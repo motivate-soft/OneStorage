@@ -17,7 +17,7 @@
 <body class="bg-white h-screen antialiased leading-none">
 
     @include('layouts.header')
-    <div class="mx-4 md:mx-36 lg:mx-72 my-13 ">
+    <div class="mx-4 md:mx-36 lg:mx-72 py-32">
 
         <div class="flex px-12 mt-16 lg:px-32 md:px-20">
             <img class="mr-4 w-32 h-32" src="{{asset('images/contactUs/Intersection 15@2x.png')}}" alt="Avatar of Jonathan Reinink">

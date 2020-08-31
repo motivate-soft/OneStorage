@@ -115,3 +115,7 @@ Route::get('/mobile/chatList', function(){
 Route::get('/mobile/chatRoom', function(){
     return view('mobile/chatRoom');
 });
+
+Route::get('/mobile/joinus', function(){
+    return view('mobile/joinus');
+});
