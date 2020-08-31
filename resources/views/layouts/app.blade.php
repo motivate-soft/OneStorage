@@ -133,6 +133,8 @@
     </style>
 
     @yield('styles')
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body class="bg-gray-50 h-screen antialiased leading-none" ondragstart="return false;" ondrop="return false;">
@@ -152,20 +154,20 @@
     </div>
 
     <div class="app-container flex-1 text-primary">
-        @include('partials.latest_news')
+        <!-- @include('partials.latest_news') -->
         @include('layouts.header')
-        <main>
+        <main id="main-content">
             @yield('content')
         </main>
         @yield('footer')
     </div>
 
-    <!-- <script src="{{asset('js/jquery-3.5.1.slim.min.js')}}"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @yield('scripts')
     <script>
         //Get the button
         var mybutton = document.getElementById("floatBT");
+        document.getElementById("main-content").style.marginTop = (document.getElementsByTagName("nav")[0].clientHeight + 7) + "px";
+
 
         // When the user scrolls down 20px from the top of the document, show the button
         window.onscroll = function() {
