@@ -18,7 +18,7 @@
                 <a class="inline-block font_16 default-color no-underline  py-2 px-2" href="#">最新資訊</a>
             </li>
             <li class="mr-1 md:mr-0">
-                <a class="inline-block font_16 default-color no-underline  py-2 px-2" href="{{url('dashboard/LN')}}">分店位置</a>
+                <a class="inline-block font_16 default-color no-underline  py-2 px-2" href="#">分店位置</a>
             </li>
             <li class="mr-1 md:mr-0 dropdown">
                 <a class="dropbtn font_16 default-color no-underline py-2 px-2" href="javascript:void(0)">空間計算器</a>
@@ -38,7 +38,7 @@
 
             <li class="relative sm:mr-10 md:mr-15 lg:mr-20">
                 <img src="{{asset('images/header/icons8-crown-48.png')}}" class=" absolute top-0 left-16" style="margin-top:-11px;">
-                <a class="inline-block font_16 default-color no-underline  py-2 px-2" href="{{url('dashboard/contact_us')}}">聯絡我們</a>
+                <a class="inline-block font_16 default-color no-underline  py-2 px-2" href="javascript:void(0)">聯絡我們</a>
             </li>
 
             <li class="mr-1 md:mr-0 dropdown">
