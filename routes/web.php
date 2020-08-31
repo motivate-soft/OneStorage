@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/location', function () {
-    return view('branchlocation');
+    return view('mobile.branchlocation');
 });
 
 Route::get('/rentwarehouse', function () {
@@ -34,11 +34,11 @@ Route::get('/join', function () {
 });
 
 Route::get('/about', function () {
-    return view('aboutus');
+    return view('mobile.aboutus');
 });
 
 Route::get('/calc', function () {
-    return view('calculator');
+    return view('mobile.calculator');
 });
 
 Route::get('/faqq', function () {
@@ -84,7 +84,34 @@ Route::get('/booking', function () {
 });
 
 
-
 Route::get('/mobile', function () {
     return view('mobile.home');
+});
+
+Route::get('/mobile/booking', function(){
+    return view('mobile/booking');
+});
+
+Route::get('/mobile/signin', function(){
+    return view('mobile/signin');
+});
+
+Route::get('/mobile/register', function(){
+    return view('mobile/register');
+});
+
+Route::get('/mobile/forgetPassword', function(){
+    return view('mobile/forgetPassword');
+});
+
+Route::get('/mobile/accountPage', function(){
+    return view('mobile/accountPage');
+});
+
+Route::get('/mobile/chatList', function(){
+    return view('mobile/chatList');
+});
+
+Route::get('/mobile/chatRoom', function(){
+    return view('mobile/chatRoom');
 });
