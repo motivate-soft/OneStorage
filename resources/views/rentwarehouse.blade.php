@@ -274,6 +274,10 @@
 
     .rentwarehouse-toggle-item-icon {
         background-color: #B881FC;
+        height: 22px;
+        width: 22px;
+        padding-top: 2px;
+        
     }
 </style>
 <link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}" />
@@ -372,7 +376,7 @@
                         <p class="text-sm color-deep pt-8">辦公時間</p>
                         <p class="text-sm color-primary">週一至週五，早上10時至晚上7時。</p>
                         <p class="text-sm color-primary">週六，早上10時至晚上5時。</p>
-                        <p class="text-sm color-primary">星期日及假期，需於 1 天前預約參觀。</p>
+                        <p class="text-sm color-primary mb-3">星期日及假期，需於 1 天前預約參觀。</p>
                         <img class="rentware-middle-image pr-5" src="{{ asset('images/Image 7@2x.png') }}" />
 
                         <p class="text-sm color-deep pt-8">交通:</p>
@@ -548,7 +552,7 @@
                 月費
             </div>
             <div class="border-b border-l border-r border-gray-600 rounded-b px-4 py-3 text-center">
-                <p class="rentwarehouse-price-select-result-card-content pt-3 pb-5 text-center">$385</p>
+                <p class="rentwarehouse-price-select-result-card-content pt-3 pb-5 text-center">$380</p>
                 <div class="w-max-content mx-auto">
                     <p class="w-max-content rentwarehouse-price-select-result-card-footer-title color-primary">付費方式:</p>
                     <div class="w-max-content flex color-primary pb-2 pt-2">
@@ -630,9 +634,11 @@
             this.className += " active";
 
             if (this.childNodes[1].innerHTML == "預繳12個月") {
-                this.parentNode.nextSibling.nextSibling.childNodes[3].innerHTML = "$380";
+                // this.parentNode.nextSibling.nextSibling.childNodes[3].innerHTML = "$380";
+                $(".rentwarehouse-price-select-result-card-content").html("$380");
             } else {
-                this.parentNode.nextSibling.nextSibling.childNodes[3].innerHTML = "$385";
+                //this.parentNode.nextSibling.nextSibling.childNodes[3].innerHTML = "$385";
+                $(".rentwarehouse-price-select-result-card-content").html("$385");
             }
 
 
