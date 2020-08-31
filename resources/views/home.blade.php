@@ -239,7 +239,7 @@
     </div>
 </div>
 
-<div class="bg-white px-60 py-8 mb-4">
+<div class="bg-white px-60 py-10">
     <div class="grid grid-cols-3 col-gap-6 mb-8">
         <div>
             <img src="{{asset('images/img_1.jpg')}}" class="mb-4" />
@@ -348,7 +348,7 @@
     </div>
 </div>
 
-<div class="bg-white px-60 py-8 mb-12 text-center">
+<div class="bg-white px-60 pt-10 pb-20 text-center">
     <span class="heading2 box-shadow1">至尊迷你倉</span>
     <p class="w-full bg-yellow py-6 px-10 text4 my-10 leading-snug font-medium">
         至尊迷你倉致力為每位客戶打造最安全及最可靠的倉存空間，實力雄厚，全屬自置物業。分店網絡積極不斷擴充，新蒲崗及火炭分店將於短期內正式投入服務。 特設多種大小不同呎碼獨立迷你倉，任君選擇。2.4米闊的走廊配以完善的裝置設備，完全符合消防指引。全天候高清保安監察及警報系統，智能保安進出系統，24小時自助式儲存，支援現金、EPS、支票、信用卡、轉數快及免息分期付費，優質的儲存環境及親切專業的客戶服務，用心為每位客戶提升生活空間質素，承傳尊貴享受典範。
