@@ -1,0 +1,94 @@
+.form-login {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 40px
+}
+
+.form_header {
+    color: #374151;
+    font-size: 19px;
+}
+
+.input-group {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+}
+
+.input-group .form-control, .input-group-addon, .input-group-btn {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.input-group .form-control {
+    position: relative;
+    z-index: 2;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-bottom: 0;
+}
+
+.form-control-icon {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    z-index: 99;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.form-icons .form-control-icon + .form-control {
+    padding-left: 30px;
+    border-top-left-radius: .215rem;
+    border-bottom-left-radius: .215rem;
+}
+
+.form-control {
+    box-sizing: border-box;
+    height: 2.573rem;
+    font-weight: 100;
+    border-color: #e4eaec;
+    box-shadow: none;
+    transition: box-shadow .25s linear,border .25s linear,color .25s linear,background-color .25s linear;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    display: block;
+    width: 100%;
+    padding: .429rem 1rem;
+    padding-left: 3rem;
+    font-size: 1rem;
+    line-height: 1.57142857;
+    color: #76838f;
+    background-color: #fff;
+    background-image: none;
+    background-clip: padding-box;
+    border: 1px solid #e4eaec;
+        border-top-color: rgb(228, 234, 236);
+        border-right-color: rgb(228, 234, 236);
+        border-bottom-color: rgb(228, 234, 236);
+        border-left-color: rgb(228, 234, 236);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    --text-opacity: 1;
+    color: rgba(255, 255, 255, var(--text-opacity));
+    color: #56628c;
+    font-weight: 700;
+    font-size: 21px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: #E0CBF6;
+}
