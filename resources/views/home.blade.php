@@ -89,6 +89,7 @@
     .text1 {
         font-size: 16px;
         color: #4D5567;
+        line-height: 1.225;
     }
 
     .text2 {
@@ -163,8 +164,8 @@
     }
 
     .contact-icon {
-        width: 20px;
-        height: 20px;
+        width: 24px;
+        height: 24px;
     }
 </style>
 
@@ -172,7 +173,7 @@
 
 @section('content')
 
-<div class="bg-white flex w-full pl-32 pt-10 relative bg-hero">
+<div class="bg-white flex w-full pl-32 pt-10 bg-hero">
     <div class="w-1/2">
         <span class="page-title leading-relaxed text-primary">
             唔想屋企<span class="text-yellow">咁亂</span>? <br />
@@ -241,15 +242,15 @@
 
 <div class="bg-white px-60 py-10">
     <div class="grid grid-cols-3 col-gap-6 mb-8">
-        <div>
+        <div class="mx-auto">
             <img src="{{asset('images/img_1.jpg')}}" class="mb-4" />
             <p class="text-center text1">迷你倉廣告</p>
         </div>
-        <div>
+        <div class="mx-auto">
             <img src="{{asset('images/img_2.jpg')}}" class="mb-4" />
             <p class="text-center text1">迷你倉廣告</p>
         </div>
-        <div>
+        <div class="mx-auto">
             <img src="{{asset('images/img_3.jpg')}}" class="mb-4" />
             <p class="text-center text1">迷你倉廣告</p>
         </div>
@@ -257,7 +258,7 @@
 
     <span class="heading2 ml-20 box-shadow">最新優惠</span>
 
-    <div class="grid grid-cols-2 col-gap-8 row-gap-10 my-10">
+    <div class="grid grid-cols-2 col-gap-8 row-gap-10 my-10 max-w-5xl mx-auto">
         <img src="{{asset('images/img_2_1.jpg')}}" class="yellow-shadow" />
         <img src="{{asset('images/img_2_2.jpg')}}" class="yellow-shadow" />
         <img src="{{asset('images/img_2_3.jpg')}}" class="yellow-shadow" />
@@ -281,7 +282,7 @@
             <div class="score-base mb-4">
                 <p class="m-auto">5.0</p>
             </div>
-            <p class="text1 mb-8">
+            <p class="text1 mb-12">
                 The storage is clean and
                 tidy.
                 The office girl is very
@@ -296,7 +297,7 @@
             <div class="score-base mb-4">
                 <p class="m-auto">5.0</p>
             </div>
-            <p class="text1 mb-8">
+            <p class="text1 mb-12">
                 Excellent customer service,
                 very fast response even at
                 midnight on facebook
@@ -312,7 +313,7 @@
             <div class="score-base mb-4">
                 <p class="m-auto">5.0</p>
             </div>
-            <p class="text1 mb-8">
+            <p class="text1 mb-12">
                 Finally got a place to put our
                 extra stuff, 24 hrs air con and
                 just 5 mins distance away
@@ -327,24 +328,24 @@
 </div>
 
 <div class="flex justify-between bg-primary px-60 py-6 text3">
-    <span class="my-auto">
+    <a class="my-auto" href="Tel: 852-21112636">
         <img src="{{asset('images/ic_phone.png')}}" class="inline mr-2 contact-icon" />
         (852) 2111 2636
-    </span>
+    </a>
 
-    <span class="my-auto">
+    <a class="my-auto" href="mailto:email">
         <img src="{{asset('images/ic_email.png')}}" class="inline mr-2 contact-icon" />
         cs@onestorage.com.hk
-    </span>
+    </a>
 
-    <span class="my-auto">
+    <a class="my-auto" href="https://wa.me/85251188503">
         <img src="{{asset('images/ic_wa.png')}}" class="inline mr-2 contact-icon" />
         (852) 5118 8503
-    </span>
+    </a>
     <div>
-        <img src="{{asset('images/ic_fb.png')}}" class="inline mr-4 contact-icon" />
-        <img src="{{asset('images/ic_in.png')}}" class="inline mr-4 contact-icon" />
-        <img src="{{asset('images/ic_play.png')}}" class="inline mr-4 contact-icon" />
+        <a href="https://www.facebook.com/onestorage/"><img src="{{asset('images/ic_fb.png')}}" class="inline mx-2 contact-icon" /></a>
+        <a href="https://www.instagram.com/onestorage_hk/"><img src="{{asset('images/ic_in.png')}}" class="inline mx-2 contact-icon" /></a>
+        <a href="https://www.youtube.com/channel/UCp91DP8DqA1_4zWhzum1NDQ"><img src="{{asset('images/ic_play.png')}}" class="inline mx-2" /></a>
     </div>
 </div>
 
