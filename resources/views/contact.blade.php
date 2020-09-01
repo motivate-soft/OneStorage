@@ -225,7 +225,7 @@
     <div class="grid grid-cols-5 gap-4 pt-20 pb-10">
         <div class="col-span-3">
             <div class="ml-10">
-                <p class="form_header mb-8">連絡我們</p>
+                <p class="form_header font_19 mb-8">連絡我們</p>
                 <div class="grid grid-cols-6 gap-4">
                     <a href="Tel: 852-21112636" class="flex col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-5 xl:col-span-2...">
                         <img class="fill-current mr-4" src="{{asset('images/footer/icons8-phone-50@2x.png')}}" />
