@@ -365,7 +365,7 @@
                     <img class="rentwarehouse-sub-image" src="{{asset('images/th_1.jpg')}}" />
                 </div>
             </div>
-            <div class="mr-10">
+            <div class="mr-10 pb-4">
                 <div class="horz-line my-4"></div>
                 <p class="text1 pb-2">
                     詳細資料
@@ -376,12 +376,12 @@
                     多種面積，適合任何人仕使用。
                 </p>
 
-                <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer mb-8 pt-8">
+                <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
                     <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
                     <span class="text1 my-auto self-center pl-2">租用面積</span>
                 </div>
 
-                <div class="flex mb-4">
+                <div class="flex my-4">
                     <div class="w-2/3">
                         <table style="width:100%" class="text-center text0">
                             <tr class="table-heading">
@@ -428,11 +428,11 @@
                 </div>
                 <div class="horz-line my-4"></div>
 
-                <div class="flex mb-8 rentwarehouse-toggle-item selection-none cursor-pointer pt-8">
+                <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
                     <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
                     <span class="text1 my-auto self-center pl-2">地址</span>
                 </div>
-                <div>
+                <div class="my-4">
                     <p class="text-sm color-primary">地址:黃竹坑道18號瑞琪工業大廈14樓A室</p>
                     <div>
                         <p class="text-sm color-deep pt-8 py-2">開放時間</p>
@@ -452,11 +452,11 @@
 
                 <div class="horz-line my-4"></div>
 
-                <div class="flex mb-8 rentwarehouse-toggle-item selection-none cursor-pointer pt-8">
+                <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
                     <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
                     <span class="text1 my-auto self-center pl-2">最新優惠</span>
                 </div>
-                <div>
+                <div class="my-4">
                     <p class="text-sm color-primary">黃竹坑新店快閃優惠　低至6折優惠</p>
                     <img class="pr-20 mt-10 mb-10" src="{{ asset('images/Image 8@2x.png') }}" />
 
@@ -479,11 +479,11 @@
 
                 <div class="horz-line my-4"></div>
 
-                <div class="flex mb-8 rentwarehouse-toggle-item selection-none cursor-pointer pt-8">
+                <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
                     <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
                     <span class="text1 my-auto self-center pl-2">服務設施</span>
                 </div>
-                <div>
+                <div class="my-4">
                     <div class="flex py-2">
                         <div class="w-2/5">
                             <div class="flex">
@@ -553,11 +553,11 @@
 
                 <div class="horz-line my-4"></div>
 
-                <div class="flex mb-8 rentwarehouse-toggle-item selection-none cursor-pointer pt-8">
+                <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
                     <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
                     <span class="text1 my-auto self-center pl-2">附近設施</span>
                 </div>
-                <div>
+                <div class="my-4">
                     <div class="flex py-2">
                         <div class="w-1/2">
                             <p class="text-sm color-deep">香葉道休憩處</p>
@@ -578,12 +578,12 @@
 
                 <div class="horz-line my-4"></div>
 
-                <div class="flex mb-8 rentwarehouse-toggle-item selection-none cursor-pointer pt-8">
+                <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
                     <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
                     <span class="text1 my-auto self-center pl-2">附近設施</span>
                 </div>
 
-                <div>
+                <div class="my-4">
                     <p class="text-sm color-deep py-1">- 問題?</p>
                     <p class="text-sm color-deep py-1">- 答案。</p>
                 </div>

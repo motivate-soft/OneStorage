@@ -7,7 +7,6 @@
 @section('styles')
 
 <style>
-
     .panel-other {
         padding: 0 18px;
         background-color: white;
@@ -197,7 +196,7 @@
                     </div>
                 </div>
                 <div class="flex relative rentwarehouse-select-store-item-branch mx-2">
-                <select class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 leading-tight focus:outline-none focus:shadow-outline rentwarehouse-selects-store-item-select">
+                    <select class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 leading-tight focus:outline-none focus:shadow-outline rentwarehouse-selects-store-item-select">
                         <option class="rentwarehouse-selects-store-item-option" selected disabled>分店</option>
                         <option class="rentwarehouse-selects-store-item-option">Option 1</option>
                         <option class="rentwarehouse-selects-store-item-option">Option 2</option>
@@ -223,7 +222,7 @@
                         <span class="rentwarehouse-price-title color-primary pl-5">價格範圍</span>
                         <span id="amount" class="rentwarehouse-price-title color-primary rentwarehouse-price pl-10"></span>
                     </div>
-                    <div class="flex pt-5 pl-5">
+                    <div class="flex py-5 pl-5 border-b border-gray-200">
                         <div class="cursor-pointer">
                             <div id="slider-range"></div>
                         </div>
@@ -231,8 +230,8 @@
                             <label class="flex items-center rentwarehouse-price-check"><input type="checkbox" class="mr-3" />只顯示有折扣地區</label>
                         </div>
                     </div>
-                    
                 </div>
+                
                 <div class="pl-8 pt-5">
                     <div class="flex">
                         <p class="branchlocation-store-select-description">唔知自己需要咩size ? 試下我地既空間計算器</p>
@@ -245,8 +244,8 @@
                                 <div class="branchlocation-card-title text-center mb-2">小型倉</div>
                             </div>
                             <div class="px-6 pt-0 pb-4">
-                                <div class="branchlocation-card-content text-center mb-2">
-                                    換季衣服, 兒童物件<br />及玩具,書本
+                                <div class="branchlocation-card-content text-center mb-2 leading-normal">
+                                    換季衣服, 兒童物件及玩具,書本
                                 </div>
                             </div>
                             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
@@ -259,8 +258,8 @@
                                 <div class="branchlocation-card-title text-center mb-2">小型倉</div>
                             </div>
                             <div class="px-6 pt-0 pb-4">
-                                <div class="branchlocation-card-content text-center mb-2">
-                                    換季衣服, 兒童物件<br />及玩具,書本
+                                <div class="branchlocation-card-content text-center mb-2 leading-normal">
+                                    換季衣服, 兒童物件及玩具,書本
                                 </div>
                             </div>
                             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
@@ -273,8 +272,8 @@
                                 <div class="branchlocation-card-title text-center mb-2">小型倉</div>
                             </div>
                             <div class="px-6 pt-0 pb-4">
-                                <div class="branchlocation-card-content text-center mb-2">
-                                    換季衣服, 兒童物件<br />及玩具,書本
+                                <div class="branchlocation-card-content text-center mb-2 leading-normal">
+                                    換季衣服, 兒童物件及玩具,書本
                                 </div>
                             </div>
                             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
@@ -287,8 +286,8 @@
                                 <div class="branchlocation-card-title text-center mb-2">小型倉</div>
                             </div>
                             <div class="px-6 pt-0 pb-4">
-                                <div class="branchlocation-card-content text-center mb-2">
-                                    換季衣服, 兒童物件<br />及玩具,書本
+                                <div class="branchlocation-card-content text-center mb-2 leading-normal">
+                                    換季衣服, 兒童物件及玩具,書本
                                 </div>
                             </div>
                             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
@@ -312,7 +311,7 @@
                     <div class="p-2">
                         <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
                         <div class="flex py-1 mb-2">
-                            <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
+                            <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
                         <div class="flex py-1 mb-2">
@@ -326,7 +325,7 @@
                                 選擇
                             </button>
                         </a>
-                        
+
                     </div>
                 </div>
                 <div class="relative rounded overflow-hidden shadow-lg location-content-item">
@@ -340,7 +339,7 @@
                     <div class="p-2">
                         <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
                         <div class="flex py-1 mb-2">
-                            <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
+                            <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
                         <div class="flex py-1 mb-2">
@@ -354,7 +353,7 @@
                                 選擇
                             </button>
                         </a>
-                        
+
                     </div>
                 </div>
                 <div class="relative rounded overflow-hidden shadow-lg location-content-item">
@@ -368,7 +367,7 @@
                     <div class="p-2">
                         <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
                         <div class="flex py-1 mb-2">
-                            <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
+                            <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
                         <div class="flex py-1 mb-2">
@@ -382,7 +381,7 @@
                                 選擇
                             </button>
                         </a>
-                        
+
                     </div>
                 </div>
                 <div class="relative rounded overflow-hidden shadow-lg location-content-item">
@@ -396,7 +395,7 @@
                     <div class="p-2">
                         <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
                         <div class="flex py-1 mb-2">
-                            <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
+                            <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
                         <div class="flex py-1 mb-2">
@@ -410,7 +409,7 @@
                                 選擇
                             </button>
                         </a>
-                        
+
                     </div>
                 </div>
                 <div class="relative rounded overflow-hidden shadow-lg location-content-item">
@@ -424,7 +423,7 @@
                     <div class="p-2">
                         <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
                         <div class="flex py-1 mb-2">
-                            <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
+                            <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
                         <div class="flex py-1 mb-2">
@@ -438,7 +437,7 @@
                                 選擇
                             </button>
                         </a>
-                        
+
                     </div>
                 </div>
                 <div class="relative rounded overflow-hidden shadow-lg location-content-item">
@@ -452,7 +451,7 @@
                     <div class="p-2">
                         <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
                         <div class="flex py-1 mb-2">
-                            <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
+                            <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
                         <div class="flex py-1 mb-2">
@@ -466,9 +465,10 @@
                                 選擇
                             </button>
                         </a>
-                        
+
                     </div>
                 </div>
+
             </div>
 
         </div>
@@ -493,7 +493,6 @@
 <script src="{{asset('branchlocation/ribbon/js/Site.js')}}"></script>
 
 <script>
-
     var stores = document.getElementsByClassName("store-select");
 
     for (var i = 0; i < stores.length; i++) {
@@ -529,7 +528,7 @@
         $(".rentwarehouse-price-toggle-button").click(function() {
             $(this).next().toggle();
 
-            if($(this).next().css("display") == "none") {
+            if ($(this).next().css("display") == "none") {
                 $(this).find("i").removeClass("wb-triangle-up");
                 $(this).find("i").addClass("wb-triangle-down");
             } else {
