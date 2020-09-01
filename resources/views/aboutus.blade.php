@@ -99,7 +99,7 @@
         <div class="relative maintitle-right">
             <div class="flex items-stretch">
                 <span class="self-center">關於</span>
-                <span class="self-center capitalize maintitle-right-aboutus-english">one storage</span>
+                <span class="self-center capitalize maintitle-right-aboutus-english pt-2">one storage</span>
             </div>
             <div class="capitalize absolute bottom-0 left-0 maintitle-right-bottom">one choice one storage</div>
         </div>
