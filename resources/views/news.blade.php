@@ -19,7 +19,7 @@
         <div class="col-span-2 mr-10 lg:mr-0">
             <div class="text-left text-5xl pt-10 pb-5 ml-10 border-b">
                 <h1 class="font_49 text-purple">新型肺炎疫情最新安排</h1>
-                <p class="text2 text-xl mt-4">by admin &nap;&nap;&nap; November 23, 2020</p>
+                <p class="text2 text-xl mt-4">by admin &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; November 23, 2020</p>
             </div>
             <div class="text-left ml-10 mt-5">
                 <img class="h-40 w-120 pb-4" src="{{asset('images/latest_news/Image 89.png')}}" class="mt-4">
