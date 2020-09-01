@@ -6,10 +6,6 @@
 
 @section('styles')
 <style>
-    .main-image {
-        max-width: 1366px;
-    }
-
     .main-wrapper {
         margin-top: -80px;
         margin-right: 200px;
@@ -94,9 +90,7 @@
 
 
 @section('content')
-<div class="w-full mx-auto main-image">
-    <img class="p-0 m-0" src="{{asset('images/aboutus/shutterstock_95637766@2x.png')}}" />
-</div>
+<img class="w-full" src="{{asset('images/aboutus/shutterstock_95637766@2x.png')}}" />
 
 <div class="relative block bg-white main-wrapper">
     <div class="flex maintitle-wrapper color-primary">

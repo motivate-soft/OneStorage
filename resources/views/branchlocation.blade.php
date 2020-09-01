@@ -185,7 +185,7 @@
             <div class="flex items-center pl-6 py-5">
                 <img class="rentwarehouse-select-store-image px-2" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                 <div class="flex relative rentwarehouse-select-store-item-area mx-2">
-                    <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 shadow leading-tight focus:outline-none focus:shadow-outline rentwarehouse-selects-store-item-select">
+                    <select class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 leading-tight focus:outline-none focus:shadow-outline rentwarehouse-selects-store-item-select">
                         <option class="rentwarehouse-selects-store-item-option" selected disabled>地區</option>
                         <option class="rentwarehouse-selects-store-item-option">Option 1</option>
                         <option class="rentwarehouse-selects-store-item-option">Option 2</option>
@@ -197,7 +197,7 @@
                     </div>
                 </div>
                 <div class="flex relative rentwarehouse-select-store-item-branch mx-2">
-                    <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 shadow leading-tight focus:outline-none focus:shadow-outline rentwarehouse-selects-store-item-select">
+                <select class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 leading-tight focus:outline-none focus:shadow-outline rentwarehouse-selects-store-item-select">
                         <option class="rentwarehouse-selects-store-item-option" selected disabled>分店</option>
                         <option class="rentwarehouse-selects-store-item-option">Option 1</option>
                         <option class="rentwarehouse-selects-store-item-option">Option 2</option>
@@ -300,24 +300,24 @@
             </div>
 
             <div class="rentwarehouse-wrapper-title color-primary text-left pt-4">分店位置</div>
-            <div class="grid grid-cols-3 col-gap-3 row-gap-2 pt-5 pl-8 pr-0">
+            <div class="grid grid-cols-3 col-gap-3 row-gap-6 pt-5 pl-8 pr-0">
                 <div class="relative rounded overflow-hidden shadow-lg location-content-item">
                     <div class="relative">
                         <div class="ribbon ribbon-badge ribbon-pink">
                             <span class="ribbon-inner">最新優惠</span>
                         </div>
                         <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Sunset in the mountains">
-                        <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 起</span>
+                        <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 <span class="text-sm">起</span></span>
                     </div>
-                    <div class="px-1 py-2">
+                    <div class="p-2">
                         <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
-                        <div class="flex py-1">
+                        <div class="flex py-1 mb-2">
                             <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
-                        <div class="flex py-1">
-                            <img class="w-4" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
-                            <p class="color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
+                        <div class="flex py-1 mb-2">
+                            <img class="" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
+                            <p class="ml-1 color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                         </div>
                     </div>
                     <div class="absolute px-2 py-1 bottom-0 w-full">
@@ -335,17 +335,17 @@
                             <span class="ribbon-inner">最新優惠</span>
                         </div>
                         <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Sunset in the mountains">
-                        <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 起</span>
+                        <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 <span class="text-sm">起</span></span>
                     </div>
-                    <div class="px-1 py-2">
+                    <div class="p-2">
                         <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
-                        <div class="flex py-1">
+                        <div class="flex py-1 mb-2">
                             <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
-                        <div class="flex py-1">
-                            <img class="w-4" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
-                            <p class="color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
+                        <div class="flex py-1 mb-2">
+                            <img class="" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
+                            <p class="ml-1 color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                         </div>
                     </div>
                     <div class="absolute px-2 py-1 bottom-0 w-full">
@@ -354,6 +354,7 @@
                                 選擇
                             </button>
                         </a>
+                        
                     </div>
                 </div>
                 <div class="relative rounded overflow-hidden shadow-lg location-content-item">
@@ -362,17 +363,17 @@
                             <span class="ribbon-inner">最新優惠</span>
                         </div>
                         <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Sunset in the mountains">
-                        <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 起</span>
+                        <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 <span class="text-sm">起</span></span>
                     </div>
-                    <div class="px-1 py-2">
+                    <div class="p-2">
                         <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
-                        <div class="flex py-1">
+                        <div class="flex py-1 mb-2">
                             <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
-                        <div class="flex py-1">
-                            <img class="w-4" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
-                            <p class="color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
+                        <div class="flex py-1 mb-2">
+                            <img class="" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
+                            <p class="ml-1 color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                         </div>
                     </div>
                     <div class="absolute px-2 py-1 bottom-0 w-full">
@@ -381,6 +382,7 @@
                                 選擇
                             </button>
                         </a>
+                        
                     </div>
                 </div>
                 <div class="relative rounded overflow-hidden shadow-lg location-content-item">
@@ -389,17 +391,17 @@
                             <span class="ribbon-inner">最新優惠</span>
                         </div>
                         <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Sunset in the mountains">
-                        <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 起</span>
+                        <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 <span class="text-sm">起</span></span>
                     </div>
-                    <div class="px-1 py-2">
+                    <div class="p-2">
                         <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
-                        <div class="flex py-1">
+                        <div class="flex py-1 mb-2">
                             <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
-                        <div class="flex py-1">
-                            <img class="w-4" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
-                            <p class="color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
+                        <div class="flex py-1 mb-2">
+                            <img class="" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
+                            <p class="ml-1 color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                         </div>
                     </div>
                     <div class="absolute px-2 py-1 bottom-0 w-full">
@@ -408,6 +410,7 @@
                                 選擇
                             </button>
                         </a>
+                        
                     </div>
                 </div>
                 <div class="relative rounded overflow-hidden shadow-lg location-content-item">
@@ -416,17 +419,17 @@
                             <span class="ribbon-inner">最新優惠</span>
                         </div>
                         <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Sunset in the mountains">
-                        <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 起</span>
+                        <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 <span class="text-sm">起</span></span>
                     </div>
-                    <div class="px-1 py-2">
+                    <div class="p-2">
                         <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
-                        <div class="flex py-1">
+                        <div class="flex py-1 mb-2">
                             <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
-                        <div class="flex py-1">
-                            <img class="w-4" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
-                            <p class="color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
+                        <div class="flex py-1 mb-2">
+                            <img class="" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
+                            <p class="ml-1 color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                         </div>
                     </div>
                     <div class="absolute px-2 py-1 bottom-0 w-full">
@@ -435,6 +438,7 @@
                                 選擇
                             </button>
                         </a>
+                        
                     </div>
                 </div>
                 <div class="relative rounded overflow-hidden shadow-lg location-content-item">
@@ -443,17 +447,17 @@
                             <span class="ribbon-inner">最新優惠</span>
                         </div>
                         <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Sunset in the mountains">
-                        <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 起</span>
+                        <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 <span class="text-sm">起</span></span>
                     </div>
-                    <div class="px-1 py-2">
+                    <div class="p-2">
                         <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
-                        <div class="flex py-1">
+                        <div class="flex py-1 mb-2">
                             <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
-                        <div class="flex py-1">
-                            <img class="w-4" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
-                            <p class="color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
+                        <div class="flex py-1 mb-2">
+                            <img class="" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
+                            <p class="ml-1 color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                         </div>
                     </div>
                     <div class="absolute px-2 py-1 bottom-0 w-full">
@@ -462,9 +466,9 @@
                                 選擇
                             </button>
                         </a>
+                        
                     </div>
                 </div>
-
             </div>
 
         </div>
