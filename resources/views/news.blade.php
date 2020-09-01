@@ -93,8 +93,8 @@
     </div>
 </div>
 
-<div class="bg-white sm:mx-30  lg:mx-56 md:mx-40 mx-20 mt-14 mb-10">
-    <div class="justify-center lg:mx-48 md:mx-36 sm:mx-28 pb-6 pt-14">
+<div class="bg-white sm:mx-30 lg:mx-56 md:mx-40 mx-20 pt-14 pb-10">
+    <div class="px-60">
         @include('partials.loginForm')
     </div>
 </div>
