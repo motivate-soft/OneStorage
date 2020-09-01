@@ -13,12 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+//testing code
+Route::post('/signin', function () {
+    session()->put('logged_in', true);
+    return redirect('/');
+});
+
+Route::get('/logout', function () {
+    session()->flush();
+    return redirect('/');
+});
+
 Route::get('/', function () {
     return view('home');
 });
 
 Route::get('/location', function () {
-    return view('mobile.branchlocation');
+    return view('branchlocation');
 });
 
 Route::get('/rentwarehouse', function () {
@@ -29,16 +41,16 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/join', function () {
-    return view('joinus');
+Route::get('/career', function () {
+    return view('career');
 });
 
 Route::get('/about', function () {
-    return view('mobile.aboutus');
+    return view('aboutus');
 });
 
 Route::get('/calc', function () {
-    return view('mobile.calculator');
+    return view('calculator');
 });
 
 Route::get('/faqq', function () {
@@ -68,15 +80,24 @@ Route::get('/forgetpwd', function () {
 });
 
 Route::get('/account', function () {
-    return view('account.accountPage');
+    if (session()->get('logged_in')) {
+        return view('account.accountPage');
+    }
+    return redirect('/login');
 });
 
 Route::get('/chatlist', function () {
-    return view('account.chatList');
+    if (session()->get('logged_in')) {
+        return view('account.chatList');
+    }
+    return redirect('/login');
 });
 
 Route::get('/chatroom', function () {
-    return view('account.chatRoom');
+    if (session()->get('logged_in')) {
+        return view('account.chatRoom');
+    }
+    return redirect('/login');
 });
 
 Route::get('/booking', function () {
@@ -88,30 +109,30 @@ Route::get('/mobile', function () {
     return view('mobile.home');
 });
 
-Route::get('/mobile/booking', function(){
+Route::get('/mobile/booking', function () {
     return view('mobile/booking');
 });
 
-Route::get('/mobile/signin', function(){
+Route::get('/mobile/signin', function () {
     return view('mobile/signin');
 });
 
-Route::get('/mobile/register', function(){
+Route::get('/mobile/register', function () {
     return view('mobile/register');
 });
 
-Route::get('/mobile/forgetPassword', function(){
+Route::get('/mobile/forgetPassword', function () {
     return view('mobile/forgetPassword');
 });
 
-Route::get('/mobile/accountPage', function(){
+Route::get('/mobile/accountPage', function () {
     return view('mobile/accountPage');
 });
 
-Route::get('/mobile/chatList', function(){
+Route::get('/mobile/chatList', function () {
     return view('mobile/chatList');
 });
 
-Route::get('/mobile/chatRoom', function(){
+Route::get('/mobile/chatRoom', function () {
     return view('mobile/chatRoom');
 });

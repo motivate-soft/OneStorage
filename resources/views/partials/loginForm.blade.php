@@ -1,5 +1,5 @@
-<form class=" form-login">
-    <p class="form_header mb-10">給我們留言 </p>
+<form class="form-login">
+    <p class="text2 mb-8">給我們留言</p>
     <div class="flex mb-4 w-full">
         <div class="flex w-1/2 input-group">
             <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">

@@ -12,11 +12,12 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/common.css') }}" rel="stylesheet">
     <link href="{{ asset('css/header.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/accessory.css') }}" rel="stylesheet">
 </head>
 
 <body class="bg-white h-screen antialiased leading-none text-primary" ondragstart="return false;" ondrop="return false;">
-    
+    @include('partials.accessory')
+
     @include('layouts.header')
 
     <div class=" mx-auto" style="padding-top: 168px;padding-bottom: px;width: 60%">
@@ -25,20 +26,20 @@
         <div class="flex flex-col lg:flex-row">
 
             <div class="w-full lg:w-1/2 px-4 border-r-none lg:border-r">
-                <form class=" register-form">
-
+                <form class="register-form" action="{{url('/signin')}}" method="post">
+                    @csrf
                     <div class="input-group mb-4">
                         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-                        <input class="form-control" type="text" placeholder="電話號碼">
+                        <input class="form-control" name="phoneNumber" required type="text" placeholder="電話號碼">
                     </div>
 
-                    <input class="w-full form-control mb-6" style="padding-left:32px" type="text" placeholder="密碼">
+                    <input class="w-full form-control mb-6" name="password" type="password" required style="padding-left:32px" type="text" placeholder="密碼">
 
                     <a href="{{url('/forgetpwd')}}">
                         <p class=" register-subtilte title-violet">忘記密碼?</p>
                     </a>
 
-                    <button class="submit-btn hover:bg-purple-400">
+                    <button class="submit-btn hover:bg-purple-400" type="submit">
                         登入
                     </button>
                 </form>
@@ -63,7 +64,7 @@
         </div>
 
     </div>
-
+    <script src="{{ asset('js/accessory.js') }}"></script>
 </body>
 
 </html>

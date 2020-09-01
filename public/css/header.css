@@ -45,3 +45,14 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.new-msg::after{
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 9999px;
+    background-color: #FB6767;
+    right: 8px;
+    margin-top: 5px;
+    position: absolute;
+}

@@ -17,15 +17,14 @@
         font-size: 61px;
         position: relative;
         font-weight: bold;
-        z-index: 10;
     }
 
-    .page-title:before {
+    .title-shadow:before {
         content: '';
         position: absolute;
-        width: 115%;
+        width: 94%;
         height: 88px;
-        bottom: -71px;
+        bottom: 20px;
         z-index: -1;
         left: -10px;
         background-color: #E0CBF6;
@@ -35,18 +34,6 @@
         font-size: 26px;
         font-weight: bold;
         color: #B2B5BD;
-    }
-
-    .heading1 {
-        font-size: 24px;
-        color: white;
-    }
-
-    .heading2 {
-        /* 33px */
-        font-size: 33px;
-        font-weight: normal;
-        color: #4D5567;
     }
 
     .box-shadow {
@@ -79,34 +66,6 @@
         background-color: #FABD02;
         top: 15px;
         left: -15%;
-    }
-
-    .text0 {
-        font-size: 14px;
-        color: #4D5567;
-    }
-
-    .text1 {
-        font-size: 16px;
-        color: #4D5567;
-        line-height: 1.225;
-    }
-
-    .text2 {
-        /* 19px */
-        font-size: 19px;
-        color: #4D5567;
-    }
-
-    .text3 {
-        font-size: 20px;
-        color: white
-    }
-
-    .text4 {
-        /* 21px */
-        font-size: 21px;
-        color: #4D5567;
     }
 
     .text-name {
@@ -175,11 +134,13 @@
 
 <div class="bg-white flex w-full pl-32 pt-10 bg-hero">
     <div class="w-1/2">
-        <span class="page-title leading-relaxed text-primary">
-            唔想屋企<span class="text-yellow">咁亂</span>? <br />
+        <p class="z-20 page-title leading-snug text-primary mb-3">
+            唔想屋企<span class="text-yellow">咁亂</span>?
+        </p>
+        <span class="z-10 page-title title-shadow">
             搵One Storage 啦
         </span>
-        <p class="page-desc">至尊迷你倉 ‧ One Choice ‧ One Storage</p>
+        <p class="page-desc pt-6">至尊迷你倉 ‧ One Choice ‧ One Storage</p>
         <div class="flex bg-primary rounded-lg p-4 mr-40 mt-8 justify-between w-auto">
             <img src="{{asset('images/ic_marker.png')}}" class="align-middle my-auto" />
             <div class="w-3/12 inline-block relative">
@@ -270,7 +231,7 @@
 
 <div class="bg-grey px-60 pb-8 text-center">
     <span class="heading2 box-shadow1 relative" style="top:-26px">客戶感言</span>
-    <p class="text4 ml-10">用戶好評來自 <span class="text-blue-900 font-extrabold">facebook</span></p>
+    <p class="text4 my-4 ml-10">用戶好評來自 <span class="text-blue-900 font-extrabold">facebook</span></p>
     <div class="flex justify-center mb-10">
         <div class="score-lg relative" style="top: -20px">
             <p class="m-auto">5.0</p>
@@ -333,7 +294,7 @@
         (852) 2111 2636
     </a>
 
-    <a class="my-auto" href="mailto:email">
+    <a class="my-auto" href="mailto:cs@onestorage.com.hk">
         <img src="{{asset('images/ic_email.png')}}" class="inline mr-2 contact-icon" />
         cs@onestorage.com.hk
     </a>
@@ -420,7 +381,7 @@
 </div>
 
 
-<div class="bg-white px-60 py-2">
+<div class="bg-white px-60 pt-14 pb-6">
     <div class="px-60">
         @include('partials.loginForm')
     </div>

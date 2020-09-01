@@ -20,16 +20,18 @@ module.exports = {
         'primary': '#4D5567',
         'second': '#56628C',
         'third': '#9A9CA2',
-        'grey' : '#AFAFAF',
-        'grey-1' : '#B2B5BD',
-        'yellow' : '#FABD02'
+        'purple': '#7E3E97',
+        'grey': '#AFAFAF',
+        'grey-1': '#B2B5BD',
+        'yellow': '#FABD02'
       },
 
       backgroundColor: {
-        'yellow' : '#FABD02',
-        'primary' : '#56628C',
-        'second' : '#E0CBF6',
-        'grey' : '#F6F6F6'
+        'yellow': '#FABD02',
+        'primary': '#56628C',
+        'second': '#E0CBF6',
+        'grey': '#F6F6F6',
+        'grey-1': '#F9F9F9',
       }
     },
   },

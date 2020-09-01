@@ -12,10 +12,12 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/common.css') }}" rel="stylesheet">
     <link href="{{ asset('css/header.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/accessory.css') }}" rel="stylesheet">
 
 </head>
 
 <body class="bg-white h-screen antialiased leading-none" ondragstart="return false;" ondrop="return false;">
+    @include('partials.accessory')
 
     @include('layouts.header')
 
@@ -274,7 +276,7 @@
         </div>
 
     </div>
-
+    <script src="{{ asset('js/accessory.js') }}"></script>
 </body>
 
 </html>
