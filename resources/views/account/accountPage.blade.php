@@ -20,12 +20,12 @@
 
     @include('layouts.header')
 
-    <div class="mx-4 md:mx-24 lg:mx-40 py-32">
+    <div class="mx-4 md:mx-24 lg:mx-60 py-32">
 
         <div class="flex px-12 mt-16 lg:px-32 md:px-20">
             <img class="mr-4 w-32 h-32" src="{{asset('images/contactUs/Intersection 15@2x.png')}}" alt="Avatar of Jonathan Reinink">
             <div class="body-content lg:rounded-b-none lg:rounded-r mt-28">
-                <div class=" branch-title mb-8">Paul Smith, 歡迎你回來!</div>
+                <div class=" branch-title mb-8 regular-color">Paul Smith, 歡迎你回來!</div>
             </div>
         </div>
 
@@ -40,21 +40,21 @@
             <div class=" flex w-full mb-4">
 
                 <div class=" w-1/5 mx-8">
-                    <div class=" border text-center branch-tab py-6">個人資料</div>
-                    <div class=" border text-center branch-tab py-6">信息</div>
+                    <div class=" border text-center branch-tab py-6 regular-color">個人資料</div>
+                    <div class=" border text-center branch-tab py-6 regular-color">信息</div>
                 </div>
 
-                <div class=" flex w-4/5 mx-2 border py-2 px-2">
-                    <div class=" w-3/5 pl-20">
+                <div class=" flex w-4/5 mx-2 border py-2">
+                    <div class=" w-3/5 px-4">
                         <div class=" sub-content">
-                            <p class="subcontent-header my-2 pt-4 font-bold">個人資料</p>
+                            <p class="subcontent-header my-2 pt-4 font-bold regular-color">個人資料</p>
 
                             <div class=" flex relative py-2">
-                                <p class=" w-1/4 input-label text-right font-bold">姓 :</p>
+                                <p class=" w-1/4 input-label text-right font-bold regular-color">姓 :</p>
                                 <div class=" flex w-1/4 items-center border-b">
-                                    <input id="firstName" class="ischanged appearance-none bg-transparent border-none text-center font-bold w-full px-2 leading-tight" type="text" value="Smith" readonly>
+                                    <input id="firstName" class="ischanged appearance-none bg-transparent border-none text-center font-bold w-full px-2 leading-tight regular-color" type="text" value="Smith" readonly>
                                 </div>
-                                <p class=" w-1/4 input-label text-right font-bold">名 :</p>
+                                <p class=" w-1/4 input-label text-right font-bold regular-color">名 :</p>
                                 <div class=" w-1/4 items-center border-b">
                                     <input id="lastName" class="ischanged appearance-none bg-transparent border-none w-full text-center font-bold px-2 leading-tight" type="text" value="Paul" readonly>
                                 </div>
@@ -62,25 +62,25 @@
                             </div>
 
                             <div class=" flex relative py-2">
-                                <p class=" w-1/4 input-label text-right font-bold">電子郵件 :</p>
+                                <p class=" w-1/4 input-label text-right font-bold regular-color">電子郵件 :</p>
                                 <div class=" w-3/4 items-center border-b">
-                                    <input id="email" class="ischanged appearance-none bg-transparent border-none text-center w-full font-bold px-2 leading-tight" type="text" value="Smith.P@gmail.com" readonly>
+                                    <input id="email" class="ischanged appearance-none bg-transparent border-none text-center w-full font-bold px-2 leading-tight regular-color" type="text" value="Smith.P@gmail.com" readonly>
                                 </div>
                                 <a href="javascript:void(0);" class=" w-4 h-4" onclick="modifyData(2)"><img class=" w-4 h-4" src="{{asset('images/contactUs/icons8-edit-48@2x.png')}}" style="right:0;margin-right: -16px" alt="Pencil"></a>
                             </div>
 
                             <div class=" flex relative py-2 mb-8">
-                                <p class=" w-1/4 input-label text-right font-bold">電話號碼 :</p>
+                                <p class=" w-1/4 input-label text-right font-bold regular-color">電話號碼 :</p>
                                 <div class=" w-3/4 items-center border-b">
                                     <input id="phone" class="ischanged appearance-none bg-transparent text-center border-none w-full font-bold px-2 leading-tight" type="text" value="6123 6123" readonly>
                                 </div>
                                 <a href="javascript:void(0);" class=" w-4 h-4" onclick="modifyData(3)"><img class=" w-4 h-4" src="{{asset('images/contactUs/icons8-edit-48@2x.png')}}" style="right:0;margin-right: -16px" alt="Pencil"></a>
                             </div>
 
-                            <p class="subcontent-header py-4 mb-2 font-bold">更改密碼</p>
+                            <p class="subcontent-header py-4 mb-2 font-bold regular-color">更改密碼</p>
 
                             <div class=" flex relative mb-8">
-                                <p class=" w-1/4 input-label text-right font-bold">密碼 :</p>
+                                <p class=" w-1/4 input-label text-right font-bold regular-color">密碼 :</p>
                                 <div class=" w-3/4 items-center border-b">
                                     <input id="password" class=" ischanged appearance-none bg-transparent border-none text-center w-full px-2 leading-tight" type="password" value="********" readonly>
                                 </div>

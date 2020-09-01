@@ -31,13 +31,13 @@
             <div class=" flex w-full mb-4">
 
                 <div class=" w-1/5 mx-8">
-                    <div class=" border text-center branch-tab py-6 bg-gray-200">個人資料</div>
-                    <div class=" border text-center branch-tab py-6 tab-active">信息</div>
+                <div class=" border text-center branch-tab py-6 tab-active"><a href="{{url('/account')}}">個人資料</a></div>
+                    <div class=" border text-center branch-tab py-6 bg-gray-200">信息</div>
                 </div>
 
-                <div class=" w-4/5 mx-2 border pt-2 px-2">
+                <div class=" w-4/5 mx-2 border px-2">
 
-                <p class=" border-b py-1" style="font-size: 19px; color: #C293FC"><a href="{{url('chatlist')}}">< Back </a></p>
+                <p class=" border-b py-3 fontsize-19" style="color: #C293FC"><a href="{{url('chatlist')}}">< Back </a></p>
 
                 <div class="flex border-b pt-1 pb-2 px-2 mb-4">
                     <div class=" w-1/6">
@@ -45,10 +45,10 @@
                     </div>
                     <div class=" w-5/6">
                         <div class=" flex">
-                            <p class=" w-4/6 font-bold leading-none pt-2 fontsize-14 regular-color">Admin - Tom</p>
-                            <p class=" w-2/6 text-right pt-2 pr-2 fontsize-14">28-Jul-2020</p>
+                            <p class=" w-4/6 font-bold leading-none pt-2 fontsize-19 regular-color">Admin - Tom</p>
+                            <p class=" w-2/6 text-right pt-2 pr-2 fontsize-14 regular-color">28-Jul-2020</p>
                         </div>
-                        <p class=" pt-1 fontsize-13 regular-color ml-4"><br>
+                        <p class=" pt-1 fontsize-13 regular-color"><br>
                             應繳費用 $ xxxx
                             <br>
                             thanks!
@@ -64,10 +64,10 @@
                     </div>
                     <div class=" w-5/6">
                         <div class=" flex">
-                            <p class=" w-4/6 font-bold leading-none pt-2 fontsize-14 regular-color">Paul Smith</p>
-                            <p class=" w-2/6 text-right pt-2 pr-2 fontsize-14">28-Jul-2020</p>
+                            <p class=" w-4/6 font-bold leading-none pt-2 fontsize-19 regular-color">Paul Smith</p>
+                            <p class=" w-2/6 text-right pt-2 pr-2 fontsize-14 regular-color">28-Jul-2020</p>
                         </div>
-                        <p class=" pt-1 fontsize-13 regular-color ml-4">Thank you!</p>
+                        <p class=" pt-1 fontsize-13 regular-color">Thank you!</p>
                     </div>
 
                 </div>
@@ -77,9 +77,9 @@
                         <img class="w-12 h-12 rounded-full mx-auto" src="{{asset('images/contactUs/Intersection15.png')}}" alt="Avatar of Jonathan Reinink">
                     </div>
                     <div class=" w-5/6">
-                        <p class=" font-bold w-full leading-none subcontent-header py-2">Paul Smith</p>
-                        <textarea class="border w-full border-gray-300 px-4 py-2 ml-4 fontsize-16" rows="6" placeholder="Reply To Tom..."></textarea>
-                        <button class=" px-6 py-2 my-8 text-center ml-4 fontsize-17" style="background-color: #3F81C7; color:white">送出</button>
+                        <p class=" font-bold w-full leading-none subcontent-header py-2 fontsize-19 regular-color">Paul Smith</p>
+                        <textarea class="border w-full border-gray-300 px-4 py-2 fontsize-16" rows="6" placeholder="Reply To Tom..."></textarea>
+                        <button class=" px-6 py-2 my-8 text-center fontsize-17 regular-color" style="background-color: #3F81C7; color:white">送出</button>
                     </div>
                 </form>
                 </div>

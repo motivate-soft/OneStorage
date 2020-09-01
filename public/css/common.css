@@ -1,4 +1,80 @@
 /* =======================  Start Contact Us Css ====================== */
+.fontsize-8 {
+    font-size: 8px;
+
+}
+
+.fontsize-10 {
+    font-size: 10px;
+}
+.fontsize-11 {
+    font-size: 11px;
+}
+
+.fontsize-12 {
+    font-size: 12px;
+}
+.fontsize-13 {
+    font-size: 13px;
+}
+.fontsize-14 {
+    font-size: 14px;
+}
+.fontsize-15 {
+    font-size: 15px;
+}
+.fontsize-16 {
+    font-size: 16px;
+}
+.fontsize-17 {
+    font-size: 17px;
+}
+.fontsize-18 {
+    font-size: 18px;
+}
+.fontsize-19 {
+    font-size: 19px;
+}
+.fontsize-20 {
+    font-size: 20px;
+}
+.fontsize-21 {
+    font-size: 21px;
+}
+.fontsize-22 {
+    font-size: 22px;
+}
+.fontsize-23 {
+    font-size: 23px;
+}
+.fontsize-24 {
+    font-size: 24px;
+}
+.fontsize-25 {
+    font-size: 25px;
+}
+.fontsize-26 {
+    font-size: 26px;
+}
+.fontsize-27 {
+    font-size: 27px;
+}
+
+.regular-color {
+    color: #4D5567;
+}
+
+.secondary-fontcolor {
+    color: #56628C;
+}
+
+.bgregular-color {
+    background-color: #4D5567;
+}
+
+.bgsecondary-color {
+    background-color: #E0CBF6;
+}
 
 select {
     color: #9A9CA2

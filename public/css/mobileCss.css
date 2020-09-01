@@ -85,6 +85,7 @@ main {
 
 /* ================== End Booking Page ===========  */
 
+
 /* ================== Star Login Page  ===========  */
 
 .top-img {
@@ -92,3 +93,19 @@ main {
 }
 
 /* ================== End Login Page   ===========  */
+
+
+/* ================== Star Join Us Page   ===========  */
+
+.jointitle-color {
+    color: #7F3E98;
+}
+
+.mobileafter-list {
+    content: url(../images/contactUs/violetRound@2x.png);
+    margin-left: -40px;
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+/* ================== End Join Us Page   ===========  */

@@ -24,22 +24,20 @@
 <body class=" bg-white">
     <main className="w-full mx-auto">
 
-        <p class=" heading-font">職位空缺</p>
-        <div class="horizontal-line">
-        </div>
+        <p class=" text-center fontsize-21 py-4 regular-color">職位空缺</p>
 
-        <div class="flex mt-16 bg-grey p-3">
-            <img class="mr-4 w-40 h-40" src="{{asset('images/contactUs/contactUs.png')}}" alt="Avatar of Jonathan Reinink">
-            <div class="body-content lg:rounded-b-none lg:rounded-r">
+        <div class="flex py-8 bg-grey">
+            <img class="w-24 h-24 mr-2" src="{{asset('images/contactUs/contactUs.png')}}" alt="Avatar of Jonathan Reinink">
+            <div>
                 <div class="mb-8">
-                    <div class=" subtitle-font">客戶服務主任</div>
-                    <p class="content-font">處理迷你倉銷售﹑客戶查詢﹑透過電郵及電話處理客戶要求﹑為客戶提供高水平服務﹑負責日常事務﹑
+                    <div class=" jointitle-color fontsize-25 font-bold">客戶服務主任</div>
+                    <p class=" fontsize-13 regular-color">處理迷你倉銷售﹑客戶查詢﹑透過電郵及電話處理客戶要求﹑為客戶提供高水平服務﹑負責日常事務﹑
                         文書處理﹑協助租務及市場部運作。 </p>
                 </div>
 
                 <div class="mb-4">
-                    <div class=" subtitle-font">入職要求</div>
-                    <p class="after-list content-font">中六或以上程度及一年或以上的客戶服務工作經驗</p>
+                    <div class=" jointitle-color fontsize-25 font-bold">入職要求</div>
+                    <p class="mobileafter-list fontsize-13 regular-color pl-2">中六或以上程度及一年或以上的客戶服務工作經驗</p>
                     <p class="after-list content-font">有客戶服務或銷售經驗者優先</p>
                     <p class="after-list content-font">需自律﹑獨立﹑有責任心 </p>
                     <p class="after-list content-font">懂基本電腦操作</p>
