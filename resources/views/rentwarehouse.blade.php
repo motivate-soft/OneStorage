@@ -376,7 +376,7 @@
                     多種面積，適合任何人仕使用。
                 </p>
 
-                <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer mb-8 pt-8">
+                <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer mb-8 pt-1">
                     <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
                     <span class="text1 my-auto self-center pl-2">租用面積</span>
                 </div>
@@ -428,7 +428,7 @@
                 </div>
                 <div class="horz-line my-4"></div>
 
-                <div class="flex mb-8 rentwarehouse-toggle-item selection-none cursor-pointer pt-8">
+                <div class="flex mb-8 rentwarehouse-toggle-item selection-none cursor-pointer pt-1">
                     <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
                     <span class="text1 my-auto self-center pl-2">地址</span>
                 </div>
@@ -452,7 +452,7 @@
 
                 <div class="horz-line my-4"></div>
 
-                <div class="flex mb-8 rentwarehouse-toggle-item selection-none cursor-pointer pt-8">
+                <div class="flex mb-8 rentwarehouse-toggle-item selection-none cursor-pointer pt-1">
                     <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
                     <span class="text1 my-auto self-center pl-2">最新優惠</span>
                 </div>
@@ -479,7 +479,7 @@
 
                 <div class="horz-line my-4"></div>
 
-                <div class="flex mb-8 rentwarehouse-toggle-item selection-none cursor-pointer pt-8">
+                <div class="flex mb-8 rentwarehouse-toggle-item selection-none cursor-pointer pt-1">
                     <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
                     <span class="text1 my-auto self-center pl-2">服務設施</span>
                 </div>
@@ -553,7 +553,7 @@
 
                 <div class="horz-line my-4"></div>
 
-                <div class="flex mb-8 rentwarehouse-toggle-item selection-none cursor-pointer pt-8">
+                <div class="flex mb-8 rentwarehouse-toggle-item selection-none cursor-pointer pt-1">
                     <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
                     <span class="text1 my-auto self-center pl-2">附近設施</span>
                 </div>
@@ -578,7 +578,7 @@
 
                 <div class="horz-line my-4"></div>
 
-                <div class="flex mb-8 rentwarehouse-toggle-item selection-none cursor-pointer pt-8">
+                <div class="flex mb-8 rentwarehouse-toggle-item selection-none cursor-pointer pt-1">
                     <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
                     <span class="text1 my-auto self-center pl-2">附近設施</span>
                 </div>

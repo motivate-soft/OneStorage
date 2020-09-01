@@ -1,4 +1,4 @@
-﻿@extends('mobile.layouts.app')
+@extends('mobile.layouts.app')
 
 @section('title')
 <title>{{__('About Us')}}</title>

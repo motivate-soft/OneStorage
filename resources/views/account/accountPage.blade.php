@@ -20,7 +20,7 @@
 
     @include('layouts.header')
 
-    <div class="mx-4 md:mx-24 lg:mx-40 my-13 ">
+    <div class="mx-4 md:mx-24 lg:mx-40 py-32">
 
         <div class="flex px-12 mt-16 lg:px-32 md:px-20">
             <img class="mr-4 w-32 h-32" src="{{asset('images/contactUs/Intersection 15@2x.png')}}" alt="Avatar of Jonathan Reinink">
@@ -33,7 +33,7 @@
             <div class=" flex w-full mb-4">
                 <div class=" w-1/4"></div>
                 <div class=" w-3/4">
-                    <p class=" text-center" style="color: #18B84D; font-size: 11px">更新成功! </p>
+                    <p class=" text-center" id="notification" style="color: #18B84D; font-size: 11px">更新成功! </p>
                 </div>
             </div>
 
@@ -46,33 +46,35 @@
 
                 <div class=" flex w-4/5 mx-2 border py-2 px-2">
                     <div class=" w-3/5 pl-20">
-
                         <div class=" sub-content">
                             <p class="subcontent-header my-2 pt-4 font-bold">個人資料</p>
 
                             <div class=" flex relative py-2">
                                 <p class=" w-1/4 input-label text-right font-bold">姓 :</p>
-                                <div class=" w-1/4 items-center border-b">
-                                    <input class="appearance-none bg-transparent border-none text-center font-bold w-full px-2 leading-tight" type="text" placeholder="Smith">
+                                <div class=" flex w-1/4 items-center border-b">
+                                    <input id="firstName" class="ischanged appearance-none bg-transparent border-none text-center font-bold w-full px-2 leading-tight" type="text" value="Smith" readonly>
                                 </div>
                                 <p class=" w-1/4 input-label text-right font-bold">名 :</p>
                                 <div class=" w-1/4 items-center border-b">
-                                    <input class="appearance-none bg-transparent border-none w-full text-center font-bold px-2 leading-tight" type="text" placeholder="Paul">
+                                    <input id="lastName" class="ischanged appearance-none bg-transparent border-none w-full text-center font-bold px-2 leading-tight" type="text" value="Paul" readonly>
                                 </div>
+                                <a href="javascript:void(0);" class=" w-4 h-4" onclick="modifyData(1)"><img class=" w-4 h-4" src="{{asset('images/contactUs/icons8-edit-48@2x.png')}}" style="right:0;margin-right: -16px" alt="Pencil"></a>
                             </div>
 
                             <div class=" flex relative py-2">
                                 <p class=" w-1/4 input-label text-right font-bold">電子郵件 :</p>
                                 <div class=" w-3/4 items-center border-b">
-                                    <input class="appearance-none bg-transparent border-none text-center w-full font-bold px-2 leading-tight" type="text" placeholder="Smith.P@gmail.com">
+                                    <input id="email" class="ischanged appearance-none bg-transparent border-none text-center w-full font-bold px-2 leading-tight" type="text" value="Smith.P@gmail.com" readonly>
                                 </div>
+                                <a href="javascript:void(0);" class=" w-4 h-4" onclick="modifyData(2)"><img class=" w-4 h-4" src="{{asset('images/contactUs/icons8-edit-48@2x.png')}}" style="right:0;margin-right: -16px" alt="Pencil"></a>
                             </div>
 
                             <div class=" flex relative py-2 mb-8">
                                 <p class=" w-1/4 input-label text-right font-bold">電話號碼 :</p>
                                 <div class=" w-3/4 items-center border-b">
-                                    <input class="appearance-none bg-transparent text-center border-none w-full font-bold px-2 leading-tight" type="text" placeholder="6123 6123">
+                                    <input id="phone" class="ischanged appearance-none bg-transparent text-center border-none w-full font-bold px-2 leading-tight" type="text" value="6123 6123" readonly>
                                 </div>
+                                <a href="javascript:void(0);" class=" w-4 h-4" onclick="modifyData(3)"><img class=" w-4 h-4" src="{{asset('images/contactUs/icons8-edit-48@2x.png')}}" style="right:0;margin-right: -16px" alt="Pencil"></a>
                             </div>
 
                             <p class="subcontent-header py-4 mb-2 font-bold">更改密碼</p>
@@ -80,8 +82,9 @@
                             <div class=" flex relative mb-8">
                                 <p class=" w-1/4 input-label text-right font-bold">密碼 :</p>
                                 <div class=" w-3/4 items-center border-b">
-                                    <input class="appearance-none bg-transparent border-none text-center w-full px-2 leading-tight" type="password" placeholder="********">
+                                    <input id="password" class=" ischanged appearance-none bg-transparent border-none text-center w-full px-2 leading-tight" type="password" value="********" readonly>
                                 </div>
+                                <a href="javascript:void(0);" class=" w-4 h-4" onclick="modifyData(4)"><img class=" w-4 h-4" src="{{asset('images/contactUs/icons8-edit-48@2x.png')}}" style="right:0;margin-right: -16px" alt="Pencil"></a>
                             </div>
 
                             <div class="date-group">
@@ -267,7 +270,6 @@
                             </div>
 
                         </div>
-
                     </div>
                     <div class=" w-2/5 py-4">
                         <img class=" w-28 h-28 mx-auto" src="{{asset('images/contactUs/Intersection15.png')}}" alt="Avatar of Jonathan Reinink">
@@ -278,6 +280,41 @@
         </div>
     </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>  
+        $(document).ready(function(){
+            $("#notification").hide();
+            $(".ischanged").click(function(){
+                $("#notification").fadeIn(3000);
+
+            });
+        });
+
+        function modifyData(id)
+        {
+            if(id == 1)
+            {
+                document.getElementById('firstName').readOnly = false;
+                document.getElementById('lastName').readOnly = false;
+                return true;
+            }
+            if(id == 2)
+            {
+                document.getElementById('email').readOnly = false;
+                return true;
+            }
+            if(id == 3)
+            {
+                document.getElementById('phone').readOnly = false;
+                return true;
+            }
+            if(id == 4)
+            {
+                document.getElementById('password').readOnly = false;
+                return true;
+            }
+        }
+    </script>
 </body>
 
 </html>

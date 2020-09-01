@@ -312,11 +312,11 @@
                     <div class="px-1 py-2">
                         <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
                         <div class="flex py-1">
-                            <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
+                            <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
                         <div class="flex py-1">
-                            <img class="w-4" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
+                            <img class="w-4 h-4" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
                             <p class="color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                         </div>
                     </div>
@@ -340,11 +340,11 @@
                     <div class="px-1 py-2">
                         <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
                         <div class="flex py-1">
-                            <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
+                            <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
                         <div class="flex py-1">
-                            <img class="w-4" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
+                            <img class="w-4 h-4" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
                             <p class="color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                         </div>
                     </div>
@@ -367,11 +367,11 @@
                     <div class="px-1 py-2">
                         <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
                         <div class="flex py-1">
-                            <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
+                            <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
                         <div class="flex py-1">
-                            <img class="w-4" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
+                            <img class="w-4 h-4" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
                             <p class="color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                         </div>
                     </div>
@@ -394,11 +394,11 @@
                     <div class="px-1 py-2">
                         <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
                         <div class="flex py-1">
-                            <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
+                            <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
                         <div class="flex py-1">
-                            <img class="w-4" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
+                            <img class="w-4 h-4" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
                             <p class="color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                         </div>
                     </div>
@@ -421,11 +421,11 @@
                     <div class="px-1 py-2">
                         <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
                         <div class="flex py-1">
-                            <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
+                            <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
                         <div class="flex py-1">
-                            <img class="w-4" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
+                            <img class="w-4 h-4" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
                             <p class="color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                         </div>
                     </div>
@@ -448,11 +448,11 @@
                     <div class="px-1 py-2">
                         <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
                         <div class="flex py-1">
-                            <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
+                            <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
                         <div class="flex py-1">
-                            <img class="w-4" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
+                            <img class="w-4 h-4" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
                             <p class="color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                         </div>
                     </div>

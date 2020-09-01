@@ -15,10 +15,11 @@
 
 </head>
 
-<body class="bg-white h-screen antialiased leading-none"  ondragstart="return false;" ondrop="return false;">
-
+<body class="bg-white h-screen antialiased leading-none text-primary" ondragstart="return false;" ondrop="return false;">
+    
     @include('layouts.header')
-    <div class="mx-4 md:mx-24 lg:mx-48 my-13 ">
+
+    <div class=" mx-auto" style="padding-top: 168px;padding-bottom: px;width: 60%">
         <p class="subheader-title">登入</p>
 
         <div class="flex flex-col lg:flex-row">
@@ -31,9 +32,11 @@
                         <input class="form-control" type="text" placeholder="電話號碼">
                     </div>
 
-                    <input class="w-full form-control mb-6" style="padding-left:32px" type="text" placeholder="地址第一行">
+                    <input class="w-full form-control mb-6" style="padding-left:32px" type="text" placeholder="密碼">
 
-                    <p class=" register-subtilte title-violet">忘記密碼?</p>
+                    <a href="{{url('/forgetpwd')}}">
+                        <p class=" register-subtilte title-violet">忘記密碼?</p>
+                    </a>
 
                     <button class="submit-btn hover:bg-purple-400">
                         登入

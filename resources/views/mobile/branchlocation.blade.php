@@ -1,4 +1,4 @@
-﻿@extends('mobile.layouts.app')
+﻿﻿@extends('mobile.layouts.app')
 
 @section('title')
 <title>{{__('About Us')}}</title>
@@ -186,6 +186,10 @@
 <div class="w-full">
     <img class="p-1 shadow-lg overflow-hidden" src="{{ asset('branchlocation/Intersection 10@2x.png') }}"/>
 </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 29971dc0e6ae30699aeea931d3bfca4d17d4798d
 <div class="p-5">
     <div class="rentwarehouse-wrapper-title color-primary text-center">租倉</div>
     
