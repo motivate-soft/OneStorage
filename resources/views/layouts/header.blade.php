@@ -1,4 +1,4 @@
-<nav class="w-full pin-t z-50 fixed text-primary">
+<nav class="w-full pin-t z-40 fixed text-primary">
     @include('partials.latest_news')
     <div class="bg-white flex items-center justify-between flex-wrap p-2" style="background: rgba(255, 255, 255, 0.75); ">
         <div class="flex items-center flex-shrink-0 text-white ">

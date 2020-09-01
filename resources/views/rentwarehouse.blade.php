@@ -286,7 +286,6 @@
     .modal {
         display: none; /* Hidden by default */
         position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
         padding-top: 100px; /* Location of the box */
         left: 0;
         top: 0;
@@ -324,7 +323,7 @@
     }
     .rentwarehouse-modal {
         display: none;
-        z-index:100;
+        z-index: 50 !important;
         /* max-width:375px; */
     }
     .rentwarehouse-space-size-title {
@@ -654,7 +653,7 @@
     </div>
 </div>
 
-<div id="rentwarehouse-modal" class="modal">
+<div id="rentwarehouse-modal" class="z-50 modal">
     <div class="modal-content">
 
         <span class="close">&times;</span>
