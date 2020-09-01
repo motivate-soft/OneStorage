@@ -7,11 +7,8 @@
 @section('styles')
 
 <style>
-    /* .active:after {
-            content: "\2212";
-        } */
 
-    .panel {
+    .panel-other {
         padding: 0 18px;
         background-color: white;
         max-height: 0;
@@ -27,72 +24,8 @@
         color: #4D5567
     }
 
-    .main-image {
-        max-width: 1366px;
-    }
-
-    .main-wrapper {
-        margin-top: -80px;
-        margin-right: 200px;
-        margin-left: 200px;
-    }
-
-    .maintitle-wrapper {
-        padding-top: 54.5px;
-    }
-
-    .maintitle-left {
-        padding-top: 30px;
-        margin-left: 163px;
-        margin-right: 52.5px;
-        font-size: 49px;
-    }
-
-    .maintitle-divider {
-        height: 110px;
-        background-color: #707070;
-    }
-
-    .maintitle-right {
-        padding-top: 30px;
-        margin-left: 27.5px;
-        font-size: 50px;
-    }
-
-    .maintitle-right-aboutus-english {
-        font-family: 'Roboto';
-    }
-
-    .maintitle-right-bottom {
-        font-size: 19px;
-        color: #B2B5BD;
-        transform: translate(0, 50%);
-    }
-
     .color-primary {
         color: #4D5567;
-    }
-
-    .pb-230 {
-        padding-bottom: 230px;
-    }
-
-    .category-title {
-        font-size: 19px;
-        font-weight: 600;
-    }
-
-    .content-area {
-        min-height: 500px;
-    }
-
-    .color-primary {
-        color: #4D5567;
-    }
-
-    .main-screen {
-        max-width: 1366px;
-        background-color: #F6F6F6;
     }
 
     .rentwarehouse-price-title {
@@ -153,9 +86,6 @@
         background: white;
     }
 
-    /* .location-content-wrapper {
-
-        } */
     .location-content-item {
         min-width: 120px;
         max-width: 220px;
@@ -283,7 +213,7 @@
             <div>
                 <span class="rentwarehouse-price-toggle-button cursor-pointer py-5 select-none">
                     <span class="pr-1">
-                        <i class="icon wb-triangle-down"></i>
+                        <i class="icon wb-triangle-up"></i>
                     </span>
                     更多選項
                 </span>
@@ -301,67 +231,68 @@
                             <label class="flex items-center rentwarehouse-price-check"><input type="checkbox" class="mr-3" />只顯示有折扣地區</label>
                         </div>
                     </div>
-                    <div class="pl-12 pt-3">
-                        <div class="flex">
-                            <p class="branchlocation-store-select-description">唔知自己需要咩size ? 試下我地既空間計算器</p>
-                            <img class="w-4 box-content pl-3" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
+                    
+                </div>
+                <div class="pl-8 pt-5">
+                    <div class="flex">
+                        <p class="branchlocation-store-select-description">唔知自己需要咩size ? 試下我地既空間計算器</p>
+                        <img class="w-4 box-content pl-3" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
+                    </div>
+                    <div class="grid grid-cols-4 col-gap-3 pt-1 branchlocation-room-select">
+                        <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
+                            <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-03@2x.png') }}" alt="BranchLocation">
+                            <div class="px-6 py-4">
+                                <div class="branchlocation-card-title text-center mb-2">小型倉</div>
+                            </div>
+                            <div class="px-6 pt-0 pb-4">
+                                <div class="branchlocation-card-content text-center mb-2">
+                                    換季衣服, 兒童物件<br />及玩具,書本
+                                </div>
+                            </div>
+                            <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
+                                <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow color-primary store-select text-2xl"><i class="icon wb-check"></i></button>
+                            </div>
                         </div>
-                        <div class="grid grid-cols-4 col-gap-3 pt-1 branchlocation-room-select">
-                            <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
-                                <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-03@2x.png') }}" alt="BranchLocation">
-                                <div class="px-6 py-4">
-                                    <div class="branchlocation-card-title text-center mb-2">小型倉</div>
-                                </div>
-                                <div class="px-6 pt-0 pb-4">
-                                    <div class="branchlocation-card-content text-center mb-2">
-                                        換季衣服, 兒童物件<br />及玩具,書本
-                                    </div>
-                                </div>
-                                <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                                    <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow color-primary store-select text-2xl"><i class="icon wb-check"></i></button>
+                        <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper active">
+                            <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-03@2x.png') }}" alt="BranchLocation">
+                            <div class="px-6 py-4">
+                                <div class="branchlocation-card-title text-center mb-2">小型倉</div>
+                            </div>
+                            <div class="px-6 pt-0 pb-4">
+                                <div class="branchlocation-card-content text-center mb-2">
+                                    換季衣服, 兒童物件<br />及玩具,書本
                                 </div>
                             </div>
-                            <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper active">
-                                <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-03@2x.png') }}" alt="BranchLocation">
-                                <div class="px-6 py-4">
-                                    <div class="branchlocation-card-title text-center mb-2">小型倉</div>
-                                </div>
-                                <div class="px-6 pt-0 pb-4">
-                                    <div class="branchlocation-card-content text-center mb-2">
-                                        換季衣服, 兒童物件<br />及玩具,書本
-                                    </div>
-                                </div>
-                                <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                                    <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow color-primary store-select text-2xl"><i class="icon wb-check"></i></button>
+                            <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
+                                <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow color-primary store-select text-2xl"><i class="icon wb-check"></i></button>
+                            </div>
+                        </div>
+                        <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
+                            <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-03@2x.png') }}" alt="BranchLocation">
+                            <div class="px-6 py-4">
+                                <div class="branchlocation-card-title text-center mb-2">小型倉</div>
+                            </div>
+                            <div class="px-6 pt-0 pb-4">
+                                <div class="branchlocation-card-content text-center mb-2">
+                                    換季衣服, 兒童物件<br />及玩具,書本
                                 </div>
                             </div>
-                            <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
-                                <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-03@2x.png') }}" alt="BranchLocation">
-                                <div class="px-6 py-4">
-                                    <div class="branchlocation-card-title text-center mb-2">小型倉</div>
-                                </div>
-                                <div class="px-6 pt-0 pb-4">
-                                    <div class="branchlocation-card-content text-center mb-2">
-                                        換季衣服, 兒童物件<br />及玩具,書本
-                                    </div>
-                                </div>
-                                <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                                    <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow color-primary store-select text-2xl"><i class="icon wb-check"></i></button>
+                            <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
+                                <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow color-primary store-select text-2xl"><i class="icon wb-check"></i></button>
+                            </div>
+                        </div>
+                        <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
+                            <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-03@2x.png') }}" alt="BranchLocation">
+                            <div class="px-6 py-4">
+                                <div class="branchlocation-card-title text-center mb-2">小型倉</div>
+                            </div>
+                            <div class="px-6 pt-0 pb-4">
+                                <div class="branchlocation-card-content text-center mb-2">
+                                    換季衣服, 兒童物件<br />及玩具,書本
                                 </div>
                             </div>
-                            <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
-                                <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-03@2x.png') }}" alt="BranchLocation">
-                                <div class="px-6 py-4">
-                                    <div class="branchlocation-card-title text-center mb-2">小型倉</div>
-                                </div>
-                                <div class="px-6 pt-0 pb-4">
-                                    <div class="branchlocation-card-content text-center mb-2">
-                                        換季衣服, 兒童物件<br />及玩具,書本
-                                    </div>
-                                </div>
-                                <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                                    <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow color-primary store-select text-2xl"><i class="icon wb-check"></i></button>
-                                </div>
+                            <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
+                                <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow color-primary store-select text-2xl"><i class="icon wb-check"></i></button>
                             </div>
                         </div>
                     </div>
@@ -390,9 +321,12 @@
                         </div>
                     </div>
                     <div class="absolute px-2 py-1 bottom-0 w-full">
-                        <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
-                            選擇
-                        </button>
+                        <a href="/rentwarehouse">
+                            <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
+                                選擇
+                            </button>
+                        </a>
+                        
                     </div>
                 </div>
                 <div class="relative rounded overflow-hidden shadow-lg location-content-item">
@@ -415,9 +349,11 @@
                         </div>
                     </div>
                     <div class="absolute px-2 py-1 bottom-0 w-full">
-                        <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
-                            選擇
-                        </button>
+                        <a href="/rentwarehouse">
+                            <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
+                                選擇
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div class="relative rounded overflow-hidden shadow-lg location-content-item">
@@ -440,9 +376,11 @@
                         </div>
                     </div>
                     <div class="absolute px-2 py-1 bottom-0 w-full">
-                        <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
-                            選擇
-                        </button>
+                        <a href="/rentwarehouse">
+                            <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
+                                選擇
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div class="relative rounded overflow-hidden shadow-lg location-content-item">
@@ -465,9 +403,11 @@
                         </div>
                     </div>
                     <div class="absolute px-2 py-1 bottom-0 w-full">
-                        <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
-                            選擇
-                        </button>
+                        <a href="/rentwarehouse">
+                            <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
+                                選擇
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div class="relative rounded overflow-hidden shadow-lg location-content-item">
@@ -490,9 +430,11 @@
                         </div>
                     </div>
                     <div class="absolute px-2 py-1 bottom-0 w-full">
-                        <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
-                            選擇
-                        </button>
+                        <a href="/rentwarehouse">
+                            <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
+                                選擇
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div class="relative rounded overflow-hidden shadow-lg location-content-item">
@@ -515,9 +457,11 @@
                         </div>
                     </div>
                     <div class="absolute px-2 py-1 bottom-0 w-full">
-                        <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
-                            選擇
-                        </button>
+                        <a href="/rentwarehouse">
+                            <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
+                                選擇
+                            </button>
+                        </a>
                     </div>
                 </div>
 
@@ -545,50 +489,6 @@
 <script src="{{asset('branchlocation/ribbon/js/Site.js')}}"></script>
 
 <script>
-    // // Script For Accordion
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-            // this.classList.toggle("active");
-            alert("1");
-            var panel = this.nextElementSibling;
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-                panel.style.border = null;
-            } else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
-                panel.style.border = "1px solid #DCDCDC";
-            }
-        });
-    }
-
-    var items = document.getElementsByTagName("li");
-    var content = document.getElementById("content");
-
-
-    for (var i = 0; i < items.length; i++) {
-
-        items[i].addEventListener("click", function(event) {
-
-            if (event.target.id == "item0") {
-                window.location.reload();
-            }
-
-            event.cancelBubble = true;
-
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-
-            this.className += " active";
-
-            content.innerHTML = "<div style='color:blue;font-size:50px;'>Page : " + this.id + "</div>";
-
-            console.log(event);
-
-        });
-    }
 
     var stores = document.getElementsByClassName("store-select");
 
@@ -625,9 +525,15 @@
         $(".rentwarehouse-price-toggle-button").click(function() {
             $(this).next().toggle();
 
+            if($(this).next().css("display") == "none") {
+                $(this).find("i").removeClass("wb-triangle-up");
+                $(this).find("i").addClass("wb-triangle-down");
+            } else {
+                $(this).find("i").removeClass("wb-triangle-down");
+                $(this).find("i").addClass("wb-triangle-up");
+            }
+
         });
-
-
 
     });
 </script>

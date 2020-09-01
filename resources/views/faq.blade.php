@@ -41,8 +41,8 @@
         color: #4D5567
     }
 
-    .main-image {
-        max-width: 1366px;
+    .main-image img {
+        max-width: 100%;
     }
 
     .main-wrapper {
@@ -109,6 +109,8 @@
     }
 </style>
 
+<link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}" />
+
 @endsection
 
 
@@ -154,36 +156,40 @@
             <div class="py-5 category-title color-primary active">尺寸選擇</div>
             <div class="pr-40">
                 <div class="accordion relative appearance-none items-center">我該選用多大的倉儲單位?
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                    <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center px-2 text-gray-700">
+                        {{-- <svg class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"> --}}
+                            {{-- <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg> --}}
+                            <i class="icon wb-chevron-down"></i>
                     </div>
                 </div>
                 <div class="panel">
                     <p class="leading-normal px-5 py-4 color-primary">您可以自行使用空間計算器以確認計算所需倉庫尺寸，請點擊以下按鈕查詢所需尺寸。 您亦可以點擊以下按鈕，填寫相關聯繫資料，由我們的客戶服務員聯絡您為您推薦合適的倉儲單位以及相關的優惠。 </p>
                 </div>
                 <div class="accordion relative appearance-none items-center">我該選用多大的倉儲單位?
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                    <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center px-2 text-gray-700">
+                        {{-- <svg class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"> --}}
+                            {{-- <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg> --}}
+                            <i class="icon wb-chevron-down"></i>
                     </div>
                 </div>
                 <div class="panel">
                     <p class="leading-normal px-5 py-4 color-primary">您可以自行使用空間計算器以確認計算所需倉庫尺寸，請點擊以下按鈕查詢所需尺寸。 您亦可以點擊以下按鈕，填寫相關聯繫資料，由我們的客戶服務員聯絡您為您推薦合適的倉儲單位以及相關的優惠。 </p>
                 </div>
                 <div class="accordion relative appearance-none items-center">我該選用多大的倉儲單位?
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                    <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center px-2 text-gray-700">
+                        {{-- <svg class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"> --}}
+                            {{-- <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg> --}}
+                            <i class="icon wb-chevron-down"></i>
                     </div>
                 </div>
                 <div class="panel">
                     <p class="leading-normal px-5 py-4 color-primary">您可以自行使用空間計算器以確認計算所需倉庫尺寸，請點擊以下按鈕查詢所需尺寸。 您亦可以點擊以下按鈕，填寫相關聯繫資料，由我們的客戶服務員聯絡您為您推薦合適的倉儲單位以及相關的優惠。 </p>
                 </div>
                 <div class="accordion relative appearance-none items-center">我該選用多大的倉儲單位?
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                    <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center px-2 text-gray-700">
+                        {{-- <svg class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"> --}}
+                            {{-- <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg> --}}
+                            <i class="icon wb-chevron-down"></i>
                     </div>
                 </div>
                 <div class="panel">
@@ -193,18 +199,20 @@
             <div class="py-5 category-title color-primary active">睇倉</div>
             <div class="pr-40">
                 <div class="accordion relative appearance-none items-center">我該選用多大的倉儲單位?
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                    <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center px-2 text-gray-700">
+                        {{-- <svg class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"> --}}
+                            {{-- <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg> --}}
+                            <i class="icon wb-chevron-down"></i>
                     </div>
                 </div>
                 <div class="panel">
                     <p class="leading-normal px-5 py-4 color-primary">您可以自行使用空間計算器以確認計算所需倉庫尺寸，請點擊以下按鈕查詢所需尺寸。 您亦可以點擊以下按鈕，填寫相關聯繫資料，由我們的客戶服務員聯絡您為您推薦合適的倉儲單位以及相關的優惠。 </p>
                 </div>
                 <div class="accordion relative appearance-none items-center">我該選用多大的倉儲單位?
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                    <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center px-2 text-gray-700">
+                        {{-- <svg class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"> --}}
+                            {{-- <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg> --}}
+                            <i class="icon wb-chevron-down"></i>
                     </div>
                 </div>
                 <div class="panel">
@@ -225,7 +233,7 @@
     var acc = document.getElementsByClassName("accordion");
     var i;
 
-    for (i = 0; i < acc.length; i++) {
+    for (i = 0; i < acc.length; i ++) {
         acc[i].addEventListener("click", function() {
             // this.classList.toggle("active");
             var panel = this.nextElementSibling;
@@ -235,6 +243,14 @@
             } else {
                 panel.style.maxHeight = panel.scrollHeight + "px";
                 panel.style.border = "1px solid #DCDCDC";
+            }
+
+            if(panel.style.maxHeight) {
+                console.log(this.childNodes[1].childNodes[1].className);
+                this.childNodes[1].childNodes[1].className = this.childNodes[1].childNodes[1].className.replace("wb-chevron-down", "wb-chevron-up");
+            } else {
+                this.childNodes[1].childNodes[1].className = this.childNodes[1].childNodes[1].className.replace("wb-chevron-up", "wb-chevron-down");
+
             }
         });
     }

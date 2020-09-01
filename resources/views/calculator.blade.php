@@ -7,8 +7,8 @@
 @section('styles')
 
 <style>
-    .main-image {
-        max-width: 1366px;
+    .main-image img {
+        max-width: 100%;
     }
 
     .main-wrapper {
@@ -60,15 +60,6 @@
         padding-bottom: 22px;
     }
 
-    .content-description {
-        margin-left: 173px;
-        margin-right: 173px;
-        font-size: 16px;
-    }
-
-    .content-image-wrapper-1 {
-        padding: 56px;
-    }
 
     .content-image-wrapper-2 {
         padding-top: 56px;

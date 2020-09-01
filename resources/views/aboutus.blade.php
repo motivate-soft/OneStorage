@@ -6,8 +6,8 @@
 
 @section('styles')
 <style>
-    .main-image {
-        max-width: 1366px;
+    .main-image img {
+        max-width: 100%;
     }
 
     .main-wrapper {
@@ -36,6 +36,9 @@
         padding-top: 30px;
         margin-left: 27.5px;
         font-size: 50px;
+    }
+    .maintitle-right-top {
+        font-weight: 600;
     }
 
     .maintitle-right-aboutus-english {
@@ -85,9 +88,6 @@
 
     }
 
-    .main-screen {
-        max-width: 1366px;
-    }
 </style>
 
 @endsection
@@ -98,14 +98,19 @@
     <img class="p-0 m-0" src="{{asset('images/aboutus/shutterstock_95637766@2x.png')}}" />
 </div>
 
+{{-- <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer mb-8 pt-8">
+    <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
+    <span class="text1 my-auto self-center pl-2">租用面積</span>
+</div> --}}
+
 <div class="relative block bg-white main-wrapper">
     <div class="flex maintitle-wrapper color-primary">
         <span class="uppercase maintitle-left">one</span>
         <div class="w-px maintitle-divider"></div>
         <div class="relative maintitle-right">
-            <div class="flex items-stretch">
-                <span class="self-center">關於</span>
-                <span class="self-center capitalize maintitle-right-aboutus-english">one storage</span>
+            <div class="flex maintitle-right-top">
+                <span class="pt-0">關於</span>
+                <span class="capitalize maintitle-right-aboutus-english pt-1">one storage</span>
             </div>
             <div class="capitalize absolute bottom-0 left-0 maintitle-right-bottom">one choice one storage</div>
         </div>
