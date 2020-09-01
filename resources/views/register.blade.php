@@ -258,16 +258,16 @@
             </div>
 
             <div class="w-full px-4 lg:w-1/2">
-                <div class=" register-form">
+                <div class="register-form">
 
                     <div class="input-group mb-4">
                         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-gmail-50@2x.png')}}" alt="Mobile">
-                        <input class="form-control text-center facebook-btn" type="button" value="以 Gmail 註冊">
+                        <input class="form-control cursor-pointer btn text-left gmail-btn hover:bg-purple-400" type="button" value="以 Gmail 註冊">
                     </div>
 
                     <div class="input-group mb-4">
                         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-facebook-50@2x.png')}}" alt="Mobile">
-                        <input class="form-control text-center gmail-btn" type="button" value="以 Facebook 註冊">
+                        <input class="form-control cursor-pointer btn text-left facebook-btn hover:bg-purple-400" type="button" value="以 Facebook 註冊">
                     </div>
 
                 </div>

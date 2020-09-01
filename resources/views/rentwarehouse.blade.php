@@ -276,24 +276,33 @@
         height: 22px;
         width: 22px;
         padding-top: 2px;
-        
+
     }
+
     .rentwarehouse-table-item {
-        cursor:pointer;
+        cursor: pointer;
     }
 
     /* The Modal (background) */
     .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        padding-top: 100px; /* Location of the box */
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        padding-top: 100px;
+        /* Location of the box */
         left: 0;
         top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
     }
 
     /* Modal Content */
@@ -303,8 +312,8 @@
         padding: 10px;
         border: 1px solid #888;
         /* width: 80%; */
-        max-width:410px;
-     
+        max-width: 410px;
+
     }
 
     /* The Close Button */
@@ -321,27 +330,30 @@
         text-decoration: none;
         cursor: pointer;
     }
+
     .rentwarehouse-modal {
         display: none;
         z-index: 50 !important;
         /* max-width:375px; */
     }
+
     .rentwarehouse-space-size-title {
-        font-size:14px;
-    }
-    .rentwarehouse-mode-select-item-title {
-        font-size:12px;
-    }
-    .rentwarehouse-price-select-item {
-        font-size:21px;
-    }
-    .rentwarehouse-select-result-card-title {
-        font-size: 20px; 
-        background-color: #E0CBF6; 
-        color:#56628C;
+        font-size: 14px;
     }
 
-   
+    .rentwarehouse-mode-select-item-title {
+        font-size: 12px;
+    }
+
+    .rentwarehouse-price-select-item {
+        font-size: 21px;
+    }
+
+    .rentwarehouse-select-result-card-title {
+        font-size: 20px;
+        background-color: #E0CBF6;
+        color: #56628C;
+    }
 </style>
 <link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}" />
 
@@ -483,70 +495,43 @@
                     <span class="text1 my-auto self-center pl-2">服務設施</span>
                 </div>
                 <div class="my-4">
-                    <div class="flex py-2">
-                        <div class="w-2/5">
-                            <div class="flex">
-                                <img class="w-6 mr-3 object-contain" src="{{ asset('images/005-key-card@2x.png') }}" />
-                                <p class="text-sm color-primary">7 x 24智能保安進出系統</p>
-                            </div>
+                    <div class="px-4 grid grid-cols-2 col-gap-2 row-gap-4">
+                        <div class="flex">
+                            <img src="{{asset('images/ic_key_card.png')}}" class="mr-2 object-none" />
+                            <p class="text0 my-auto"><span class="font-bold">7 x 24</span>智能保安進出系統</p>
                         </div>
-                        <div class="w-3/5">
-                            <div class="flex">
-                                <img class="w-6 mr-3 object-contain" src="{{ asset('images/002-air-conditioner@2x.png') }}" />
-                                <p class="text-sm color-primary">無間斷恆溫空調</p>
-                            </div>
+                        <div class="flex">
+                            <img src="{{asset('images/ic_air_con.png')}}" class="mr-2 object-none" />
+                            <p class="text1 my-auto">無間斷恆溫空調</p>
                         </div>
-                    </div>
-                    <div class="flex py-2">
-                        <div class="w-2/5">
-                            <div class="flex">
-                                <img class="w-4 mr-5 object-contain" src="{{ asset('images/007-fire-extinguisher@2x.png') }}" />
-                                <p class="text-sm color-primary">消防裝置設備</p>
-                            </div>
+                        <div class="flex">
+                            <img src="{{asset('images/ic_fire.png')}}" class="mr-2 object-none" />
+                            <p class="text0 my-auto">消防裝置設備</p>
                         </div>
-                        <div class="w-3/5">
-                            <div class="flex">
-                                <img class="w-6 mr-3 object-contain" src="{{ asset('images/001-delivery@2x.png') }}" />
-                                <p class="text-sm color-primary">鋁梯及手推車借用服務</p>
-                            </div>
+                        <div class="flex">
+                            <img src="{{asset('images/ic_delivery.png')}}" class="mr-2 object-none" />
+                            <p class="text0 my-auto">鋁梯及手推車借用服務</p>
                         </div>
-                    </div>
-                    <div class="flex py-2">
-                        <div class="w-2/5">
-                            <div class="flex">
-                                <img class="w-6 mr-3 object-contain" src="{{ asset('images/008-water-machine@2x.png') }}" />
-                                <p class="text-sm color-primary">自助飲用水機</p>
-                            </div>
+                        <div class="flex">
+                            <img src="{{asset('images/ic_water.png')}}" class="mr-2 object-none" />
+                            <p class="text0 my-auto">自助飲用水機</p>
                         </div>
-                        <div class="w-3/5">
-                            <div class="flex">
-                                <img class="w-6 mr-3 object-contain" src="{{ asset('images/006-security-camera@2x.png') }}" />
-                                <p class="text-sm color-primary">全天候高清保安監察及警報系統</p>
-                            </div>
+                        <div class="flex">
+                            <img src="{{asset('images/ic_sec_cam.png')}}" class="mr-2 object-none" />
+                            <p class="text0 my-auto">全天候高清保安監察及警報系統</p>
                         </div>
-                    </div>
-                    <div class="flex py-2">
-                        <div class="w-2/5">
-                            <div class="flex">
-                                <img class="w-6 mr-3 object-contain" src="{{ asset('images/009-24-hours@2x.png') }}" />
-                                <p class="text-sm color-primary">24小時電話熱線服務</p>
-                            </div>
+                        <div class="flex">
+                            <img src="{{asset('images/ic_24_hours.png')}}" class="mr-2 object-none" />
+                            <p class="text0">24小時電話熱線服務</p>
                         </div>
-                        <div class="w-3/5">
-                            <div class="flex">
-                                <img class="w-6 mr-3 object-contain" src="{{ asset('images/003-wifi@2x.png') }}" />
-                                <p class="text-sm color-primary">免費Wi-Fi</p>
-                            </div>
+                        <div class="flex">
+                            <img src="{{asset('images/ic_wifi.png')}}" class="mr-2 object-none" />
+                            <p class="text0 my-auto">免費Wi-Fi</p>
                         </div>
-                    </div>
-                    <div class="flex py-2">
-                        <div class="w-2/5">
-                            <div class="flex">
-                                <img class="w-6 mr-3 object-contain" src="{{ asset('images/icons8-secured-letter-40@2x.png') }}" />
-                                <p class="text-sm color-primary">信箱服務</p>
-                            </div>
+                        <div class="flex">
+                            <img  class="mr-2 object-none" src="{{ asset('images/icons8-secured-letter-40@2x.png') }}" />
+                            <p class="text-sm color-primary">信箱服務</p>
                         </div>
-                        <div class="w-3/5"></div>
                     </div>
                 </div>
 
@@ -556,7 +541,7 @@
                     <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
                     <span class="text1 my-auto self-center pl-2">附近設施</span>
                 </div>
-                <div class="my-4">
+                <div class="my-4 ml-4">
                     <div class="flex py-2">
                         <div class="w-1/2">
                             <p class="text-sm color-deep">香葉道休憩處</p>
@@ -635,7 +620,7 @@
                 </div>
             </div>
         </div>
-    
+
         <button id="modal-trigger-button" class="rounded-full w-full rentwarehouse-price-select-button py-2 my-2 color-primary">立即預訂</button>
 
         <p class="rentwarehouse-price-select-news-title color-primary mb-2">最新資訊</p>
@@ -661,13 +646,13 @@
         <div class=" bg-white w-96 mx-auto mt-2 mb-8 pt-2">
 
             <p class="text-center pt-4 pb-2 font-bold" style="font-size: 21px;">立即申請 </p>
-        
+
             <form class="px-8 pt-3">
-        
+
                 <p class=" font-bold mb-3" style="font-size: 25px;">黃竹坑(瑞琪分店) </p>
-        
+
                 <p class=" font-bold mb-3" style="font-size: 20px;"><span style="font-size: 25px">12</span>平方呎 </p>
-        
+
                 <div role="alert" class="mb-3">
                     <div class=" text-center font-bold rounded-t px-4 py-2 mr-4 ml-4" style="font-size: 25px; background-color: #E0CBF6; color:#56628C">
                         月費
@@ -676,7 +661,7 @@
                         <p class="font-bold" style="font-size: 32px;color:#324A5E">$600</p>
                     </div>
                 </div>
-        
+
                 <div class="flex mb-4 w-full pt-6 border-t">
                     <div class="flex w-1/2 input-group">
                         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">
@@ -684,16 +669,16 @@
                     </div>
                     <div class="w-1/2 flex input-group">
                         <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名">
-        
+
                     </div>
                 </div>
-        
-        
+
+
                 <div class="input-group mb-3">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
                     <input class="form-control" type="text" placeholder="電話號碼">
                 </div>
-        
+
                 <div class="w-full inline-block relative mb-4">
                     <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
                         <option value="" selected>查詢問題</option>
@@ -706,12 +691,12 @@
                             <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                     </div>
                 </div>
-        
+
                 <div class="w-full inline-block relative pb-3 border-b">
                     <input class="w-full form-control pb-8 border-b" style="padding: 16px 8px 16px 16px;" type="text" placeholder="你的信息">
-        
+
                 </div>
-        
+
                 <div class=" w-full mt-3 md:flex md:items-center mb-4">
                     <label class="md:w-2/3 block text-gray-500 font-bold">
                         <input class="mr-2 rounded border-gray-400" type="checkbox">
@@ -720,11 +705,11 @@
                         </span>
                     </label>
                 </div>
-        
+
                 <button class="submit-btn hover:bg-purple-400">
                     送出
                 </button>
-        
+
                 <div class=" flex py-2 mt-2 border-t">
                     <div class="w-2/5">
                         <p class=" text-center font-bold" style="font-size: 21px;color: #988F9A">分享</p>
@@ -739,7 +724,7 @@
             </form>
         </div>
     </div>
-    
+
 </div>
 
 @endsection
@@ -818,7 +803,7 @@
     var tablerows = document.getElementsByClassName("rentwarehouse-table-item");
 
     for (var i = 0; i < tablerows.length; i++) {
-        
+
 
         tablerows[i].addEventListener("mouseenter", function(event) {
 
@@ -830,28 +815,28 @@
 <script>
     // Get the modal
     var modal = document.getElementById("rentwarehouse-modal");
-    
+
     // Get the button that opens the modal
     var btn = document.getElementById("modal-trigger-button");
-    
+
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
-    
+
     // When the user clicks the button, open the modal 
     btn.onclick = function() {
-      modal.style.display = "block";
+        modal.style.display = "block";
     }
-    
+
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
-      modal.style.display = "none";
+        modal.style.display = "none";
     }
-    
+
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
-    </script>
+</script>
 @endsection

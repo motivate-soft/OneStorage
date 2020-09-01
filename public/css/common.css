@@ -368,15 +368,17 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 .facebook-btn {
-    background-color:#FF8282;
-    font-weight: 700;
-    color: white;
-}
-
-.gmail-btn {
     background-color:#8BB7F0;
     font-weight: 700;
     color: white;
+    padding-left: 100px !important;
+}
+
+.gmail-btn {
+    background-color:#FF8282;
+    font-weight: 700;
+    color: white;
+    padding-left: 100px !important;
 }
 
 .select-grey {
