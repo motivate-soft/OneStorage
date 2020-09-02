@@ -110,7 +110,6 @@
         main {
             font-family: 'RobertBlack';
         }
-
     </style>
 
     @yield('styles')
@@ -118,7 +117,7 @@
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 </head>
 
-<body class="bg-grey h-screen antialiased leading-none" ondragstart="return false;" ondrop="return false;">
+<body class="bg-grey h-screen antialiased leading-none" onresize="onResize()" ondragstart="return false;" ondrop="return false;">
 
     @include('partials.accessory')
 
@@ -134,7 +133,10 @@
     @yield('scripts')
     <script src="{{ asset('js/accessory.js') }}"></script>
     <script>
-        document.getElementById("main-content").style.marginTop = (document.getElementsByTagName("nav")[0].clientHeight + 7) + "px";
+        onResize();
+        function onResize() {
+            document.getElementById("main-content").style.marginTop = (document.getElementsByTagName("nav")[0].clientHeight) + "px";
+        }
     </script>
 </body>
 

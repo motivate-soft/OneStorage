@@ -24,9 +24,11 @@
         padding-top:20px; 
         margin-left:27.5px;
         font-size:29px;
+        font-weight:600;
     }
     .maintitle-right-aboutus-english-m {
         font-family:'Roboto';
+        font-weight:800;
     }
     .maintitle-right-bottom-m {
         font-size:11px; 

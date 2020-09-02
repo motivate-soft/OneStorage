@@ -301,6 +301,61 @@
     .rentwarehouse-content-title-1 {
         font-weight:600;
     }
+
+    /* The Modal (background) */
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        padding-top: 100px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 10px;
+        border: 1px solid #888;
+        /* width: 80%; */
+        max-width: 350px;
+
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .rentwarehouse-modal {
+        display: none;
+        z-index: 50 !important;
+        /* max-width:375px; */
+    }
+
 </style>
 <link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}"/>
 @endsection
@@ -377,7 +432,7 @@
                 <p class="border rounded-md border-gray-500 py-2 mx-1"><span class="text-lg pr-2">月費</span><span id="rentwarehouse-result-rate-m" class="text-3xl">$385</span><span class="text-lg">起</span></p>
             </div>
             <div class="w-2/5 px-1">
-                <button class="w-full rounded-full rentwarehouse-mobile-order-button py-3 mx-1">立即預訂</button>
+                <button id="modal-trigger-button" class="w-full rounded-full rentwarehouse-mobile-order-button py-3 mx-1">立即預訂</button>
             </div>
         </div>
     </div>
@@ -559,9 +614,99 @@
         <span class="text1 my-auto self-center pl-2 rentwarehouse-content-title-1">附近設施</span>
     </div>
 
-    <div class="pl-11 pt-2">
+    <div class="pl-11 pt-2 pb-8">
         <p class="text-sm color-deep py-1">- 問題?</p>
         <p class="text-sm color-deep py-1">- 答案。</p>
+    </div>
+
+</div>
+
+<div id="rentwarehouse-modal-m" class="modal" style="z-index:1000;">
+
+    <div class="modal-content">
+
+        <span class="close">&times;</span>
+
+        <div class=" bg-white w-80 mx-auto mt-2 mb-8 pt-2">
+
+            <p class="text-center pt-4 pb-2 font-bold" style="font-size: 21px;">立即申請 </p>
+
+            <form class="px-8 pt-3">
+
+                <p class=" font-bold mb-3" style="font-size: 25px;">黃竹坑(瑞琪分店) </p>
+
+                <p class=" font-bold mb-3" style="font-size: 20px;"><span style="font-size: 25px">12</span>平方呎 </p>
+
+                <div role="alert" class="mb-3">
+                    <div class=" text-center font-bold rounded-t px-4 py-2 mr-4 ml-4" style="font-size: 25px; background-color: #E0CBF6; color:#56628C">
+                        月費
+                    </div>
+                    <div class="border border-t-0 rounded-b px-4 py-3 text-center mr-4 ml-4">
+                        <p class="font-bold" style="font-size: 32px;color:#324A5E">$600</p>
+                    </div>
+                </div>
+
+                <div class="flex mb-4 w-full pt-6 border-t">
+                    <div class="flex w-1/2 input-group">
+                        <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">
+                        <input class="w-full form-control" type="text" placeholder="姓">
+                    </div>
+                    <div class="w-1/2 flex input-group">
+                        <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名">
+
+                    </div>
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
+                    <input class="form-control" type="text" placeholder="電話號碼">
+                </div>
+
+                <div class="w-full inline-block relative mb-4">
+                    <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
+                        <option value="" selected>查詢問題</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                    </div>
+                </div>
+
+                <div class="w-full inline-block relative pb-3 border-b">
+                    <input class="w-full form-control pb-8 border-b" style="padding: 16px 8px 16px 16px;" type="text" placeholder="你的信息">
+
+                </div>
+
+                <div class=" w-full mt-3 md:flex md:items-center mb-4">
+                    <label class="md:w-2/3 block text-gray-500 font-bold">
+                        <input class="mr-2 rounded border-gray-400" type="checkbox">
+                        <span class="text-sm">
+                            要運輸
+                        </span>
+                    </label>
+                </div>
+
+                <button class="submit-btn hover:bg-purple-400">
+                    送出
+                </button>
+
+                <div class=" flex py-2 mt-2 border-t">
+                    <div class="w-2/5">
+                        <p class=" text-center font-bold" style="font-size: 21px;color: #988F9A">分享</p>
+                    </div>
+                    <div class="w-2/5 flex">
+                        <img class="img-links pr-1 object-none" src="{{asset('images/contactUs/icons8-facebook-50@2x.png')}}" alt="facebook">
+                        <img class="img-links pr-1 object-none" src="{{asset('images/contactUs/icons8-instagram-50.png')}}" alt="instagram">
+                        <img class="img-links pr-1 object-none" src="{{asset('images/contactUs/icons8-whatsapp-50.png')}}" alt="whatsapp">
+                        <img class="img-links pr-1 object-none" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="email">
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 
 </div>
@@ -640,10 +785,36 @@
 
         tablerows[i].addEventListener("click", function(event) {
 
-
             $("#rentwarehouse-size-preview-m").attr("src", "../images/size-" + $(this).find(".bg-yellow").html() + ".jpg");
 
         });
+    }
+</script>
+<script>
+    // Get the modal
+    var modal = document.getElementById("rentwarehouse-modal-m");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("modal-trigger-button");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
 </script>
 @endsection
