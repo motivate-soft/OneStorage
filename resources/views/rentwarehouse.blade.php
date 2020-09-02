@@ -141,12 +141,6 @@
         padding-right: 18px;
     }
 
-    main {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 1336px;
-        overflow-x: hidden
-    }
 
     .yellow-shadow {
         box-shadow: 10px 15px #FABD02;
@@ -210,7 +204,7 @@
     .rentwarehouse-price-select div.rentwarehouse-price-select-item {
         background-color: white;
         color: #4D5567;
-        border: 1px solid gray;
+        border: 1px solid #888888;
     }
 
     .rentwarehouse-price-select.active p {
@@ -239,6 +233,7 @@
 
     .rentwarehouse-price-select-result-card-footer-content {
         font-size: 14px;
+        font-family: 'RobertRegular';
     }
 
     .rentwarehouse-price-select-button {
@@ -259,13 +254,9 @@
         height: 127px;
     }
 
-    .rentwarehouse-left {
-        max-width: 620px;
-    }
+    .rentwarehouse-left {}
 
-    .rentwarehouse-right {
-        max-width: 340px;
-    }
+    .rentwarehouse-right {}
 
     .bg-yellow {
         background-color: #FABD02;
@@ -360,281 +351,284 @@
 @endsection
 
 @section('content')
-<div class="grid grid-cols-12 px-56">
-    <div class="col-start-1 col-span-8 py-8 rentwarehouse-left">
-        <p class="heading2 px-4 mb-3">黃竹坑(瑞琪分店)</p>
-        <p class="text1 px-4 mb-2">香港仔, 香港島南區</p>
-        <div class="bg-white px-4 py-2">
-            <div class="flex">
-                <img id="rentwarehouse-main-image" class="w-4/5" src="{{asset('images/img_rentvideo.jpg')}}" />
-                <div class="w-1/5 pl-1 grid grid-cols-1 row-gap-2 overflow-y-scroll overflow-auto" style="max-height: 310px;">
-                    <img class="rentwarehouse-sub-image" src="{{asset('images/th_1.jpg')}}" />
-                    <img class="rentwarehouse-sub-image" src="{{asset('images/th_1.jpg')}}" />
-                    <img class="rentwarehouse-sub-image" src="{{asset('images/th_1.jpg')}}" />
-                    <img class="rentwarehouse-sub-image" src="{{asset('images/th_1.jpg')}}" />
-                    <img class="rentwarehouse-sub-image" src="{{asset('images/th_1.jpg')}}" />
-                    <img class="rentwarehouse-sub-image" src="{{asset('images/th_1.jpg')}}" />
+<div class="mx-auto w-3/5 pt-6">
+    <p class="heading2 px-4 mb-3">黃竹坑(瑞琪分店)</p>
+    <div class="grid grid-cols-12 ">
+        <div class="col-start-1 col-span-8 pb-8">
+            <p class="text1 px-4 mb-2">香港仔, 香港島南區</p>
+            <div class="bg-white px-4 py-2">
+                <div class="flex">
+                    <img id="rentwarehouse-main-image" class="w-4/5" src="{{asset('images/img_rentvideo.jpg')}}" />
+                    <div class="w-1/5 pl-1 grid grid-cols-1 row-gap-2 overflow-y-scroll overflow-auto" style="max-height: 310px;">
+                        <img class="rentwarehouse-sub-image" src="{{asset('images/th_1.jpg')}}" />
+                        <img class="rentwarehouse-sub-image" src="{{asset('images/th_1.jpg')}}" />
+                        <img class="rentwarehouse-sub-image" src="{{asset('images/th_1.jpg')}}" />
+                        <img class="rentwarehouse-sub-image" src="{{asset('images/th_1.jpg')}}" />
+                        <img class="rentwarehouse-sub-image" src="{{asset('images/th_1.jpg')}}" />
+                        <img class="rentwarehouse-sub-image" src="{{asset('images/th_1.jpg')}}" />
+                    </div>
+                </div>
+                <div class="mr-10 pb-4">
+                    <div class="horz-line my-4"></div>
+                    <p class="text1 pb-2">
+                        詳細資料
+                    </p>
+                    <p class="text0 py-4 leading-normal">
+                        設備完善，提取簡便，環境清潔，光線充足，安全可靠。<br />
+                        優質服務 優惠價格，適合儲存大小貨物及辦公室物品、生財工具、家居雜物、收藏精品、季節性服飾、健身器材及單車等等。<br />
+                        多種面積，適合任何人仕使用。
+                    </p>
+
+                    <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
+                        <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
+                        <span class="text1 my-auto self-center pl-2">租用面積</span>
+                    </div>
+
+                    <div class="flex my-4">
+                        <div class="w-2/3">
+                            <table style="font-family: 'RobertRegular';" class="text-center text0 w-full">
+                                <tr class="table-heading">
+                                    <th class="py-2">租用面積<br />
+                                        (平方尺)</th>
+                                    <th>約數尺寸<br />
+                                        (長x闊x高) </th>
+                                    <th>原價</th>
+                                    <th>會員價</th>
+                                </tr>
+                                <tr class="border-b border-white bg-grey rentwarehouse-table-item">
+                                    <td class="bg-yellow py-5">14</td>
+                                    <td>(3"x4'5"x3'4")</td>
+                                    <td><del>$642</del></td>
+                                    <td><span class=" rounded bg-third px-2 py-1">$385起</span></td>
+                                </tr>
+                                <tr class="border-b border-white bg-grey rentwarehouse-table-item">
+                                    <td class="bg-yellow py-5">18</td>
+                                    <td>(4'6"x4'1"x6'7")</td>
+                                    <td><del>$1,764</del></td>
+                                    <td><span class=" rounded bg-third px-2 py-1">$1,058起</span></td>
+                                </tr>
+                                <tr class="border-b border-white bg-grey rentwarehouse-table-item">
+                                    <td class="bg-yellow py-5">26</td>
+                                    <td>(5'1"x5'2"x6'7")</td>
+                                    <td><del>$2,288</del></td>
+                                    <td><span class=" rounded bg-third px-2 py-1">$1,373起</span></td>
+                                </tr>
+                                <tr class="border-b border-white bg-grey rentwarehouse-table-item">
+                                    <td class="bg-yellow py-5">48</td>
+                                    <td>(9'10"x4'10"x6'7")</td>
+                                    <td><del>$3,840</del></td>
+                                    <td><span class=" rounded bg-third px-2 py-1">$2,304起</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="w-1/3 ml-4">
+                            <p class="text0 mb-10  leading-normal">
+                                可放換季衣服, 兒童物件及玩具,書本
+                                參照圖片:
+                            </p>
+                            <img id="rentwarehouse-size-preview" src="{{asset('images/img_webbox.jpg')}}" />
+                        </div>
+                    </div>
+                    <div class="horz-line my-4"></div>
+
+                    <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
+                        <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
+                        <span class="text1 my-auto self-center pl-2">地址</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-sm color-primary">地址:黃竹坑道18號瑞琪工業大廈14樓A室</p>
+                        <div>
+                            <p class="text-sm color-deep pt-8 py-2">開放時間</p>
+                            <p class="text-sm color-primary">全年24小時開放。</p>
+                            <p class="text-sm color-deep pt-8 py-2">辦公時間</p>
+                            <p class="text-sm color-primary py-1">週一至週五，早上10時至晚上7時。</p>
+                            <p class="text-sm color-primary py-1">週六，早上10時至晚上5時。</p>
+                            <p class="text-sm color-primary mb-3 py-1">星期日及假期，需於 1 天前預約參觀。</p>
+                            <img class="rentware-middle-image pr-5 py-1" src="{{ asset('images/Image 7@2x.png') }}" />
+
+                            <p class="text-sm color-deep pt-8 py-2">交通:</p>
+                            <p class="text-sm color-primary py-1">地鐵: 黃竹坑 (B 出口)</p>
+                            <p class="text-sm color-primary py-1">巴士線: 170, 171, 37B, 671, 69, 70, 973</p>
+                            <p class="text-sm color-primary py-1">小巴線: 4A, 4B, 4C, 4M, 29, 29A, 36X, 59A, 59B, 69</p>
+                        </div>
+                    </div>
+
+                    <div class="horz-line my-4"></div>
+
+                    <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
+                        <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
+                        <span class="text1 my-auto self-center pl-2">最新優惠</span>
+                    </div>
+                    <div class="my-4">
+                        <p class="text-sm color-primary">黃竹坑新店快閃優惠　低至6折優惠</p>
+                        <img class="pr-20 mt-10 mb-10" src="{{ asset('images/Image 8@2x.png') }}" />
+
+                        <p class="text-sm color-deep py-1 leading-normal">黃竹坑新店快閃優惠　低至6折優惠</p>
+                        <p class="text-sm color-deep py-1 leading-normal">震撼筍價HK$300起即可入手</p><br />
+                        <p class="text-sm color-deep py-1 leading-normal">黃竹坑分店全新開業，推出快閃驚喜優惠！顧客可享低至6折優惠，以震撼筍價HK$300起即可入手！你仲唔快啲黎搵我哋！！</p>
+                        <p class="text-sm color-deep py-1 leading-normal">*詳情請向職員查詢</p><br />
+                        <p class="text-sm color-deep py-1 leading-normal">地址：黃竹坑道18號瑞琪工業大廈14樓A室</p>
+                        <p class="text-sm color-deep py-1 leading-normal">=========================</p>
+                        <p class="text-sm color-deep py-1 leading-normal">立即租倉</p>
+                        <p class="text-sm color-deep py-1 leading-normal">客戶專線：2111-2636</p>
+                        <p class="text-sm color-deep py-1 leading-normal">WhatsApp：https://bit.ly/2XWPFdJ</p>
+                        <p class="text-sm color-deep py-1 leading-normal">網頁：https://bit.ly/2B2Raxy</p>
+                        <p class="text-sm color-deep py-1 leading-normal">全港18間分店任你揀，預繳優惠低至$307，仲有免息分期添</p>
+                        <p class="text-sm color-deep py-1 leading-normal">熱門地點：</p>
+                        <p class="text-sm color-deep py-1 leading-normal">#柴灣｜#小西灣｜#黃竹坑｜#新蒲崗｜#葵涌｜#葵興｜#葵芳｜#荃灣｜#青衣｜#火炭｜#屯門</p>
+                        <p class="text-sm color-deep py-1 leading-normal">#至尊迷你倉 #onestorage #迷你倉 #黃竹坑 #隆重開幕 #符合消防最新指引</p>
+
+                    </div>
+
+                    <div class="horz-line my-4"></div>
+
+                    <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
+                        <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
+                        <span class="text1 my-auto self-center pl-2">服務設施</span>
+                    </div>
+                    <div class="my-4">
+                        <div class="px-4 grid grid-cols-2 col-gap-2 row-gap-4">
+                            <div class="flex">
+                                <img src="{{asset('images/ic_key_card.png')}}" class="mr-2 object-none" />
+                                <p class="text0 my-auto"><span class="font-bold">7 x 24</span>智能保安進出系統</p>
+                            </div>
+                            <div class="flex">
+                                <img src="{{asset('images/ic_air_con.png')}}" class="mr-2 object-none" />
+                                <p class="text1 my-auto">無間斷恆溫空調</p>
+                            </div>
+                            <div class="flex">
+                                <img src="{{asset('images/ic_fire.png')}}" class="mr-2 object-none" />
+                                <p class="text0 my-auto">消防裝置設備</p>
+                            </div>
+                            <div class="flex">
+                                <img src="{{asset('images/ic_delivery.png')}}" class="mr-2 object-none" />
+                                <p class="text0 my-auto">鋁梯及手推車借用服務</p>
+                            </div>
+                            <div class="flex">
+                                <img src="{{asset('images/ic_water.png')}}" class="mr-2 object-none" />
+                                <p class="text0 my-auto">自助飲用水機</p>
+                            </div>
+                            <div class="flex">
+                                <img src="{{asset('images/ic_sec_cam.png')}}" class="mr-2 object-none" />
+                                <p class="text0 my-auto">全天候高清保安監察及警報系統</p>
+                            </div>
+                            <div class="flex">
+                                <img src="{{asset('images/ic_24_hours.png')}}" class="mr-2 object-none" />
+                                <p class="text0">24小時電話熱線服務</p>
+                            </div>
+                            <div class="flex">
+                                <img src="{{asset('images/ic_wifi.png')}}" class="mr-2 object-none" />
+                                <p class="text0 my-auto">免費Wi-Fi</p>
+                            </div>
+                            <div class="flex">
+                                <img class="mr-2 object-none" src="{{ asset('images/icons8-secured-letter-40@2x.png') }}" />
+                                <p class="text-sm color-primary">信箱服務</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="horz-line my-4"></div>
+
+                    <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
+                        <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
+                        <span class="text1 my-auto self-center pl-2">附近設施</span>
+                    </div>
+                    <div class="my-4 ml-4">
+                        <div class="flex py-2">
+                            <div class="w-1/2">
+                                <p class="text-sm color-deep">香葉道休憩處</p>
+                            </div>
+                            <div class="w-1/2">
+                                <p class="text-sm color-deep">南朗山道熟食市場</p>
+                            </div>
+                        </div>
+                        <div class="flex py-2">
+                            <div class="w-1/2">
+                                <p class="text-sm color-deep">香港仔警署</p>
+                            </div>
+                            <div class="w-1/2">
+                                <p class="text-sm color-deep">香港仔網球及壁球中心網球場</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="horz-line my-4"></div>
+
+                    <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
+                        <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
+                        <span class="text1 my-auto self-center pl-2">附近設施</span>
+                    </div>
+
+                    <div class="my-4">
+                        <p class="text-sm color-deep py-1">- 問題?</p>
+                        <p class="text-sm color-deep py-1">- 答案。</p>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-start-9 col-span-4 mx-4 pb-8 rentwarehouse-right">
+            <p class="color-primary rentwarehouse-space-size-title pb-6">你需要多大的空間?</p>
+            <div class="grid grid-cols-2 col-gap-2 row-gap-2">
+                <div class="rounded p-2 color-primary rentwarehouse-space-size-select cursor-pointer text-center active"><b>14</b>平方呎</div>
+                <div class="rounded p-2 color-primary rentwarehouse-space-size-select cursor-pointer text-center"><b>18</b>平方呎</div>
+                <div class="rounded p-2 color-primary rentwarehouse-space-size-select cursor-pointer text-center"><b>26</b>平方呎</div>
+                <div class="rounded p-2 color-primary rentwarehouse-space-size-select cursor-pointer text-center"><b>48</b>平方呎</div>
+            </div>
+
+            <div class="flex pt-4">
+                <p class="rentwarehouse-size-select-description">唔知自己需要咩size ? 試下我地既空間計算器</p>
+                <img class="w-4 h-4 box-content pl-3" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
+            </div>
+
+            <p class="color-primary rentwarehouse-space-size-title pt-4 pb-4">請選擇付費方式</p>
+            <div class="grid grid-cols-2 col-gap-4 row-gap-2">
+                <div class="rentwarehouse-price-select cursor-pointer active">
+                    <p class="color-primary rentwarehouse-mode-select-item-title pb-2">預繳12個月</p>
+                    <div class="rounded p-2 color-primary rentwarehouse-price-select-item text-center"><b>$380/</b>月</div>
+                </div>
+                <div class="rentwarehouse-price-select cursor-pointer">
+                    <p class="color-primary rentwarehouse-mode-select-item-title pb-2">單月付款</p>
+                    <div class="rounded p-2 color-primary rentwarehouse-price-select-item text-center"><b>$385/</b>月</div>
                 </div>
             </div>
-            <div class="mr-10 pb-4">
-                <div class="horz-line my-4"></div>
-                <p class="text1 pb-2">
-                    詳細資料
+            <div class="my-4">
+                <div class="border-t border-l border-r border-grey text-center font-bold rounded-t px-4 py-4 rentwarehouse-select-result-card-title">
+                    月費
+                </div>
+                <div class="border-b border-l border-r border-grey rounded-b px-4 py-3 text-center">
+                    <p class="rentwarehouse-price-select-result-card-content pt-3 pb-5 text-center">$380</p>
+                    <div class="px-5">
+                        <p class="w-max-content rentwarehouse-price-select-result-card-footer-title color-primary">付費方式:</p>
+                        <div class="w-max-content flex color-primary pb-2 pt-2">
+                            <span class="rentwarehouse-price-select-result-card-footer-content color-deep my-auto mr-2">現金</span>
+                            <img class="mx-1 object-none" src="{{ asset('images/Image 60@2x.png') }}" />
+                            <img class="mx-1 object-none" src="{{ asset('images/Image 59@2x.png') }}" />
+                            <img class="mx-1 object-none" src="{{ asset('images/Image 58@2x.png') }}" />
+                            <img class="mx-1 object-none" src="{{ asset('images/fps_color_tc@2x.png') }}" />
+                            <img class="mx-1 object-none" src="{{ asset('images/Intersection 41@2x.png') }}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="modal-trigger-button" class="rounded-full w-full rentwarehouse-price-select-button py-2 my-2 color-primary">立即預訂</button>
+
+            <p class="rentwarehouse-price-select-news-title color-primary my-2">最新資訊</p>
+
+            <div class="flex pt-2">
+                <img class="flex-shrink-0 rentwarehouse-price-select-news-image" src="{{ asset('images/Image 8@2x.png') }}" />
+                <p class="pl-3 color-deep overflow-y-hidden leading-relaxed">黃竹坑新店快閃優惠　低至6折優惠<br/><br/>
+                    震撼筍價HK$300起即可入手
+                    黃竹坑分店全新開業，推出快閃驚喜優惠！顧客可享低至6折優惠，以震撼筍價HK$300起即可入手！你仲唔快啲黎搵我哋！！
+                    *詳情請向職員查詢
+                    地址：黃竹坑道18號瑞琪工業大廈14樓A室
                 </p>
-                <p class="text0 py-4 leading-normal">
-                    設備完善，提取簡便，環境清潔，光線充足，安全可靠。<br />
-                    優質服務 優惠價格，適合儲存大小貨物及辦公室物品、生財工具、家居雜物、收藏精品、季節性服飾、健身器材及單車等等。<br />
-                    多種面積，適合任何人仕使用。
-                </p>
-
-                <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
-                    <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
-                    <span class="text1 my-auto self-center pl-2">租用面積</span>
-                </div>
-
-                <div class="flex my-4">
-                    <div class="w-2/3">
-                        <table style="width:100%" class="text-center text0">
-                            <tr class="table-heading">
-                                <th class="py-2">租用面積<br />
-                                    (平方尺)</th>
-                                <th>約數尺寸<br />
-                                    (長x闊x高) </th>
-                                <th>原價</th>
-                                <th>會員價</th>
-                            </tr>
-                            <tr class="border-b border-white bg-grey rentwarehouse-table-item">
-                                <td class="bg-yellow py-2 ">14</td>
-                                <td>(3"x4'5"x3'4")</td>
-                                <td><del>$642</del></td>
-                                <td><span class=" rounded bg-third px-2 py-1">$385起</span></td>
-                            </tr>
-                            <tr class="border-b border-white bg-grey rentwarehouse-table-item">
-                                <td class="bg-yellow py-2 ">18</td>
-                                <td>(4'6"x4'1"x6'7")</td>
-                                <td><del>$1,764</del></td>
-                                <td><span class=" rounded bg-third px-2 py-1">$1,058起</span></td>
-                            </tr>
-                            <tr class="border-b border-white bg-grey rentwarehouse-table-item">
-                                <td class="bg-yellow py-2 ">26</td>
-                                <td>(5'1"x5'2"x6'7")</td>
-                                <td><del>$2,288</del></td>
-                                <td><span class=" rounded bg-third px-2 py-1">$1,373起</span></td>
-                            </tr>
-                            <tr class="border-b border-white bg-grey rentwarehouse-table-item">
-                                <td class="bg-yellow py-2 ">48</td>
-                                <td>(9'10"x4'10"x6'7")</td>
-                                <td><del>$3,840</del></td>
-                                <td><span class=" rounded bg-third px-2 py-1">$2,304起</span></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="w-1/3 ml-4">
-                        <p class="text0 mb-10  leading-normal">
-                            可放換季衣服, 兒童物件及玩具,書本
-                            參照圖片:
-                        </p>
-                        <img id="rentwarehouse-size-preview" src="{{asset('images/img_webbox.jpg')}}" />
-                    </div>
-                </div>
-                <div class="horz-line my-4"></div>
-
-                <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
-                    <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
-                    <span class="text1 my-auto self-center pl-2">地址</span>
-                </div>
-                <div class="my-4">
-                    <p class="text-sm color-primary">地址:黃竹坑道18號瑞琪工業大廈14樓A室</p>
-                    <div>
-                        <p class="text-sm color-deep pt-8 py-2">開放時間</p>
-                        <p class="text-sm color-primary">全年24小時開放。</p>
-                        <p class="text-sm color-deep pt-8 py-2">辦公時間</p>
-                        <p class="text-sm color-primary py-1">週一至週五，早上10時至晚上7時。</p>
-                        <p class="text-sm color-primary py-1">週六，早上10時至晚上5時。</p>
-                        <p class="text-sm color-primary mb-3 py-1">星期日及假期，需於 1 天前預約參觀。</p>
-                        <img class="rentware-middle-image pr-5 py-1" src="{{ asset('images/Image 7@2x.png') }}" />
-
-                        <p class="text-sm color-deep pt-8 py-2">交通:</p>
-                        <p class="text-sm color-primary py-1">地鐵: 黃竹坑 (B 出口)</p>
-                        <p class="text-sm color-primary py-1">巴士線: 170, 171, 37B, 671, 69, 70, 973</p>
-                        <p class="text-sm color-primary py-1">小巴線: 4A, 4B, 4C, 4M, 29, 29A, 36X, 59A, 59B, 69</p>
-                    </div>
-                </div>
-
-                <div class="horz-line my-4"></div>
-
-                <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
-                    <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
-                    <span class="text1 my-auto self-center pl-2">最新優惠</span>
-                </div>
-                <div class="my-4">
-                    <p class="text-sm color-primary">黃竹坑新店快閃優惠　低至6折優惠</p>
-                    <img class="pr-20 mt-10 mb-10" src="{{ asset('images/Image 8@2x.png') }}" />
-
-                    <p class="text-sm color-deep py-1 leading-normal">黃竹坑新店快閃優惠　低至6折優惠</p>
-                    <p class="text-sm color-deep py-1 leading-normal">震撼筍價HK$300起即可入手</p><br />
-                    <p class="text-sm color-deep py-1 leading-normal">黃竹坑分店全新開業，推出快閃驚喜優惠！顧客可享低至6折優惠，以震撼筍價HK$300起即可入手！你仲唔快啲黎搵我哋！！</p>
-                    <p class="text-sm color-deep py-1 leading-normal">*詳情請向職員查詢</p><br />
-                    <p class="text-sm color-deep py-1 leading-normal">地址：黃竹坑道18號瑞琪工業大廈14樓A室</p>
-                    <p class="text-sm color-deep py-1 leading-normal">=========================</p>
-                    <p class="text-sm color-deep py-1 leading-normal">立即租倉</p>
-                    <p class="text-sm color-deep py-1 leading-normal">客戶專線：2111-2636</p>
-                    <p class="text-sm color-deep py-1 leading-normal">WhatsApp：https://bit.ly/2XWPFdJ</p>
-                    <p class="text-sm color-deep py-1 leading-normal">網頁：https://bit.ly/2B2Raxy</p>
-                    <p class="text-sm color-deep py-1 leading-normal">全港18間分店任你揀，預繳優惠低至$307，仲有免息分期添</p>
-                    <p class="text-sm color-deep py-1 leading-normal">熱門地點：</p>
-                    <p class="text-sm color-deep py-1 leading-normal">#柴灣｜#小西灣｜#黃竹坑｜#新蒲崗｜#葵涌｜#葵興｜#葵芳｜#荃灣｜#青衣｜#火炭｜#屯門</p>
-                    <p class="text-sm color-deep py-1 leading-normal">#至尊迷你倉 #onestorage #迷你倉 #黃竹坑 #隆重開幕 #符合消防最新指引</p>
-
-                </div>
-
-                <div class="horz-line my-4"></div>
-
-                <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
-                    <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
-                    <span class="text1 my-auto self-center pl-2">服務設施</span>
-                </div>
-                <div class="my-4">
-                    <div class="px-4 grid grid-cols-2 col-gap-2 row-gap-4">
-                        <div class="flex">
-                            <img src="{{asset('images/ic_key_card.png')}}" class="mr-2 object-none" />
-                            <p class="text0 my-auto"><span class="font-bold">7 x 24</span>智能保安進出系統</p>
-                        </div>
-                        <div class="flex">
-                            <img src="{{asset('images/ic_air_con.png')}}" class="mr-2 object-none" />
-                            <p class="text1 my-auto">無間斷恆溫空調</p>
-                        </div>
-                        <div class="flex">
-                            <img src="{{asset('images/ic_fire.png')}}" class="mr-2 object-none" />
-                            <p class="text0 my-auto">消防裝置設備</p>
-                        </div>
-                        <div class="flex">
-                            <img src="{{asset('images/ic_delivery.png')}}" class="mr-2 object-none" />
-                            <p class="text0 my-auto">鋁梯及手推車借用服務</p>
-                        </div>
-                        <div class="flex">
-                            <img src="{{asset('images/ic_water.png')}}" class="mr-2 object-none" />
-                            <p class="text0 my-auto">自助飲用水機</p>
-                        </div>
-                        <div class="flex">
-                            <img src="{{asset('images/ic_sec_cam.png')}}" class="mr-2 object-none" />
-                            <p class="text0 my-auto">全天候高清保安監察及警報系統</p>
-                        </div>
-                        <div class="flex">
-                            <img src="{{asset('images/ic_24_hours.png')}}" class="mr-2 object-none" />
-                            <p class="text0">24小時電話熱線服務</p>
-                        </div>
-                        <div class="flex">
-                            <img src="{{asset('images/ic_wifi.png')}}" class="mr-2 object-none" />
-                            <p class="text0 my-auto">免費Wi-Fi</p>
-                        </div>
-                        <div class="flex">
-                            <img  class="mr-2 object-none" src="{{ asset('images/icons8-secured-letter-40@2x.png') }}" />
-                            <p class="text-sm color-primary">信箱服務</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="horz-line my-4"></div>
-
-                <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
-                    <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
-                    <span class="text1 my-auto self-center pl-2">附近設施</span>
-                </div>
-                <div class="my-4 ml-4">
-                    <div class="flex py-2">
-                        <div class="w-1/2">
-                            <p class="text-sm color-deep">香葉道休憩處</p>
-                        </div>
-                        <div class="w-1/2">
-                            <p class="text-sm color-deep">南朗山道熟食市場</p>
-                        </div>
-                    </div>
-                    <div class="flex py-2">
-                        <div class="w-1/2">
-                            <p class="text-sm color-deep">香港仔警署</p>
-                        </div>
-                        <div class="w-1/2">
-                            <p class="text-sm color-deep">香港仔網球及壁球中心網球場</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="horz-line my-4"></div>
-
-                <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
-                    <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
-                    <span class="text1 my-auto self-center pl-2">附近設施</span>
-                </div>
-
-                <div class="my-4">
-                    <p class="text-sm color-deep py-1">- 問題?</p>
-                    <p class="text-sm color-deep py-1">- 答案。</p>
-                </div>
-
-
             </div>
 
         </div>
-    </div>
-    <div class="col-start-9 col-span-4 py-8 rentwarehouse-right">
-        <p class="color-primary rentwarehouse-space-size-title pt-8 pb-4">你需要多大的空間?</p>
-        <div class="grid grid-cols-2 col-gap-2 row-gap-2">
-            <div class="rounded p-2 color-primary rentwarehouse-space-size-select cursor-pointer text-center active"><b>14</b>平方呎</div>
-            <div class="rounded p-2 color-primary rentwarehouse-space-size-select cursor-pointer text-center"><b>18</b>平方呎</div>
-            <div class="rounded p-2 color-primary rentwarehouse-space-size-select cursor-pointer text-center"><b>26</b>平方呎</div>
-            <div class="rounded p-2 color-primary rentwarehouse-space-size-select cursor-pointer text-center"><b>48</b>平方呎</div>
-        </div>
-
-        <div class="flex pt-4">
-            <p class="rentwarehouse-size-select-description">唔知自己需要咩size ? 試下我地既空間計算器</p>
-            <img class="w-4 h-4 box-content pl-3" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
-        </div>
-
-        <p class="color-primary rentwarehouse-space-size-title pt-4 pb-4">請選擇付費方式</p>
-        <div class="grid grid-cols-2 col-gap-4 row-gap-2">
-            <div class="rentwarehouse-price-select cursor-pointer active">
-                <p class="color-primary rentwarehouse-mode-select-item-title pb-2">預繳12個月</p>
-                <div class="rounded p-2 color-primary rentwarehouse-price-select-item text-center"><b>$380/</b>月</div>
-            </div>
-            <div class="rentwarehouse-price-select cursor-pointer">
-                <p class="color-primary rentwarehouse-mode-select-item-title pb-2">單月付款</p>
-                <div class="rounded p-2 color-primary rentwarehouse-price-select-item text-center"><b>$385/</b>月</div>
-            </div>
-        </div>
-        <div class="my-4">
-            <div class="border-t border-l border-r border-gray-600 text-center font-bold rounded-t px-4 py-4 rentwarehouse-select-result-card-title">
-                月費
-            </div>
-            <div class="border-b border-l border-r border-gray-600 rounded-b px-4 py-3 text-center">
-                <p class="rentwarehouse-price-select-result-card-content pt-3 pb-5 text-center">$380</p>
-                <div class="w-max-content mx-auto">
-                    <p class="w-max-content rentwarehouse-price-select-result-card-footer-title color-primary">付費方式:</p>
-                    <div class="w-max-content flex color-primary pb-2 pt-2">
-                        <p class="rentwarehouse-price-select-result-card-footer-content color-deep">現金</p>
-                        <img class="mx-1" src="{{ asset('images/Image 60@2x.png') }}" />
-                        <img class="mx-1" src="{{ asset('images/Image 59@2x.png') }}" />
-                        <img class="mx-1" src="{{ asset('images/Image 58@2x.png') }}" />
-                        <img class="mx-1" src="{{ asset('images/fps_color_tc@2x.png') }}" />
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <button id="modal-trigger-button" class="rounded-full w-full rentwarehouse-price-select-button py-2 my-2 color-primary">立即預訂</button>
-
-        <p class="rentwarehouse-price-select-news-title color-primary mb-2">最新資訊</p>
-
-        <div class="flex">
-            <img class="flex-shrink-0 rentwarehouse-price-select-news-image" src="{{ asset('images/Image 8@2x.png') }}" />
-            <p class="rentwarehouse-price-select-news-content px-2 color-deep overflow-y-hidden">黃竹坑新店快閃優惠　低至6折優惠
-                震撼筍價HK$300起即可入手
-                黃竹坑分店全新開業，推出快閃驚喜優惠！顧客可享低至6折優惠，以震撼筍價HK$300起即可入手！你仲唔快啲黎搵我哋！！
-                *詳情請向職員查詢
-                地址：黃竹坑道18號瑞琪工業大廈14樓A室
-            </p>
-        </div>
-
     </div>
 </div>
 

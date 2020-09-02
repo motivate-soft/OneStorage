@@ -17,11 +17,11 @@
 <body class="bg-white h-screen antialiased leading-none">
 
     @include('layouts.header')
-    <div class="px-4 md:px-24 lg:px-48 py-32 ">
+    <div class="px-4 mx-auto w-1/4 py-52">
 
         <p class="subheader-title">忘記密碼</p>
 
-        <form class=" contact-form">
+        <form>
 
             <div class="input-group mb-8">
                 <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">

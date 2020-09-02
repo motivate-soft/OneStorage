@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}"/>
 </head>
 
-<body class=" bg-white">
+<body class=" bg-white" ondragstart="return false;" ondrop="return false;">
     <main className="w-full mx-auto">
 
         <div class=" mb-8 fontsize-25 regular-color text-center font-bold">Paul Smith, 歡迎你回來!</div>
@@ -270,38 +270,44 @@
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>  
-        $(document).ready(function(){
-            $("#notification").hide();
-            $(".ischanged").click(function(){
-                $("#notification").fadeIn(3000);
+        $(document).ready(function() {
+        $("#notification").hide();
+        $(".ischanged").click(function() {
+            $("#notification").fadeIn(3000);
 
-            });
         });
+    });
 
-        function modifyData(id)
-        {
-            if(id == 1)
-            {
-                document.getElementById('firstName').readOnly = false;
-                document.getElementById('lastName').readOnly = false;
-                return true;
-            }
-            if(id == 2)
-            {
-                document.getElementById('email').readOnly = false;
-                return true;
-            }
-            if(id == 3)
-            {
-                document.getElementById('phone').readOnly = false;
-                return true;
-            }
-            if(id == 4)
-            {
-                document.getElementById('password').readOnly = false;
-                return true;
-            }
+    function modifyData(id) {
+        if (id == 1) {
+            const edtFirstName = document.getElementById('firstName');
+            const edtLastName = document.getElementById('lastName');
+
+            edtFirstName.readOnly = false;
+            edtLastName.readOnly = false;
+            edtFirstName.focus();
+
+            return true;
         }
+        if (id == 2) {
+            const edtEmail = document.getElementById('email');
+            edtEmail.readOnly = false;
+            edtEmail.focus();
+            return true;
+        }
+        if (id == 3) {
+            const edtPhone = document.getElementById('phone');
+            edtPhone.readOnly = false;
+            edtPhone.focus();
+            return true;
+        }
+        if (id == 4) {
+            const edtPwd = document.getElementById('password');
+            edtPwd.readOnly = false;
+            edtPwd.focus();
+            return true;
+        }
+    }
     </script>
 </body>
 

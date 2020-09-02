@@ -87,8 +87,8 @@
 
     .location-content-item {
         min-width: 120px;
-        max-width: 220px;
-        height: 300px;
+        /* max-width: 220px; */
+        /* height: 300px; */
     }
 
     .location-content-title {
@@ -177,8 +177,8 @@
 
 
 @section('content')
-<div class="grid grid-cols-12 px-5">
-    <div class="col-start-1 col-span-7">
+<div class="flex px-5 w-full">
+    <div class="" style="width: 56%">
         <div class="p-5">
             <div class="rentwarehouse-wrapper-title color-primary text-left">租倉</div>
             <div class="flex items-center pl-6 py-5">
@@ -232,7 +232,7 @@
                     </div>
                 </div>
                 
-                <div class="pl-8 pt-5">
+                <div class="px-12 pt-5">
                     <div class="flex">
                         <p class="branchlocation-store-select-description">唔知自己需要咩size ? 試下我地既空間計算器</p>
                         <img class="w-4 box-content pl-3" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
@@ -299,7 +299,7 @@
             </div>
 
             <div class="rentwarehouse-wrapper-title color-primary text-left pt-4">分店位置</div>
-            <div class="grid grid-cols-3 col-gap-3 row-gap-6 pt-5 pl-8 pr-0">
+            <div class="grid grid-cols-3 col-gap-4 row-gap-6 pt-5 pl-8 pr-0">
                 <div class="relative rounded overflow-hidden shadow-lg location-content-item">
                     <div class="relative">
                         <div class="ribbon ribbon-badge ribbon-pink">
@@ -314,12 +314,12 @@
                             <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
-                        <div class="flex py-1 mb-2">
+                        <div class="flex py-1 mb-1">
                             <img class="" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
                             <p class="ml-1 color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                         </div>
                     </div>
-                    <div class="absolute px-2 py-1 bottom-0 w-full">
+                    <div class="px-2 py-1 bottom-0 w-full">
                         <a href="/rentwarehouse">
                             <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
                                 選擇
@@ -342,12 +342,12 @@
                             <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
-                        <div class="flex py-1 mb-2">
+                        <div class="flex py-1 mb-1">
                             <img class="" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
                             <p class="ml-1 color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                         </div>
                     </div>
-                    <div class="absolute px-2 py-1 bottom-0 w-full">
+                    <div class="px-2 py-1 bottom-0 w-full">
                         <a href="/rentwarehouse">
                             <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
                                 選擇
@@ -370,12 +370,12 @@
                             <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
-                        <div class="flex py-1 mb-2">
+                        <div class="flex py-1 mb-1">
                             <img class="" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
                             <p class="ml-1 color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                         </div>
                     </div>
-                    <div class="absolute px-2 py-1 bottom-0 w-full">
+                    <div class="px-2 py-1 bottom-0 w-full">
                         <a href="/rentwarehouse">
                             <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
                                 選擇
@@ -398,12 +398,12 @@
                             <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
-                        <div class="flex py-1 mb-2">
+                        <div class="flex py-1 mb-1">
                             <img class="" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
                             <p class="ml-1 color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                         </div>
                     </div>
-                    <div class="absolute px-2 py-1 bottom-0 w-full">
+                    <div class="px-2 py-1 bottom-0 w-full">
                         <a href="/rentwarehouse">
                             <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
                                 選擇
@@ -426,12 +426,12 @@
                             <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
-                        <div class="flex py-1 mb-2">
+                        <div class="flex py-1 mb-1">
                             <img class="" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
                             <p class="ml-1 color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                         </div>
                     </div>
-                    <div class="absolute px-2 py-1 bottom-0 w-full">
+                    <div class="px-2 py-1 bottom-0 w-full">
                         <a href="/rentwarehouse">
                             <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
                                 選擇
@@ -454,12 +454,12 @@
                             <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
                         </div>
-                        <div class="flex py-1 mb-2">
+                        <div class="flex py-1 mb-1">
                             <img class="" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
                             <p class="ml-1 color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                         </div>
                     </div>
-                    <div class="absolute px-2 py-1 bottom-0 w-full">
+                    <div class="px-2 py-1 bottom-0 w-full">
                         <a href="/rentwarehouse">
                             <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
                                 選擇
@@ -473,10 +473,9 @@
 
         </div>
     </div>
-    <div class="col-start-8 col-span-5">
-        <img class="w-screen p-1 shadow-lg overflow-hidden" src="{{ asset('branchlocation/Group 72@2x.png') }}" />
+    <div class="" style="width: 44%;">
+        <img class="w-full p-1 shadow-lg overflow-hidden" src="{{ asset('branchlocation/Group 72@2x.png') }}" />
     </div>
-
 </div>
 @endsection
 

@@ -105,6 +105,10 @@ Route::get('/booking', function () {
 });
 
 
+
+
+
+// Mobile pages
 Route::get('/mobile', function () {
     return view('mobile.home');
 });
@@ -136,3 +140,39 @@ Route::get('/mobile/chatList', function () {
 Route::get('/mobile/chatRoom', function () {
     return view('mobile/chatRoom');
 });
+
+
+Route::get('/mobile/location', function () {
+    return view('mobile/branchlocation');
+});
+
+Route::get('/mobile/rentwarehouse', function () {
+    return view('mobile/rentwarehouse');
+});
+
+Route::get('/mobile/about', function () {
+    return view('mobile/aboutus');
+});
+
+Route::get('/mobile/calc', function () {
+    return view('mobile/calculator');
+});
+
+Route::get('/mobile/faqq', function () {
+    return view('mobile/faq');
+});
+
+Route::get('mobile/lastnews', function () {
+    $data['users'] = [1, 2, 3, 4, 5];
+    return view('mobile.lastnews', $data);
+});
+
+Route::get('mobile/news', function () {
+    return view('mobile.news');
+});
+
+Route::get('mobile/contact', function () {
+    return view('mobile.contact');
+});
+
+

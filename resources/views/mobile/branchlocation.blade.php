@@ -1,11 +1,10 @@
-@extends('mobile.layouts.app')
+﻿﻿@extends('mobile.layouts.app')
 
 @section('title')
 <title>{{__('About Us')}}</title>
 @endsection
 
 @section('styles')
-
 <style>
     .accordion {
         /* background-color: #E0CBF6; */
@@ -26,22 +25,7 @@
         background-color: #E0CB00;
     }
 
-    /* .accordion:after {
-        content: '\02C7';
-        color: #777;
-        font-weight: bold;
-        float: right;
-        margin-left: 5px;
-        vertical-align:middle;
-        transform:translate(0, 30%);
-
-    } */
-
-    /* .active:after {
-        content: "\2212";
-    } */
-
-    .panel {
+    .panel-other {
         padding: 0;
         background-color: white;
         max-height: 0;
@@ -54,64 +38,11 @@
     li.active {
         color:#4D5567
     }
-
-    .main-image {
-        max-width:1366px;
-    }
-
-    .main-wrapper {
-        margin-top:-80px;
-        margin-right:200px;
-        margin-left:200px;
-    }
-    .maintitle-wrapper {
-        padding-top:54.5px;
-    }
-    .maintitle-left {
-        padding-top:30px; 
-        margin-left:163px; 
-        margin-right:52.5px;
-        font-size:49px;
-    }
-    .maintitle-divider {
-        height:110px; 
-        background-color:#707070;
-    }
-    .maintitle-right {
-        padding-top:30px; 
-        margin-left:27.5px;
-        font-size:50px;
-    }
-    .maintitle-right-aboutus-english {
-        font-family:'Roboto';
-    }
-    .maintitle-right-bottom {
-        font-size:19px; 
-        color:#B2B5BD;
-        transform:translate(0, 50%);
-    }
+   
     .color-primary {
         color:#4D5567;
     }
-    .pb-230 {
-        padding-bottom:230px;
-    }
 
-    .category-title {
-        font-size:19px;
-        font-weight:600;
-    }
-    .content-area {
-        min-height:500px;
-    }
-
-    .color-primary {
-        color:#4D5567;
-    }
-    .main-screen {
-        max-width:375px;
-        background-color: #F6F6F6;
-    }
     .rentwarehouse-price-title {
         font-size:13px;
     }
@@ -160,14 +91,6 @@
     .store-select {
         color:#4D5567;
         background:white;
-    }
-    /* .location-content-wrapper {
-
-    } */
-    .location-content-item {
-        min-width:120px;
-        max-width:220px;
-        height:300px;
     }
     .location-content-item-m {
         min-width:120px;
@@ -254,23 +177,20 @@
     
     
 </style>
-
 <link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}"/>
 <link rel="stylesheet" href="{{ asset('branchlocation/ribbon/site.min.css') }}" />
 <link rel="stylesheet" href=" {{asset('branchlocation/slider/jquery-ui.css') }}"/>
-
 @endsection
 
 @section('content')
 <div class="w-full">
     <img class="p-1 shadow-lg overflow-hidden" src="{{ asset('branchlocation/Intersection 10@2x.png') }}"/>
 </div>
-
 <div class="p-5">
     <div class="rentwarehouse-wrapper-title color-primary text-center">租倉</div>
     
-    <div class="flex items-center px-2 py-5 mx-auto">
-        <img class="rentwarehouse-select-store-image-m px-1" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}"/>
+    <div class="flex items-center px-1 py-5 mx-auto">
+        <img class="rentwarehouse-select-store-image-m px-0" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}"/>
         <div class="flex relative rentwarehouse-select-store-item-area-m mx-1">
             <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-1 py-2 pr-8 shadow leading-tight focus:outline-none focus:shadow-outline rentwarehouse-selects-store-item-select-m">
                 <option class="rentwarehouse-selects-store-item-option-m" selected disabled>地區</option>
@@ -293,7 +213,7 @@
                 <svg class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
             </div>
         </div>
-        <button class="rentwarehouse-select-store-button-m items-center px-2">租倉</button>
+        <button class="rentwarehouse-select-store-button-m items-center ml-2 px-2">租倉</button>
     </div>
     
     <div class="flex relative pt-4 mb-12">
@@ -303,35 +223,35 @@
         <div class="accordion appearance-none flex relative bg-white border-gray-800">
             <img class="align-middle w-4" src="{{ asset('branchlocation/icons8-ruler-50@2x.png') }}"/>
             <span class="pl-2 align-middle">尺寸</span>
-            <div class="absolute right-4">
+            <div class="absolute right-6">
                 <i class="icon wb-chevron-down"></i>
             </div>
         </div>
-        <div class="panel">
+        <div class="panel-other">
             <div class="flex branchlocation-m-item items-center relative">
-                <span class="p-4 branchlocation-card-title flex-shrink-0">小型倉</span>
-                <span class="pl-0 pt-4 pb-4 pr-5 branchlocation-m-card-content leading-5">換季衣服, 兒童物及玩具,書本</span>
+                <span class="pl-8 pr-4 branchlocation-card-title flex-shrink-0">小型倉</span>
+                <span class="pl-0 pt-4 pb-4 pr-7 branchlocation-m-card-content leading-5">換季衣服, 兒童物及玩具,書本</span>
                 <span class="pr-0 pt-4 pb-4 absolute right-2 branchlocation-m-card-check text-white"><i class="icon wb-check"></i></span>
             </div>
             <div class="flex branchlocation-m-item items-center relative active">
-                <span class="p-4 branchlocation-card-title flex-shrink-0">中型倉</span>
-                <span class="pl-0 pt-4 pb-4 pr-5 branchlocation-m-card-content leading-5">梳化, 椅, 櫃, 枱, 床縟, 單車, 高爾夫球袋, 箱</span>
+                <span class="pl-8 pr-4 branchlocation-card-title flex-shrink-0">中型倉</span>
+                <span class="pl-0 pt-4 pb-4 pr-7 branchlocation-m-card-content leading-5">梳化, 椅, 櫃, 枱, 床縟, 單車, 高爾夫球袋, 箱</span>
                 <span class="pr-0 pt-4 pb-4 absolute right-2 branchlocation-m-card-check text-white"><i class="icon wb-check"></i></span>
             </div>
             <div class="flex branchlocation-m-item items-center relative">
-                <span class="p-4 branchlocation-card-title flex-shrink-0">大型倉</span>
-                <span class="pl-0 pt-4 pb-4 pr-5 branchlocation-m-card-content leading-5">梳化, 椅, 櫃, 枱, 床縟, 單車, 高爾夫球袋, 箱</span>
+                <span class="pl-8 pr-4 branchlocation-card-title flex-shrink-0">大型倉</span>
+                <span class="pl-0 pt-4 pb-4 pr-7 branchlocation-m-card-content leading-5">梳化, 椅, 櫃, 枱, 床縟, 單車, 高爾夫球袋, 箱</span>
                 <span class="pr-0 pt-4 pb-4 absolute right-2 branchlocation-m-card-check text-white"><i class="icon wb-check"></i></span>
             </div>
             <div class="flex branchlocation-m-item items-center relative">
-                <span class="object-none object-center p-4 branchlocation-card-title flex-shrink-0">特大倉</span>
-                <span class="pl-0 pt-4 pb-4 pr-5 branchlocation-m-card-content leading-5">梳化, 椅, 櫃, 枱, 床縟, 單車, 高爾夫球袋, 箱換季衣服, 兒童物及玩具,書本</span>
+                <span class="pl-8 pr-4 branchlocation-card-title flex-shrink-0">特大倉</span>
+                <span class="pl-0 pt-4 pb-4 pr-7 branchlocation-m-card-content leading-5">梳化, 椅, 櫃, 枱, 床縟, 單車, 高爾夫球袋, 箱換季衣服, 兒童物及玩具,書本</span>
                 <span class="pr-0 pt-4 pb-4 absolute right-2 branchlocation-m-card-check text-white"><i class="icon wb-check"></i></span>
             </div>
         </div>
     </div>
-    <div class="p-3">
-        <div class="flex">
+    <div class="px-3 py-4">
+        <div class="flex py-3">
             <img class="w-5" src="{{ asset('branchlocation/icons8-pricing-50@2x.png') }}"/>
             <span class="rentwarehouse-price-title color-primary pl-5">價格範圍</span>
             <span id="amount" class="rentwarehouse-price-title color-primary rentwarehouse-price pl-10"></span>
@@ -342,14 +262,14 @@
             </div>
          
         </div>
-        <div class="flex pt-3 pb-3">
+        <div class="flex pt-5 pb-3">
             <p class="branchlocation-store-select-description">唔知自己需要咩size ? 試下我地既空間計算器</p>
             <img class="w-4 box-content pl-3" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
         </div>
       
     </div>
     <div class="rentwarehouse-wrapper-title color-primary text-center pb-4">分店位置</div>
-    <div class="grid grid-cols-1 row-gap-2 pt-5 px-8">
+    <div class="grid grid-cols-1 row-gap-2 pt-5 px-6">
         <div class="relative rounded overflow-hidden shadow-lg location-content-item-m mx-auto">
             <div class="relative">
                 <div class="ribbon ribbon-badge ribbon-pink">
@@ -358,21 +278,23 @@
                 <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Sunset in the mountains">
                 <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 起</span>
             </div>
-            <div class="px-1 py-2">
-              <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
-              <div class="flex py-1 items-center">
+            <div class="px-1 py-2 pl-2">
+              <div class="mb-1 mt-2 color-primary location-content-title">火炭(富昌分店)</div>
+              <div class="flex pt-1 pl-1 items-center">
                   <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}"/>
                   <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
               </div>
-              <div class="flex py-1 items-center">
+              <div class="flex py-1 pl-1 items-center">
                 <img class="w-3" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}"/>
                 <p class="color-primary location-content-description">合符消防署條例  + 其他 8 項設施 </p>
               </div>
             </div>
-            <div class="absolute px-2 py-1 bottom-0 w-full">
-                <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
-                    選擇
-                </button>
+            <div class="absolute px-2 py-2 bottom-0 w-full">
+                <a href="/mobile/rentwarehouse">
+                    <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
+                        選擇
+                    </button>
+                </a>
             </div>
         </div>
         <div class="relative rounded overflow-hidden shadow-lg location-content-item-m mx-auto">
@@ -383,21 +305,23 @@
                 <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Sunset in the mountains">
                 <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 起</span>
             </div>
-            <div class="px-1 py-2">
-              <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
-              <div class="flex py-1 items-center">
+            <div class="px-1 py-2 pl-2">
+              <div class="mb-1 mt-2 color-primary location-content-title">火炭(富昌分店)</div>
+              <div class="flex pt-1 pl-1 items-center">
                   <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}"/>
                   <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
               </div>
-              <div class="flex py-1 items-center">
+              <div class="flex py-1 pl-1 items-center">
                 <img class="w-3" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}"/>
                 <p class="color-primary location-content-description">合符消防署條例  + 其他 8 項設施 </p>
               </div>
             </div>
-            <div class="absolute px-2 py-1 bottom-0 w-full">
-                <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
-                    選擇
-                </button>
+            <div class="absolute px-2 py-2 bottom-0 w-full">
+                <a href="/mobile/rentwarehouse">
+                    <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
+                        選擇
+                    </button>
+                </a>
             </div>
         </div>
         <div class="relative rounded overflow-hidden shadow-lg location-content-item-m mx-auto">
@@ -408,21 +332,23 @@
                 <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Sunset in the mountains">
                 <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 起</span>
             </div>
-            <div class="px-1 py-2">
-              <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
-              <div class="flex py-1 items-center">
+            <div class="px-1 py-2 pl-2">
+              <div class="mb-1 mt-2 color-primary location-content-title">火炭(富昌分店)</div>
+              <div class="flex pt-1 pl-1 items-center">
                   <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}"/>
                   <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
               </div>
-              <div class="flex py-1 items-center">
+              <div class="flex py-1 pl-1 items-center">
                 <img class="w-3" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}"/>
                 <p class="color-primary location-content-description">合符消防署條例  + 其他 8 項設施 </p>
               </div>
             </div>
-            <div class="absolute px-2 py-1 bottom-0 w-full">
-                <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
-                    選擇
-                </button>
+            <div class="absolute px-2 py-2 bottom-0 w-full">
+                <a href="/mobile/rentwarehouse">
+                    <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
+                        選擇
+                    </button>
+                </a>
             </div>
         </div>
         <div class="relative rounded overflow-hidden shadow-lg location-content-item-m mx-auto">
@@ -433,48 +359,26 @@
                 <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Sunset in the mountains">
                 <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 起</span>
             </div>
-            <div class="px-1 py-2">
-              <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
-              <div class="flex py-1 items-center">
+            <div class="px-1 py-2 pl-2">
+              <div class="mb-1 mt-2 color-primary location-content-title">火炭(富昌分店)</div>
+              <div class="flex pt-1 pl-1 items-center">
                   <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}"/>
                   <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
               </div>
-              <div class="flex py-1 items-center">
+              <div class="flex py-1 pl-1 items-center">
                 <img class="w-3" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}"/>
                 <p class="color-primary location-content-description">合符消防署條例  + 其他 8 項設施 </p>
               </div>
             </div>
-            <div class="absolute px-2 py-1 bottom-0 w-full">
-                <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
-                    選擇
-                </button>
+            <div class="absolute px-2 py-2 bottom-0 w-full">
+                <a href="/mobile/rentwarehouse">
+                    <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
+                        選擇
+                    </button>
+                </a>
             </div>
         </div>
-        <div class="relative rounded overflow-hidden shadow-lg location-content-item-m mx-auto">
-            <div class="relative">
-                <div class="ribbon ribbon-badge ribbon-pink">
-                    <span class="ribbon-inner">最新優惠</span>
-                </div>
-                <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Sunset in the mountains">
-                <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 起</span>
-            </div>
-            <div class="px-1 py-2">
-              <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
-              <div class="flex py-1 items-center">
-                  <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}"/>
-                  <p class="color-primary location-content-description">富昌中心,火炭黃竹洋街5-7號</p>
-              </div>
-              <div class="flex py-1 items-center">
-                <img class="w-3" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}"/>
-                <p class="color-primary location-content-description">合符消防署條例  + 其他 8 項設施 </p>
-              </div>
-            </div>
-            <div class="absolute px-2 py-1 bottom-0 w-full">
-                <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
-                    選擇
-                </button>
-            </div>
-        </div>
+        
 
     </div>
 
@@ -482,7 +386,6 @@
 @endsection
 
 @section('scripts')
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="{{asset('branchlocation/ribbon/babel-external-helpers/babel-external-helpers.js')}}"></script>
@@ -491,55 +394,24 @@
 <script src="{{asset('branchlocation/ribbon/js/Base.js')}}"></script>
 <script src="{{asset('branchlocation/ribbon/js/Config.js')}}"></script>
 <script src="{{asset('branchlocation/ribbon/js/Site.js')}}"></script>
-
 <script>
-    // Script For Accordion
+
+     // Script For Accordion
     var acc = document.getElementsByClassName("accordion");
     var i;
 
-    for (i = 0; i < acc.length; i ++) {
-    acc[i].addEventListener("click", function() {
-
-        
-        // this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-
-        // panel.style.maxHeight = "1000px";
-
-        if (panel.style.maxHeight) {
-        panel.style.maxHeight = null;
-        panel.style.border = null;
-        } else {
-        panel.style.maxHeight = panel.scrollHeight + "px";
-        panel.style.border = "1px solid #DCDCDC";
-        } 
-    });
-    }
-
-    var items = document.getElementsByTagName("li");
-    var content = document.getElementById("content");
-
-
-    for (var i = 0; i < items.length; i ++) {
-
-        items[i].addEventListener("click", function(event) {
-
-            if(event.target.id == "item0") {
-                window.location.reload();
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            // this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+                panel.style.border = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+                panel.style.border = "1px solid #DCDCDC";
             }
-
-            event.cancelBubble = true;
-
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-
-            this.className += " active";
-
-            content.innerHTML = "<div style='color:blue;font-size:50px;'>Page : "+ this.id +"</div>";
-
-            console.log(event);
-        
-    });
+        });
     }
 
     var stores = document.getElementsByClassName("branchlocation-m-item");
@@ -559,7 +431,6 @@
     }
 
 </script>
-
 <script>
 
     $( function() {
@@ -577,7 +448,6 @@
     } );
 
 </script>
-
 @endsection
 
 @section('footer')

@@ -17,6 +17,13 @@
     <link href="{{ asset('css/header.css') }}" rel="stylesheet">
 
     <style>
+        .default-color:hover {
+            color: #C293FC;
+        }
+
+        .default-color {
+            color: #4D5567;
+        }
         .app-container {
             margin-left: auto;
             margin-right: auto;
@@ -58,18 +65,18 @@
 
 <body class="bg-gray-50 h-screen antialiased leading-none"  ondragstart="return false;" ondrop="return false;">
     <div class="app-container flex-1 text-primary">
-        @include('partials.latest_news')
-        @include('layouts.header')
+        @include('mobile.partials.latest_news')
+        @include('mobile.layouts.header')
         <main>
             @yield('content')
         </main>
-        @yield('footer')
+        @include('mobile.layouts.footer')
     </div>
 
     <!-- <script src="{{asset('js/jquery-3.5.1.slim.min.js')}}"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @yield('scripts')
-    <!-- <script>
+    <script>
         var acc = document.getElementsByClassName("accordion");
         var i;
 
@@ -87,10 +94,10 @@
             });
         }
         //Javascript to toggle the menu
-        document.getElementById('nav-toggle').onclick = function() {
-            document.getElementById("nav-content").classList.toggle("hidden");
-        }
-    </script> -->
+        // document.getElementById('nav-toggle').onclick = function() {
+        //     document.getElementById("nav-content").classList.toggle("hidden");
+        // }
+    </script>
 </body>
 
 </html>

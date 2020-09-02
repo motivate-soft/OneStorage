@@ -29,7 +29,6 @@
 
         .heading2 {
             font-size: 33px;
-            font-weight: normal;
             color: #4D5567;
         }
 
@@ -97,14 +96,29 @@
         body {
             padding-top: 0px !important;
         }
+
+        @font-face {
+            font-family: 'RobertBlack';
+            src: url(fonts/Roboto-Black.ttf);
+        }
+
+        @font-face {
+            font-family: 'RobertRegular';
+            src: url(fonts/Roboto-Regular.ttf);
+        }
+
+        main {
+            font-family: 'RobertBlack';
+        }
+
     </style>
 
     @yield('styles')
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 </head>
 
-<body class="bg-gray-50 h-screen antialiased leading-none" ondragstart="return false;" ondrop="return false;">
+<body class="bg-grey h-screen antialiased leading-none" ondragstart="return false;" ondrop="return false;">
 
     @include('partials.accessory')
 

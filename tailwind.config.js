@@ -32,6 +32,10 @@ module.exports = {
         'second': '#E0CBF6',
         'grey': '#F6F6F6',
         'grey-1': '#F9F9F9',
+      },
+
+      borderColor: {
+        'grey': '#888888'
       }
     },
   },

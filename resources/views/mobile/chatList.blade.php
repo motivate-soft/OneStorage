@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}"/>
 </head>
 
-<body class=" bg-white">
+<body class=" bg-white" ondragstart="return false;" ondrop="return false;">
     <main className="w-full mx-auto">
 
         <div class=" mb-8 fontsize-25 regular-color text-center font-bold">Paul Smith, 歡迎你回來!</div>

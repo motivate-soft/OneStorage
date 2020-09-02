@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-<div class="bg-white sm:mx-30 lg:mx-56 md:mx-40 mx-20 pb-10 mt-32 mb-10">
+<div class="bg-white mx-auto w-3/5 pb-10 mt-40 mb-10">
     <div class="grid lg:grid-cols-3 md:grid-cols-1 gap-4">
         <div class="col-span-2 mr-10 lg:mr-0">
             <div class="text-left text-5xl pt-10 pb-5 ml-10 border-b">
@@ -93,8 +93,8 @@
     </div>
 </div>
 
-<div class="bg-white sm:mx-30 lg:mx-56 md:mx-40 mx-20 pt-14 pb-10">
-    <div class="px-60">
+<div class="bg-white mx-auto w-3/5 pt-14 pb-10 mb-10">
+    <div class="w-1/3 mx-auto">
         @include('partials.loginForm')
     </div>
 </div>

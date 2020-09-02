@@ -11,7 +11,7 @@
 
 @section('content')
 <div class="bg-white">
-    <div class="mx-4 md:mx-24 lg:mx-56 py-13">
+    <div class="px-4 mx-auto py-13 w-1/2">
         <p class="heading-font">職位空缺</p>
         <div class="horizontal-line">
         </div>
@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <form class=" contact-form">
+        <form class="mx-auto w-1/2 mt-24 mb-10">
             <p class="content-font mb-10">立即申請 </p>
 
             <div class="flex mb-4 w-full">

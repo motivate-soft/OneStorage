@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}"/>
 </head>
 
-<body class=" bg-white">
+<body class=" bg-white" ondragstart="return false;" ondrop="return false;">
     <main className="w-full mx-auto">
         <p class="subheader-title fontsize-21 regular-color mt-8 pb-12 font-bold">忘記密碼</p>
     

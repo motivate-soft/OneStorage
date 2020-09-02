@@ -21,7 +21,7 @@
 
     @include('layouts.header')
 
-    <div class=" mx-auto" style="padding-top: 168px; padding-bottom: 147px; width: 60%">
+    <div class="w-3/5 mx-auto" style="padding-top: 168px; padding-bottom: 147px;">
         <p class="subheader-title">註冊</p>
 
         <div class="flex flex-col lg:flex-row">

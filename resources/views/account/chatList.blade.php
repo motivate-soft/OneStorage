@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="mx-4 md:mx-24 lg:mx-60 py-10">
+<div class="mx-auto w-3/5 py-10">
 
     <div class="flex px-12 mt-8 lg:px-32 md:px-20">
         <img class="mr-4 w-32 h-32" src="{{asset('images/contactUs/Intersection 15@2x.png')}}" alt="Avatar of Jonathan Reinink">

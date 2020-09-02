@@ -21,21 +21,20 @@
     <link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}"/>
 </head>
 
-<body class=" bg-white">
+<body class=" bg-white" ondragstart="return false;" ondrop="return false;">
     <main className="w-full mx-auto">
-        <p class="subheader-title pb-4">註冊</p>
+        <p class=" text-center fontsize-21 regular-color pb-4">註冊</p>
     
-
         <div class=" register-form">
 
             <div class="input-group mb-4">
                 <img class="form-control-icon" src="{{asset('images/contactUs/icons8-gmail-50@2x.png')}}" alt="Mobile">
-                <input class="form-control text-center facebook-btn fontsize-14" type="button" value="以 Gmail 註冊">
+                <button class="w-full facebook-btn fontsize-14 px-4 py-2 hover:bg-purple-400 text-left pl-24">以 Gmail 註冊</button>
             </div>
 
             <div class="input-group mb-4">
                 <img class="form-control-icon" src="{{asset('images/contactUs/icons8-facebook-50@2x.png')}}" alt="Mobile">
-                <input class="form-control text-center gmail-btn fontsize-14" type="button" value="以 Facebook 註冊">
+                <button class="w-full gmail-btn fontsize-14 px-4 py-2 hover:bg-purple-400 text-left pl-24">以 Facebook 註冊</button>
             </div>
 
             <div class=" flex">

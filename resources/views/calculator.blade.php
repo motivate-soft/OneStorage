@@ -7,14 +7,8 @@
 @section('styles')
 
 <style>
-    .main-image {
-        max-width: 1366px;
-    }
-
     .main-wrapper {
         margin-top: -80px;
-        margin-right: 200px;
-        margin-left: 200px;
     }
 
     .maintitle-wrapper {
@@ -114,7 +108,9 @@
 
     .calculator-elements-wrapper {
         background-color: #E0CBF6;
-        padding: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 120px;
     }
 
     .calculator-item-element-input {
@@ -183,20 +179,15 @@
         background-color: #E0CBF6;
     }
 
-    .main-screen {
-        max-width: 1366px;
-    }
 </style>
 @endsection
 
 
 @section('content')
 
-<div class="w-full mx-auto main-image">
-    <img class="p-0 m-0" src="{{asset('images/calculator/markus-spiske-QtFAXP6z0Wk-unsplash@2x.png')}}" />
-</div>
+<img class="w-full" src="{{asset('images/calculator/markus-spiske-QtFAXP6z0Wk-unsplash@2x.png')}}" />
 
-<div class="relative block bg-white main-wrapper">
+<div class="relative block bg-white w-3/5 mx-auto main-wrapper mb-10">
     <div class="flex maintitle-wrapper color-primary">
         <span class="uppercase maintitle-left">one</span>
         <div class="w-px maintitle-divider"></div>
@@ -208,7 +199,7 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-12 col-gap-0 calculator-items-wrapper">
+    <div class="grid grid-cols-12 col-gap-0 mt-16 mx-16 lg:mx-32">
         <div class="col-start-1 col-span-3">
             <div id="1" class="calculator-item-title color-primary rounded-l-md cursor-pointer">客廳用品</div>
             <div id="item0" class="calculator-item-title color-primary rounded-l-md active cursor-pointer">客廳用品</div>
@@ -218,7 +209,7 @@
             <div id="5" class="calculator-item-title color-primary rounded-l-md  cursor-pointer">書房用品</div>
             <div id="6" class="calculator-item-title color-primary rounded-l-md  cursor-pointer">廚房用品</div>
         </div>
-        <div id="content" class="col-start-4 col-span-9 grid grid-cols-3 col-gap-1 calculator-elements-wrapper">
+        <div id="content" class="col-start-4 col-span-9 grid grid-cols-3 col-gap-16 calculator-elements-wrapper">
             <div class="flex relative calculator-item-element">
                 <span class="calculator-item-element-title color-primary absolute bottom-0 left-0">紅白藍5個</span>
                 <input type="number" class="calculator-item-element-input absolute bottom-0 right-0" min=0 />

@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}"/>
 </head>
 
-<body class=" bg-white">
+<body class=" bg-white" ondragstart="return false;" ondrop="return false;">
     <main className="w-full mx-auto">
         <div class=" w-96 mx-auto mt-12 mb-12 pt-2">
 

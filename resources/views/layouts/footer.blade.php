@@ -1,8 +1,9 @@
-<footer class="w-full static pt-10 bottom-0 bg-grey">
-    <div class="pb-5" style="margin-left:100px; margin-right:100px; ">
-        <div class="grid lg:grid-cols-3 lg:gap-4 sm:grid-cols-1 sm:min-w-full">
-            <div style="margin-right: 30px;">
-                <div class="mt-2 ml-6">
+<footer class="w-full static pt-10 bottom-0" style="background-color: #F0F0F0;">
+    <div class="pb-5 mx-auto w-3/5">
+        <!-- <div class="grid lg:grid-cols-3 lg:gap-4 sm:grid-cols-1 sm:min-w-full"> -->
+        <div class="flex">
+            <div style="margin-right: 30px;" class="w-2/5">
+                <div class="mt-2">
                     <!-- <h2 class=" text-lg my-8 font_15">關於 <b>One Storage.</b></h2> -->
                     <h2 class="text-lg mt-4 mb-8">關於 <b>One Storage.</b></h2>
                     <div class=" text-justify my-4 leading-5 font_13">至尊迷你倉為金朝陽集團屬下業務(股票代號：
@@ -284,7 +285,7 @@
 
                 </div>
             </div>
-            <div style="margin-left: 10px;">
+            <div class="w-2/5" style="margin-left: 10px;">
                 <h2 class="text-lg mt-4 mb-8">連絡我們</h2>
                 <div class="flex mt-2 pb-5">
                     <img class="h-24 md:h-32 mx-auto md:mx-0 md:mr-4 object-none inline" src="{{asset('images/footer/Image 17@2x.png')}}">

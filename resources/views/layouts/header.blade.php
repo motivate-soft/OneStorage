@@ -1,8 +1,8 @@
 <nav class="w-full pin-t z-40 fixed text-primary">
     @include('partials.latest_news')
-    <div class="bg-white flex items-center justify-between flex-wrap p-2" style="background: rgba(255, 255, 255, 0.75); ">
-        <div class="flex items-center flex-shrink-0 text-white ">
-            <a href="/"><img class="fill-current ml-12" width="90" height="45" src="{{asset('images/header/logo@2x.png')}}" /></a>
+    <div class="bg-white flex items-center justify-between flex-wrap pr-10 py-5" style="background: rgba(255, 255, 255, 0.75); ">
+        <div class="flex items-center flex-shrink-0 text-white" style="padding-left: 140px;">
+            <a href="/"><img class="fill-current" width="90" height="45" src="{{asset('images/header/logo@2x.png')}}" /></a>
         </div>
         <div class="block lg:hidden">
             <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-grey border-grey-dark hover:text-grey hover:border-black">
@@ -15,7 +15,6 @@
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden pt-6 lg:pt-0" id="nav-content">
 
             <ul class="list-reset lg:flex lg:ml-0 justify-end flex-1 items-center font-16" style="z-index: 50;">
-
                 <li class="mr-1 md:mr-0">
                     <a class="inline-block default-color no-underline  py-2 px-2" href="#">最新資訊</a>
                 </li>
@@ -78,7 +77,7 @@
                     </ul>
                 </li>
                 <li class="sm:mr-5 md:mr-10 lg:mr-15">
-                    <img class="fill-current inline-block" src="{{asset('images/header/Component 7 – 1@2x.png')}}" />
+                    <a  href="https://wa.me/85251188503"><img class="fill-current inline-block" src="{{asset('images/header/Component 7 – 1@2x.png')}}" /></a>
                 </li>
 
                 <?php

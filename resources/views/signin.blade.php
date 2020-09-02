@@ -20,7 +20,7 @@
 
     @include('layouts.header')
 
-    <div class=" mx-auto" style="padding-top: 168px;padding-bottom: px;width: 60%">
+    <div class="mx-auto w-3/5" style="padding-top: 168px;">
         <p class="subheader-title">登入</p>
 
         <div class="flex flex-col lg:flex-row">

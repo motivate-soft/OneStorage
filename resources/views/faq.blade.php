@@ -47,8 +47,6 @@
 
     .main-wrapper {
         margin-top: -80px;
-        margin-right: 200px;
-        margin-left: 200px;
     }
 
     .maintitle-wrapper {
@@ -115,7 +113,7 @@
 @section('content')
 <img class="w-full" src="{{asset('images/faq/shutterstock_1540492397@2x.png')}}" />
 
-<div class="relative block bg-white main-wrapper pb-230">
+<div class="relative block bg-white w-3/5 mx-auto main-wrapper pb-230">
 
     <div class="flex maintitle-wrapper color-primary">
         <span class="uppercase maintitle-left">one</span>

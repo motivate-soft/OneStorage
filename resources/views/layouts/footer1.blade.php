@@ -1,5 +1,5 @@
-<footer class="w-full static mt-10 bottom-0 bg-grey">
-    <div style="margin-left:200px; margin-right:200px;">
+<footer class="w-full static mt-10 bottom-0" style="background-color: #F0F0F0;">
+    <div class="mx-auto w-3/5">
         <div class="grid lg:grid-cols-3 lg:gap-4 sm:grid-cols-1 sm:min-w-full">
             <div class="flex">
                 <div class="self-center text-center my-5">

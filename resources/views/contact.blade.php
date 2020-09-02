@@ -8,8 +8,6 @@
 <style>
     .main-wrapper {
         margin-top: -60px;
-        margin-right: 200px;
-        margin-left: 200px;
     }
 
     .maintitle-wrapper {
@@ -210,7 +208,7 @@
 
 <img class="w-full" src="{{asset('images/contact_us/shutterstock_1224334369.png')}}" />
 
-<div class="relative block bg-white main-wrapper">
+<div class="relative block bg-white w-3/5 mx-auto main-wrapper">
     <div class="flex maintitle-wrapper color-primary">
         <span class="uppercase maintitle-left">one</span>
         <div class="w-px maintitle-divider"></div>
@@ -410,9 +408,6 @@
                     </div>
 
                 </div>
-
-
-
             </div>
             <div class="grid grid-cols-2 mt-8  ml-10">
                 <div class="col-span-1">
