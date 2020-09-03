@@ -22,7 +22,7 @@
                 <p class="text2 text-xl mt-4">by admin &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; November 23, 2020</p>
             </div>
             <div class="text-left ml-10 mt-5">
-                <img class="h-40 w-120 pb-4" src="{{asset('images/latest_news/Image 89.png')}}" class="mt-4">
+                <img class="object-none pb-4" src="{{asset('images/latest_news/Image 89.png')}}" class="mt-4">
                 <div class="bg-grey-1 py-5 px-5">
                     <h1 class="text2 text-justify leading-loose">
                         檔案編號: <b>SWH/OSM/MEMO2020-0005</b> <br>

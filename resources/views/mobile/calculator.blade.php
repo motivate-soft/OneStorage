@@ -154,6 +154,10 @@
 </style>
 @endsection
 
+@section('header')
+	@include('mobile.layouts.header')
+@endsection
+
 @section('content')
 <div class="relative block bg-white">
 

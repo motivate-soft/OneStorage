@@ -117,7 +117,7 @@ Route::get('/mobile/booking', function () {
     return view('mobile/booking');
 });
 
-Route::get('/mobile/signin', function () {
+Route::get('/mobile/login', function () {
     return view('mobile/signin');
 });
 
@@ -125,19 +125,19 @@ Route::get('/mobile/register', function () {
     return view('mobile/register');
 });
 
-Route::get('/mobile/forgetPassword', function () {
+Route::get('/mobile/forgetpwd', function () {
     return view('mobile/forgetPassword');
 });
 
-Route::get('/mobile/accountPage', function () {
+Route::get('/mobile/account', function () {
     return view('mobile/accountPage');
 });
 
-Route::get('/mobile/chatList', function () {
+Route::get('/mobile/chatlist', function () {
     return view('mobile/chatList');
 });
 
-Route::get('/mobile/chatRoom', function () {
+Route::get('/mobile/chatroom', function () {
     return view('mobile/chatRoom');
 });
 
@@ -175,4 +175,7 @@ Route::get('mobile/contact', function () {
     return view('mobile.contact');
 });
 
+Route::get('mobile/career', function () {
+    return view('mobile.joinus');
+});
 

@@ -224,6 +224,21 @@
         height: 1px;
         background-color: #707070;
     }
+
+    .accordion {
+            /* background-color: #E0CBF6; */
+            color: #444;
+            cursor: pointer;
+            padding: 8px;
+            margin-top: 2px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+            font-weight: 600;
+        }
 </style>
 @endsection
 
@@ -250,22 +265,22 @@
             <div class="mt-2 ml-10">
                 <p class=" form_header my-8">連絡我們</p>
                 <div class="grid grid-cols-6 gap-4">
-                    <div class="flex col-span-6">
+                    <a href="Tel: 852-21112636" class="flex col-span-6">
                         <img class="fill-current mr-4" src="{{asset('images/footer/icons8-phone-50@2x.png')}}" />
                         <span class="self-center text-primary font_19">(852) 2111 2636</span>
-                    </div>
-                    <div class="flex col-span-6 ">
+                    </a>
+                    <a href="mailto:cs@onestorage.com.hk" class="flex col-span-6 ">
                         <img class="fill-current mr-4" src="{{asset('images/footer/icons8-email-open-50@2x.png')}}" />
                         <span class="self-center text-primary font_19">cs@onestorage.com.hk</span>
-                    </div>
-                    <div class="flex col-span-6 ">
+                    </a>
+                    <a href="https://wa.me/85251188503" class="flex col-span-6 ">
                         <img class="fill-current mr-4" src="{{asset('images/footer/icons8-whatsapp-50@2x.png')}}" />
                         <span class="self-center text-primary font_19">(852) 5118 8503</span>
-                    </div>
-                    <div class="flex col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-5 xl:col-span-2...">
+                    </a>
+                    <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" class="flex col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-5 xl:col-span-2...">
                         <img class="fill-current mr-4" src="{{asset('images/footer/icons8-home-50@2x.png')}}" />
                         <span class="self-center text-primary font_19">查看分店地址</span>
-                    </div>
+                    </a>
                 </div>
             </div>
             <div class="grid grid-cols-2  mt-8 ml-5">
@@ -285,12 +300,13 @@
                             <p class="font_14">
                                 電話 : <span>852-21112636</span>
                             </p>
+                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
+                                電郵 : <span>cs@onestorage.com.hk</span>
+                            </a>
                             <p class="font_14">
-                                電郵 : <span>mailto:email </span>
-                            </p>
-                            <p class="font_14">
-                                地址 : <span>新界屯門新益里3號通明工業大廈
-                                    4/5樓</span>
+                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
+                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
+                                </a>
                             </p>
                         </div>
                     </div>
@@ -306,12 +322,13 @@
                             <p class="font_14">
                                 電話 : <span>852-21112636</span>
                             </p>
+                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
+                                電郵 : <span>cs@onestorage.com.hk</span>
+                            </a>
                             <p class="font_14">
-                                電郵 : <span>mailto:email </span>
-                            </p>
-                            <p class="font_14">
-                                地址 : <span>新界屯門新益里3號通明工業大廈
-                                    4/5樓</span>
+                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
+                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
+                                </a>
                             </p>
                         </div>
                     </div>
@@ -327,12 +344,13 @@
                             <p class="font_14">
                                 電話 : <span>852-21112636</span>
                             </p>
+                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
+                                電郵 : <span>cs@onestorage.com.hk</span>
+                            </a>
                             <p class="font_14">
-                                電郵 : <span>mailto:email </span>
-                            </p>
-                            <p class="font_14">
-                                地址 : <span>新界屯門新益里3號通明工業大廈
-                                    4/5樓</span>
+                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
+                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
+                                </a>
                             </p>
                         </div>
                     </div>
@@ -348,12 +366,13 @@
                             <p class="font_14">
                                 電話 : <span>852-21112636</span>
                             </p>
+                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
+                                電郵 : <span>cs@onestorage.com.hk</span>
+                            </a>
                             <p class="font_14">
-                                電郵 : <span>mailto:email </span>
-                            </p>
-                            <p class="font_14">
-                                地址 : <span>新界屯門新益里3號通明工業大廈
-                                    4/5樓</span>
+                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
+                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
+                                </a>
                             </p>
                         </div>
                     </div>
@@ -369,12 +388,13 @@
                             <p class="font_14">
                                 電話 : <span>852-21112636</span>
                             </p>
+                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
+                                電郵 : <span>cs@onestorage.com.hk</span>
+                            </a>
                             <p class="font_14">
-                                電郵 : <span>mailto:email </span>
-                            </p>
-                            <p class="font_14">
-                                地址 : <span>新界屯門新益里3號通明工業大廈
-                                    4/5樓</span>
+                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
+                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
+                                </a>
                             </p>
                         </div>
                     </div>
@@ -390,12 +410,13 @@
                             <p class="font_14">
                                 電話 : <span>852-21112636</span>
                             </p>
+                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
+                                電郵 : <span>cs@onestorage.com.hk</span>
+                            </a>
                             <p class="font_14">
-                                電郵 : <span>mailto:email </span>
-                            </p>
-                            <p class="font_14">
-                                地址 : <span>新界屯門新益里3號通明工業大廈
-                                    4/5樓</span>
+                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
+                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
+                                </a>
                             </p>
                         </div>
                     </div>
@@ -411,12 +432,13 @@
                             <p class="font_14">
                                 電話 : <span>852-21112636</span>
                             </p>
+                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
+                                電郵 : <span>cs@onestorage.com.hk</span>
+                            </a>
                             <p class="font_14">
-                                電郵 : <span>mailto:email </span>
-                            </p>
-                            <p class="font_14">
-                                地址 : <span>新界屯門新益里3號通明工業大廈
-                                    4/5樓</span>
+                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
+                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
+                                </a>
                             </p>
                         </div>
                     </div>
@@ -440,12 +462,13 @@
                             <p class="font_14">
                                 電話 : <span>852-21112636</span>
                             </p>
+                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
+                                電郵 : <span>cs@onestorage.com.hk</span>
+                            </a>
                             <p class="font_14">
-                                電郵 : <span>mailto:email </span>
-                            </p>
-                            <p class="font_14">
-                                地址 : <span>新界屯門新益里3號通明工業大廈
-                                    4/5樓</span>
+                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
+                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
+                                </a>
                             </p>
                         </div>
                     </div>
@@ -461,12 +484,13 @@
                             <p class="font_14">
                                 電話 : <span>852-21112636</span>
                             </p>
+                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
+                                電郵 : <span>cs@onestorage.com.hk</span>
+                            </a>
                             <p class="font_14">
-                                電郵 : <span>mailto:email </span>
-                            </p>
-                            <p class="font_14">
-                                地址 : <span>新界屯門新益里3號通明工業大廈
-                                    4/5樓</span>
+                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
+                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
+                                </a>
                             </p>
                         </div>
                     </div>
@@ -485,12 +509,13 @@
                             <p class="font_14">
                                 電話 : <span>852-21112636</span>
                             </p>
+                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
+                                電郵 : <span>cs@onestorage.com.hk</span>
+                            </a>
                             <p class="font_14">
-                                電郵 : <span>mailto:email </span>
-                            </p>
-                            <p class="font_14">
-                                地址 : <span>新界屯門新益里3號通明工業大廈
-                                    4/5樓</span>
+                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
+                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
+                                </a>
                             </p>
                         </div>
                     </div>
@@ -528,5 +553,5 @@
 @endsection
 
 @section('footer')
-@include('layouts.footer1')
+@include('mobile.layouts.footer1')
 @endsection

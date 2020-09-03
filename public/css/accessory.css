@@ -4,6 +4,21 @@ html {
     scroll-behavior: smooth;
 }
 
+.inbox {
+    position: relative;
+}
+
+.new-msg::after {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 9999px;
+    background-color: #FB6767;
+    right: 0px;
+    margin-top: 5px;
+    position: absolute;
+}
+
 #floatBT {
     display: none;
     position: fixed;
@@ -38,6 +53,7 @@ html {
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+    z-index: 50;
 }
 
 .icon-bar a {

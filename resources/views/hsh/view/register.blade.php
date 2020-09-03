@@ -6,25 +6,17 @@
 
 @section('styles')
 <link href="{{ asset('css/common.css') }}" rel="stylesheet">
-<style>
-    #main-content {
-        font-family: "RobertBlack";
-    }
-    body{
-        background-color: white !important;
-    }
-</style>
 @endsection
 
 
 @section('content')
-<div class="w-3/5 mx-auto" style="padding-top: 81px; padding-bottom: 147px;">
+<div class="w-3/5 mx-auto" style="padding-top: 168px; padding-bottom: 147px;">
     <p class="subheader-title">註冊</p>
 
-    <div class="flex flex-col lg:flex-row pt-10">
+    <div class="flex flex-col lg:flex-row">
 
         <div class="w-full lg:w-1/2 px-4 border-r-none lg:border-r">
-            <form class="register-form" style="padding-right: 20px !important;">
+            <form class=" register-form">
 
                 <div class="flex mb-4 w-full">
                     <div class="flex w-1/2 input-group">
@@ -255,15 +247,16 @@
         </div>
 
         <div class="w-full px-4 lg:w-1/2">
-            <div class="login-alt-panel">
+            <div class="register-form">
+
                 <div class="input-group mb-4">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-gmail-50@2x.png')}}" alt="Mobile">
-                    <input class="form-control  py-10 cursor-pointer btn text-left gmail-btn hover:bg-red-500" type="button" value="以 Gmail 登入">
+                    <input class="form-control cursor-pointer btn text-left gmail-btn hover:bg-purple-400" type="button" value="以 Gmail 註冊">
                 </div>
 
                 <div class="input-group mb-4">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-facebook-50@2x.png')}}" alt="Mobile">
-                    <input class="form-control cursor-pointer btn text-left facebook-btn hover:bg-blue-500" type="button" value="以 Facebook 登入">
+                    <input class="form-control cursor-pointer btn text-left facebook-btn hover:bg-purple-400" type="button" value="以 Facebook 註冊">
                 </div>
 
             </div>
@@ -275,4 +268,9 @@
 @endsection
 
 @section('scripts')
+@endsection
+
+
+@section('footer')
+@include('layouts.footer')
 @endsection

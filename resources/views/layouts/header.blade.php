@@ -41,6 +41,10 @@
                     <a class="inline-block default-color no-underline  py-2 px-2" href="javascript:void(0)">聯絡我們</a>
                 </li>
 
+                <li class="relative sm:mr-10 md:mr-15 lg:mr-20">
+                    <a href="{{url('/mobile')}}">Mobile Demo</a>
+                </li>
+
                 <li class="mr-1 md:mr-0 dropdown">
                     <a class="dropbtn default-color no-underline py-2 px-2" href="javascript:void(0)">test</a>
 
@@ -77,7 +81,7 @@
                     </ul>
                 </li>
                 <li class="sm:mr-5 md:mr-10 lg:mr-15">
-                    <a  href="https://wa.me/85251188503"><img class="fill-current inline-block" src="{{asset('images/header/Component 7 – 1@2x.png')}}" /></a>
+                    <a href="https://wa.me/85251188503"><img class="fill-current inline-block" src="{{asset('images/header/Component 7 – 1@2x.png')}}" /></a>
                 </li>
 
                 <?php
@@ -118,9 +122,6 @@
                 <?php
                 }
                 ?>
-
-
-
             </ul>
         </div>
     </div>

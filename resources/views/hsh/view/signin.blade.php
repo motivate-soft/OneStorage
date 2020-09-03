@@ -6,20 +6,11 @@
 
 @section('styles')
 <link href="{{ asset('css/common.css') }}" rel="stylesheet">
-<style>
-    #main-content {
-        font-family: "RobertBlack";
-    }
-    body{
-        background-color: white !important;
-    }
-</style>
-
 @endsection
 
 
 @section('content')
-<div class="mx-auto w-3/5 h-full" style="padding-top: 81px;">
+<div class="mx-auto w-3/5" style="padding-top: 168px;">
     <p class="subheader-title">登入</p>
 
     <div class="flex flex-col lg:flex-row">
@@ -45,15 +36,16 @@
         </div>
 
         <div class="w-full px-4 lg:w-1/2">
-            <div class="login-alt-panel">
+            <div class="register-form">
+
                 <div class="input-group mb-4">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-gmail-50@2x.png')}}" alt="Mobile">
-                    <input class="form-control  py-10 cursor-pointer btn text-left gmail-btn hover:bg-red-500" type="button" value="以 Gmail 登入">
+                    <input class="form-control cursor-pointer btn text-left gmail-btn hover:bg-purple-400" type="button" value="以 Gmail 登入">
                 </div>
 
                 <div class="input-group mb-4">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-facebook-50@2x.png')}}" alt="Mobile">
-                    <input class="form-control cursor-pointer btn text-left facebook-btn hover:bg-blue-500" type="button" value="以 Facebook 登入">
+                    <input class="form-control cursor-pointer btn text-left facebook-btn hover:bg-purple-400" type="button" value="以 Facebook 登入">
                 </div>
 
             </div>

@@ -5,6 +5,11 @@
 @endsection
 
 @section('styles')
+<style>
+    #main-content {
+        font-family: "RobertBlack";
+    }
+</style>
 
 @endsection
 
@@ -21,11 +26,9 @@
     <a href="{{url('/news')}}" class="lg:flex rounded-lg mt-2 lg:py-3 lg:px-10">
         <img class="h-24 md:h-32 mr-10 md:mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
         <div class="text-center w-2/3 lg:text-left">
-            <p class="font_25 md:text-center lg:text-left leading-normal px-10 lg:px-0">
-                【搬屋冇煩惱】搬屋前一定要知嘅小貼士
+            <p class="font_25 md:text-center lg:text-left leading-normal px-10 lg:px-0">【搬屋冇煩惱】搬屋前一定要知嘅小貼士
             </p>
-            <p class="font_19 text-justify my-4 leading-normal ">
-                因應最近新型肺炎疫情，至尊迷你倉 <b>ONE Storage</b> 為保障各客戶及職員的健康，由即日起將採取以下防疫措施。
+            <p class="font_19 text-justify my-4 leading-normal ml-3">因應最近新型肺炎疫情，至尊迷你倉 <b>ONE Storage</b> 為保障各客戶及職員的健康，由即日起將採取以下防疫措施。
             </p>
         </div>
     </a>

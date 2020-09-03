@@ -16,8 +16,11 @@
         <div class="horizontal-line">
         </div>
 
-        <div class="flex mt-16 bg-grey p-3">
-            <img class="mr-4 w-40 h-40" src="{{asset('images/contactUs/contactUs.png')}}" alt="Avatar of Jonathan Reinink">
+        <div class="flex mt-16 bg-grey p-3 mx-20 pt-10">
+            <div class="mr-10 mt-3">
+                <img style="width: 200px;" src="{{asset('images/contactUs/contactUs@2x.png')}}" alt="Avatar of Jonathan Reinink">
+            </div>
+
             <div class="body-content lg:rounded-b-none lg:rounded-r">
                 <div class="mb-8">
                     <div class="subtitle-font">客戶服務主任</div>
@@ -49,7 +52,7 @@
             </div>
         </div>
 
-        <form class="mx-auto w-1/2 mt-24 mb-10">
+        <form class="w-1/2 mx-auto px-14 mt-24 mb-10">
             <p class="content-font mb-10">立即申請 </p>
 
             <div class="flex mb-4 w-full">

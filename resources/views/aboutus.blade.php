@@ -92,12 +92,12 @@
 
 <div class="relative block bg-white w-3/5 mx-auto main-wrapper">
     <div class="flex maintitle-wrapper color-primary">
-        <span class="uppercase maintitle-left">one</span>
+        <span class="uppercase maintitle-left robert-regular">one</span>
         <div class="w-px maintitle-divider"></div>
         <div class="relative maintitle-right">
             <div class="flex items-stretch">
                 <span class="self-center">關於</span>
-                <span class="self-center capitalize maintitle-right-aboutus-english pt-3">one storage</span>
+                <span class="self-center capitalize maintitle-right-aboutus-english pt-2">one storage</span>
             </div>
             <div class="capitalize absolute bottom-0 left-0 maintitle-right-bottom">one choice one storage</div>
         </div>

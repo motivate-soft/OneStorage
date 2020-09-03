@@ -10,23 +10,23 @@
         background-color: #E0CBF6;
         color: #444;
         cursor: pointer;
-        padding: 12px;
+        padding: 12px 24px;
         margin-top: 10px;
         width: 100%;
         border: none;
         text-align: left;
         outline: none;
-        font-size: 15px;
+        font-size: 19px;
         transition: 0.4s;
-        font-weight: 600;
+        /* font-weight: 600; */
     }
 
     .accordion:hover {
-        background-color: #E0CB00;
+        background-color: #9B62D7;
     }
 
     .panel {
-        padding: 0 18px;
+        padding: 0 24px;
         background-color: white;
         max-height: 0;
         overflow: hidden;
@@ -91,7 +91,7 @@
 
     .category-title {
         font-size: 19px;
-        font-weight: 600;
+        /* font-weight: 600; */
     }
 
     .content-area {
@@ -102,8 +102,12 @@
         color: #4D5567;
     }
 
-    .main-screen {
-        max-width: 1366px;
+    .maintitle-right{
+        /* font-weight: 600; */
+    }
+
+    #main-content {
+        font-family: "RobertBlack";
     }
 </style>
 
@@ -116,7 +120,7 @@
 <div class="relative block bg-white w-3/5 mx-auto main-wrapper pb-230">
 
     <div class="flex maintitle-wrapper color-primary">
-        <span class="uppercase maintitle-left">one</span>
+        <span class="uppercase maintitle-left robert-regular">one</span>
         <div class="w-px maintitle-divider"></div>
         <div class="relative maintitle-right">
             <div class="flex color-primary">
@@ -156,7 +160,7 @@
                     </div>
                 </div>
                 <div class="panel">
-                    <p class="leading-normal px-5 py-4 color-primary">您可以自行使用空間計算器以確認計算所需倉庫尺寸，請點擊以下按鈕查詢所需尺寸。 您亦可以點擊以下按鈕，填寫相關聯繫資料，由我們的客戶服務員聯絡您為您推薦合適的倉儲單位以及相關的優惠。 </p>
+                    <p class="leading-normal py-4 color-primary">您可以自行使用空間計算器以確認計算所需倉庫尺寸，請點擊以下按鈕查詢所需尺寸。 您亦可以點擊以下按鈕，填寫相關聯繫資料，由我們的客戶服務員聯絡您為您推薦合適的倉儲單位以及相關的優惠。 </p>
                 </div>
                 <div class="accordion relative appearance-none items-center">我該選用多大的倉儲單位?
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -165,7 +169,7 @@
                     </div>
                 </div>
                 <div class="panel">
-                    <p class="leading-normal px-5 py-4 color-primary">您可以自行使用空間計算器以確認計算所需倉庫尺寸，請點擊以下按鈕查詢所需尺寸。 您亦可以點擊以下按鈕，填寫相關聯繫資料，由我們的客戶服務員聯絡您為您推薦合適的倉儲單位以及相關的優惠。 </p>
+                    <p class="leading-normal py-4 color-primary">您可以自行使用空間計算器以確認計算所需倉庫尺寸，請點擊以下按鈕查詢所需尺寸。 您亦可以點擊以下按鈕，填寫相關聯繫資料，由我們的客戶服務員聯絡您為您推薦合適的倉儲單位以及相關的優惠。 </p>
                 </div>
                 <div class="accordion relative appearance-none items-center">我該選用多大的倉儲單位?
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -174,7 +178,7 @@
                     </div>
                 </div>
                 <div class="panel">
-                    <p class="leading-normal px-5 py-4 color-primary">您可以自行使用空間計算器以確認計算所需倉庫尺寸，請點擊以下按鈕查詢所需尺寸。 您亦可以點擊以下按鈕，填寫相關聯繫資料，由我們的客戶服務員聯絡您為您推薦合適的倉儲單位以及相關的優惠。 </p>
+                    <p class="leading-normal py-4 color-primary">您可以自行使用空間計算器以確認計算所需倉庫尺寸，請點擊以下按鈕查詢所需尺寸。 您亦可以點擊以下按鈕，填寫相關聯繫資料，由我們的客戶服務員聯絡您為您推薦合適的倉儲單位以及相關的優惠。 </p>
                 </div>
                 <div class="accordion relative appearance-none items-center">我該選用多大的倉儲單位?
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -183,7 +187,7 @@
                     </div>
                 </div>
                 <div class="panel">
-                    <p class="leading-normal px-5 py-4 color-primary">您可以自行使用空間計算器以確認計算所需倉庫尺寸，請點擊以下按鈕查詢所需尺寸。 您亦可以點擊以下按鈕，填寫相關聯繫資料，由我們的客戶服務員聯絡您為您推薦合適的倉儲單位以及相關的優惠。 </p>
+                    <p class="leading-normal py-4 color-primary">您可以自行使用空間計算器以確認計算所需倉庫尺寸，請點擊以下按鈕查詢所需尺寸。 您亦可以點擊以下按鈕，填寫相關聯繫資料，由我們的客戶服務員聯絡您為您推薦合適的倉儲單位以及相關的優惠。 </p>
                 </div>
             </div>
             <div class="py-5 category-title color-primary active">睇倉</div>
@@ -195,7 +199,7 @@
                     </div>
                 </div>
                 <div class="panel">
-                    <p class="leading-normal px-5 py-4 color-primary">您可以自行使用空間計算器以確認計算所需倉庫尺寸，請點擊以下按鈕查詢所需尺寸。 您亦可以點擊以下按鈕，填寫相關聯繫資料，由我們的客戶服務員聯絡您為您推薦合適的倉儲單位以及相關的優惠。 </p>
+                    <p class="leading-normal py-4 color-primary">您可以自行使用空間計算器以確認計算所需倉庫尺寸，請點擊以下按鈕查詢所需尺寸。 您亦可以點擊以下按鈕，填寫相關聯繫資料，由我們的客戶服務員聯絡您為您推薦合適的倉儲單位以及相關的優惠。 </p>
                 </div>
                 <div class="accordion relative appearance-none items-center">我該選用多大的倉儲單位?
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -204,7 +208,7 @@
                     </div>
                 </div>
                 <div class="panel">
-                    <p class="leading-normal px-5 py-4 color-primary">您可以自行使用空間計算器以確認計算所需倉庫尺寸，請點擊以下按鈕查詢所需尺寸。 您亦可以點擊以下按鈕，填寫相關聯繫資料，由我們的客戶服務員聯絡您為您推薦合適的倉儲單位以及相關的優惠。 </p>
+                    <p class="leading-normal py-4 color-primary">您可以自行使用空間計算器以確認計算所需倉庫尺寸，請點擊以下按鈕查詢所需尺寸。 您亦可以點擊以下按鈕，填寫相關聯繫資料，由我們的客戶服務員聯絡您為您推薦合適的倉儲單位以及相關的優惠。 </p>
                 </div>
             </div>
         </div>
@@ -254,7 +258,7 @@
 
             this.className += " active";
 
-            content.innerHTML = "<div style='color:blue;font-size:50px;'>Page : " + this.id + "</div>";
+            content.innerHTML = "<div style='color:grey;font-size:30px;'>Page : " + this.id + "</div>";
 
             console.log(event);
 

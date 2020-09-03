@@ -66,6 +66,10 @@
 </style>
 @endsection
 
+@section('header')
+	@include('mobile.layouts.header')
+@endsection
+
 @section('content')
 <div class="relative block bg-white pb-10">
     <div class="flex maintitle-wrapper-m color-primary text-center mx-auto w-max-content">

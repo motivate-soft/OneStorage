@@ -165,11 +165,7 @@
 </style>
 
 <link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}" />
-
 <link rel="stylesheet" href="{{ asset('branchlocation/ribbon/site.min.css') }}" />
-
-
-
 <link rel="stylesheet" href=" {{asset('branchlocation/slider/jquery-ui.css') }}" />
 
 

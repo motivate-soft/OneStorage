@@ -180,7 +180,9 @@
         margin-left: auto;
         margin-right: auto;
         max-width: 375px;
-        overflow-x: hidden
+        overflow-x: hidden;
+        background-color: #F6F6F6; /* For Mobile Home Screen */
+        font-family: "RobertBlack";
     }
 
     .yellow-shadow {
@@ -195,7 +197,33 @@
         width: 20px;
         height: 20px;
     }
+    .home-image-1 {
+        width:235px;
+    }
+    .home-screen-background {
+        background-color: #F6F6F6;
+    }
+    .color-gray {
+        color: #9A9CA2;
+    }
+
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #9A9CA2;
+        opacity: 1; /* Firefox */
+    }
+
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: #9A9CA2;
+    }
+
+    ::-ms-input-placeholder { /* Microsoft Edge */
+        color: #9A9CA2;
+    }
 </style>
+@endsection
+
+@section('header')
+	@include('mobile.layouts.header')
 @endsection
 
 @section('content')
@@ -264,18 +292,18 @@
     </button>
 </div>
 
-<div class="bg-white py-4 mb-4 text-center">
-    <div class="grid grid-cols-3 col-gap-6 mb-8">
-        <div>
-            <img src="<?php echo e(asset('images/img_1.jpg')); ?>" class="mb-4" />
+<div class="py-4 mb-4 text-center">
+    <div class="flex overflow-x-auto overflow-y-hidden mb-8">
+        <div class="flex-shrink-0 mr-2">
+            <img src="<?php echo e(asset('images/img_1.jpg')); ?>" class="home-image-1 mb-4" />
             <p class="text-center text1">迷你倉廣告</p>
         </div>
-        <div>
-            <img src="<?php echo e(asset('images/img_2.jpg')); ?>" class="mb-4" />
+        <div class="flex-shrink-0 mx-2">
+            <img src="<?php echo e(asset('images/img_2.jpg')); ?>" class="home-image-1 mb-4" />
             <p class="text-center text1">迷你倉廣告</p>
         </div>
-        <div>
-            <img src="<?php echo e(asset('images/img_3.jpg')); ?>" class="mb-4" />
+        <div class="flex-shrink-0 ml-2">
+            <img src="<?php echo e(asset('images/img_3.jpg')); ?>" class="home-image-1 mb-4" />
             <p class="text-center text1">迷你倉廣告</p>
         </div>
     </div>
@@ -292,7 +320,7 @@
     </div>
 </div>
 
-<div class="bg-grey pb-8 text-center">
+<div class="home-screen-background pb-8 text-center">
     <span class="heading2 box-shadow1 relative" style="top:-26px">客戶感言</span>
     <p class="text4 ml-10">用戶好評來自 <span class="text-blue-900 font-extrabold">facebook</span></p>
     <div class="flex justify-center mb-10">
@@ -399,12 +427,12 @@
 <div class="flex justify-between bg-primary py-3"></div>
 
 <div class="bg-yellow pb-12 text-center">
-    <p class="w-fullpy-6 px-10 py-14 text4">
+    <p class="w-fullpy-6 px-10 py-14 text4 leading-5">
         至尊迷你倉致力為每位客戶打造最安全及最可靠的倉存空間，實力雄厚，全屬自置物業。分店網絡積極不斷擴充，新蒲崗及火炭分店將於短期內正式投入服務。 特設多種大小不同呎碼獨立迷你倉，任君選擇。2.4米闊的走廊配以完善的裝置設備，完全符合消防指引。全天候高清保安監察及警報系統，智能保安進出系統，24小時自助式儲存，支援現金、EPS、支票、信用卡、轉數快及免息分期付費，優質的儲存環境及親切專業的客戶服務，用心為每位客戶提升生活空間質素，承傳尊貴享受典範。
     </p>
     <img src="<?php echo e(asset('images/img_camera.jpg')); ?>" class="yellow-shadow1" />
     <div class="text-left px-4 py-3">
-        <p class="heading2 text-center">迷你倉設施</p>
+        <p class="heading2 text-center pb-6">迷你倉設施</p>
         <div class="grid grid-cols-1 row-gap-6 mb-8">
             <div class="flex">
                 <img src="<?php echo e(asset('images/ic_key_card.png')); ?>" class="mr-2 object-none" />
@@ -451,30 +479,101 @@
     <span class="heading2 box-shadow1">常見問題</span>
     <div class="text-left mt-12 px-15">
         <div class="mb-8">
-            <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="inline mr-4" />
-            <span class="text4">常見問題1</span>
+            <div class="cursor-pointer home-problem-toggle-item">
+                <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="inline mr-4" />
+                <span class="text4">常見問題1</span>
+            </div>
+            <div class="hidden py-5">content</div>
         </div>
         <div class="mb-8">
-            <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="inline mr-4" />
-            <span class="text4">常見問題1</span>
+            <div class="cursor-pointer home-problem-toggle-item">
+                <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="inline mr-4" />
+                <span class="text4">常見問題1</span>
+            </div>
+            <div class="hidden py-5">content</div>
         </div>
         <div class="mb-8">
-            <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="inline mr-4" />
-            <span class="text4">常見問題1</span>
+            <div class="cursor-pointer home-problem-toggle-item">
+                <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="inline mr-4" />
+                <span class="text4">常見問題1</span>
+            </div>
+            <div class="hidden py-5">content</div>
         </div>
         <div class="mb-8">
-            <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="inline mr-4" />
-            <span class="text4">常見問題1</span>
+            <div class="cursor-pointer home-problem-toggle-item">
+                <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="inline mr-4" />
+                <span class="text4">常見問題1</span>
+            </div>
+            <div class="hidden py-5">content</div>
         </div>
     </div>
 
 </div>
 
 <div class="bg-white px-6 py-10">
-    <form class="">
-        <p class="text2">給我們留言</p>
+
+    <form class=" register-form">
+
+        <p class="text2" style="font-weight:600;">給我們留言</p>
+
+        <div class="flex mt-6 mb-4 w-full">
+            <div class="flex w-1/2 input-group">
+                <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">
+                <input class="w-full form-control fontsize-14" type="text" placeholder="姓">
+            </div>
+            <div class="w-1/2 flex input-group">
+                <input class="w-full form-control fontsize-14" style="margin-left: 8px;padding-left:12px" type="text" placeholder="名">
+            </div>
+        </div>
+
+        <div class="input-group mb-4">
+            <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
+            <input class="form-control fontsize-14" type="text" placeholder="電話號碼">
+        </div>
+
+        <div class="w-full inline-block relative mb-4">
+            <select class="block color-gray appearance-none w-full pl-11 bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none fontsize-14" aria-placeholder="日">
+                <option value="" selected>分店</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+            </div>
+        </div>
+
+        <div class="w-full inline-block relative mb-4">
+            <select class="block color-gray appearance-none w-full pl-11 bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none fontsize-14" aria-placeholder="日">
+                <option value="" selected>查詢問題</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+            </div>
+        </div>
+
+        <div class="w-full pb-8">
+            <textarea class="w-full color-gray border border-gray-200 pl-11 pt-2 pb-3" placeholder="你的信息"></textarea>
+        </div>
+
+        <button class="submit-btn hover:bg-purple-400 fontsize-21">
+            送出
+        </button>
     </form>
 </div>
+
+@section('footer')
+@include('mobile.layouts.footer')
+@endsection
 
 
 
@@ -538,6 +637,10 @@
                 scrollLeft: "+=" + offset + "px"
             }, "fast");
         });
+
+        $(".home-problem-toggle-item").click(function() {
+            $(this).next().toggle(500);
+        })
     });
 </script>
 @endsection

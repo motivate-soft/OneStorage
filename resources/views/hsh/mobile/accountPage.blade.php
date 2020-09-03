@@ -7,15 +7,7 @@
 @section('styles')
 <link href="{{ asset('css/common.css')}}" rel="stylesheet">
 <link href="{{ asset('css/mobileCss.css')}}" rel="stylesheet">
-
-<style>
-    .robert-font {
-        font-family: "RobertBlack";
-    }
-
-</style>
 @endsection
-
 
 @section('latest_news')
 
@@ -26,23 +18,23 @@
 @endsection
 
 @section('content')
-    <div class=" mt-10 robert-font mb-8 fontsize-25 regular-color text-center px-5">Paul Smith, 歡迎你回來!</div>
+<div class=" mt-10 mb-8 fontsize-25 regular-color text-center font-bold">Paul Smith, 歡迎你回來!</div>
 
-    <div class=" w-full">
+<div class=" w-full">
 
     <div class=" flex w-full">
         <div class=" w-1/4"></div>
-        <a class=" w-1/4 border bg-grey text-center py-3 fontsize-11 regular-color" href="{{url('mobile/account')}}">個人資料</a>
-        <a class=" w-1/4 border text-center py-3 fontsize-11 regular-color" href="{{url('mobile/chatlist')}}">信息</a>
+        <div class=" w-1/4 border text-center py-3 fontsize-11 regular-color">個人資料</div>
+        <div class=" w-1/4 border text-center py-3 fontsize-11 regular-color">信息</div>
         <div class=" w-1/4"></div>
     </div>
 
-    <div class=" w-full border pt-4 px-8">
+    <div class=" w-full border pt-2 px-4">
         <p class=" text-center py-3 fontsize-11" id="notification" style="color: #18B84D">更新成功!</p>
-        <img class="w-16 h-16 mx-auto object-center" src="{{asset('images/contactUs/Intersection15.png')}}" alt="Avatar of Jonathan Reinink">
-        <p class=" text-center py-1 fontsize-8 regular-color">更改相片</p>
-        <div class="sub-content">
-            <p class="subcontent-header my-2  fontsize-15">個人資料</p>
+        <img class=" w-12 h-12 mx-auto object-center" src="{{asset('images/contactUs/Intersection15.png')}}" alt="Avatar of Jonathan Reinink">
+        <p class=" text-center py-3 fontsize-8 regular-color">更改相片</p>
+        <div class=" sub-content">
+            <p class="subcontent-header my-2 pt-4 font-bold fontsize-15">個人資料</p>
 
             <div class=" flex relative py-2">
                 <p class=" w-1/4 input-label text-right fontsize-14">姓 :</p>
@@ -72,7 +64,7 @@
                 <a href="javascript:void(0);" class=" w-4 h-4" onclick="modifyData(3)"><img class=" w-4 h-4" src="{{asset('images/contactUs/icons8-edit-48@2x.png')}}" style="right:0;margin-right: -16px" alt="Pencil"></a>
             </div>
 
-            <p class="subcontent-header py-4 mb-2  fontsize-13">更改密碼</p>
+            <p class="subcontent-header py-4 mb-2 font-bold fontsize-13">更改密碼</p>
 
             <div class=" flex relative mb-8">
                 <p class=" w-1/4 input-label text-right fontsize-14">密碼 :</p>
@@ -84,7 +76,7 @@
 
             <div class="date-group">
 
-                <p class=" date-title text-right  mr-2 fontsize-13">生日日期</p>
+                <p class=" date-title text-right font-bold mr-2 fontsize-13">生日日期</p>
 
                 <div class=" date-component">
                     <div class="inline-block relative">
@@ -160,7 +152,7 @@
                 </div>
             </div>
 
-            <p class="subcontent-header py-4 mb-2  fontsize-13">住址</p>
+            <p class="subcontent-header py-4 mb-2 font-bold fontsize-13">住址</p>
 
             <div class=" flex mb-8 py-4">
                 <div class=" w-1/3">
@@ -222,7 +214,7 @@
 
             <div class="radio-group">
 
-                <p class="radio-title w-4/6  fontsize-14">是否One Storage 現有客戶 ? </p>
+                <p class="radio-title w-4/6 font-bold fontsize-14">是否One Storage 現有客戶 ? </p>
 
                 <div class=" radio-custom w-1/6">
                     <input type="radio" id="storageyesunchecked" checked class="radio-gray" name="storage">
@@ -252,7 +244,7 @@
 
             <div class="radio-group">
 
-                <p class="radio-title w-4/6  fontsize-14">是否SoundWill Club 會員 ? </p>
+                <p class="radio-title w-4/6 font-bold fontsize-14">是否SoundWill Club 會員 ? </p>
 
                 <div class=" radio-custom w-1/6">
                     <input type="radio" id="clubyesunchecked" checked class="radio-gray" name="club">
@@ -267,7 +259,7 @@
         </div>
     </div>
 
-    </div>
+</div>
 @endsection
 
 @section('scripts')

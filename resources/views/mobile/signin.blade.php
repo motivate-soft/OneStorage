@@ -1,51 +1,41 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Booking') }}</title>
-
-    <!-- Styles -->
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-
-    <link href="{{ asset('css/common.css')}}" rel="stylesheet">
-    <link href="{{ asset('css/mobileCss.css')}}" rel="stylesheet">
-
-
-    <link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}" />
-</head>
-
 @extends('mobile.layouts.app')
 
 @section('title')
-<title>{{__('Signin')}}</title>
+<title>{{__('Sign In')}}</title>
+@endsection
+
+@section('styles')
+<link href="{{ asset('css/common.css')}}" rel="stylesheet">
+<link href="{{ asset('css/mobileCss.css')}}" rel="stylesheet">
+@endsection
+
+@section('latest_news')
+
+@endsection
+
+@section('header')
+@include('mobile.layouts.header')
 @endsection
 
 @section('content')
-<p class=" text-center fontsize-21 regular-color pb-4">登入</p>
+<p class=" text-center fontsize-21 regular-color pt-6 pb-8">登入</p>
 
 <div class=" register-form w-full border-b pb-6">
 
     <div class="input-group mb-4">
         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-gmail-50@2x.png')}}" alt="Mobile">
-        <button class="w-full facebook-btn fontsize-14 px-4 py-2 hover:bg-purple-400 text-left pl-24">以 Gmail 註冊</button>
+        <input class="form-control  py-10 cursor-pointer btn text-left gmail-btn-mobile hover:bg-red-500" type="button" value="以 Gmail 登入">
     </div>
 
     <div class="input-group mb-4">
         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-facebook-50@2x.png')}}" alt="Mobile">
-        <button class="w-full gmail-btn fontsize-14 px-4 py-2 hover:bg-purple-400 text-left pl-24">以 Facebook 註冊</button>
+        <input class="form-control cursor-pointer btn text-left facebook-btn-mobile hover:bg-blue-500" type="button" value="以 Facebook 登入">
     </div>
 
 </div>
-
-<form class=" register-form w-full">
-
+           
+<form class=" register-form w-full"  action="{{url('/signin')}}" method="post">
+    @csrf
     <div class="input-group mb-4">
         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
         <input class="form-control fontsize-14" type="text" placeholder="電話號碼">
@@ -61,8 +51,11 @@
         登入
     </button>
 </form>
-
 @endsection
 
 @section('scripts')
+@endsection
+
+@section('footer')
+
 @endsection

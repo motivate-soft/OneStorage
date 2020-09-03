@@ -173,13 +173,14 @@
         color:#9A9CA2;
     }
     
-
-    
-    
 </style>
 <link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}"/>
 <link rel="stylesheet" href="{{ asset('branchlocation/ribbon/site.min.css') }}" />
 <link rel="stylesheet" href=" {{asset('branchlocation/slider/jquery-ui.css') }}"/>
+@endsection
+
+@section('header')
+	@include('mobile.layouts.header')
 @endsection
 
 @section('content')
@@ -386,8 +387,6 @@
 @endsection
 
 @section('scripts')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="{{asset('branchlocation/ribbon/babel-external-helpers/babel-external-helpers.js')}}"></script>
 <script src="{{asset('branchlocation/ribbon/animsition/animsition.js')}}"></script>
 <script src="{{asset('branchlocation/ribbon/js/Component.js')}}"></script>

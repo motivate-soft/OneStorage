@@ -360,6 +360,10 @@
 <link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}"/>
 @endsection
 
+@section('header')
+	@include('mobile.layouts.header')
+@endsection
+
 @section('content')
 <div>
     <div class="relative items-center">

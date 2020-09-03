@@ -18,7 +18,7 @@
 <div class="bg-white pb-10 my-10">
     <div class="grid grid-cols-1 gap-4">
         <div class="col-span-2 mr-5 ">
-            <div class="text-left pt-10 pb-5 ml-5"  style="border-bottom-width:1px">
+            <div class="text-left pb-5 ml-5"  style="border-bottom-width:1px">
                 <h1 class="font_21" style="color: #7E3E97;">新型肺炎疫情最新安排</h1>
                 <p class="font_19 mt-4">by admin November 23, 2020</p>
             </div>
@@ -68,7 +68,7 @@
                     <h1 class="font_21">空間計算器</h1>
                 </div>
                 <a href="javascript:void(0)" class="flex  rounded-lg mt-2  px-2">
-                    <img class="h-24 w-24 ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
+                    <img class="h-24 ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
                     <div class="text-left">
                         <p class=" font_19  leading-normal px-3 ">
                             【搬屋冇煩惱】搬屋前一定要知嘅小貼士
@@ -79,7 +79,7 @@
                     <hr>
                 </div>
                 <a href="javascript:void(0)" class="flex  rounded-lg mt-2 px-2">
-                    <img class="h-24 w-24 ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
+                    <img class="h-24 ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
                     <div class="text-left">
                         <p class="font_19 leading-normal px-3 ">
                             政府派1萬蚊 點先最快收到錢？ </p>
@@ -89,7 +89,7 @@
                     <hr>
                 </div>
                 <a href="javascript:void(0)" class="flex  rounded-lg mt-2  px-2">
-                    <img class="h-24 w-24 ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
+                    <img class="h-24 ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
                     <div class="text-left">
                         <p class="font_19 leading-normal px-3 ">
                             蝸居套房 </p>
@@ -99,16 +99,13 @@
                     <hr>
                 </div>
                 <a href="javascript:void(0)" class="flex  rounded-lg mt-2  px-2">
-                    <img class="h-24 w-24 ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
+                    <img class="h-24 ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
                     <div class="text-left">
                         <p class="font_19 leading-normal px-3 ">
                             迷你倉點揀好 - 2020年四大安全注意要點
                         </p>
                     </div>
                 </a>
-                <div class="rounded-lg  px-2">
-                    <hr>
-                </div>
             </div>
 
         </div>
@@ -123,5 +120,5 @@
 @endsection
 
 @section('footer')
-@include('layouts.footer')
+@include('mobile.layouts.footer')
 @endsection

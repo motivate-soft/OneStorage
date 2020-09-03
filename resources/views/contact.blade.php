@@ -7,7 +7,7 @@
 @section('styles')
 <style>
     .main-wrapper {
-        margin-top: -60px;
+        margin-top: -80px;
     }
 
     .maintitle-wrapper {
@@ -210,7 +210,7 @@
 
 <div class="relative block bg-white w-3/5 mx-auto main-wrapper">
     <div class="flex maintitle-wrapper color-primary">
-        <span class="uppercase maintitle-left">one</span>
+        <span class="uppercase maintitle-left robert-regular">one</span>
         <div class="w-px maintitle-divider"></div>
         <div class="relative maintitle-right">
             <div class="flex items-center">

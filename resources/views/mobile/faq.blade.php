@@ -87,6 +87,11 @@
 <link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}" />
 
 @endsection
+
+@section('header')
+	@include('mobile.layouts.header')
+@endsection
+
 @section('content')
 <div class="relative block bg-white">
 
@@ -211,9 +216,9 @@
 
             if(panel.style.maxHeight) {
                 console.log(this.childNodes[1].childNodes[1].className);
-                this.childNodes[1].childNodes[1].className = this.childNodes[1].childNodes[1].className.replace("wb-chevron-down", "wb-chevron-up");
-            } else {
                 this.childNodes[1].childNodes[1].className = this.childNodes[1].childNodes[1].className.replace("wb-chevron-up", "wb-chevron-down");
+            } else {
+                this.childNodes[1].childNodes[1].className = this.childNodes[1].childNodes[1].className.replace("wb-chevron-down", "wb-chevron-up");
 
             }
         });

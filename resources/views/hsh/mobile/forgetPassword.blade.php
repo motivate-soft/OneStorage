@@ -18,7 +18,7 @@
 @endsection
 
 @section('content')
-    <p class="subheader-title fontsize-21 regular-color mt-10 pb-12 px-5">忘記密碼</p>
+    <p class="subheader-title fontsize-21 regular-color mt-10 pb-12 font-bold px-5">忘記密碼</p>
     
     <form class=" w-full px-5">
 

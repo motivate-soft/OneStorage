@@ -54,7 +54,7 @@
                 </div>
                 <div class="grid grid-cols-2 mt-8">
                     <div class="col-span-1 ">
-                        <div class="accordion relative appearance-none items-center">
+                        <div class="footer-accordion relative appearance-none items-center">
                             <div class="flex font_13">
                                 <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
                                 <span class="self-center text-primary">屯門</span>
@@ -76,7 +76,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="accordion relative appearance-none items-center">
+                        <div class="footer-accordion relative appearance-none items-center">
                             <div class="flex font_13">
                                 <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
                                 <span class="self-center text-primary">荃灣</span>
@@ -98,7 +98,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="accordion relative appearance-none items-center">
+                        <div class="footer-accordion relative appearance-none items-center">
                             <div class="flex font_13">
                                 <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
                                 <span class="self-center text-primary">火炭</span>
@@ -120,7 +120,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="accordion relative appearance-none items-center">
+                        <div class="footer-accordion relative appearance-none items-center">
                             <div class="flex">
                                 <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
                                 <span class="self-center text-primary">新蒲崗</span>
@@ -142,7 +142,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="accordion relative appearance-none items-center">
+                        <div class="footer-accordion relative appearance-none items-center">
                             <div class="flex">
                                 <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
                                 <span class="self-center text-primary">長沙灣</span>
@@ -168,7 +168,7 @@
 
                     </div>
                     <div class="col-span-1">
-                        <div class="accordion relative appearance-none items-center">
+                        <div class="footer-accordion relative appearance-none items-center">
                             <div class="flex font_13">
                                 <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
                                 <span class="self-center text-primary">葵芳</span>
@@ -190,7 +190,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="accordion relative appearance-none items-center">
+                        <div class="footer-accordion relative appearance-none items-center">
                             <div class="flex font_13">
                                 <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
                                 <span class="self-center text-primary">葵涌</span>
@@ -212,7 +212,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="accordion relative appearance-none items-center">
+                        <div class="footer-accordion relative appearance-none items-center">
                             <div class="flex font_13">
                                 <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
                                 <span class="self-center text-primary">葵興</span>
@@ -234,7 +234,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="accordion relative appearance-none items-center">
+                        <div class="footer-accordion relative appearance-none items-center">
                             <div class="flex font_13">
                                 <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
                                 <span class="self-center text-primary">青衣</span>
@@ -256,7 +256,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="accordion relative appearance-none items-center">
+                        <div class="footer-accordion relative appearance-none items-center">
                             <div class="flex">
                                 <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
                                 <span class="self-center text-primary">柴灣</span>
@@ -328,25 +328,21 @@
     </div>
 </footer>
 
+
+
 <script>
-    var acc = document.getElementsByClassName("accordion");
+    var acc = document.getElementsByClassName("footer-accordion");
     var i;
 
     for (i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function() {
-            // this.classList.toggle("active");
             var panel = this.nextElementSibling;
             if (panel.style.maxHeight) {
                 panel.style.maxHeight = null;
                 panel.style.border = null;
             } else {
                 panel.style.maxHeight = panel.scrollHeight + "px";
-                // panel.style.border = "1px solid #DCDCDC";
             }
         });
-    }
-    //Javascript to toggle the menu
-    document.getElementById('nav-toggle').onclick = function() {
-        document.getElementById("nav-content").classList.toggle("hidden");
     }
 </script>
