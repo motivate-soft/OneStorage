@@ -242,6 +242,10 @@
 </style>
 @endsection
 
+@section('accessory')
+    @include('mobile.partials.accessory')
+@endsection
+
 @section('content')
 
 <!-- <div class="w-full mx-auto main-image" style="margin-top: 0px;">
@@ -523,7 +527,7 @@
             </div>
         </div>
         <div class="col-span-2 px-2">
-            @include('partials.loginForm')
+            @include('desktop.partials.loginForm')
         </div>
     </div>
 

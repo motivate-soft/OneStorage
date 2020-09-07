@@ -181,7 +181,8 @@
         margin-right: auto;
         max-width: 375px;
         overflow-x: hidden;
-        background-color: #F6F6F6; /* For Mobile Home Screen */
+        background-color: #F6F6F6;
+        /* For Mobile Home Screen */
         font-family: "RobertBlack";
     }
 
@@ -197,33 +198,40 @@
         width: 20px;
         height: 20px;
     }
+
     .home-image-1 {
-        width:235px;
+        width: 235px;
     }
+
     .home-screen-background {
         background-color: #F6F6F6;
     }
+
     .color-gray {
         color: #9A9CA2;
     }
 
-    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    ::placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
         color: #9A9CA2;
-        opacity: 1; /* Firefox */
+        opacity: 1;
+        /* Firefox */
     }
 
-    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    :-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
         color: #9A9CA2;
     }
 
-    ::-ms-input-placeholder { /* Microsoft Edge */
+    ::-ms-input-placeholder {
+        /* Microsoft Edge */
         color: #9A9CA2;
     }
 </style>
 @endsection
 
-@section('header')
-	@include('mobile.layouts.header')
+@section('accessory')
+@include('mobile.partials.accessory')
 @endsection
 
 @section('content')
@@ -237,15 +245,16 @@
     <p class="page-desc pt-3">至尊迷你倉 ‧ One Choice ‧ One Storage</p>
 </div>
 
-<div class="bg-primary px-4 py-5">
+<form id="branchSearchForm" class="bg-primary px-4 py-5" method="get" action="{{url('/mobile/rentwarehouse')}}">
     <div class="flex mb-4 justify-between">
         <img src="<?php echo e(asset('images/ic_marker.png')); ?>" class="align-middle my-auto" />
+        <input id="storeId" type="hidden" name="storeId" />
         <div class="w-5/12 inline-block relative">
-            <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
-                <option value="" selected>地區</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
+            <select id="location-select" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
+                <option value="" selected disabled class="text-grey">地區</option>
+                @foreach($locations as $location)
+                <option value="{{$location->location}}" class=" text-grey-2">{{$location->location}}</option>
+                @endforeach
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -253,11 +262,8 @@
             </div>
         </div>
         <div class="w-5/12 inline-block relative">
-            <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
-                <option value="" selected>分店</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
+            <select id="branch-select" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
+                <option value="" selected disabled class="text-grey">分店</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -265,10 +271,10 @@
             </div>
         </div>
     </div>
-    <button class="button-primary w-full">
+    <button class="button-primary w-full" type="submit">
         租倉
     </button>
-</div>
+</form>
 
 <div class="bg-primary px-5 pb-4">
     <p class="heading1 text-center mb-4">填妥簡單資料，立即領取5% off 獨家優惠</p>
@@ -582,6 +588,46 @@
 @section('scripts')
 <script>
     $(function() {
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': '<?= csrf_token() ?>'
+            }
+        });
+
+        const form = document.getElementById("branchSearchForm");
+        if (form) {
+            form.reset();
+            $("#storeId").val('');
+        }
+
+        $("#location-select").change(function() {
+            const location = $(this).val();
+            if (location == "") {
+                return;
+            }
+            const branchSelect = $("#branch-select");
+            branchSelect.prop('disabled', true);
+            $.ajax({
+                url: "{{url('get-branches?location=')}}" + location,
+                type: 'GET',
+                datatype: 'json',
+                success: function(result) {
+                    console.log(result);
+                    branchSelect.prop('disabled', false);
+                    branchSelect.html('');
+                    branchSelect.append('<option value="" selected disabled class="text-grey">分店</option>');
+                    result.forEach(data => {
+                        branchSelect.append('<option value="' + data.id + '" class="text-grey-2">' + data.branch + '</option>');
+                    });
+                }
+            });
+        })
+
+        $("#branch-select").change(function() {
+            $("#storeId").val($(this).val());
+        })
+
         $('.horizon-prev').click(function(event) {
             event.preventDefault();
             const cItem = $(".internal").length;

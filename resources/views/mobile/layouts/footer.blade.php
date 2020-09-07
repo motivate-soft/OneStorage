@@ -98,7 +98,7 @@
                     </div>
 
                 </div>
-                <div class="grid grid-cols-2  mt-8 ">
+                <div class="grid grid-cols-2  mt-8 z-10">
                     <div class="col-span-2 ">
                         <div class="footer-accordion relative appearance-none items-center">
                             <div class="flex font_13">

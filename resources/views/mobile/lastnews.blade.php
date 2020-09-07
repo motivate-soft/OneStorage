@@ -8,6 +8,10 @@
 
 @endsection
 
+@section('accessory')
+    @include('mobile.partials.accessory')
+@endsection
+
 @section('content')
 <div class="bg-white my-10">
     <div class=" text-center text-5xl mb-16">

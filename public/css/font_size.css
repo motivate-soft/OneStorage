@@ -25,6 +25,15 @@
 .font_25{
     font-size: 25px;
 }
+
+.font_26{
+    font-size: 26px;
+}
+
+.font_34{
+    font-size: 34px;
+}
+
 .font_49{
     font-size: 49px;
 }
@@ -35,10 +44,30 @@
     font-size: 56px;
 }
 
+@font-face {
+    font-family: 'RobertBlack';
+    src: url(../fonts/Roboto-Black.ttf);
+}
+
+@font-face {
+    font-family: 'RobertRegular';
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'RobertBold';
+    src: url(../fonts/Roboto-Bold.ttf);
+}
+
 .robert-regular{
     font-family: "RobertRegular";
 }
 
 .robert-black{
-    font-family: "RebertBlack";
+    font-family: "RobertBlack";
+}
+
+.robert-bold{
+    font-family: "RobertBold";
+    font-weight: 700;
 }

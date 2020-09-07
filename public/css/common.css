@@ -53,7 +53,7 @@
     overflow-x: hidden
 }
 
-.footer-accordion{
+.footer-accordion {
     /* background-color: #E0CBF6; */
     color: #444;
     cursor: pointer;
@@ -81,7 +81,6 @@ body {
     padding-top: 0px !important;
     font-family: 'RobertRegular';
 }
-
 
 /* =======================  Start Contact Us Css ====================== */
 
@@ -345,7 +344,7 @@ svg {
     margin-bottom: 40px
 }
 
-.login-alt-panel{
+.login-alt-panel {
     width: 70%;
     margin-left: auto;
     margin-right: auto;
@@ -536,7 +535,7 @@ input[type="checkbox"], input[type="radio"] {
     padding-left: 140px !important;
 }
 
-.facebook-btn-mobile{
+.facebook-btn-mobile {
     background-color: #8BB7F0;
     font-weight: 700;
     color: white;
@@ -629,7 +628,16 @@ input[type="checkbox"], input[type="radio"] {
     color: #4D5567;
     font-size: 19px;
     width: 120px;
+    /* background-color: #FBF9F9; */
+    background-color: #F5F5F5;
     /* margin: auto; */
+}
+
+.branch-tab-active{
+    color: #4D5567;
+    font-size: 19px;
+    width: 120px;
+    background-color: white;
 }
 
 .subcontent-header {
@@ -644,3 +652,10 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 /* ======================= End Branch Location Now Css ====================== */
+
+.crown::after {
+    content: url("../images/header/icons8-crown-48.png");
+    right: -1px;
+    margin-top: -15px;
+    position: absolute;
+}

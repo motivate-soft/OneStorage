@@ -14,6 +14,10 @@
 
 @endsection
 
+@section('accessory')
+    @include('mobile.partials.accessory')
+@endsection
+
 @section('content')
 <div class="bg-white pb-10 my-10">
     <div class="grid grid-cols-1 gap-4">

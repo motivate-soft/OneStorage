@@ -66,8 +66,8 @@
 </style>
 @endsection
 
-@section('header')
-	@include('mobile.layouts.header')
+@section('accessory')
+    @include('mobile.partials.accessory')
 @endsection
 
 @section('content')

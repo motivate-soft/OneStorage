@@ -108,19 +108,24 @@
 
 <body class="bg-gray-50 h-screen antialiased leading-none" ondragstart="return false;" ondrop="return false;">
 
-    @include('partials.accessory')
+    @yield('accessory')
+    <!-- back to top floating button -->
+    <button onclick="topFunction()" id="floatBT" title="Go to top">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
 
     <div class="app-container flex-1 text-primary">
         @include('mobile.partials.latest_news')
         @include('mobile.layouts.header')
-        <main id="main-content">
+        <main id="main-content" class="bg-white">
             @yield('content')
         </main>
         @yield('footer')
     </div>
 
     @yield('scripts')
-    
+
     <script src="{{ asset('js/accessory.js') }}"></script>
     <script>
         //Javascript to toggle the menu
@@ -189,7 +194,7 @@
             $('#phone_log').toggle();
         }
 
-         var acc = document.getElementsByClassName("accordion_2");
+        var acc = document.getElementsByClassName("accordion_2");
         var j;
 
         for (j = 0; j < acc.length; j++) {

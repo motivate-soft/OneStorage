@@ -85,7 +85,7 @@
 
     .text1-m {
         font-size: 15px;
-        font-weight:600;
+        font-weight: 600;
         color: #4D5567;
     }
 
@@ -176,130 +176,163 @@
     .bg-third {
         background-color: #28E8DB;
     }
+
     .color-primary {
-        color:#4D5567;
+        color: #4D5567;
     }
+
     .color-deep {
-        color:#5D6475;
+        color: #5D6475;
         /* font-weight:600; */
     }
 
     .rentwarehouse-space-size-select-m {
         background-color: white;
-        font-size:17px;
-        border:1px solid gray;
+        font-size: 17px;
+        border: 1px solid gray;
     }
+
     .rentwarehouse-space-size-select-m.active {
         background-color: #E0CBF6;
-        font-size:17px;
-        border:none;
+        font-size: 17px;
+        border: none;
     }
+
     .rentwarehouse-size-select-description {
-        font-size:13px;
-        color:#B881FD;
+        font-size: 13px;
+        color: #B881FD;
     }
+
     .rentwarehouse-price-select p {
-        color:#4D5567;
-        font-size:12px;
+        color: #4D5567;
+        font-size: 12px;
     }
+
     .rentwarehouse-price-select div.rentwarehouse-price-select-item-m {
         background-color: white;
-        color:#4D5567;
-        border:1px solid gray;
+        color: #4D5567;
+        border: 1px solid gray;
     }
+
     .rentwarehouse-price-select.active p {
-        color:#B881FD;
-        font-size:12px;
+        color: #B881FD;
+        font-size: 12px;
     }
+
     .rentwarehouse-price-select.active div.rentwarehouse-price-select-item-m {
         background-color: #E0CBF6;
-        color:#4D5567;
-        border:none;
+        color: #4D5567;
+        border: none;
     }
 
     .rentwarehouse-price-select-result-card-title {
-        font-size:19px;
-        background:#E0CBF6;
+        font-size: 19px;
+        background: #E0CBF6;
     }
+
     .rentwarehouse-price-select-result-card-content {
-        font-size:32px;
+        font-size: 32px;
     }
+
     .rentwarehouse-price-select-result-card-footer-title {
-        font-size:12px;
+        font-size: 12px;
     }
+
     .rentwarehouse-price-select-result-card-footer-content {
-        font-size:14px;
+        font-size: 14px;
     }
+
     .rentwarehouse-price-select-button {
         background-color: #28E8DB;
-        font-size:19px;
+        font-size: 19px;
     }
+
     .rentwarehouse-price-select-news-title {
-        font-size:21px;
+        font-size: 21px;
     }
+
     .rentwarehouse-price-select-news-image {
-        width:127px;
-        height:127px;
+        width: 127px;
+        height: 127px;
     }
+
     .rentwarehouse-price-select-news-content {
-        height:127px;
+        height: 127px;
     }
+
     .rentwarehouse-left {
-        max-width:620px;
+        max-width: 620px;
     }
+
     .rentwarehouse-right {
-        max-width:340px;
+        max-width: 340px;
     }
+
     .bg-yellow {
-        background-color:#FABD02;
+        background-color: #FABD02;
     }
+
     .rentwarehouse-toggle-item-icon {
         background-color: #B881FC;
     }
+
     .rentwarehouse-mobile-order-button {
         background-color: #28E8DB;
     }
+
     .rentwarehouse-modal-title-m {
-        font-size:14px;
+        font-size: 14px;
     }
+
     .rentwarehouse-space-size-select-m {
-        font-size:17px;
+        font-size: 17px;
     }
+
     .rentwarehouse-size-select-description-m {
-        font-size:13px;
+        font-size: 13px;
     }
+
     .rentwarehouse-size-select-item-m {
-        font-size:12px;
+        font-size: 12px;
     }
+
     .rentwarehouse-space-size-title-m {
-        font-size:14px;
+        font-size: 14px;
     }
+
     .rentwarehouse-mode-select-item-title-m {
-        font-size:12px;
+        font-size: 12px;
     }
+
     .rentwarehouse-price-select-item-m {
-        font-size:21px;
+        font-size: 21px;
     }
+
     .rentwarehouse-select-result-card-title-m {
-        font-size: 20px; 
-        background-color: #E0CBF6; 
-        color:#56628C;
+        font-size: 20px;
+        background-color: #E0CBF6;
+        color: #56628C;
     }
+
     .rentwarehouse-space-size-title-m {
-        font-size:14px;
+        font-size: 14px;
     }
+
     .rentwarehouse-space-size-select-m {
-        font-size:17px;
+        font-size: 17px;
     }
+
     .rentwarehouse-size-select-description-m {
         font-size: 13px;
         color: #B881FD;
     }
+
     .rentwarehouse-price-select-item-m {
-        font-size:17px;
+        font-size: 17px;
     }
+
     .rentwarehouse-content-title-1 {
-        font-weight:600;
+        font-weight: 600;
     }
 
     /* The Modal (background) */
@@ -355,13 +388,12 @@
         z-index: 50 !important;
         /* max-width:375px; */
     }
-
 </style>
-<link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}"/>
+<link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}" />
 @endsection
 
-@section('header')
-	@include('mobile.layouts.header')
+@section('accessory')
+@include('mobile.partials.accessory')
 @endsection
 
 @section('content')
@@ -371,7 +403,7 @@
         <img class="w-full" src="{{asset('images/Intersection 11@2x.png')}}" />
 
         <div class="absolute flex w-full h-full left-0 top-0 items-center">
-            <p class="flex justify-between p-2 z-50 w-full">
+            <p class="flex justify-between p-2 z-10 w-full">
                 <i class="flex icon wb-dropleft position-absolute left-0 rounded-full cursor-pointer bg-gray-600 text-white"></i>
                 <i class="flex icon wb-dropright position-absolute right-0 rounded-full cursor-pointer bg-gray-600 text-white"></i>
             </p>
@@ -387,58 +419,59 @@
         優質服務 優惠價格，適合儲存大小貨物及辦公室物品、生財工具、家居雜物、收藏精品、季節性服飾、健身器材及單車等等。<br />
         多種面積，適合任何人仕使用。
     </p>
+    <div class="mx-1 fixed bottom-0 flex justify-start z-10 w-full" style="margin-bottom: 5px">
+        <div class="bg-white shadow-lg py-1 px-3" style="width: 367px;">
+            <div id="rentwarehouse-modal-toggle-m" class="py-2 cursor-pointer text-center"><i class="icon wb-chevron-down"></i></div>
+            <div>
+                <p class="color-primary rentwarehouse-space-size-title-m pt-0 pb-4">你需要多大的空間?</p>
+                <div class="grid grid-cols-2 col-gap-4 row-gap-2">
+                    @foreach($store->sizes as $key=>$size)
+                    <div class="rounded p-2 color-primary rentwarehouse-space-size-select-m cursor-pointer text-center <?= $key == 0 ? 'active' : '' ?>"><b>{{$size->size}}</b>平方呎</div>
+                    @endforeach
+                </div>
 
-    <div class="shadow-lg mx-2 py-1 px-3">
-        <div id="rentwarehouse-modal-toggle-m" class="py-2 cursor-pointer text-center"><i class="icon wb-chevron-down"></i></div>
-        <div>
-            <p class="color-primary rentwarehouse-space-size-title-m pt-0 pb-4">你需要多大的空間?</p>
-            <div class="grid grid-cols-2 col-gap-4 row-gap-2">
-                <div class="rounded p-2 color-primary rentwarehouse-space-size-select-m cursor-pointer text-center active"><b>14</b>平方呎</div>
-                <div class="rounded p-2 color-primary rentwarehouse-space-size-select-m cursor-pointer text-center"><b>18</b>平方呎</div>
-                <div class="rounded p-2 color-primary rentwarehouse-space-size-select-m cursor-pointer text-center"><b>26</b>平方呎</div>
-                <div class="rounded p-2 color-primary rentwarehouse-space-size-select-m cursor-pointer text-center"><b>48</b>平方呎</div>
-            </div>
-    
-            <div class="flex pt-4">
-                <p class="rentwarehouse-size-select-description-m">唔知自己需要咩size ? 試下我地既空間計算器</p>
-                <img class="w-4 h-4 box-content pl-3" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
-            </div>
-    
-            <p class="color-primary rentwarehouse-space-size-title-m pt-4 pb-4">請選擇付費方式</p>
-            <div class="grid grid-cols-2 col-gap-4 row-gap-2">
-                <div class="rentwarehouse-price-select cursor-pointer">
-                    <p class="color-primary rentwarehouse-mode-select-item-title pb-2">預繳12個月</p>
-                    <div class="rounded p-2 color-primary rentwarehouse-price-select-item-m text-center"><b>$380/</b>月</div>
+                <div class="flex pt-4">
+                    <p class="rentwarehouse-size-select-description-m">唔知自己需要咩size ? 試下我地既空間計算器</p>
+                    <img class="w-4 h-4 box-content pl-3" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
                 </div>
-                <div class="rentwarehouse-price-select cursor-pointer active">
-                    <p class="color-primary rentwarehouse-mode-select-item-title pb-2">單月付款</p>
-                    <div class="rounded p-2 color-primary rentwarehouse-price-select-item-m text-center"><b>$385/</b>月</div>
+
+                <p class="color-primary rentwarehouse-space-size-title-m pt-4 pb-4">請選擇付費方式</p>
+                <div class="grid grid-cols-2 col-gap-4 row-gap-2">
+                    <div class="rentwarehouse-price-select cursor-pointer">
+                        <p class="color-primary rentwarehouse-mode-select-item-title pb-2">預繳12個月</p>
+                        <div class="rounded p-2 color-primary rentwarehouse-price-select-item-m text-center"><b>$380/</b>月</div>
+                    </div>
+                    <div class="rentwarehouse-price-select cursor-pointer active">
+                        <p class="color-primary rentwarehouse-mode-select-item-title pb-2">單月付款</p>
+                        <div class="rounded p-2 color-primary rentwarehouse-price-select-item-m text-center"><b>$385/</b>月</div>
+                    </div>
                 </div>
-            </div>
-            <div class="mt-3 pb-0">
-     
-                <div class="px-4 py-1 text-center">
-                    <div class="w-max-content pl-4">
-                        <p class="w-max-content rentwarehouse-price-select-result-card-footer-title color-primary">付費方式:</p>
-                        <div class="w-max-content flex color-primary items-center pb-2 pt-2">
-                            <p class="rentwarehouse-price-select-result-card-footer-content color-deep">現金</p>
-                            <img class="mx-1" src="{{ asset('images/Image 60@2x.png') }}" />
-                            <img class="mx-1" src="{{ asset('images/Image 59@2x.png') }}" />
-                            <img class="mx-1" src="{{ asset('images/Image 58@2x.png') }}" />
-                            <img class="mx-1" src="{{ asset('images/fps_color_tc@2x.png') }}" />
+                <div class="mt-3 pb-0">
+
+                    <div class="px-4 py-1 text-center">
+                        <div class="w-max-content pl-4">
+                            <p class="w-max-content rentwarehouse-price-select-result-card-footer-title color-primary">付費方式:</p>
+                            <div class="w-max-content flex color-primary items-center pb-2 pt-2">
+                                <p class="rentwarehouse-price-select-result-card-footer-content color-deep">現金</p>
+                                <img class="mx-1" src="{{ asset('images/Image 60@2x.png') }}" />
+                                <img class="mx-1" src="{{ asset('images/Image 59@2x.png') }}" />
+                                <img class="mx-1" src="{{ asset('images/Image 58@2x.png') }}" />
+                                <img class="mx-1" src="{{ asset('images/fps_color_tc@2x.png') }}" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="flex px-1 items-center pb-2">
-            <div class="w-3/5 px-2 text-center">
-                <p class="border rounded-md border-gray-500 py-2 mx-1"><span class="text-lg pr-2">月費</span><span id="rentwarehouse-result-rate-m" class="text-3xl">$385</span><span class="text-lg">起</span></p>
+            <div class="flex px-1 items-center pb-2">
+                <div class="w-3/5 px-2 text-center">
+                    <p class="border rounded-md border-gray-500 py-2 mx-1"><span class="text-lg pr-2">月費</span><span id="rentwarehouse-result-rate-m" class="text-3xl">$385</span><span class="text-lg">起</span></p>
+                </div>
+                <div class="w-2/5 px-1">
+                    <button id="modal-trigger-button" class="w-full rounded-full rentwarehouse-mobile-order-button py-3 mx-1">立即預訂</button>
+                </div>
             </div>
-            <div class="w-2/5 px-1">
-                <button id="modal-trigger-button" class="w-full rounded-full rentwarehouse-mobile-order-button py-3 mx-1">立即預訂</button>
-            </div>
         </div>
+
     </div>
 
     <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer mb-1 pt-5 pl-5">
@@ -468,30 +501,14 @@
                 <th>原價</th>
                 <th>會員價</th>
             </tr>
+            @foreach($store->sizes as $size)
             <tr class="border-b border-white bg-grey cursor-pointer rentwarehouse-table-item-m">
-                <td class="bg-yellow py-2 ">14</td>
-                <td>(3"x4'5"x3'4")</td>
-                <td><del>$642</del></td>
-                <td><span class=" rounded bg-third px-2 py-1">$385起</span></td>
+                <td class="bg-yellow py-2">{{$size->size}}</td>
+                <td>({{$size->width}}"x{{$size->height}}"x{{$size->depth}}")</td>
+                <td><del>${{number_format($size->price)}}</del></td>
+                <td><span class=" rounded bg-third px-2 py-1">${{number_format($size->prepaid_price)}}起</span></td>
             </tr>
-            <tr class="border-b border-white bg-grey cursor-pointer rentwarehouse-table-item-m">
-                <td class="bg-yellow py-2 ">18</td>
-                <td>(4'6"x4'1"x6'7")</td>
-                <td><del>$1,764</del></td>
-                <td><span class=" rounded bg-third px-2 py-1">$1,058起</span></td>
-            </tr>
-            <tr class="border-b border-white bg-grey cursor-pointer rentwarehouse-table-item-m">
-                <td class="bg-yellow py-2 ">26</td>
-                <td>(5'1"x5'2"x6'7")</td>
-                <td><del>$2,288</del></td>
-                <td><span class=" rounded bg-third px-2 py-1">$1,373起</span></td>
-            </tr>
-            <tr class="border-b border-white bg-grey cursor-pointer rentwarehouse-table-item-m">
-                <td class="bg-yellow py-2 ">48</td>
-                <td>(9'10"x4'10"x6'7")</td>
-                <td><del>$3,840</del></td>
-                <td><span class=" rounded bg-third px-2 py-1">$2,304起</span></td>
-            </tr>
+            @endforeach
         </table>
     </div>
 
@@ -502,7 +519,7 @@
         <span class="text1 my-auto self-center pl-2 rentwarehouse-content-title-1">地址</span>
     </div>
     <div class="pt-6">
-        <p class="text-sm color-primary px-4">地址: 黃竹坑道18號瑞琪工業大廈14樓A室</p>
+        <p class="text-sm color-primary px-4">地址: {{$store->address}}</p>
         <div class="px-4">
             <p class="text-sm color-deep pt-8 py-2 rentwarehouse-content-title-1">開放時間</p>
             <p class="text-sm color-primary py-1">全年24小時開放。</p>
@@ -510,7 +527,7 @@
             <p class="text-sm color-primary py-1">週一至週五，早上10時至晚上7時。</p>
             <p class="text-sm color-primary py-1">週六，早上10時至晚上5時。</p>
             <p class="text-sm color-primary py-1">星期日及假期，需於 1 天前預約參觀。</p>
-            <img class="rentware-middle-image px-1 pt-3" src="{{ asset('images/Image 7@2x.png') }}"/>
+            <img class="rentware-middle-image px-1 pt-3" src="{{ asset('images/Image 7@2x.png') }}" />
 
             <p class="text-sm color-deep pt-8 py-2 rentwarehouse-content-title-1">交通:</p>
             <p class="text-sm color-primary py-1">地鐵: 黃竹坑 (B 出口)</p>
@@ -527,12 +544,12 @@
     </div>
     <div class="pl-5 pr-4 pt-6">
         <p class="text-sm color-primary">黃竹坑新店快閃優惠　低至6折優惠</p>
-        <img class="px-1 mt-10 mb-10" src="{{ asset('images/Image 8@2x.png') }}"/>
+        <img class="px-1 mt-10 mb-10" src="{{ asset('images/Image 8@2x.png') }}" />
 
         <p class="text-sm color-deep py-1 leading-normal">黃竹坑新店快閃優惠　低至6折優惠</p>
-        <p class="text-sm color-deep py-1 leading-normal">震撼筍價HK$300起即可入手</p><br/>
+        <p class="text-sm color-deep py-1 leading-normal">震撼筍價HK$300起即可入手</p><br />
         <p class="text-sm color-deep py-1 leading-normal">黃竹坑分店全新開業，推出快閃驚喜優惠！顧客可享低至6折優惠，以震撼筍價HK$300起即可入手！你仲唔快啲黎搵我哋！！</p>
-        <p class="text-sm color-deep py-1 leading-normal">*詳情請向職員查詢</p><br/>
+        <p class="text-sm color-deep py-1 leading-normal">*詳情請向職員查詢</p><br />
         <p class="text-sm color-deep py-1 leading-normal">地址：黃竹坑道18號瑞琪工業大廈14樓A室</p>
         <p class="text-sm color-deep py-1 leading-normal">=========================</p>
         <p class="text-sm color-deep py-1 leading-normal">立即租倉</p>
@@ -587,12 +604,12 @@
                 <p class="text0 my-auto">免費Wi-Fi</p>
             </div>
             <div class="flex">
-                <img  class="mr-2 object-none" src="{{ asset('images/icons8-secured-letter-40@2x.png') }}" />
+                <img class="mr-2 object-none" src="{{ asset('images/icons8-secured-letter-40@2x.png') }}" />
                 <p class="text-sm color-primary">信箱服務</p>
             </div>
         </div>
-        
-        
+
+
     </div>
 
     <div class="horz-line my-4"></div>
@@ -608,7 +625,7 @@
             <p class="text-sm color-deep">香港仔警署</p>
             <p class="text-sm color-deep">香港仔網球及壁球中心網球場</p>
         </div>
-        
+
     </div>
 
     <div class="horz-line my-4"></div>

@@ -7,64 +7,47 @@
 @section('styles')
 <link href="{{ asset('css/common.css')}}" rel="stylesheet">
 <link href="{{ asset('css/mobileCss.css')}}" rel="stylesheet">
-<style>
-    .description-color {
-        color: #6B6B6B;
-    }   
-    .robert-font {
-        font-family: "RobertBlack";
-    }
-    .content-body-color {
-        background-color: F9F9F9;
-    }
-</style>
 @endsection
 
-@section('header')
-	@include('mobile.layouts.header')
+@section('accessory')
+    @include('mobile.partials.accessory')
 @endsection
 
 @section('content')
     <p class=" text-center fontsize-21 py-6 regular-color px-5">職位空缺</p>
 
-    <div class="pt-8 pb-4 px-5">
-        <div class=" flex content-body-color">
-            <img class="w-24 h-24 mr-2" src="{{asset('images/contactUs/contactUs.png')}}" alt="Avatar of Jonathan Reinink">
-            <div>
-                <div class="mb-8">
-                    <div class=" jointitle-color fontsize-25 font-bold subtitle-font">客戶服務主任</div>
-                    <p class=" fontsize-13 regular-color leading-relaxed pt-4">處理迷你倉銷售﹑客戶查詢﹑透過電郵及電話處理客戶要求﹑為客戶提供高水平服務﹑負責日常事務﹑
-                        文書處理﹑協助租務及市場部運作。 </p>
-                </div>
-    
-                <div class="mb-4">
-                    <div class=" jointitle-color fontsize-25 font-bold subtitle-font">入職要求</div>
-                    <p class="after-list regular-color pl-2 py-1 leading-relaxed">中六或以上程度及一年或以上的客戶服務工作經驗</p>
-                    <p class="after-list regular-color pl-2 py-1 leading-relaxed">有客戶服務或銷售經驗者優先</p>
-                    <p class="after-list regular-color pl-2 py-1 leading-relaxed">需自律﹑獨立﹑有責任心 </p>
-                    <p class="after-list regular-color pl-2 py-1 leading-relaxed">懂基本電腦操作</p>
-                </div>
-    
-                <div class="mb-4">
-                    <div class=" jointitle-color fontsize-25 font-bold subtitle-font">員工福利</div>
-                    <p class="after-list regular-color pl-2 py-1 leading-relaxed">銀行假期 </p>
-                    <p class="after-list regular-color pl-2 py-1 leading-relaxed">有薪年假 </p>
-                    <p class="after-list regular-color pl-2 py-1 leading-relaxed">醫療福利 </p>
-                    <p class="after-list regular-color pl-2 py-1 leading-relaxed">年尾獎金 </p>
-                    <p class="after-list regular-color pl-2 py-1 leading-relaxed">營業獎金 </p>
-                    <p class="after-list regular-color pl-2 py-1 leading-relaxed">員工優惠 </p>
-                    <p class="after-list regular-color pl-2 py-1 leading-relaxed">在職培訓 </p>
-                    <p class="after-list regular-color pl-2 py-1 leading-relaxed">晉升機會 </p>
-                </div>
+    <div class="flex pt-8 bg-grey pb-4 px-5">
+        <img class="w-24 h-24 mr-2" src="{{asset('images/contactUs/contactUs.png')}}" alt="Avatar of Jonathan Reinink">
+        <div>
+            <div class="mb-8">
+                <div class=" jointitle-color fontsize-25 font-bold">客戶服務主任</div>
+                <p class=" fontsize-13 regular-color">處理迷你倉銷售﹑客戶查詢﹑透過電郵及電話處理客戶要求﹑為客戶提供高水平服務﹑負責日常事務﹑
+                    文書處理﹑協助租務及市場部運作。 </p>
+            </div>
+
+            <div class="mb-4">
+                <div class=" jointitle-color fontsize-25 font-bold">入職要求</div>
+                <p class="after-list regular-color pl-2 py-1">中六或以上程度及一年或以上的客戶服務工作經驗</p>
+                <p class="after-list regular-color pl-2 py-1">有客戶服務或銷售經驗者優先</p>
+                <p class="after-list regular-color pl-2 py-1">需自律﹑獨立﹑有責任心 </p>
+                <p class="after-list regular-color pl-2 py-1">懂基本電腦操作</p>
+            </div>
+
+            <div class="mb-4">
+                <div class=" subtitle-font">員工福利</div>
+                <p class="after-list regular-color pl-2 py-1">銀行假期 </p>
+                <p class="after-list regular-color pl-2 py-1">有薪年假 </p>
+                <p class="after-list regular-color pl-2 py-1">醫療福利 </p>
+                <p class="after-list regular-color pl-2 py-1">年尾獎金 </p>
+                <p class="after-list regular-color pl-2 py-1">營業獎金 </p>
+                <p class="after-list regular-color pl-2 py-1">員工優惠 </p>
+                <p class="after-list regular-color pl-2 py-1">在職培訓 </p>
+                <p class="after-list regular-color pl-2 py-1">晉升機會 </p>
             </div>
         </div>
-        <div class=" pb-2 px-5">
-            <p class=" fontsize-13 leading-relaxed description-color font-bold robert-font">請電郵履歷至 swhr@soundwill.com.hk </p>
-            <p class=" fontsize-13 leading-relaxed description-color font-bold">(申請人提供之全部資料絕對保密及只作招聘之用) </p>
-        </div>
-
-        
     </div>
+    <p class=" fontsize-13 regular-color px-5">請電郵履歷至 swhr@soundwill.com.hk </p>
+    <p class=" fontsize-13 regular-color px-5">(申請人提供之全部資料絕對保密及只作招聘之用) </p>
 
     <form class=" w-full mt-12 px-5">
         <p class=" font-bold mb-10 fontsize-19 regular-color">立即申請 </p>
