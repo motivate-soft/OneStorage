@@ -215,7 +215,7 @@
     </div>
 
     <div class="grid grid-cols-4 col-gap-1 content-image-wrapper-2">
-        <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select active cursor-pointer" id="s-store">
+        <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select cursor-pointer" id="s-store">
             <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-03@2x.png') }}" alt="Room">
             <div class="px-6 py-4">
                 <div class="room-card-title text-center mb-2">小型倉</div>
@@ -620,7 +620,7 @@
         categories[0].items.forEach(item => {
             itemsWrapper.append('<div class="flex relative calculator-item-element">' +
                 '<span class="calculator-item-element-title color-primary absolute bottom-0 left-0">' + item.name + '</span>' +
-                '<input type="number" class="calculator-item-element-input absolute bottom-0 right-0" min=0 max=' + item.size + ' />' +
+                '<input type="number" class="calculator-item-element-input absolute bottom-0 right-0" min=0 max=20 size=' + item.size + ' />' +
                 '</div>');
         });
     }
@@ -629,16 +629,19 @@
         //sum up all item values
         var sum = 0;
         $(".calculator-item-element-input").each(function(index, input) {
-            sum += Number($(this).val());
+            sum += (Number($(this).val()) * Number($(this).attr("size")));
         })
         $(".store-select").removeClass('active');
-        if (sum >= 0 && sum <= 12) {
+        if(sum <= 0){
+            return;
+        }
+        if (sum > 0 && sum < 13) {
             $("#s-store").click();
-        } else if (sum <= 24) {
+        } else if (sum < 25) {
             $("#m-store").click();
-        } else if (sum <= 36) {
+        } else if (sum < 37) {
             $("#l-store").click();
-        } else {
+        } else if(sum >= 37){
             $("#xl-store").click();
         }
     }
@@ -652,10 +655,10 @@
         categories[$(this).attr('id')].items.forEach(item => {
             itemsWrapper.append('<div class="flex relative calculator-item-element">' +
                 '<span class="calculator-item-element-title color-primary absolute bottom-0 left-0">' + item.name + '</span>' +
-                '<input type="number" class="calculator-item-element-input absolute bottom-0 right-0" min=0 max=' + item.size + ' />' +
+                '<input type="number" class="calculator-item-element-input absolute bottom-0 right-0" min=0 max=20 size=' + item.size + ' />' +
                 '</div>');
         });
-        $("#s-store").click();
+        $(".store-select").removeClass('active');
     });
 
     $(document).on("keyup", ".calculator-item-element-input", function() {

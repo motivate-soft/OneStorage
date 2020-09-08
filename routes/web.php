@@ -26,6 +26,8 @@ Route::get('/logout', function () {
     return redirect('/');
 });
 
+Route::post('/enquiry', 'EnquiryController@store');
+
 Route::get('/get-branches', 'StoreController@getBranch');
 
 
@@ -193,9 +195,7 @@ Route::group(['prefix' => '/backend', 'as' => 'backend'], function () {
         return view('backend.login');
     });
 
-    Route::get('/', function () {
-        return view('backend.enquiries');
-    });
+    Route::get('/', 'EnquiryController@index');
 
     Route::get('/members', function () {
         return view('backend.members');
@@ -204,4 +204,6 @@ Route::group(['prefix' => '/backend', 'as' => 'backend'], function () {
     Route::get('/pages', function () {
         return view('backend.pages');
     });
+
+    Route::get('/accept-enquiry', 'EnquiryController@accept');
 });

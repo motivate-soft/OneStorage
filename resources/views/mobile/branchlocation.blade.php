@@ -110,7 +110,7 @@
     .location-content-item-m {
         min-width: 120px;
         max-width: 312px;
-        height: 350px;
+        /* height: 350px; */
     }
 
     .location-content-title {
@@ -225,7 +225,7 @@
 
     <form id="branchSearchForm" class="flex items-center px-1 py-5 mx-auto" method="get" action="{{url('/mobile/rentwarehouse')}}">
         <img class="rentwarehouse-select-store-image-m px-0" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
-        <input id="storeId" type="hidden" name="storeId" />
+        <input id="storeId" type="hidden" name="storeId" value="{{$stores[0]['id']}}" />
         <div class="flex relative rentwarehouse-select-store-item-area-m mx-1">
             <select id="location-select" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-1 py-2 pr-8 shadow leading-tight focus:outline-none focus:shadow-outline rentwarehouse-selects-store-item-select-m">
                 <option class="rentwarehouse-selects-store-item-option-m" selected disabled>地區</option>
@@ -244,7 +244,7 @@
         </div>
         <div class="flex relative rentwarehouse-select-store-item-branch-m mx-1">
             <select id="branch-select" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-1 py-2 pr-8 shadow leading-tight focus:outline-none focus:shadow-outline rentwarehouse-selects-store-item-select-m">
-                <option class="rentwarehouse-selects-store-item-option-m" selected disabled>分店</option>
+                <!-- <option class="rentwarehouse-selects-store-item-option-m" selected disabled>分店</option> -->
                 @foreach($stores as $store)
                 <option value="{{$store->id}}" class="rentwarehouse-selects-store-item-option-m">{{$store->branch}}</option>
                 @endforeach
@@ -304,8 +304,8 @@
 
         </div>
         <div class="flex pt-5 pb-3">
-            <p class="branchlocation-store-select-description">唔知自己需要咩size ? 試下我地既空間計算器</p>
-            <img class="w-4 box-content pl-3" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
+            <p class="branchlocation-store-select-description my-auto">唔知自己需要咩size ? 試下我地既<a href="{{url('/mobile/calc')}}">空間計算器</a></p>
+            <img class="object-none box-content pl-1 -mt-1" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
         </div>
 
     </div>
@@ -321,7 +321,7 @@
                 <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 起</span>
             </div>
             <div class="px-1 py-2 pl-2">
-                <div class="mb-1 mt-2 color-primary location-content-title">火炭(富昌分店)</div>
+                <div class="mb-1 mt-2 color-primary location-content-title">{{$store->branch}}</div>
                 <div class="flex pt-1 pl-1 items-center">
                     <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                     <p class="color-primary location-content-description">{{$store->address}}</p>
@@ -330,14 +330,13 @@
                     <img class="w-3" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
                     <p class="color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                 </div>
-            </div>
-            <div class="absolute px-2 py-2 bottom-0 w-full">
                 <a href="{{url('/mobile/rentwarehouse?storeId='). $store->id}}">
                     <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
                         選擇
                     </button>
                 </a>
             </div>
+           
         </div>
         @endforeach
     </div>

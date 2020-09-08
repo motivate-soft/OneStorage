@@ -357,10 +357,10 @@
 @section('content')
 @if($store != null)
 <div class="mx-auto w-3/5 pt-6">
-    <p class="heading2 px-4 mb-3">黃竹坑(瑞琪分店)</p>
+    <p class="heading2 px-4 mb-3">{{$store->branch}}</p>
     <div class="grid grid-cols-12 ">
         <div class="col-start-1 col-span-8 pb-8">
-            <p class="text1 px-4 mb-2">香港仔, 香港島南區</p>
+            <p class="text1 px-4 mb-2">{{$store->location}}</p>
             <div class="bg-white px-4 py-2">
                 <div class="flex">
                     <img id="rentwarehouse-main-image" class="w-4/5" src="{{asset('images/img_rentvideo.jpg')}}" />
@@ -562,24 +562,28 @@
             <p class="color-primary rentwarehouse-space-size-title pb-6">你需要多大的空間?</p>
             <div class="grid grid-cols-2 col-gap-2 row-gap-2">
                 @foreach($store->sizes as $key=>$size)
-                <div class="rounded p-2 color-primary rentwarehouse-space-size-select cursor-pointer text-center <?=$key == 0 ? 'active' : ''?>"><b>{{$size->size}}</b>平方呎</div>
+                <div data-price="{{$size->price}}" data-size="{{$size->size}}" data-prepaid-price="{{$size->prepaid_price}}" class="rounded p-2 color-primary rentwarehouse-space-size-select cursor-pointer text-center <?= $key == 0 ? 'active' : '' ?>"><b>{{$size->size}}</b>平方呎</div>
                 @endforeach
             </div>
 
             <div class="flex pt-4">
-                <p class="rentwarehouse-size-select-description">唔知自己需要咩size ? 試下我地既空間計算器</p>
-                <img class="w-4 h-4 box-content pl-3" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
+                <p class="rentwarehouse-size-select-description my-auto">唔知自己需要咩size ? 試下我地既<a href="{{url('/calc')}}">空間計算器</a></p>
+                <img class="object-none box-content pl-1 -mt-1" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
             </div>
 
             <p class="color-primary rentwarehouse-space-size-title pt-4 pb-4">請選擇付費方式</p>
             <div class="grid grid-cols-2 col-gap-4 row-gap-2">
                 <div class="rentwarehouse-price-select cursor-pointer active">
                     <p class="color-primary rentwarehouse-mode-select-item-title pb-2">預繳12個月</p>
-                    <div class="rounded p-2 color-primary rentwarehouse-price-select-item text-center"><b>$380/</b>月</div>
+                    <div class="rounded p-2 color-primary rentwarehouse-price-select-item text-center">
+                        <b>$</b><b class="price-content" id="prepaid-price-wrapper">---</b><b>/</b>月
+                    </div>
                 </div>
                 <div class="rentwarehouse-price-select cursor-pointer">
                     <p class="color-primary rentwarehouse-mode-select-item-title pb-2">單月付款</p>
-                    <div class="rounded p-2 color-primary rentwarehouse-price-select-item text-center"><b>$385/</b>月</div>
+                    <div class="rounded p-2 color-primary rentwarehouse-price-select-item text-center">
+                        <b>$</b><b class="price-content" id="price-wrapper">---</b><b>/</b>月
+                    </div>
                 </div>
             </div>
             <div class="my-4">
@@ -587,7 +591,7 @@
                     月費
                 </div>
                 <div class="border-b border-l border-r border-grey rounded-b px-4 py-3 text-center">
-                    <p class="rentwarehouse-price-select-result-card-content pt-3 pb-5 text-center">$380</p>
+                    <p class="rentwarehouse-price-select-result-card-content pt-3 pb-5 text-center">$<span class="selected-price">380</span></p>
                     <div class="px-5">
                         <p class="w-max-content rentwarehouse-price-select-result-card-footer-title color-primary">付費方式:</p>
                         <div class="w-max-content flex color-primary pb-2 pt-2">
@@ -629,28 +633,32 @@
 
             <p class="text-center pt-4 pb-2 font-bold" style="font-size: 21px;">立即申請 </p>
 
-            <form class="px-8 pt-3">
+            <form class="px-8 pt-3" method="post" action="{{url('/enquiry')}}">
+                @csrf
+                <input type="hidden" name="page" value="{{$store->branch}}" required>
+                <input type="hidden" name="branchName" value="{{$store->branch}}" required>
+                <input type="hidden" name="branchSize" id="branchSize" required>
 
-                <p class=" font-bold mb-3" style="font-size: 25px;">黃竹坑(瑞琪分店) </p>
+                <p class=" font-bold mb-3" style="font-size: 25px;">{{$store->branch}} </p>
 
-                <p class=" font-bold mb-3" style="font-size: 20px;"><span style="font-size: 25px">12</span>平方呎 </p>
+                <p class=" font-bold mb-3" style="font-size: 20px;"><span style="font-size: 25px" id="branchSizeTxt">12</span>平方呎 </p>
 
                 <div role="alert" class="mb-3">
                     <div class=" text-center font-bold rounded-t px-4 py-2 mr-4 ml-4" style="font-size: 25px; background-color: #E0CBF6; color:#56628C">
                         月費
                     </div>
                     <div class="border border-t-0 rounded-b px-4 py-3 text-center mr-4 ml-4">
-                        <p class="font-bold" style="font-size: 32px;color:#324A5E">$600</p>
+                        <p class="font-bold" style="font-size: 32px;color:#324A5E">$<span class="selected-price">---</span></p>
                     </div>
                 </div>
 
                 <div class="flex mb-4 w-full pt-6 border-t">
                     <div class="flex w-1/2 input-group">
                         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">
-                        <input class="w-full form-control" type="text" placeholder="姓">
+                        <input class="w-full form-control" type="text" placeholder="姓" name="firstName" required>
                     </div>
                     <div class="w-1/2 flex input-group">
-                        <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名">
+                        <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名" name="lastName" required>
 
                     </div>
                 </div>
@@ -658,11 +666,11 @@
 
                 <div class="input-group mb-3">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-                    <input class="form-control" type="text" placeholder="電話號碼">
+                    <input class="form-control" type="text" placeholder="電話號碼" name="email">
                 </div>
 
                 <div class="w-full inline-block relative mb-4">
-                    <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
+                    <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="question">
                         <option value="" selected>查詢問題</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -675,7 +683,7 @@
                 </div>
 
                 <div class="w-full inline-block relative pb-3 border-b">
-                    <input class="w-full form-control pb-8 border-b" style="padding: 16px 8px 16px 16px;" type="text" placeholder="你的信息">
+                    <textarea class="w-full border placeholder-gray-600 px-3 py-2 border-gray-200" style="padding: 16px 8px 16px 16px;color:#76838f" type="text" placeholder="你的信息" rows="1" name="message"></textarea>
 
                 </div>
 
@@ -688,7 +696,7 @@
                     </label>
                 </div>
 
-                <button class="submit-btn hover:bg-purple-400">
+                <button class="submit-btn hover:bg-purple-400" type="submit">
                     送出
                 </button>
 
@@ -723,8 +731,13 @@
 
 @section('scripts')
 
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
 <script>
+    var branchSize;
+    function numberFormat(num) {
+        return Number(num).toString().replace(/\d(?=(\d{3})+)/g, '$&,');
+    }
+
     $(".rentwarehouse-toggle-item").click(function() {
         $(this).next().toggle();
 
@@ -737,45 +750,27 @@
         }
     })
 
-    var sizes = document.getElementsByClassName("rentwarehouse-space-size-select");
+    $(".rentwarehouse-space-size-select").click(function() {
+        $(".rentwarehouse-space-size-select").removeClass("active");
+        $(this).addClass("active");
+        $("#prepaid-price-wrapper").html(numberFormat($(this).attr('data-prepaid-price')));
+        $("#price-wrapper").html(numberFormat($(this).attr('data-price')));
+        $(".rentwarehouse-price-select:first").click();
+        branchSize = Number($(this).attr('data-size'));
+    })
 
-    for (var i = 0; i < sizes.length; i++) {
+    $(".rentwarehouse-price-select").click(function() {
+        $(".rentwarehouse-price-select").removeClass("active");
+        $(this).addClass("active");
+        $(".selected-price").html($(this).find(".price-content").html());
+    })
 
-        sizes[i].addEventListener("click", function(event) {
-
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-
-            this.className += " active";
-
-            console.log(event);
-
-        });
+    function init() {
+        $(".rentwarehouse-space-size-select:first").click();
     }
 
-    var prices = document.getElementsByClassName("rentwarehouse-price-select");
+    init();
 
-    for (var i = 0; i < prices.length; i++) {
-
-        prices[i].addEventListener("click", function(event) {
-
-            var current = document.getElementsByClassName("active");
-
-            current[1].className = current[1].className.replace(" active", "");
-
-            this.className += " active";
-
-            if (this.childNodes[1].innerHTML == "預繳12個月") {
-                // this.parentNode.nextSibling.nextSibling.childNodes[3].innerHTML = "$380";
-                $(".rentwarehouse-price-select-result-card-content").html("$380");
-            } else {
-                //this.parentNode.nextSibling.nextSibling.childNodes[3].innerHTML = "$385";
-                $(".rentwarehouse-price-select-result-card-content").html("$385");
-            }
-
-
-        });
-    }
 
     var subimages = document.getElementsByClassName("rentwarehouse-sub-image");
 
@@ -805,13 +800,15 @@
     var modal = document.getElementById("rentwarehouse-modal");
 
     // Get the button that opens the modal
-    var btn = document.getElementById("modal-trigger-button");
+    var purchaseBtn = document.getElementById("modal-trigger-button");
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
     // When the user clicks the button, open the modal 
-    btn.onclick = function() {
+    purchaseBtn.onclick = function() {
+        $("#branchSize").val(branchSize);
+        $("#branchSizeTxt").html(branchSize);
         modal.style.display = "block";
     }
 

@@ -276,27 +276,29 @@
     </button>
 </form>
 
-<div class="bg-primary px-5 pb-4">
+<form class="bg-primary px-5 pb-4" method="post" action="{{url('/enquiry')}}">
+    @csrf
+    <input type="hidden" name="page" value="Front Page">
     <p class="heading1 text-center mb-4">填妥簡單資料，立即領取5% off 獨家優惠</p>
     <div class="flex mb-4 w-full">
         <div class="flex w-1/2 input-group mr-2">
             <img class="form-control-icon" src="<?php echo e(asset('images/contactUs/icons8-account-50@2x.png')); ?>" alt="Mobile">
-            <input class="w-full form-control" type="text" placeholder="姓">
+            <input class="w-full form-control" type="text" placeholder="姓" name="firstName" required>
         </div>
         <div class="w-1/2 flex input-group">
-            <input class="w-full form-control" style="padding-left:12px" type="text" placeholder="名">
+            <input class="w-full form-control" style="padding-left:12px" type="text" placeholder="名" name="lastName" required>
         </div>
     </div>
 
     <div class="input-group mb-4">
         <img class="form-control-icon" src="<?php echo e(asset('images/contactUs/icons8-email-50@2x.png')); ?>" alt="Mobile">
-        <input class="form-control" type="text" placeholder="電子郵件">
+        <input class="form-control" type="text" placeholder="電子郵件" name="email">
     </div>
 
-    <button class="button-primary w-full">
+    <button class="button-primary w-full" type="submit">
         領取優惠
     </button>
-</div>
+</form>
 
 <div class="py-4 mb-4 text-center">
     <div class="flex overflow-x-auto overflow-y-hidden mb-8">
@@ -518,33 +520,34 @@
 
 <div class="bg-white px-6 py-10">
 
-    <form class=" register-form">
-
-        <p class="text2" style="font-weight:600;">給我們留言</p>
-
-        <div class="flex mt-6 mb-4 w-full">
+    <form class="form-enquiry" method="post" action="{{url('/enquiry')}}">
+        @csrf
+        <input type="hidden" name="page" value="Front Page">
+        <p class="text2 mb-8">給我們留言</p>
+        <div class="flex mb-4 w-full">
             <div class="flex w-1/2 input-group">
                 <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">
-                <input class="w-full form-control fontsize-14" type="text" placeholder="姓">
+                <input class="w-full form-control" type="text" placeholder="姓" name="firstName" required>
             </div>
             <div class="w-1/2 flex input-group">
-                <input class="w-full form-control fontsize-14" style="margin-left: 8px;padding-left:12px" type="text" placeholder="名">
+                <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名" name="lastName" required>
             </div>
         </div>
 
         <div class="input-group mb-4">
             <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-            <input class="form-control fontsize-14" type="text" placeholder="電話號碼">
+            <input class="form-control" type="text" placeholder="" name="phoneNumber">
         </div>
 
-        <div class="w-full inline-block relative mb-4">
-            <select class="block color-gray appearance-none w-full pl-11 bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none fontsize-14" aria-placeholder="日">
-                <option value="" selected>分店</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+        <div class="w-full inline-block relative mb-6">
+            <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" style="color:#76838f" name="branchName">
+                <option value="" selected disabled>分店</option>
+                <?php
+                $branches = App\Store::select('branch')->get();
+                ?>
+                @foreach($branches as $branch)
+                <option value="{{$branch->branch}}">{{$branch->branch}}</option>
+                @endforeach
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -552,14 +555,12 @@
             </div>
         </div>
 
-        <div class="w-full inline-block relative mb-4">
-            <select class="block color-gray appearance-none w-full pl-11 bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none fontsize-14" aria-placeholder="日">
-                <option value="" selected>查詢問題</option>
+        <div class="w-full inline-block relative mb-6">
+            <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" style="color:#76838f" name="question">
+                <option value="" selected disabled>查詢問題</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -567,11 +568,9 @@
             </div>
         </div>
 
-        <div class="w-full pb-8">
-            <textarea class="w-full color-gray border border-gray-200 pl-11 pt-2 pb-3" placeholder="你的信息"></textarea>
-        </div>
+        <textarea class="w-full border placeholder-gray-400 px-3 py-2 border-gray-200 mb-6" style="padding-left:16px;color:#76838f" type="text" placeholder="你的信息" rows="3" name="message"></textarea>
 
-        <button class="submit-btn hover:bg-purple-400 fontsize-21">
+        <button class="submit-btn hover:bg-purple-400">
             送出
         </button>
     </form>

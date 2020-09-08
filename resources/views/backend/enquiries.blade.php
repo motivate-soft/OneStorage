@@ -19,116 +19,52 @@
                 <th class="py-5 border-r border-second">狀態</th>
                 <th class="py-5">負責人</th>
             </tr>
+            @foreach($enquiries as $enquiry)
             <tr class="border-b border-third align-top">
                 <td class="item-column">
-                    <p class="mb-1">16:05 23-07-2020</p>
-                    <p>E00003</p>
+                    <p class="mb-1">{{$enquiry->created_at}}</p>
+                    <p>E{{str_pad($enquiry->id, 6, '0', STR_PAD_LEFT)}}</p>
                 </td>
                 <td class="item-column">
                     <div class="flex mb-3">
                         <img class="object-none mr-2" src="{{asset('images/ic-account.png')}}" />
-                        <span class="my-auto">Paul Smith</span>
+                        <span class="my-auto">{{$enquiry->user_name}}</span>
                     </div>
                     <div class="flex mb-3">
                         <img class="object-none mr-2" src="{{asset('images/ic-phone.png')}}" />
-                        <span class="my-auto">6123 6123</span>
+                        <span class="my-auto">{{$enquiry->phone_number}}</span>
                     </div>
                     <div class="flex mb-3">
                         <img class="object-none mr-2" src="{{asset('images/ic-email.png')}}" />
-                        <span class="my-auto">PSasdasdmith@gmail.com</span>
+                        <span class="my-auto">{{$enquiry->email}}</span>
                     </div>
                 </td>
                 <td class="item-column">
+                    <p class="mb-3">{{$enquiry->branch_name}}</p>
+                    @if($enquiry->branch_size > 0)
+                    <p class="font_34 text-left">{{$enquiry->branch_size}}"</p>
+                    @endif
                 </td>
                 <td class="item-column">
-                    <p>你們的營業時間?</p>
+                    <p>{{$enquiry->question}}</p>
                 </td>
                 <td class="item-column">
-                    I would like to know the operation hour of your stores
+                    {{$enquiry->message}}
                 </td>
                 <td class="item-column">
-                    Contact us
+                    {{$enquiry->page}}
                 </td>
                 <td class="px-7 py-6 font_14 text-primary">
-                    <span class="bg-yellow-1 px-6 py-2 rounded-md">未follow</span>
-                </td>
-                <td class="item-column">
-                </td>
-            </tr>
-            <tr class="border-b border-third align-top">
-                <td class="item-column">
-                    <p class="mb-1">16:05 23-07-2020</p>
-                    <p>E00002</p>
-                </td>
-                <td class="item-column">
-                    <div class="flex mb-3">
-                        <img class="object-none mr-2" src="{{asset('images/ic-account.png')}}" />
-                        <span class="my-auto">Paul Smith</span>
-                    </div>
-                    <div class="flex mb-3">
-                        <img class="object-none mr-2" src="{{asset('images/ic-phone.png')}}" />
-                        <span class="my-auto"></span>
-                    </div>
-                    <div class="flex mb-3">
-                        <img class="object-none mr-2" src="{{asset('images/ic-email.png')}}" />
-                        <span class="my-auto">PSasdasdmith@gmail.com</span>
-                    </div>
-                </td>
-                <td class="item-column">
-                </td>
-                <td class="item-column">
-
-                </td>
-                <td class="item-column">
-
-                </td>
-                <td class="item-column">
-                    Front page
-                </td>
-                <td class="px-7 py-6 font_14 text-primary">
+                    @if($enquiry->status == 0)
+                    <a href="{{url('/backend/accept-enquiry?id='.$enquiry->id)}}" class="bg-yellow-1 px-6 py-2 rounded-md">未follow</a>
+                    @else
                     <span class="bg-green px-6 py-2 rounded-md">已follow</span>
-                </td>
-                <td class="item-column">
-                    <span>Oscar</span>
-                </td>
-            </tr>
-            <tr class="border-b border-third align-top">
-                <td class="item-column">
-                    <p class="mb-1">16:05 23-07-2020</p>
-                    <p>E00001</p>
-                </td>
-                <td class="item-column">
-                    <div class="flex mb-3">
-                        <img class="object-none mr-2" src="{{asset('images/ic-account.png')}}" />
-                        <span class="my-auto">Paul Smith</span>
-                    </div>
-                    <div class="flex mb-3">
-                        <img class="object-none mr-2" src="{{asset('images/ic-phone.png')}}" />
-                        <span class="my-auto">6123 6123</span>
-                    </div>
-                    <div class="flex mb-3">
-                        <img class="object-none mr-2" src="{{asset('images/ic-email.png')}}" />
-                        <span class="my-auto">PSasdasdmith@gmail.com</span>
-                    </div>
-                </td>
-                <td class="item-column">
-                    <p class="mb-3">黃竹坑(瑞琪分店)</p>
-                    <p class="font_34 text-center">12"</p>
-                </td>
-                <td class="item-column">
-                </td>
-                <td class="item-column">
-
-                </td>
-                <td class="item-column">
-                    Contact us
-                </td>
-                <td class="px-7 py-6 font_14 text-primary">
-                    <span class="bg-yellow-1 px-6 py-2 rounded-md">未follow</span>
+                    @endif
                 </td>
                 <td class="item-column">
                 </td>
             </tr>
+            @endforeach
         </table>
     </div>
 

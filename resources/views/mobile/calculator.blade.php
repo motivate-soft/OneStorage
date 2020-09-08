@@ -618,7 +618,7 @@
         categories[0].items.forEach(item => {
             itemsWrapper.append(' <div class="flex relative calculator-item-element-m items-center">' +
                 '<span class = "calculator-item-element-title-m color-primary pr-2"> '+ item.name +' </span>' +
-                '<input type = "number" class = "calculator-item-element-input-m absolute right-2" min=0 max=' + item.size + '  /></div>');
+                '<input type = "number" class = "calculator-item-element-input-m absolute right-2" min=0 max=20 size="'+ item.size +'"/></div>');
         });
     }
 
@@ -626,16 +626,19 @@
         //sum up all item values
         var sum = 0;
         $(".calculator-item-element-input-m").each(function(index, input) {
-            sum += Number($(this).val());
+            sum += (Number($(this).val()) * Number($(this).attr("size")));
         })
         $(".store-select").removeClass('active');
-        if (sum >= 0 && sum <= 12) {
+        if(sum <= 0){
+            return;
+        }
+        if (sum > 0 && sum < 13) {
             $("#s-store").click();
-        } else if (sum <= 24) {
+        } else if (sum < 25) {
             $("#m-store").click();
-        } else if (sum <= 36) {
+        } else if (sum < 37) {
             $("#l-store").click();
-        } else {
+        } else if(sum >= 37){
             $("#xl-store").click();
         }
     }
@@ -649,19 +652,18 @@
         categories[$(this).attr('id')].items.forEach(item => {
             itemsWrapper.append(' <div class="flex relative calculator-item-element-m items-center">' +
                 '<span class = "calculator-item-element-title-m color-primary pr-2"> '+ item.name +' </span>' +
-                '<input type = "number" class = "calculator-item-element-input-m absolute right-2" min=0 max=' + item.size + '  /></div>');
+                '<input type = "number" class = "calculator-item-element-input-m absolute right-2" min=0 max=20 size="'+ item.size +'"/></div>');
         });
-        $("#s-store").click();
+        $(".store-select").removeClass('active');
     });
 
     $(document).on("keyup", ".calculator-item-element-input-m", function() {
         console.log($(this).val());
         const val = $(this).val();
-        const maxVal = Number($(this).attr("max"));
         if (val < 0) {
             $(this).val(0);
-        } else if (val > maxVal) {
-            $(this).val(maxVal);
+        } else if (val > 20) {
+            $(this).val(20);
         }
         selectStore();
     })

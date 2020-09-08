@@ -183,7 +183,7 @@
             <div class="rentwarehouse-wrapper-title color-primary text-left">租倉</div>
             <form id="branchSearchForm" class="flex items-center pl-6 py-5" method="get" action="{{url('/rentwarehouse')}}">
                 <img class="rentwarehouse-select-store-image px-2" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
-                <input id="storeId" type="hidden" name="storeId" />
+                <input id="storeId" type="hidden" name="storeId" value="{{$stores[0]['id']}}" />
                 <div class="flex relative rentwarehouse-select-store-item-area mx-2">
                     <select id="location-select" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 leading-tight focus:outline-none focus:shadow-outline rentwarehouse-selects-store-item-select">
                         <option value="" disabled class="text-grey">地區</option>
@@ -202,7 +202,7 @@
                 </div>
                 <div class="flex relative rentwarehouse-select-store-item-branch mx-2">
                     <select id="branch-select" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 leading-tight focus:outline-none focus:shadow-outline rentwarehouse-selects-store-item-select">
-                        <option value="" selected disabled class="text-grey">分店</option>
+                        <!-- <option value="" selected disabled class="text-grey">分店</option> -->
                         @foreach($stores as $store)
                         <option value="{{$store->id}}" class="text-grey-2">{{$store->branch}}</option>
                         @endforeach
@@ -239,8 +239,8 @@
 
                 <div class="px-12 pt-5">
                     <div class="flex">
-                        <p class="branchlocation-store-select-description">唔知自己需要咩size ? 試下我地既空間計算器</p>
-                        <img class="w-4 box-content pl-3" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
+                        <p class="branchlocation-store-select-description my-auto">唔知自己需要咩size ? 試下我地既<a href="{{url('/calc')}}">空間計算器</a></p>
+                        <img class="object-none box-content pl-1 -mt-1" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
                     </div>
                     <div class="grid grid-cols-4 col-gap-3 pt-1 branchlocation-room-select">
                         <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
@@ -260,11 +260,11 @@
                         <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper active">
                             <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-03@2x.png') }}" alt="BranchLocation">
                             <div class="px-6 py-4">
-                                <div class="branchlocation-card-title text-center mb-2">小型倉</div>
+                                <div class="branchlocation-card-title text-center mb-2">中型倉</div>
                             </div>
                             <div class="px-6 pt-0 pb-4">
                                 <div class="branchlocation-card-content text-center mb-2 leading-normal">
-                                    換季衣服, 兒童物件及玩具,書本
+                                    梳化, 椅, 櫃, 枱, 床縟, 單車, 高爾夫球袋, 箱
                                 </div>
                             </div>
                             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
@@ -274,11 +274,11 @@
                         <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
                             <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-03@2x.png') }}" alt="BranchLocation">
                             <div class="px-6 py-4">
-                                <div class="branchlocation-card-title text-center mb-2">小型倉</div>
+                                <div class="branchlocation-card-title text-center mb-2">大型倉</div>
                             </div>
                             <div class="px-6 pt-0 pb-4">
                                 <div class="branchlocation-card-content text-center mb-2 leading-normal">
-                                    換季衣服, 兒童物件及玩具,書本
+                                    梳化, 椅, 櫃, 枱, 床縟, 單車, 高爾夫球袋, 箱
                                 </div>
                             </div>
                             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
@@ -288,11 +288,11 @@
                         <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
                             <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-03@2x.png') }}" alt="BranchLocation">
                             <div class="px-6 py-4">
-                                <div class="branchlocation-card-title text-center mb-2">小型倉</div>
+                                <div class="branchlocation-card-title text-center mb-2">特大倉</div>
                             </div>
                             <div class="px-6 pt-0 pb-4">
                                 <div class="branchlocation-card-content text-center mb-2 leading-normal">
-                                    換季衣服, 兒童物件及玩具,書本
+                                    梳化, 椅, 櫃, 枱, 床縟, 單車, 高爾夫球袋, 箱
                                 </div>
                             </div>
                             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
@@ -315,7 +315,7 @@
                         <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 <span class="text-sm">起</span></span>
                     </div>
                     <div class="p-2">
-                        <div class="mb-2 color-primary location-content-title">火炭(富昌分店)</div>
+                        <div class="mb-2 color-primary location-content-title">{{$store->branch}}</div>
                         <div class="flex py-1 mb-2">
                             <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                             <p class="color-primary location-content-description">{{$store->address}}</p>
