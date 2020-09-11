@@ -658,14 +658,14 @@ $user = Auth::user();
                     <div class="flex w-1/2 input-group">
                         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">
                         @if(Auth::check())
-                        <input class="w-full form-control" type="text" placeholder="{{$user->first_name}}" disabled name="firstName" required>
+                        <input class="w-full form-control" type="text" placeholder="姓" value="{{$user->first_name}}" name="firstName" required>
                         @else
                         <input class="w-full form-control" type="text" placeholder="姓" name="firstName" required>
                         @endif
                     </div>
                     <div class="w-1/2 flex input-group">
                         @if(Auth::check())
-                        <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="{{$user->last_name}}" disabled name="lastName" required>
+                        <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名" value="{{$user->last_name}}" name="lastName" required>
                         @else
                         <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名" name="lastName" required>
                         @endif
@@ -677,7 +677,7 @@ $user = Auth::user();
                 <div class="input-group mb-3">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
                     @if(Auth::check())
-                    <input class="form-control" type="text" placeholder="{{$user->email}}" disabled name="email">
+                    <input class="form-control" type="text" placeholder="電話號碼" value="{{$user->email}}" name="email">
                     @else
                     <input class="form-control" type="text" placeholder="電話號碼" name="email">
                     @endif

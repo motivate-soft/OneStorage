@@ -1,5 +1,7 @@
 <?php
 
+use App\AppConfig;
+use App\Background;
 use App\Store;
 use App\StoreSize;
 use Illuminate\Database\Seeder;
@@ -13,6 +15,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //set background
+        Background::truncate();
+        $background = new Background;
+        $background->image = "background.jpg";
+        $background->save();
+
+        //set app config
+        AppConfig::truncate();
+        $appConfig = new AppConfig;
+        $appConfig->background = "/images/backgrounds/background.jpg";
+        $appConfig->save();
+
         Store::truncate();
         StoreSize::truncate();
 

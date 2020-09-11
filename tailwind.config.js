@@ -21,6 +21,7 @@ module.exports = {
         'second': '#56628C',
         'third': '#9A9CA2',
         'purple': '#7E3E97',
+        'purple-1': '#C293FC',
         'grey': '#AFAFAF',
         'grey-1': '#B2B5BD',
         'grey-2': '#6B6B6B',

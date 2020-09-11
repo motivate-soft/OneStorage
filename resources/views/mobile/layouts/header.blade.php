@@ -12,8 +12,9 @@
         <a href="/"><img class="fill-current ml-20" width="90" height="45" src="{{asset('images/header/logo@2x.png')}}" id="default_log" /></a>
     </div>
     <div class="  text-white mx-auto">
-        <a href="https://wa.me/85251188503">
-            <img class="fill-current" id="phone_log" style="display: none;" src="{{asset('images/header/Component 7 – 1@2x.png')}}" />
+        <a href="https://wa.me/85251188503" class="flex" id="phone_log" style="display: none;">
+            <img class="fill-current inline-block" src="{{asset('images/header/icons8-whatsapp-50.png')}}" />
+            <span class="text-purple-1 font-bold text-xl my-auto ml-3 robert-black">5118 8503</span>
         </a>
     </div>
     <div class="w-full flex-grow z-50  hidden pt-6" id="nav-content" style="background-color:#F6F6F6;">
@@ -97,7 +98,7 @@
 
             <div class="flex text-left px-4 py-2 m-2 font_16 default-color">
                 <?php
-                if (session()->get('logged_in')) {
+                if (Auth::check()) {
                 ?>
                     <div class="text-left w-1/2 py-1 font_16 default-color">
                         <a class="inline-block font_16 default-color no-underline py-2" href="{{url('/account')}}" style="display: flex;">

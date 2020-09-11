@@ -14,6 +14,7 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font_size.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/common.css') }}" rel="stylesheet">
 
     @yield('styles')
 
@@ -37,10 +38,14 @@
     <div class="text-primary h-full">
         <main id="main-content" class="flex robert-black">
             @include('backend.layouts.sidebar')
-            @yield('content')
+            <div class=" overflow-y-auto w-full bg-grey">
+                @yield('content')
+            </div>
+
         </main>
     </div>
 
     @yield('scripts')
 </body>
+
 </html>

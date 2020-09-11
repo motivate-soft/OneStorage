@@ -2,7 +2,7 @@
     @include('partials.latest_news')
     <div class="bg-white flex items-center justify-between flex-wrap pr-10 py-5" style="background: rgba(255, 255, 255, 0.75); ">
         <div class="flex items-center flex-shrink-0 text-white" style="padding-left: 140px;">
-            <a href="/"><img class="fill-current" width="90" height="45" src="{{asset('images/header/logo@2x.png')}}" /></a>
+            <a href="/"><img class="fill-current" width="140" height="70" src="{{asset('images/header/logo@2x.png')}}" /></a>
         </div>
         <div class="block lg:hidden">
             <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-grey border-grey-dark hover:text-grey hover:border-black">
@@ -65,11 +65,14 @@
                     </ul>
                 </li>
                 <li class="sm:mr-5 md:mr-10 lg:mr-15">
-                    <a href="https://wa.me/85251188503"><img class="fill-current inline-block" src="{{asset('images/header/Component 7 – 1@2x.png')}}" /></a>
+                    <a href="https://wa.me/85251188503" class="flex">
+                        <img class="fill-current inline-block" src="{{asset('images/header/icons8-whatsapp-50.png')}}" />
+                        <span class="text-purple-1 font-bold text-xl my-auto ml-3 robert-black">5118 8503</span>
+                    </a>
                 </li>
 
                 <?php
-                if (Illuminate\Support\Facades\Auth::check()) {
+                if (Auth::check()) {
                 ?>
                     <li class="mr-1 md:mr-0">
                         <a class="inline-block font_16 default-color no-underline py-2 px-2" href="{{url('/account')}}" style="display: flex;">

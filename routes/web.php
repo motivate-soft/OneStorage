@@ -14,15 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-//testing code
 Route::post('login', 'AuthController@login');
 Route::post('register', 'AuthController@register');
 Route::get('logout', 'AuthController@logout');
 
 Route::post('/enquiry', 'EnquiryController@store');
+Route::get('/branches', 'StoreController@getBranch');
 
-Route::get('/get-branches', 'StoreController@getBranch');
+Route::post('/blog', 'BlogController@store');
+Route::put('/blog', 'BlogController@update');
+Route::delete('/blog/{id}', 'BlogController@delete');
+Route::get('/blog/{id}', 'BlogController@get');
+
+Route::post('/background', 'BackgroundController@store');
+Route::get('/background/delete/{id}', 'BackgroundController@delete');
+Route::get('/background/set/{id}', 'BackgroundController@set');
 
 
 // Desktop version pages routes
@@ -113,6 +119,18 @@ Route::group(['prefix' => '/backend', 'as' => 'backend'], function () {
 
     Route::get('/pages', function () {
         return view('backend.pages');
+    });
+
+    Route::get('/stores', function () {
+        return view('backend.stores');
+    });
+
+    Route::get('/messages', function () {
+        return view('backend.messages');
+    });
+
+    Route::get('/chatroom', function () {
+        return view('backend.chatroom');
     });
 
     Route::get('/accept-enquiry', 'EnquiryController@accept');

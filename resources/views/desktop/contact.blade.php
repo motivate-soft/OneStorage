@@ -247,244 +247,103 @@
                     </a>
                 </div>
             </div>
-            <div class="grid grid-cols-2 mt-8 ml-10">
-                <div class="col-span-2">
-                    <p class="font_56 pl-10 pb-5">新界</p>
+            <p class="font_56 pl-10 pb-5 mt-8 ml-10">新界</p>
+            <?php
+            $contactInfos = App\ContactInfo::get1();
+            ?>
+            <div class="grid grid-cols-2 ml-10">
+                @foreach($contactInfos as $contact)
+                <div>
+                    <div class="accordion relative appearance-none items-center">
+                        <div class="flex">
+                            <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
+                            <span class="self-center text-primary">{{$contact['name']}}</span>
+                        </div>
+                    </div>
+                    <div class="panel flex">
+                        <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
+                        <div class=" leading-5">
+                            <p class="font_14">
+                                電話 :<span>{{$contact['phone']}}</span>
+                            </p>
+                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
+                                電郵 : <span>{{$contact['email']}}</span>
+                            </a>
+                            <p class="font_14">
+                                <a href="{{'http://maps.google.com/?q='.$contact['address']}}" target="_blank" rel="noopener noreferrer">
+                                    地址 : {{$contact['address']}}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-span-1">
-                    <div class="accordion relative appearance-none items-center">
-                        <div class="flex">
-                            <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                            <span class="self-center text-primary">屯門</span>
-                        </div>
-                    </div>
-                    <div class="panel flex">
-                        <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                        <div class=" leading-5">
-                            <p class="font_14">
-                                電話 : <span>2374-2022</span>
-                            </p>
-                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
-                                電郵 : <span>cs@onestorage.com.hk</span>
-                            </a>
-                            <p class="font_14">
-                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
-                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion relative appearance-none items-center">
-                        <div class="flex">
-                            <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                            <span class="self-center text-primary">荃灣</span>
-                        </div>
-                    </div>
-                    <div class="panel flex">
-                        <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                        <div class=" leading-5">
-                            <p class="font_14">
-                                電話 : <span>2374-2022</span>
-                            </p>
-                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
-                                電郵 : <span>cs@onestorage.com.hk</span>
-                            </a>
-                            <p class="font_14">
-                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
-                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion relative appearance-none items-center">
-                        <div class="flex">
-                            <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                            <span class="self-center text-primary">火炭</span>
-                        </div>
-                    </div>
-                    <div class="panel flex">
-                        <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                        <div class=" leading-5">
-                            <p class="font_14">
-                                電話 : <span>2374-2022</span>
-                            </p>
-                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
-                                電郵 : <span>cs@onestorage.com.hk</span>
-                            </a>
-                            <p class="font_14">
-                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
-                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
-                                </a>
-                            </p>
-                        </div>
-                    </div>
+                @endforeach
 
-
-                </div>
-                <div class="col-span-1">
-                    <div class="accordion relative appearance-none items-center">
-                        <div class="flex">
-                            <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                            <span class="self-center text-primary">葵芳</span>
-                        </div>
-                    </div>
-                    <div class="panel flex">
-                        <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                        <div class=" leading-5">
-                            <p class="font_14">
-                                電話 : <span>2374-2022</span>
-                            </p>
-                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
-                                電郵 : <span>cs@onestorage.com.hk</span>
-                            </a>
-                            <p class="font_14">
-                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
-                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion relative appearance-none items-center">
-                        <div class="flex">
-                            <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                            <span class="self-center text-primary">葵涌</span>
-                        </div>
-                    </div>
-                    <div class="panel flex">
-                        <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                        <div class=" leading-5">
-                            <p class="font_14">
-                                電話 : <span>2374-2022</span>
-                            </p>
-                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
-                                電郵 : <span>cs@onestorage.com.hk</span>
-                            </a>
-                            <p class="font_14">
-                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
-                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion relative appearance-none items-center">
-                        <div class="flex">
-                            <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                            <span class="self-center text-primary">葵興</span>
-                        </div>
-                    </div>
-                    <div class="panel flex">
-                        <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                        <div class=" leading-5">
-                            <p class="font_14">
-                                電話 : <span>2374-2022</span>
-                            </p>
-                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
-                                電郵 : <span>cs@onestorage.com.hk</span>
-                            </a>
-                            <p class="font_14">
-                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
-                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion relative appearance-none items-center">
-                        <div class="flex">
-                            <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                            <span class="self-center text-primary">青衣</span>
-                        </div>
-                    </div>
-                    <div class="panel flex">
-                        <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                        <div class=" leading-5">
-                            <p class="font_14">
-                                電話 : <span>2374-2022</span>
-                            </p>
-                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
-                                電郵 : <span>cs@onestorage.com.hk</span>
-                            </a>
-                            <p class="font_14">
-                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
-                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
             </div>
+            <?php
+            $contactInfos = App\ContactInfo::get2();
+            ?>
             <div class="grid grid-cols-2 mt-8  ml-10">
                 <div class="col-span-1">
                     <p class="font_56 pl-10 pb-5">九龍</p>
-                    <div class="accordion relative appearance-none items-center">
-                        <div class="flex">
-                            <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                            <span class="self-center text-primary">新蒲崗</span>
+                    @foreach($contactInfos as $contact)
+                    <div>
+                        <div class="accordion relative appearance-none items-center">
+                            <div class="flex">
+                                <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
+                                <span class="self-center text-primary">{{$contact['name']}}</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="panel flex">
-                        <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                        <div class=" leading-5">
-                            <p class="font_14">
-                                電話 : <span>2374-2022</span>
-                            </p>
-                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
-                                電郵 : <span>cs@onestorage.com.hk</span>
-                            </a>
-                            <p class="font_14">
-                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
-                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
+                        <div class="panel flex">
+                            <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
+                            <div class=" leading-5">
+                                <p class="font_14">
+                                    電話 :<span>{{$contact['phone']}}</span>
+                                </p>
+                                <a href="mailto:cs@onestorage.com.hk" class="font_14">
+                                    電郵 : <span>{{$contact['email']}}</span>
                                 </a>
-                            </p>
+                                <p class="font_14">
+                                    <a href="{{'http://maps.google.com/?q='.$contact['address']}}" target="_blank" rel="noopener noreferrer">
+                                        地址 : {{$contact['address']}}
+                                    </a>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <div class="accordion relative appearance-none items-center">
-                        <div class="flex">
-                            <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                            <span class="self-center text-primary">長沙灣</span>
-                        </div>
-                    </div>
-                    <div class="panel flex">
-                        <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                        <div class=" leading-5">
-                            <p class="font_14">
-                                電話 : <span>2374-2022</span>
-                            </p>
-                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
-                                電郵 : <span>cs@onestorage.com.hk</span>
-                            </a>
-                            <p class="font_14">
-                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
-                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
-                                </a>
-                            </p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
+                <?php
+                $contactInfos = App\ContactInfo::get3();
+                ?>
                 <div class="col-span-1">
-                    <p class="font_56 pl-10 pb-5">香港島</p>
-                    <div class="accordion relative appearance-none items-center">
-                        <div class="flex">
-                            <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                            <span class="self-center text-primary">柴灣</span>
+                    <p class="font_56 pl-10 pb-5">香港</p>
+                    @foreach($contactInfos as $contact)
+                    <div>
+                        <div class="accordion relative appearance-none items-center">
+                            <div class="flex">
+                                <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
+                                <span class="self-center text-primary">{{$contact['name']}}</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="panel flex">
-                        <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                        <div class=" leading-5">
-                            <p class="font_14">
-                                電話 : <span>2374-2022</span>
-                            </p>
-                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
-                                電郵 : <span>cs@onestorage.com.hk</span>
-                            </a>
-                            <p class="font_14">
-                                <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" target="_blank" rel="noopener noreferrer">
-                                    地址 : 新界屯門新益里3號通明工業大廈 4/5樓
+                        <div class="panel flex">
+                            <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
+                            <div class=" leading-5">
+                                <p class="font_14">
+                                    電話 :<span>{{$contact['phone']}}</span>
+                                </p>
+                                <a href="mailto:cs@onestorage.com.hk" class="font_14">
+                                    電郵 : <span>{{$contact['email']}}</span>
                                 </a>
-                            </p>
+                                <p class="font_14">
+                                    <a href="{{'http://maps.google.com/?q='.$contact['address']}}" target="_blank" rel="noopener noreferrer">
+                                        地址 : {{$contact['address']}}
+                                    </a>
+                                </p>
+                            </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -25,7 +25,7 @@ $(function () {
                 const branchSelect = $("#branch-select");
                 branchSelect.prop('disabled', true);
                 $.ajax({
-                    url: '/get-branches?location=' + location,
+                    url: '/branches?location=' + location,
                     type: 'GET',
                     datatype: 'json',
                     success: function (result) {

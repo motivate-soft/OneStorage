@@ -1,3 +1,6 @@
+<?php
+use App\AppConfig;
+?>
 @extends('layouts.app')
 
 @section('title')
@@ -7,7 +10,8 @@
 @section('styles')
 <style>
     .bg-hero {
-        background-image: url(images/bg_hero.jpg);
+
+        background-image: url(<?= AppConfig::first()->background ?>);
         background-repeat: no-repeat;
         background-position: bottom right;
         min-height: 647px;
