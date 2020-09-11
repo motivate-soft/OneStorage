@@ -1,4 +1,4 @@
-@extends('mobile.layouts.app')
+@extends('layouts.app')
 
 @section('title')
 <title>{{__('空間計算器')}}</title>
@@ -9,7 +9,7 @@
 @endsection
 
 @section('accessory')
-    @include('mobile.partials.accessory')
+    @include('partials.accessory')
 @endsection
 
 @section('content')
@@ -22,7 +22,7 @@
     $index = 0;
     ?>
     @foreach($users as $user)
-    <a href="{{url('/mobile/news')}}" class="flex mt-2 px-5">
+    <a href="{{url('/news')}}" class="flex mt-2 px-5">
         <img class="h-32" src="{{asset('images/latest_news/Image 35.png')}}">
         <div class="text-justify">
             <p class="font_19 leading-normal pl-5">
@@ -55,5 +55,5 @@
 
 
 @section('footer')
-@include('mobile.layouts.footer')
+@include('layouts.footer')
 @endsection

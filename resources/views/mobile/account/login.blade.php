@@ -1,4 +1,4 @@
-@extends('mobile.layouts.app')
+@extends('layouts.app')
 
 @section('title')
 <title>{{__('Sign In')}}</title>
@@ -14,7 +14,7 @@
 @endsection
 
 @section('header')
-@include('mobile.layouts.header')
+@include('layouts.header')
 @endsection
 
 @section('content')
@@ -43,7 +43,7 @@
 
     <input class="w-full form-control mb-6 fontsize-14 pl-8" type="text" placeholder="密碼">
 
-    <a href="{{url('mobile/forgetpwd')}}">
+    <a href="{{url('forgetpwd')}}">
         <p class=" register-subtilte title-violet fontsize-12">忘記密碼?</p>
     </a>
 

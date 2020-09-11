@@ -16,15 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 
 //testing code
-Route::post('/login', function () {
-    session()->put('logged_in', true);
-    return redirect('/');
-});
-
-Route::get('/logout', function () {
-    session()->flush();
-    return redirect('/');
-});
+Route::post('login', 'AuthController@login');
+Route::post('register', 'AuthController@register');
+Route::get('logout', 'AuthController@logout');
 
 Route::post('/enquiry', 'EnquiryController@store');
 
@@ -35,152 +29,68 @@ Route::get('/get-branches', 'StoreController@getBranch');
 Route::group(['prefix' => '/'], function () {
     
     Route::get('/', function () {
-        $locations = Store::groupBy('location')->select('location')->get();
-        return view('desktop.home', ['locations' => $locations]);
+        return view('home');
     });
     Route::get('/branch-location', 'StoreController@branchLocation');
     Route::get('/rentwarehouse', 'StoreController@showRentwareHouse');
 
     Route::get('/contact', function () {
-        return view('desktop.contact');
+        return view('contact');
     });
 
     Route::get('/joinus', function () {
-        return view('desktop.joinus');
+        return view('joinus');
     });
 
     Route::get('/about', function () {
-        return view('desktop.aboutus');
+        return view('aboutus');
     });
 
     Route::get('/calc', function () {
-        return view('desktop.calculator');
+        return view('calculator');
     });
 
     Route::get('/faq', function () {
-        return view('desktop.faq');
+        return view('faq');
     });
 
     Route::get('/lastnews', function () {
         $data['users'] = [1, 2, 3, 4, 5];
-        return view('desktop.lastnews', $data);
+        return view('lastnews', $data);
     });
 
     Route::get('/news', function () {
-        return view('desktop.news');
+        return view('news');
     });
 
-    Route::get('/login', function () {
-        return view('desktop.account.login');
-    });
+    Route::get('/login', 'AuthController@loginPage');
 
 
     Route::get('/register', function () {
-        return view('desktop.account.register');
+        return view('account.register');
     });
 
     Route::get('/forgetpwd', function () {
-        return view('desktop.account.forgetpassword');
+        return view('account.forgetpassword');
     });
 
-    Route::get('/account', function () {
-        if (session()->get('logged_in')) {
-            return view('desktop.account.accountinfo');
-        }
-        return redirect('/login');
-    });
-
-    Route::get('/chatlist', function () {
-        if (session()->get('logged_in')) {
-            return view('desktop.account.chatlist');
-        }
-        return redirect('/login');
-    });
-
-    Route::get('/chatroom', function () {
-        if (session()->get('logged_in')) {
-            return view('desktop.account.chatroom');
-        }
-        return redirect('/login');
-    });
-});
-
-
-// Mobile version pages routes
-Route::group(['prefix' => '/mobile', 'as' => 'mobile'], function () {
-    Route::get('/', function () {
-        $locations = Store::groupBy('location')->select('location')->get();
-        return view('mobile.home', ['locations' => $locations]);
-    });
+    Route::group(['middleware' => ['auth']], function () {
+        //
+        Route::get('/account', function () {
+            return view('account.accountinfo');
+        });
     
-    Route::get('/branch-location', 'StoreController@branchLocation');
+        Route::get('/chatlist', function () {
+            return view('account.chatlist');
+        });
     
-    Route::get('/rentwarehouse', 'StoreController@showRentwareHouse');
-
-    Route::get('/contact', function () {
-        return view('mobile.contact');
+        Route::get('/chatroom', function () {
+            return view('account.chatroom');
+        });
     });
 
-    Route::get('/joinus', function () {
-        return view('mobile.joinus');
-    });
-
-    Route::get('/about', function () {
-        return view('mobile.aboutus');
-    });
-
-    Route::get('/calc', function () {
-        return view('mobile.calculator');
-    });
-
-    Route::get('/faq', function () {
-        return view('mobile.faq');
-    });
-
-    Route::get('/lastnews', function () {
-        $data['users'] = [1, 2, 3, 4, 5];
-        return view('mobile.lastnews', $data);
-    });
-
-    Route::get('/news', function () {
-        return view('mobile.news');
-    });
-
-    Route::get('/login', function () {
-        return view('mobile.account.login');
-    });
-
-
-    Route::get('/register', function () {
-        return view('mobile.account.register');
-    });
-
-    Route::get('/forgetpwd', function () {
-        return view('mobile.account.forgetpassword');
-    });
-
-    Route::get('/account', function () {
-        if (session()->get('logged_in')) {
-            return view('mobile.account.accountinfo');
-        }
-        return redirect('/login');
-    });
-
-    Route::get('/chatlist', function () {
-        if (session()->get('logged_in')) {
-            return view('mobile.account.chatlist');
-        }
-        return redirect('/login');
-    });
-
-    Route::get('/chatroom', function () {
-        if (session()->get('logged_in')) {
-            return view('mobile.account.chatroom');
-        }
-        return redirect('/login');
-    });
+    
 });
-
 
 
 //Backend 

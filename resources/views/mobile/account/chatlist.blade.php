@@ -1,4 +1,4 @@
-@extends('mobile.layouts.app')
+@extends('layouts.app')
 
 @section('title')
 <title>{{__('Chat List')}}</title>
@@ -20,7 +20,7 @@
 @endsection
 
 @section('header')
-	@include('mobile.layouts.header')
+	@include('layouts.header')
 @endsection
 
 @section('content')
@@ -30,14 +30,14 @@
 
         <div class=" flex w-full">
             <div class=" w-1/4"></div>
-            <a class=" w-1/4 border text-center py-3 fontsize-11 regular-color bg-grey" href="{{url('mobile/account')}}">個人資料</a>
-            <a class=" w-1/4 border text-center py-3 fontsize-11 regular-color" href="{{url('mobile/chatlist')}}">信息</a>
+            <a class=" w-1/4 border text-center py-3 fontsize-11 regular-color bg-grey" href="{{url('account')}}">個人資料</a>
+            <a class=" w-1/4 border text-center py-3 fontsize-11 regular-color" href="{{url('chatlist')}}">信息</a>
             <div class=" w-1/4"></div>
         </div>
 
         <div class=" w-full border pt-2 px-2">
 
-            <a class="flex items-center border-b pt-1 pb-2 mx-2" href="{{url('mobile/chatroom')}}">
+            <a class="flex items-center border-b pt-1 pb-2 mx-2" href="{{url('chatroom')}}">
                 <div class=" w-1/6">
                     <img class=" w-12 h-12 rounded-full mr-4" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
                 </div>
@@ -49,7 +49,7 @@
                     <p class=" robert-font pt-1 fontsize-13 regular-color">你好! Paul Smith, 提提你要繳費.</p>
                 </div>
             </a>
-            <a class="flex items-center border-b pt-1 pb-2 mx-2" href="{{url('mobile/chatroom')}}">
+            <a class="flex items-center border-b pt-1 pb-2 mx-2" href="{{url('chatroom')}}">
                 <div class=" w-1/6">
                     <img class=" w-12 h-12 rounded-full mr-4" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
                 </div>
@@ -61,7 +61,7 @@
                     <p class=" robert-font pt-1 fontsize-13 regular-color">你好! Paul Smith, 提提你要繳費.</p>
                 </div>
             </a>
-            <a class="flex items-center border-b pt-1 pb-2 mx-2" href="{{url('mobile/chatroom')}}">
+            <a class="flex items-center border-b pt-1 pb-2 mx-2" href="{{url('chatroom')}}">
                 <div class=" w-1/6">
                     <img class=" w-12 h-12 rounded-full mr-4" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
                 </div>
@@ -73,7 +73,7 @@
                     <p class=" robert-font pt-1 fontsize-13 regular-color">你好! Paul Smith, 提提你要繳費.</p>
                 </div>
             </a>
-            <a class="flex items-center border-b pt-1 pb-2 mx-2" href="{{url('mobile/chatroom')}}">
+            <a class="flex items-center border-b pt-1 pb-2 mx-2" href="{{url('chatroom')}}">
                 <div class=" w-1/6">
                     <img class=" w-12 h-12 rounded-full mr-4" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
                 </div>
@@ -85,7 +85,7 @@
                     <p class=" robert-font pt-1 fontsize-13 regular-color">你好! Paul Smith, 提提你要繳費.</p>
                 </div>
             </a>
-            <a class="flex items-center pt-1 pb-2 mx-2" href="{{url('mobile/chatroom')}}">
+            <a class="flex items-center pt-1 pb-2 mx-2" href="{{url('chatroom')}}">
                 <div class=" w-1/6">
                     <img class=" w-12 h-12 rounded-full mr-4" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
                 </div>

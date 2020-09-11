@@ -1,4 +1,4 @@
-﻿@extends('mobile.layouts.app')
+﻿@extends('layouts.app')
 
 @section('title')
 <title>{{__('Rent Ware House')}}</title>
@@ -186,13 +186,13 @@
         /* font-weight:600; */
     }
 
-    .rentwarehouse-space-size-select-m {
+    .rentwarehouse-space-size-select {
         background-color: white;
         font-size: 17px;
         border: 1px solid gray;
     }
 
-    .rentwarehouse-space-size-select-m.active {
+    .rentwarehouse-space-size-select.active {
         background-color: #E0CBF6;
         font-size: 17px;
         border: none;
@@ -284,7 +284,7 @@
         font-size: 14px;
     }
 
-    .rentwarehouse-space-size-select-m {
+    .rentwarehouse-space-size-select {
         font-size: 17px;
     }
 
@@ -318,7 +318,7 @@
         font-size: 14px;
     }
 
-    .rentwarehouse-space-size-select-m {
+    .rentwarehouse-space-size-select {
         font-size: 17px;
     }
 
@@ -393,12 +393,12 @@
 @endsection
 
 @section('accessory')
-@include('mobile.partials.accessory')
+@include('partials.accessory')
 @endsection
 
 @section('content')
 @if($store != null)
-<div>
+<div class="pb-4">
     <div class="relative items-center">
 
         <img class="w-full" src="{{asset('images/Intersection 11@2x.png')}}" />
@@ -422,18 +422,18 @@
     </p>
     <div class="mx-1 fixed bottom-0 flex justify-start z-10 w-full" style="margin-bottom: 5px">
         <div class="bg-white shadow-lg py-1 px-3" style="width: 367px;">
-            <div id="rentwarehouse-modal-toggle-m" class="py-2 cursor-pointer text-center"><i class="icon wb-chevron-down"></i></div>
+            <div class="rentwarehouse-toggle-item py-2 cursor-pointer text-center"><i class="icon wb-chevron-down"></i></div>
             <div>
                 <p class="color-primary rentwarehouse-space-size-title-m pt-0 pb-4">你需要多大的空間?</p>
                 <div class="grid grid-cols-2 col-gap-4 row-gap-2">
                     @foreach($store->sizes as $key=>$size)
-                    <div data-price="{{$size->price}}" data-size="{{$size->size}}" data-prepaid-price="{{$size->prepaid_price}}" class="rounded p-2 color-primary rentwarehouse-space-size-select-m cursor-pointer text-center <?= $key == 0 ? 'active' : '' ?>"><b>{{$size->size}}</b>平方呎</div>
+                    <div data-price="{{$size->price}}" data-size="{{$size->size}}" data-prepaid-price="{{$size->prepaid_price}}" class="rounded p-2 color-primary rentwarehouse-space-size-select cursor-pointer text-center <?= $key == 0 ? 'active' : '' ?>"><b>{{$size->size}}</b>平方呎</div>
                     @endforeach
                 </div>
 
                 <div class="flex pt-4">
-                <p class="rentwarehouse-size-select-description-m my-auto">唔知自己需要咩size ? 試下我地既<a href="{{url('/mobile/calc')}}">空間計算器</a></p>
-                <img class="object-none box-content pl-1 -mt-1" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
+                    <p class="rentwarehouse-size-select-description-m my-auto">唔知自己需要咩size ? 試下我地既<a href="{{url('/calc')}}">空間計算器</a></p>
+                    <img class="object-none box-content pl-1 -mt-1" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
                 </div>
 
                 <p class="color-primary rentwarehouse-space-size-title-m pt-4 pb-4">請選擇付費方式</p>
@@ -475,7 +475,8 @@
                     </p>
                 </div>
                 <div class="w-2/5 px-1">
-                    <button id="modal-trigger-button" class="w-full rounded-full rentwarehouse-mobile-order-button py-3 mx-1">立即預訂</button>
+                    <button id="modalTrigger" class="w-full rounded-full rentwarehouse-mobile-order-button py-3 mx-1">立即預訂</button>
+
                 </div>
             </div>
         </div>
@@ -498,7 +499,7 @@
             </p>
         </div>
 
-        <img id="rentwarehouse-size-preview-m" class="mx-auto mb-4" src="{{asset('images/img_webbox.jpg')}}" />
+        <img id="rentwarehouse-size-preview" class="mx-auto mb-4" src="{{asset('images/img_webbox.jpg')}}" />
 
         <table style="width:92%" class="mx-auto text-center text0">
             <tr class="table-heading">
@@ -510,7 +511,7 @@
                 <th>會員價</th>
             </tr>
             @foreach($store->sizes as $size)
-            <tr class="border-b border-white bg-grey cursor-pointer rentwarehouse-table-item-m">
+            <tr class="border-b border-white bg-grey cursor-pointer rentwarehouse-table-item">
                 <td class="bg-yellow py-2">{{$size->size}}</td>
                 <td>({{$size->width}}"x{{$size->height}}"x{{$size->depth}}")</td>
                 <td><del>${{number_format($size->price)}}</del></td>
@@ -650,11 +651,11 @@
 
 </div>
 
-<div id="rentwarehouse-modal-m" class="modal" style="z-index:1000;">
+<div id="bookingModal" class="modal" style="z-index:1000;">
 
     <div class="modal-content">
 
-        <span class="close">&times;</span>
+        <span class="close" id="modalClose">&times;</span>
 
         <div class=" bg-white w-80 mx-auto mt-2 mb-8 pt-2">
 
@@ -747,99 +748,17 @@
 <div class="text-center text-4xl py-36">
     No data
 </div>
-
 @endif
 @endsection
 
-
-
 @section('scripts')
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 <script>
-    var branchSize;
-
-    function numberFormat(num) {
-        return Number(num).toString().replace(/\d(?=(\d{3})+)/g, '$&,');
-    }
-
-    $("#rentwarehouse-modal-toggle-m").click(function() {
-        $(this).next().toggle();
-
-        if ($(this).next().css("display") == "none") {
-            $(this).find("i").removeClass("wb-chevron-down");
-            $(this).find("i").addClass("wb-chevron-up");
-        } else {
-            $(this).find("i").removeClass("wb-chevron-up");
-            $(this).find("i").addClass("wb-chevron-down");
-        }
-    })
-
-    $(".rentwarehouse-space-size-select-m").click(function() {
-        $(".rentwarehouse-space-size-select-m").removeClass("active");
-        $(this).addClass("active");
-        $("#prepaid-price-wrapper").html(numberFormat($(this).attr('data-prepaid-price')));
-        $("#price-wrapper").html(numberFormat($(this).attr('data-price')));
-        $(".rentwarehouse-price-select:first").click();
-        branchSize = Number($(this).attr('data-size'));
-    })
-
-    $(".rentwarehouse-price-select").click(function() {
-        $(".rentwarehouse-price-select").removeClass("active");
-        $(this).addClass("active");
-        $(".selected-price").html($(this).find(".price-content").html());
-    })
-
-    function init() {
-        $(".rentwarehouse-space-size-select-m:first").click();
-    }
-
-    init();
-
-
-
-
-    var tablerows = document.getElementsByClassName("rentwarehouse-table-item-m");
-
-    for (var i = 0; i < tablerows.length; i++) {
-
-        tablerows[i].addEventListener("click", function(event) {
-
-            $("#rentwarehouse-size-preview-m").attr("src", "../images/size-" + $(this).find(".bg-yellow").html() + ".jpg");
-
-        });
-    }
-</script>
-<script>
-    // Get the modal
-    var modal = document.getElementById("rentwarehouse-modal-m");
-
-    // Get the button that opens the modal
-    var btn = document.getElementById("modal-trigger-button");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks the button, open the modal 
-    btn.onclick = function() {
-        $("#branchSize").val(branchSize);
-        $("#branchSizeTxt").html(branchSize);
-        modal.style.display = "block";
-    }
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+    $(function() {
+        OneStorage.RentwareHouse();
+    });
 </script>
 @endsection
 
 @section('footer')
-@include('mobile.layouts.footer')
+@include('layouts.footer')
 @endsection

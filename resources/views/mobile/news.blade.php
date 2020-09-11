@@ -1,4 +1,4 @@
-@extends('mobile.layouts.app')
+@extends('layouts.app')
 
 @section('title')
 <title>{{__('空間計算器')}}</title>
@@ -15,7 +15,7 @@
 @endsection
 
 @section('accessory')
-    @include('mobile.partials.accessory')
+    @include('partials.accessory')
 @endsection
 
 @section('content')
@@ -64,7 +64,7 @@
             </div>
         </div>
         <div class="col-span-2">
-            @include('partials.loginForm')
+            
         </div>
         <div class=" col-span-2 mx-3">
             <div class="text-left  pb-5">
@@ -124,5 +124,5 @@
 @endsection
 
 @section('footer')
-@include('mobile.layouts.footer')
+@include('layouts.footer')
 @endsection

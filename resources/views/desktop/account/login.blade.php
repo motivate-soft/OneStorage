@@ -1,4 +1,4 @@
-@extends('desktop.layouts.app')
+@extends('layouts.app')
 
 @section('title')
 <title>{{__('Sign In')}}</title>
@@ -29,7 +29,7 @@
                 @csrf
                 <div class="input-group mb-4">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-                    <input class="form-control" name="phoneNumber" required type="text" placeholder="電話號碼">
+                    <input class="form-control" name="phone" required type="text" placeholder="電話號碼">
                 </div>
 
                 <input class="w-full form-control mb-6" name="password" type="password" required style="padding-left:32px" type="text" placeholder="密碼">

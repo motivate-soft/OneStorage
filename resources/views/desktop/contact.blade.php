@@ -1,4 +1,4 @@
-@extends('desktop.layouts.app')
+@extends('layouts.app')
 
 @section('title')
 <title>{{__('Contact Us')}}</title>
@@ -205,7 +205,7 @@
 @endsection
 
 @section('accessory')
-@include('desktop.partials.accessory')
+@include('partials.accessory')
 @endsection
 
 @section('content')
@@ -489,7 +489,7 @@
             </div>
         </div>
         <div class="col-span-2 pr-4">
-            <!-- @include('desktop.partials.loginForm') -->
+            <!-- @include('partials.loginForm') -->
             <form class="form-enquiry" method="post" action="{{url('/enquiry')}}">
                 @csrf
                 <input type="hidden" name="page" value="Contact us">
@@ -573,5 +573,5 @@
 @endsection
 
 @section('footer')
-@include('desktop.layouts.footer1')
+@include('layouts.footer1')
 @endsection

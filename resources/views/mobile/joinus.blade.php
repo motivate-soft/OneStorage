@@ -1,4 +1,4 @@
-@extends('mobile.layouts.app')
+@extends('layouts.app')
 
 @section('title')
 <title>{{__('Join Us')}}</title>
@@ -10,7 +10,7 @@
 @endsection
 
 @section('accessory')
-    @include('mobile.partials.accessory')
+    @include('partials.accessory')
 @endsection
 
 @section('content')
@@ -122,5 +122,5 @@
 @endsection
 
 @section('footer')
-@include('mobile.layouts.footer')
+@include('layouts.footer')
 @endsection

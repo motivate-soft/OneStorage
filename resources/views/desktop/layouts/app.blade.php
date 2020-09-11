@@ -34,17 +34,17 @@
 
 
     <div class="app-container text-primary">
-        @include('desktop.layouts.header')
+        @include('layouts.header')
         <main id="main-content">
             @yield('content')
         </main>
         @yield('footer')
     </div>
 
-    @yield('scripts')
-
     <script src="{{ asset('js/accessory.js') }}"></script>
-    <!-- <script src="{{ asset('js/common.js') }}"></script> -->
+    <script src="{{ asset('js/onestorage.js') }}"></script>
+
+    @yield('scripts')
     <script>
         resize();
 

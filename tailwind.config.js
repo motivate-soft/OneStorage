@@ -23,19 +23,26 @@ module.exports = {
         'purple': '#7E3E97',
         'grey': '#AFAFAF',
         'grey-1': '#B2B5BD',
+        'grey-2': '#6B6B6B',
         'yellow': '#FABD02'
       },
 
       backgroundColor: {
         'yellow': '#FABD02',
+        'yellow-1': '#FFF563',
+        'green': '#63FFB1',
         'primary': '#56628C',
         'second': '#E0CBF6',
         'grey': '#F6F6F6',
         'grey-1': '#F9F9F9',
+        'grey-2': '#EFEFEF'
       },
 
       borderColor: {
-        'grey': '#888888'
+        'grey': '#888888',
+        'primary': '#DCDCDC',
+        'second':'#A7A7A7',
+        'third':'#707070'
       }
     },
   },

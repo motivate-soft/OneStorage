@@ -1,4 +1,4 @@
-@extends('desktop.layouts.app')
+@extends('layouts.app')
 
 @section('title')
 <title>{{__('Rent Ware House')}}</title>
@@ -351,7 +351,7 @@
 @endsection
 
 @section('accessory')
-@include('desktop.partials.accessory')
+@include('partials.accessory')
 @endsection
 
 @section('content')
@@ -606,7 +606,7 @@
                 </div>
             </div>
 
-            <button id="modal-trigger-button" class="rounded-full w-full rentwarehouse-price-select-button py-2 my-2 color-primary">立即預訂</button>
+            <button id="modalTrigger" class="rounded-full w-full rentwarehouse-price-select-button py-2 my-2 color-primary">立即預訂</button>
 
             <p class="rentwarehouse-price-select-news-title color-primary my-2">最新資訊</p>
 
@@ -623,11 +623,13 @@
         </div>
     </div>
 </div>
-
-<div id="rentwarehouse-modal" class="z-50 modal">
+<?php
+$user = Auth::user();
+?>
+<div id="bookingModal" class="z-50 modal">
     <div class="modal-content">
 
-        <span class="close">&times;</span>
+        <span class="close" id="modalClose">&times;</span>
 
         <div class=" bg-white w-96 mx-auto mt-2 mb-8 pt-2">
 
@@ -655,10 +657,18 @@
                 <div class="flex mb-4 w-full pt-6 border-t">
                     <div class="flex w-1/2 input-group">
                         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">
+                        @if(Auth::check())
+                        <input class="w-full form-control" type="text" placeholder="{{$user->first_name}}" disabled name="firstName" required>
+                        @else
                         <input class="w-full form-control" type="text" placeholder="姓" name="firstName" required>
+                        @endif
                     </div>
                     <div class="w-1/2 flex input-group">
+                        @if(Auth::check())
+                        <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="{{$user->last_name}}" disabled name="lastName" required>
+                        @else
                         <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名" name="lastName" required>
+                        @endif
 
                     </div>
                 </div>
@@ -666,7 +676,11 @@
 
                 <div class="input-group mb-3">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
+                    @if(Auth::check())
+                    <input class="form-control" type="text" placeholder="{{$user->email}}" disabled name="email">
+                    @else
                     <input class="form-control" type="text" placeholder="電話號碼" name="email">
+                    @endif
                 </div>
 
                 <div class="w-full inline-block relative mb-4">
@@ -726,102 +740,13 @@
 @endsection
 
 @section('footer')
-@include('desktop.layouts.footer')
+@include('layouts.footer')
 @endsection
 
 @section('scripts')
-
-
 <script>
-    var branchSize;
-    function numberFormat(num) {
-        return Number(num).toString().replace(/\d(?=(\d{3})+)/g, '$&,');
-    }
-
-    $(".rentwarehouse-toggle-item").click(function() {
-        $(this).next().toggle();
-
-        if ($(this).next().css("display") == "none") {
-            $(this).find("i").removeClass("wb-chevron-up");
-            $(this).find("i").addClass("wb-chevron-down");
-        } else {
-            $(this).find("i").removeClass("wb-chevron-down");
-            $(this).find("i").addClass("wb-chevron-up");
-        }
-    })
-
-    $(".rentwarehouse-space-size-select").click(function() {
-        $(".rentwarehouse-space-size-select").removeClass("active");
-        $(this).addClass("active");
-        $("#prepaid-price-wrapper").html(numberFormat($(this).attr('data-prepaid-price')));
-        $("#price-wrapper").html(numberFormat($(this).attr('data-price')));
-        $(".rentwarehouse-price-select:first").click();
-        branchSize = Number($(this).attr('data-size'));
-    })
-
-    $(".rentwarehouse-price-select").click(function() {
-        $(".rentwarehouse-price-select").removeClass("active");
-        $(this).addClass("active");
-        $(".selected-price").html($(this).find(".price-content").html());
-    })
-
-    function init() {
-        $(".rentwarehouse-space-size-select:first").click();
-    }
-
-    init();
-
-
-    var subimages = document.getElementsByClassName("rentwarehouse-sub-image");
-
-    for (var i = 0; i < subimages.length; i++) {
-
-        subimages[i].addEventListener("click", function(event) {
-
-            $("#rentwarehouse-main-image").attr("src", $(this).attr("src"));
-
-        });
-    }
-
-    var tablerows = document.getElementsByClassName("rentwarehouse-table-item");
-
-    for (var i = 0; i < tablerows.length; i++) {
-
-
-        tablerows[i].addEventListener("mouseenter", function(event) {
-
-            $("#rentwarehouse-size-preview").attr("src", "images/size-" + $(this).find(".bg-yellow").html() + ".jpg");
-
-        });
-    }
-</script>
-<script>
-    // Get the modal
-    var modal = document.getElementById("rentwarehouse-modal");
-
-    // Get the button that opens the modal
-    var purchaseBtn = document.getElementById("modal-trigger-button");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks the button, open the modal 
-    purchaseBtn.onclick = function() {
-        $("#branchSize").val(branchSize);
-        $("#branchSizeTxt").html(branchSize);
-        modal.style.display = "block";
-    }
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+    $(function() {
+        OneStorage.RentwareHouse();
+    });
 </script>
 @endsection

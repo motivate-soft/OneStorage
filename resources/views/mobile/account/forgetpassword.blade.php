@@ -1,4 +1,4 @@
-@extends('mobile.layouts.app')
+@extends('layouts.app')
 
 @section('title')
 <title>{{__('Forget Password')}}</title>
@@ -14,7 +14,7 @@
 @endsection
 
 @section('header')
-	@include('mobile.layouts.header')
+	@include('layouts.header')
 @endsection
 
 @section('content')

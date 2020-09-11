@@ -1,4 +1,4 @@
-@extends('mobile.layouts.app')
+@extends('layouts.app')
 
 @section('title')
 <title>{{__('Chat Room')}}</title>
@@ -19,7 +19,7 @@
 @endsection
 
 @section('header')
-@include('mobile.layouts.header')
+@include('layouts.header')
 @endsection
 
 @section('content')
@@ -29,14 +29,14 @@
 
     <div class=" flex w-full">
         <div class=" w-1/4"></div>
-        <a class=" w-1/4 border text-center py-3 fontsize-11 regular-color bg-grey" href="{{url('mobile/account')}}">個人資料</a>
-        <a class=" w-1/4 border text-center py-3 fontsize-11 regular-color" href="{{url('mobile/chatlist')}}">信息</a>
+        <a class=" w-1/4 border text-center py-3 fontsize-11 regular-color bg-grey" href="{{url('account')}}">個人資料</a>
+        <a class=" w-1/4 border text-center py-3 fontsize-11 regular-color" href="{{url('chatlist')}}">信息</a>
         <div class=" w-1/4"></div>
     </div>
 
     <div class="border">
         <p class="border-b py-2">
-            <a class="mx-4" href="{{url('mobile/chatlist')}}" style="font-size: 19px; color: #C293FC">
+            <a class="mx-4" href="{{url('chatlist')}}" style="font-size: 19px; color: #C293FC">
                 &lt; Back
             </a>
         </p>

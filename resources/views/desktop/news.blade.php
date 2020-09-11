@@ -1,4 +1,4 @@
-@extends('desktop.layouts.app')
+@extends('layouts.app')
 
 @section('title')
 <title>{{__('空間計算器')}}</title>
@@ -14,7 +14,7 @@
 @endsection
 
 @section('accessory')
-    @include('desktop.partials.accessory')
+    @include('partials.accessory')
 @endsection
 
 @section('content')
@@ -99,7 +99,7 @@
 
 <div class="bg-white mx-auto w-3/5 pt-14 pb-10 mb-10">
     <div class="w-1/3 mx-auto">
-        @include('desktop.partials.loginForm')
+        
     </div>
 </div>
 @endsection
@@ -110,5 +110,5 @@
 @endsection
 
 @section('footer')
-@include('desktop.layouts.footer')
+@include('layouts.footer')
 @endsection

@@ -81,26 +81,16 @@ class StoreController extends Controller
 
     public function showRentwareHouse(Request $request)
     {
-        $url = $request->url();
         $id = isset($_GET['storeId']) ? $_GET['storeId'] : -1;
         $store = Store::find($id);
-        if (str_contains($url, "mobile")) {
-            return view('mobile.rentwarehouse', ['store' => $store]);
-        } else {
-            return view('desktop.rentwarehouse', ['store' => $store]);
-        }
+        return view('rentwarehouse', ['store' => $store]);
     }
 
     public function branchLocation(Request $request)
     {
-        $url = $request->url();
         $location = isset($_GET['location']) ? $_GET['location'] : '';
         $locations = Store::groupBy('location')->select('location')->get();
         $stores = Store::where('location', $location)->get();
-        if (str_contains($url, "mobile")) {
-            return view('mobile.branchlocation', ['locations' => $locations, 'stores' => $stores]);
-        } else {
-            return view('desktop.branchlocation', ['locations' => $locations, 'stores' => $stores]);
-        }
+        return view('branchlocation', ['locations' => $locations, 'stores' => $stores]);
     }
 }

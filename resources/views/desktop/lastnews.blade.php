@@ -1,4 +1,4 @@
-@extends('desktop.layouts.app')
+@extends('layouts.app')
 
 @section('title')
 <title>{{__('最新資訊')}}</title>
@@ -14,7 +14,7 @@
 @endsection
 
 @section('accessory')
-    @include('desktop.partials.accessory')
+    @include('partials.accessory')
 @endsection
 
 @section('content')
@@ -58,5 +58,5 @@
 
 
 @section('footer')
-@include('desktop.layouts.footer')
+@include('layouts.footer')
 @endsection

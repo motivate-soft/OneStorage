@@ -1,5 +1,5 @@
 <nav class="w-full pin-t z-40 fixed text-primary">
-    @include('desktop.partials.latest_news')
+    @include('partials.latest_news')
     <div class="bg-white flex items-center justify-between flex-wrap pr-10 py-5" style="background: rgba(255, 255, 255, 0.75); ">
         <div class="flex items-center flex-shrink-0 text-white" style="padding-left: 140px;">
             <a href="/"><img class="fill-current" width="90" height="45" src="{{asset('images/header/logo@2x.png')}}" /></a>
@@ -45,7 +45,7 @@
                 </li>
 
                 <li class="relative mr-4 text-white font-thin">
-                    <a href="{{url('/mobile')}}" class="bg-gray-500 px-3 py-px text-xs w-full">Mobile Demo</a><br />
+                    <!-- <a href="{{url('/mobile')}}" class="bg-gray-500 px-3 py-px text-xs w-full">Mobile Demo</a><br /> -->
                     <a href="{{url('/backend')}}" class="bg-gray-700 px-3 py-px text-xs w-full">Backend Demo</a><br />
                 </li>
 
@@ -69,7 +69,7 @@
                 </li>
 
                 <?php
-                if (session()->get('logged_in')) {
+                if (Illuminate\Support\Facades\Auth::check()) {
                 ?>
                     <li class="mr-1 md:mr-0">
                         <a class="inline-block font_16 default-color no-underline py-2 px-2" href="{{url('/account')}}" style="display: flex;">

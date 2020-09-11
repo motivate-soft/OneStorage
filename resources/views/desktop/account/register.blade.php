@@ -1,4 +1,4 @@
-@extends('desktop.layouts.app')
+@extends('layouts.app')
 
 @section('title')
 <title>{{__('Register')}}</title>
@@ -10,7 +10,8 @@
     #main-content {
         font-family: "RobertBlack";
     }
-    body{
+
+    body {
         background-color: white !important;
     }
 </style>
@@ -24,15 +25,15 @@
     <div class="flex flex-col lg:flex-row pt-10">
 
         <div class="w-full lg:w-1/2 px-4 border-r-none lg:border-r">
-            <form class="register-form" style="padding-right: 20px !important;">
-
+            <form class="register-form" style="padding-right: 20px !important;" method="post" action="{{url('/register')}}">
+                @csrf
                 <div class="flex mb-4 w-full">
                     <div class="flex w-1/2 input-group">
                         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">
-                        <input class="w-full form-control" type="text" placeholder="姓">
+                        <input class="w-full form-control appearance-none" type="text" placeholder="姓" name="firstName" required>
                     </div>
                     <div class="w-1/2 flex input-group">
-                        <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名">
+                        <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名" name="lastName" required>
 
                     </div>
                 </div>
@@ -40,12 +41,12 @@
 
                 <div class="input-group mb-4">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-                    <input class="form-control" type="text" placeholder="電話號碼">
+                    <input class="form-control" type="text" placeholder="電話號碼" name="phone" required>
                 </div>
 
                 <div class="input-group mb-4">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">
-                    <input class="form-control" type="text" placeholder="電子郵件">
+                    <input class="form-control" type="email" placeholder="電子郵件" name="email" required>
                 </div>
 
                 <div class="radio-group">
@@ -53,11 +54,11 @@
                     <p class="radio-title w-1/4">姓別</p>
 
                     <div class=" radio-custom w-1/4">
-                        <input type="radio" checked id="genderunchecked" class="radio-gray" name="gender">
+                        <input type="radio" checked id="genderunchecked" class="radio-gray" value="m" name="gender">
                         <label for="genderunchecked" class="radio-label">男</label>
                     </div>
                     <div class=" radio-custom w-1/4">
-                        <input type="radio" id="genderchecked" class="radio-gray" name="gender">
+                        <input type="radio" id="genderchecked" class="radio-gray" value="w" name="gender">
                         <label for="genderchecked" class="radio-label">女</label>
                     </div>
                 </div>
@@ -68,8 +69,8 @@
 
                     <div class=" date-component">
                         <div class="inline-block relative">
-                            <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日">
-                                <option value="" selected>日</option>
+                            <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日" name="day" required>
+                                <option value="" selected disabled>日</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -95,8 +96,8 @@
 
                     <div class=" date-component">
                         <div class="inline-block relative">
-                            <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
-                                <option value="" selected>月</option>
+                            <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="month" required>
+                                <option value="" selected disabled>月</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -119,8 +120,8 @@
 
                     <div class=" date-component">
                         <div class="inline-block relative">
-                            <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
-                                <option value="" selected>年</option>
+                            <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="year" required>
+                                <option value="" selected disabled>年</option>
                                 <option value="2011">2011</option>
                                 <option value="2012">2012</option>
                                 <option value="2013">2013</option>
@@ -146,8 +147,8 @@
 
                     <div class="flex mb-6">
                         <div class="w-1/3 inline-block relative">
-                            <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
-                                <option value="" selected>地域</option>
+                            <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="area">
+                                <option value="" selected disabled>地域</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -159,8 +160,8 @@
                         </div>
 
                         <div class="w-2/3 inline-block relative ml-4">
-                            <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
-                                <option value="" selected>地區</option>
+                            <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="place">
+                                <option value="" selected disabled>地區</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -173,13 +174,13 @@
                     </div>
 
 
-                    <input class="w-full form-control mb-6" style="padding-left:16px" type="text" placeholder="地址第一行">
+                    <input class="w-full form-control mb-6" style="padding-left:16px" type="text" placeholder="地址第一行" name="addr1">
 
-                    <input class="w-full form-control mb-6" style="padding-left:16px" type="text" placeholder="地址第二行">
+                    <input class="w-full form-control mb-6" style="padding-left:16px" type="text" placeholder="地址第二行" name="addr2">
 
                     <div class="w-full inline-block relative mb-6">
-                        <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
-                            <option value="" selected>最佳聯絡方式</option>
+                        <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="contacatMethod">
+                            <option value="" selected disabled>最佳聯絡方式</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -195,11 +196,11 @@
                         <p class="radio-title w-4/6">是否One Storage 現有客戶 ? </p>
 
                         <div class=" radio-custom w-1/6">
-                            <input type="radio" id="storageyesunchecked" checked class="radio-gray" name="storage">
+                            <input type="radio" id="storageyesunchecked" checked class="radio-gray" value="true" name="isCustomer">
                             <label for="storageyesunchecked" class="radio-label">是</label>
                         </div>
                         <div class=" radio-custom w-1/6">
-                            <input type="radio" id="storagenochecked" class="radio-gray" name="storage">
+                            <input type="radio" id="storagenochecked" class="radio-gray" value="false" name="isCustomer">
                             <label for="storagenochecked" class="radio-label">否</label>
                         </div>
                     </div>
@@ -207,8 +208,8 @@
                     <div class="flex">
                         <div class="w-2/3"></div>
                         <div class="w-1/3 inline-block relative mb-6">
-                            <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日">
-                                <option value="" selected>分店</option>
+                            <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="branch">
+                                <option value="" selected disabled>分店</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -225,11 +226,11 @@
                         <p class="radio-title w-4/6">是否SoundWill Club 會員 ? </p>
 
                         <div class=" radio-custom w-1/6">
-                            <input type="radio" id="clubyesunchecked" checked class="radio-gray" name="club">
+                            <input type="radio" id="clubyesunchecked" checked class="radio-gray" value="true" name="isMember">
                             <label for="clubyesunchecked" class="radio-label">是</label>
                         </div>
                         <div class=" radio-custom w-1/6">
-                            <input type="radio" id="clubnochecked" class="radio-gray" name="club">
+                            <input type="radio" id="clubnochecked" class="radio-gray" value="false" name="isMember">
                             <label for="clubnochecked" class="radio-label">否</label>
                         </div>
                     </div>
@@ -238,17 +239,18 @@
 
                 <div class="relative">
                     <img class="show-icon" src="{{asset('images/contactUs/Image_39@2x.png')}}" alt="Mobile">
-                    <input class="show-input w-full form-control mb-6" style="padding-left:16px" type="text" placeholder="密碼">
+                    <input class="show-input w-full form-control mb-6" style="padding-left:16px" placeholder="密碼" name="password" id="password" type="password" required>
                 </div>
 
                 <div class="relative">
                     <img class="show-icon" src="{{asset('images/contactUs/Image_39@2x.png')}}" alt="Mobile">
-                    <input class="w-full form-control mb-6" style="padding-left:16px" type="text" placeholder="確認密碼">
+                    <input class="w-full form-control mb-6" style="padding-left:16px" placeholder="確認密碼" type="password" name="confirm_password" id="confirm_password" required>
                 </div>
 
+                <span class="mb-4" id='message'></span>
 
 
-                <button class="submit-btn hover:bg-purple-400">
+                <button class="submit-btn hover:bg-purple-400 mt-4">
                     註冊
                 </button>
             </form>
@@ -275,4 +277,12 @@
 @endsection
 
 @section('scripts')
+<script>
+    $('#password, #confirm_password').on('keyup', function() {
+        if ($('#password').val() == $('#confirm_password').val()) {
+            $('#message').html('Matching').css('color', 'green');
+        } else
+            $('#message').html('Not Matching').css('color', 'red');
+    });
+</script>
 @endsection

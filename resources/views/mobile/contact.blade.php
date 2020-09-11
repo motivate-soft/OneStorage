@@ -1,4 +1,4 @@
-@extends('mobile.layouts.app')
+@extends('layouts.app')
 
 @section('title')
 <title>{{__('Contact Us')}}</title>
@@ -243,7 +243,7 @@
 @endsection
 
 @section('accessory')
-@include('mobile.partials.accessory')
+@include('partials.accessory')
 @endsection
 
 @section('content')
@@ -610,5 +610,5 @@
 @endsection
 
 @section('footer')
-@include('mobile.layouts.footer1')
+@include('layouts.footer1')
 @endsection

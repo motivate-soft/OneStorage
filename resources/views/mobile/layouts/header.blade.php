@@ -9,7 +9,7 @@
         </button>
     </div>
     <div class=" items-center  text-white " style="margin-right:123px">
-        <a href="/mobile"><img class="fill-current ml-20" width="90" height="45" src="{{asset('images/header/logo@2x.png')}}" id="default_log" /></a>
+        <a href="/"><img class="fill-current ml-20" width="90" height="45" src="{{asset('images/header/logo@2x.png')}}" id="default_log" /></a>
     </div>
     <div class="  text-white mx-auto">
         <a href="https://wa.me/85251188503">
@@ -19,10 +19,10 @@
     <div class="w-full flex-grow z-50  hidden pt-6" id="nav-content" style="background-color:#F6F6F6;">
         <div class="my-2 px-2">
             <div class="text-left px-4 py-2 m-2 font_16 default-color">
-                <a href="{{url('/mobile/about')}}">關於我們</a>
+                <a href="{{url('/about')}}">關於我們</a>
             </div>
             <div class="text-left px-4 py-2 m-2 font_16 default-color">
-                <a href="{{url('/mobile/lastnews')}}">最新資訊</a>
+                <a href="{{url('/lastnews')}}">最新資訊</a>
             </div>
             <div class="text-left px-4 pt-2 py-2 m-2 font_16 default-color">
                 <div class="flex ">
@@ -36,7 +36,7 @@
 
                     <div class="text-left w-full px-4  m-2 font_16 default-color">
                         <div class="flex">
-                            <a class="inline-block font_16 default-color no-underline" href="{{url('/mobile/branch-location?location=九龍')}}">九龍
+                            <a class="inline-block font_16 default-color no-underline" href="{{url('/branch-location?location=九龍')}}">九龍
                             </a>
                             <!-- <div class="inset-y-0 right-0 items-center px-2 text-gray-700" style="margin-left: 57px;">
                                 <a href="javascript:void(0)"><i class="icon wb-chevron-down"></i></a>
@@ -45,7 +45,7 @@
                     </div>
                     <div class="text-left w-full px-4  m-2 font_16 default-color">
                         <div class="flex">
-                            <a class="inline-block font_16 default-color no-underline" href="{{url('/mobile/branch-location?location=新界')}}">新界
+                            <a class="inline-block font_16 default-color no-underline" href="{{url('/branch-location?location=新界')}}">新界
                             </a>
                             <!-- <div class="inset-y-0 right-0 items-center px-2 text-gray-700" style="margin-left: 57px;">
                                 <a href="javascript:void(0)"><i class="icon wb-chevron-down"></i></a>
@@ -54,7 +54,7 @@
                     </div>
                     <div class="text-left w-full px-4 m-2 font_16 default-color">
                         <div class="flex accordion_2">
-                            <a class="inline-block font_16 default-color no-underline" href="{{url('/mobile/branch-location?location=香港島')}}">新界區
+                            <a class="inline-block font_16 default-color no-underline" href="{{url('/branch-location?location=香港島')}}">新界區
                             </a>
                             <!-- <div class="inset-y-0 right-0 items-center px-2 text-gray-700" style="margin-left: 57px; ">
                                 <a href="javascript:void(0)"><i class="icon wb-chevron-down"></i></a>
@@ -76,23 +76,23 @@
 
             </div>
             <div class="text-left flex px-4 py-2 m-2 font_16 default-color">
-                <a class="inline-block font_16 default-color no-underline" href="{{url('/mobile/calc')}}">空間計算器
+                <a class="inline-block font_16 default-color no-underline" href="{{url('/calc')}}">空間計算器
                 </a>
                 <img src="{{asset('images/header/icons8-crown-48.png')}}" class="ml-5 relative" style="margin-top: -5px;">
             </div>
             <div class="text-left px-4 py-2 m-2 font_16 default-color">
-                <a href="{{url('/mobile/faq')}}">常見問題</a>
+                <a href="{{url('/faq')}}">常見問題</a>
             </div>
             <div class="text-left px-4 py-2 m-2 font_16 default-color">
-                <a href="{{url('/mobile/contact')}}">聯絡我們</a>
+                <a href="{{url('/contact')}}">聯絡我們</a>
             </div>
 
             <div class="text-left px-4 py-2 m-2 font_16 default-color cursor-pointer">
-                <a href="{{url('/')}}">Desktop Demo</a>
+                <!-- <a href="{{url('/')}}">Desktop Demo</a> -->
             </div>
 
             <div class="text-left px-4 py-2 m-2 font_16 default-color cursor-pointer">
-                <a href="{{url('/backend')}}">Backend Demo</a>
+                <!-- <a href="{{url('/backend')}}">Backend Demo</a> -->
             </div>
 
             <div class="flex text-left px-4 py-2 m-2 font_16 default-color">
@@ -100,13 +100,13 @@
                 if (session()->get('logged_in')) {
                 ?>
                     <div class="text-left w-1/2 py-1 font_16 default-color">
-                        <a class="inline-block font_16 default-color no-underline py-2" href="{{url('/mobile/account')}}" style="display: flex;">
+                        <a class="inline-block font_16 default-color no-underline py-2" href="{{url('/account')}}" style="display: flex;">
                             <img class="mr-1" src="{{asset('images/header/icons8-user-50@2x.png')}}" />
                             <span class=" self-center text-primary">帳戶</span>
                         </a>
                     </div>
                     <div class="flex text-left w-1/2 py-1 font_16 default-color">
-                        <a class="inbox new-msg flex-shrink-0 inline-block  font_16 default-color no-underline  py-2" href="{{url('/mobile/chatlist')}}" style="display: flex;">
+                        <a class="inbox new-msg flex-shrink-0 inline-block  font_16 default-color no-underline  py-2" href="{{url('/chatlist')}}" style="display: flex;">
                             <img class="" src="{{asset('images/header/icons8-secured-letter-40@2x.png')}}" />
                             <span class="self-center text-primary mx-2">
                                 信息
@@ -117,13 +117,13 @@
                 } else {
                 ?>
                     <div class="text-left w-1/2 py-1 font_16 default-color">
-                        <a class="inline-block font_16 default-color no-underline py-2" href="{{url('/mobile/login')}}" style="display: flex;">
+                        <a class="inline-block font_16 default-color no-underline py-2" href="{{url('/login')}}" style="display: flex;">
                             <img class=" mr-1" src="{{asset('images/header/icons8-user-50@2x.png')}}" />
                             <span class=" self-center text-primary">登入</span>
                         </a>
                     </div>
                     <div class="text-left w-1/2 py-1 font_16 default-color">
-                        <a class=" inline-block  font_16 default-color no-underline  py-2" href="{{url('/mobile/register')}}" style="display: flex;">
+                        <a class=" inline-block  font_16 default-color no-underline  py-2" href="{{url('/register')}}" style="display: flex;">
                             <img class="mr-1" src="{{asset('images/header/icons8-join-50@2x.png')}}" />
                             <span class="self-center text-primary">
                                 註冊

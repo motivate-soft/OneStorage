@@ -1,4 +1,4 @@
-﻿@extends('mobile.layouts.app')
+﻿@extends('layouts.app')
 
 @section('title')
 <title>{{__('Branch Location')}}</title>
@@ -22,7 +22,8 @@
     }
 
     .accordion:hover {
-        background-color: #E0CB00;
+        background-color: #9B62D7;
+        color: white;
     }
 
     .panel-other {
@@ -213,7 +214,7 @@
 @endsection
 
 @section('accessory')
-@include('mobile.partials.accessory')
+@include('partials.accessory')
 @endsection
 
 @section('content')
@@ -223,7 +224,7 @@
 <div class="p-5">
     <div class="rentwarehouse-wrapper-title color-primary text-center">租倉</div>
 
-    <form id="branchSearchForm" class="flex items-center px-1 py-5 mx-auto" method="get" action="{{url('/mobile/rentwarehouse')}}">
+    <form id="branchSearchForm" class="flex items-center px-1 py-5 mx-auto" method="get" action="{{url('/rentwarehouse')}}">
         <img class="rentwarehouse-select-store-image-m px-0" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
         <input id="storeId" type="hidden" name="storeId" value="{{$stores[0]['id']}}" />
         <div class="flex relative rentwarehouse-select-store-item-area-m mx-1">
@@ -304,7 +305,7 @@
 
         </div>
         <div class="flex pt-5 pb-3">
-            <p class="branchlocation-store-select-description my-auto">唔知自己需要咩size ? 試下我地既<a href="{{url('/mobile/calc')}}">空間計算器</a></p>
+            <p class="branchlocation-store-select-description my-auto">唔知自己需要咩size ? 試下我地既<a href="{{url('/calc')}}">空間計算器</a></p>
             <img class="object-none box-content pl-1 -mt-1" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
         </div>
 
@@ -330,13 +331,13 @@
                     <img class="w-3" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
                     <p class="color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                 </div>
-                <a href="{{url('/mobile/rentwarehouse?storeId='). $store->id}}">
+                <a href="{{url('/rentwarehouse?storeId='). $store->id}}">
                     <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
                         選擇
                     </button>
                 </a>
             </div>
-           
+
         </div>
         @endforeach
     </div>
@@ -354,6 +355,9 @@
 <script src="{{asset('branchlocation/ribbon/js/Config.js')}}"></script>
 <script src="{{asset('branchlocation/ribbon/js/Site.js')}}"></script>
 <script>
+    $(function() {
+        OneStorage.BranchLocation();
+    });
     // Script For Accordion
     var acc = document.getElementsByClassName("accordion");
     var i;
@@ -371,52 +375,9 @@
             }
         });
     }
-
-    var stores = document.getElementsByClassName("branchlocation-m-item");
-
-    for (var i = 0; i < stores.length; i++) {
-
-        stores[i].addEventListener("click", function(event) {
-
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-
-            this.className += " active";
-
-            console.log(event);
-
-        });
-    }
-</script>
-<script>
-    $(function() {
-        $("#slider-range").slider({
-            range: true,
-            min: 200,
-            max: 2500,
-            values: [200, 2500],
-            slide: function(event, ui) {
-                $("#amount").html("$" + ui.values[0] + " ~ $" + ui.values[1]);
-            }
-        });
-        $("#amount").html("$" + $("#slider-range").slider("values", 0) +
-            " - $" + $("#slider-range").slider("values", 1));
-
-        $("#location-select").change(function() {
-            const location = $(this).val();
-            if (location == "") {
-                return;
-            }
-            window.location.href = ("{{url('/mobile/branch-location?location=')}}" + location);
-        })
-
-        $("#branch-select").change(function() {
-            $("#storeId").val($(this).val());
-        })
-    });
 </script>
 @endsection
 
 @section('footer')
-@include('mobile.layouts.footer1')
+@include('layouts.footer1')
 @endsection

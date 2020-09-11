@@ -1,4 +1,4 @@
-@extends('desktop.layouts.app')
+@extends('layouts.app')
 
 @section('title')
 <title>{{__('Location')}}</title>
@@ -172,7 +172,7 @@
 @endsection
 
 @section('accessory')
-@include('desktop.partials.accessory')
+@include('partials.accessory')
 @endsection
 
 
@@ -359,67 +359,12 @@
 <script src="{{asset('branchlocation/ribbon/js/Site.js')}}"></script>
 
 <script>
-    var stores = document.getElementsByClassName("store-select");
-
-    for (var i = 0; i < stores.length; i++) {
-
-        stores[i].addEventListener("click", function(event) {
-
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-
-            this.parentNode.parentNode.className += " active";
-
-            console.log(event);
-
-        });
-    }
-</script>
-
-<script>
     $(function() {
-        $("#slider-range").slider({
-            range: true,
-            min: 200,
-            max: 2500,
-            values: [200, 2500],
-            slide: function(event, ui) {
-                $("#amount").html("$" + ui.values[0] + " ~ $" + ui.values[1]);
-            }
-        });
-        $("#amount").html("$" + $("#slider-range").slider("values", 0) +
-            " - $" + $("#slider-range").slider("values", 1));
-
-
-        $(".rentwarehouse-price-toggle-button").click(function() {
-            $(this).next().toggle();
-
-            if ($(this).next().css("display") == "none") {
-                $(this).find("i").removeClass("wb-triangle-up");
-                $(this).find("i").addClass("wb-triangle-down");
-            } else {
-                $(this).find("i").removeClass("wb-triangle-down");
-                $(this).find("i").addClass("wb-triangle-up");
-            }
-
-        });
-
-        $("#location-select").change(function() {
-            const location = $(this).val();
-            if (location == "") {
-                return;
-            }
-            window.location.href = ("{{url('branch-location?location=')}}" + location);
-        })
-
-        $("#branch-select").change(function() {
-            $("#storeId").val($(this).val());
-        })
-
+        OneStorage.BranchLocation();
     });
 </script>
 @endsection
 
 @section('footer')
-@include('desktop.layouts.footer1')
+@include('layouts.footer1')
 @endsection

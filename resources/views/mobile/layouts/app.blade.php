@@ -116,17 +116,21 @@
 
 
     <div class="app-container flex-1 text-primary">
-        @include('mobile.partials.latest_news')
-        @include('mobile.layouts.header')
+        @include('partials.latest_news')
+        @include('layouts.header')
         <main id="main-content" class="bg-white">
             @yield('content')
         </main>
         @yield('footer')
     </div>
 
-    @yield('scripts')
+    
 
     <script src="{{ asset('js/accessory.js') }}"></script>
+    <script src="{{ asset('js/onestorage.js') }}"></script>
+
+    @yield('scripts')
+    
     <script>
         //Javascript to toggle the menu
         document.getElementById('nav-toggle').onclick = function() {

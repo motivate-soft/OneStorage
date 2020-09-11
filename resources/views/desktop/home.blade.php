@@ -1,4 +1,4 @@
-@extends('desktop.layouts.app')
+@extends('layouts.app')
 
 @section('title')
 <title>{{__('Home')}}</title>
@@ -134,7 +134,7 @@
 @endsection
 
 @section('accessory')
-@include('desktop.partials.accessory')
+@include('partials.accessory')
 @endsection
 
 @section('content')
@@ -152,6 +152,7 @@
             <img src="{{asset('images/ic_marker.png')}}" class="align-middle my-auto" />
             <input id="storeId" type="hidden" name="storeId" />
             <div class="w-3/12 inline-block relative">
+                <?php $locations = App\Store::groupBy('location')->select('location')->get(); ?>
                 <select id="location-select" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
                     <option value="" selected disabled class="text-grey">地區</option>
                     @foreach($locations as $location)
@@ -458,47 +459,12 @@
 
 @section('scripts')
 <script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': '<?= csrf_token() ?>'
-        }
+    $(function() {
+        OneStorage.Home();
     });
-
-    const form = document.getElementById("branchSearchForm");
-    if (form) {
-        form.reset();
-        $("#storeId").val('');
-    }
-
-    $("#location-select").change(function() {
-        const location = $(this).val();
-        if (location == "") {
-            return;
-        }
-        const branchSelect = $("#branch-select");
-        branchSelect.prop('disabled', true);
-        $.ajax({
-            url: "{{url('get-branches?location=')}}" + location,
-            type: 'GET',
-            datatype: 'json',
-            success: function(result) {
-                console.log(result);
-                branchSelect.prop('disabled', false);
-                branchSelect.html('');
-                branchSelect.append('<option value="" selected disabled class="text-grey">分店</option>');
-                result.forEach(data => {
-                    branchSelect.append('<option value="' + data.id + '" class="text-grey-2">' + data.branch + '</option>');
-                });
-            }
-        });
-    })
-
-    $("#branch-select").change(function() {
-        $("#storeId").val($(this).val());
-    })
 </script>
 @endsection
 
 @section('footer')
-@include('desktop.layouts.footer')
+@include('layouts.footer')
 @endsection
