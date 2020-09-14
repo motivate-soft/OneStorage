@@ -28,19 +28,18 @@
     }
 
     .rentwarehouse-price-title {
+        font-weight: 700;
         font-size: 13px;
     }
 
     .rentwarehouse-wrapper-title {
         font-size: 21px;
-    }
-
-    .rentwarehouse-price {
-        font-weight: 800;
+        font-weight: 700;
     }
 
     .branchlocation-store-select-description {
         font-size: 13px;
+        font-weight: 700;
         color: #B881FD;
     }
 
@@ -156,6 +155,7 @@
 
     .rentwarehouse-price-check {
         font-size: 13px;
+        font-weight: 700;
         color: #9A9CA2;
     }
 
@@ -180,7 +180,7 @@
 <div class="flex px-5 w-full">
     <div class="" style="width: 56%">
         <div class="p-5">
-            <div class="rentwarehouse-wrapper-title color-primary text-left">租倉</div>
+            <div class="rentwarehouse-wrapper-title color-primary text-left font-bold">選擇分店位置</div>
             <form id="branchSearchForm" class="flex items-center pl-6 py-5" method="get" action="{{url('/rentwarehouse')}}">
                 <img class="rentwarehouse-select-store-image px-2" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
                 <input id="storeId" type="hidden" name="storeId" value="{{$stores[0]['id']}}" />
@@ -212,10 +212,10 @@
                             <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                     </div>
                 </div>
-                <button class="rentwarehouse-select-store-button items-center px-8" type="submit">租倉</button>
+                <button class="rentwarehouse-select-store-button items-center px-8" type="submit">搜尋</button>
             </form>
             <div>
-                <span class="rentwarehouse-price-toggle-button cursor-pointer py-5 select-none">
+                <span class="rentwarehouse-price-toggle-button cursor-pointer py-5 select-none font-bold">
                     <span class="pr-1">
                         <i class="icon wb-triangle-up"></i>
                     </span>
@@ -224,7 +224,7 @@
                 <div class="py-3 pl-2 pr-4">
                     <div class="flex">
                         <img class="w-5" src="{{ asset('branchlocation/icons8-pricing-50@2x.png') }}" />
-                        <span class="rentwarehouse-price-title color-primary pl-5">價格範圍</span>
+                        <span class="rentwarehouse-price-title color-primary pl-5 font-bold">價格範圍</span>
                         <span id="amount" class="rentwarehouse-price-title color-primary rentwarehouse-price pl-10"></span>
                     </div>
                     <div class="flex py-5 pl-5 border-b border-gray-200">
@@ -366,5 +366,5 @@
 @endsection
 
 @section('footer')
-@include('layouts.footer1')
+@include('layouts.footer')
 @endsection

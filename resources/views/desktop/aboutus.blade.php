@@ -6,9 +6,6 @@
 
 @section('styles')
 <style>
-    .main-wrapper {
-        margin-top: -80px;
-    }
 
     .maintitle-wrapper {
         padding-top: 54.5px;
@@ -28,7 +25,7 @@
 
     .maintitle-right {
         padding-top: 30px;
-        margin-left: 27.5px;
+        /* margin-left: 27.5px; */
         font-size: 50px;
     }
 
@@ -40,7 +37,7 @@
     .maintitle-right-bottom {
         font-size: 19px;
         color: #B2B5BD;
-        transform: translate(0, 50%);
+        /* transform: translate(0, 50%); */
     }
 
     .color-primary {
@@ -75,7 +72,7 @@
         padding-top: 56px;
         padding-left: 121px;
         padding-right: 121px;
-        margin-bottom: 133px;
+        /* margin-bottom: 133px; */
 
     }
 
@@ -87,30 +84,28 @@
 @endsection
 
 @section('accessory')
-    @include('partials.accessory')
+@include('partials.accessory')
 @endsection
 
 
 @section('content')
-<img class="w-full" src="{{asset('images/aboutus/shutterstock_95637766@2x.png')}}" />
+<img class="w-full" src="{{asset('images/aboutus/bg_about.jpg')}}" />
 
-<div class="relative block bg-white w-3/5 mx-auto main-wrapper">
-    <div class="flex maintitle-wrapper color-primary">
-        <span class="uppercase maintitle-left robert-regular">one</span>
-        <div class="w-px maintitle-divider"></div>
-        <div class="relative maintitle-right">
-            <div class="flex items-stretch">
+<div class="relative block bg-white w-3/5 mx-auto mb-10 floating-panel">
+    <div class="flex maintitle-wrapper color-primary mx-auto mb-8">
+        <div class="maintitle-right mx-auto">
+            <div class="ml-1 mb-4">
                 <span class="self-center">關於</span>
                 <span class="self-center capitalize maintitle-right-aboutus-english pt-2">one storage</span>
             </div>
-            <div class="capitalize absolute bottom-0 left-0 maintitle-right-bottom">one choice one storage</div>
+            <div class="capitalize maintitle-right-bottom">one choice one storage</div>
         </div>
     </div>
     <div class="color-primary">
-        <p class="text-center content-title-1">背景</p>
-        <p class="leading-relaxed content-description">至尊迷你倉為金朝陽集團屬下業務(股票代號：00878.HK)。
+        <p class="text-center content-title-1">至尊迷你倉</p>
+        <p class="leading-relaxed content-description">為金朝陽集團屬下業務(股票代號： 00878.HK)。
             <br /><br />
-            至尊迷你倉致力為每位客戶打造最安全及最可靠的倉存空間，實力雄厚，自置物業。分店網絡遍佈港、九、新界，並且積極不斷擴充。 特設多種不同呎碼獨立迷你倉，任君選擇。
+            分店遍佈港、九及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質的儲存環境及專業的服務。至尊迷你倉是亞洲迷你倉商會(SSAA及香港迷你倉總會會員(HKMSA)。
         </p>
     </div>
 
@@ -121,10 +116,11 @@
     </div>
 
     <div class="color-primary">
-        <p class="text-center content-title-2">迷你倉業務</p>
-        <p class="leading-relaxed content-description">2.4米闊的走廊配以完善的裝置設備，完全符合消防指引。
-            <br /><br />
-            全天候高清保安監察及警報系統，智能保安進出系統，24小時自助式儲存，支援現金、EPS、支票、信用卡、轉數快及免息分期付費，優質的儲存環境及親切專業的客戶服務，用心為每位客戶提升生活空間質素，承傳尊貴享受典範。
+        <p class="text-center content-title-2">設備及付款方式</p>
+        <p class="leading-relaxed content-description">
+            設備合乎消防處迷伙倉指引，客人可24小時自助儲存，配備全天候保安系統及智能保安系統。
+            <br/><br/>
+            付款方式：現金、EPS、支票、信用卡、轉數快及免息分期
         </p>
     </div>
 

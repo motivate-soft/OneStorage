@@ -14,7 +14,7 @@
         </div>
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden pt-6 lg:pt-0" id="nav-content">
 
-            <ul class="list-reset lg:flex lg:ml-0 justify-end flex-1 items-center font-16 robert-bold" style="z-index: 50;">
+            <ul class="list-reset lg:flex lg:ml-0 justify-end flex-1 items-center font_15 robert-bold" style="z-index: 50;">
 
                 <li class="mr-1 md:mr-0 dropdown">
                     <a class="dropbtn inline-block default-color no-underline py-2 px-2" href="{{url('/about')}}">關於我們</a>
@@ -28,9 +28,14 @@
                     <a class="dropbtn default-color no-underline py-2 px-2" href="javascript:void(0)">分店位置</a>
 
                     <ul class="dropdown-content">
-                        <li class="py-1"><a class="block text-base uppercase hover:text-purple-700 cursor-pointer font_16" href="{{url('/branch-location?location=九龍')}}">九龍</a></li>
-                        <li class="py-1"><a class="block  text-base uppercase hover:text-purple-700 cursor-pointer font_16" href="{{url('/branch-location?location=新界')}}">新界</a></li>
-                        <li class="py-1"><a class="block  text-base uppercase hover:text-purple-700 cursor-pointer font_16" href="{{url('/branch-location?location=香港島')}}">香港島</a></li>
+                        <?php $locations = App\Store::getLocations(); ?>
+                        @foreach($locations as $location)
+                        <li class="py-1">
+                            <a class="block  text-base uppercase hover:text-purple-700 cursor-pointer font_16" href="{{url('/branch-location?location='.$location->location)}}">
+                                {{$location->location}}
+                            </a>
+                        </li>
+                        @endforeach
                     </ul>
                 </li>
                 <li class="relative mr-1 md:mr-0 dropdown">

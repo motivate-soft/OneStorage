@@ -42,6 +42,9 @@
                 <a href="{{url('chatlist')}}">
                     <div class="border text-center branch-tab py-6">信息</div>
                 </a>
+                <a href="{{url('logout')}}">
+                    <div class="border text-center branch-tab py-6" style="background-color: white !important;">登出</div>
+                </a>
             </div>
 
             <div class="flex w-4/5 ml-2 border">
@@ -172,8 +175,9 @@
                                 <div class="inline-block relative w-full px-2">
                                     <select class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日">
                                         <option value="" selected>地域</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
+                                        <option value="香港">香港</option>
+                                        <option value="九龍">九龍</option>
+                                        <option value="新界">新界</option>
                                     </select>
                                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                         <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -186,8 +190,24 @@
                                 <div class="inline-block relative w-full px-2">
                                     <select class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
                                         <option value="" selected>地區</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
+                                        <option value="中西區">中西區</option>
+                                        <option value="灣仔">灣仔</option>
+                                        <option value="東區">東區</option>
+                                        <option value="南區">南區</option>
+                                        <option value="深水埗">深水埗</option>
+                                        <option value="油尖旺">油尖旺</option>
+                                        <option value="九龍城">九龍城</option>
+                                        <option value="黃大仙">黃大仙</option>
+                                        <option value="觀塘">觀塘</option>
+                                        <option value="屯門">屯門</option>
+                                        <option value="元朗">元朗</option>
+                                        <option value="荃灣">荃灣</option>
+                                        <option value="葵青">葵青</option>
+                                        <option value="離島">離島</option>
+                                        <option value="北區">北區</option>
+                                        <option value="大埔">大埔</option>
+                                        <option value="沙田">沙田</option>
+                                        <option value="西貢">西貢</option>
                                     </select>
                                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                         <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

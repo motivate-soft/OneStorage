@@ -36,6 +36,9 @@
                 <a href="{{url('chatlist')}}">
                     <div class="border text-center branch-tab-active py-6">信息</div>
                 </a>
+                <a href="{{url('logout')}}">
+                    <div class="border text-center branch-tab py-6" style="background-color: white !important;">登出</div>
+                </a>
             </div>
 
             <div class="w-4/5 ml-2 border">

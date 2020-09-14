@@ -1,4 +1,5 @@
 <?php
+
 use App\AppConfig;
 ?>
 @extends('layouts.app')
@@ -156,7 +157,7 @@ use App\AppConfig;
             <img src="{{asset('images/ic_marker.png')}}" class="align-middle my-auto" />
             <input id="storeId" type="hidden" name="storeId" />
             <div class="w-3/12 inline-block relative">
-                <?php $locations = App\Store::groupBy('location')->select('location')->get(); ?>
+                <?php $locations = App\Store::getLocations(); ?>
                 <select id="location-select" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
                     <option value="" selected disabled class="text-grey">地區</option>
                     @foreach($locations as $location)
@@ -188,7 +189,7 @@ use App\AppConfig;
 <div class="bg-primary py-4">
     <p class="heading1 text-center">填妥簡單資料，立即領取5% off 獨家優惠</p>
 
-    <form class="flex justify-between mt-6 pr-10 pb-4 mx-auto w-3/5" method="post" action="{{url('/enquiry')}}">
+    <form id="discountForm" class="flex justify-between mt-6 pr-10 pb-4 mx-auto w-3/5" method="post" action="{{url('/enquiry')}}">
         @csrf
         <input type="hidden" name="page" value="Front Page">
         <div class="flex w-4/5">
@@ -203,7 +204,7 @@ use App\AppConfig;
 
         <div class="input-group mx-10">
             <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">
-            <input class="form-control" type="email" placeholder="電子郵件" name="email">
+            <input class="form-control" type="email" placeholder="電子郵件" name="email" required>
         </div>
 
         <button class="w-1/3 button-second" type="submit">
@@ -336,14 +337,14 @@ use App\AppConfig;
             <img src="{{asset('images/img_camera.jpg')}}" class="yellow-shadow1 w-2/5" />
             <div class="bg-yellow w-3/5 mr-12 ml-10 mt-6 mb-4 text-left px-4 pb-6">
                 <p class="heading2 relative" style="top: -20px">迷你倉設施</p>
-                <div class="grid grid-cols-2 col-gap-2 row-gap-4">
+                <div class="grid grid-cols-2 col-gap-2 row-gap-4 font_14">
                     <div class="flex">
                         <img src="{{asset('images/ic_key_card.png')}}" class="mr-2 object-none" />
                         <p class="text0 my-auto"><span class="font-bold">7 x 24</span>智能保安進出系統</p>
                     </div>
                     <div class="flex">
                         <img src="{{asset('images/ic_air_con.png')}}" class="mr-2 object-none" />
-                        <p class="text1 my-auto">無間斷恆溫空調</p>
+                        <p class="text0 my-auto">無間斷恆溫空調</p>
                     </div>
                     <div class="flex">
                         <img src="{{asset('images/ic_fire.png')}}" class="mr-2 object-none" />
@@ -363,7 +364,7 @@ use App\AppConfig;
                     </div>
                     <div class="flex">
                         <img src="{{asset('images/ic_24_hours.png')}}" class="mr-2 object-none" />
-                        <p class="text0">24小時電話熱線服務</p>
+                        <p class="text0 my-auto">24小時電話熱線服務</p>
                     </div>
                     <div class="flex">
                         <img src="{{asset('images/ic_wifi.png')}}" class="mr-2 object-none" />
@@ -379,21 +380,29 @@ use App\AppConfig;
     <span class="heading2 box-shadow1 relative" style="top:-26px">常見問題</span>
     <div class="text-left mt-12 mx-auto w-3/5">
         <div class="mb-8">
-            <img src="{{asset('images/ic_rarrow.png')}}" class="inline mr-4" />
-            <span class="text4">常見問題1</span>
+            <div class="flex cursor-pointer home-problem-toggle-item">
+                <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="mr-4" />
+                <span class="text4 my-auto">怎樣聯絡至尊迷你倉？</span>
+            </div>
+            <div class="hidden px-12 pt-4">可致電：2111 2636、電郵：cs@onestorage.com.hk或Whatapp: 51188503</div>
         </div>
+
         <div class="mb-8">
-            <img src="{{asset('images/ic_rarrow.png')}}" class="inline mr-4" />
-            <span class="text4">常見問題1</span>
+            <div class="flex cursor-pointer home-problem-toggle-item">
+                <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="mr-4" />
+                <span class="text4 my-auto">至尊迷你倉分店位於那裡？</span>
+            </div>
+            <div class="hidden px-12 pt-4">我們分店遍佈港、九及新界，詳情可查閱分店位置。</div>
         </div>
+
         <div class="mb-8">
-            <img src="{{asset('images/ic_rarrow.png')}}" class="inline mr-4" />
-            <span class="text4">常見問題1</span>
+            <div class="flex cursor-pointer home-problem-toggle-item">
+                <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="mr-4" />
+                <span class="text4 my-auto">可以預約實地參觀迷你倉嗎？</span>
+            </div>
+            <div class="hidden px-12 pt-4"><p>歡迎致電21112636或whatsapp 51188503預約參觀。星期日及公眾假期，需至少於 1 天前預約。</p></div>
         </div>
-        <div class="mb-8">
-            <img src="{{asset('images/ic_rarrow.png')}}" class="inline mr-4" />
-            <span class="text4">常見問題1</span>
-        </div>
+        
     </div>
 
 </div>
@@ -439,9 +448,9 @@ use App\AppConfig;
             <div class="w-full inline-block relative mb-6">
                 <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" style="color:#76838f" name="question">
                     <option value="" selected>查詢問題</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
+                    <option value="請問那裡有分店？">請問那裡有分店？</option>
+                    <option value="我要預約參觀？">我要預約參觀？</option>
+                    <option value="請問尺寸及價錢如何？">請問尺寸及價錢如何？</option>
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                     <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -465,6 +474,32 @@ use App\AppConfig;
 <script>
     $(function() {
         OneStorage.Home();
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': '<?= csrf_token() ?>'
+            }
+        });
+
+        $("#discountForm").submit(function(e) {
+            e.preventDefault();
+            var form = $(this);
+            if(form.attr("state") === "sent"){
+                return;
+            }
+            var submitBtn = form.find("button");
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: $(this).serialize(),
+                datatype: 'json',
+                success: function(result) {
+                    submitBtn.css("background-color", "#28e8db");
+                    submitBtn.prop('disabled', true);
+                    form.attr("state", "sent");
+                }
+            });
+        })
     });
 </script>
 @endsection

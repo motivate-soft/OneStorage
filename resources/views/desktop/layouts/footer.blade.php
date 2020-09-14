@@ -5,7 +5,7 @@
             <div style="margin-right: 30px;" class="w-2/5">
                 <div class="mt-2">
                     <!-- <h2 class=" text-lg my-8 font_15">關於 <b>One Storage.</b></h2> -->
-                    <h2 class="text-lg mt-4 mb-8">關於 <b>One Storage.</b></h2>
+                    <h2 class="text-lg mt-4 mb-8  font-bold">關於 One Storage</h2>
                     <div class=" text-justify my-4 leading-5 font_13">至尊迷你倉為金朝陽集團屬下業務(股票代號：
                         00878.HK)。<br>
                         <br>
@@ -24,14 +24,16 @@
                         貴享受典範。
                     </div>
                     <a href="{{url('/joinus')}}">
-                        <h2 class="my-8 font_15">職位空缺</h2>
+                        <h2 class="my-8 font_15 font-bold">職位空缺</h2>
                     </a>
+
+                    <p class="font_15 font-bold">©2020 至尊迷你倉 | 版權所有 | 免責聲明</p>
 
                 </div>
             </div>
             <div class="px-2">
                 <div class="">
-                    <h2 class="text-lg mt-4 mb-8">連絡我們</h2>
+                    <h2 class="text-lg mt-4 mb-8 font-bold">連絡我們</h2>
                     <div class="grid grid-cols-6 gap-4 font_13 ml-1">
                         <a class="flex col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-5 xl:col-span-2..." href="Tel: 852-21112636">
                             <img class="fill-current mr-4" src="{{asset('images/footer/icons8-phone-50@2x.png')}}" />
@@ -45,7 +47,7 @@
                             <img class="fill-current mr-4" src="{{asset('images/footer/icons8-whatsapp-50@2x.png')}}" />
                             <span class="self-center text-primary">(852) 5118 8503</span>
                         </a>
-                        <a class="flex col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-5 xl:col-span-2..." href="#">
+                        <a class="flex col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-5 xl:col-span-2..." href="{{url('/branch-location')}}">
                             <img class="fill-current mr-4" src="{{asset('images/footer/icons8-home-50@2x.png')}}" />
                             <span class="self-center text-primary">查看分店地址</span>
                         </a>
@@ -57,23 +59,23 @@
                 ?>
                 <div class="grid grid-cols-2 mt-8">
                     @foreach($contactInfos as $contact)
-                    <div>
+                    <div class="font_13">
                         <div class="footer-accordion relative appearance-none items-center">
-                            <div class="flex font_13">
+                            <div class="flex">
                                 <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
                                 <span class="self-center text-primary">{{$contact['name']}}</span>
                             </div>
                         </div>
-                        <div class="panel flex">
+                        <div class="footer-panel flex">
                             <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                            <div class=" leading-5 ">
-                                <p class="font_13">
+                            <div class="leading-5 ">
+                                <p class="">
                                     電話 : <span>{{$contact['phone']}}</span>
                                 </p>
-                                <a href="mailto:cs@onestorage.com.hk" class="font_13">
+                                <a href="mailto:cs@onestorage.com.hk" class="">
                                     電郵 : <span>{{$contact['email']}}</span>
                                 </a>
-                                <p class="font_13">
+                                <p class="">
                                     <a href="{{'http://maps.google.com/?q='.$contact['address']}}" target="_blank" rel="noopener noreferrer">
                                         地址 : {{$contact['address']}}
                                     </a>
@@ -88,7 +90,7 @@
                 </div>
             </div>
             <div class="w-2/5" style="margin-left: 10px;">
-                <h2 class="text-lg mt-4 mb-8">連絡我們</h2>
+                <h2 class="text-lg mt-4 mb-8 font-bold">最新資訊</h2>
                 <div class="flex mt-2 pb-5">
                     <img class="h-24 md:h-32 mx-auto md:mx-0 md:mr-4 object-none inline" src="{{asset('images/footer/Image 17@2x.png')}}">
                     <span class="text-center md:text-left text-sm leading-4 font_13 inline">

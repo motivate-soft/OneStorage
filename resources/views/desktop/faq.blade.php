@@ -123,7 +123,7 @@
 @section('content')
 <img class="w-full" src="{{asset('images/faq/shutterstock_1540492397@2x.png')}}" />
 
-<div class="relative block bg-white w-3/5 mx-auto main-wrapper pb-230">
+<div class="relative block bg-white w-3/5 mx-auto mb-10 floating-panel">
 
     <div class="flex maintitle-wrapper color-primary">
         <span class="uppercase maintitle-left robert-regular">one</span>
@@ -176,5 +176,5 @@
 
 
 @section('footer')
-@include('layouts.footer1')
+@include('layouts.footer')
 @endsection

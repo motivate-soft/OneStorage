@@ -86,10 +86,11 @@ class StoreController extends Controller
         return view('rentwarehouse', ['store' => $store]);
     }
 
-    public function branchLocation(Request $request)
+    public function branchLocation()
     {
-        $location = isset($_GET['location']) ? $_GET['location'] : '';
-        $locations = Store::groupBy('location')->select('location')->get();
+        $locations = Store::getLocations();
+        $location = isset($_GET['location']) ? $_GET['location'] : $locations[0]->location;
+        $_GET['location'] = $location;
         $stores = Store::where('location', $location)->get();
         return view('branchlocation', ['locations' => $locations, 'stores' => $stores]);
     }

@@ -189,7 +189,7 @@
 
 <img class="w-full" src="{{asset('images/calculator/markus-spiske-QtFAXP6z0Wk-unsplash@2x.png')}}" />
 
-<div class="relative block bg-white w-3/5 mx-auto main-wrapper mb-10">
+<div class="relative block bg-white w-3/5 mx-auto floating-panel mb-10">
     <div class="flex maintitle-wrapper color-primary">
         <span class="uppercase maintitle-left">one</span>
         <div class="w-px maintitle-divider"></div>

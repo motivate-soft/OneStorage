@@ -15,8 +15,24 @@ $(function () {
         $("#storeId").val($(this).val());
     })
 
+    $("#question-selector").val("");
+    $("#question-selector").change(function () {
+        const msgWrapper = $("#message-wrapper");
+        if ($(this).val() == "其他") {
+            msgWrapper.show();
+            msgWrapper.find("textarea").val("我有興趣租倉，請與我聯絡");
+
+        } else {
+            msgWrapper.hide();
+            msgWrapper.find("textarea").val("");
+        }
+    })
+
     OneStorage.Home = (function () {
         return function () {
+            $(".home-problem-toggle-item").click(function () {
+                $(this).next().toggle(500);
+            })
             $("#location-select").change(function () {
                 const location = $(this).val();
                 if (location == "") {
@@ -83,8 +99,12 @@ $(function () {
             })
 
             $(".store-select").click(function () {
-                $(".active").removeClass("active");
-                $(this).parent().parent().addClass("active");
+                const parent = $(this).parent().parent();
+                if (parent.hasClass("active")) {
+                    parent.removeClass("active");
+                } else {
+                    parent.addClass("active");
+                }
             })
 
             $(".branchlocation-m-item").click(function () {
@@ -98,6 +118,7 @@ $(function () {
         return function () {
             var branchSize;
             var bookingModal = document.getElementById("bookingModal");
+
             $(".rentwarehouse-toggle-item").click(function () {
                 $(this).next().toggle();
 
@@ -123,6 +144,7 @@ $(function () {
                 $(".rentwarehouse-price-select").removeClass("active");
                 $(this).addClass("active");
                 $(".selected-price").html($(this).find(".price-content").html());
+                $("#payment-method").text($(this).find(".rentwarehouse-mode-select-item-title").text());
             })
 
             $(".rentwarehouse-table-item").click(function () {
@@ -571,7 +593,7 @@ $(function () {
                 category: '聯繫我們',
                 faqs: [{
                     question: '我可以怎樣聯絡到One Storage?',
-                    answer: '電話：(852) 2111 2636 <br/>EMAIL：cs@onestorage.com.hk <br/>WhatsApp：(852) 54907251星期一至五: 早上10:00至下午1:00及下午2:00至晚上7:00星期六日及公眾假期: 早上10:00至下午1:00及下午2:00至5:00星期日及公眾假期 需於 1 天前預約'
+                    answer: '電話：(852) 2111 2636 EMAIL：cs@onestorage.com.hk <br/>WhatsApp：(852) <span class="text-red-500">(852) 51188503</span>星期一至五:<br/>早上10:00至下午1:00及下午2:00至晚上7:00星期六日及公眾假期: 早上10:00至下午1:00及下午2:00至5:00星期日及公眾假期 需於 1 天前預約'
                 }]
             },
             {
@@ -703,7 +725,7 @@ $(function () {
 
                 contentWrapper.html('');
                 faqData[0].faqs.forEach(faq => {
-                    contentWrapper.append('<div class="accordion flex justify-between appearance-none "><p class="break-words">' + faq.question + 
+                    contentWrapper.append('<div class="accordion flex justify-between appearance-none "><p class="break-words">' + faq.question +
                         '</p><i class="icon wb-chevron-down text-gray-700"></i>' +
                         '</div>' +
                         '<div class="answer-panel">' +
@@ -716,7 +738,7 @@ $(function () {
                 $(this).addClass("active");
                 contentWrapper.html('');
                 faqData[$(this).attr('id')].faqs.forEach(faq => {
-                    contentWrapper.append('<div class="accordion flex justify-between appearance-none "><p class="break-words">' + faq.question + 
+                    contentWrapper.append('<div class="accordion flex justify-between appearance-none "><p class="break-words">' + faq.question +
                         '</p><i class="icon wb-chevron-down text-gray-700"></i>' +
                         '</div>' +
                         '<div class="answer-panel">' +

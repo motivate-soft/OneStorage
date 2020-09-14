@@ -63,12 +63,11 @@
     border: none;
     text-align: left;
     outline: none;
-    font-size: 15px;
     transition: 0.4s;
-    font-weight: 600;
+    /* font-weight: 600; */
 }
 
-.panel {
+.footer-panel {
     /* padding: 0 18px; */
     /* background-color: white; */
     max-height: 0;
@@ -262,6 +261,11 @@ svg {
     background-color: #E0CBF6;
 }
 
+.floating-panel{
+    position: relative;
+    margin-top: -187px;
+}
+
 /* ======================= header Css =============================== */
 
 .dropdown {
@@ -270,13 +274,10 @@ svg {
 }
 
 .dropdown .dropbtn {
-    font-size: 17px;
     border: none;
     outline: none;
     color: #4D5567;
     padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit;
     margin: 0;
 }
 
@@ -524,9 +525,9 @@ input[type="checkbox"], input[type="radio"] {
 
 .register-subtilte {
     color: #747474;
-    margin-top: 12px;
+    /* margin-top: 12px; */
     margin-bottom: 16px;
-    font-weight: 700;
+    /* font-weight: 700; */
 }
 
 .facebook-btn {
@@ -659,4 +660,8 @@ input[type="checkbox"], input[type="radio"] {
     right: -1px;
     margin-top: -15px;
     position: absolute;
+}
+
+.enquiry-sent{
+    background-color: #28e8db;
 }

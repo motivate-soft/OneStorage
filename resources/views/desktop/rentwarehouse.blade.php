@@ -360,7 +360,7 @@
     <p class="heading2 px-4 mb-3">{{$store->branch}}</p>
     <div class="grid grid-cols-12 ">
         <div class="col-start-1 col-span-8 pb-8">
-            <p class="text1 px-4 mb-2">{{$store->location}}</p>
+            <p class="text1 px-4 mb-2"><a href="#address-section">{{$store->address}}</a> </p>
             <div class="bg-white px-4 py-2">
                 <div class="flex">
                     <img id="rentwarehouse-main-image" class="w-4/5" src="{{asset('images/img_rentvideo.jpg')}}" />
@@ -385,7 +385,7 @@
                     </p>
 
                     <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
-                        <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
+                        <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-down"></i></span>
                         <span class="text1 my-auto self-center pl-2">租用面積</span>
                     </div>
 
@@ -420,8 +420,8 @@
                     </div>
                     <div class="horz-line my-4"></div>
 
-                    <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
-                        <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
+                    <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2" id="address-section">
+                        <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-down"></i></span>
                         <span class="text1 my-auto self-center pl-2">地址</span>
                     </div>
                     <div class="my-4">
@@ -445,7 +445,7 @@
                     <div class="horz-line my-4"></div>
 
                     <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer py-2">
-                        <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
+                        <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-down"></i></span>
                         <span class="text1 my-auto self-center pl-2">最新優惠</span>
                     </div>
                     <div class="my-4">
@@ -475,7 +475,7 @@
                         <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
                         <span class="text1 my-auto self-center pl-2">服務設施</span>
                     </div>
-                    <div class="my-4">
+                    <div class="my-4 hidden">
                         <div class="px-4 grid grid-cols-2 col-gap-2 row-gap-4">
                             <div class="flex">
                                 <img src="{{asset('images/ic_key_card.png')}}" class="mr-2 object-none" />
@@ -522,7 +522,7 @@
                         <span class="rentwarehouse-toggle-item-icon text-white px-1"><i class="icon wb-chevron-up"></i></span>
                         <span class="text1 my-auto self-center pl-2">附近設施</span>
                     </div>
-                    <div class="my-4 ml-4">
+                    <div class="my-4 ml-4 hidden">
                         <div class="flex py-2">
                             <div class="w-1/2">
                                 <p class="text-sm color-deep">香葉道休憩處</p>
@@ -548,7 +548,7 @@
                         <span class="text1 my-auto self-center pl-2">附近設施</span>
                     </div>
 
-                    <div class="my-4">
+                    <div class="my-4 hidden">
                         <p class="text-sm color-deep py-1">- 問題?</p>
                         <p class="text-sm color-deep py-1">- 答案。</p>
                     </div>
@@ -558,7 +558,7 @@
 
             </div>
         </div>
-        <div class="col-start-9 col-span-4 mx-4 pb-8 rentwarehouse-right">
+        <div class="mx-4 pb-8 rentwarehouse-right fixed w-1/5 pr-10 right-80 bg-grey">
             <p class="color-primary rentwarehouse-space-size-title pb-6">你需要多大的空間?</p>
             <div class="grid grid-cols-2 col-gap-2 row-gap-2">
                 @foreach($store->sizes as $key=>$size)
@@ -614,9 +614,7 @@
                 <img class="flex-shrink-0 rentwarehouse-price-select-news-image" src="{{ asset('images/Image 8@2x.png') }}" />
                 <p class="pl-3 color-deep overflow-y-hidden leading-relaxed">黃竹坑新店快閃優惠　低至6折優惠<br /><br />
                     震撼筍價HK$300起即可入手
-                    黃竹坑分店全新開業，推出快閃驚喜優惠！顧客可享低至6折優惠，以震撼筍價HK$300起即可入手！你仲唔快啲黎搵我哋！！
-                    *詳情請向職員查詢
-                    地址：黃竹坑道18號瑞琪工業大廈14樓A室
+                    黃竹坑分店全新開業，推出快閃驚喜優惠!
                 </p>
             </div>
 
@@ -633,7 +631,7 @@ $user = Auth::user();
 
         <div class=" bg-white w-96 mx-auto mt-2 mb-8 pt-2">
 
-            <p class="text-center pt-4 pb-2 font-bold" style="font-size: 21px;">立即申請 </p>
+            <p class="text-center pt-4 mb-6 font-bold" style="font-size: 21px;">查詢/預約</p>
 
             <form class="px-8 pt-3" method="post" action="{{url('/enquiry')}}">
                 @csrf
@@ -645,14 +643,16 @@ $user = Auth::user();
 
                 <p class=" font-bold mb-3" style="font-size: 20px;"><span style="font-size: 25px" id="branchSizeTxt">12</span>平方呎 </p>
 
-                <div role="alert" class="mb-3">
-                    <div class=" text-center font-bold rounded-t px-4 py-2 mr-4 ml-4" style="font-size: 25px; background-color: #E0CBF6; color:#56628C">
+                <div role="alert" class="mb-2">
+                    <div id="payment-method" class="text-center font-bold rounded-t px-4 py-2 mr-4 ml-4" style="font-size: 25px; background-color: #E0CBF6; color:#56628C">
                         月費
                     </div>
                     <div class="border border-t-0 rounded-b px-4 py-3 text-center mr-4 ml-4">
                         <p class="font-bold" style="font-size: 32px;color:#324A5E">$<span class="selected-price">---</span></p>
                     </div>
                 </div>
+
+                <p class="text-center text-grey mb-6">此價格只供參考</p>
 
                 <div class="flex mb-4 w-full pt-6 border-t">
                     <div class="flex w-1/2 input-group">
@@ -684,11 +684,12 @@ $user = Auth::user();
                 </div>
 
                 <div class="w-full inline-block relative mb-4">
-                    <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="question">
+                    <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="question" id="question-selector">
                         <option value="" selected>查詢問題</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        <option value="我想預約參觀。">我想預約參觀。</option>
+                        <option value="我想預留迷你倉。">我想預留迷你倉。</option>
+                        <option value="我想續約/或繳款。">我想續約/或繳款。</option>
+                        <option value="其他">其他</option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                         <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -696,9 +697,8 @@ $user = Auth::user();
                     </div>
                 </div>
 
-                <div class="w-full inline-block relative pb-3 border-b">
+                <div class="w-full pb-3 border-b hidden" id="message-wrapper">
                     <textarea class="w-full border placeholder-gray-600 px-3 py-2 border-gray-200" style="padding: 16px 8px 16px 16px;color:#76838f" type="text" placeholder="你的信息" rows="1" name="message"></textarea>
-
                 </div>
 
                 <div class=" w-full mt-3 md:flex md:items-center mb-4">

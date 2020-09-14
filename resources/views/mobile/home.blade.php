@@ -646,9 +646,7 @@
             }, "fast");
         });
 
-        $(".home-problem-toggle-item").click(function() {
-            $(this).next().toggle(500);
-        })
+        
     });
 </script>
 @endsection
