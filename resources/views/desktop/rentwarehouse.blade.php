@@ -624,6 +624,29 @@
 <?php
 $user = Auth::user();
 ?>
+<div id="confirmModal" class="z-50 modal">
+    <div class="modal-content">
+        <div class="text-center p-8">
+            <p class="font_25 mb-8">多謝你的查詢</p>
+            <p class="font_16 leading-normal">
+                我們的客戶服務專員，<br />
+                將會盡快與你聯絡。<br />
+                立刻註冊成為會員可享更多優惠
+            </p>
+
+            <div class="flex justify-between mt-8">
+                <a href="{{url('/register')}}" class="submit-btn hover:bg-purple-400 mr-4" id="confirmBtn">
+                    註冊
+                </a>
+                <button class="cancel-btn ml-4" type="button" id="cancelBtn">
+                    離開
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <div id="bookingModal" class="z-50 modal">
     <div class="modal-content">
 
@@ -633,11 +656,12 @@ $user = Auth::user();
 
             <p class="text-center pt-4 mb-6 font-bold" style="font-size: 21px;">查詢/預約</p>
 
-            <form class="px-8 pt-3" method="post" action="{{url('/enquiry')}}">
+            <form class="px-8 pt-3" id="bookingForm" method="post" action="{{url('/enquiry')}}">
                 @csrf
                 <input type="hidden" name="page" value="{{$store->branch}}" required>
                 <input type="hidden" name="branchName" value="{{$store->branch}}" required>
                 <input type="hidden" name="branchSize" id="branchSize" required>
+                <input type="hidden" name="ajax" value="1" type="number">
 
                 <p class=" font-bold mb-3" style="font-size: 25px;">{{$store->branch}} </p>
 

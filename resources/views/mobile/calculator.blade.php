@@ -92,6 +92,7 @@
 
     .calculator-elements-wrapper {
         background-color: #E0CBF6;
+        min-height: 100%;
         padding: 5px;
     }
 
@@ -186,11 +187,13 @@
 
     <div class="grid grid-cols-12 col-gap-0 pt-10 px-5">
         <div class="col-start-1 col-span-4" id="category-menu">
-            
+
         </div>
         <!-- <div id="content-items" class="col-start-5 col-span-8 grid grid-cols-1 col-gap-1 row-gap-2 calculator-elements-wrapper"> -->
-        <div id="content-items" class="col-start-5 col-span-8 flex flex-col calculator-elements-wrapper">
+        <!-- <div id="content-items" class="col-start-5 col-span-8 flex flex-col calculator-elements-wrapper">
 
+        </div> -->
+        <div id="content-wrapper" class="col-start-5 col-span-8 ">
         </div>
     </div>
 
@@ -269,7 +272,7 @@
 @section('scripts')
 <script>
     $(function() {
-        OneStorage.Calculator();
+        OneStorage.Calculator('<div class="flex flex-col calculator-elements-wrapper" style="display: none;">');
     });
 </script>
 @endsection

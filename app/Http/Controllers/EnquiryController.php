@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Enquiry;
+use Auth;
+use App\User;
 use Illuminate\Http\Request;
 
 class EnquiryController extends Controller
@@ -48,7 +50,18 @@ class EnquiryController extends Controller
         $enquiry->message = isset($request->message) ? $request->message : '';
         $enquiry->page = $request->page;
         $enquiry->save();
-        return redirect()->back();
+
+        $ajax = isset($request->ajax) ? $request->ajax : 0;
+        if($ajax == 1){
+            $is_member = User::where('email', $enquiry->email)->first() != null;
+            return [
+                'state' => 'success',
+                'is_member' => $is_member
+            ];
+        }else{
+            return redirect()->back();
+        }
+        
     }
 
     public function accept()

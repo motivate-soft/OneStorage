@@ -117,6 +117,15 @@ svg {
     transform: translateY(-50%);
 }
 
+.form-control-right-icon {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    z-index: 20;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
 .red-600 {
     color: #ff4c52 !important;
 }
@@ -259,6 +268,20 @@ svg {
     padding-left: 1rem;
     padding-right: 1rem;
     background-color: #E0CBF6;
+}
+
+.cancel-btn {
+    display: block;
+    width: 100%;
+    --text-opacity: 1;
+    color: white;
+    font-weight: 700;
+    font-size: 21px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: #BEBCBC;
 }
 
 .floating-panel{

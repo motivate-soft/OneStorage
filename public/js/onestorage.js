@@ -117,7 +117,38 @@ $(function () {
     OneStorage.RentwareHouse = (function () {
         return function () {
             var branchSize;
-            var bookingModal = document.getElementById("bookingModal");
+            var confirmed = false;
+            const bookingModal = document.getElementById("bookingModal");
+            const confirmModal = document.getElementById("confirmModal");
+
+
+            $("#bookingForm").submit(function (e) {
+
+                e.preventDefault();
+
+                var form = $(this);
+                var submitBtn = form.find("button");
+                submitBtn.prop('disabled', true);
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: $(this).attr('method'),
+                    data: $(this).serialize(),
+                    datatype: 'json',
+                    success: function (result) {
+                        submitBtn.prop('disabled', false);
+                        if (result.state == "success") {
+                            bookingModal.style.display = "none";
+                            confirmModal.style.display = "block";
+                            if (!result.logged_in) {
+                                //confirmModal.style.display = "block";
+                            }
+                        } else {
+                            alert("Failed!");
+                        }
+                    }
+                });
+
+            })
 
             $(".rentwarehouse-toggle-item").click(function () {
                 $(this).next().toggle();
@@ -162,6 +193,7 @@ $(function () {
             $("#modalTrigger").click(function () {
                 $("#branchSize").val(branchSize);
                 $("#branchSizeTxt").html(branchSize);
+                confirmed = false;
                 bookingModal.style.display = "block"
             })
 
@@ -169,9 +201,21 @@ $(function () {
                 bookingModal.style.display = "none"
             });
 
+            $("#confirmBtn").click(function () {
+                confirmed = true;
+                confirmModal.style.display = "none"
+            })
+
+            $("#cancelBtn").click(function () {
+                confirmed = false;
+                confirmModal.style.display = "none"
+            })
+
             window.onclick = function (event) {
                 if (event.target == bookingModal) {
                     bookingModal.style.display = "none"
+                } else if (event.target == confirmModal) {
+                    confirmModal.style.display = "none"
                 }
             }
 
@@ -506,7 +550,7 @@ $(function () {
             ]
         },
         ];
-        const itemsWrapper = $("#content-items");
+        const itemsWrapper = $("#content-wrapper");
 
         function selectStore() {
             //sum up all item values
@@ -532,14 +576,16 @@ $(function () {
         $(document).on("click", ".calculator-category-title", function () {
             $("#category-menu").find(".active").removeClass("active");
             $(this).addClass("active");
-            itemsWrapper.html('');
-            categories[$(this).attr('id')].items.forEach(item => {
-                itemsWrapper.append('<div class="flex relative calculator-item-element">' +
-                    '<span class="calculator-item-element-title color-primary absolute bottom-0 left-0">' + item.name + '</span>' +
-                    '<input type="number" class="calculator-item-element-input absolute bottom-0 right-0" min=0 max=20 size=' + item.size + ' />' +
-                    '</div>');
-            });
-            $(".store-select").removeClass('active');
+            $(".calculator-elements-wrapper").hide();
+            itemsWrapper.children(".calculator-elements-wrapper").eq($(this).attr('id')).show();
+            // $(".store-select").removeClass('active');
+            // itemsWrapper.html('');
+            // categories[$(this).attr('id')].items.forEach(item => {
+            //     itemsWrapper.append('<div class="flex relative calculator-item-element">' +
+            //         '<span class="calculator-item-element-title color-primary absolute bottom-0 left-0">' + item.name + '</span>' +
+            //         '<input type="number" class="calculator-item-element-input absolute bottom-0 right-0" min=0 max=20 size=' + item.size + ' />' +
+            //         '</div>');
+            // });
         });
 
         $(document).on("keyup", ".calculator-item-element-input", function () {
@@ -565,25 +611,30 @@ $(function () {
             console.log("selected");
         });
 
-        return function () {
+        return function (_template) {
             const menu = $("#category-menu");
             menu.html('');
             var index = 0;
+            itemsWrapper.html('');
             categories.forEach(category => {
                 const active = index == 0 ? 'active' : '';
                 menu.append('<div id="' + index + '" class="calculator-category-title color-primary cursor-pointer ' + active + '">' + category.name + '</div>');
+
+                var content = _template;
+                console.log(content);
+                category.items.forEach(item => {
+                    content += ('<div class="flex relative calculator-item-element">' +
+                        '<span class="calculator-item-element-title color-primary absolute bottom-0 left-0">' + item.name + '</span>' +
+                        '<input type="number" class="calculator-item-element-input absolute bottom-0 right-0" min=0 max=20 size=' + item.size + ' />' +
+                        '</div>');
+                });
+                content += '</div>';
+
+                itemsWrapper.append(content);
+
                 index++;
             });
-
-            //set items to content-items
-
-            itemsWrapper.html('');
-            categories[0].items.forEach(item => {
-                itemsWrapper.append('<div class="flex relative calculator-item-element">' +
-                    '<span class="calculator-item-element-title color-primary absolute bottom-0 left-0">' + item.name + '</span>' +
-                    '<input type="number" class="calculator-item-element-input absolute bottom-0 right-0" min=0 max=20 size=' + item.size + ' />' +
-                    '</div>');
-            });
+            $(".calculator-category-title:first").click();
         }
     })();
 
@@ -616,23 +667,23 @@ $(function () {
                 },
                 {
                     question: '迷你倉各分店地址？',
-                    answer: '柴灣 (王子分店):柴灣新業街5號王子工業大廈4樓<br/>' +  
-                    '新蒲崗(捷景分店):九龍新蒲崗景福街114號捷景工業大廈9樓B室<br/>' +
-                    '葵涌(同珍分店):葵涌昌榮路9-11號同珍工業大廈1期A座2/3樓(接待處2樓)<br/>' +
-                    '葵涌(有利分店):葵涌打磚坪街16號有利工業貨倉大廈2樓D室<br/>' +   
-                    '葵興(貴豐分店):新界葵興葵昌路9-15號貴豐工業大廈8樓B室<br/>' +   
-                    '葵芳(美適分店):新界葵芳葵定路1-11號美適工業大廈3樓B室<br/>' +   
-                    '荃灣(京華分店):荃灣德士古道216-218號京華工業貨倉大廈2期14樓<br/>' +   
-                    '青衣(青衣工業中心):青衣長達路1-33號青衣工業中心2期D座5樓<br/>' +   
-                    '火炭(富昌分店):火炭黃竹洋街5-7號富昌中心6樓H-J 室<br/>' +   
-                    '火炭(華威分店):新界火炭禾香街1-7號華威工業大廈3樓C室<br/>' +  
-                    '屯門(通明分店):新界屯門新益里3號通明工業大廈4/5樓<br/>' + 
-                    '柴灣(萬峰分店)：柴灣祥利街7號萬峰工業大廈6樓C室<br/>' +  
-                    '新蒲崗(利嘉分店)：九龍新蒲崗五芳街8號利嘉工業大廈9樓CD室<br/>' +   
-                    '柴灣(柴工分店)：柴灣利眾街20號柴灣中心工業大廈14樓B1室<br/>' +
-                    '青衣(青衣工業中心):青衣長達路1-33號青衣工業中心2期D座7樓<br/>' +     
-                    '荃灣(華興分店)：荃灣馬角街2-6號華興工業大廈7樓B室<br/>' +
-                    '黃竹坑(瑞祺分店)：黃竹坑道18號瑞琪工業大廈14樓A室'
+                    answer: '柴灣 (王子分店):柴灣新業街5號王子工業大廈4樓<br/>' +
+                        '新蒲崗(捷景分店):九龍新蒲崗景福街114號捷景工業大廈9樓B室<br/>' +
+                        '葵涌(同珍分店):葵涌昌榮路9-11號同珍工業大廈1期A座2/3樓(接待處2樓)<br/>' +
+                        '葵涌(有利分店):葵涌打磚坪街16號有利工業貨倉大廈2樓D室<br/>' +
+                        '葵興(貴豐分店):新界葵興葵昌路9-15號貴豐工業大廈8樓B室<br/>' +
+                        '葵芳(美適分店):新界葵芳葵定路1-11號美適工業大廈3樓B室<br/>' +
+                        '荃灣(京華分店):荃灣德士古道216-218號京華工業貨倉大廈2期14樓<br/>' +
+                        '青衣(青衣工業中心):青衣長達路1-33號青衣工業中心2期D座5樓<br/>' +
+                        '火炭(富昌分店):火炭黃竹洋街5-7號富昌中心6樓H-J 室<br/>' +
+                        '火炭(華威分店):新界火炭禾香街1-7號華威工業大廈3樓C室<br/>' +
+                        '屯門(通明分店):新界屯門新益里3號通明工業大廈4/5樓<br/>' +
+                        '柴灣(萬峰分店)：柴灣祥利街7號萬峰工業大廈6樓C室<br/>' +
+                        '新蒲崗(利嘉分店)：九龍新蒲崗五芳街8號利嘉工業大廈9樓CD室<br/>' +
+                        '柴灣(柴工分店)：柴灣利眾街20號柴灣中心工業大廈14樓B1室<br/>' +
+                        '青衣(青衣工業中心):青衣長達路1-33號青衣工業中心2期D座7樓<br/>' +
+                        '荃灣(華興分店)：荃灣馬角街2-6號華興工業大廈7樓B室<br/>' +
+                        '黃竹坑(瑞祺分店)：黃竹坑道18號瑞琪工業大廈14樓A室'
                 },
                 {
                     question: '我想參觀迷你倉，但需要晚上才下班，請問營業時間後能否為我安排一下呢？',

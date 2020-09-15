@@ -111,6 +111,7 @@
         padding-left: 20px;
         padding-right: 20px;
         padding-bottom: 120px;
+        min-height: 100%;
     }
 
     .calculator-item-element-input {
@@ -212,9 +213,9 @@
         <div class="col-start-1 col-span-3" id="category-menu">
 
         </div>
-        <div id="content-items" class="col-start-4 col-span-9 grid grid-cols-3 col-gap-10 calculator-elements-wrapper">
-
+        <div id="content-wrapper" class="flex flex-col col-start-4 col-span-9 ">
         </div>
+
     </div>
 
     <div>
@@ -263,10 +264,12 @@
     <div class="pb-20">
         <p class="flex w-max-content room-footer color-primary mx-auto">
             <span class="pr-4">分享</span>
-            <a href="#"><img class="pl-2 box-content room-footer-image" src="{{ asset('images/calculator/icons8-facebook-50@2x.png') }}" /></a>
-            <a href="#"><img class="pl-2 box-content room-footer-image" src="{{ asset('images/calculator/icons8-instagram-50@2x.png') }}" /></a>
-            <a href="#"><img class="pl-2 box-content room-footer-image" src="{{ asset('images/calculator/icons8-whatsapp-50@2x.png') }}" /></a>
-            <a href="#"><img class="pl-2 box-content room-footer-image" src="{{ asset('images/calculator/icons8-email-50@2x.png') }}" /></a>
+            <a class="ml-2" href="https://developers.facebook.com/docs/plugins/share-button/"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-facebook-50@2x.png') }}" /></a>
+            <!-- <a href="#"><img class="pl-2 box-content room-footer-image" src="{{ asset('images/calculator/icons8-instagram-50@2x.png') }}" /></a> -->
+            <a class="ml-2" href="https://api.whatsapp.com/send?text=check%20this%20out"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-whatsapp-50@2x.png') }}" /></a>
+            <a class="ml-2" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.onestorage.com.hk" title="Share by Email">
+                <img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-email-50@2x.png') }}" />
+            </a>
         </p>
 
     </div>
@@ -282,7 +285,7 @@
 @section('scripts')
 <script>
     $(function() {
-        OneStorage.Calculator();
+        OneStorage.Calculator('<div class="grid grid-cols-3 col-gap-10 calculator-elements-wrapper">');
     });
 </script>
 

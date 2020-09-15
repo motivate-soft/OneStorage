@@ -250,11 +250,11 @@
                             <p class="radio-title w-4/6 ">是否One Storage 現有客戶 ? </p>
 
                             <div class=" radio-custom w-1/6">
-                                <input type="radio" id="storageyesunchecked" checked class="radio-gray" name="storage">
+                                <input type="radio" id="storageyesunchecked" class="radio-gray" name="storage" value="true">
                                 <label for="storageyesunchecked" class="radio-label">是</label>
                             </div>
                             <div class=" radio-custom w-1/6">
-                                <input type="radio" id="storagenochecked" class="radio-gray" name="storage">
+                                <input type="radio" id="storagenochecked" checked class="radio-gray" name="storage" value="false">
                                 <label for="storagenochecked" class="radio-label">否</label>
                             </div>
                         </div>
@@ -263,9 +263,12 @@
                             <div class="w-1/3 inline-block relative mb-6">
                                 <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日">
                                     <option value="" selected>分店</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
+                                    <?php
+                                    $branches = App\Store::select('branch')->get();
+                                    ?>
+                                    @foreach($branches as $branch)
+                                    <option value="{{$branch->branch}}">{{$branch->branch}}</option>
+                                    @endforeach
                                 </select>
                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                     <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -280,11 +283,11 @@
                             <p class="radio-title w-4/6 ">是否SoundWill Club 會員 ? </p>
 
                             <div class=" radio-custom w-1/6">
-                                <input type="radio" id="clubyesunchecked" checked class="radio-gray" name="club">
+                                <input type="radio" id="clubyesunchecked" class="radio-gray" name="club" value="true">
                                 <label for="clubyesunchecked" class="radio-label">是</label>
                             </div>
                             <div class=" radio-custom w-1/6">
-                                <input type="radio" id="clubnochecked" class="radio-gray" name="club">
+                                <input type="radio" id="clubnochecked" checked class="radio-gray" name="club" value="false">
                                 <label for="clubnochecked" class="radio-label">否</label>
                             </div>
                         </div>

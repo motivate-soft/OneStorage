@@ -36,7 +36,6 @@
                         </div>
                         <div class="w-1/2 flex input-group">
                             <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名" name="lastName" required>
-
                         </div>
                     </div>
 
@@ -142,17 +141,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="relative">
-                        <img class="show-icon" src="{{asset('images/contactUs/Image_39@2x.png')}}" alt="Mobile">
+                    <div class="relative input-group">
+                        <img id="pwdShowToggle" class="form-control-right-icon" src="{{asset('images/contactUs/Image_39@2x.png')}}" alt="Mobile">
                         <input class="show-input w-full form-control mb-6" style="padding-left:16px" placeholder="密碼" name="password" id="password" type="password" required>
                     </div>
 
-                    <div class="relative">
+                    <!-- <div class="relative">
                         <img class="show-icon" src="{{asset('images/contactUs/Image_39@2x.png')}}" alt="Mobile">
                         <input class="w-full form-control mb-6" style="padding-left:16px" placeholder="確認密碼" type="password" name="confirm_password" id="confirm_password" required>
-                    </div>
+                    </div> -->
 
-                    <span class="mb-4" id='message'></span>
+                    <!-- <span class="mb-4" id='message'></span> -->
 
 
                     <button class="submit-btn hover:bg-purple-400 mt-4">
@@ -303,11 +302,28 @@
 
 @section('scripts')
 <script>
-    $('#password, #confirm_password').on('keyup', function() {
-        if ($('#password').val() == $('#confirm_password').val()) {
-            $('#message').html('Matching').css('color', 'green');
-        } else
-            $('#message').html('Not Matching').css('color', 'red');
-    });
+    $(function() {
+        $('#password, #confirm_password').on('keyup', function() {
+            if ($('#password').val() == $('#confirm_password').val()) {
+                $('#message').html('Matching').css('color', 'green');
+            } else
+                $('#message').html('Not Matching').css('color', 'red');
+        });
+
+        $("#pwdShowToggle").click(function() {
+            const inputPwd = $("#password");
+            if ($(this).attr("state") == "show") {
+                $(this).attr("state", "hide");
+                $(this).attr("src", "images/contactUs/Image_39@2x.png");
+                inputPwd.attr("type", "password");
+            } else {
+                $(this).attr("state", "show");
+                $(this).attr("src", "images/contactUs/Image_40@2x.png");
+                inputPwd.attr("type", "text");
+            }
+            inputPwd.focus();
+
+        })
+    })
 </script>
 @endsection
