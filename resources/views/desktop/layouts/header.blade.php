@@ -31,7 +31,7 @@
                         <?php $locations = App\Store::getLocations(); ?>
                         @foreach($locations as $location)
                         <li class="py-1">
-                            <a class="block  text-base uppercase hover:text-purple-700 cursor-pointer font_16" href="{{url('/branch-location?location='.$location->location)}}">
+                            <a class="block hover:text-purple-700 cursor-pointer font_15" href="{{url('/branch-location?location='.$location->location)}}">
                                 {{$location->location}}
                             </a>
                         </li>

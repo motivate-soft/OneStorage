@@ -28,18 +28,20 @@
 
     .maintitle-right {
         padding-top: 30px;
-        margin-left: 27.5px;
+        /* margin-left: 27.5px; */
+        /* font-family: 'RobertBlack'; */
         font-size: 50px;
     }
 
     .maintitle-right-aboutus-english {
-        font-family: 'Roboto';
+        font-family: 'Roboto', sans-serif;
+        font-weight: 800;
     }
 
     .maintitle-right-bottom {
         font-size: 19px;
         color: #B2B5BD;
-        transform: translate(0, 50%);
+        /* transform: translate(0, 50%); */
     }
 
     .color-primary {
@@ -214,14 +216,21 @@
 
 <div class="relative block bg-white w-3/5 mx-auto mb-10 floating-panel">
     <div class="flex maintitle-wrapper color-primary">
-        <span class="uppercase maintitle-left robert-regular">one</span>
+        <div class="maintitle-right mx-auto">
+            <div class="mb-6">
+                <span class="self-center">聯絡我們</span>
+                <!-- <span class="self-center capitalize maintitle-right-aboutus-english pt-2">one storage</span> -->
+            </div>
+            <div class="capitalize maintitle-right-bottom">我們會在24小時內回覆</div>
+        </div>
+        <!-- <span class="uppercase maintitle-left robert-regular">one</span>
         <div class="w-px maintitle-divider"></div>
         <div class="relative maintitle-right">
             <div class="flex items-center">
                 <span>聯絡我們</span>
             </div>
             <div class="capitalize absolute bottom-0 left-0 maintitle-right-bottom">我們會在24小時內回覆</div>
-        </div>
+        </div> -->
     </div>
 
     <div class="grid grid-cols-5 gap-4 pt-20 pb-10">

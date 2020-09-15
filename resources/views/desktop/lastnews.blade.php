@@ -25,11 +25,12 @@
     <div class=" text-center text-5xl py-10">
         <h1 class="font_36">最新資訊</h1>
     </div>
-    @if(count($users)>0)
     <?php
     $index = 0;
+    $blogs = App\Blog::orderBy('updated_at', 'desc')->paginate(10);
+    $count = count($blogs);
     ?>
-    @foreach($users as $user)
+    @foreach($blogs as $blog)
     <a href="{{url('/news')}}" class="lg:flex rounded-lg mt-2 lg:py-3 lg:px-10">
         <img class="h-24 md:h-32 mr-10 md:mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
         <div class="w-full text-center">
@@ -44,7 +45,7 @@
     </a>
     <?php
     $index++;
-    if ($index != count($users)) {
+    if ($index != $count) {
     ?>
         <div class="rounded-lg lg:px-10 px-10 md:px-20 mb-3">
             <hr>
@@ -53,7 +54,8 @@
     }
     ?>
     @endforeach
-    @endif
+
+    {{ $blogs->links() }}
 </div>
 @endsection
 

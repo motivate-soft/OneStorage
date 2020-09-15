@@ -67,7 +67,7 @@
 
     .maintitle-right {
         padding-top: 30px;
-        margin-left: 27.5px;
+        /* margin-left: 27.5px; */
         font-size: 50px;
     }
 
@@ -78,7 +78,7 @@
     .maintitle-right-bottom {
         font-size: 19px;
         color: #B2B5BD;
-        transform: translate(0, 50%);
+        /* transform: translate(0, 50%); */
     }
 
     .color-primary {
@@ -126,13 +126,9 @@
 <div class="relative block bg-white w-3/5 mx-auto mb-10 floating-panel">
 
     <div class="flex maintitle-wrapper color-primary">
-        <span class="uppercase maintitle-left robert-regular">one</span>
-        <div class="w-px maintitle-divider"></div>
-        <div class="relative maintitle-right">
-            <div class="flex color-primary">
-                <span class="object-left-bottom">常見問題</span>
-            </div>
-            <div class="absolute bottom-0 left-0 maintitle-right-bottom">解答關於迷你倉的疑難</div>
+        <div class="maintitle-right mx-auto">
+            <p class="mb-6 self-center">常見問題</p>
+            <div class="maintitle-right-bottom">解答關於迷你倉的疑難</div>
         </div>
     </div>
 
@@ -156,7 +152,7 @@
                 </li> -->
             </ul>
         </div>
-        <div id="faq-content" class="col-start-4 col-span-7 bg-gray content-area pr-40">
+        <div id="faq-content" class="col-start-4 col-span-7 bg-gray content-area pr-40 pb-10">
         </div>
 
     </div>

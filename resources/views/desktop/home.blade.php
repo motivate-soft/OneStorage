@@ -496,6 +496,7 @@ use App\AppConfig;
                 success: function(result) {
                     submitBtn.css("background-color", "#28e8db");
                     submitBtn.prop('disabled', true);
+                    form.find("input").prop('disabled', true);
                     form.attr("state", "sent");
                 }
             });

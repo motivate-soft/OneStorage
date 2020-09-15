@@ -29,7 +29,7 @@
 
     .maintitle-right {
         padding-top: 30px;
-        margin-left: 27.5px;
+        /* margin-left: 27.5px; */
         font-size: 50px;
     }
 
@@ -40,7 +40,7 @@
     .maintitle-right-bottom {
         font-size: 19px;
         color: #B2B5BD;
-        transform: translate(0, 50%);
+        /* transform: translate(0, 50%); */
     }
 
     .color-primary {
@@ -190,7 +190,7 @@
 <img class="w-full" src="{{asset('images/calculator/markus-spiske-QtFAXP6z0Wk-unsplash@2x.png')}}" />
 
 <div class="relative block bg-white w-3/5 mx-auto floating-panel mb-10">
-    <div class="flex maintitle-wrapper color-primary">
+    <!-- <div class="flex maintitle-wrapper color-primary">
         <span class="uppercase maintitle-left">one</span>
         <div class="w-px maintitle-divider"></div>
         <div class="relative maintitle-right">
@@ -198,6 +198,13 @@
                 <span>空間計算器</span>
             </div>
             <div class="capitalize absolute bottom-0 left-0 maintitle-right-bottom">想知到需要幾大既倉? 幫緊你</div>
+        </div>
+    </div> -->
+
+    <div class="flex maintitle-wrapper color-primary">
+        <div class="maintitle-right mx-auto">
+            <p class="mb-6 self-center">空間計算器</p>
+            <div class="maintitle-right-bottom">想知到需要幾大既倉? 幫緊你</div>
         </div>
     </div>
 
