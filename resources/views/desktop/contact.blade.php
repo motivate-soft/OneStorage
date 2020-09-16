@@ -250,12 +250,83 @@
                         <img class="fill-current mr-4" src="{{asset('images/footer/icons8-whatsapp-50@2x.png')}}" />
                         <span class="self-center text-primary font_19">(852) 5118 8503</span>
                     </a>
-                    <a href="{{url('/branch-location')}}" class="flex col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-5 xl:col-span-2...">
+                    <a class="flex col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-5 xl:col-span-2...">
                         <img class="fill-current mr-4" src="{{asset('images/footer/icons8-home-50@2x.png')}}" />
-                        <span class="self-center text-primary font_19">查看分店地址不用</span>
+                        <span class="self-center text-primary font_19">查看分店地址</span>
                     </a>
                 </div>
             </div>
+            
+
+
+            <div class="grid grid-cols-2 mt-12 ml-10">
+                <div class="col-span-1">
+                    <p class="font_19 pl-10 pb-3">香港</p>
+                    <?php
+                    $contactInfos = App\ContactInfo::get3();
+                    ?>
+                    @foreach($contactInfos as $contact)
+                    <div>
+                        <div class="accordion relative appearance-none items-center">
+                            <div class="flex">
+                                <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
+                                <span class="self-center text-primary">{{$contact['name']}}</span>
+                            </div>
+                        </div>
+                        <div class="panel flex">
+                            <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
+                            <div class=" leading-5">
+                                <p class="font_14">
+                                    電話 :<span>{{$contact['phone']}}</span>
+                                </p>
+                                <a href="mailto:cs@onestorage.com.hk" class="font_14">
+                                    電郵 : <span>{{$contact['email']}}</span>
+                                </a>
+                                <p class="font_14">
+                                    <a href="{{'http://maps.google.com/?q='.$contact['address']}}" target="_blank" rel="noopener noreferrer">
+                                        地址 : {{$contact['address']}}
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+
+                <div class="col-span-1">
+                    <p class="font_19 pl-10 pb-3">九龍</p>
+                    <?php
+                    $contactInfos = App\ContactInfo::get2();
+                    ?>
+                    @foreach($contactInfos as $contact)
+                    <div>
+                        <div class="accordion relative appearance-none items-center">
+                            <div class="flex">
+                                <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
+                                <span class="self-center text-primary">{{$contact['name']}}</span>
+                            </div>
+                        </div>
+                        <div class="panel flex">
+                            <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
+                            <div class=" leading-5">
+                                <p class="font_14">
+                                    電話 :<span>{{$contact['phone']}}</span>
+                                </p>
+                                <a href="mailto:cs@onestorage.com.hk" class="font_14">
+                                    電郵 : <span>{{$contact['email']}}</span>
+                                </a>
+                                <p class="font_14">
+                                    <a href="{{'http://maps.google.com/?q='.$contact['address']}}" target="_blank" rel="noopener noreferrer">
+                                        地址 : {{$contact['address']}}
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+
             <p class="font_19 pl-10 pb-3 mt-12 ml-10">新界</p>
             <?php
             $contactInfos = App\ContactInfo::get1();
@@ -288,72 +359,6 @@
                 </div>
                 @endforeach
 
-            </div>
-            <?php
-            $contactInfos = App\ContactInfo::get2();
-            ?>
-            <div class="grid grid-cols-2 mt-8  ml-10">
-                <div class="col-span-1">
-                    <p class="font_19 pl-10 pb-3">九龍</p>
-                    @foreach($contactInfos as $contact)
-                    <div>
-                        <div class="accordion relative appearance-none items-center">
-                            <div class="flex">
-                                <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                                <span class="self-center text-primary">{{$contact['name']}}</span>
-                            </div>
-                        </div>
-                        <div class="panel flex">
-                            <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                            <div class=" leading-5">
-                                <p class="font_14">
-                                    電話 :<span>{{$contact['phone']}}</span>
-                                </p>
-                                <a href="mailto:cs@onestorage.com.hk" class="font_14">
-                                    電郵 : <span>{{$contact['email']}}</span>
-                                </a>
-                                <p class="font_14">
-                                    <a href="{{'http://maps.google.com/?q='.$contact['address']}}" target="_blank" rel="noopener noreferrer">
-                                        地址 : {{$contact['address']}}
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-                <?php
-                $contactInfos = App\ContactInfo::get3();
-                ?>
-                <div class="col-span-1">
-                    <p class="font_19 pl-10 pb-3">香港</p>
-                    @foreach($contactInfos as $contact)
-                    <div>
-                        <div class="accordion relative appearance-none items-center">
-                            <div class="flex">
-                                <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                                <span class="self-center text-primary">{{$contact['name']}}</span>
-                            </div>
-                        </div>
-                        <div class="panel flex">
-                            <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                            <div class=" leading-5">
-                                <p class="font_14">
-                                    電話 :<span>{{$contact['phone']}}</span>
-                                </p>
-                                <a href="mailto:cs@onestorage.com.hk" class="font_14">
-                                    電郵 : <span>{{$contact['email']}}</span>
-                                </a>
-                                <p class="font_14">
-                                    <a href="{{'http://maps.google.com/?q='.$contact['address']}}" target="_blank" rel="noopener noreferrer">
-                                        地址 : {{$contact['address']}}
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
             </div>
         </div>
         <div class="col-span-2 pr-10">

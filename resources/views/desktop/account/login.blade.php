@@ -32,7 +32,7 @@
                     <input class="form-control" name="phone" required type="text" placeholder="電話號碼">
                 </div>
 
-                <input class="w-full form-control mb-6" name="password" type="password" required style="padding-left:32px" type="text" placeholder="密碼">
+                <input class="w-full form-control mb-6" name="password" type="password" required style="" type="text" placeholder="密碼">
 
                 <a href="{{url('/forgetpwd')}}">
                     <p class=" register-subtilte title-violet">忘記密碼?</p>

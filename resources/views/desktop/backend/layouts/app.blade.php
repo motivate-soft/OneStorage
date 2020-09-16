@@ -38,7 +38,7 @@
     <div class="text-primary h-full">
         <main id="main-content" class="flex robert-black">
             @include('backend.layouts.sidebar')
-            <div class=" overflow-y-auto w-full bg-grey">
+            <div class="overflow-y-auto w-full bg-grey" id="wrapper">
                 @yield('content')
             </div>
 

@@ -3,6 +3,8 @@
 use App\AppConfig;
 use App\Background;
 use App\Store;
+use App\StoreQuestion;
+use App\User;
 use App\StoreSize;
 use Illuminate\Database\Seeder;
 
@@ -15,6 +17,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //add admin user
+        User::truncate();
+        $admin = new User;
+        $admin->first_name = "Tom";
+        $admin->last_name = "Tom";
+        $admin->phone = "51188503";
+        $admin->email = "cs@onestorage.com.hk";
+        $admin->password = bcrypt("admin");
+        $admin->role = "admin";
+        $admin->save();
+
+
         //set background
         Background::truncate();
         $background = new Background;
@@ -27,9 +41,10 @@ class DatabaseSeeder extends Seeder
         $appConfig->background = "/images/backgrounds/background.jpg";
         $appConfig->save();
 
-        Store::truncate();
         StoreSize::truncate();
-
+        StoreQuestion::truncate();
+        Store::truncate();
+        
         $stores = [
             [
                 'location'  =>  '香港島',

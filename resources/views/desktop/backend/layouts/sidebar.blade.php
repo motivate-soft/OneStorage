@@ -7,7 +7,7 @@
         <span class="w-32 mx-auto"><a href="{{url('/backend')}}">Enquiries</a></span>
     </div>
     <div class="flex mb-11">
-        <span class="w-32 mx-auto"><a href="{{url('/backend/stores')}}">Stores</a></span>
+        <span class="w-32 mx-auto"><a href="{{url('/backend/store')}}">Stores</a></span>
     </div>
     <div class="flex mb-11">
         <span class="w-32 mx-auto"><a href="{{url('/backend/pages')}}">Pages</a></span>

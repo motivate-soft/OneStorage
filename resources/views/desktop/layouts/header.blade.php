@@ -86,7 +86,10 @@
                         </a>
                     </li>
                     <li class="mr-1 md:mr-0">
-                        <a class="inbox new-msg inline-block font_16 default-color no-underline py-2 px-2" href="{{url('/chatlist')}}" style="display: flex;">
+                        <?php
+                        $hasMsg = Auth::user()->hasUnreadMsg();
+                        ?>
+                        <a class="{{$hasMsg ? 'inbox new-msg' : ' '}} inline-block font_16 default-color no-underline py-2 px-2" href="{{url('/chatlist')}}" style="display: flex;">
                             <img class="mr-1" src="{{asset('images/header/icons8-secured-letter-40@2x.png')}}" />
                             <span class="self-center text-primary">
                                 信息

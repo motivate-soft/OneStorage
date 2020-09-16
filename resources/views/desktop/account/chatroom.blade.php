@@ -22,7 +22,7 @@
     <div class="flex mb-24">
         <img class="mx-15 object-none" src="{{asset('images/contactUs/Intersection 15@2x.png')}}" alt="Avatar of Jonathan Reinink">
         <div class="flex flex-col lg:rounded-b-none lg:rounded-r justify-end">
-            <div class="branch-title">Paul Smith, 歡迎你回來!</div>
+            <div class="branch-title">{{Auth::user()->getName()}}, 歡迎你回來!</div>
         </div>
     </div>
 
@@ -47,60 +47,67 @@
                         &lt; Back
                     </a>
                 </p>
-                <div class="flex border-b py-2 mx-4 mb-4">
-                    <div>
-                        <img class="object-none" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
-                    </div>
 
-                    <div class="w-9/10 pl-6">
-                        <div class="flex justify-between">
-                            <p class="leading-none pt-2 font_19 regular-color">
-                                Admin - Tom <span class="text-grey font-normal ml-2 robert-regular">Admin at OneStorage</span>
-                            </p>
-                            <p class="text-right pt-2 font_14 robert-regular">18-Jul-2020 14:00</p>
+                <div id="msgWrapper" class="overflow-y-auto" style="max-height: 400px;">
+                    @if(isset($thread))
+                    @foreach($thread->messages as $key => $message)
+                    <div class="flex py-2 mx-4 mb-4 {{$key == count($thread->messages) - 1 ? '' : 'border-b'}} ">
+                        <?php
+                        // $prevMsg = $key > 0 ? $thread->messages[$key - 1] : null;
+                        // $timeInterval = $key > 0 ? $message->created_at->diffInSeconds($prevMsg->created_at) : -1
+                        ?>
+                        <div>
+                            @if($message->user->isAdmin())
+                            <img class="object-none" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Admin">
+                            @else
+                            <img class="object-none" src="{{asset('images/contactUs/Intersection15.png')}}" alt="Avatar">
+                            @endif
                         </div>
-                        <div class="font_19 my-6 robert-regular">
-                            <p class="mb-6">你好! Paul Smith, 提提你要繳費. </p>
-                            <p class="mb-6">應繳費用 $ xxxx</p>
-                            <p class="mb-6">thanks!</p>
-                            <p class="mb-6">Tom</p>
+
+                        <div class="w-9/10 pl-6">
+                            <div class="flex justify-between">
+                                <p class="leading-none pt-2 font_19 regular-color">
+                                    @if($message->user->isAdmin())
+                                    Admin - {{$message->user->first_name}} <span class="text-grey font-normal ml-2 robert-regular">Admin at OneStorage</span>
+                                    @else
+                                    {{$message->user->getName()}}
+                                    @endif
+                                </p>
+                                <p class="text-right pt-2 font_14 robert-regular">{{$message->created_at->format('d-M-Y H:i')}}</p>
+                            </div>
+                            <div class="font_19 my-6 robert-regular">
+                                <p class="mb-6">{{$message->body}}</p>
+                            </div>
                         </div>
                     </div>
+                    @endforeach
+                    @endif
                 </div>
-                <div class="flex py-2 mx-4 mb-4">
-                    <div>
-                        <img class="object-none" src="{{asset('images/contactUs/Intersection15.png')}}" alt="Avatar of Jonathan Reinink">
-                    </div>
+                @if(isset($thread))
+                <form id="msgForm" class="flex border-t p-4" action="{{ route('messages.update', $thread->id) }}" method="post">
+                    {{ method_field('put') }}
+                @else
+                <form class="flex border-t p-4" action="{{ route('messages.store') }}" method="post">
+                        @endif
+                        @csrf
+                        @if(isset($_GET['id']))
+                        <input type="hidden" name="recipient" value="{{$_GET['id']}}" />
+                        @endif
+                        <div>
+                            <img class="object-none" src="{{asset('images/contactUs/Intersection15.png')}}" alt="Avatar of Jonathan Reinink">
+                        </div>
 
-                    <div class="w-9/10 pl-6">
-                        <div class="flex justify-between">
-                            <p class="leading-none pt-2 font_19 regular-color">
-                                Paul Smith
-                            </p>
-                            <p class="text-right pt-2 font_14 robert-regular">28-Jul-2020 14:00</p>
+                        <div class="w-9/10 pl-6">
+                            <div class="flex justify-between">
+                                <p class="leading-none pt-2 font_19 regular-color">
+                                    {{Auth::user()->getName()}}
+                                </p>
+                            </div>
+                            <div class="font_16 robert-regular mt-6">
+                                <textarea class="border placeholder-gray-600 px-3 py-2 w-full border-gray-300" name="message" placeholder="Reply to Tom..." rows="3"></textarea>
+                                <button class="mt-4 mb-3 px-4 py-2 text-center" style="font-size: 17px;background-color: #3F81C7; color:white">送出</button>
+                            </div>
                         </div>
-                        <div class="font_19 my-6 robert-regular">
-                            <p class="mb-6">Thank you!</p>
-                        </div>
-                    </div>
-                </div>
-
-                <form class="flex border-t p-4">
-                    <div>
-                        <img class="object-none" src="{{asset('images/contactUs/Intersection15.png')}}" alt="Avatar of Jonathan Reinink">
-                    </div>
-
-                    <div class="w-9/10 pl-6">
-                        <div class="flex justify-between">
-                            <p class="leading-none pt-2 font_19 regular-color">
-                                Paul Smith
-                            </p>
-                        </div>
-                        <div class="font_16 robert-regular mt-6">
-                            <textarea class="border placeholder-gray-600 px-3 py-2 w-full border-gray-300" placeholder="Reply to Tom..." rows="3"></textarea>
-                            <button class="mt-4 mb-3 px-4 py-2 text-center" style="font-size: 17px;background-color: #3F81C7; color:white">送出</button>
-                        </div>
-                    </div>
                 </form>
             </div>
         </div>
@@ -110,4 +117,13 @@
 
 
 @section('scripts')
+<script>
+    $(function() {
+        $("#msgWrapper").animate({
+            scrollTop: $('#msgWrapper').prop("scrollHeight")
+        }, 500);
+        window.location.href = "#msgForm";
+
+    })
+</script>
 @endsection

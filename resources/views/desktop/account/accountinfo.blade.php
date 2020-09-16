@@ -22,7 +22,7 @@
     <div class="flex mb-24">
         <img class="mx-15 object-none" src="{{asset('images/contactUs/Intersection 15@2x.png')}}" alt="Avatar of Jonathan Reinink">
         <div class="flex flex-col lg:rounded-b-none lg:rounded-r justify-end">
-            <div class="branch-title">Paul Smith, 歡迎你回來!</div>
+        <div class="branch-title">{{Auth::user()->getName()}}, 歡迎你回來!</div>
         </div>
     </div>
 

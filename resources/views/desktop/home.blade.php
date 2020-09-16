@@ -231,7 +231,10 @@ use App\AppConfig;
             </div>
         </div>
 
-        <span class="heading2 ml-20 box-shadow">最新優惠</span>
+        <div class="text-center">
+            <span class="heading2 text-center box-shadow">最新優惠</span>
+        </div>
+
 
         <div class="grid grid-cols-2 col-gap-8 row-gap-10 my-24 max-w-full mx-auto">
             <img src="{{asset('images/img_2_1.jpg')}}" class="yellow-shadow" />
@@ -331,7 +334,10 @@ use App\AppConfig;
     <span class="heading2 box-shadow1">至尊迷你倉</span>
     <div class="mx-auto w-3/5">
         <p class="w-full bg-yellow py-6 px-10 text4 my-10 leading-snug font-medium">
-            至尊迷你倉致力為每位客戶打造最安全及最可靠的倉存空間，實力雄厚，全屬自置物業。分店網絡積極不斷擴充，新蒲崗及火炭分店將於短期內正式投入服務。 特設多種大小不同呎碼獨立迷你倉，任君選擇。2.4米闊的走廊配以完善的裝置設備，完全符合消防指引。全天候高清保安監察及警報系統，智能保安進出系統，24小時自助式儲存，支援現金、EPS、支票、信用卡、轉數快及免息分期付費，優質的儲存環境及親切專業的客戶服務，用心為每位客戶提升生活空間質素，承傳尊貴享受典範。
+            <!-- 至尊迷你倉致力為每位客戶打造最安全及最可靠的倉存空間，實力雄厚，全屬自置物業。分店網絡積極不斷擴充，新蒲崗及火炭分店將於短期內正式投入服務。 特設多種大小不同呎碼獨立迷你倉，任君選擇。2.4米闊的走廊配以完善的裝置設備，完全符合消防指引。全天候高清保安監察及警報系統，智能保安進出系統，24小時自助式儲存，支援現金、EPS、支票、信用卡、轉數快及免息分期付費，優質的儲存環境及親切專業的客戶服務，用心為每位客戶提升生活空間質素，承傳尊貴享受典範。 -->
+            為金朝陽集團屬下業務(股票代號： 00878.HK)。<br/>
+            分店遍佈港、九及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質的儲存環境及專業的服務。至尊迷你倉是亞洲迷你倉商會(SSAA及香港迷你倉總會會員(HKMSA)。
+
         </p>
         <div class="flex">
             <img src="{{asset('images/img_camera.jpg')}}" class="yellow-shadow1 w-2/5" />
@@ -400,9 +406,11 @@ use App\AppConfig;
                 <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="mr-4" />
                 <span class="text4 my-auto">可以預約實地參觀迷你倉嗎？</span>
             </div>
-            <div class="hidden px-12 pt-4"><p>歡迎致電21112636或whatsapp 51188503預約參觀。星期日及公眾假期，需至少於 1 天前預約。</p></div>
+            <div class="hidden px-12 pt-4">
+                <p>歡迎致電21112636或whatsapp 51188503預約參觀。星期日及公眾假期，需至少於 1 天前預約。</p>
+            </div>
         </div>
-        
+
     </div>
 
 </div>
@@ -484,7 +492,7 @@ use App\AppConfig;
         $("#discountForm").submit(function(e) {
             e.preventDefault();
             var form = $(this);
-            if(form.attr("state") === "sent"){
+            if (form.attr("state") === "sent") {
                 return;
             }
             var submitBtn = form.find("button");

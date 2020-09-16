@@ -13,6 +13,21 @@
     body {
         background-color: white !important;
     }
+
+    .inbox {
+        position: relative;
+    }
+
+    .has-msg::after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-radius: 9999px;
+        background-color: #FB6767;
+        right: -20px;
+        margin-top: 2px;
+        position: absolute;
+    }
 </style>
 @endsection
 
@@ -22,7 +37,7 @@
     <div class="flex mb-24">
         <img class="mx-15 object-none" src="{{asset('images/contactUs/Intersection 15@2x.png')}}" alt="Avatar of Jonathan Reinink">
         <div class="flex flex-col lg:rounded-b-none lg:rounded-r justify-end">
-            <div class="branch-title">Paul Smith, 歡迎你回來!</div>
+            <div class="branch-title">{{Auth::user()->getName()}}, 歡迎你回來!</div>
         </div>
     </div>
 
@@ -41,8 +56,13 @@
                 </a>
             </div>
 
-            <div class="w-4/5 ml-2 border">
-                <a class="flex border-b py-3 px-4 cursor-pointer" href="{{url('chatroom')}}">
+            <div class="w-4/5 ml-2">
+                <?php
+                $threads = Cmgmyr\Messenger\Models\Thread::forUser(Auth::id())->latest('updated_at')->get();
+                ?>
+                @if(count($threads))
+                @foreach($threads as $thread)
+                <a class="flex border py-3 px-4 cursor-pointer" href="{{url('chatroom/'.$thread->id)}}">
                     <div>
                         <img class="object-none" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
                     </div>
@@ -50,16 +70,23 @@
                     <div class="w-9/10 pl-6 pt-2">
                         <div class="flex justify-between">
                             <p class="leading-none pt-2 font_19 regular-color">
-                                Admin - Tom
+                                Admin - {{$thread->participantsString(Auth::id(), ['first_name'])}}
+                                <?php $unreadCnt = $thread->userUnreadMessagesCount(Auth::id())?> 
+                                @if($unreadCnt)
+                                <span class=" text-sm text-red-500">({{ $unreadCnt }} new msgs)</span>
+                                @endif
                             </p>
-                            <p class="text-right pt-2 font_14 robert-regular">28-Jul-2020</p>
+                            <p class="text-right pt-2 font_14 robert-regular">{{$thread->latestMessage->created_at->format('d-M-Y')}}</p>
                         </div>
                         <div class="font_19 mt-2 robert-regular">
-                            <p class="">你好! Paul Smith, 提提你要繳費. </p>
+                            <p class="">{{ $thread->latestMessage->body }}</p>
                         </div>
                     </div>
                 </a>
-                <a class="flex border-b py-3 px-4 cursor-pointer" href="{{url('chatroom')}}">
+                @endforeach
+                @else
+                @foreach(App\User::getAdmins() as $admin)
+                <a class="flex border py-3 px-4 cursor-pointer" href="{{url('chatroom?id='.$admin->id)}}">
                     <div>
                         <img class="object-none" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
                     </div>
@@ -67,66 +94,17 @@
                     <div class="w-9/10 pl-6 pt-2">
                         <div class="flex justify-between">
                             <p class="leading-none pt-2 font_19 regular-color">
-                                Admin - Tom
+                                Admin - {{$admin->first_name}}
                             </p>
-                            <p class="text-right pt-2 font_14 robert-regular">28-Jul-2020</p>
+                            <!-- <p class="text-right pt-2 font_14 robert-regular">28-Jul-2020</p> -->
                         </div>
                         <div class="font_19 mt-2 robert-regular">
-                            <p class="">你好! Paul Smith, 提提你要繳費. </p>
+                            <p class="text-xs text-blue-500">Click here to chat with Admin</p>
                         </div>
                     </div>
                 </a>
-                <a class="flex border-b py-3 px-4 cursor-pointer" href="{{url('chatroom')}}">
-                    <div>
-                        <img class="object-none" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
-                    </div>
-
-                    <div class="w-9/10 pl-6 pt-2">
-                        <div class="flex justify-between">
-                            <p class="leading-none pt-2 font_19 regular-color">
-                                Admin - Tom
-                            </p>
-                            <p class="text-right pt-2 font_14 robert-regular">28-Jul-2020</p>
-                        </div>
-                        <div class="font_19 mt-2 robert-regular">
-                            <p class="">你好! Paul Smith, 提提你要繳費. </p>
-                        </div>
-                    </div>
-                </a>
-                <a class="flex border-b py-3 px-4 cursor-pointer" href="{{url('chatroom')}}">
-                    <div>
-                        <img class="object-none" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
-                    </div>
-
-                    <div class="w-9/10 pl-6 pt-2">
-                        <div class="flex justify-between">
-                            <p class="leading-none pt-2 font_19 regular-color">
-                                Admin - Tom
-                            </p>
-                            <p class="text-right pt-2 font_14 robert-regular">28-Jul-2020</p>
-                        </div>
-                        <div class="font_19 mt-2 robert-regular">
-                            <p class="">你好! Paul Smith, 提提你要繳費. </p>
-                        </div>
-                    </div>
-                </a>
-                <a class="flex border-b py-3 px-4 cursor-pointer" href="{{url('chatroom')}}">
-                    <div>
-                        <img class="object-none" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
-                    </div>
-
-                    <div class="w-9/10 pl-6 pt-2">
-                        <div class="flex justify-between">
-                            <p class="leading-none pt-2 font_19 regular-color">
-                                Admin - Tom
-                            </p>
-                            <p class="text-right pt-2 font_14 robert-regular">28-Jul-2020</p>
-                        </div>
-                        <div class="font_19 mt-2 robert-regular">
-                            <p class="">你好! Paul Smith, 提提你要繳費. </p>
-                        </div>
-                    </div>
-                </a>
+                @endforeach
+                @endif
             </div>
         </div>
     </div>

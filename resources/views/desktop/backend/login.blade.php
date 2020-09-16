@@ -30,17 +30,18 @@
         <main id="main-content" class="flex flex-col justify-between py-10 w-2/5 mx-auto robert-black relative h-full">
             <form class="px-20 pt-48 mx-auto" method="post" action="{{url('/backend/login')}}">
                 @csrf
+                <input type="hidden" value="admin" name="role"/>
                 <p class="font_25 mb-10 ml-5 mr-8 leading-tight">
                     OneStorage Backend login<br />
                     Please sign in to your account
                 </p>
                 <div class="flex mb-6">
                     <span class="w-1/3 font_19 mr-px my-auto">Login Name:</span>
-                    <input class="form-input w-2/3 appearance-none rounded-none bg-white border border-gray-300 p-2 text-base" name="name" required type="text">
+                    <input class="form-input w-2/3 appearance-none rounded-none bg-white border border-gray-300 p-2 text-base" name="first_name" required type="text">
                 </div>
                 <div class="flex mb-6">
                     <span class="w-1/3 font_19 mr-px my-auto">Password:</span>
-                    <input class="form-input w-2/3 appearance-none rounded-none bg-white border border-gray-300 p-2 text-base" name="name" required type="password">
+                    <input class="form-input w-2/3 appearance-none rounded-none bg-white border border-gray-300 p-2 text-base" name="password" required type="password">
                 </div>
                 <div class="flex">
                     <div class="w-1/3"></div>

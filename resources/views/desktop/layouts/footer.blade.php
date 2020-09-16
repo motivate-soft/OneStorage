@@ -5,7 +5,7 @@
             <div style="margin-right: 30px;" class="w-2/5">
                 <div class="mt-2">
                     <!-- <h2 class=" text-lg my-8 font_15">關於 <b>One Storage.</b></h2> -->
-                    <h2 class="text-lg mt-4 mb-8  font-bold">關於 One Storage</h2>
+                    <h2 class="text-lg mt-4 mb-8  font-bold">關於至尊迷你倉</h2>
                     <div class=" text-justify my-4 leading-5 font_13">至尊迷你倉為金朝陽集團屬下業務(股票代號：
                         00878.HK)。<br>
                         <br>
@@ -33,7 +33,7 @@
             </div>
             <div class="px-2">
                 <div class="">
-                    <h2 class="text-lg mt-4 mb-8 font-bold">連絡我們</h2>
+                    <h2 class="text-lg mt-4 mb-8 font-bold">聯絡我們</h2>
                     <div class="grid grid-cols-6 gap-4 font_13 ml-1">
                         <a class="flex col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-5 xl:col-span-2..." href="Tel: 852-21112636">
                             <img class="fill-current mr-4" src="{{asset('images/footer/icons8-phone-50@2x.png')}}" />
@@ -47,7 +47,7 @@
                             <img class="fill-current mr-4" src="{{asset('images/footer/icons8-whatsapp-50@2x.png')}}" />
                             <span class="self-center text-primary">(852) 5118 8503</span>
                         </a>
-                        <a class="flex col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-5 xl:col-span-2..." href="{{url('/branch-location')}}">
+                        <a class="flex col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-5 xl:col-span-2...">
                             <img class="fill-current mr-4" src="{{asset('images/footer/icons8-home-50@2x.png')}}" />
                             <span class="self-center text-primary">查看分店地址</span>
                         </a>

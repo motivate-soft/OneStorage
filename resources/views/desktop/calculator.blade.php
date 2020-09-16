@@ -264,10 +264,14 @@
     <div class="pb-20">
         <p class="flex w-max-content room-footer color-primary mx-auto">
             <span class="pr-4">分享</span>
-            <a class="ml-2" href="https://developers.facebook.com/docs/plugins/share-button/"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-facebook-50@2x.png') }}" /></a>
-            <!-- <a href="#"><img class="pl-2 box-content room-footer-image" src="{{ asset('images/calculator/icons8-instagram-50@2x.png') }}" /></a> -->
+            <!-- <a class="ml-2" href="https://developers.facebook.com/docs/plugins/share-button/"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-facebook-50@2x.png') }}" /></a>
             <a class="ml-2" href="https://api.whatsapp.com/send?text=check%20this%20out"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-whatsapp-50@2x.png') }}" /></a>
             <a class="ml-2" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.onestorage.com.hk" title="Share by Email">
+                <img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-email-50@2x.png') }}" />
+            </a> -->
+            <a class="ml-2 cursor-pointer"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-facebook-50@2x.png') }}" /></a>
+            <a class="ml-2 cursor-pointer"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-whatsapp-50@2x.png') }}" /></a>
+            <a class="ml-2 cursor-pointer">
                 <img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-email-50@2x.png') }}" />
             </a>
         </p>

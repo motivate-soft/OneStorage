@@ -23,7 +23,7 @@
 
 <div class="bg-white mx-auto w-3/5 mb-10 floating-panel">
     <div class=" text-center text-5xl py-10">
-        <h1 class="font_36">最新資訊</h1>
+        <span class="font_35 font-bold">最新資訊</span>
     </div>
     <?php
     $index = 0;

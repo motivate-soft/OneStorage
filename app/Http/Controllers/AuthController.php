@@ -25,7 +25,18 @@ class AuthController extends Controller
             // Authentication passed...
             return redirect()->intended();
         }
-        return response('login failed');
+        return redirect('login');
+    }
+
+    public function adminLogin(Request $request)
+    {
+        $credentials = $request->only('first_name', 'password', 'role');
+
+        if (Auth::attempt($credentials, true)) {
+            // Authentication passed...
+            return redirect('backend');
+        }
+        return redirect('backend/login');
     }
 
     public function loginPage()
@@ -34,6 +45,16 @@ class AuthController extends Controller
             return redirect()->intended();
         }
         return view('account.login');
+    }
+
+    public function registerPage()
+    {
+        return view('account.register');
+    }
+
+    public function forgetPwdPage()
+    {
+        return view('account.forgetpassword');
     }
 
     public function register(Request $request)
