@@ -70,7 +70,7 @@
 
                         <div class=" date-component">
                             <div class="inline-block relative">
-                                <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日" name="day" required>
+                                <select id="daySelector" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日" name="day" required>
                                     <option value="" selected disabled>日</option>
                                     @for($i = 1; $i < 32; $i++)
                                     <option value="{{$i}}">{{$i}}</option>
@@ -85,7 +85,7 @@
 
                         <div class=" date-component">
                             <div class="inline-block relative">
-                                <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="month" required>
+                                <select id="monthSelector" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="month" required>
                                     <option value="" selected disabled>月</option>
                                     @for($i = 1; $i < 13; $i++)
                                     <option value="{{$i}}">{{$i}}</option>
@@ -100,9 +100,9 @@
 
                         <div class=" date-component">
                             <div class="inline-block relative">
-                                <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="year" required>
+                                <select id="yearSelector" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="year" required>
                                     <option value="" selected disabled>年</option>
-                                    @for($i = 2011; $i < 2021; $i++)
+                                    @for($i = 1990; $i < 2021; $i++)
                                     <option value="{{$i}}">{{$i}}</option>
                                     @endfor
                                 </select>
@@ -275,27 +275,7 @@
 @section('scripts')
 <script>
     $(function() {
-        $('#password, #confirm_password').on('keyup', function() {
-            if ($('#password').val() == $('#confirm_password').val()) {
-                $('#message').html('Matching').css('color', 'green');
-            } else
-                $('#message').html('Not Matching').css('color', 'red');
-        });
-
-        $("#pwdShowToggle").click(function() {
-            const inputPwd = $("#password");
-            if ($(this).attr("state") == "show") {
-                $(this).attr("state", "hide");
-                $(this).attr("src", "images/contactUs/Image_39@2x.png");
-                inputPwd.attr("type", "password");
-            } else {
-                $(this).attr("state", "show");
-                $(this).attr("src", "images/contactUs/Image_40@2x.png");
-                inputPwd.attr("type", "text");
-            }
-            inputPwd.focus();
-
-        })
+        OneStorage.Register();
     })
 </script>
 @endsection

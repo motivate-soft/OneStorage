@@ -800,5 +800,61 @@ $(function () {
             init();
         }
     })();
+
+    OneStorage.Register = (function () {
+        const mDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        const daySelector = $("#daySelector");
+        return function () {
+            $('#password, #confirm_password').on('keyup', function () {
+                if ($('#password').val() == $('#confirm_password').val()) {
+                    $('#message').html('Matching').css('color', 'green');
+                } else
+                    $('#message').html('Not Matching').css('color', 'red');
+            })
+
+            $("#pwdShowToggle").click(function () {
+                const inputPwd = $("#password");
+                if ($(this).attr("state") == "show") {
+                    $(this).attr("state", "hide");
+                    $(this).attr("src", "images/contactUs/Image_39@2x.png");
+                    inputPwd.attr("type", "password");
+                } else {
+                    $(this).attr("state", "show");
+                    $(this).attr("src", "images/contactUs/Image_40@2x.png");
+                    inputPwd.attr("type", "text");
+                }
+                inputPwd.focus();
+
+            })
+
+            daySelector.val("1");
+            $("#monthSelector").val("1");
+            $("#yearSelector").val("2000");
+
+            function setDays() {
+                const month = Number($("#monthSelector").val());
+                const year = Number($("#yearSelector").val());
+                const selectedDay = Number(daySelector.val());
+
+                var days = mDays[month - 1];
+                if (days == 28 && year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
+                    days = 29;
+                }
+
+                daySelector.html('<option value="" selected disabled>日</option>');
+                for (var i = 1; i < days + 1; i++) {
+                    daySelector.append('<option value="' + i + '">' + i + '</option>')
+                }
+
+                daySelector.val(selectedDay > days ? "1" : selectedDay);
+            }
+
+            $("#monthSelector, #yearSelector").change(function () {
+                setDays();
+            })
+
+            //$("#yearSelector")
+        };
+    })();
 });
 
