@@ -72,21 +72,9 @@
                             <div class="inline-block relative">
                                 <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日" name="day" required>
                                     <option value="" selected disabled>日</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                    <option value="15">15</option>
+                                    @for($i = 1; $i < 32; $i++)
+                                    <option value="{{$i}}">{{$i}}</option>
+                                    @endfor
                                 </select>
                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                     <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -99,18 +87,9 @@
                             <div class="inline-block relative">
                                 <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="month" required>
                                     <option value="" selected disabled>月</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
+                                    @for($i = 1; $i < 13; $i++)
+                                    <option value="{{$i}}">{{$i}}</option>
+                                    @endfor
                                 </select>
                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                     <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -123,16 +102,9 @@
                             <div class="inline-block relative">
                                 <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="year" required>
                                     <option value="" selected disabled>年</option>
-                                    <option value="2011">2011</option>
-                                    <option value="2012">2012</option>
-                                    <option value="2013">2013</option>
-                                    <option value="2014">2014</option>
-                                    <option value="2015">2015</option>
-                                    <option value="2016">2016</option>
-                                    <option value="2017">2017</option>
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
+                                    @for($i = 2011; $i < 2021; $i++)
+                                    <option value="{{$i}}">{{$i}}</option>
+                                    @endfor
                                 </select>
                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                     <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -215,9 +187,9 @@
                         <div class="w-full inline-block relative mb-6">
                             <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="contacatMethod">
                                 <option value="" selected disabled>最佳聯絡方式</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
+                                <option value="Whatsapp">Whatsapp</option>
+                                <option value="Email">Email</option>
+                                <option value="Call">Call</option>
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                 <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -234,7 +206,7 @@
                                 <label for="storageyesunchecked" class="radio-label">是</label>
                             </div>
                             <div class="radio-custom w-1/6">
-                                <input type="radio" id="storagenochecked" checked class="radio-gray" value="false" name="isCustomer">
+                                <input type="radio" id="storagenochecked" class="radio-gray" value="false" name="isCustomer">
                                 <label for="storagenochecked" class="radio-label">否</label>
                             </div>
                         </div>
@@ -267,7 +239,7 @@
                                 <label for="clubyesunchecked" class="radio-label">是</label>
                             </div>
                             <div class=" radio-custom w-1/6">
-                                <input type="radio" id="clubnochecked" checked class="radio-gray" value="true" name="isMember">
+                                <input type="radio" id="clubnochecked" class="radio-gray" value="true" name="isMember">
                                 <label for="clubnochecked" class="radio-label">否</label>
                             </div>
                         </div>

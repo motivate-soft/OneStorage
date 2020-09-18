@@ -1,4 +1,4 @@
-<nav class="w-full pin-t z-40 fixed text-primary">
+<nav class="w-full pin-t z-40 fixed top-0 text-primary" id="header">
     @include('partials.latest_news')
     <div class="bg-white flex items-center justify-between flex-wrap pr-10 py-5" style="background: rgba(255, 255, 255, 0.75); ">
         <div class="flex items-center flex-shrink-0 text-white" style="padding-left: 140px;">
@@ -14,7 +14,7 @@
         </div>
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden pt-6 lg:pt-0" id="nav-content">
 
-            <ul class="list-reset lg:flex lg:ml-0 justify-end flex-1 items-center font_15 robert-bold" style="z-index: 50;">
+            <ul class="list-reset lg:flex lg:ml-0 justify-end flex-1 items-center font_15 source-han" style="z-index: 50;">
 
                 <li class="mr-1 md:mr-0 dropdown">
                     <a class="dropbtn inline-block default-color no-underline py-2 px-2" href="{{url('/about')}}">關於我們</a>
@@ -51,7 +51,7 @@
 
                 <li class="relative mr-4 text-white font-thin">
                     <!-- <a href="{{url('/mobile')}}" class="bg-gray-500 px-3 py-px text-xs w-full">Mobile Demo</a><br /> -->
-                    <a href="{{url('/backend')}}" class="bg-gray-700 px-3 py-px text-xs w-full">Backend Demo</a><br />
+                    <a href="{{url('/backend')}}" class="bg-gray-700 px-3 py-px text-xs w-full robert-bold">Backend Demo</a><br />
                 </li>
 
                 <li class="relative mr-4">

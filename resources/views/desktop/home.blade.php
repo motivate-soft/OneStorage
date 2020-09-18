@@ -146,13 +146,13 @@ use App\AppConfig;
 
 <div class="bg-white flex w-full pl-36 pt-10 bg-hero">
     <div class="w-1/2">
-        <p class="z-20 page-title leading-snug text-primary mb-2">
+        <p class="z-20 page-title leading-snug text-primary mb-2 source-han">
             唔想屋企<span class="text-yellow">咁亂</span>?
         </p>
-        <span class="z-10 page-title title-shadow">
+        <span class="z-10 page-title title-shadow source-han">
             搵One Storage 啦
         </span>
-        <p class="page-desc pt-6">至尊迷你倉 ‧ One Choice ‧ One Storage</p>
+        <p class="page-desc pt-6 source-han">至尊迷你倉 ‧ One Choice ‧ One Storage</p>
         <form id="branchSearchForm" class="flex bg-primary rounded-lg p-4 mr-4 mt-8 justify-between w-7/10" method="get" action="{{url('/rentwarehouse')}}">
             <img src="{{asset('images/ic_marker.png')}}" class="align-middle my-auto" />
             <input id="storeId" type="hidden" name="storeId" />

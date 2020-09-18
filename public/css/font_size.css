@@ -67,6 +67,15 @@
     src: url(../fonts/Roboto-Bold.ttf);
 }
 
+@font-face {
+    font-family: 'SourceHan';
+    src: url(../fonts/SourceSansPro-Bold.otf);
+}
+
+.source-han{
+    font-family: 'SourceHan';
+}
+
 .robert-regular{
     font-family: "RobertRegular";
 }

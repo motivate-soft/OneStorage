@@ -18,4 +18,7 @@
     <div class="flex mb-11">
         <span class="w-32 mx-auto"><a href="{{url('/backend/messages ')}}">Messages</a></span>
     </div>
+    <div class="flex mb-11">
+        <span class="w-32 mx-auto"><a href="{{url('/logout ')}}">Logout</a></span>
+    </div>
 </div>

@@ -71,6 +71,10 @@ Route::group(['prefix' => '/'], function () {
         return view('news');
     });
 
+    Route::get('/disclaimer', function(){
+        return view('disclaimer');
+    });
+
     Route::get('/login', 'AuthController@loginPage');
     Route::get('/register', 'AuthController@registerPage');
     Route::get('/forgetpwd', 'AuthController@forgetPwdPage');

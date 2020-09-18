@@ -125,8 +125,8 @@
 
 <div class="relative block bg-white w-3/5 mx-auto mb-10 floating-panel">
 
-    <div class="flex maintitle-wrapper color-primary">
-        <div class="maintitle-right mx-auto">
+    <div class="maintitle-wrapper color-primary text-center">
+        <div class="maintitle-right">
             <p class="mb-6 self-center">常見問題</p>
             <div class="maintitle-right-bottom">解答關於迷你倉的疑難</div>
         </div>

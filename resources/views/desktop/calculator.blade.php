@@ -202,9 +202,10 @@
         </div>
     </div> -->
 
-    <div class="flex maintitle-wrapper color-primary">
-        <div class="maintitle-right mx-auto">
-            <p class="mb-6 self-center">空間計算器</p>
+
+    <div class="maintitle-wrapper color-primary text-center">
+        <div class="maintitle-right">
+            <p class="mb-6">空間計算器</p>
             <div class="maintitle-right-bottom">想知到需要幾大既倉? 幫緊你</div>
         </div>
     </div>

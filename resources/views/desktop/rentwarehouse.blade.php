@@ -345,6 +345,8 @@
         background-color: #E0CBF6;
         color: #56628C;
     }
+
+    
 </style>
 <link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}" />
 
@@ -356,10 +358,12 @@
 
 @section('content')
 @if($store != null)
+
+
 <div class="mx-auto w-3/5 pt-6">
-    <p class="heading2 px-4 mb-3">{{$store->branch}}</p>
-    <div class="grid grid-cols-12 ">
-        <div class="col-start-1 col-span-8 pb-8">
+    <p class="heading2 px-4 mb-3 overflo">{{$store->branch}}</p>
+    <div class="flex">
+        <div class="w-2/3 pb-8">
             <p class="text1 px-4 mb-2"><a href="#address-section">{{$store->address}}</a> </p>
             <div class="bg-white px-4 py-2">
                 <div class="flex">
@@ -593,67 +597,70 @@
 
             </div>
         </div>
-        <div class="mx-4 pb-8 rentwarehouse-right fixed w-1/5 pr-10 right-80 bg-grey">
-            <p class="color-primary rentwarehouse-space-size-title pb-6">你需要多大的空間?</p>
-            <div class="grid grid-cols-2 col-gap-2 row-gap-2">
-                @foreach($store->sizes as $key=>$size)
-                @if($size->size)
-                <div data-price="{{$size->price}}" data-size="{{$size->size}}" data-prepaid-price="{{$size->prepaid_price}}" class="rounded p-2 color-primary rentwarehouse-space-size-select cursor-pointer text-center <?= $key == 0 ? 'active' : '' ?>"><b>{{$size->size}}</b>平方呎</div>
-                @endif
-                @endforeach
-            </div>
+        <div class="w-1/3 mx-8 pb-8 rentwarehouse-right bg-grey top-4">
+            <div class="sticky top-48">
+                <p class="color-primary rentwarehouse-space-size-title pb-6">你需要多大的空間?</p>
+                <div class="grid grid-cols-2 col-gap-2 row-gap-2">
+                    @foreach($store->sizes as $key=>$size)
+                    @if($size->size)
+                    <div data-price="{{$size->price}}" data-size="{{$size->size}}" data-prepaid-price="{{$size->prepaid_price}}" class="rounded p-2 color-primary rentwarehouse-space-size-select cursor-pointer text-center <?= $key == 0 ? 'active' : '' ?>"><b>{{$size->size}}</b>平方呎</div>
+                    @endif
+                    @endforeach
+                </div>
 
-            <div class="flex pt-4">
-                <p class="rentwarehouse-size-select-description my-auto">唔知自己需要咩size ? 試下我地既<a href="{{url('/calc')}}">空間計算器</a></p>
-                <img class="object-none box-content pl-1 -mt-1" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
-            </div>
+                <div class="flex pt-4">
+                    <p class="rentwarehouse-size-select-description my-auto">唔知自己需要咩size ? 試下我地既<a href="{{url('/calc')}}">空間計算器</a></p>
+                    <img class="object-none box-content pl-1 -mt-1" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
+                </div>
 
-            <p class="color-primary rentwarehouse-space-size-title pt-4 pb-4">請選擇付費方式</p>
-            <div class="grid grid-cols-2 col-gap-4 row-gap-2">
-                <div class="rentwarehouse-price-select cursor-pointer active">
-                    <p class="color-primary rentwarehouse-mode-select-item-title pb-2">預繳12個月</p>
-                    <div class="rounded p-2 color-primary rentwarehouse-price-select-item text-center">
-                        <b>$</b><b class="price-content" id="prepaid-price-wrapper">---</b><b>/</b>月
+                <p class="color-primary rentwarehouse-space-size-title pt-4 pb-4">請選擇付費方式</p>
+                <div class="grid grid-cols-2 col-gap-4 row-gap-2">
+                    <div class="rentwarehouse-price-select cursor-pointer active">
+                        <p class="color-primary rentwarehouse-mode-select-item-title pb-2">預繳12個月</p>
+                        <div class="rounded p-2 color-primary rentwarehouse-price-select-item text-center">
+                            <b>$</b><b class="price-content" id="prepaid-price-wrapper">---</b><b>/</b>月
+                        </div>
                     </div>
-                </div>
-                <div class="rentwarehouse-price-select cursor-pointer">
-                    <p class="color-primary rentwarehouse-mode-select-item-title pb-2">單月付款</p>
-                    <div class="rounded p-2 color-primary rentwarehouse-price-select-item text-center">
-                        <b>$</b><b class="price-content" id="price-wrapper">---</b><b>/</b>月
-                    </div>
-                </div>
-            </div>
-            <div class="my-4">
-                <div class="border-t border-l border-r border-grey text-center font-bold rounded-t px-4 py-4 rentwarehouse-select-result-card-title">
-                    月費
-                </div>
-                <div class="border-b border-l border-r border-grey rounded-b px-4 py-3 text-center">
-                    <p class="rentwarehouse-price-select-result-card-content pt-3 pb-5 text-center">$<span class="selected-price">380</span></p>
-                    <div class="px-5">
-                        <p class="w-max-content rentwarehouse-price-select-result-card-footer-title color-primary">付費方式:</p>
-                        <div class="w-max-content flex color-primary pb-2 pt-2">
-                            <span class="rentwarehouse-price-select-result-card-footer-content color-deep my-auto mr-2">現金</span>
-                            <img class="mx-1 object-none" src="{{ asset('images/Image 60@2x.png') }}" />
-                            <img class="mx-1 object-none" src="{{ asset('images/Image 59@2x.png') }}" />
-                            <img class="mx-1 object-none" src="{{ asset('images/Image 58@2x.png') }}" />
-                            <img class="mx-1 object-none" src="{{ asset('images/fps_color_tc@2x.png') }}" />
-                            <img class="mx-1 object-none" src="{{ asset('images/Intersection 41@2x.png') }}" />
+                    <div class="rentwarehouse-price-select cursor-pointer">
+                        <p class="color-primary rentwarehouse-mode-select-item-title pb-2">單月付款</p>
+                        <div class="rounded p-2 color-primary rentwarehouse-price-select-item text-center">
+                            <b>$</b><b class="price-content" id="price-wrapper">---</b><b>/</b>月
                         </div>
                     </div>
                 </div>
+                <div class="my-4">
+                    <div class="border-t border-l border-r border-grey text-center font-bold rounded-t px-4 py-4 rentwarehouse-select-result-card-title">
+                        月費
+                    </div>
+                    <div class="border-b border-l border-r border-grey rounded-b px-4 py-3 text-center">
+                        <p class="rentwarehouse-price-select-result-card-content pt-3 pb-5 text-center">$<span class="selected-price">380</span></p>
+                        <div class="px-5">
+                            <p class="w-max-content rentwarehouse-price-select-result-card-footer-title color-primary">付費方式:</p>
+                            <div class="w-max-content flex color-primary pb-2 pt-2">
+                                <span class="rentwarehouse-price-select-result-card-footer-content color-deep my-auto mr-2">現金</span>
+                                <img class="mx-1 object-none" src="{{ asset('images/Image 60@2x.png') }}" />
+                                <img class="mx-1 object-none" src="{{ asset('images/Image 59@2x.png') }}" />
+                                <img class="mx-1 object-none" src="{{ asset('images/Image 58@2x.png') }}" />
+                                <img class="mx-1 object-none" src="{{ asset('images/fps_color_tc@2x.png') }}" />
+                                <img class="mx-1 object-none" src="{{ asset('images/Intersection 41@2x.png') }}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="modalTrigger" class="rounded-full w-full rentwarehouse-price-select-button py-2 my-2 color-primary">查詢/預約 </button>
+
+                <p class="rentwarehouse-price-select-news-title color-primary my-2">最新資訊</p>
+
+                <div class="flex pt-2">
+                    <img class="flex-shrink-0 rentwarehouse-price-select-news-image" src="{{ asset('images/Image 8@2x.png') }}" />
+                    <p class="pl-3 color-deep overflow-y-hidden leading-relaxed">黃竹坑新店快閃優惠　低至6折優惠<br /><br />
+                        震撼筍價HK$300起即可入手
+                        黃竹坑分店全新開業，推出快閃驚喜優惠!
+                    </p>
+                </div>
             </div>
 
-            <button id="modalTrigger" class="rounded-full w-full rentwarehouse-price-select-button py-2 my-2 color-primary">查詢/預約 </button>
-
-            <p class="rentwarehouse-price-select-news-title color-primary my-2">最新資訊</p>
-
-            <div class="flex pt-2">
-                <img class="flex-shrink-0 rentwarehouse-price-select-news-image" src="{{ asset('images/Image 8@2x.png') }}" />
-                <p class="pl-3 color-deep overflow-y-hidden leading-relaxed">黃竹坑新店快閃優惠　低至6折優惠<br /><br />
-                    震撼筍價HK$300起即可入手
-                    黃竹坑分店全新開業，推出快閃驚喜優惠!
-                </p>
-            </div>
 
         </div>
     </div>

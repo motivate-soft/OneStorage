@@ -215,22 +215,11 @@
 <img class="w-full" src="{{asset('images/contact_us/shutterstock_1224334369.png')}}" />
 
 <div class="relative block bg-white w-3/5 mx-auto mb-10 floating-panel">
-    <div class="flex maintitle-wrapper color-primary">
-        <div class="maintitle-right mx-auto">
-            <div class="mb-6">
-                <span class="self-center">聯絡我們</span>
-                <!-- <span class="self-center capitalize maintitle-right-aboutus-english pt-2">one storage</span> -->
-            </div>
+    <div class="maintitle-wrapper color-primary text-center">
+        <div class="maintitle-right">
+            <p class="mb-6">聯絡我們</p>
             <div class="capitalize maintitle-right-bottom">我們會在24小時內回覆</div>
         </div>
-        <!-- <span class="uppercase maintitle-left robert-regular">one</span>
-        <div class="w-px maintitle-divider"></div>
-        <div class="relative maintitle-right">
-            <div class="flex items-center">
-                <span>聯絡我們</span>
-            </div>
-            <div class="capitalize absolute bottom-0 left-0 maintitle-right-bottom">我們會在24小時內回覆</div>
-        </div> -->
     </div>
 
     <div class="grid grid-cols-5 gap-4 pt-20 pb-10">
@@ -256,109 +245,45 @@
                     </a>
                 </div>
             </div>
-            
+
 
 
             <div class="grid grid-cols-2 mt-12 ml-10">
                 <div class="col-span-1">
-                    <p class="font_19 pl-10 pb-3">香港</p>
+                    <p class="font_19 pl-10 pb-3">香港島</p>
                     <?php
-                    $contactInfos = App\ContactInfo::get3();
+                    $locations = App\LocationInfo::getHongKong();
                     ?>
-                    @foreach($contactInfos as $contact)
-                    <div>
-                        <div class="accordion relative appearance-none items-center">
-                            <div class="flex">
-                                <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                                <span class="self-center text-primary">{{$contact['name']}}</span>
-                            </div>
-                        </div>
-                        <div class="panel flex">
-                            <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                            <div class=" leading-5">
-                                <p class="font_14">
-                                    電話 :<span>{{$contact['phone']}}</span>
-                                </p>
-                                <a href="mailto:cs@onestorage.com.hk" class="font_14">
-                                    電郵 : <span>{{$contact['email']}}</span>
-                                </a>
-                                <p class="font_14">
-                                    <a href="{{'http://maps.google.com/?q='.$contact['address']}}" target="_blank" rel="noopener noreferrer">
-                                        地址 : {{$contact['address']}}
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
+                    @each('partials.location_info', $locations, 'location')
                 </div>
 
                 <div class="col-span-1">
                     <p class="font_19 pl-10 pb-3">九龍</p>
                     <?php
-                    $contactInfos = App\ContactInfo::get2();
+                    $locations = App\LocationInfo::getKowloon();
                     ?>
-                    @foreach($contactInfos as $contact)
-                    <div>
-                        <div class="accordion relative appearance-none items-center">
-                            <div class="flex">
-                                <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                                <span class="self-center text-primary">{{$contact['name']}}</span>
-                            </div>
-                        </div>
-                        <div class="panel flex">
-                            <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                            <div class=" leading-5">
-                                <p class="font_14">
-                                    電話 :<span>{{$contact['phone']}}</span>
-                                </p>
-                                <a href="mailto:cs@onestorage.com.hk" class="font_14">
-                                    電郵 : <span>{{$contact['email']}}</span>
-                                </a>
-                                <p class="font_14">
-                                    <a href="{{'http://maps.google.com/?q='.$contact['address']}}" target="_blank" rel="noopener noreferrer">
-                                        地址 : {{$contact['address']}}
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
+                    @each('partials.location_info', $locations, 'location')
                 </div>
             </div>
 
             <p class="font_19 pl-10 pb-3 mt-12 ml-10">新界</p>
-            <?php
-            $contactInfos = App\ContactInfo::get1();
-            ?>
             <div class="grid grid-cols-2 ml-10">
-                @foreach($contactInfos as $contact)
-                <div class="font_14">
-                    <div class="accordion relative appearance-none items-center">
-                        <div class="flex">
-                            <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                            <span class="self-center text-primary">{{$contact['name']}}</span>
-                        </div>
-                    </div>
-                    <div class="panel flex">
-                        <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                        <div class=" leading-5">
-                            <p>
-                                電話 :<span>{{$contact['phone']}}</span>
-                            </p>
-                            <a href="mailto:cs@onestorage.com.hk">
-                                電郵 : <span>{{$contact['email']}}</span>
-                            </a>
-                            <p>
-                                <a href="{{'http://maps.google.com/?q='.$contact['address']}}" target="_blank" rel="noopener noreferrer">
-                                    地址 : {{$contact['address']}}
-                                </a>
-                            </p>
-                        </div>
-                    </div>
+                <?php
+                $locations = App\LocationInfo::getNew();
+                $even = array_filter($locations, function ($input) {
+                    return !($input & 1);
+                }, ARRAY_FILTER_USE_KEY );
+                $odd = array_filter($locations, function ($input) {
+                    return $input & 1;
+                }, ARRAY_FILTER_USE_KEY );
+                ?>
+                <div class="col-span-1">
+                    @each('partials.location_info', $even, 'location')
                 </div>
-                @endforeach
 
+                <div class="col-span-1">
+                    @each('partials.location_info', $odd, 'location')
+                </div>
             </div>
         </div>
         <div class="col-span-2 pr-10">
