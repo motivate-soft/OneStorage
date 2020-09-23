@@ -9,6 +9,52 @@ use Illuminate\Http\Request;
 
 class EnquiryController extends Controller
 {
+    public static $SEARCH_KEYS = [
+        [
+            'key' => 'created_at',
+            'value' => '日期'
+        ],
+        [
+            'key' => 'first_name',
+            'value' => 'First name'
+        ],
+        [
+            'key' => 'last_name',
+            'value' => 'Last name'
+        ],
+        [
+            'key' => 'phone_number',
+            'value' => 'Telephone'
+        ],
+        [
+            'key' => 'email',
+            'value' => 'Email'
+        ],
+        [
+            'key' => 'branch_name',
+            'value' => '需求'
+        ],
+        [
+            'key' => 'question',
+            'value' => '查詢問題'
+        ],
+        [
+            'key' => 'message',
+            'value' => '你的信息'
+        ],
+        [
+            'key' => 'page',
+            'value' => '頁面'
+        ],
+        [
+            'key' => 'status',
+            'value' => '狀態'
+        ],
+        [
+            'key' => 'principal',
+            'value' => '負責人'
+        ]   
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -17,8 +63,20 @@ class EnquiryController extends Controller
     public function index()
     {
         //
-        $enquiries = Enquiry::orderBy('id', 'desc')->get();
-        return view('backend.enquiries', ['enquiries' => $enquiries]);
+        $key = isset($_GET['key']) ? $_GET['key'] : '';
+        $value = isset($_GET['value']) ? $_GET['value'] : '';
+
+        if($key && $value){
+            $enquiries = Enquiry::where($key, 'like', '%'.$value.'%')->orderBy('id', 'desc');
+        }else{
+            $enquiries = Enquiry::orderBy('id', 'desc');
+        }
+
+        $enquiries = $enquiries->paginate(10)->appends(request()->query());
+
+      
+        
+        return view('backend.enquiries', ['enquiries' => $enquiries, 'keys' => static::$SEARCH_KEYS]);
     }
 
     /**
@@ -41,7 +99,8 @@ class EnquiryController extends Controller
     {
         //
         $enquiry = new Enquiry;
-        $enquiry->user_name = $request->firstName.' '.$request->lastName;
+        $enquiry->first_name = $request->firstName;
+        $enquiry->last_name = $request->lastName;
         $enquiry->phone_number = isset($request->phoneNumber) ? $request->phoneNumber : '';
         $enquiry->email = isset($request->email) ? $request->email : '';
         $enquiry->branch_name = isset($request->branchName) ? $request->branchName : '';
@@ -69,8 +128,8 @@ class EnquiryController extends Controller
         $id = isset($_GET['id']) ? $_GET['id'] : 0;
         $enquiry = Enquiry::find($id);
         if($enquiry){
-            $enquiry->status = 1;
-            // $enquiry->principal_id = Auth()->id;
+            $enquiry->status = $enquiry->status == '未' ? '已' : '未';
+            $enquiry->principal = Auth::user()->getName();
             $enquiry->save();
         }
         return redirect('/backend');

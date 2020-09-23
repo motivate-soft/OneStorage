@@ -25,7 +25,7 @@
                 </li>
 
                 <li class="mr-1 md:mr-0 dropdown">
-                    <a class="dropbtn default-color no-underline py-2 px-2" href="javascript:void(0)">分店位置</a>
+                    <a class="dropbtn default-color no-underline py-2 px-2" href="{{url('/branch-location')}}">分店位置</a>
 
                     <ul class="dropdown-content">
                         <?php $locations = App\Store::getLocations(); ?>

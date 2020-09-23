@@ -52,7 +52,7 @@
 
                     <div class="radio-group">
 
-                        <p class="radio-title w-1/4">姓別</p>
+                        <p class="radio-title w-1/4">性別</p>
 
                         <div class=" radio-custom w-1/4">
                             <input type="radio" checked id="genderunchecked" class="radio-gray" value="m" name="gender">

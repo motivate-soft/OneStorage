@@ -230,7 +230,7 @@
                 <div class="room-card-title text-center mb-2">小型倉</div>
             </div>
             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
+                <button value="S" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
             </div>
         </div>
         <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select cursor-pointer" id="m-store">
@@ -239,7 +239,7 @@
                 <div class="room-card-title text-center mb-2">中型倉</div>
             </div>
             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
+                <button value="M" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
             </div>
         </div>
         <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select cursor-pointer" id="l-store">
@@ -248,7 +248,7 @@
                 <div class="room-card-title text-center mb-2">大型倉</div>
             </div>
             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
+                <button value="L" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
             </div>
         </div>
         <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select cursor-pointer" id="xl-store">
@@ -257,7 +257,7 @@
                 <div class="room-card-title text-center mb-2">特大倉</div>
             </div>
             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
+                <button value="XL" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
             </div>
         </div>
     </div>

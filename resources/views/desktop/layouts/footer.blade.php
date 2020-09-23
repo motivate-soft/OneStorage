@@ -13,15 +13,13 @@
                         至尊迷你倉是亞洲迷你倉商會(SSAA及香港迷你倉總會會員(HKMSA)。
                     </div>
 
-                    <span class="w-auto mt-8 font_15 font-bold">
-                        <a href="{{url('/joinus')}}">職位空缺</a>
+                    <span class="w-auto my-8 font_15 font-bold">
+                        <a href="{{url('/joinus')}}">職位空缺</a> | <a href="{{url('/disclaimer')}}">免責聲明</a>
                     </span>
 
-                    <span class="mt-4 mb-8 font_15 font-bold">
-                        <a href="{{url('/disclaimer')}}">免責聲明</a>
-                    </span>
+                    
 
-                    <p class="font_15">©2020 至尊迷你倉 | 版權所有</p>
+                    <p class="font_15">©2020 至尊迷你倉 版權所有</p>
 
                 </div>
             </div>
@@ -114,7 +112,7 @@
             <h2 class="text-lg mt-4 mb-8 font-bold">最新資訊</h2>
             <div class="flex mt-2 pb-5">
                 <img class="h-24 md:h-32 mx-auto md:mx-0 md:mr-4 object-none inline" src="{{asset('images/footer/Image 17@2x.png')}}">
-                <span class="text-center md:text-left text-sm leading-4 font_13 inline">
+                <span class="h-24 md:h-32 text-center md:text-left text-sm leading-4 font_13 inline overflow-y-hidden">
                     黃竹坑新店快閃優惠　低至6折優惠
                     震撼筍價HK$300起即可入手<br>
                     <br>
@@ -126,7 +124,7 @@
             </div>
             <div class="flex mt-2 pb-5">
                 <img class="h-24 md:h-32 mx-auto md:mx-0 md:mr-4 object-none inline" src="{{asset('images/footer/Image 17@2x.png')}}">
-                <span class="text-center md:text-left text-sm leading-4 font_13 inline">
+                <span class="h-24 md:h-32 text-center md:text-left text-sm leading-4 font_13 inline overflow-y-hidden">
                     黃竹坑新店快閃優惠　低至6折優惠
                     震撼筍價HK$300起即可入手<br>
                     <br>
@@ -138,7 +136,7 @@
             </div>
             <div class="flex mt-2 pb-5">
                 <img class="h-24 md:h-32 mx-auto md:mx-0 md:mr-4 object-none inline" src="{{asset('images/footer/Image 17@2x.png')}}">
-                <span class="text-center md:text-left text-sm leading-4 font_13 inline">
+                <span class="h-24 md:h-32 text-center md:text-left text-sm leading-4 font_13 inline overflow-y-hidden">
                     黃竹坑新店快閃優惠　低至6折優惠
                     震撼筍價HK$300起即可入手<br>
                     <br>

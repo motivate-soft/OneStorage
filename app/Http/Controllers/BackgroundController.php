@@ -48,7 +48,6 @@ class BackgroundController extends Controller
 
             $image = $request->file('image');
             $name = time() . '.' . $image->getClientOriginalExtension();
-            echo $name;
             $destinationPath = public_path('/images/backgrounds');
             $image->move($destinationPath, $name);
             $background->image = $name;

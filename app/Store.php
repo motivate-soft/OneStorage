@@ -25,6 +25,10 @@ class Store extends Model
     {
         return $this->hasMany('App\StoreQuestion');
     }
+    public function offerImages()
+    {
+        return $this->hasMany('App\StoreOfferImage');
+    }
 
     public function serviceState($index)
     {
@@ -45,12 +49,51 @@ class Store extends Model
         return  Store::select('id', 'location')->orderBy('id', 'asc')->get()->unique('location');
     }
 
+    public function getLowestPrice()
+    {
+        return $this->sizes->min('price');
+    }
+
+    public function getSizeLabel()
+    {
+        $sizeLabels = [];
+        foreach($this->sizes as $size){
+            $label = '';
+            if($size->size < 13){
+                $label = 'S';
+            }else if($size->size < 25){
+                $label = 'M';
+            }else if($size->size < 37){
+                $label = 'L';
+            }else if($size->size >= 37 ){
+                $label = 'XL';
+            }
+            if(!in_array($label, $sizeLabels)){
+                $sizeLabels[] = $label;
+            }
+        }
+        
+        return json_encode($sizeLabels);
+    }
+
+    public function activeOfferImages()
+    {
+        $activeImages = [];
+        foreach($this->offerImages as $image){
+            if($image->is_used){
+                $activeImages[] = $image->id;
+            }
+        }
+        return json_encode($activeImages);
+    }
+
     public function delete()
     {
         DB::transaction(function() 
         {
             $this->sizes()->delete();
             $this->questions()->delete();
+            $this->offerImages()->delete();
             parent::delete();
         });
     }

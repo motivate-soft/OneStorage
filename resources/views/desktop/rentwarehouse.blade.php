@@ -345,8 +345,6 @@
         background-color: #E0CBF6;
         color: #56628C;
     }
-
-    
 </style>
 <link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}" />
 
@@ -396,7 +394,7 @@
                     </div>
 
                     <div class="my-4">
-                        <p class="mb-4 font-bold">備有多款尺寸以供選擇</p>
+                        <p class="mb-4 font-bold">以下是較受歡迎之尺寸：</p>
                         <div class="flex">
                             <div class="w-2/3">
                                 <table style="font-family: 'RobertRegular';" class="text-center text0 w-full">
@@ -609,7 +607,7 @@
                 </div>
 
                 <div class="flex pt-4">
-                    <p class="rentwarehouse-size-select-description my-auto">唔知自己需要咩size ? 試下我地既<a href="{{url('/calc')}}">空間計算器</a></p>
+                    <p class="rentwarehouse-size-select-description my-auto"><a href="{{url('/calc')}}">唔知自己需要咩size ? 試下我地既空間計算器</a></p>
                     <img class="object-none box-content pl-1 -mt-1" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
                 </div>
 
@@ -653,10 +651,12 @@
                 <p class="rentwarehouse-price-select-news-title color-primary my-2">最新資訊</p>
 
                 <div class="flex pt-2">
-                    <img class="flex-shrink-0 rentwarehouse-price-select-news-image" src="{{ asset('images/Image 8@2x.png') }}" />
-                    <p class="pl-3 color-deep overflow-y-hidden leading-relaxed">黃竹坑新店快閃優惠　低至6折優惠<br /><br />
-                        震撼筍價HK$300起即可入手
-                        黃竹坑分店全新開業，推出快閃驚喜優惠!
+                    <img class="flex-shrink-0 h-32" src="{{ asset('images/Image 8@2x.png') }}" />
+                    <p class="pl-3 color-deep overflow-y-hidden leading-relaxed font_13 h-32">
+                        黃竹坑新店快閃優惠　低至6折優惠 震撼筍價HK$300起即可入手
+                        <br/><br/>
+                        黃竹坑分店全新開業，推出快閃驚喜優 ！顧客可享低至6折優惠，以震撼筍價 HK$300起即可入手！你仲唔
+                        黃竹坑分店全新開業，推出快閃驚喜優 ！顧客可享低至6折優惠，以震撼筍價 HK$300起即可入手！你仲唔
                     </p>
                 </div>
             </div>

@@ -22,24 +22,24 @@
     <div class="grid lg:grid-cols-3 md:grid-cols-1 gap-4">
         <div class="col-span-2 mr-10 lg:mr-0">
             <div class="text-left text-5xl pt-10 pb-5 ml-10 border-b">
-                <h1 class="font_49 text-purple">新型肺炎疫情最新安排</h1>
+                <h1 class="font_36 text-purple">新型肺炎疫情最新安排</h1>
                 <p class="text2 text-xl mt-4">November 23, 2020</p>
             </div>
             <div class="text-left ml-10 mt-5">
                 <img class="object-none pb-4" src="{{asset('images/latest_news/Image 89.png')}}" class="mt-4">
                 <div class="bg-grey-1 py-5 px-5">
-                    <h1 class="text2 text-justify leading-loose">
-                        檔案編號: <b>SWH/OSM/MEMO2020-0005</b> <br>
+                    <h1 class="font_19 robert-black text-justify leading-loose">
+                        檔案編號: SWH/OSM/MEMO2020-0005 <br>
                         敬啟者:<br>
                         <br>
-                        因應最近新型肺炎疫情，至尊迷你倉 <b>ONE Storage</b> 為保障各客戶及職員的健康，由即 日起將採取以下防疫措施。<br>
-                        所有於辦公時間進入至尊迷你倉 <b>ONE Storage</b> 之客戶，各分店職員會先於接待處為客
+                        因應最近新型肺炎疫情，至尊迷你倉 ONE Storage 為保障各客戶及職員的健康，由即 日起將採取以下防疫措施。<br>
+                        所有於辦公時間進入至尊迷你倉 ONE Storage 之客戶，各分店職員會先於接待處為客
                         人量度體溫。在疫情減退前，恕不接待沒有配戴口罩之客戶。同時，倉內設有消毒洗手液供所<br>
                         <br>有訪客使用。<br>
                         .<br>
                         此致 所有客戶及員工<br>
                         有關: 應對最近「新型冠狀病毒」安排<br>
-                        至尊迷你倉 <b>ONE Storage</b> 呼籲各位客戶通力合作，注意個人衞生及健康，做好一切預
+                        至尊迷你倉 ONE Storage 呼籲各位客戶通力合作，注意個人衞生及健康，做好一切預
                         防傳染病的措施，與香港市民攜手抗疫。如出現感冒症狀及發燒，請戴上口罩及立即求診。<br>
                     </h1>
 

@@ -63,7 +63,30 @@ $(function () {
     })();
 
     OneStorage.BranchLocation = (function () {
-        return function () {
+        return function (storeSize) {
+
+            function filter(sizeFilter, priceFilter) {
+
+                $(".location-content-item").each(function () {
+                    if (sizeFilter.length == 0) {
+                        $(this).show();
+                        return true;
+                    }
+                    $(this).hide();
+                    const label = JSON.parse($(this).attr('data-size-label'));
+                    var flag = false;
+                    $.each(sizeFilter, function (index, value) {
+                        if (label.includes(value)) {
+                            flag = true;
+                            return false;
+                        }
+                    })
+                    if (flag) {
+                        $(this).show();
+                    }
+                })
+            }
+
             $("#slider-range").slider({
                 range: true,
                 min: 200,
@@ -105,12 +128,21 @@ $(function () {
                 } else {
                     parent.addClass("active");
                 }
+
+                var labels = [];
+                $(".branchlocation-card-wrapper.active").each(function () {
+                    labels.push($(this).find("button").val());
+                })
+                filter(labels, []);
+
             })
 
             $(".branchlocation-m-item").click(function () {
                 $(".branchlocation-m-item").removeClass("active");
                 $(this).addClass("active");
             })
+
+            $(".store-select[value='" + storeSize + "']").click();
         }
     })();
 
@@ -227,43 +259,55 @@ $(function () {
         const categories = [{
             name: '常用',
             items: [{
-                name: '紅白藍5個',
+                name: '紅白藍<br/>尼龍袋5個',
                 size: 4
             },
             {
-                name: '紙箱10個',
+                name: '紙箱十個',
                 size: 6
+            },
+            {
+                name: '膠箱十個',
+                size: 8
             },
             ]
         },
         {
             name: '客廳用品',
             items: [{
-                name: ' 組合櫃',
+                name: ' 電視櫃',
                 size: 8
             },
             {
-                name: '雙門鞋櫃',
+                name: '鞋櫃',
                 size: 6
             },
             {
                 name: '小童檯',
-                size: 6
-            },
-            {
-                name: '吧檯',
-                size: 8
-            },
-            {
-                name: '高腳凳',
                 size: 4
             },
             {
-                name: '玻璃餐檯',
+                name: '吧檯',
+                size: 6
+            },
+            {
+                name: '餐桌椅',
+                size: 3
+            },
+            {
+                name: 'BB椅',
+                size: 3
+            },
+            {
+                name: '高凳',
+                size: 4
+            },
+            {
+                name: '餐檯',
                 size: 15
             },
             {
-                name: '四人餐枱(可拆)',
+                name: '可摺疊餐檯',
                 size: 8
             },
             {
@@ -272,83 +316,99 @@ $(function () {
             },
             {
                 name: '音響',
-                size: 3
+                size: 4
             },
             {
                 name: '電暖爐',
-                size: 3
+                size: 2
             },
             {
                 name: '風扇',
-                size: 3
+                size: 1
             },
             {
                 name: '吸塵器',
-                size: 3
+                size: 2
             },
             {
                 name: '抽濕機',
                 size: 3
             },
-            {
-                name: '魚缸',
-                size: 3
-            },
-            {
-                name: '散熱器/<br/>陶瓷式暖風機',
-                size: 3
-            },
 
             {
-                name: '工業用吸塵機',
-                size: 3
+                name: '魚缸',
+                size: 4
+            },
+            {
+                name: '暖風機',
+                size: 2
+            },
+            {
+                name: '摺凳',
+                size: 1
+            },
+            {
+                name: '梳發',
+                size: 8
+            },
+            {
+                name: '40吋電視機',
+                size: 8
             },
             ]
         },
         {
             name: '睡房用品',
             items: [{
-                name: '衣櫃(一般雙門)',
+                name: '雙門衣櫃',
                 size: 8
             },
             {
-                name: '梳妝台',
-                size: 6
+                name: '單門衣櫃',
+                size: 4
+            },
+            {
+                name: '梳妝檯',
+                size: 4
             },
             {
                 name: '床頭櫃',
                 size: 3
             },
             {
-                name: '抽屜櫃(一般)',
+                name: '小抽屜櫃',
                 size: 4
             },
             {
-                name: '抽屜櫃(大)',
+                name: '大抽屜櫃',
                 size: 8
             },
             {
                 name: '雙人床',
-                size: 6
+                size: 4
             },
             {
-                name: '上下格/碌架床',
-                size: 12
-            },
-            {
-                name: '子母床(可拆)',
-                size: 5
-            },
-            {
-                name: '摺床(可摺)',
-                size: 2
-            },
-            {
-                name: '油壓床',
+                name: '單人床',
                 size: 3
             },
             {
-                name: "嬰兒床<br/>(4'3 x 2'9 可拆)",
+                name: '碌架床',
+                size: 6
+            },
+            {
+                name: '子母床(可拆)',
+                size: 6
+            },
+            {
+                name: "摺床",
+                size: 4
+            },
+            {
+                name: '油壓床',
+                size: 8
+            },
+            {
+                name: '嬰兒床',
                 size: 4
             },
             {
@@ -357,7 +417,15 @@ $(function () {
             },
             {
                 name: '坐地掛衣架',
-                size: 1
+                size: 5
+            },
+            {
+                name: '床鋪',
+                size: 4
+            },
+            {
+                name: '床褥',
+                size: 6
             }
             ]
         },
@@ -365,23 +433,31 @@ $(function () {
             name: '廚房用品',
             items: [{
                 name: '廚櫃',
-                size: 4
+                size: 10
             },
             {
                 name: '雙門雪櫃',
-                size: 3
-            },
-            {
-                name: '三門雪櫃',
                 size: 9
             },
             {
-                name: '單/雙頭煮飯爐',
-                size: 7
+                name: '三門雪櫃',
+                size: 12
             },
             {
-                name: '微波爐/焗爐/<br/>光波爐/燒烤爐',
-                size: 1
+                name: '煮食爐',
+                size: 4
+            },
+            {
+                name: '微波爐/焗爐',
+                size: 2
+            },
+            {
+                name: '光波爐',
+                size: 2
+            },
+            {
+                name: '氣炸鍋',
+                size: 2
             },
             {
                 name: '上蓋式洗衣機',
@@ -389,51 +465,103 @@ $(function () {
             },
             {
                 name: '前置式洗衣機',
-                size: 3
+                size: 5
             },
             {
                 name: '乾衣機',
-                size: 3
+                size: 5
             },
             {
                 name: '電熱水爐',
                 size: 3
             },
             {
-                name: '家用咖啡機',
+                name: '咖啡機',
                 size: 3
             },
             {
                 name: '抽油煙機',
+                size: 4
+            }, ,
+            {
+                name: '洗碗碟機',
+                size: 5
+            },
+            ]
+        },
+        {
+            name: '辦公室用品',
+            items: [{
+                name: 'L型寫字檯',
+                size: 25
+            },
+            {
+                name: '圍板',
+                size: 30
+            },
+            {
+                name: '會議檯',
+                size: 50
+            },
+            {
+                name: '大班椅',
+                size: 9
+            },
+            {
+                name: '文件鐵櫃',
+                size: 6
+            },
+            {
+                name: '打印機',
                 size: 3
             },
             {
-                name: '洗碗碟機',
+                name: '坐地影印機',
+                size: 4
+            },
+            {
+                name: '傳真機',
+                size: 2
+            },
+            {
+                name: '飲用水機',
                 size: 3
-            }
+            },
+            {
+                name: '貨架',
+                size: 6
+            },
+            {
+                name: '小抽屜櫃',
+                size: 4
+            },
             ]
         },
         {
             name: '書房用品',
             items: [{
                 name: '書櫃',
-                size: 4
+                size: 6
             },
             {
                 name: '書檯',
-                size: 3
+                size: 4
             },
             {
                 name: '電腦檯',
-                size: 9
+                size: 3
             },
             {
-                name: '電腦<br/>(主機連MON)',
-                size: 7
+                name: '電腦<br/>(主機及顯示屏)',
+                size: 3
             },
             {
                 name: '電腦椅',
-                size: 1
+                size: 4
+            },
+            {
+                name: '健身器材',
+                size: 6
             }
             ]
         },
@@ -441,39 +569,35 @@ $(function () {
             name: '其他家庭用品',
             items: [{
                 name: '窗口式冷氣機',
-                size: 4
-            },
-            {
-                name: '分體式空調機',
-                size: 3
-            },
-            {
-                name: '座地燈',
-                size: 9
-            },
-            {
-                name: '吊燈',
-                size: 7
-            },
-            {
-                name: '健身器材',
-                size: 1
-            },
-            {
-                name: '直立式鋼琴',
                 size: 5
             },
             {
-                name: '數碼鋼琴',
-                size: 3
+                name: '分體式冷氣機',
+                size: 6
             },
             {
-                name: '行李喼/手提箱',
-                size: 3
+                name: '座地燈',
+                size: 2
+            },
+            {
+                name: '吊燈',
+                size: 2
+            },
+            {
+                name: '直立式鋼琴',
+                size: 20
+            },
+            {
+                name: '數碼鋼琴',
+                size: 15
+            },
+            {
+                name: '行李喼',
+                size: 4
             },
             {
                 name: '手推車',
-                size: 3
+                size: 4
             },
             {
                 name: '摺疊梯',
@@ -488,65 +612,21 @@ $(function () {
                 size: 3
             },
             {
-                name: '紅白藍尼龍袋',
-                size: 3
-            },
-            {
                 name: 'BB車',
-                size: 3
-            },
-            {
-                name: '單車',
-                size: 3
-            },
-            {
-                name: '夾萬',
-                size: 3
-            },
-            ]
-        },
-        {
-            name: '辦公室用品',
-            items: [{
-                name: 'L型寫字檯',
                 size: 4
             },
             {
-                name: '圍板',
-                size: 3
-            },
-            {
-                name: '會議檯',
+                name: '單車',
                 size: 9
             },
             {
-                name: '大班椅',
-                size: 7
+                name: '夾萬',
+                size: 2
             },
             {
-                name: '文件鐵櫃',
-                size: 1
+                name: '按摩椅',
+                size: 10
             },
-            {
-                name: '打印機',
-                size: 5
-            },
-            {
-                name: '坐地影印機',
-                size: 3
-            },
-            {
-                name: '傳真機',
-                size: 3
-            },
-            {
-                name: '飲用水機',
-                size: 3
-            },
-            {
-                name: '貨架',
-                size: 3
-            }
             ]
         },
         ];
@@ -609,6 +689,7 @@ $(function () {
 
         $(".store-select-button").click(function () {
             console.log("selected");
+            window.location.href = '/branch-location?size=' + $(this).val();
         });
 
         return function (_template) {

@@ -6,7 +6,6 @@
 
 @section('styles')
 <style>
-
     .maintitle-wrapper {
         padding-top: 54.5px;
     }
@@ -64,6 +63,11 @@
         font-size: 16px;
     }
 
+    .content-image-wrapper-0 {
+        margin-left: 153px;
+        margin-right: 153px;
+    }
+
     .content-image-wrapper-1 {
         padding: 56px;
     }
@@ -101,6 +105,13 @@
             <div class="capitalize maintitle-right-bottom">one choice one storage</div>
         </div>
     </div>
+
+    <div class="grid grid-cols-3 col-gap-8 content-image-wrapper-0 mt-20">
+        <img src="{{asset('images/aboutus/Web_Photos-03.jpg')}}" />
+        <img src="{{asset('images/aboutus/Web_Photos-01.jpg')}}" />
+        <img src="{{asset('images/aboutus/Web_Photos-02.jpg')}}" />
+    </div>
+
     <div class="color-primary">
         <p class="text-center content-title-1">至尊迷你倉</p>
         <p class="leading-relaxed content-description">為金朝陽集團屬下業務(股票代號： 00878.HK)。
@@ -109,17 +120,17 @@
         </p>
     </div>
 
-    <div class="grid grid-cols-3 col-gap-10 content-image-wrapper-1">
-        <img src="{{asset('images/aboutus/9@2x.png')}}" />
-        <img src="{{asset('images/aboutus/8@2x.png')}}" />
-        <img src="{{asset('images/aboutus/1@2x.png')}}" />
+    <div class="grid grid-cols-3 col-gap-8 content-image-wrapper-0 my-10">
+        <img src="{{asset('images/aboutus/Web_SW_Photos-01.jpg')}}" />
+        <img src="{{asset('images/aboutus/Web_SW_Photos-02.jpg')}}" />
+        <img src="{{asset('images/aboutus/Web_SW_Photos-03.jpg')}}" />
     </div>
 
     <div class="color-primary">
         <p class="text-center content-title-2">設備及付款方式</p>
         <p class="leading-relaxed content-description">
             設備合乎消防處迷伙倉指引，客人可24小時自助儲存，配備全天候保安系統及智能保安系統。
-            <br/><br/>
+            <br /><br />
             付款方式：現金、EPS、支票、信用卡、轉數快及免息分期
         </p>
     </div>

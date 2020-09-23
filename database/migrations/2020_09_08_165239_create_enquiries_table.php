@@ -15,7 +15,8 @@ class CreateEnquiriesTable extends Migration
     {
         Schema::create('enquiries', function (Blueprint $table) {
             $table->id();
-            $table->string('user_name');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('phone_number')->nullable();
             $table->string('email')->nullable();
             $table->string('branch_name')->nullable();
@@ -23,8 +24,8 @@ class CreateEnquiriesTable extends Migration
             $table->string('question')->nullable();
             $table->string('message')->nullable();
             $table->string('page');
-            $table->integer('status')->default(0);
-            $table->integer('principal_id')->nullable();
+            $table->enum('status', ['未', '已'])->default('未');
+            $table->string('principal')->nullable();
             $table->timestamps();
         });
     }

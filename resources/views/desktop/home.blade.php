@@ -343,38 +343,38 @@ use App\AppConfig;
             <img src="{{asset('images/img_camera.jpg')}}" class="yellow-shadow1 w-2/5" />
             <div class="bg-yellow w-3/5 mr-12 ml-10 mt-6 mb-4 text-left px-4 pb-6">
                 <p class="heading2 relative" style="top: -20px">迷你倉設施</p>
-                <div class="grid grid-cols-2 col-gap-2 row-gap-4 font_14">
+                <div class="grid grid-cols-2 col-gap-2 row-gap-4 font_21 mt-2">
                     <div class="flex">
                         <img src="{{asset('images/ic_key_card.png')}}" class="mr-2 object-none" />
-                        <p class="text0 my-auto"><span class="font-bold">7 x 24</span>智能保安進出系統</p>
+                        <p class="my-auto"><span class="font-bold">7 x 24</span>智能保安進出系統</p>
                     </div>
                     <div class="flex">
                         <img src="{{asset('images/ic_air_con.png')}}" class="mr-2 object-none" />
-                        <p class="text0 my-auto">無間斷恆溫空調</p>
+                        <p class="my-auto">無間斷恆溫空調</p>
                     </div>
                     <div class="flex">
                         <img src="{{asset('images/ic_fire.png')}}" class="mr-2 object-none" />
-                        <p class="text0 my-auto">消防裝置設備</p>
+                        <p class="my-auto">消防裝置設備</p>
                     </div>
                     <div class="flex">
                         <img src="{{asset('images/ic_delivery.png')}}" class="mr-2 object-none" />
-                        <p class="text0 my-auto">鋁梯及手推車借用服務</p>
+                        <p class="my-auto">鋁梯及手推車借用服務</p>
                     </div>
                     <div class="flex">
                         <img src="{{asset('images/ic_water.png')}}" class="mr-2 object-none" />
-                        <p class="text0 my-auto">自助飲用水機</p>
+                        <p class="my-auto">自助飲用水機</p>
                     </div>
                     <div class="flex">
                         <img src="{{asset('images/ic_sec_cam.png')}}" class="mr-2 object-none" />
-                        <p class="text0 my-auto">全天候高清保安監察及警報系統</p>
+                        <p class="my-auto">全天候高清保安監察及警報系統</p>
                     </div>
                     <div class="flex">
                         <img src="{{asset('images/ic_24_hours.png')}}" class="mr-2 object-none" />
-                        <p class="text0 my-auto">24小時電話熱線服務</p>
+                        <p class="my-auto">24小時電話熱線服務</p>
                     </div>
                     <div class="flex">
                         <img src="{{asset('images/ic_wifi.png')}}" class="mr-2 object-none" />
-                        <p class="text0 my-auto">免費Wi-Fi</p>
+                        <p class="my-auto">免費Wi-Fi</p>
                     </div>
                 </div>
             </div>

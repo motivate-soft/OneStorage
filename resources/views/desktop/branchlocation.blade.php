@@ -186,7 +186,7 @@
                 <input id="storeId" type="hidden" name="storeId" value="{{$stores[0]['id']}}" />
                 <div class="flex relative rentwarehouse-select-store-item-area mx-2">
                     <select id="location-select" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 leading-tight focus:outline-none focus:shadow-outline rentwarehouse-selects-store-item-select">
-                        <option value="" disabled class="text-grey">地區</option>
+                        <option value="" selected disabled class="text-grey">地區</option>
                         @foreach($locations as $location)
 
                         <option value="{{$location->location}}" class="text-grey-2" {{$location->location == $_GET['location'] ? 'selected' : ''}}>
@@ -202,7 +202,9 @@
                 </div>
                 <div class="flex relative rentwarehouse-select-store-item-branch mx-2">
                     <select id="branch-select" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 leading-tight focus:outline-none focus:shadow-outline rentwarehouse-selects-store-item-select">
-                        <!-- <option value="" selected disabled class="text-grey">分店</option> -->
+                        @if($_GET['location'] == '')
+                        <option value="" selected disabled class="text-grey">分店</option>
+                        @endif
                         @foreach($stores as $store)
                         <option value="{{$store->id}}" class="text-grey-2">{{$store->branch}}</option>
                         @endforeach
@@ -239,7 +241,7 @@
 
                 <div class="px-12 pt-5">
                     <div class="flex">
-                        <p class="branchlocation-store-select-description my-auto">唔知自己需要咩size ? 試下我地既<a href="{{url('/calc')}}">空間計算器</a></p>
+                        <p class="branchlocation-store-select-description my-auto"><a href="{{url('/calc')}}">唔知自己需要咩size ? 試下我地既空間計算器</a></p>
                         <img class="object-none box-content pl-1 -mt-1" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
                     </div>
                     <div class="grid grid-cols-4 col-gap-3 pt-1 branchlocation-room-select">
@@ -254,10 +256,10 @@
                                 </div>
                             </div>
                             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                                <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow color-primary store-select text-2xl"><i class="icon wb-check"></i></button>
+                                <button value="S" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow color-primary store-select text-2xl"><i class="icon wb-check"></i></button>
                             </div>
                         </div>
-                        <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper active">
+                        <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
                             <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-03@2x.png') }}" alt="BranchLocation">
                             <div class="px-6 py-4">
                                 <div class="branchlocation-card-title text-center mb-2">中型倉</div>
@@ -268,7 +270,7 @@
                                 </div>
                             </div>
                             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                                <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow color-primary store-select text-2xl"><i class="icon wb-check"></i></button>
+                                <button value="M" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow color-primary store-select text-2xl"><i class="icon wb-check"></i></button>
                             </div>
                         </div>
                         <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
@@ -282,7 +284,7 @@
                                 </div>
                             </div>
                             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                                <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow color-primary store-select text-2xl"><i class="icon wb-check"></i></button>
+                                <button value="L" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow color-primary store-select text-2xl"><i class="icon wb-check"></i></button>
                             </div>
                         </div>
                         <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
@@ -296,7 +298,7 @@
                                 </div>
                             </div>
                             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                                <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow color-primary store-select text-2xl"><i class="icon wb-check"></i></button>
+                                <button value="XL" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow color-primary store-select text-2xl"><i class="icon wb-check"></i></button>
                             </div>
                         </div>
                     </div>
@@ -306,13 +308,13 @@
             <div class="rentwarehouse-wrapper-title color-primary text-left pt-4">分店位置</div>
             <div id="stores-wrapper" class="grid grid-cols-3 col-gap-4 row-gap-6 pt-5 pl-8 pr-0">
                 @foreach($stores as $store)
-                <div class="relative rounded overflow-hidden shadow-lg location-content-item">
+                <div class="relative rounded overflow-hidden shadow-lg location-content-item" data-size-label="{{$store->getSizeLabel()}}">
                     <div class="relative">
                         <div class="ribbon ribbon-badge ribbon-pink">
                             <span class="ribbon-inner">最新優惠</span>
                         </div>
                         <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Sunset in the mountains">
-                        <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 <span class="text-sm">起</span></span>
+                        <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ {{$store->getLowestPrice()}} <span class="text-sm">起</span></span>
                     </div>
                     <div class="p-2">
                         <div class="mb-2 color-primary location-content-title">{{$store->branch}}</div>
@@ -360,7 +362,7 @@
 
 <script>
     $(function() {
-        OneStorage.BranchLocation();
+        OneStorage.BranchLocation('<?= isset($_GET['size']) ? strtoupper($_GET['size']): '' ?>');
     });
 </script>
 @endsection
