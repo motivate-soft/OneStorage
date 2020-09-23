@@ -182,6 +182,11 @@ use App\AppConfig;
                 租倉
             </button>
         </form>
+
+        <div class="flex mt-16 robert-black font_24 text-primary">
+            <span class="my-auto relative mr-6 crown">唔知自己需要咩size ? 試下我地既空間計算器&nbsp;&nbsp;&nbsp;</span>
+            <a href="{{url('/calc')}}" class="bg-yellow px-6 py-2">立即計算</a>
+        </div>
     </div>
     <!-- <img class="relative" style="right:-100px;" src="{{asset('images/bg_hero.jpg')}}" /> -->
 </div>
@@ -503,6 +508,7 @@ use App\AppConfig;
                 datatype: 'json',
                 success: function(result) {
                     submitBtn.css("background-color", "#28e8db");
+                    submitBtn.text('請查看電郵');
                     submitBtn.prop('disabled', true);
                     form.find("input").prop('disabled', true);
                     form.attr("state", "sent");
