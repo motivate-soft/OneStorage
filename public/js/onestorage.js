@@ -219,7 +219,9 @@ $(function () {
             })
 
             $(".rentwarehouse-sub-image").click(function () {
-                $("#rentwarehouse-main-image").attr("src", $(this).attr("src"));
+                const mainImage = $("#rentwarehouse-main-image");
+                mainImage.attr("src", $(this).attr("src"));
+                mainImage.show();
             })
 
             $("#modalTrigger").click(function () {

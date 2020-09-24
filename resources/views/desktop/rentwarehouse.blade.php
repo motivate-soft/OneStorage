@@ -355,7 +355,7 @@
 @endsection
 
 @section('content')
-@if($store != null)
+@if($store)
 
 
 <div class="mx-auto w-3/5 pt-6">
@@ -364,17 +364,25 @@
         <div class="w-2/3 pb-8">
             <p class="text1 px-4 mb-2"><a href="#address-section">{{$store->address}}</a> </p>
             <div class="bg-white px-4 py-2">
-                <div class="flex">
-                    <img id="rentwarehouse-main-image" class="w-4/5" src="{{asset('images/img_rentvideo.jpg')}}" />
-                    <div class="w-1/5 pl-1 grid grid-cols-1 row-gap-2 overflow-y-scroll overflow-auto" style="max-height: 310px;">
-                        <img class="rentwarehouse-sub-image" src="{{asset('images/th_1.jpg')}}" />
-                        <img class="rentwarehouse-sub-image" src="{{asset('images/th_1.jpg')}}" />
-                        <img class="rentwarehouse-sub-image" src="{{asset('images/th_1.jpg')}}" />
-                        <img class="rentwarehouse-sub-image" src="{{asset('images/th_1.jpg')}}" />
-                        <img class="rentwarehouse-sub-image" src="{{asset('images/th_1.jpg')}}" />
-                        <img class="rentwarehouse-sub-image" src="{{asset('images/th_1.jpg')}}" />
+                <?php
+                $storeImages = $store->storeImages()->where('is_used', true)->get();
+                ?>
+                @if(count($storeImages))
+                <div class="flex" style="height: 310px;">
+                    <div class="w-4/5">
+                        <iframe id="rentwarehouse-main-image" class="w-full h-full" src="{{$store->video_link ? $store->video_link : asset($storeImages[0]->image)}}"></iframe>
+                    </div>
+
+                    <div class="w-1/5 pl-1 flex flex-col overflow-y-scroll overflow-auto" style="max-height: 310px;">
+                        @if($store->video_link)
+                        <p class="text-center rentwarehouse-sub-image cursor-pointer mb-3" src="{{$store->video_link}}">Video</p>
+                        @endif
+                        @foreach($storeImages as $image)
+                        <img class="rentwarehouse-sub-image cursor-pointer mb-2" src="{{asset($image->image)}}" />
+                        @endforeach
                     </div>
                 </div>
+                @endif
                 <div class="mr-10 pb-4">
                     <div class="horz-line my-4"></div>
                     <p class="text1 pb-2">
@@ -458,10 +466,15 @@
                         <span class="text1 my-auto self-center pl-2">最新優惠</span>
                     </div>
                     <div class="my-4">
-                        <p class="text-sm color-primary">黃竹坑新店快閃優惠　低至6折優惠</p>
-                        <img class="pr-20 mt-10 mb-10" src="{{ asset('images/Image 8@2x.png') }}" />
+                        <!-- <p class="text-sm color-primary">黃竹坑新店快閃優惠　低至6折優惠</p> -->
+                        <!-- <img class="pr-20 mt-4 mb-10" src="{{ asset('images/Image 8@2x.png') }}" /> -->
+                        @foreach($store->offerImages()->where('is_used', true)->get() as $image)
+                        @if($image->is_used)
+                        <img class="pr-20 my-4" src="{{asset('images/offers/'.$image->image)}}" />
+                        @endif
+                        @endforeach
 
-                        <p class="text-sm color-deep py-1 leading-snug"><?php echo nl2br($store->latest_offer) ?></p>
+                        <p class="text-sm color-deep py-1 leading-snug mt-6"><?php echo nl2br($store->latest_offer) ?></p>
                         <!-- <p class="text-sm color-deep py-1 leading-normal">黃竹坑新店快閃優惠　低至6折優惠</p> -->
                         <!-- <p class="text-sm color-deep py-1 leading-normal">震撼筍價HK$300起即可入手</p><br />
                         <p class="text-sm color-deep py-1 leading-normal">黃竹坑分店全新開業，推出快閃驚喜優惠！顧客可享低至6折優惠，以震撼筍價HK$300起即可入手！你仲唔快啲黎搵我哋！！</p>
@@ -607,7 +620,7 @@
                 </div>
 
                 <div class="flex pt-4">
-                    <p class="rentwarehouse-size-select-description my-auto"><a href="{{url('/calc')}}">唔知自己需要咩size ? 試下我地既空間計算器</a></p>
+                    <p class="rentwarehouse-size-select-description my-auto"><a target="_blank" href="{{url('/calc')}}">唔知自己需要咩size ? 試下我地既空間計算器</a></p>
                     <img class="object-none box-content pl-1 -mt-1" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
                 </div>
 
@@ -654,7 +667,7 @@
                     <img class="flex-shrink-0 h-32" src="{{ asset('images/Image 8@2x.png') }}" />
                     <p class="pl-3 color-deep overflow-y-hidden leading-relaxed font_13 h-32">
                         黃竹坑新店快閃優惠　低至6折優惠 震撼筍價HK$300起即可入手
-                        <br/><br/>
+                        <br /><br />
                         黃竹坑分店全新開業，推出快閃驚喜優 ！顧客可享低至6折優惠，以震撼筍價 HK$300起即可入手！你仲唔
                         黃竹坑分店全新開業，推出快閃驚喜優 ！顧客可享低至6折優惠，以震撼筍價 HK$300起即可入手！你仲唔
                     </p>

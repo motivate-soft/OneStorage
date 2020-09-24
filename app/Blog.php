@@ -7,7 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
     //
-    public function get_image_url(){
-        return '/images/blogs/' . $this->image;
+    private static $IMAGE_PREFIX = '/images/blogs/';
+
+    public function getImageAttribute($value){
+        return static::$IMAGE_PREFIX . $value;
     }
+
+    public function getThumbnailAttribute($value){
+        return static::$IMAGE_PREFIX . $value;
+    }
+
+    public function getPromotionAttribute($value){
+        return static::$IMAGE_PREFIX . $value;
+    }
+
+
 }

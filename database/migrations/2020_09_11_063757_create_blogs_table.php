@@ -18,7 +18,9 @@ class CreateBlogsTable extends Migration
             $table->string('title');
             $table->longText('content');
             $table->string('image')->nullable();
-            $table->boolean('used_notibar')->default(false);
+            $table->string('thumbnail')->nullable();
+            $table->string('promotion')->nullable();
+            $table->boolean('used_promotion')->default(false);
             $table->timestamps();
         });
     }

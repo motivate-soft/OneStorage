@@ -8,29 +8,11 @@
 <div class="bg-grey w-full h-screen pl-16 pr-5 pt-10 pb-24">
     <div class="flex justify-between">
         <a href="{{url('/backend')}}" class="font_25 mb-6">Enquiries</a>
-        <form method="GET" action="{{url('/backend')}}" class="flex justify-end" style="height: 44px">  
-            <div class="flex relative mr-8 shadow-md">
-                <select name="key" id="search-field-select" class="block appearance-none w-full bg-white border-none hover:border-gray-500 px-20 leading-tight focus:outline-none focus:shadow-outline ">
-                    <option value="" selected class="text-grey">Search Field</option>
-                    @foreach($keys as $key)
-                    <option value="{{$key['key']}}" {{$key['key'] == (isset($_GET['key'])?$_GET['key']:'') ? 'selected' : ''}} class=" text-grey-2">{{$key['value']}}</option>
-                    @endforeach
-                </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                    <svg class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                </div>
-            </div>
-            <div class="flex relative mr-2">
-                <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x1.png')}}" alt="">
-                <input class="form-control w-full shadow-md" type="text" placeholder="" name="value" value="{{isset($_GET['value'])?$_GET['value']:''}}">
-            </div>
-            <a class="ml-8 text-blue-700 my-auto">Export as xls</a>
-        </form>
+        @include('backend.partials.searchbar')
     </div>
 
     <div class="bg-white h-full">
-        <table class="w-full bg-white">
+        <table class="w-full bg-white" id="content">
             <tr class="table-heading shadow-lg border border-primary">
                 <th class="py-5 border-r border-second">日期</th>
                 <th class="py-5 border-r border-second">客人資料</th>
@@ -95,4 +77,11 @@
 @endsection
 
 @section('scripts')
+<script>
+    $("#export2Excel").click(function(){
+        var table = $("#content").clone();
+        table.find("img").remove();
+        Excel.export(table.html());
+    })
+</script>
 @endsection

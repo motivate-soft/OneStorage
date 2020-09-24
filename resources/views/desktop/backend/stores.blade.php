@@ -226,10 +226,10 @@
                     </p>
 
                     <div class="px-2">
-                        <div class="grid grid-cols-3 row-gap-2 col-gap-2 mb-4" id="offerImages">
+                        <div class="image-uploader grid grid-cols-3 row-gap-2 col-gap-2 mb-4">
                             @if($selected_store)
-                            <input type="hidden" name="deleteImages" class="initial" id="delImage" value="{{json_encode([])}}"/>
-                            <input type="hidden" name="activeImages" id="selImage" value="{{$selected_store->activeOfferImages()}}"/>
+                            <input type="hidden" name="delete-offerImages" class="initial delete-images" value="" />
+                            <input type="hidden" name="active-offerImages" class="active-images" value="{{$selected_store->activeOfferImages()}}" />
                             @foreach($selected_store->offerImages as $image)
                             <div class="container original-image {{$image->is_used ? 'image-active' : ''}}" data-image-id="{{$image->id}}">
                                 <img class="background" src="{{asset('images/offers/'.$image->image)}}" />
@@ -244,10 +244,9 @@
                             </div>
                             @endforeach
                             @endif
-
                             <div class="flex flex-col justify-center mr-4 img-add-wrapper">
-                                <img class="object-fill mx-auto cursor-pointer" id="offerImgAddBtn" src="{{asset('images/icons8-plus-64@2x.png')}}" />
-                                <input type="file" id="offerImgInput" name="image" class="hidden" accept=".jpg,.png,.gif" />
+                                <img class="object-fill mx-auto cursor-pointer img-add-btn" src="{{asset('images/icons8-plus-64@2x.png')}}" />
+                                <input type="file" data-name="offerImages[]" name="image" class="hidden img-input" accept=".jpg,.png,.gif" />
                             </div>
                         </div>
                         <textarea placeholder="" name="latest_offer" rows="8" class="form-input">{{$selected_store ? $selected_store->latest_offer : ''}}</textarea>
@@ -343,9 +342,29 @@
                     <p class="font_26 mb-2">
                         圖片
                     </p>
-                    <!-- <p class="font_16 robert-regular mb-2">C:/Users/download/bg.jpg</p> -->
-
-
+                    <div class="image-uploader grid grid-cols-3 row-gap-2 col-gap-2 mb-4">
+                        @if($selected_store)
+                        <input type="hidden" name="delete-storeImages" class="initial delete-images" value="" />
+                        <input type="hidden" name="active-storeImages" class="active-images" value="{{$selected_store->activeStoreImages()}}" />
+                        @foreach($selected_store->storeImages as $image)
+                        <div class="container original-image {{$image->is_used ? 'image-active' : ''}}" data-image-id="{{$image->id}}">
+                            <img class="background" src="{{asset($image->image)}}" />
+                            <div class="middle flex justify-center">
+                                <div class="flex flex-col justify-center">
+                                    <button type="button" class="mx-4 my-auto cursor-pointer img-del-btn"><img class="object-none" src="{{asset('images/icons8-delete-bin-48@2x.png')}}" /></button>
+                                </div>
+                                <div class="flex flex-col justify-center">
+                                    <button type="button" class="mx-4 my-auto cursor-pointer img-sel-btn"><img class="object-none" src="{{asset('images/icons8-tick-box-48@2x.png')}}" /></button>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                        @endif
+                        <div class="flex flex-col justify-center mr-4 img-add-wrapper">
+                            <img class="object-fill mx-auto cursor-pointer img-add-btn" src="{{asset('images/icons8-plus-64@2x.png')}}" />
+                            <input type="file" data-name="storeImages[]" name="image" class="hidden img-input" accept=".jpg,.png,.gif" />
+                        </div>
+                    </div>
                     <p class="font_26 mb-4">
                         Video
                     </p>
@@ -353,7 +372,7 @@
                         <span class="w-1/5 mt-1 robert-regular">
                             Video Link
                         </span>
-                        <input placeholder="" class="form-input" name="url" type="text">
+                        <input placeholder="" class="form-input" name="video_link" value="{{$selected_store ? $selected_store->video_link : ''}}" type="text">
                     </div>
                 </div>
             </div>
@@ -368,7 +387,7 @@
     $(function() {
 
         $(".initial").val('[]');
-        
+
         $("#branch-select").change(function() {
             const branch = $(this).val();
             if (branch == "") {
@@ -428,16 +447,16 @@
 
         function readURL(input, preview) {
             if (input.files && input.files[0]) {
-                if(input.files[0].size > 2 * 1024 * 1024){
+                if (input.files[0].size > 2 * 1024 * 1024) {
                     alert("Max file size is 2M!");
                     return;
                 }
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
-                    $(".img-add-wrapper").before(
+                    $(input).parent().before(
                         '<div class="container image-active">' +
-                        `<input type="hidden" name="offerImages[]" value='`+ e.target.result +`'/>` +
+                        `<input type="hidden" name="` + $(input).attr('data-name') + `" value='` + e.target.result + `'/>` +
                         '<img class="background" src="' + e.target.result + '"/>' +
                         '<div class="middle flex justify-center">' +
                         '<div class="flex flex-col justify-center">' +
@@ -452,38 +471,42 @@
             }
         }
 
-
-        $("#offerImgInput").change(function() {
+        $(".img-input").change(function() {
             readURL(this);
         });
 
-        $("#offerImgAddBtn").click(function() {
-            $("#offerImgInput").click();
+        $(".img-add-btn").click(function() {
+            $(this).next().click();
         })
 
         $(document).on('click', '.img-del-btn', function() {
             const container = $(this).closest('.container');
-            if(container.hasClass('original-image')){
-                const delImageInput = $("#delImage");
+            if (container.hasClass('original-image')) {
+                const delImageInput = container.parent().find('.delete-images');
                 var value = JSON.parse(delImageInput.val());
                 value.push(container.attr('data-image-id'));
                 delImageInput.val(JSON.stringify(value));
             }
             $(this).closest('.container').remove();
         })
-
-        $(".img-sel-btn").click(function(){
+        $(document).on('click', '.img-sel-btn', function() {
             const container = $(this).closest('.container');
             const activeName = "image-active";
-            const selImageInput = $("#selImage");
-            if(container.hasClass(activeName)){
+            const selImageInput = container.parent().find('.active-images');
+            var value = JSON.parse(selImageInput.val());
+            var id = container.attr('data-image-id');
+            if (container.hasClass(activeName)) {
                 container.removeClass(activeName);
-                var value = JSON.parse(selImageInput.val());
-                
+                const index = value.indexOf(id);
+                if (index >= 0) {
+                    value.splice(index, 1);
+                }
 
-            }else{
+            } else {
                 container.addClass(activeName);
+                value.push(id);
             }
+            selImageInput.val(JSON.stringify(value));
         })
     })
 </script>

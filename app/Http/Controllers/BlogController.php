@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Blog;
 use Illuminate\Http\Request;
+use Helper;
+
+
 
 class BlogController extends Controller
 {
@@ -30,8 +33,40 @@ class BlogController extends Controller
     public function get($id)
     {
         $blog = Blog::find($id);
-        $blog->image = $blog->get_image_url();
         return $blog;
+    }
+
+    private function saveImage($blog, $request, $name)
+    {
+        if ($request->hasFile($name)) {
+
+            $image = $request->file($name);
+            $imgName = time() . Helper::getRandomString() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/blogs');
+            $image->move($destinationPath, $imgName);
+            $blog[$name] = $imgName;
+        }
+    }
+
+    private function setData($blog, $request)
+    {
+        if(!$blog){
+            return;
+        }
+        $blog->title = $request->title;
+        $blog->content = $request->content;
+        $blog->used_promotion = isset($request->usedPromition) &&  $request->usedPromition == "on";
+        if(!$blog->used_promotion){
+            $blog->as_promotion = false;
+            $blog->column = 0;
+            $blog->state = false;
+        }
+
+        $this->saveImage($blog, $request, "image");
+        $this->saveImage($blog, $request, "thumbnail");
+        $this->saveImage($blog, $request, "promotion");
+
+        $blog->save();
     }
 
     /**
@@ -48,21 +83,8 @@ class BlogController extends Controller
         // ]);
 
         $blog = new Blog;
-        $blog->title = $request->title;
-        $blog->content = $request->content;
-        $blog->used_notibar = isset($request->usedNotiBar) &&  $request->usedNotiBar == "on";
+        $this->setData($blog, $request);
 
-        if ($request->hasFile('image')) {
-
-            $image = $request->file('image');
-            $name = time() . '.' . $image->getClientOriginalExtension();
-            echo $name;
-            $destinationPath = public_path('/images/blogs');
-            $image->move($destinationPath, $name);
-            $blog->image = $name;
-        }
-
-        $blog->save();
         return redirect()->back();
     }
 
@@ -72,9 +94,11 @@ class BlogController extends Controller
      * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show($id)
     {
         //
+        $blog = Blog::find($id);
+        return view('news', compact('blog'));
     }
 
     /**
@@ -99,22 +123,7 @@ class BlogController extends Controller
     {
         //
         $blog = Blog::find(isset($request->id) ?  $request->id : 0);
-        if ($blog) {
-            $blog->title = $request->title;
-            $blog->content = $request->content;
-            $blog->used_notibar = isset($request->usedNotiBar) &&  $request->usedNotiBar == "on";
-
-            if ($request->hasFile('image')) {
-
-                $image = $request->file('image');
-                $name = time() . '.' . $image->getClientOriginalExtension();
-                $destinationPath = public_path('/images/blogs');
-                $image->move($destinationPath, $name);
-                $blog->image = $name;
-            }
-
-            $blog->save();
-        }
+        $this->setData($blog, $request);
         return redirect()->back();
     }
 
@@ -132,7 +141,41 @@ class BlogController extends Controller
     public function delete($id)
     {
         $blog = Blog::find($id);
-        $blog->delete();
-        return true;
+        if($blog){
+            $blog->delete();
+            return true;
+        }
+        return false;
+    }
+
+    public function asPromotion($id, $column)
+    {
+        $blog = Blog::find($id);
+        if($blog){
+            $old = Blog::where('column', $column)->first();
+            if($old){
+                $old->as_promotion = false;
+                $old->column = 0;
+                $old->state = false;
+                $old->save();
+            }
+            $blog->as_promotion = true;
+            $blog->column = $column;
+            $blog->state = false;
+            $blog->save();
+            return true;
+        }
+        return false;
+    }
+
+    public function setPromotion($id, $state)
+    {
+        $blog = Blog::find($id);
+        if($blog){
+            $blog->state = $state;
+            $blog->save();
+            return true;
+        }
+        return false;
     }
 }

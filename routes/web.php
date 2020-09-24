@@ -26,6 +26,9 @@ Route::put('/blog', 'BlogController@update');
 Route::delete('/blog/{id}', 'BlogController@delete');
 Route::get('/blog/{id}', 'BlogController@get');
 
+Route::get('/blog/as-promotion/{id}/{column}', 'BlogController@asPromotion');
+Route::get('/blog/set-promotion/{id}/{state}', 'BlogController@setPromotion');
+
 Route::post('/background', 'BackgroundController@store');
 Route::get('/background/delete/{id}', 'BackgroundController@delete');
 Route::get('/background/set/{id}', 'BackgroundController@set');
@@ -63,13 +66,10 @@ Route::group(['prefix' => '/'], function () {
     });
 
     Route::get('/lastnews', function () {
-        $data['users'] = [1, 2, 3, 4, 5];
-        return view('lastnews', $data);
+        return view('lastnews');
     });
 
-    Route::get('/news', function () {
-        return view('news');
-    });
+    Route::get('/news/{id}', 'BlogController@show');
 
     Route::get('/disclaimer', function(){
         return view('disclaimer');
@@ -111,22 +111,20 @@ Route::group(['prefix' => '/backend', 'as' => 'backend'], function () {
     });
 
     Route::group(['middleware' => ['admin']], function () {
-        Route::get('/', 'EnquiryController@index');
-
-        Route::get('/members', function () {
-            return view('backend.members');
+        Route::get('/', function(){
+            return redirect('/backend/enquiries');
         });
-
+        Route::get('/enquiries', 'EnquiryController@index');
+        Route::get('/enquiries/export', 'EnquiryController@export');
+        Route::get('/members', 'AuthController@index');
+        Route::get('/members/export', 'AuthController@export');
         Route::get('/pages', function () {
             return view('backend.pages');
         });
-
         Route::get('/messages', function () {
             return view('backend.messages');
         });
-
         Route::get('/chatroom/{id?}', 'MessagesController@showAdminRoom');
-
         Route::get('/accept-enquiry', 'EnquiryController@accept');
         Route::get('/store/{id?}', 'StoreController@show');
         Route::post('/store', 'StoreController@store');

@@ -25,9 +25,15 @@ class Store extends Model
     {
         return $this->hasMany('App\StoreQuestion');
     }
+
     public function offerImages()
     {
         return $this->hasMany('App\StoreOfferImage');
+    }
+
+    public function storeImages()
+    {
+        return $this->hasMany('App\StoreImage');
     }
 
     public function serviceState($index)
@@ -79,10 +85,17 @@ class Store extends Model
     public function activeOfferImages()
     {
         $activeImages = [];
-        foreach($this->offerImages as $image){
-            if($image->is_used){
-                $activeImages[] = $image->id;
-            }
+        foreach($this->offerImages()->where('is_used', true)->get() as $image){
+            $activeImages[] = $image->id.'';
+        }
+        return json_encode($activeImages);
+    }
+
+    public function activeStoreImages()
+    {
+        $activeImages = [];
+        foreach($this->storeImages()->where('is_used', true)->get() as $image){
+            $activeImages[] = $image->id.'';
         }
         return json_encode($activeImages);
     }

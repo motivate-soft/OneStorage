@@ -23,6 +23,7 @@ class AddOtherFieldsToStoresTable extends Migration
             $table->string('service_facilities')->nullable();
             $table->longText('nearby_facilities')->nullable();
             $table->string('opening_hours')->nullable();
+            $table->string('video_link')->nullable();
         });
     }
 

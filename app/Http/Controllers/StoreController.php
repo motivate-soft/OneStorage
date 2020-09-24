@@ -4,16 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Store;
 use App\StoreOfferImage;
+use App\StoreImage;
 use App\StoreQuestion;
 use App\StoreSize;
 use Illuminate\Http\Request;
 use Image;
-
-
-function getRandomString($length = 10)
-{
-    return substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length / strlen($x)))), 1, $length);;
-}
+use Helper;
 
 class StoreController extends Controller
 {
@@ -37,6 +33,40 @@ class StoreController extends Controller
         //
     }
 
+    private function setImages($store, $data, $type, $url)
+    {
+        $activeImages = json_decode($data['active-'.$type]);
+        //active offer images
+        foreach ($store[$type] as $image) {
+            $image->is_used = in_array($image->id, $activeImages);
+            $image->save();
+        }
+
+        //save offer images
+        if (isset($data[$type])) {
+            foreach ($data[$type] as $image_base64) {
+                $name = time() . Helper::getRandomString() . '.png';
+                $path = public_path($url) . '/' . $name;
+                if (Image::make($image_base64)->save($path)) {
+                    $image = $type == 'storeImages' ? new StoreImage : new StoreOfferImage;
+                    $image->image = $name;
+                    $image->is_used = true;
+                    $image->store_id = $store->id;
+                    $image->save();
+                }
+            }
+        }
+
+        //delete offer images
+        $willDeleteImages = json_decode($data['delete-'.$type]);
+        foreach ($willDeleteImages as $id) {
+            $image = $type == 'storeImages' ? StoreImage::find($id) :StoreOfferImage::find($id);
+            if ($image) {
+                $image->delete();
+            }
+        }
+    }
+
 
     private function setData($store, $data)
     {
@@ -51,6 +81,7 @@ class StoreController extends Controller
             $store->text_below_addr = $data['text_below_addr'];
             $store->opening_hours = $data['opening_hours'];
             $store->nearby_facilities = $data['nearby_facilities'];
+            $store->video_link = $data['video_link'];
             //save services
             $services = '';
             for ($i = 0; $i < Store::$_SERVICE_COUNT; $i++) {
@@ -101,30 +132,8 @@ class StoreController extends Controller
                     $question->save();
                 }
             }
-
-            //save offer images
-            if (isset($data['offerImages'])) {
-                foreach ($data['offerImages'] as $image) {
-                    $name = time() . getRandomString() . '.png';
-                    $path = public_path() . '/images/offers/' . $name;
-                    if( Image::make(file_get_contents($image))->save($path)){
-                        $offerImage = new StoreOfferImage;
-                        $offerImage->image = $name;
-                        $offerImage->is_used = true;
-                        $offerImage->store_id = $store->id;
-                        $offerImage->save();
-                    }
-                }
-            }
-
-            //delete offer images
-            $willDeleteImages = json_decode($data['deleteImages']);
-            foreach ($willDeleteImages as $id) {
-                $offerImage = StoreOfferImage::find($id);
-                if ($offerImage) {
-                    $offerImage->delete();
-                }
-            }
+            $this->setImages($store, $data, "offerImages", "/images/offers");
+            $this->setImages($store, $data, "storeImages", "/images/stores");
         }
     }
 

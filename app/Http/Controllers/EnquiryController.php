@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Enquiry;
+use App\Exports\EnquiriesExport;
 use Auth;
 use App\User;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EnquiryController extends Controller
 {
@@ -178,5 +180,10 @@ class EnquiryController extends Controller
     public function destroy(Enquiry $enquiry)
     {
         //
+    }
+
+    public function export()
+    {
+        return Excel::download(new EnquiriesExport, 'enquiries.xlsx');
     }
 }

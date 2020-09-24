@@ -31,6 +31,7 @@
     </style>
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/excel.js') }}"></script>
 
 </head>
 
@@ -44,8 +45,6 @@
 
         </main>
     </div>
-
     @yield('scripts')
 </body>
-
 </html>

@@ -110,42 +110,17 @@
         </div>
         <div class="w-2/5" style="margin-left: 10px;">
             <h2 class="text-lg mt-4 mb-8 font-bold">最新資訊</h2>
-            <div class="flex mt-2 pb-5">
-                <img class="h-24 md:h-32 mx-auto md:mx-0 md:mr-4 object-none inline" src="{{asset('images/footer/Image 17@2x.png')}}">
-                <span class="h-24 md:h-32 text-center md:text-left text-sm leading-4 font_13 inline overflow-y-hidden">
-                    黃竹坑新店快閃優惠　低至6折優惠
-                    震撼筍價HK$300起即可入手<br>
-                    <br>
-                    黃竹坑分店全新開業，推出快閃驚喜優
-                    ！顧客可享低至6折優惠，以震撼筍價
-                    HK$300起即可入手！你仲唔快啲黎搵我
-                    哋！！
+            <?php
+            $lasted_news = App\Blog::orderBy('id', 'desc')->take(3)->get();
+            ?>
+            @foreach($lasted_news as $news)
+            <a class="flex mt-2 mb-5" href="{{url('/news/'.$news->id)}}">
+                <img class="h-32 w-32 mx-auto md:mx-0 md:mr-4 object-cover inline" src="{{asset($news->thumbnail)}}">
+                <span class="h-24 md:h-32 text-center md:text-left text-sm leading-4 font_13 inline overflow-y-hidden robert-black">
+                <?php echo nl2br($news->content) ?>
                 </span>
-            </div>
-            <div class="flex mt-2 pb-5">
-                <img class="h-24 md:h-32 mx-auto md:mx-0 md:mr-4 object-none inline" src="{{asset('images/footer/Image 17@2x.png')}}">
-                <span class="h-24 md:h-32 text-center md:text-left text-sm leading-4 font_13 inline overflow-y-hidden">
-                    黃竹坑新店快閃優惠　低至6折優惠
-                    震撼筍價HK$300起即可入手<br>
-                    <br>
-                    黃竹坑分店全新開業，推出快閃驚喜優
-                    ！顧客可享低至6折優惠，以震撼筍價
-                    HK$300起即可入手！你仲唔快啲黎搵我
-                    哋！！
-                </span>
-            </div>
-            <div class="flex mt-2 pb-5">
-                <img class="h-24 md:h-32 mx-auto md:mx-0 md:mr-4 object-none inline" src="{{asset('images/footer/Image 17@2x.png')}}">
-                <span class="h-24 md:h-32 text-center md:text-left text-sm leading-4 font_13 inline overflow-y-hidden">
-                    黃竹坑新店快閃優惠　低至6折優惠
-                    震撼筍價HK$300起即可入手<br>
-                    <br>
-                    黃竹坑分店全新開業，推出快閃驚喜優
-                    ！顧客可享低至6折優惠，以震撼筍價
-                    HK$300起即可入手！你仲唔快啲黎搵我
-                    哋！！
-                </span>
-            </div>
+            </a>
+            @endforeach
         </div>
     </div>
     </div>

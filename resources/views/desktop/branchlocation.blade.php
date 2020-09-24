@@ -241,7 +241,7 @@
 
                 <div class="px-12 pt-5">
                     <div class="flex">
-                        <p class="branchlocation-store-select-description my-auto"><a href="{{url('/calc')}}">唔知自己需要咩size ? 試下我地既空間計算器</a></p>
+                        <p class="branchlocation-store-select-description my-auto"><a target="_blank" href="{{url('/calc')}}">唔知自己需要咩size ? 試下我地既空間計算器</a></p>
                         <img class="object-none box-content pl-1 -mt-1" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
                     </div>
                     <div class="grid grid-cols-4 col-gap-3 pt-1 branchlocation-room-select">

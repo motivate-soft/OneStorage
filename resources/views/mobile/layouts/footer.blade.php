@@ -98,36 +98,35 @@
                     </div>
 
                 </div>
-                <?php
-                $contactInfos = App\ContactInfo::get();
-                ?>
+              
                 <div class="grid grid-cols-1  mt-8 z-10">
-                    @foreach($contactInfos as $contact)
+              
                     <div>
                         <div class="footer-accordion relative appearance-none items-center">
                             <div class="flex font_13">
                                 <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                                <span class="self-center text-primary">{{$contact['name']}}</span>
+                                <span class="self-center text-primary"></span>
                             </div>
                         </div>
                         <div class="panel flex">
                             <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
                             <div class=" leading-5 ">
                                 <p class="font_13">
-                                    電話 : <span>{{$contact['phone']}}</span>
+                                    電話 : <span></span>
                                 </p>
                                 <a href="mailto:cs@onestorage.com.hk" class="font_13">
-                                    電郵 : <span>{{$contact['email']}}</span>
+                                    電郵 : <span></span>
                                 </a>
                                 <p class="font_13">
-                                    <a href="{{'http://maps.google.com/?q='.$contact['address']}}" target="_blank" rel="noopener noreferrer">
-                                        地址 : {{$contact['address']}}
+                                    <a href="{{'http://maps.google.com/?q='}}" target="_blank" rel="noopener noreferrer">
+                                        地址 : 
                                     </a>
                                 </p>
                             </div>
                         </div>
                     </div>
-                    @endforeach
+              
+
                 </div>
             </div>
         </div>

@@ -183,9 +183,9 @@ use App\AppConfig;
             </button>
         </form>
 
-        <div class="flex mt-16 robert-black font_24 text-primary">
-            <span class="my-auto relative mr-6 crown">唔知自己需要咩size ? 試下我地既空間計算器&nbsp;&nbsp;&nbsp;</span>
-            <a href="{{url('/calc')}}" class="bg-yellow px-6 py-2">立即計算</a>
+        <div class="flex mt-16 robert-black text-primary">
+            <span class="my-auto relative mr-6 font_24 crown">唔知自己需要咩size ? 試下我地既空間計算器&nbsp;&nbsp;&nbsp;</span>
+            <a href="{{url('/calc')}}" target="_blank" class="bg-yellow px-6 py-2 font_18">立即計算</a>
         </div>
     </div>
     <!-- <img class="relative" style="right:-100px;" src="{{asset('images/bg_hero.jpg')}}" /> -->
@@ -242,12 +242,18 @@ use App\AppConfig;
 
 
         <div class="grid grid-cols-2 col-gap-8 row-gap-10 my-24 max-w-full mx-auto">
-            <img src="{{asset('images/img_2_1.jpg')}}" class="yellow-shadow" />
-            <img src="{{asset('images/img_2_2.jpg')}}" class="yellow-shadow" />
+            <?php
+            $promotions = App\Blog::where('as_promotion', true)->where('state', true)->orderBy('column', 'asc')->get();
+            ?>
+            @foreach($promotions as $promotion)
+            <a href="{{url('/news/'.$promotion->id)}}"><img src="{{asset($promotion->promotion)}}" class="yellow-shadow promotion h-52" /></a>
+            @endforeach
+
+            <!-- <img src="{{asset('images/img_2_2.jpg')}}" class="yellow-shadow" />
             <img src="{{asset('images/img_2_3.jpg')}}" class="yellow-shadow" />
             <img src="{{asset('images/img_2_4.jpg')}}" class="yellow-shadow" />
             <img src="{{asset('images/img_2_5.jpg')}}" class="yellow-shadow" />
-            <img src="{{asset('images/img_2_6.jpg')}}" class="yellow-shadow" />
+            <img src="{{asset('images/img_2_6.jpg')}}" class="yellow-shadow" /> -->
         </div>
     </div>
 </div>
@@ -340,7 +346,7 @@ use App\AppConfig;
     <div class="mx-auto w-3/5">
         <p class="w-full bg-yellow py-6 px-10 text4 my-10 leading-snug font-medium">
             <!-- 至尊迷你倉致力為每位客戶打造最安全及最可靠的倉存空間，實力雄厚，全屬自置物業。分店網絡積極不斷擴充，新蒲崗及火炭分店將於短期內正式投入服務。 特設多種大小不同呎碼獨立迷你倉，任君選擇。2.4米闊的走廊配以完善的裝置設備，完全符合消防指引。全天候高清保安監察及警報系統，智能保安進出系統，24小時自助式儲存，支援現金、EPS、支票、信用卡、轉數快及免息分期付費，優質的儲存環境及親切專業的客戶服務，用心為每位客戶提升生活空間質素，承傳尊貴享受典範。 -->
-            為金朝陽集團屬下業務(股票代號： 00878.HK)。<br/>
+            為金朝陽集團屬下業務(股票代號： 00878.HK)。<br />
             分店遍佈港、九及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質的儲存環境及專業的服務。至尊迷你倉是亞洲迷你倉商會(SSAA及香港迷你倉總會會員(HKMSA)。
 
         </p>
