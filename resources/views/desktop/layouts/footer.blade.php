@@ -45,14 +45,15 @@
                         </a>
                     </div>
                 </div>
-                <div class="mt-4">
-                    <div class="grid grid-cols-2 mt-8">
+
+                <div class="flex mt-5 ml-2">
+                    <div class="grid grid-cols-2">
                         <div class="col-span-1">
                             <p class="font_19 pl-10 pb-3">香港島</p>
                             <?php
                             $locations = App\LocationInfo::getHongKong();
                             ?>
-                            @each('partials.location_info', $locations, 'location')
+                            @each('partials.location_info1', $locations, 'location')
                         </div>
 
                         <div class="col-span-1">
@@ -60,31 +61,29 @@
                             <?php
                             $locations = App\LocationInfo::getKowloon();
                             ?>
-                            @each('partials.location_info', $locations, 'location')
-                        </div>
-                    </div>
-
-                    <p class="font_19 pl-10 pb-3 mt-4">新界</p>
-                    <div class="grid grid-cols-2">
-                        <?php
-                        $locations = App\LocationInfo::getNew();
-                        $even = array_filter($locations, function ($input) {
-                            return !($input & 1);
-                        }, ARRAY_FILTER_USE_KEY);
-                        $odd = array_filter($locations, function ($input) {
-                            return $input & 1;
-                        }, ARRAY_FILTER_USE_KEY);
-                        ?>
-                        <div class="col-span-1">
-                            @each('partials.location_info', $even, 'location')
-                        </div>
-
-                        <div class="col-span-1">
-                            @each('partials.location_info', $odd, 'location')
+                            @each('partials.location_info1', $locations, 'location')
                         </div>
                     </div>
                 </div>
+                <p class="font_19 pl-10 pb-3 ml-2 mt-6">新界</p>
+                <div class="grid grid-cols-2 ml-2">
+                    <?php
+                    $locations = App\LocationInfo::getNew();
+                    $even = array_filter($locations, function ($input) {
+                        return !($input & 1);
+                    }, ARRAY_FILTER_USE_KEY);
+                    $odd = array_filter($locations, function ($input) {
+                        return $input & 1;
+                    }, ARRAY_FILTER_USE_KEY);
+                    ?>
+                    <div class="col-span-1">
+                        @each('partials.location_info1', $even, 'location')
+                    </div>
 
+                    <div class="col-span-1">
+                        @each('partials.location_info1', $odd, 'location')
+                    </div>
+                </div>
             </div>
             <div class="w-2/5" style="margin-left: 10px;">
                 <h2 class="text-lg mt-4 mb-8 font-bold">最新資訊</h2>
@@ -101,6 +100,8 @@
                 @endforeach
             </div>
         </div>
+
+    </div>
 
     </div>
     </div>
