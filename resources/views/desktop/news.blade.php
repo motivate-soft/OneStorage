@@ -29,10 +29,9 @@
             <div class="text-left ml-10 mt-5">
                 <img class="pb-4" src="{{asset($blog->image)}}" class="mt-4">
                 <div class="bg-grey-1 py-5 px-5">
-                    <h1 class="font_19 robert-black text-justify leading-loose">
+                    <h1 class="font_19 robert-black text-justify leading-normal">
                         <?php echo nl2br($blog->content) ?>
                     </h1>
-
                 </div>
             </div>
         </div>

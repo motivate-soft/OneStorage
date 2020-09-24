@@ -17,7 +17,7 @@
                         <a href="{{url('/joinus')}}">職位空缺</a> | <a href="{{url('/disclaimer')}}">免責聲明</a>
                     </span>
 
-                    
+
 
                     <p class="font_15">©2020 至尊迷你倉 版權所有</p>
 
@@ -45,83 +45,63 @@
                         </a>
                     </div>
                 </div>
+                <div class="mt-4">
+                    <div class="grid grid-cols-2 mt-8">
+                        <div class="col-span-1">
+                            <p class="font_19 pl-10 pb-3">香港島</p>
+                            <?php
+                            $locations = App\LocationInfo::getHongKong();
+                            ?>
+                            @each('partials.location_info', $locations, 'location')
+                        </div>
+
+                        <div class="col-span-1">
+                            <p class="font_19 pl-10 pb-3">九龍</p>
+                            <?php
+                            $locations = App\LocationInfo::getKowloon();
+                            ?>
+                            @each('partials.location_info', $locations, 'location')
+                        </div>
+                    </div>
+
+                    <p class="font_19 pl-10 pb-3 mt-4">新界</p>
+                    <div class="grid grid-cols-2">
+                        <?php
+                        $locations = App\LocationInfo::getNew();
+                        $even = array_filter($locations, function ($input) {
+                            return !($input & 1);
+                        }, ARRAY_FILTER_USE_KEY);
+                        $odd = array_filter($locations, function ($input) {
+                            return $input & 1;
+                        }, ARRAY_FILTER_USE_KEY);
+                        ?>
+                        <div class="col-span-1">
+                            @each('partials.location_info', $even, 'location')
+                        </div>
+
+                        <div class="col-span-1">
+                            @each('partials.location_info', $odd, 'location')
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="w-2/5" style="margin-left: 10px;">
+                <h2 class="text-lg mt-4 mb-8 font-bold">最新資訊</h2>
                 <?php
-                $locations = App\LocationInfo::getAll();
-                $count = count($locations);
+                $lasted_news = App\Blog::orderBy('id', 'desc')->take(3)->get();
                 ?>
-                <div class="flex mt-5">
-                    <div class="w-1/2 mr-2">
-                        @for($i = 0; $i < $count; $i +=2) 
-                        <div class="font_13">
-                            <div class="footer-accordion relative appearance-none items-center">
-                                <div class="flex">
-                                    <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                                    <span class="self-center text-primary">{{$locations[$i]['name']}}</span>
-                                </div>
-                            </div>
-                            <div class="footer-panel">
-                                @foreach($locations[$i]['items'] as $item)
-                                <div class="flex mb-2">
-                                    <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                                    <div class="leading-5 ">
-                                        <p class="">電話 : <span>{{$item['phone']}}</span></p>
-                                        <a href="{{'http://maps.google.com/?q='.$item['address']}}" target="_blank" rel="noopener noreferrer">
-                                            地址 : {{$item['address']}}
-                                        </a>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        @endfor
-                </div>
-                <div class="w-1/2 ml-2">
-                    @for($i = 1; $i < $count; $i +=2) 
-                        <div class="font_13">
-                            <div class="footer-accordion relative appearance-none items-center">
-                                <div class="flex">
-                                    <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                                    <span class="self-center text-primary">{{$locations[$i]['name']}}</span>
-                                </div>
-                            </div>
-                            <div class="footer-panel">
-                                @foreach($locations[$i]['items'] as $item)
-                                <div class="flex mb-2">
-                                    <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                                    <div class="leading-5 ">
-                                        <p class="">電話 : <span>{{$item['phone']}}</span></p>
-                                        <a href="{{'http://maps.google.com/?q='.$item['address']}}" target="_blank" rel="noopener noreferrer">
-                                            地址 : {{$item['address']}}
-                                        </a>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endfor
-                </div>
-            </div>
-            <div class="grid grid-cols-2 mt-8">
-                
-
-
-
+                @foreach($lasted_news as $news)
+                <a class="flex mt-2 mb-5" href="{{url('/news/'.$news->id)}}">
+                    <img class="h-32 w-32 mx-auto md:mx-0 md:mr-4 object-cover inline" src="{{asset($news->thumbnail)}}">
+                    <span class="h-24 md:h-32 text-center md:text-left text-sm leading-4 font_13 inline overflow-y-hidden robert-black">
+                        <?php echo nl2br($news->content) ?>
+                    </span>
+                </a>
+                @endforeach
             </div>
         </div>
-        <div class="w-2/5" style="margin-left: 10px;">
-            <h2 class="text-lg mt-4 mb-8 font-bold">最新資訊</h2>
-            <?php
-            $lasted_news = App\Blog::orderBy('id', 'desc')->take(3)->get();
-            ?>
-            @foreach($lasted_news as $news)
-            <a class="flex mt-2 mb-5" href="{{url('/news/'.$news->id)}}">
-                <img class="h-32 w-32 mx-auto md:mx-0 md:mr-4 object-cover inline" src="{{asset($news->thumbnail)}}">
-                <span class="h-24 md:h-32 text-center md:text-left text-sm leading-4 font_13 inline overflow-y-hidden robert-black">
-                <?php echo nl2br($news->content) ?>
-                </span>
-            </a>
-            @endforeach
-        </div>
+
     </div>
     </div>
 </footer>
