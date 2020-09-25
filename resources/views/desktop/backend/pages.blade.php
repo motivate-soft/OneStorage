@@ -245,11 +245,11 @@
                         ?>
                         @foreach ($blogs as $blog)
                         <div class="flex justify-between mb-2 robert-regular cursor-pointer blog-item" id="{{$blog->id}}">
-                            <span class="blog-title">{{ $blog->title }}</span>
+                            <span class="blog-title my-auto">{{ $blog->title }}</span>
                             <div class="flex justify-end flex-shrink-0">
                                 <div class="action-bar hidden">
                                     <img src="{{asset('images/icons8-edit-48@2x.png')}}" class="inline" />
-                                    <span class="deleteBtn ml-2">delete</span>
+                                    <img src="{{asset('images/ic-recycle-bin-50.png')}}" class="inline deleteBtn ml-2 w-8 h-8" />
                                 </div>
                                 <span class="ml-4 float-right font_12 my-auto">{{$blog->updated_at->format('d/m/Y')}}</span>
                             </div>

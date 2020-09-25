@@ -63,33 +63,28 @@
                 @if(count($threads))
                 @foreach($threads as $thread)
                 <a class="flex border py-3 px-4 cursor-pointer" href="{{url('chatroom/'.$thread->id)}}">
-                    <div>
-                        <img class="object-none" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
-                    </div>
+                    <img class="object-center rounded-full inline" width="72" height="72" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
 
+                    <?php $unreadCnt = $thread->userUnreadMessagesCount(Auth::id()) ?>
                     <div class="w-9/10 pl-6 pt-2">
                         <div class="flex justify-between">
-                            <p class="leading-none pt-2 font_19 regular-color">
+                            <span class="leading-none pt-2 font_19 regular-color relative {{$unreadCnt ? 'has-new-msg' : ''}}">
                                 Admin - {{$thread->participantsString(Auth::id(), ['first_name'])}}
-                                <?php $unreadCnt = $thread->userUnreadMessagesCount(Auth::id())?> 
-                                @if($unreadCnt)
-                                <span class=" text-sm text-red-500">({{ $unreadCnt }} new msgs)</span>
-                                @endif
-                            </p>
+
+                            </span>
                             <p class="text-right pt-2 font_14 robert-regular">{{$thread->latestMessage->created_at->format('d-M-Y')}}</p>
                         </div>
                         <div class="font_19 mt-2 robert-regular">
-                            <p class="">{{ $thread->latestMessage->body }}</p>
+                            <!-- <p class="">{{ $thread->latestMessage->body }}</p> -->
+                            <span class="{{$unreadCnt ? 'robert-black' : 'robert-regular'}}">{{ mb_strimwidth($thread->latestMessage->body, 0, 40, "...") }}</span>
                         </div>
                     </div>
                 </a>
                 @endforeach
-                @else
-                @foreach(App\User::getAdmins() as $admin)
+                @endif
+                @foreach(Auth::user()->getUnConnectedAdmins() as $admin)
                 <a class="flex border py-3 px-4 cursor-pointer" href="{{url('chatroom?id='.$admin->id)}}">
-                    <div>
-                        <img class="object-none" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
-                    </div>
+                    <img class=" object-center rounded-full inline" width="72" height="72" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
 
                     <div class="w-9/10 pl-6 pt-2">
                         <div class="flex justify-between">
@@ -104,7 +99,6 @@
                     </div>
                 </a>
                 @endforeach
-                @endif
             </div>
         </div>
     </div>

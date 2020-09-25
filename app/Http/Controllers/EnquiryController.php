@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Enquiry;
 use App\Exports\EnquiriesExport;
+use App\Helper\Helper;
+use App\Mail\DiscountEmail;
+use App\Mail\EnquiryEmail;
 use Auth;
 use App\User;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Mail;
 
 class EnquiryController extends Controller
 {
@@ -55,7 +59,7 @@ class EnquiryController extends Controller
         [
             'key' => 'principal',
             'value' => '負責人'
-        ]   
+        ]
     ];
     /**
      * Display a listing of the resource.
@@ -68,16 +72,16 @@ class EnquiryController extends Controller
         $key = isset($_GET['key']) ? $_GET['key'] : '';
         $value = isset($_GET['value']) ? $_GET['value'] : '';
 
-        if($key && $value){
-            $enquiries = Enquiry::where($key, 'like', '%'.$value.'%')->orderBy('id', 'desc');
-        }else{
+        if ($key && $value) {
+            $enquiries = Enquiry::where($key, 'like', '%' . $value . '%')->orderBy('id', 'desc');
+        } else {
             $enquiries = Enquiry::orderBy('id', 'desc');
         }
 
         $enquiries = $enquiries->paginate(10)->appends(request()->query());
 
-      
-        
+
+
         return view('backend.enquiries', ['enquiries' => $enquiries, 'keys' => static::$SEARCH_KEYS]);
     }
 
@@ -91,12 +95,26 @@ class EnquiryController extends Controller
         //
     }
 
+    public function saveFile($request, $name)
+    {
+        if ($request->hasFile($name)) {
+            $file = $request->file($name);
+            $fileName = time() . Helper::getRandomString() . '.' . $file->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads');
+            $file->move($destinationPath, $fileName);
+            return '/uploads'.'/'. $fileName;
+        }
+        return null;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
     public function store(Request $request)
     {
         //
@@ -109,27 +127,43 @@ class EnquiryController extends Controller
         $enquiry->branch_size = isset($request->branchSize) ? $request->branchSize : null;
         $enquiry->question = isset($request->question) ? $request->question : '';
         $enquiry->message = isset($request->message) ? $request->message : '';
+        $enquiry->store_price = isset($request->price) ? $request->price: null;
         $enquiry->page = $request->page;
+
+        //save cv file
+        $enquiry->cv_file = $this->saveFile($request, "fileCV");
+        $enquiry->cl_file = $this->saveFile($request, "fileCL");
+
+
+        $user = Auth::user();
+        if ($user && !$user->isAdmin()) {
+            $enquiry->user_id = $user->id;
+        }
         $enquiry->save();
 
+        //send email
+        Mail::to(Helper::$ONESTORAGE_EMAIL)->send(new EnquiryEmail($enquiry));
+        if ($enquiry->page == Helper::$SS_FROM_FRONT_PAGE1) {
+            Mail::to($enquiry->email)->send(new DiscountEmail);
+        }
+
         $ajax = isset($request->ajax) ? $request->ajax : 0;
-        if($ajax == 1){
+        if ($ajax == 1) {
             $is_member = User::where('email', $enquiry->email)->first() != null;
-            return [
+            return response([
                 'state' => 'success',
                 'is_member' => $is_member
-            ];
-        }else{
+            ]);
+        } else {
             return redirect()->back();
         }
-        
     }
 
     public function accept()
     {
         $id = isset($_GET['id']) ? $_GET['id'] : 0;
         $enquiry = Enquiry::find($id);
-        if($enquiry){
+        if ($enquiry) {
             $enquiry->status = $enquiry->status == '未' ? '已' : '未';
             $enquiry->principal = Auth::user()->getName();
             $enquiry->save();

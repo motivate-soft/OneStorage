@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enquiry;
 use App\Exports\UsersExport;
 use App\Profile;
 use App\User;
@@ -77,6 +78,9 @@ class AuthController extends Controller
         }
 
         $members = $members->paginate(10)->appends(request()->query());
+        foreach($members as $member){
+            $member->{"enquiries"} = Enquiry::select('id')->where('user_id', $member->user_id)->get();
+        }
         // print_r($members);
 
         return view('backend.members', ['members' => $members, 'keys' => static::$SEARCH_KEYS]);
@@ -129,6 +133,26 @@ class AuthController extends Controller
         return view('account.forgetpassword');
     }
 
+    public function updateByAdmin(Request $request)
+    {
+        $user = User::find($request->id);
+        if($user){
+            $user->first_name = $request->firstName;
+            $user->last_name = $request->lastName;
+            $user->phone = $request->phone;
+            $user->email = $request->email;
+            $user->save();
+            $profile = $user->profile;
+            $profile->birthday = $request->year . '/' . $request->month . '/' . $request->day;
+            $profile->address_line1 = isset($request->addr1) ? $request->addr1 : '';
+            $profile->is_existing_customer = isset($request->isCustomer) ? $request->isCustomer == '1' : false;
+            $profile->is_soundwill_member = isset($request->isMember) ? $request->isMember == '1' : false;
+            $profile->save();
+        }
+
+        return redirect('/backend/members');
+    }
+
     public function register(Request $request)
     {
         $user = new User;
@@ -165,5 +189,10 @@ class AuthController extends Controller
     public function export()
     {
         return Excel::download(new UsersExport, 'members.xlsx');
+    }
+
+    public function get($id)
+    {
+        return User::with('profile')->find($id);
     }
 }

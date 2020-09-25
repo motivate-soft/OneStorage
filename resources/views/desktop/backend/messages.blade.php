@@ -4,39 +4,47 @@
 <title>{{__('Messages')}}</title>
 @endsection
 
+@section('styles')
+<style>
+
+</style>
+@endsection
+
 @section('content')
 <div class="bg-grey w-full h-screen pl-16 pr-5 pt-10 pb-24">
     <div class="w-1/2 mb-8">
-        <p class="font_25 mb-6">Messages</p>
+        <p class="font_25 mb-2">Messages</p>
+        <div class="flex justify-end">
+            <span class="font_12 mb-4">Last messages</span>
+        </div>
+
         <div class="border bg-white mb-6 px-2">
             <?php
-            $threads = Cmgmyr\Messenger\Models\Thread::forUser(Auth::id())->get();
+            $threads = Cmgmyr\Messenger\Models\Thread::forUser(Auth::id())->latest('updated_at')->paginate(5);
+            $count = count($threads);
+            $i = 0;
             ?>
             @foreach($threads as $thread)
-            <a class="flex border-b py-3 px-4 cursor-pointer" href="{{url('backend/chatroom/'.$thread->id)}}">
-                <div>
-                    <img class="object-none" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
-                </div>
-
-                <div class="w-9/10 pl-6 pt-2">
+            <a class="flex {{($i++) == $count - 1 ? '' : 'border-b'}} py-3 px-4 cursor-pointer" href="{{url('backend/chatroom/'.$thread->id)}}">
+                <img class=" object-center rounded-full inline" width="72" height="72" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
+                <?php $unreadCnt = $thread->userUnreadMessagesCount(Auth::id()) ?>
+                <div class="w-full pl-6 pt-2">
                     <div class="flex justify-between">
-                        <p class="leading-none pt-2 font_19 regular-color">
-                            Admin - {{$thread->participantsString(Auth::id(), ['first_name'])}}
-                            <?php $unreadCnt = $thread->userUnreadMessagesCount(Auth::id()) ?>
-                            @if($unreadCnt)
-                            <span class=" text-sm text-red-500">({{ $unreadCnt }} new msgs)</span>
-                            @endif
-                        </p>
+                        <span class="leading-none pt-2 font_19 regular-color relative {{$unreadCnt ? 'has-new-msg' : ''}}">
+                            Admin - {{$thread->participantsString(Auth::id(), ['first_name'])}}&nbsp;&nbsp;
+                        </span>
                         <p class="text-right pt-2 font_14 robert-regular">{{$thread->latestMessage->created_at->format('d-M-Y')}}</p>
                     </div>
-                    <div class="font_19 mt-2 robert-regular">
-                        <p class="">{{ $thread->latestMessage->body }}</p>
+                    <div class="flex justify-between font_19 mt-2">
+                        <span class="{{$unreadCnt ? 'robert-black' : 'robert-regular'}}">{{ mb_strimwidth($thread->latestMessage->body, 0, 40, "...") }}</span>
                     </div>
                 </div>
             </a>
             @endforeach
-         
+            
+            {{ $threads->links() }}
         </div>
+        
 
         <p class="font_25 mb-1">Broadcase message</p>
 

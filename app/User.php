@@ -46,6 +46,11 @@ class User extends Authenticatable
         return $this->hasOne('App\Profile');
     }
 
+    public function enquiries()
+    {
+        return $this->hasMany('App\Enquiry');
+    }
+
     public function getName()
     {
         return $this->first_name.' '.$this->last_name;
@@ -72,5 +77,15 @@ class User extends Authenticatable
     public static function getAdmins()
     {
         return User::where('role', 'admin')->get();
+    }
+
+    public function getUnConnectedAdmins()
+    {
+        $threads = Thread::forUser($this->id)->get();
+        $ids = [];
+        foreach($threads as $thread){
+            $ids[] = (int)($thread->participantsString($this->id, ['id']));
+        }
+        return User::where('role', 'admin')->whereNotIn('id', $ids)->get();
     }
 }

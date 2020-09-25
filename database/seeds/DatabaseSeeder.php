@@ -28,6 +28,17 @@ class DatabaseSeeder extends Seeder
         $admin->role = "admin";
         $admin->save();
 
+        for ($i = 0; $i < 10; $i++) {
+            $admin = new User;
+            $admin->first_name = "user" . ($i + 1);
+            $admin->last_name = "";
+            $admin->phone = "51188503" . $i;
+            $admin->email = "cs" . ($i + 1) . "@onestorage.com.hk";
+            $admin->password = bcrypt("admin");
+            $admin->role = "admin";
+            $admin->save();
+        }
+
 
         //set background
         Background::truncate();
@@ -44,7 +55,7 @@ class DatabaseSeeder extends Seeder
         StoreSize::truncate();
         StoreQuestion::truncate();
         Store::truncate();
-        
+
         $stores = [
             [
                 'location'  =>  '香港島',
@@ -139,7 +150,7 @@ class DatabaseSeeder extends Seeder
                 'branch'    =>  'TM1(通明)',
                 'address'   =>  '新界屯門新益里3號通明工業大廈5樓',
                 'sizes'     =>  [
-                    [7, 3.1, 2.11, 3.4, 589, 412], 
+                    [7, 3.1, 2.11, 3.4, 589, 412],
                     [16, 3.4, 4.9, 6.6, 952, 666],
                     [29, 3.3, 8.9, 6.6, 1555, 1089],
                     [42, 6.9, 6.2, 6.6, 2011, 1408]
@@ -150,7 +161,7 @@ class DatabaseSeeder extends Seeder
                 'branch'    =>  'TM2(通明)',
                 'address'   =>  '新界屯門新益里3號通明工業大廈4樓',
                 'sizes'     =>  [
-                    [13, 3.11, 3.4, 3.3, 501, 351], 
+                    [13, 3.11, 3.4, 3.3, 501, 351],
                     [25, 6.6, 3.11, 6.6, 1375, 963],
                     [31, 8.1, 3.1, 3.3, 933, 653],
                     [40, 8.6, 4.9, 6.6, 1945, 1362]
@@ -172,7 +183,7 @@ class DatabaseSeeder extends Seeder
                 'branch'    =>  'KC2(有利)',
                 'address'   =>  '葵涌打磚坪街16號有利工業貨倉大廈2樓D室',
                 'sizes'     =>  [
-                    [14, 4.1, 3.4, 6.6, 939, 657], 
+                    [14, 4.1, 3.4, 6.6, 939, 657],
                     [18, 4.3, 3.9, 6.6, 1152, 806],
                     [26, 6.1, 3.8, 6.6, 1463, 1024],
                     [41, 8.9, 4.6, 6.6, 2059, 1441]
@@ -194,9 +205,9 @@ class DatabaseSeeder extends Seeder
                 'branch'    =>  'KC4(貴豐)',
                 'address'   =>  '新界葵興葵昌路9-15號貴豐工業大廈8樓B室',
                 'sizes'     =>  [
-                    [9, 3.2, 2.1, 6.6, 711, 498], 
+                    [9, 3.2, 2.1, 6.6, 711, 498],
                     [12, 4, 3, 3.3, 535, 375],
-                    [29, 7.8, 3.1, 6.6, 1628, 1140], 
+                    [29, 7.8, 3.1, 6.6, 1628, 1140],
                     [35, 10.1, 3.6, 6.6, 1840, 1288]
                 ]
             ],

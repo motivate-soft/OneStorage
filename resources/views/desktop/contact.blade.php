@@ -272,10 +272,10 @@
                 $locations = App\LocationInfo::getNew();
                 $even = array_filter($locations, function ($input) {
                     return !($input & 1);
-                }, ARRAY_FILTER_USE_KEY );
+                }, ARRAY_FILTER_USE_KEY);
                 $odd = array_filter($locations, function ($input) {
                     return $input & 1;
-                }, ARRAY_FILTER_USE_KEY );
+                }, ARRAY_FILTER_USE_KEY);
                 ?>
                 <div class="col-span-1">
                     @each('partials.location_info', $even, 'location')
@@ -290,7 +290,7 @@
             <!-- @include('partials.loginForm') -->
             <form class="form-enquiry" method="post" action="{{url('/enquiry')}}">
                 @csrf
-                <input type="hidden" name="page" value="Contact us">
+                <input type="hidden" name="page" value="{{Helper::$SS_FROM_CONTACTUS_PAGE}}">
                 <p class="text2 mb-8">給我們留言</p>
                 <div class="flex mb-4 w-full">
                     <div class="flex w-1/2 input-group">
@@ -305,6 +305,11 @@
                 <div class="input-group mb-4">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
                     <input class="form-control" type="text" placeholder="" name="phoneNumber">
+                </div>
+
+                <div class="input-group mb-8">
+                    <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">
+                    <input class="form-control" type="email" placeholder="電子郵件" name="email" required>
                 </div>
 
                 <div class="w-full inline-block relative mb-6">

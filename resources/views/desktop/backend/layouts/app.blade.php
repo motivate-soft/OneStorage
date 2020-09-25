@@ -32,6 +32,7 @@
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/excel.js') }}"></script>
+    <script src="{{ asset('js/onestorage.js') }}"></script>
 
 </head>
 

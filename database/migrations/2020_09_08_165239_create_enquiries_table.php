@@ -18,7 +18,7 @@ class CreateEnquiriesTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('phone_number')->nullable();
-            $table->string('email')->nullable();
+            $table->string('email');
             $table->string('branch_name')->nullable();
             $table->integer('branch_size')->nullable();
             $table->string('question')->nullable();

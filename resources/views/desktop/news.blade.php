@@ -90,7 +90,7 @@
     <div class="w-1/3 mx-auto">
         <form id="enquiryForm" class="form-enquiry" method="post" action="{{url('/enquiry')}}">
             @csrf
-            <input type="hidden" name="page" value="News">
+            <input type="hidden" name="page" value="{{Helper::$SS_FROM_NEWS_PAGE}}">
             <p class="text2 mb-8">給我們留言</p>
             <div class="flex mb-4 w-full">
                 <div class="flex w-1/2 input-group">

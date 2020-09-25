@@ -350,6 +350,17 @@ svg {
     position: absolute;
 }
 
+.has-new-msg::after {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 9999px;
+    background-color: #FB3030;
+    right: -12px;
+    margin-top: 7px;
+    position: absolute;
+}
+
 /* =======================  End Contact Us Css ====================== */
 
 /* =======================  Start Shop Place Css ====================== */

@@ -117,7 +117,9 @@ Route::group(['prefix' => '/backend', 'as' => 'backend'], function () {
         Route::get('/enquiries', 'EnquiryController@index');
         Route::get('/enquiries/export', 'EnquiryController@export');
         Route::get('/members', 'AuthController@index');
+        Route::get('/members/{id}', 'AuthController@get');
         Route::get('/members/export', 'AuthController@export');
+        Route::put('/member', 'AuthController@updateByAdmin');
         Route::get('/pages', function () {
             return view('backend.pages');
         });

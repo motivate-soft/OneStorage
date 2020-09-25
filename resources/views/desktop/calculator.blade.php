@@ -138,13 +138,13 @@
     .room-card-wrapper {
         min-width: 120px;
         height: 280px;
-        padding-top: 40px;
+        padding-top: 20px;
     }
 
     .room-card-image {
 
-        width: 100px;
-        height: 80px;
+        width: 150px;
+        height: 150px;
 
     }
 
@@ -225,7 +225,7 @@
 
     <div class="grid grid-cols-4 col-gap-1 content-image-wrapper-2">
         <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select cursor-pointer" id="s-store">
-            <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-03@2x.png') }}" alt="Room">
+            <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-s.jpg') }}" alt="Room">
             <div class="px-6 py-4">
                 <div class="room-card-title text-center mb-2">小型倉</div>
             </div>
@@ -234,7 +234,7 @@
             </div>
         </div>
         <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select cursor-pointer" id="m-store">
-            <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-04@2x.png') }}" alt="Room">
+            <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-m.jpg') }}" alt="Room">
             <div class="px-6 py-4">
                 <div class="room-card-title text-center mb-2">中型倉</div>
             </div>
@@ -243,7 +243,7 @@
             </div>
         </div>
         <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select cursor-pointer" id="l-store">
-            <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-05@2x.png') }}" alt="Room">
+            <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-l.jpg') }}" alt="Room">
             <div class="px-6 py-4">
                 <div class="room-card-title text-center mb-2">大型倉</div>
             </div>
@@ -252,7 +252,7 @@
             </div>
         </div>
         <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select cursor-pointer" id="xl-store">
-            <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-06@2x.png') }}" alt="Room">
+            <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-xl.jpg') }}" alt="Room">
             <div class="px-6 py-4">
                 <div class="room-card-title text-center mb-2">特大倉</div>
             </div>

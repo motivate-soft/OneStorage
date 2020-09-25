@@ -9,7 +9,7 @@
 @endsection
 
 @section('accessory')
-    @include('partials.accessory')
+@include('partials.accessory')
 @endsection
 
 @section('content')
@@ -55,16 +55,18 @@
             </div>
         </div>
 
-        <form class="w-1/2 mx-auto px-14 mt-24 mb-10">
+        <form class="w-1/2 mx-auto px-14 mt-24 mb-10" method="post" action="{{url('/enquiry')}}" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="page" value="{{Helper::$SS_FROM_JOINUS_PAGE}}">
             <p class="content-font mb-10">立即申請 </p>
 
             <div class="flex mb-4 w-full">
                 <div class="flex w-1/2 input-group">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">
-                    <input class="w-full form-control" type="text" placeholder="姓">
+                    <input class="w-full form-control" type="text" placeholder="姓" name="firstName" required>
                 </div>
                 <div class="w-1/2 flex input-group">
-                    <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名">
+                    <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名" name="lastName" required>
 
                 </div>
             </div>
@@ -72,26 +74,34 @@
 
             <div class="input-group mb-4">
                 <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-                <input class="form-control" type="text" placeholder="電話號碼">
+                <input class="form-control" type="text" placeholder="電話號碼" name="phoneNumber">
             </div>
 
             <div class="input-group mb-8">
                 <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">
-                <input class="form-control" type="text" placeholder="電子郵件">
+                <input class="form-control" type="email" placeholder="電子郵件" name="email" required>
             </div>
 
             <div class="flex flex-wrap -mx-3 px-3 mb-8 justify-between">
-                <div class="flex">
-                    <span class="my-auto upload-label">上傳 <b>CV</b></span>
-                    <button class="fileupload-btn ml-2">選擇檔案</button>
+                <div>
+                    <span class="file-name mb-1"></span>
+                    <div class="flex">
+                        <span class="my-auto upload-label">上傳 <b>CV</b></span>
+                        <button type="button" class="fileupload-btn ml-2">選擇檔案</button>
+                        <input type="file" class="hidden file-input" name="fileCV" />
+                    </div>
                 </div>
-                <div class="flex">
-                    <span class="my-auto upload-label">上傳 <b>Cover letter</b></span>
-                    <button class="fileupload-btn ml-2">選擇檔案</button>
+                <div>
+                    <span class="file-name mb-1"></span>
+                    <div class="flex">
+                        <span class="my-auto upload-label">上傳 <b>Cover letter</b></span>
+                        <button type="button" class="fileupload-btn ml-2">選擇檔案</button>
+                        <input type="file" class="hidden file-input" name="fileCL" />
+                    </div>
                 </div>
             </div>
 
-            <button class="submit-btn hover:bg-purple-400">
+            <button class="submit-btn hover:bg-purple-400" type="submit">
                 送出
             </button>
         </form>
@@ -104,4 +114,25 @@
 
 @section('footer')
 @include('layouts.footer')
+@endsection
+
+@section('scripts')
+<script>
+    $(function() {
+        $(".fileupload-btn").click(function() {
+            $(this).next().click();
+        })
+
+        $(".file-input").change(function() {
+            if (this.files && this.files[0]) {
+                if (this.files[0].size > 2 * 1024 * 1024) {
+                    alert("Max file size is 2M!");
+                    $(this).val('');
+                    return;
+                }
+            }
+            $(this).parent().parent().find(".file-name").text(this.files[0].name);
+        })
+    })
+</script>
 @endsection

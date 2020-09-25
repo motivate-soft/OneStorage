@@ -43,10 +43,13 @@
                         <span class="my-auto">{{$enquiry->email}}</span>
                     </div>
                 </td>
-                <td class="item-column">
-                    <p class="mb-3">{{$enquiry->branch_name}}</p>
+                <td class="item-column text-center">
+                    <p class="mb-1">{{$enquiry->branch_name}}</p>
                     @if($enquiry->branch_size > 0)
-                    <p class="font_34 text-left">{{$enquiry->branch_size}}"</p>
+                    <p class="font_34">{{$enquiry->branch_size}}"</p>
+                    @endif
+                    @if($enquiry->store_price > 0)
+                    <p class="font_24">${{$enquiry->store_price}}</p>
                     @endif
                 </td>
                 <td class="item-column">

@@ -46,12 +46,13 @@
     .branchlocation-card-wrapper {
         min-width: 100px;
         height: 280px;
+        /* background-color: whi; */
     }
 
     .branchlocation-card-image {
 
-        width: 90px;
-        height: 70px;
+        width: 100px;
+        height: 80px;
         margin-top: 30px;
 
     }
@@ -246,7 +247,7 @@
                     </div>
                     <div class="grid grid-cols-4 col-gap-3 pt-1 branchlocation-room-select">
                         <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
-                            <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-03@2x.png') }}" alt="BranchLocation">
+                            <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-s.jpg') }}" alt="BranchLocation">
                             <div class="px-6 py-4">
                                 <div class="branchlocation-card-title text-center mb-2">小型倉</div>
                             </div>
@@ -260,7 +261,7 @@
                             </div>
                         </div>
                         <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
-                            <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-03@2x.png') }}" alt="BranchLocation">
+                            <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-m.jpg') }}" alt="BranchLocation">
                             <div class="px-6 py-4">
                                 <div class="branchlocation-card-title text-center mb-2">中型倉</div>
                             </div>
@@ -274,7 +275,7 @@
                             </div>
                         </div>
                         <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
-                            <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-03@2x.png') }}" alt="BranchLocation">
+                            <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-l.jpg') }}" alt="BranchLocation">
                             <div class="px-6 py-4">
                                 <div class="branchlocation-card-title text-center mb-2">大型倉</div>
                             </div>
@@ -288,7 +289,7 @@
                             </div>
                         </div>
                         <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
-                            <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-03@2x.png') }}" alt="BranchLocation">
+                            <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-xl.jpg') }}" alt="BranchLocation">
                             <div class="px-6 py-4">
                                 <div class="branchlocation-card-title text-center mb-2">特大倉</div>
                             </div>

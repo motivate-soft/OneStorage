@@ -196,20 +196,32 @@ use App\AppConfig;
 
     <form id="discountForm" class="flex justify-between mt-6 pr-10 pb-4 mx-auto w-3/5" method="post" action="{{url('/enquiry')}}">
         @csrf
-        <input type="hidden" name="page" value="Front Page">
+        <input type="hidden" name="page" value="{{Helper::$SS_FROM_FRONT_PAGE1}}">
         <div class="flex w-4/5">
             <div class="flex w-1/2 input-group mr-2">
                 <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">
+                @if(Auth::check())
+                <input class="w-full form-control" type="text" placeholder="姓" name="firstName" value="{{Auth::user()->first_name}}" required>
+                @else
                 <input class="w-full form-control" type="text" placeholder="姓" name="firstName" required>
+                @endif
             </div>
             <div class="w-1/2 flex input-group">
+                @if(Auth::check())
+                <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" value="{{Auth::user()->last_name}}" type="text" placeholder="名" name="lastName" required>
+                @else
                 <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名" name="lastName" required>
+                @endif
             </div>
         </div>
 
         <div class="input-group mx-10">
             <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">
+            @if(Auth::check())
+            <input class="form-control" type="email" placeholder="電子郵件" value="{{Auth::user()->email}}" name="email" required>
+            @else
             <input class="form-control" type="email" placeholder="電子郵件" name="email" required>
+            @endif
         </div>
 
         <button class="w-1/3 button-second" type="submit">
@@ -431,7 +443,7 @@ use App\AppConfig;
     <div class="mx-auto w-1/5">
         <form class="form-enquiry" method="post" action="{{url('/enquiry')}}">
             @csrf
-            <input type="hidden" name="page" value="Front Page">
+            <input type="hidden" name="page" value="{{Helper::$SS_FROM_FRONT_PAGE2}}">
             <p class="text2 mb-8">給我們留言</p>
             <div class="flex mb-4 w-full">
                 <div class="flex w-1/2 input-group">
@@ -446,6 +458,11 @@ use App\AppConfig;
             <div class="input-group mb-4">
                 <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
                 <input class="form-control" type="text" placeholder="" name="phoneNumber">
+            </div>
+
+            <div class="input-group mb-8">
+                <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">
+                <input class="form-control" type="email" placeholder="電子郵件" name="email" required>
             </div>
 
             <div class="w-full inline-block relative mb-6">

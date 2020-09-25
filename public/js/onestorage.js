@@ -208,6 +208,7 @@ $(function () {
                 $(this).addClass("active");
                 $(".selected-price").html($(this).find(".price-content").html());
                 $("#payment-method").text($(this).find(".rentwarehouse-mode-select-item-title").text());
+                $("#storePrice").val($(this).find(".price-content").text());
             })
 
             $(".rentwarehouse-table-item").click(function () {
@@ -884,9 +885,38 @@ $(function () {
         }
     })();
 
-    OneStorage.Register = (function () {
+    OneStorage.DOB = (function () {
         const mDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
         const daySelector = $("#daySelector");
+        function setDays() {
+            const month = Number($("#monthSelector").val());
+            const year = Number($("#yearSelector").val());
+            const selectedDay = Number(daySelector.val());
+
+            var days = mDays[month - 1];
+            if (days == 28 && year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
+                days = 29;
+            }
+
+            daySelector.html('<option value="" selected disabled>日</option>');
+            for (var i = 1; i < days + 1; i++) {
+                daySelector.append('<option value="' + i + '">' + i + '</option>')
+            }
+
+            daySelector.val(selectedDay > days ? "1" : selectedDay);
+        }
+
+        $("#monthSelector, #yearSelector").change(function () {
+            setDays();
+        })
+        return function (initialDate) {
+            daySelector.val(initialDate.getDate());
+            $("#monthSelector").val(initialDate.getMonth() + 1);
+            $("#yearSelector").val(initialDate.getFullYear());
+        }
+    })();
+
+    OneStorage.Register = (function () {
         return function () {
             $('#password, #confirm_password').on('keyup', function () {
                 if ($('#password').val() == $('#confirm_password').val()) {
@@ -907,36 +937,10 @@ $(function () {
                     inputPwd.attr("type", "text");
                 }
                 inputPwd.focus();
-
             })
 
-            daySelector.val("1");
-            $("#monthSelector").val("1");
-            $("#yearSelector").val("2000");
+            OneStorage.DOB(new Date(2000, 0, 1));
 
-            function setDays() {
-                const month = Number($("#monthSelector").val());
-                const year = Number($("#yearSelector").val());
-                const selectedDay = Number(daySelector.val());
-
-                var days = mDays[month - 1];
-                if (days == 28 && year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
-                    days = 29;
-                }
-
-                daySelector.html('<option value="" selected disabled>日</option>');
-                for (var i = 1; i < days + 1; i++) {
-                    daySelector.append('<option value="' + i + '">' + i + '</option>')
-                }
-
-                daySelector.val(selectedDay > days ? "1" : selectedDay);
-            }
-
-            $("#monthSelector, #yearSelector").change(function () {
-                setDays();
-            })
-
-            //$("#yearSelector")
         };
     })();
 });
