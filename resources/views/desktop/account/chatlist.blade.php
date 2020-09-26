@@ -58,7 +58,7 @@
 
             <div class="w-4/5 ml-2">
                 <?php
-                $threads = Cmgmyr\Messenger\Models\Thread::forUser(Auth::id())->latest('updated_at')->get();
+                $threads = Cmgmyr\Messenger\Models\Thread::where('subject', '!=', App\Helper\Helper::$MESSAGE_TYPE_BROADCAST)->forUser(Auth::id())->latest('updated_at')->get();
                 ?>
                 @if(count($threads))
                 @foreach($threads as $thread)

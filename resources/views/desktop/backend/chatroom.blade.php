@@ -9,11 +9,21 @@
     <p class="font_25 mb-6">Chat Room</p>
     <div class="bg-white border w-1/2">
         <div class="">
-            <p class="border-b py-2">
+            <div class="flex justify-between border-b py-2">
                 <a class="mx-4 font_19 robert-regular" href="{{url('/backend/messages')}}" style="color: #C293FC">
                     &lt; Back
                 </a>
-            </p>
+                <span class="mr-4">To: <?php
+                        $names = $thread->participantsString(Auth::id(), ['first_name']);
+                        $string = $names ? $names : ('All +' . (App\User::where('role', '!=', 'admin')->count()));
+                        $names = explode(',', $names);
+                        $count = count($names);
+                        if ($count > 3) {
+                            $string = $names[0] . ', ' . $names[1] . ', ' . $names[2] . ' ....+' . ($count - 3);
+                        }
+                        ?>
+                    {{$string}}</span>
+            </div>
 
             <div id="msgWrapper" class="overflow-y-auto" style="max-height: 400px;">
                 @foreach($thread->messages as $key => $message)

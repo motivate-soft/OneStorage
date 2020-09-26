@@ -4,6 +4,16 @@ function numberFormat(num) {
     return Number(num).toString().replace(/\d(?=(\d{3})+)/g, '$&,');
 }
 
+String.prototype.padFunction = function (padStr, len) {
+    var str = this;
+    while (str.length < len)
+        str = padStr + str;
+    return str;
+}
+
+const allKey = "SELECTED_ALL";
+const key = "SELECTED_MEMBERS";
+
 $(function () {
     $.ajaxSetup({
         headers: {

@@ -227,9 +227,9 @@
 
                     <div class="px-2">
                         <div class="image-uploader grid grid-cols-3 row-gap-2 col-gap-2 mb-4">
-                            @if($selected_store)
                             <input type="hidden" name="delete-offerImages" class="initial delete-images" value="" />
-                            <input type="hidden" name="active-offerImages" class="active-images" value="{{$selected_store->activeOfferImages()}}" />
+                            <input type="hidden" name="active-offerImages" class="active-images" value="{{$selected_store ? $selected_store->activeOfferImages() : ''}}" />
+                            @if($selected_store)
                             @foreach($selected_store->offerImages as $image)
                             <div class="container original-image {{$image->is_used ? 'image-active' : ''}}" data-image-id="{{$image->id}}">
                                 <img class="background" src="{{asset('images/offers/'.$image->image)}}" />
@@ -343,9 +343,10 @@
                         圖片
                     </p>
                     <div class="image-uploader grid grid-cols-3 row-gap-2 col-gap-2 mb-4">
-                        @if($selected_store)
+                        
                         <input type="hidden" name="delete-storeImages" class="initial delete-images" value="" />
-                        <input type="hidden" name="active-storeImages" class="active-images" value="{{$selected_store->activeStoreImages()}}" />
+                        <input type="hidden" name="active-storeImages" class="active-images" value="{{$selected_store ? $selected_store->activeStoreImages() : ''}}" />
+                        @if($selected_store)
                         @foreach($selected_store->storeImages as $image)
                         <div class="container original-image {{$image->is_used ? 'image-active' : ''}}" data-image-id="{{$image->id}}">
                             <img class="background" src="{{asset($image->image)}}" />

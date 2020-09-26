@@ -117,7 +117,7 @@ Route::group(['prefix' => '/backend', 'as' => 'backend'], function () {
         Route::get('/enquiries', 'EnquiryController@index');
         Route::get('/enquiries/export', 'EnquiryController@export');
         Route::get('/members', 'AuthController@index');
-        Route::get('/members/{id}', 'AuthController@get');
+        Route::get('/member/{id}', 'AuthController@get');
         Route::get('/members/export', 'AuthController@export');
         Route::put('/member', 'AuthController@updateByAdmin');
         Route::get('/pages', function () {
@@ -127,6 +127,7 @@ Route::group(['prefix' => '/backend', 'as' => 'backend'], function () {
             return view('backend.messages');
         });
         Route::get('/chatroom/{id?}', 'MessagesController@showAdminRoom');
+        Route::post('/broadcast', 'MessagesController@broadcast');
         Route::get('/accept-enquiry', 'EnquiryController@accept');
         Route::get('/store/{id?}', 'StoreController@show');
         Route::post('/store', 'StoreController@store');

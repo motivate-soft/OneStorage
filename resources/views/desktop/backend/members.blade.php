@@ -74,9 +74,15 @@
                 <th class="py-5 border-r border-second">客人資料</th>
                 <th class="py-5 border-r border-second">註冊渠道</th>
                 <th class="py-5 border-r border-second">查詢</th>
+                <th class="py-5 border-r border-second">
+                    <label class="cursor-pointer">
+                        Select all
+                        <input class="checkbox ml-1" id="selectAll" type="checkbox" />
+                    </label>
+                </th>
             </tr>
             @foreach($members as $member)
-            <tr class="member-info border-b border-third align-top cursor-pointer" data-id="{{$member->user_id}}">
+            <tr class="member-info border-b border-third align-top" data-id="{{$member->user_id}}">
                 <td class="item-column">
                     <?php
                     $date = new DateTime($member->created_at);
@@ -125,16 +131,21 @@
                         </div>
                     </div>
                     <div>
-                        <img src="{{asset('images/icons8-edit-48@2x.png')}}" class="inline mx-auto edit-btn" />
+                        <img src="{{asset('images/icons8-edit-48@2x.png')}}" class="z-20 inline mx-auto edit-btn cursor-pointer" />
                     </div>
                 </td>
                 <td class="item-column align-middle text-center">
                     <p class="font_19">{{$member->contact_method}}</p>
                 </td>
                 <td class="item-column">
-                        @foreach($member->enquiries as $enquiry )
-                            <span class="mr-2">E{{str_pad($enquiry->id, 6, '0', STR_PAD_LEFT)}}</span>
-                        @endforeach
+                    @foreach($member->enquiries as $enquiry )
+                    <span class="mr-2">E{{str_pad($enquiry->id, 6, '0', STR_PAD_LEFT)}}</span>
+                    @endforeach
+                </td>
+                <td class="mt-4">
+                    <div class="mt-8 flex justify-center">
+                        <input class="cursor-pointer select-row checkbox w-1/2 mx-auto" type="checkbox" data-id='{{$member->user_id}}' />
+                    </div>
                 </td>
             </tr>
             @endforeach
@@ -150,7 +161,7 @@
         <span class="close" id="modalClose">&times;</span>
         <form class="flex register-form1 my-8" method="POST" action="{{url('/backend/member')}}">
             @csrf
-            <input type="hidden" name="id"/>
+            <input type="hidden" name="id" />
             <input type="hidden" name='_method' value="PUT">
             <div class="w-full mx-4">
                 <p style="color: red;" class="mb-4">*</p>
@@ -280,22 +291,82 @@
 <script>
     const confirmModal = document.getElementById("confirmModal");
 
+
+    function selectionChange() {
+
+        if ($("#selectAll").prop('checked')) {
+            window.localStorage.setItem(allKey, "1");
+            window.localStorage.setItem(key, []);
+        } else {
+            window.localStorage.setItem(allKey, "0");
+            var ids = window.localStorage.getItem(key);
+            if (ids == null || ids.length == 0) {
+                ids = [];
+            } else {
+                ids = ids.split(',');
+            }
+
+            $(".select-row").each(function() {
+                const id = $(this).attr('data-id');
+                const index = ids.indexOf(id);
+                if (index > -1 && !$(this).prop('checked')) {
+                    ids.splice(index, 1);
+                } else if (index == -1 && $(this).prop('checked')) {
+                    ids.push(id);
+                }
+            })
+            window.localStorage.setItem(key, ids);
+            console.log(ids);
+        }
+    }
+
+    function setSelection() {
+        var ids = window.localStorage.getItem(key);
+        if (ids == null || ids.length == 0) {
+            ids = [];
+        } else {
+            ids = ids.split(',');
+        }
+        for (var i = 0; i < ids.length; i++) {
+            $(".select-row[data-id='" + ids[i] + "']").click();
+        }
+
+        if(window.localStorage.getItem(allKey) == "1"){
+            $("#selectAll").click();
+        }
+    }
+
+
+
+    $("#selectAll").change(function() {
+        if ($(this).prop('checked')) {
+            $(".member-info").addClass("active");
+            $(".select-row").prop('checked', true);
+        } else {
+            $(".member-info").removeClass("active");
+            $(".select-row").prop('checked', false);
+        }
+    })
+
     $("#export2Excel").click(function() {
         var table = $("#content").clone();
         table.find("img").remove();
         Excel.export(table.html());
     })
-    $(".member-info").click(function() {
-        if ($(this).hasClass('active')) {
-            $(this).removeClass('active');
+    $(".select-row").change(function() {
+        if ($(this).prop('checked')) {
+            $(this).closest('tr').addClass('active');
         } else {
-            $(this).addClass('active');
+            $(this).closest('tr').removeClass('active');
+            $("#selectAll").prop('checked', false);
         }
+        // selectionChange();
     })
-    $(".edit-btn").click(function() {
+    $(".edit-btn").click(function(e) {
+        e.preventDefault();
         const id = $(this).closest('tr').attr('data-id');
         $.ajax({
-            url: '/backend/members/' + id,
+            url: '/backend/member/' + id,
             type: 'GET',
             datatype: 'json',
             success: function(data) {
@@ -309,25 +380,25 @@
                     $('input[name="email"]').val(data.email);
                     $('input[name="addr1"]').val(data.profile.address_line1);
 
-                    if(data.profile.is_existing_customer != '-'){
+                    if (data.profile.is_existing_customer != '-') {
                         $("#storageyesunchecked").prop("checked", true);
                         $("#storagenochecked").removeAttr("checked");
-                    }else{
+                    } else {
                         $("#storagenochecked").prop("checked", true);
                         $("#storageyesunchecked").removeAttr("checked");
                     }
 
-                    if(data.profile.is_soundwill_member != '-'){
+                    if (data.profile.is_soundwill_member != '-') {
                         $("#clubyesunchecked").prop("checked", true);
                         $("#clubnochecked").removeAttr("checked");
-                    }else{
+                    } else {
                         $("#clubnochecked").prop("checked", true);
                         $("#clubyesunchecked").removeAttr("checked");
                     }
                     // $('input[name="contactMethod"]').val(data.profile.contact_method);
-                    
+
                     OneStorage.DOB(new Date(data.profile.birthday));
-                    
+
                     confirmModal.style.display = "block";
                 }
             }
@@ -346,8 +417,18 @@
         }
     }
 
-    $(function(){
+    window.onbeforeunload = function(event) {
+        // do stuff here
+        // alert("1");
+        selectionChange();
+        return "you have unsaved changes. Are you sure you want to navigate away?";
+    };
+
+
+
+    $(function() {
         OneStorage.DOB(new Date(2000, 1, 1));
+        setSelection();
     })
 </script>
 @endsection

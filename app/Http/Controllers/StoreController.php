@@ -35,9 +35,6 @@ class StoreController extends Controller
 
     private function setImages($store, $data, $type, $url)
     {
-        if(!isset($data['active-'.$type])){
-            return;
-        }
         $activeImages = json_decode($data['active-'.$type]);
         //active offer images
         foreach ($store[$type] as $image) {

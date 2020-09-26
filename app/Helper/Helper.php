@@ -6,6 +6,10 @@ class Helper
 {
 
     public static $ONESTORAGE_EMAIL = "cs@onestorage.com.hk";
+
+    public static $MESSAGE_TYPE_NORMAL = "For Support";
+    public static $MESSAGE_TYPE_BYADMIN = "Created By Admin";
+    public static $MESSAGE_TYPE_BROADCAST = "Broadcast";
     
     public static $SS_FROM_FRONT_PAGE1 = "Front Page(discount)";
     public static $SS_FROM_FRONT_PAGE2 = "Front Page";

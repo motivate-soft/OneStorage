@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\Helper;
 use App\User;
 use Carbon\Carbon;
 use Cmgmyr\Messenger\Models\Message;
@@ -41,7 +42,7 @@ class MessagesController extends Controller
      */
     public function show($id = 0)
     {
-        if(!$id){
+        if (!$id) {
             return view('account.chatroom');
         }
         try {
@@ -102,10 +103,7 @@ class MessagesController extends Controller
     {
         $input = Request::all();
 
-        $thread = Thread::create([
-            // 'subject' => $input['subject'],
-            'subject' => "Support",
-        ]);
+        $thread = Thread::create(['subject' => Helper::$MESSAGE_TYPE_NORMAL]);
 
         // Message
         Message::create([
@@ -129,6 +127,96 @@ class MessagesController extends Controller
         return redirect()->route('chatroom.show', $thread->id);
     }
 
+    private function broadcastMsg($thread, $message)
+    {
+        $receipients = $thread->participants()->whereNotIn('user_id', [Auth::id()])->select('user_id as id')->get();
+
+        if (count($receipients) == 0) {
+            //all
+            $receipients = User::where('role', 'user')->get();
+        }
+
+        foreach ($receipients as $receipient) {
+            $t = Thread::where('subject', '!=', Helper::$MESSAGE_TYPE_BROADCAST)->forUsers(Auth::id(), $receipient->id)->first();
+            if (!$t) {
+                $t = Thread::create(['subject' => $thread->subject == Helper::$MESSAGE_TYPE_BROADCAST ? Helper::$MESSAGE_TYPE_BYADMIN : Helper::$MESSAGE_TYPE_NORMAL]);
+                Participant::create(['thread_id' => $t->id, 'user_id' => Auth::id(), 'last_read' => new Carbon]);
+                $t->addParticipant($receipient->id);
+            } else {
+                $t->activateAllParticipants();
+                $participant = Participant::firstOrCreate([
+                    'thread_id' => $thread->id,
+                    'user_id' => Auth::id(),
+                ]);
+                $participant->last_read = new Carbon;
+                $participant->save();
+            }
+            // Message
+            Message::create(['thread_id' => $t->id, 'user_id' => Auth::id(), 'body' => $message]);
+        }
+
+        // usleep(1000000);
+
+        // $thread->activateAllParticipants();
+
+        Message::create([
+            'thread_id' => $thread->id,
+            'user_id' => Auth::id(),
+            'body' => $message
+        ]);
+    }
+
+    public function broadcast()
+    {
+        $input = Request::all();
+
+        $data = explode(',', $input['recipient']);
+        $receipients = [];
+        foreach ($data as $item) {
+            $id = (int)(substr($item, 1));
+            if (!in_array($id, $receipients) && User::find($id)) {
+                $receipients[] = $id;
+            }
+        }
+        sort($receipients);
+        $sel_thread = null;
+        //check duplication
+        $threads = Thread::forUser(Auth::id())->get();
+        foreach ($threads as $thread) {
+            $ids = explode(',', $thread->participantsString(Auth::id(), ['id']));
+            sort($ids);
+            if(!$ids[0]){
+                $ids = [];
+            }
+            if ($receipients == $ids) {
+                $sel_thread = $thread;
+                break;
+            }
+        }
+
+        if (!$sel_thread) {
+            $sel_thread = Thread::create([
+                'subject' => count($receipients) == 1 ? Helper::$MESSAGE_TYPE_NORMAL : Helper::$MESSAGE_TYPE_BROADCAST
+            ]);
+            // Sender
+            Participant::create([
+                'thread_id' => $sel_thread->id,
+                'user_id' => Auth::id(),
+                'last_read' => new Carbon,
+            ]);
+            $sel_thread->addParticipant($receipients);
+        }
+        
+        if(count($receipients) == 1){
+            $sel_thread->subject = Helper::$MESSAGE_TYPE_NORMAL;
+            $sel_thread->save();
+        }
+
+        $this->broadcastMsg($sel_thread, $input['message']);
+
+        return redirect()->back();
+    }
+
     /**
      * Adds a new message to a current thread.
      *
@@ -145,22 +233,26 @@ class MessagesController extends Controller
             return redirect()->route('messages');
         }
 
-        $thread->activateAllParticipants();
+        if ($thread->subject == Helper::$MESSAGE_TYPE_BROADCAST) {
+            $this->broadcastMsg($thread, Request::input('message'));
+        } else {
+            $thread->activateAllParticipants();
 
-        // Message
-        Message::create([
-            'thread_id' => $thread->id,
-            'user_id' => Auth::id(),
-            'body' => Request::input('message'),
-        ]);
+            // Message
+            Message::create([
+                'thread_id' => $thread->id,
+                'user_id' => Auth::id(),
+                'body' => Request::input('message'),
+            ]);
 
-        // Add replier as a participant
-        $participant = Participant::firstOrCreate([
-            'thread_id' => $thread->id,
-            'user_id' => Auth::id(),
-        ]);
-        $participant->last_read = new Carbon;
-        $participant->save();
+            // Add replier as a participant
+            $participant = Participant::firstOrCreate([
+                'thread_id' => $thread->id,
+                'user_id' => Auth::id(),
+            ]);
+            $participant->last_read = new Carbon;
+            $participant->save();
+        }
 
         // // Recipients
         // if (Request::has('recipients')) {
