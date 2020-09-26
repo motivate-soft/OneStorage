@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Helper\Helper;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -63,7 +64,7 @@ class User extends Authenticatable
 
     public function hasUnreadMsg()
     {
-        $threads = Thread::forUser($this->id)->get();
+        $threads = Thread::where('subject', '!=', Helper::$MESSAGE_TYPE_BROADCAST)->forUser($this->id)->get();
         $msgCnt = 0;
         foreach($threads as $thread){
             $msgCnt += $thread->userUnreadMessagesCount($this->id);

@@ -662,16 +662,15 @@
                 <button id="modalTrigger" class="rounded-full w-full rentwarehouse-price-select-button py-2 my-2 color-primary">查詢/預約 </button>
 
                 <p class="rentwarehouse-price-select-news-title color-primary my-2">最新資訊</p>
-
-                <div class="flex pt-2">
-                    <img class="flex-shrink-0 h-32" src="{{ asset('images/Image 8@2x.png') }}" />
-                    <p class="pl-3 color-deep overflow-y-hidden leading-relaxed font_13 h-32">
-                        黃竹坑新店快閃優惠　低至6折優惠 震撼筍價HK$300起即可入手
-                        <br /><br />
-                        黃竹坑分店全新開業，推出快閃驚喜優 ！顧客可享低至6折優惠，以震撼筍價 HK$300起即可入手！你仲唔
-                        黃竹坑分店全新開業，推出快閃驚喜優 ！顧客可享低至6折優惠，以震撼筍價 HK$300起即可入手！你仲唔
-                    </p>
-                </div>
+                <?php
+                $lasted_news = App\Blog::orderBy('id', 'desc')->first();
+                ?>
+                <a class="flex pt-2" href="{{url('/news/'.$lasted_news->id)}}">
+                    <img class="flex-shrink-0 h-32" src="{{asset($lasted_news->thumbnail)}}"/>
+                    <span class="pl-3 color-deep overflow-y-hidden leading-relaxed font_13 h-32">
+                        <?php echo nl2br($lasted_news->content) ?>
+                    </span>
+                </a>
             </div>
 
 

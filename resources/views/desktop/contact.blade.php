@@ -304,7 +304,7 @@
 
                 <div class="input-group mb-4">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-                    <input class="form-control" type="text" placeholder="" name="phoneNumber">
+                    <input class="form-control" type="text" placeholder="電話號碼" name="phoneNumber">
                 </div>
 
                 <div class="input-group mb-8">

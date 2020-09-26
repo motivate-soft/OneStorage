@@ -27,7 +27,7 @@
     </div>
     <?php
     $index = 0;
-    $blogs = App\Blog::orderBy('updated_at', 'desc')->paginate(10);
+    $blogs = App\Blog::orderBy('created_at', 'desc')->paginate(10);
     $count = count($blogs);
     ?>
     @foreach($blogs as $blog)

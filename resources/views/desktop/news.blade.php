@@ -19,69 +19,73 @@
 
 @section('content')
 @if($blog)
-<div class="bg-white mx-auto w-3/5 pb-10 mt-40 mb-10">
-    <div class="grid lg:grid-cols-3 md:grid-cols-1 gap-4">
-        <div class="col-span-2 mr-10 lg:mr-0">
-            <div class="text-left text-5xl pt-10 pb-5 ml-10 border-b">
-                <h1 class="font_36 text-purple">{{$blog->title}}</h1>
-                <p class="text2 text-xl mt-4">{{$blog->created_at->format('F j, Y')}}</p>
+<div class="py-10">
+
+
+    <div class="bg-white mx-auto w-3/5">
+        <div class="grid lg:grid-cols-3 md:grid-cols-1 gap-4">
+            <div class="col-span-2 mr-10 lg:mr-0">
+                <div class="text-left text-5xl pt-10 pb-5 ml-10 border-b">
+                    <h1 class="font_36 text-purple">{{$blog->title}}</h1>
+                    <p class="text2 text-xl mt-4">{{$blog->created_at->format('F j, Y')}}</p>
+                </div>
+                <div class="text-left ml-10 mt-5">
+                    <img class="pb-4" src="{{asset($blog->image)}}" class="mt-4">
+                    <div class="bg-grey-1 py-5 px-5">
+                        <h1 class="font_19 robert-black text-justify leading-normal">
+                            <?php echo nl2br($blog->content) ?>
+                        </h1>
+                    </div>
+                </div>
             </div>
-            <div class="text-left ml-10 mt-5">
-                <img class="pb-4" src="{{asset($blog->image)}}" class="mt-4">
-                <div class="bg-grey-1 py-5 px-5">
-                    <h1 class="font_19 robert-black text-justify leading-normal">
-                        <?php echo nl2br($blog->content) ?>
-                    </h1>
-                </div>
-            </div>
-        </div>
-        <div class="md:col-span-1 col-span-2 mx-10 lg:mx-0">
-            <div class="text-left pt-10 pb-5">
-                <div class="text-3xl">
-                    <h1 class="font_29 pt-4">其他資訊</h1>
-                </div>
-                <a href="javascript:void(0)" class="flex  rounded-lg mt-2 lg:py-3  px-2">
-                    <img class="h-24 ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
-                    <div class="text-left">
-                        <p class="font_19 md:text-left lg:text-left leading-normal px-3 ">
-                            【搬屋冇煩惱】搬屋前一定要知嘅小貼士
-                        </p>
+            <div class="md:col-span-1 col-span-2 mx-10 lg:mx-0">
+                <div class="text-left pt-10 pb-5">
+                    <div class="text-3xl">
+                        <h1 class="font_29 pt-4">其他資訊</h1>
                     </div>
-                </a>
-                <div class="rounded-lg  px-2">
-                    <hr>
-                </div>
-                <a href="javascript:void(0)" class="flex  rounded-lg mt-2 lg:py-3  px-2">
-                    <img class="h-24 ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
-                    <div class="text-left">
-                        <p class="font_19 md:text-left lg:text-left leading-normal px-3 ">
-                            政府派1萬蚊 點先最快收到錢？ </p>
+                    <a href="javascript:void(0)" class="flex  rounded-lg mt-2 lg:py-3  px-2">
+                        <img class="h-24 ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
+                        <div class="text-left">
+                            <p class="font_19 md:text-left lg:text-left leading-normal px-3 ">
+                                【搬屋冇煩惱】搬屋前一定要知嘅小貼士
+                            </p>
+                        </div>
+                    </a>
+                    <div class="rounded-lg  px-2">
+                        <hr>
                     </div>
-                </a>
-                <div class="rounded-lg  px-2">
-                    <hr>
-                </div>
-                <a href="javascript:void(0)" class="flex  rounded-lg mt-2 lg:py-3  px-2">
-                    <img class="h-24 ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
-                    <div class="text-left">
-                        <p class="font_19 md:text-left lg:text-left leading-normal px-3 ">
-                            蝸居套房 </p>
+                    <a href="javascript:void(0)" class="flex  rounded-lg mt-2 lg:py-3  px-2">
+                        <img class="h-24 ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
+                        <div class="text-left">
+                            <p class="font_19 md:text-left lg:text-left leading-normal px-3 ">
+                                政府派1萬蚊 點先最快收到錢？ </p>
+                        </div>
+                    </a>
+                    <div class="rounded-lg  px-2">
+                        <hr>
                     </div>
-                </a>
-                <div class="rounded-lg  px-2">
-                    <hr>
-                </div>
-                <a href="javascript:void(0)" class="flex rounded-lg mt-2 lg:py-3 px-2">
-                    <img class="h-24  ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
-                    <div class="text-left">
-                        <p class="font_19 md:text-left lg:text-left leading-normal px-3 ">
-                            迷你倉點揀好 - 2020年四大安全注意要點
-                        </p>
+                    <a href="javascript:void(0)" class="flex  rounded-lg mt-2 lg:py-3  px-2">
+                        <img class="h-24 ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
+                        <div class="text-left">
+                            <p class="font_19 md:text-left lg:text-left leading-normal px-3 ">
+                                蝸居套房 </p>
+                        </div>
+                    </a>
+                    <div class="rounded-lg  px-2">
+                        <hr>
                     </div>
-                </a>
+                    <a href="javascript:void(0)" class="flex rounded-lg mt-2 lg:py-3 px-2">
+                        <img class="h-24  ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
+                        <div class="text-left">
+                            <p class="font_19 md:text-left lg:text-left leading-normal px-3 ">
+                                迷你倉點揀好 - 2020年四大安全注意要點
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
 
             </div>
-
         </div>
     </div>
 </div>
@@ -104,7 +108,7 @@
 
             <div class="input-group mb-4">
                 <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-                <input class="form-control input-form" type="text" placeholder="" name="phoneNumber">
+                <input class="form-control input-form" type="text" placeholder="電話號碼" name="phoneNumber">
             </div>
 
             <div class="w-full inline-block relative mb-6">
