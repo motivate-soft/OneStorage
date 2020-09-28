@@ -8,6 +8,7 @@ use DateTime;
 class Profile extends Model
 {
     //
+    public static $AVATAR_PREFIX = '/images/avatars/';
 
     public function user()
     {
@@ -26,6 +27,11 @@ class Profile extends Model
 
     public function getIsExistingCustomerAttribute($value){
         return $value ? "OneStorage (分店)" : "-";
+    }
+
+    public function getAvatarAttribute($value)
+    {
+        return static::$AVATAR_PREFIX . ($value ? $value : "default.png");
     }
 
 }

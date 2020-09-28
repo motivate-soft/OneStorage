@@ -12,8 +12,9 @@ use Cmgmyr\Messenger\Models\Thread;
 class User extends Authenticatable
 {
 
-    use Messagable; 
+    use Messagable;
     use Notifiable;
+
 
     /**
      * The attributes that are mass assignable.
@@ -54,7 +55,7 @@ class User extends Authenticatable
 
     public function getName()
     {
-        return $this->first_name.' '.$this->last_name;
+        return $this->first_name . ' ' . $this->last_name;
     }
 
     public function isAdmin()
@@ -66,9 +67,9 @@ class User extends Authenticatable
     {
         $threads = Thread::where('subject', '!=', Helper::$MESSAGE_TYPE_BROADCAST)->forUser($this->id)->get();
         $msgCnt = 0;
-        foreach($threads as $thread){
+        foreach ($threads as $thread) {
             $msgCnt += $thread->userUnreadMessagesCount($this->id);
-            if($msgCnt > 0){
+            if ($msgCnt > 0) {
                 return true;
             }
         }
@@ -84,9 +85,51 @@ class User extends Authenticatable
     {
         $threads = Thread::forUser($this->id)->get();
         $ids = [];
-        foreach($threads as $thread){
+        foreach ($threads as $thread) {
             $ids[] = (int)($thread->participantsString($this->id, ['id']));
         }
         return User::where('role', 'admin')->whereNotIn('id', $ids)->get();
+    }
+
+    public function setData($data)
+    {
+        $this->first_name = $data->firstName;
+        $this->last_name = $data->lastName;
+        $this->phone = $data->phone;
+        $this->email = $data->email;
+        if (isset($data->password)) {
+            $this->password = bcrypt($data->password);
+        }
+        $this->save();
+        $profile = $this->profile;
+        if (!$profile) {
+            $profile = new Profile;
+            $profile->user_id = $this->id;
+        }
+        if(isset($data->gender)){
+            $profile->gender = $data->gender;
+        }
+        
+        $profile->birthday = $data->year . '/' . $data->month . '/' . $data->day;
+        $profile->area = isset($data->area) ? $data->area : '';
+        $profile->place = isset($data->place) ? $data->place : '';
+        $profile->address_line1 = isset($data->addr1) ? $data->addr1 : '';
+        $profile->address_line2 = isset($data->addr2) ? $data->addr2 : '';
+        $profile->contact_method = isset($data->contactMethod) ? $data->contactMethod : '';
+        $profile->is_existing_customer = isset($data->isCustomer) ? $data->isCustomer == '1' : false;
+        $profile->is_soundwill_member = isset($data->isMember) ? $data->isMember == '1' : false;
+        $profile->branch_id = isset($data->branch) ? $data->branch : 0;
+
+        //save avatar
+        if ($data->hasFile("avatar")) {
+
+            $image = $data->file("avatar");
+            $imgName = time() . Helper::getRandomString() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path(Profile::$AVATAR_PREFIX);
+            $image->move($destinationPath, $imgName);
+            $profile->avatar = $imgName;
+        }
+
+        $profile->save();
     }
 }

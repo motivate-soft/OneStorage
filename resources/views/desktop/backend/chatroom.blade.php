@@ -34,9 +34,9 @@
                     ?>
                     <div>
                         @if($message->user->isAdmin())
-                        <img class="object-fill" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Admin">
+                        <img class="object-fill w-20 h-20 rounded-full" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Admin">
                         @else
-                        <img class="object-fill" src="{{asset('images/contactUs/Intersection15.png')}}" alt="Avatar">
+                        <img class="object-fill w-20 h-20 rounded-full" src="{{asset($message->user->profile->avatar)}}" alt="Avatar">
                         @endif
                     </div>
 

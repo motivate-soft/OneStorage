@@ -20,7 +20,7 @@
 <div class="mx-auto w-1/2 py-16">
 
     <div class="flex mb-24">
-        <img class="mx-15 object-none" src="{{asset('images/contactUs/Intersection 15@2x.png')}}" alt="Avatar of Jonathan Reinink">
+        <img class="mx-15 w-40 h-40 rounded-full object-fill" src="{{asset(Auth::user()->profile->avatar)}}" alt="Avatar of Jonathan Reinink">
         <div class="flex flex-col lg:rounded-b-none lg:rounded-r justify-end">
             <div class="branch-title">{{Auth::user()->getName()}}, 歡迎你回來!</div>
         </div>
@@ -58,9 +58,9 @@
                         ?>
                         <div>
                             @if($message->user->isAdmin())
-                            <img class="object-none" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Admin">
+                            <img class="object-none w-20 h-20" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Admin">
                             @else
-                            <img class="object-none" src="{{asset('images/contactUs/Intersection15.png')}}" alt="Avatar">
+                            <img class="object-fill w-20 h-20 rounded-full" src="{{asset(Auth::user()->profile->avatar)}}" alt="Avatar">
                             @endif
                         </div>
 
@@ -86,15 +86,15 @@
                 @if(isset($thread))
                 <form id="msgForm" class="flex border-t p-4" action="{{ route('messages.update', $thread->id) }}" method="post">
                     {{ method_field('put') }}
-                @else
-                <form class="flex border-t p-4" action="{{ route('messages.store') }}" method="post">
+                    @else
+                    <form class="flex border-t p-4" action="{{ route('messages.store') }}" method="post">
                         @endif
                         @csrf
                         @if(isset($_GET['id']))
                         <input type="hidden" name="recipient" value="{{$_GET['id']}}" />
                         @endif
                         <div>
-                            <img class="object-none" src="{{asset('images/contactUs/Intersection15.png')}}" alt="Avatar of Jonathan Reinink">
+                            <img class="object-fill w-20 h-20 rounded-full" src="{{asset(Auth::user()->profile->avatar)}}" alt="Avatar">
                         </div>
 
                         <div class="w-9/10 pl-6">
@@ -108,7 +108,7 @@
                                 <button class="mt-4 mb-3 px-4 py-2 text-center" style="font-size: 17px;background-color: #3F81C7; color:white">送出</button>
                             </div>
                         </div>
-                </form>
+                    </form>
             </div>
         </div>
     </div>

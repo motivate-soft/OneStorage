@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Illuminate\Database\QueryException;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AuthController extends Controller
@@ -156,28 +157,60 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $user = new User;
-        $user->first_name = $request->firstName;
-        $user->last_name = $request->lastName;
-        $user->phone = $request->phone;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->save();
+        try{
+            $user->setData($request);
+        }catch(QueryException $e){
+            $errorCode = $e->errorInfo[1];
+            if($errorCode == '1062'){
+                $value = "";
+                $key = "";
+                sscanf($e->errorInfo[2], "Duplicate entry %s for key 'users_%s_unique'", $value, $key);
+                $key = explode("_", $key)[0];
 
-        $profile = new Profile;
-        $profile->gender = $request->gender;
-        $profile->birthday = $request->year . '/' . $request->month . '/' . $request->day;
-        $profile->area = isset($request->area) ? $request->area : '';
-        $profile->place = isset($request->place) ? $request->place : '';
-        $profile->address_line1 = isset($request->addr1) ? $request->addr1 : '';
-        $profile->address_line2 = isset($request->addr2) ? $request->addr2 : '';
-        $profile->contact_method = isset($request->contactMethod) ? $request->contacatMethod : '';
-        $profile->is_existing_customer = isset($request->isCustomer) ? (bool)$request->isCustomer : false;
-        $profile->is_soundwill_member = isset($request->isMember) ? (bool)$request->isMember : false;
-        $profile->branch_id = isset($request->branch) ? $request->branch : 0;
-        $profile->user_id = $user->id;
-        $profile->save();
+                $duplicationMsg = [
+                    'phone' =>  '此電話號碼已被使用',
+                    'email' => '此電話號碼已被使用'
+                ];
 
-        return redirect('/login');
+                return response([
+                    'state' =>  'error',
+                    'type' => 'duplication',
+                    'key'   => $key,
+                    'message' => $duplicationMsg[$key]
+                ], 500);
+            }
+            // print_r($e->errorInfo);
+        }
+        return response("success");
+        // $user->first_name = $request->firstName;
+        // $user->last_name = $request->lastName;
+        // $user->phone = $request->phone;
+        // $user->email = $request->email;
+        // $user->password = bcrypt($request->password);
+        // $user->save();
+
+        // $profile = new Profile;
+        // $profile->gender = $request->gender;
+        // $profile->birthday = $request->year . '/' . $request->month . '/' . $request->day;
+        // $profile->area = isset($request->area) ? $request->area : '';
+        // $profile->place = isset($request->place) ? $request->place : '';
+        // $profile->address_line1 = isset($request->addr1) ? $request->addr1 : '';
+        // $profile->address_line2 = isset($request->addr2) ? $request->addr2 : '';
+        // $profile->contact_method = isset($request->contactMethod) ? $request->contacatMethod : '';
+        // $profile->is_existing_customer = isset($request->isCustomer) ? (bool)$request->isCustomer : false;
+        // $profile->is_soundwill_member = isset($request->isMember) ? (bool)$request->isMember : false;
+        // $profile->branch_id = isset($request->branch) ? $request->branch : 0;
+        // $profile->user_id = $user->id;
+        // $profile->save();
+
+        // return redirect('/login');
+    }
+
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        $user->setData($request);
+        return redirect()->back();
     }
 
     public function logout()

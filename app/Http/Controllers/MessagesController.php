@@ -158,12 +158,13 @@ class MessagesController extends Controller
         // usleep(1000000);
 
         // $thread->activateAllParticipants();
-
-        Message::create([
-            'thread_id' => $thread->id,
-            'user_id' => Auth::id(),
-            'body' => $message
-        ]);
+        if ($thread->subject == Helper::$MESSAGE_TYPE_BROADCAST) {
+            Message::create([
+                'thread_id' => $thread->id,
+                'user_id' => Auth::id(),
+                'body' => $message
+            ]);
+        }
     }
 
     public function broadcast()
@@ -185,7 +186,7 @@ class MessagesController extends Controller
         foreach ($threads as $thread) {
             $ids = explode(',', $thread->participantsString(Auth::id(), ['id']));
             sort($ids);
-            if(!$ids[0]){
+            if (!$ids[0]) {
                 $ids = [];
             }
             if ($receipients == $ids) {
@@ -206,8 +207,8 @@ class MessagesController extends Controller
             ]);
             $sel_thread->addParticipant($receipients);
         }
-        
-        if(count($receipients) == 1){
+
+        if (count($receipients) == 1) {
             $sel_thread->subject = Helper::$MESSAGE_TYPE_NORMAL;
             $sel_thread->save();
         }

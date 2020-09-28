@@ -18,11 +18,14 @@
 
 @section('content')
 <div class="mx-auto w-1/2 py-16">
+    <?php
+    $user = Auth::user();
+    ?>
 
     <div class="flex mb-24">
-        <img class="mx-15 object-none" src="{{asset('images/contactUs/Intersection 15@2x.png')}}" alt="Avatar of Jonathan Reinink">
+        <img class="mx-15 img-avatar w-40 h-40 rounded-full object-fill" src="{{asset($user->profile->avatar)}}" alt="Avatar of Jonathan Reinink">
         <div class="flex flex-col lg:rounded-b-none lg:rounded-r justify-end">
-        <div class="branch-title">{{Auth::user()->getName()}}, 歡迎你回來!</div>
+            <div class="branch-title">{{$user->getName()}}, 歡迎你回來!</div>
         </div>
     </div>
 
@@ -47,7 +50,8 @@
                 </a>
             </div>
 
-            <div class="flex w-4/5 ml-2 border">
+            <form class="flex w-4/5 ml-2 border" method="POST" action="{{url('/account/update')}}" enctype="multipart/form-data">
+                @csrf
                 <div class=" w-3/5 pl-12">
                     <div class=" sub-content">
                         <p class="subcontent-header my-2 pt-4">個人資料</p>
@@ -55,11 +59,11 @@
                         <div class=" flex relative py-2">
                             <p class=" w-1/4 input-label text-right ">姓 :</p>
                             <div class=" flex w-1/4 items-center border-b">
-                                <input id="firstName" class="ischanged appearance-none bg-transparent border-none text-center  w-full px-2 leading-tight" type="text" value="Smith" readonly>
+                                <input name="firstName" required id="firstName" class="ischanged appearance-none bg-transparent border-none text-center  w-full px-2 leading-tight" type="text" value="{{$user->first_name}}" readonly>
                             </div>
                             <p class=" w-1/4 input-label text-right ">名 :</p>
                             <div class=" w-1/4 items-center border-b">
-                                <input id="lastName" class="ischanged appearance-none bg-transparent border-none w-full text-center  px-2 leading-tight" type="text" value="Paul" readonly>
+                                <input name="lastName" required id="lastName" class="ischanged appearance-none bg-transparent border-none w-full text-center  px-2 leading-tight" type="text" value="{{$user->last_name}}" readonly>
                             </div>
                             <a href="javascript:void(0);" class=" w-4 h-4" onclick="modifyData(1)"><img class=" w-4 h-4" src="{{asset('images/contactUs/icons8-edit-48@2x.png')}}" style="right:0;margin-right: -16px" alt="Pencil"></a>
                         </div>
@@ -67,7 +71,7 @@
                         <div class=" flex relative py-2">
                             <p class=" w-1/4 input-label text-right ">電子郵件 :</p>
                             <div class=" w-3/4 items-center border-b">
-                                <input id="email" class="ischanged appearance-none bg-transparent border-none text-center w-full  px-2 leading-tight" type="text" value="Smith.P@gmail.com" readonly>
+                                <input name="email" required id="email" class="ischanged appearance-none bg-transparent border-none text-center w-full  px-2 leading-tight" type="text" value="{{$user->email}}" readonly>
                             </div>
                             <a href="javascript:void(0);" class=" w-4 h-4" onclick="modifyData(2)"><img class=" w-4 h-4" src="{{asset('images/contactUs/icons8-edit-48@2x.png')}}" style="right:0;margin-right: -16px" alt="Pencil"></a>
                         </div>
@@ -75,17 +79,31 @@
                         <div class=" flex relative py-2 mb-8">
                             <p class=" w-1/4 input-label text-right ">電話號碼 :</p>
                             <div class=" w-3/4 items-center border-b">
-                                <input id="phone" class="ischanged appearance-none bg-transparent text-center border-none w-full  px-2 leading-tight" type="text" value="6123 6123" readonly>
+                                <input name="phone" required id="phone" class="ischanged appearance-none bg-transparent text-center border-none w-full  px-2 leading-tight" type="text" value="{{$user->phone}}" readonly>
                             </div>
                             <a href="javascript:void(0);" class=" w-4 h-4" onclick="modifyData(3)"><img class=" w-4 h-4" src="{{asset('images/contactUs/icons8-edit-48@2x.png')}}" style="right:0;margin-right: -16px" alt="Pencil"></a>
                         </div>
+
+                        <!-- <div class="radio-group">
+
+                            <p class="subcontent-header radio-title w-1/4">性別</p>
+
+                            <div class=" radio-custom w-1/4">
+                                <input type="radio" checked id="genderunchecked" class="radio-gray" value="m" name="gender">
+                                <label for="genderunchecked" class="radio-label">男</label>
+                            </div>
+                            <div class=" radio-custom w-1/4">
+                                <input type="radio" id="genderchecked" class="radio-gray" value="w" name="gender">
+                                <label for="genderchecked" class="radio-label">女</label>
+                            </div>
+                        </div> -->
 
                         <p class="subcontent-header py-4 mb-2 ">更改密碼</p>
 
                         <div class=" flex relative mb-8">
                             <p class=" w-1/4 input-label text-right ">密碼 :</p>
                             <div class=" w-3/4 items-center border-b">
-                                <input id="password" class=" ischanged appearance-none bg-transparent border-none text-center w-full px-2 leading-tight" type="password" value="********" readonly>
+                                <input id="password" name="password" class="ischanged appearance-none bg-transparent border-none text-center w-full px-2 leading-tight" type="password" value="" readonly>
                             </div>
                             <a href="javascript:void(0);" class=" w-4 h-4" onclick="modifyData(4)"><img class=" w-4 h-4" src="{{asset('images/contactUs/icons8-edit-48@2x.png')}}" style="right:0;margin-right: -16px" alt="Pencil"></a>
                         </div>
@@ -96,23 +114,10 @@
 
                             <div class=" date-component">
                                 <div class="inline-block relative">
-                                    <select class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日">
+                                    <select id="daySelector" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日" name="day" required>
                                         <option value="" selected>日</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
+                                        @for($i = 1; $i < 32; $i++) <option value="{{$i}}">{{$i}}</option>
+                                            @endfor
                                     </select>
                                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                         <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -123,20 +128,10 @@
 
                             <div class=" date-component">
                                 <div class="inline-block relative">
-                                    <select class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
+                                    <select id="monthSelector" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="month" required>
                                         <option value="" selected>月</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
+                                        @for($i = 1; $i < 13; $i++) <option value="{{$i}}">{{$i}}</option>
+                                            @endfor
                                     </select>
                                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                         <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -147,18 +142,10 @@
 
                             <div class=" date-component">
                                 <div class="inline-block relative">
-                                    <select class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
+                                    <select id="yearSelector" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="year" required>
                                         <option value="" selected>年</option>
-                                        <option value="2011">2011</option>
-                                        <option value="2012">2012</option>
-                                        <option value="2013">2013</option>
-                                        <option value="2014">2014</option>
-                                        <option value="2015">2015</option>
-                                        <option value="2016">2016</option>
-                                        <option value="2017">2017</option>
-                                        <option value="2018">2018</option>
-                                        <option value="2019">2019</option>
-                                        <option value="2020">2020</option>
+                                        @for($i = 1920; $i < 2021; $i++) <option value="{{$i}}">{{$i}}</option>
+                                            @endfor
                                     </select>
                                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                         <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -173,11 +160,14 @@
                         <div class=" flex mb-8 py-4">
                             <div class=" w-1/3">
                                 <div class="inline-block relative w-full px-2">
-                                    <select class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日">
+                                    <select value="{{$user->profile->area}}" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="area">
                                         <option value="" selected>地域</option>
-                                        <option value="香港">香港</option>
-                                        <option value="九龍">九龍</option>
-                                        <option value="新界">新界</option>
+                                        <?php
+                                        $areas = ["香港", "九龍", "新界"];
+                                        ?>
+                                        @foreach($areas as $area)
+                                        <option value="{{$area}}" {{$user->profile->area == $area ? 'selected' : ''}}>{{$area}}</option>
+                                        @endforeach
                                     </select>
                                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                         <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -188,26 +178,14 @@
 
                             <div class=" w-2/3">
                                 <div class="inline-block relative w-full px-2">
-                                    <select class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
+                                    <select value="{{$user->profile->place}}" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="place">
                                         <option value="" selected>地區</option>
-                                        <option value="中西區">中西區</option>
-                                        <option value="灣仔">灣仔</option>
-                                        <option value="東區">東區</option>
-                                        <option value="南區">南區</option>
-                                        <option value="深水埗">深水埗</option>
-                                        <option value="油尖旺">油尖旺</option>
-                                        <option value="九龍城">九龍城</option>
-                                        <option value="黃大仙">黃大仙</option>
-                                        <option value="觀塘">觀塘</option>
-                                        <option value="屯門">屯門</option>
-                                        <option value="元朗">元朗</option>
-                                        <option value="荃灣">荃灣</option>
-                                        <option value="葵青">葵青</option>
-                                        <option value="離島">離島</option>
-                                        <option value="北區">北區</option>
-                                        <option value="大埔">大埔</option>
-                                        <option value="沙田">沙田</option>
-                                        <option value="西貢">西貢</option>
+                                        <?php
+                                        $places = ["中西區", "灣仔", "東區", "南區", "深水埗", "油尖旺", "九龍城", "黃大仙", "觀塘", "屯門", "元朗", "荃灣", "葵青", "離島", "北區", "大埔", "沙田", "西貢"];
+                                        ?>
+                                        @foreach($places as $place)
+                                        <option value="{{$place}}" {{$user->profile->place == $place ? 'selected' : ''}}>{{$place}}</option>
+                                        @endforeach
                                     </select>
                                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                         <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -219,23 +197,27 @@
 
                         <div class=" relative mb-8 px-2">
                             <div class=" w-full items-center border-b">
-                                <input class="appearance-none bg-transparent border-none w-full px-2 py-1 leading-tight" type="text" placeholder="地址第一行">
+                                <input value="{{$user->profile->address_line1}}" name="addr1" class="appearance-none bg-transparent border-none w-full px-2 py-1 leading-tight" type="text" placeholder="地址第一行">
                             </div>
                         </div>
 
                         <div class=" relative mb-8 px-2">
                             <div class=" w-full items-center border-b">
-                                <input class="appearance-none bg-transparent border-none w-full px-2 py-1 leading-tight" type="text" placeholder="地址第二行">
+                                <input value="{{$user->profile->address_line2}}" name="addr2" class="appearance-none bg-transparent border-none w-full px-2 py-1 leading-tight" type="text" placeholder="地址第二行">
                             </div>
                         </div>
 
                         <div class=" w-full mb-8">
 
                             <div class="inline-block relative w-full px-2">
-                                <select class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-2 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日">
+                                <select value="{{$user->profile->contact_method}}" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-2 py-2 pr-8 leading-tight focus:outline-none" name="contactMethod">
+                                    <?php
+                                    $methods = ["Whatsapp", "Email", "Call"];
+                                    ?>
                                     <option value="" selected>最佳聯絡方式</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
+                                    @foreach($methods as $method)
+                                    <option value="{{$method}}" {{$user->profile->contact_method == $method ? 'selected' : ''}}>{{$method}}</option>
+                                    @endforeach
                                 </select>
                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                     <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -250,24 +232,24 @@
                             <p class="radio-title w-4/6 ">是否One Storage 現有客戶 ? </p>
 
                             <div class=" radio-custom w-1/6">
-                                <input type="radio" id="storageyesunchecked" class="radio-gray" name="storage" value="true">
+                                <input type="radio" id="storageyesunchecked" class="radio-gray" value="1" name="isCustomer">
                                 <label for="storageyesunchecked" class="radio-label">是</label>
                             </div>
                             <div class=" radio-custom w-1/6">
-                                <input type="radio" id="storagenochecked" checked class="radio-gray" name="storage" value="false">
+                                <input type="radio" id="storagenochecked" checked class="radio-gray" value="0" name="isCustomer">
                                 <label for="storagenochecked" class="radio-label">否</label>
                             </div>
                         </div>
 
                         <div class="flex">
                             <div class="w-1/3 inline-block relative mb-6">
-                                <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日">
+                                <select value="{{$user->profile->branch_id}}" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="branch">
                                     <option value="" selected>分店</option>
                                     <?php
-                                    $branches = App\Store::select('branch')->get();
+                                    $branches = App\Store::select('branch', 'id')->get();
                                     ?>
                                     @foreach($branches as $branch)
-                                    <option value="{{$branch->branch}}">{{$branch->branch}}</option>
+                                    <option value="{{$branch->id}}" {{$user->profile->branch_id == $branch->id ? 'selected' : ''}}>{{$branch->branch}}</option>
                                     @endforeach
                                 </select>
                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -283,22 +265,25 @@
                             <p class="radio-title w-4/6 ">是否SoundWill Club 會員 ? </p>
 
                             <div class=" radio-custom w-1/6">
-                                <input type="radio" id="clubyesunchecked" class="radio-gray" name="club" value="true">
+                                <input type="radio" id="clubyesunchecked" class="radio-gray" value="1" name="isMember">
                                 <label for="clubyesunchecked" class="radio-label">是</label>
                             </div>
                             <div class=" radio-custom w-1/6">
-                                <input type="radio" id="clubnochecked" checked class="radio-gray" name="club" value="false">
+                                <input type="radio" id="clubnochecked" checked class="radio-gray" value="0" name="isMember">
                                 <label for="clubnochecked" class="radio-label">否</label>
                             </div>
                         </div>
-
+                        <button class="submit-btn hover:bg-purple-400 my-4">
+                            更新
+                        </button>
                     </div>
                 </div>
                 <div class="w-2/5 pt-10">
-                    <img class="object-none mx-auto" src="{{asset('images/contactUs/Intersection 15@2x.png')}}" alt="Avatar of Jonathan Reinink">
-                    <p class=" text-center py-3" style="color: #4D5567; font-size: 14px">更改相片</p>
+                    <img class="object-fill img-avatar rounded-full mx-auto h-40 w-40 cursor-pointer" src="{{asset($user->profile->avatar)}}" alt="Avatar of Jonathan Reinink">
+                    <input type="file" name="avatar" class="hidden img-input" accept=".jpg,.png,.gif" />
+                    <p class="text-center py-3" style="color: #4D5567; font-size: 14px">更改相片</p>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -307,12 +292,51 @@
 
 @section('scripts')
 <script>
+    function readURL(input, preview) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
     $(document).ready(function() {
         $("#notification").hide();
-        $(".ischanged").click(function() {
-            $("#notification").fadeIn(3000);
 
-        });
+        // $(".ischanged").click(function() {
+        //     $("#notification").fadeIn(3000);
+
+        // });
+
+        $(".img-input").change(function(){
+            readURL(this, $(".img-avatar"));
+        })
+
+
+        $(".img-avatar").click(function() {
+            $(this).next().click();
+        })
+
+        if ('<?= $user->profile->is_existing_customer ?>' != '-') {
+            $("#storageyesunchecked").prop("checked", true);
+            $("#storagenochecked").removeAttr("checked");
+        } else {
+            $("#storagenochecked").prop("checked", true);
+            $("#storageyesunchecked").removeAttr("checked");
+        }
+
+        if ('<?= $user->profile->is_soundwill_member ?>' != '-') {
+            $("#clubyesunchecked").prop("checked", true);
+            $("#clubnochecked").removeAttr("checked");
+        } else {
+            $("#clubnochecked").prop("checked", true);
+            $("#clubyesunchecked").removeAttr("checked");
+        }
+        OneStorage.DOB(new Date('<?= $user->profile->birthday ?>'));
     });
 
     function modifyData(id) {

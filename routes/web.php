@@ -85,6 +85,8 @@ Route::group(['prefix' => '/'], function () {
             return view('account.accountinfo');
         });
 
+        Route::post('/account/update', 'AuthController@update');
+
         Route::get('/chatlist', function () {
             return view('account.chatlist');
         });

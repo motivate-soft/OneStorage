@@ -29,33 +29,44 @@
             $receipient = $thread->participants()->where('user_id', '!=', Auth::id())->first();
             ?>
             @if($thread->subject != App\Helper\Helper::$MESSAGE_TYPE_BYADMIN || Cmgmyr\Messenger\Models\Message::where('thread_id', $thread->id)->where('user_id', $receipient->user_id)->first())
-            <a class="flex border-b py-3 px-4 cursor-pointer" href="{{url('backend/chatroom/'.$thread->id)}}">
-                <img class=" object-center rounded-full inline" style="height: 72px" src="{{asset($thread->subject == App\Helper\Helper::$MESSAGE_TYPE_BROADCAST ? 'images/contactUs/Intersection18@2x.png' : 'images/contactUs/Intersection15.png')}}" alt="Avatar of Jonathan Reinink">
+            <a class="flex justify-between border-b py-3 px-4 cursor-pointer" href="{{url('backend/chatroom/'.$thread->id)}}">
+                <!-- <img class=" object-center rounded-full inline" style="height: 72px" src="{{asset($thread->subject == App\Helper\Helper::$MESSAGE_TYPE_BROADCAST ? 'images/contactUs/Intersection18@2x.png' : 'images/contactUs/Intersection15.png')}}" alt="Avatar of Jonathan Reinink"> -->
+                @if($thread->subject == App\Helper\Helper::$MESSAGE_TYPE_BROADCAST)
+                <img class="object-cover rounded-full inline w-20 h-20" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Admin">
+                @else
+                <?php
+                $user = App\User::find($receipient->user_id);
+                ?>
+                <img class="object-fill rounded-full inline w-20 h-20" src="{{asset($user->profile->avatar)}}" alt="Admin">
+                @endif
                 <?php $unreadCnt = $thread->userUnreadMessagesCount(Auth::id()) ?>
-                <div class="w-full pl-6 pt-2">
-                    <div class="flex justify-between">
-                        <span class="leading-none pt-2 font_19 regular-color relative {{$unreadCnt ? 'has-new-msg' : ''}}">
-                            @if($thread->subject == App\Helper\Helper::$MESSAGE_TYPE_BROADCAST)
-                            Admin -
-                            @endif
-                            <?php
-                            $names = $thread->participantsString(Auth::id(), ['first_name']);
-                            $string = $names ? $names : ('All +' . (App\User::where('role', '!=', 'admin')->count()));
-                            $names = explode(',', $names);
-                            $count = count($names);
-                            if ($count > 3) {
-                                $string = $names[0] . ', ' . $names[1] . ', ' . $names[2] . ' ....+' . ($count - 3);
-                            }
-                            ?>
-                            {{$string}}
-                            &nbsp;&nbsp;
-                        </span>
-                        <p class="text-right pt-2 font_14 robert-regular">{{$thread->latestMessage->created_at->format('d-M-Y')}}</p>
-                    </div>
+                <div class="flex-auto mt-2 ml-6">
+                    <span class="leading-none pt-2 font_19 regular-color relative {{$unreadCnt ? 'has-new-msg' : ''}}">
+                        @if($thread->subject == App\Helper\Helper::$MESSAGE_TYPE_BROADCAST)
+                        Admin -
+                        @endif
+                        <?php
+                        $names = $thread->participantsString(Auth::id(), ['first_name']);
+                        $string = $names ? $names : ('All +' . (App\User::where('role', '!=', 'admin')->count()));
+                        $names = explode(',', $names);
+                        $count = count($names);
+                        if ($count > 3) {
+                            $string = $names[0] . ', ' . $names[1] . ', ' . $names[2] . ' ....+' . ($count - 3);
+                        }
+                        ?>
+                        {{$string}}
+                        &nbsp;&nbsp;
+                    </span>
+                    <p class="{{$unreadCnt ? 'robert-black' : 'robert-regular'}} mt-4">{{ mb_strimwidth($thread->latestMessage->body, 0, 40, "...") }}</p>
+                    
+                </div>
+                <p class="flex-auto text-right pt-2 font_14 robert-regular">{{$thread->latestMessage->created_at->format('d-M-Y')}}</p>
+                <!-- <div class="w-full pl-6 pt-2">
+
                     <div class="flex justify-between font_19 mt-2">
                         <span class="{{$unreadCnt ? 'robert-black' : 'robert-regular'}}">{{ mb_strimwidth($thread->latestMessage->body, 0, 40, "...") }}</span>
                     </div>
-                </div>
+                </div> -->
             </a>
             @endif
             @endforeach
@@ -107,7 +118,7 @@
             var recipients = "";
             for (var i = 0; i < ids.length; i++) {
                 recipients += ('M' + ids[i].padFunction('0', 5));
-                if(i != ids.length - 1){
+                if (i != ids.length - 1) {
                     recipients += ',';
                 }
             }

@@ -253,7 +253,6 @@
                                 </div>
                                 <span class="ml-4 float-right font_12 my-auto">{{$blog->updated_at->format('d/m/Y')}}</span>
                             </div>
-
                         </div>
                         @endforeach
 
@@ -271,12 +270,6 @@
 
 @section('scripts')
 <script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': '<?= csrf_token() ?>'
-        }
-    });
-
     function readURL(input, preview) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -313,6 +306,11 @@
         }
 
         if (confirm("Do you really want to delete this blog?")) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': '<?= csrf_token() ?>'
+                }
+            });
             $.ajax({
                 url: '/blog/' + blogId,
                 type: 'DELETE',

@@ -88,9 +88,9 @@
             <div class="w-2/5" style="margin-left: 10px;">
                 <h2 class="text-lg mt-4 mb-8 font-bold">最新資訊</h2>
                 <?php
-                $lasted_news = App\Blog::orderBy('id', 'desc')->take(3)->get();
+                $latest_news = App\Blog::orderBy('created_at', 'desc')->take(3)->get();
                 ?>
-                @foreach($lasted_news as $news)
+                @foreach($latest_news as $news)
                 <a class="flex mt-2 mb-5" href="{{url('/news/'.$news->id)}}">
                     <img class="h-32 w-32 mx-auto md:mx-0 md:mr-4 object-cover inline" src="{{asset($news->thumbnail)}}">
                     <span class="h-24 md:h-32 text-center md:text-left text-sm leading-4 font_13 inline overflow-y-hidden robert-black">

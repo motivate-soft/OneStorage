@@ -43,45 +43,25 @@
                     <div class="text-3xl">
                         <h1 class="font_29 pt-4">其他資訊</h1>
                     </div>
-                    <a href="javascript:void(0)" class="flex  rounded-lg mt-2 lg:py-3  px-2">
-                        <img class="h-24 ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
+                    <?php
+                    $latest_news = App\Blog::orderBy('created_at', 'desc')->take(4)->get();
+                    $count = count($latest_news);
+                    ?>
+                    @foreach($latest_news as $index => $news)
+                    <a href="{{url('/news/'.$news->id)}}" class="flex  rounded-lg mt-2 lg:py-3  px-2">
+                        <img class="h-24 ml-0 mb-4" src="{{asset($news->thumbnail)}}">
                         <div class="text-left">
-                            <p class="font_19 md:text-left lg:text-left leading-normal px-3 ">
-                                【搬屋冇煩惱】搬屋前一定要知嘅小貼士
+                            <p class="h-24 font_19 md:text-left lg:text-left leading-normal px-3 overflow-y-hidden">
+                                <?php echo nl2br($news->content) ?>
                             </p>
                         </div>
                     </a>
+                    @if($index != $count - 1)
                     <div class="rounded-lg  px-2">
                         <hr>
                     </div>
-                    <a href="javascript:void(0)" class="flex  rounded-lg mt-2 lg:py-3  px-2">
-                        <img class="h-24 ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
-                        <div class="text-left">
-                            <p class="font_19 md:text-left lg:text-left leading-normal px-3 ">
-                                政府派1萬蚊 點先最快收到錢？ </p>
-                        </div>
-                    </a>
-                    <div class="rounded-lg  px-2">
-                        <hr>
-                    </div>
-                    <a href="javascript:void(0)" class="flex  rounded-lg mt-2 lg:py-3  px-2">
-                        <img class="h-24 ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
-                        <div class="text-left">
-                            <p class="font_19 md:text-left lg:text-left leading-normal px-3 ">
-                                蝸居套房 </p>
-                        </div>
-                    </a>
-                    <div class="rounded-lg  px-2">
-                        <hr>
-                    </div>
-                    <a href="javascript:void(0)" class="flex rounded-lg mt-2 lg:py-3 px-2">
-                        <img class="h-24  ml-0 mb-4" src="{{asset('images/latest_news/Image 35.png')}}">
-                        <div class="text-left">
-                            <p class="font_19 md:text-left lg:text-left leading-normal px-3 ">
-                                迷你倉點揀好 - 2020年四大安全注意要點
-                            </p>
-                        </div>
-                    </a>
+                    @endif
+                    @endforeach
 
                 </div>
 

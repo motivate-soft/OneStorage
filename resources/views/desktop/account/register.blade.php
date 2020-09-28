@@ -25,7 +25,7 @@
     <div class="flex flex-col lg:flex-row pt-10">
 
         <div class="w-full lg:w-2/3 border-r-none lg:border-r">
-            <form class="flex register-form1 mr-8" method="post" action="{{url('/register')}}">
+            <form id="registerForm" class="flex register-form1 mr-8" method="post" action="{{url('/register')}}">
                 @csrf
                 <div class="w-1/2 mr-4">
                     <p style="color: red;" class="mb-4">*</p>
@@ -40,15 +40,18 @@
                     </div>
 
 
-                    <div class="input-group mb-4">
+                    <div class="input-group">
                         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
                         <input class="form-control" type="text" placeholder="電話號碼" name="phone" required>
                     </div>
+                    <div class="mt-2 mb-4 text-red-600"><span class="hidden error-msg" id="phoneDuplicateMsg">此電話號碼已被使用</span></div>
 
-                    <div class="input-group mb-4">
+
+                    <div class="input-group">
                         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">
                         <input class="form-control" type="email" placeholder="電子郵件" name="email" required>
                     </div>
+                    <div class="mt-2 mb-4 text-red-600"><span class="hidden error-msg" id="emailDuplicateMsg">该电子邮件已被使用</span></div>
 
                     <div class="radio-group">
 
@@ -72,9 +75,8 @@
                             <div class="inline-block relative">
                                 <select id="daySelector" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日" name="day" required>
                                     <option value="" selected disabled>日</option>
-                                    @for($i = 1; $i < 32; $i++)
-                                    <option value="{{$i}}">{{$i}}</option>
-                                    @endfor
+                                    @for($i = 1; $i < 32; $i++) <option value="{{$i}}">{{$i}}</option>
+                                        @endfor
                                 </select>
                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                     <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -87,9 +89,8 @@
                             <div class="inline-block relative">
                                 <select id="monthSelector" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="month" required>
                                     <option value="" selected disabled>月</option>
-                                    @for($i = 1; $i < 13; $i++)
-                                    <option value="{{$i}}">{{$i}}</option>
-                                    @endfor
+                                    @for($i = 1; $i < 13; $i++) <option value="{{$i}}">{{$i}}</option>
+                                        @endfor
                                 </select>
                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                     <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -102,9 +103,8 @@
                             <div class="inline-block relative">
                                 <select id="yearSelector" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="year" required>
                                     <option value="" selected disabled>年</option>
-                                    @for($i = 1990; $i < 2021; $i++)
-                                    <option value="{{$i}}">{{$i}}</option>
-                                    @endfor
+                                    @for($i = 1920; $i < 2021; $i++) <option value="{{$i}}">{{$i}}</option>
+                                        @endfor
                                 </select>
                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                     <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -276,6 +276,24 @@
 <script>
     $(function() {
         OneStorage.Register();
+        $("#registerForm").submit(function(e) {
+            $(".error-msg").hide();
+            e.preventDefault();
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: $(this).serialize(),
+                datatype: 'json',
+                success: function(result) {
+                    window.location.href = "{{url('/login')}}";
+                },
+                error:function(error){
+                    if (error.responseJSON.type == "duplication") {
+                        $("#" + error.responseJSON.key + "DuplicateMsg").show();
+                    }
+                }
+            });
+        })
     })
 </script>
 @endsection
