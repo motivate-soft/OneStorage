@@ -36,11 +36,11 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
+            'host' => 'mail.onestorage.com.hk',
+            'port' => 587,
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'username' => 'noreply@onestorage.com.hk',
+            'password' => 'ones@2020stanley',
             'timeout' => null,
             'auth_mode' => null,
         ],
