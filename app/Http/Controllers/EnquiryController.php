@@ -142,9 +142,9 @@ class EnquiryController extends Controller
         $enquiry->save();
 
         //send email
-        Mail::to(Helper::$ONESTORAGE_EMAIL)->send(new EnquiryEmail($enquiry));
+        Mail::to(Helper::$ONESTORAGE_EMAIL)->queue(new EnquiryEmail($enquiry));
         if ($enquiry->page == Helper::$SS_FROM_FRONT_PAGE1) {
-            Mail::to($enquiry->email)->send(new DiscountEmail);
+            Mail::to($enquiry->email)->queue(new DiscountEmail);
         }
 
         $ajax = isset($request->ajax) ? $request->ajax : 0;

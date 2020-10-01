@@ -40,6 +40,35 @@ $(function () {
 
     OneStorage.Home = (function () {
         return function () {
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': '<?= csrf_token() ?>'
+                }
+            });
+
+            $("#discountForm").submit(function (e) {
+                e.preventDefault();
+                var form = $(this);
+                if (form.attr("state") === "sent") {
+                    return;
+                }
+                var submitBtn = form.find("button");
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: $(this).attr('method'),
+                    data: $(this).serialize(),
+                    datatype: 'json',
+                    success: function (result) {
+                        submitBtn.css("background-color", "#28e8db");
+                        submitBtn.text('請查看電郵');
+                        submitBtn.prop('disabled', true);
+                        form.find("input").prop('disabled', true);
+                        form.attr("state", "sent");
+                    }
+                });
+            })
+
             $(".home-problem-toggle-item").click(function () {
                 $(this).next().toggle(500);
             })
@@ -73,21 +102,92 @@ $(function () {
     })();
 
     OneStorage.BranchLocation = (function () {
-        return function (storeSize) {
+        return function (storeSize, area) {
+            const priceMin = 200;
+            const priceMax = 2500;
+            var priceRange = [priceMin, priceMax];
+            var map;
+            var geocoder = new google.maps.Geocoder();
+            var storesMarkers = [];
 
-            function filter(sizeFilter, priceFilter) {
+            initMap();
+            filter();
+
+            function initMap() {
+                geocoder.geocode({
+                    'address': area
+                }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        const location = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+                        const jMap = $("#map");
+                        jMap.height(jMap.width());
+
+                        map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 10,
+                            center: location,
+                            disableDefaultUI: true,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP,
+                            zoomControl: true
+                        });
+
+                        var pos = new google.maps.Marker({
+                            position: location,
+                            map: map
+                        });
+                    } else {
+                        console.log("Geocode was not successful for the following reason: " + status);
+                        $(".state-text").text("Geocode was not successful for the following reason: " + status);
+                    }
+                });
+            }
+
+            function addStoreMarker(address) {
+                geocoder.geocode({
+                    'address': address
+                }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        const location = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+                        var marker = new google.maps.Marker({
+                            position: location,
+                            map: map
+                        });
+                        storesMarkers.push(marker);
+                    } else {
+                        console.log("Geocode was not successful for the following reason: " + status);
+                    }
+                });
+            }
+
+            function clearMakers() {
+                for (var i = 0; i < storesMarkers.length; i++) {
+                    storesMarkers[i].setMap(null);
+                }
+                storesMarkers = [];
+            }
+
+            function filter() {
+                var sizeFilter = [];
+                clearMakers();
+
+                $(".branchlocation-card-wrapper.active").each(function () {
+                    sizeFilter.push($(this).attr('value'));
+                })
+
+                if (sizeFilter.length == 0) {
+                    sizeFilter = ["S", "M", "L", "XL"];
+                }
 
                 $(".location-content-item").each(function () {
-                    if (sizeFilter.length == 0) {
-                        $(this).show();
-                        return true;
-                    }
                     $(this).hide();
                     const label = JSON.parse($(this).attr('data-size-label'));
+                    const price = Number($(this).attr("data-price"));
+                    const address = $(this).find(".store-address").text();
                     var flag = false;
                     $.each(sizeFilter, function (index, value) {
-                        if (label.includes(value)) {
+                        if (label.includes(value) && (price >= priceRange[0] && price <= priceRange[1])) {
                             flag = true;
+                            console.log(address);
+                            addStoreMarker(address);
                             return false;
                         }
                     })
@@ -99,11 +199,15 @@ $(function () {
 
             $("#slider-range").slider({
                 range: true,
-                min: 200,
-                max: 2500,
-                values: [200, 2500],
+                min: priceMin,
+                max: priceMax,
+                values: [priceMin, priceMax],
                 slide: function (event, ui) {
                     $("#amount").html("$" + ui.values[0] + " ~ $" + ui.values[1]);
+                    priceRange[0] = ui.values[0];
+                    priceRange[1] = ui.values[1];
+                    console.log("1");
+                    filter();
                 }
             });
 
@@ -138,31 +242,64 @@ $(function () {
                 } else {
                     parent.addClass("active");
                 }
-
-                var labels = [];
-                $(".branchlocation-card-wrapper.active").each(function () {
-                    labels.push($(this).find("button").val());
-                })
-                filter(labels, []);
-
+                filter();
             })
 
             $(".branchlocation-m-item").click(function () {
-                $(".branchlocation-m-item").removeClass("active");
-                $(this).addClass("active");
+                if ($(this).hasClass("active")) {
+                    $(this).removeClass("active");
+                } else {
+                    $(this).addClass("active");
+                }
+                filter();
             })
 
+            // $(".branchlocation-m-item").click(function () {
+            //     $(".branchlocation-m-item").removeClass("active");
+            //     $(this).addClass("active");
+            // })
+
             $(".store-select[value='" + storeSize + "']").click();
+            $(".branchlocation-m-item[value='" + storeSize + "']").click();
         }
     })();
 
     OneStorage.RentwareHouse = (function () {
-        return function () {
+        return function (address) {
             var branchSize;
             var confirmed = false;
             const bookingModal = document.getElementById("bookingModal");
             const confirmModal = document.getElementById("confirmModal");
 
+            initMap();
+
+            function initMap() {
+                var geocoder = new google.maps.Geocoder();
+                var map;
+                geocoder.geocode({
+                    'address': address
+                }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        const location = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+                        $("#map").height(400);
+                        map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 18,
+                            center: location,
+                            disableDefaultUI: true,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP,
+                            zoomControl: true
+                        });
+
+                        var pos = new google.maps.Marker({
+                            position: location,
+                            map: map
+                        });
+                    } else {
+                        console.log("Geocode was not successful for the following reason: " + status);
+                        $(".state-text").text("Geocode was not successful for the following reason: " + status);
+                    }
+                });
+            }
 
             $("#bookingForm").submit(function (e) {
 
@@ -949,9 +1086,47 @@ $(function () {
                 inputPwd.focus();
             })
 
+            $("#registerForm").submit(function (e) {
+                $(".error-msg").hide();
+                e.preventDefault();
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: $(this).attr('method'),
+                    data: $(this).serialize(),
+                    datatype: 'json',
+                    success: function (result) {
+                        window.location.href = "/login";
+                    },
+                    error: function (error) {
+                        if (error.responseJSON.type == "duplication") {
+                            $("#" + error.responseJSON.key + "DuplicateMsg").show();
+                        }
+                    }
+                });
+            })
+
             OneStorage.DOB(new Date(2000, 0, 1));
 
         };
+    })();
+
+    OneStorage.JoinUs = (function () {
+        return function () {
+            $(".fileupload-btn").click(function () {
+                $(this).next().click();
+            })
+
+            $(".file-input").change(function () {
+                if (this.files && this.files[0]) {
+                    if (this.files[0].size > 2 * 1024 * 1024) {
+                        alert("Max file size is 2M!");
+                        $(this).val('');
+                        return;
+                    }
+                }
+                $(this).parent().parent().find(".file-name").text(this.files[0].name);
+            })
+        }
     })();
 });
 

@@ -253,7 +253,7 @@
 </div> -->
 
 <div class="relative block bg-white main-wrapper">
-    <div class="flex maintitle-wrapper-m color-primary text-center mx-auto w-max-content">
+    <!-- <div class="flex maintitle-wrapper-m color-primary text-center mx-auto w-max-content">
         <span class="uppercase maintitle-left-m">one</span>
         <div class="w-px maintitle-divider-m"></div>
         <div class="relative maintitle-right-m">
@@ -261,6 +261,15 @@
                 <span>聯絡我們</span>
             </div>
             <div class="capitalize absolute bottom-0 left-0 maintitle-right-bottom-m">我們會在24小時內回覆</div>
+        </div>
+    </div> -->
+
+    <div class="flex maintitle-wrapper-m color-primary">
+        <div class="relative maintitle-right-m">
+            <div class="flex items-center">
+                <span>聯絡我們</span>
+            </div>
+            <div class="capitalize mt-2 maintitle-right-bottom-m">我們會在24小時內回覆</div>
         </div>
     </div>
 
@@ -287,113 +296,32 @@
                     </a>
                 </div>
             </div>
-            <div class="grid grid-cols-2  mt-8 ml-5">
-                <div class="col-span-2">
-                    <p class="font_21 pl-10 pb-5">新界</p>
-                </div>
-                <div class="col-span-2">
-                    <?php
-                    $contactInfos = App\ContactInfo::get1();
-                    ?>
-                    @foreach($contactInfos as $contact)
-                    <div class="accordion relative appearance-none items-center">
-                        <div class="flex">
-                            <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                            <span class="self-center text-primary">{{$contact['name']}}</span>
-                        </div>
-                    </div>
-                    <div class="panel flex">
-                        <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                        <div class=" leading-5">
-                            <p class="font_14">
-                                電話 :<span>{{$contact['phone']}}</span>
-                            </p>
-                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
-                                電郵 : <span>{{$contact['email']}}</span>
-                            </a>
-                            <p class="font_14">
-                                <a href="{{'http://maps.google.com/?q='.$contact['address']}}" target="_blank" rel="noopener noreferrer">
-                                    地址 : {{$contact['address']}}
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
+
+            <div class="grid grid-cols-1  mt-8 z-10 mx-10">
+                <p class="font_21 pl-10 pb-3">香港島</p>
+                <?php
+                $locations = App\LocationInfo::getHongKong();
+                ?>
+                @each('partials.location_info', $locations, 'location')
+
+                <p class="font_21 pl-10 pb-3 pt-5">九龍</p>
+                <?php
+                $locations = App\LocationInfo::getKowloon();
+                ?>
+                @each('partials.location_info', $locations, 'location')
+
+                <p class="font_21 pl-10 pb-3 pt-5">新界</p>
+                <?php
+                $locations = App\LocationInfo::getNew();
+                ?>
+                @each('partials.location_info', $locations, 'location')
             </div>
-            <div class="grid grid-cols-2 mt-8  ml-5">
-                <div class="col-span-2">
-                    <p class="font_21 pl-10 pb-5">九龍</p>
-                </div>
-                <div class="col-span-2">
-                    <?php
-                    $contactInfos = App\ContactInfo::get2();
-                    ?>
-                    @foreach($contactInfos as $contact)
-                    <div class="accordion relative appearance-none items-center">
-                        <div class="flex">
-                            <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                            <span class="self-center text-primary">{{$contact['name']}}</span>
-                        </div>
-                    </div>
-                    <div class="panel flex">
-                        <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                        <div class=" leading-5">
-                            <p class="font_14">
-                                電話 :<span>{{$contact['phone']}}</span>
-                            </p>
-                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
-                                電郵 : <span>{{$contact['email']}}</span>
-                            </a>
-                            <p class="font_14">
-                                <a href="{{'http://maps.google.com/?q='.$contact['address']}}" target="_blank" rel="noopener noreferrer">
-                                    地址 : {{$contact['address']}}
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-            <div class="grid grid-cols-2 mt-8  ml-5">
-                <div class="col-span-2">
-                    <p class="font_21 pl-10 pb-5">香港島</p>
-                </div>
-                <div class="col-span-2">
-                    <?php
-                    $contactInfos = App\ContactInfo::get3();
-                    ?>
-                    @foreach($contactInfos as $contact)
-                    <div class="accordion relative appearance-none items-center">
-                        <div class="flex">
-                            <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                            <span class="self-center text-primary">{{$contact['name']}}</span>
-                        </div>
-                    </div>
-                    <div class="panel flex">
-                        <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                        <div class=" leading-5">
-                            <p class="font_14">
-                                電話 :<span>{{$contact['phone']}}</span>
-                            </p>
-                            <a href="mailto:cs@onestorage.com.hk" class="font_14">
-                                電郵 : <span>{{$contact['email']}}</span>
-                            </a>
-                            <p class="font_14">
-                                <a href="{{'http://maps.google.com/?q='.$contact['address']}}" target="_blank" rel="noopener noreferrer">
-                                    地址 : {{$contact['address']}}
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
+
         </div>
-        <div class="col-span-2 px-2 mt-6">
+        <div class="col-span-2 px-2 mt-6 mx-10">
             <form class="form-enquiry" method="post" action="{{url('/enquiry')}}">
                 @csrf
-                <input type="hidden" name="page" value="Contact us">
+                <input type="hidden" name="page" value="{{Helper::$SS_FROM_CONTACTUS_PAGE}}">
                 <p class="text2 mb-8">給我們留言</p>
                 <div class="flex mb-4 w-full">
                     <div class="flex w-1/2 input-group">
@@ -407,7 +335,12 @@
 
                 <div class="input-group mb-4">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-                    <input class="form-control" type="text" placeholder="" name="phoneNumber">
+                    <input class="form-control" type="text" placeholder="電話號碼" name="phoneNumber">
+                </div>
+
+                <div class="input-group mb-8">
+                    <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">
+                    <input class="form-control" type="email" placeholder="電子郵件" name="email" required>
                 </div>
 
                 <div class="w-full inline-block relative mb-6">
@@ -427,11 +360,12 @@
                 </div>
 
                 <div class="w-full inline-block relative mb-6">
-                    <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" style="color:#76838f" name="question">
+                    <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" style="color:#76838f" name="question" id="question-selector">
                         <option value="" selected>查詢問題</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        <option value="我要預約參觀。">我要預約參觀。</option>
+                        <option value="我要續約">我要續約</option>
+                        <option value="我要尺寸及價錢。">我要尺寸及價錢。</option>
+                        <option value="其他">其他</option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                         <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -439,7 +373,11 @@
                     </div>
                 </div>
 
-                <textarea class="w-full border placeholder-gray-600 px-3 py-2 border-gray-200 mb-6" style="padding-left:16px;color:#76838f" type="text" placeholder="你的信息" rows="3" name="message"></textarea>
+                <div class="w-full mb-6 hidden" id="message-wrapper">
+                    <textarea class="w-full border placeholder-gray-600 px-3 py-2 border-gray-200 mb-6" style="padding-left:16px;color:#76838f" type="text" placeholder="你的信息" rows="3" name="message"></textarea>
+                </div>
+
+                <!-- <textarea class="w-full border placeholder-gray-600 px-3 py-2 border-gray-200 mb-6" style="padding-left:16px;color:#76838f" type="text" placeholder="你的信息" rows="3" name="message"></textarea> -->
 
                 <button class="submit-btn hover:bg-purple-400">
                     送出
@@ -474,5 +412,5 @@
 @endsection
 
 @section('footer')
-@include('layouts.footer1')
+@include('layouts.footer')
 @endsection

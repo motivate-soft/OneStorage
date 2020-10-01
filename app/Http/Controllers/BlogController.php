@@ -62,6 +62,8 @@ class BlogController extends Controller
             $blog->state = false;
         }
 
+        $blog->used_notify = isset($request->usedNotify) &&  $request->usedNotify == "on";
+
         $this->saveImage($blog, $request, "image");
         $this->saveImage($blog, $request, "thumbnail");
         $this->saveImage($blog, $request, "promotion");

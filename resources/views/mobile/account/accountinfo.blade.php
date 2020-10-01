@@ -12,7 +12,6 @@
     .robert-font {
         font-family: "RobertBlack";
     }
-
 </style>
 @endsection
 
@@ -22,24 +21,34 @@
 @endsection
 
 @section('header')
-	@include('layouts.header')
+@include('layouts.header')
 @endsection
 
 @section('content')
-    <div class=" mt-10 robert-font mb-8 fontsize-25 regular-color text-center px-5">Paul Smith, 歡迎你回來!</div>
 
-    <div class=" w-full">
+<?php
+$user = Auth::user();
+?>
+<div class=" mt-10 robert-font mb-8 fontsize-25 regular-color pt-4 text-center px-5">{{$user->getName()}}, 歡迎你回來!</div>
 
-    <div class=" flex w-full">
-        <div class=" w-1/4"></div>
-        <a class=" w-1/4 border text-center py-3 fontsize-11 regular-color" href="{{url('account')}}">個人資料</a>
-        <a class=" w-1/4 border text-center py-3 fontsize-11 regular-color bg-grey" href="{{url('chatlist')}}">信息</a>
-        <div class=" w-1/4"></div>
+<div class="w-full pb-8">
+
+    <div class="flex w-full">
+        <div class="w-1/5"></div>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{url('account')}}">個人資料</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color bg-grey" href="{{url('chatlist')}}">信息</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{url('logout')}}">登出</a>
+        <div class="w-1/5"></div>
     </div>
 
-    <div class=" w-full border pt-4 px-8">
-        <p class=" text-center py-3 fontsize-11" id="notification" style="color: #18B84D">更新成功!</p>
-        <img class="w-16 h-16 mx-auto object-center" src="{{asset('images/contactUs/Intersection15.png')}}" alt="Avatar of Jonathan Reinink">
+    <form class=" w-full border py-4 px-8" method="POST" action="{{url('/account/update')}}" enctype="multipart/form-data">
+        @csrf
+        <!-- <p class=" text-center py-3 fontsize-11" id="notification" style="color: #18B84D">更新成功!</p> -->
+        <div>
+            <img class="img-avatar cursor-pointer w-16 h-16 mx-auto rounded-full object-fill object-center" src="{{asset($user->profile->avatar)}}" alt="Avatar of Jonathan Reinink">
+            <input type="file" name="avatar" class="hidden img-input" accept=".jpg,.png,.gif" />
+        </div>
+
         <p class=" text-center py-1 fontsize-8 regular-color">更改相片</p>
         <div class="sub-content">
             <p class="subcontent-header my-2  fontsize-15">個人資料</p>
@@ -47,11 +56,11 @@
             <div class=" flex relative py-2">
                 <p class=" w-1/4 input-label text-right fontsize-14">姓 :</p>
                 <div class=" flex w-1/4 items-center border-b">
-                    <input id="firstName" class="ischanged appearance-none bg-transparent border-none text-center fontsize-14 w-full px-2 leading-tight" type="text" value="Smith" readonly>
+                    <input name="firstName" id="firstName" class="ischanged appearance-none bg-transparent border-none text-center fontsize-14 w-full px-2 leading-tight" type="text" value="{{$user->first_name}}" readonly>
                 </div>
                 <p class=" w-1/4 input-label text-right fontsize-14">名 :</p>
                 <div class=" w-1/4 items-center border-b">
-                    <input id="lastName" class="ischanged appearance-none bg-transparent border-none w-full text-center fontsize-14 px-2 leading-tight" type="text" value="Paul" readonly>
+                    <input name="lastName" required id="lastName" class="ischanged appearance-none bg-transparent border-none w-full text-center fontsize-14 px-2 leading-tight" type="text" readonly value="{{$user->last_name}}">
                 </div>
                 <a href="javascript:void(0);" class=" w-4 h-4" onclick="modifyData(1)"><img class=" w-4 h-4" src="{{asset('images/contactUs/icons8-edit-48@2x.png')}}" style="right:0;margin-right: -16px" alt="Pencil"></a>
             </div>
@@ -59,7 +68,7 @@
             <div class=" flex relative py-2">
                 <p class=" w-1/4 input-label text-right fontsize-14">電子郵件 :</p>
                 <div class=" w-3/4 items-center border-b">
-                    <input id="email" class="ischanged appearance-none bg-transparent border-none text-center w-full fontsize-14 px-2 leading-tight" type="text" value="Smith.P@gmail.com" readonly>
+                    <input name="email" required id="email" class="ischanged appearance-none bg-transparent border-none text-center w-full fontsize-14 px-2 leading-tight" type="text" readonly value="{{$user->email}}">
                 </div>
                 <a href="javascript:void(0);" class=" w-4 h-4" onclick="modifyData(2)"><img class=" w-4 h-4" src="{{asset('images/contactUs/icons8-edit-48@2x.png')}}" style="right:0;margin-right: -16px" alt="Pencil"></a>
             </div>
@@ -67,7 +76,7 @@
             <div class=" flex relative py-2 mb-8">
                 <p class=" w-1/4 input-label text-right fontsize-14">電話號碼 :</p>
                 <div class=" w-3/4 items-center border-b">
-                    <input id="phone" class="ischanged appearance-none bg-transparent text-center border-none w-full fontsize-14 px-2 leading-tight" type="text" value="6123 6123" readonly>
+                    <input name="phone" required id="phone" class="ischanged appearance-none bg-transparent text-center border-none w-full fontsize-14 px-2 leading-tight" type="text" value="{{$user->phone}}" readonly>
                 </div>
                 <a href="javascript:void(0);" class=" w-4 h-4" onclick="modifyData(3)"><img class=" w-4 h-4" src="{{asset('images/contactUs/icons8-edit-48@2x.png')}}" style="right:0;margin-right: -16px" alt="Pencil"></a>
             </div>
@@ -77,7 +86,7 @@
             <div class=" flex relative mb-8">
                 <p class=" w-1/4 input-label text-right fontsize-14">密碼 :</p>
                 <div class=" w-3/4 items-center border-b">
-                    <input id="password" class=" ischanged appearance-none bg-transparent border-none text-center w-full px-2 leading-tight" type="password" value="********" readonly>
+                    <input name="password" id="password" class=" ischanged appearance-none bg-transparent border-none text-center w-full px-2 leading-tight" type="password" value="" readonly>
                 </div>
                 <a href="javascript:void(0);" class=" w-4 h-4" onclick="modifyData(4)"><img class=" w-4 h-4" src="{{asset('images/contactUs/icons8-edit-48@2x.png')}}" style="right:0;margin-right: -16px" alt="Pencil"></a>
             </div>
@@ -88,25 +97,12 @@
 
                 <div class=" date-component">
                     <div class="inline-block relative">
-                        <select class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日">
+                        <select id="daySelector" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-2 py-2 pr-6 leading-tight focus:outline-none" aria-placeholder="日" name="day" required>
                             <option value="" selected>日</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
+                            @for($i = 1; $i < 32; $i++) <option value="{{$i}}">{{$i}}</option>
+                                @endfor
                         </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center text-gray-700">
                             <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                 <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                         </div>
@@ -115,22 +111,12 @@
 
                 <div class=" date-component">
                     <div class="inline-block relative">
-                        <select class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
+                        <select id="monthSelector" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-2 py-2 pr-6 leading-tight focus:outline-none" name="month" required>
                             <option value="" selected>月</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
+                            @for($i = 1; $i < 13; $i++) <option value="{{$i}}">{{$i}}</option>
+                                @endfor
                         </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center text-gray-700">
                             <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                 <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                         </div>
@@ -139,20 +125,12 @@
 
                 <div class=" date-component">
                     <div class="inline-block relative">
-                        <select class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
+                        <select id="yearSelector" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-2 py-2 pr-6 leading-tight focus:outline-none" name="year" required>
                             <option value="" selected>年</option>
-                            <option value="2011">2011</option>
-                            <option value="2012">2012</option>
-                            <option value="2013">2013</option>
-                            <option value="2014">2014</option>
-                            <option value="2015">2015</option>
-                            <option value="2016">2016</option>
-                            <option value="2017">2017</option>
-                            <option value="2018">2018</option>
-                            <option value="2019">2019</option>
-                            <option value="2020">2020</option>
+                            @for($i = 1920; $i < 2021; $i++) <option value="{{$i}}">{{$i}}</option>
+                                @endfor
                         </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center text-gray-700">
                             <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                 <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                         </div>
@@ -165,10 +143,14 @@
             <div class=" flex mb-8 py-4">
                 <div class=" w-1/3">
                     <div class="inline-block relative w-full px-2">
-                        <select class="block appearance-none w-full bg-gray-100 fontsize-14 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日">
+                        <select class="block appearance-none w-full bg-gray-100 fontsize-14 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="area">
                             <option value="" selected>地域</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                            <?php
+                            $areas = ["香港", "九龍", "新界"];
+                            ?>
+                            @foreach($areas as $area)
+                            <option value="{{$area}}" {{$user->profile->area == $area ? 'selected' : ''}}>{{$area}}</option>
+                            @endforeach
                         </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                             <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -179,10 +161,14 @@
 
                 <div class=" w-2/3">
                     <div class="inline-block relative w-full px-2">
-                        <select class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none fontsize-14">
+                        <select class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none fontsize-14" name="place">
                             <option value="" selected>地區</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                            <?php
+                            $places = ["中西區", "灣仔", "東區", "南區", "深水埗", "油尖旺", "九龍城", "黃大仙", "觀塘", "屯門", "元朗", "荃灣", "葵青", "離島", "北區", "大埔", "沙田", "西貢"];
+                            ?>
+                            @foreach($places as $place)
+                            <option value="{{$place}}" {{$user->profile->place == $place ? 'selected' : ''}}>{{$place}}</option>
+                            @endforeach
                         </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                             <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -194,23 +180,27 @@
 
             <div class=" relative mb-8 px-2">
                 <div class=" w-full items-center border-b">
-                    <input class="appearance-none bg-transparent border-none w-full px-2 py-1 leading-tight fontsize-14" type="text" placeholder="地址第一行">
+                    <input value="{{$user->profile->address_line1}}" name="addr1" class="appearance-none bg-transparent border-none w-full px-2 py-1 leading-tight fontsize-14" type="text" placeholder="地址第一行">
                 </div>
             </div>
 
             <div class=" relative mb-8 px-2">
                 <div class=" w-full items-center border-b">
-                    <input class="appearance-none bg-transparent border-none w-full px-2 py-1 leading-tight fontsize-14" type="text" placeholder="地址第二行">
+                    <input value="{{$user->profile->address_line2}}" name="addr2" class="appearance-none bg-transparent border-none w-full px-2 py-1 leading-tight fontsize-14" type="text" placeholder="地址第二行">
                 </div>
             </div>
 
             <div class=" w-full mb-8">
 
                 <div class="inline-block relative w-full px-2">
-                    <select class="block appearance-none w-full bg-gray-100 border-b border-gray-200 fontsize-14 px-2 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日">
+                    <select name="contactMethod" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 fontsize-14 px-2 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日">
+                        <?php
+                        $methods = ["Whatsapp", "Email", "Call"];
+                        ?>
                         <option value="" selected>最佳聯絡方式</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
+                        @foreach($methods as $method)
+                        <option value="{{$method}}" {{$user->profile->contact_method == $method ? 'selected' : ''}}>{{$method}}</option>
+                        @endforeach
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                         <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -225,22 +215,24 @@
                 <p class="radio-title w-4/6  fontsize-14">是否One Storage 現有客戶 ? </p>
 
                 <div class=" radio-custom w-1/6">
-                    <input type="radio" id="storageyesunchecked" checked class="radio-gray" name="storage">
-                    <label for="storageyesunchecked" class="radio-label fontsize-14">是</label>
+                    <input type="radio" id="storageyesunchecked" class="radio-gray" value="1" name="isCustomer">
+                    <label for="storageyesunchecked" class="radio-label">是</label>
                 </div>
                 <div class=" radio-custom w-1/6">
-                    <input type="radio" id="storagenochecked" class="radio-gray" name="storage">
-                    <label for="storagenochecked" class="radio-label fontsize-14">否</label>
+                    <input type="radio" id="storagenochecked" checked class="radio-gray" value="0" name="isCustomer">
+                    <label for="storagenochecked" class="radio-label">否</label>
                 </div>
             </div>
 
             <div class="flex">
-                <div class="w-1/3 inline-block relative mb-6">
-                    <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none fontsize-14" aria-placeholder="日">
-                        <option value="" selected>分店</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                <div class="w-1/2 inline-block relative mb-6">
+                    <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none fontsize-14" name="branch">
+                        <?php
+                        $branches = App\Store::select('branch', 'id')->get();
+                        ?>
+                        @foreach($branches as $branch)
+                        <option value="{{$branch->id}}" {{$user->profile->branch_id == $branch->id ? 'selected' : ''}}>{{$branch->branch}}</option>
+                        @endforeach
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                         <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -255,61 +247,104 @@
                 <p class="radio-title w-4/6  fontsize-14">是否SoundWill Club 會員 ? </p>
 
                 <div class=" radio-custom w-1/6">
-                    <input type="radio" id="clubyesunchecked" checked class="radio-gray" name="club">
-                    <label for="clubyesunchecked" class="radio-label fontsize-14">是</label>
+                    <input type="radio" id="clubyesunchecked" class="radio-gray" value="1" name="isMember">
+                    <label for="clubyesunchecked" class="radio-label">是</label>
                 </div>
                 <div class=" radio-custom w-1/6">
-                    <input type="radio" id="clubnochecked" class="radio-gray" name="club">
-                    <label for="clubnochecked" class="radio-label fontsize-14">否</label>
+                    <input type="radio" id="clubnochecked" checked class="radio-gray" value="0" name="isMember">
+                    <label for="clubnochecked" class="radio-label">否</label>
                 </div>
             </div>
 
-        </div>
-    </div>
+            <button class="submit-btn hover:bg-purple-400 my-4">
+                更新
+            </button>
 
-    </div>
+        </div>
+    </form>
+
+</div>
 @endsection
 
 @section('scripts')
-<script>  
+<script>
+    function readURL(input, preview) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
     $(document).ready(function() {
-    $("#notification").hide();
-    $(".ischanged").click(function() {
-        $("#notification").fadeIn(3000);
+        $("#notification").hide();
 
+        // $(".ischanged").click(function() {
+        //     $("#notification").fadeIn(3000);
+
+        // });
+
+        $(".img-input").change(function() {
+            readURL(this, $(".img-avatar"));
+        })
+
+
+        $(".img-avatar").click(function() {
+            $(this).next().click();
+        })
+
+        if ('<?= $user->profile->is_existing_customer ?>' != '-') {
+            $("#storageyesunchecked").prop("checked", true);
+            $("#storagenochecked").removeAttr("checked");
+        } else {
+            $("#storagenochecked").prop("checked", true);
+            $("#storageyesunchecked").removeAttr("checked");
+        }
+
+        if ('<?= $user->profile->is_soundwill_member ?>' != '-') {
+            $("#clubyesunchecked").prop("checked", true);
+            $("#clubnochecked").removeAttr("checked");
+        } else {
+            $("#clubnochecked").prop("checked", true);
+            $("#clubyesunchecked").removeAttr("checked");
+        }
+        OneStorage.DOB(new Date('<?= $user->profile->birthday ?>'));
     });
-});
 
-function modifyData(id) {
-    if (id == 1) {
-        const edtFirstName = document.getElementById('firstName');
-        const edtLastName = document.getElementById('lastName');
+    function modifyData(id) {
+        if (id == 1) {
+            const edtFirstName = document.getElementById('firstName');
+            const edtLastName = document.getElementById('lastName');
 
-        edtFirstName.readOnly = false;
-        edtLastName.readOnly = false;
-        edtFirstName.focus();
+            edtFirstName.readOnly = false;
+            edtLastName.readOnly = false;
+            edtFirstName.focus();
 
-        return true;
+            return true;
+        }
+        if (id == 2) {
+            const edtEmail = document.getElementById('email');
+            edtEmail.readOnly = false;
+            edtEmail.focus();
+            return true;
+        }
+        if (id == 3) {
+            const edtPhone = document.getElementById('phone');
+            edtPhone.readOnly = false;
+            edtPhone.focus();
+            return true;
+        }
+        if (id == 4) {
+            const edtPwd = document.getElementById('password');
+            edtPwd.readOnly = false;
+            edtPwd.focus();
+            return true;
+        }
     }
-    if (id == 2) {
-        const edtEmail = document.getElementById('email');
-        edtEmail.readOnly = false;
-        edtEmail.focus();
-        return true;
-    }
-    if (id == 3) {
-        const edtPhone = document.getElementById('phone');
-        edtPhone.readOnly = false;
-        edtPhone.focus();
-        return true;
-    }
-    if (id == 4) {
-        const edtPwd = document.getElementById('password');
-        edtPwd.readOnly = false;
-        edtPwd.focus();
-        return true;
-    }
-}
 </script>
 @endsection
 

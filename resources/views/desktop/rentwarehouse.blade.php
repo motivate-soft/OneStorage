@@ -450,7 +450,11 @@
                             <p class="text-sm color-primary py-1 mb-3 leading-none"><?php echo nl2br($store->text_above_addr) ?></p>
                             <!-- <p class="text-sm color-primary py-1">週六，早上10時至晚上5時。</p>
                             <p class="text-sm color-primary mb-3 py-1">星期日及假期，需於 1 天前預約參觀。</p> -->
-                            <img class="rentware-middle-image pr-5 py-1" src="{{ asset('images/Image 7@2x.png') }}" />
+                            <!-- <img class="rentware-middle-image pr-5 py-1" src="{{ asset('images/Image 7@2x.png') }}" /> -->
+
+                            <div id="map" class="w-full">
+                                <p class="text-center my-10 state-text">Loading...</p>
+                            </div>
 
                             <p class="text-sm color-deep pt-8 py-2">交通:</p>
                             <p class="text-sm color-primary py-1 leading-relaxed"><?php echo nl2br($store->text_below_addr) ?></p>
@@ -666,7 +670,7 @@
                 $lasted_news = App\Blog::orderBy('id', 'desc')->first();
                 ?>
                 <a class="flex pt-2" href="{{url('/news/'.$lasted_news->id)}}">
-                    <img class="flex-shrink-0 h-32" src="{{asset($lasted_news->thumbnail)}}"/>
+                    <img class="flex-shrink-0 h-32" src="{{asset($lasted_news->thumbnail)}}" />
                     <span class="pl-3 color-deep overflow-y-hidden leading-relaxed font_13 h-32">
                         <?php echo nl2br($lasted_news->content) ?>
                     </span>
@@ -826,8 +830,11 @@ $user = Auth::user();
 
 @section('scripts')
 <script>
-    $(function() {
-        OneStorage.RentwareHouse();
-    });
+    function init() {
+        $(function() {
+            OneStorage.RentwareHouse('<?= $store ? $store->address : '' ?>');
+        });
+    }
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuF23f8P4mybfOUR2lbLynVZqSI77xn4Q&libraries=places&callback=init"></script>
 @endsection

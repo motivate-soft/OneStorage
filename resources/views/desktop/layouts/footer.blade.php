@@ -17,8 +17,6 @@
                         <a href="{{url('/joinus')}}">職位空缺</a> | <a href="{{url('/disclaimer')}}">免責聲明</a>
                     </span>
 
-
-
                     <p class="font_15">©2020 至尊迷你倉 版權所有</p>
 
                 </div>

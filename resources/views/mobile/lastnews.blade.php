@@ -9,42 +9,41 @@
 @endsection
 
 @section('accessory')
-    @include('partials.accessory')
+@include('partials.accessory')
 @endsection
 
 @section('content')
-<div class="bg-white my-10">
+<div class="bg-white py-10">
     <div class=" text-center text-5xl mb-16">
-        <h1 class="font_21">空間計算器</h1>
+        <h1 class="font_21 pt-4">空間計算器</h1>
     </div>
-    @if(count($users)>0)
     <?php
     $index = 0;
+    $blogs = App\Blog::orderBy('created_at', 'desc')->paginate(10);
+    $count = count($blogs);
     ?>
-    @foreach($users as $user)
-    <a href="{{url('/news')}}" class="flex mt-2 px-5">
-        <img class="h-32" src="{{asset('images/latest_news/Image 35.png')}}">
-        <div class="text-justify">
-            <p class="font_19 leading-normal pl-5">
-                【搬屋冇煩惱】搬屋前一定要知嘅小貼士
-            </p>
-            <p class="font_19 text-justify my-4 leading-normal pl-5">
-                因應最近新型肺炎疫情，至尊迷你倉 <b>ONE </b>
-            </p>
+    @foreach($blogs as $blog)
+    <a href="{{url('/news/'.$blog->id)}}" class="flex mt-2 px-5 py-3">
+        <img class="w-28 h-28 object-fill mr-6" src="{{asset($blog->thumbnail)}}">
+        <div class="">
+            <p class="font_16 leading-normal pl-2">{{$blog->title}}</p>
+            <p class="font_12 robert-regular mt-2 ml-1"> 刊登日期:{{$blog->created_at->format('d-m-Y')}}</p>
+            <p class="font_16 my-4 leading-normal pl-2 text-left whitespace-pre-line">{{ mb_strimwidth($blog->content, 0, 80, "...")}}</p>
         </div>
     </a>
     <?php
     $index++;
-    if ($index != count($users)) {
+    if ($index != $count) {
     ?>
-        <div class="rounded-lg lg:px-10 px-10 md:px-20 mb-3">
+        <div class="rounded-lg px-5 my-3">
             <hr>
         </div>
     <?php
     }
     ?>
     @endforeach
-    @endif
+
+    {{ $blogs->links() }}
 </div>
 @endsection
 

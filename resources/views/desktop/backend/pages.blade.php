@@ -202,7 +202,6 @@
                             <img class="object-fill mx-auto cursor-pointer input-wrapper" src="{{asset('images/icons8-plus-64@2x.png')}}" />
                             <input type="file" name="image" class="hidden image-input" accept=".jpg,.png,.gif" />
                         </div>
-
                     </div>
                     <div class="flex">
                         <div class="w-1/2">
@@ -216,7 +215,7 @@
                             </div>
                         </div>
                         <div class="w-1/2">
-                            <label class="robert-regular"><input class="mb-4 mr-3" type="checkbox" name="usedPromition" id="usedPromition" />Use as front page promotion</label>
+                            <label class="robert-regular font_14"><input class="mb-4 mr-3" type="checkbox" name="usedPromition" id="usedPromition" />Use as front page promotion</label>
                             <div class="flex mb-4 image-wrapper">
                                 <img id="promoPreview" class="mr-4 preview w-1/2" />
                                 <div class="w-1/2 flex flex-col justify-center">
@@ -226,6 +225,9 @@
                             </div>
                         </div>
                     </div>
+                    <label class="robert-regular font_14">
+                        <input class="mb-4 mr-3" type="checkbox" name="usedNotify" id="usedNotify" />Use as Notification Bar
+                    </label>
                     <div class="border-b border-gray-300 mb-4">
                         <div class="mb-4">
                             <p class="font_26 mb-2">題目</p>
@@ -236,6 +238,8 @@
                             <textarea placeholder="Content" name="content" required rows="4" class="form-input w-full appearance-none bg-white border border-gray-300 p-2 text-base" id="content"></textarea>
                         </div>
                     </div>
+
+                    
 
                     <div>
                         <p class="font_26 mb-2">Title</p>
@@ -346,6 +350,7 @@
                 $('#promoPreview').attr('src', blog.promotion);
 
                 $("#usedPromition").prop("checked", blog.used_promotion);
+                $("#usedNotify").prop("checked", blog.used_notify);
                 $("#title").val(blog.title);
                 $("#content").val(blog.content);
                 $("#method").val('PUT');

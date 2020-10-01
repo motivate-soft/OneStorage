@@ -246,7 +246,7 @@
                         <img class="object-none box-content pl-1 -mt-1" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
                     </div>
                     <div class="grid grid-cols-4 col-gap-3 pt-1 branchlocation-room-select">
-                        <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
+                        <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper" value="S">
                             <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-s.jpg') }}" alt="BranchLocation">
                             <div class="px-6 py-4">
                                 <div class="branchlocation-card-title text-center mb-2">小型倉</div>
@@ -260,7 +260,7 @@
                                 <button value="S" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow color-primary store-select text-2xl"><i class="icon wb-check"></i></button>
                             </div>
                         </div>
-                        <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
+                        <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper" value="M">
                             <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-m.jpg') }}" alt="BranchLocation">
                             <div class="px-6 py-4">
                                 <div class="branchlocation-card-title text-center mb-2">中型倉</div>
@@ -274,7 +274,7 @@
                                 <button value="M" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow color-primary store-select text-2xl"><i class="icon wb-check"></i></button>
                             </div>
                         </div>
-                        <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
+                        <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper" value="L">
                             <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-l.jpg') }}" alt="BranchLocation">
                             <div class="px-6 py-4">
                                 <div class="branchlocation-card-title text-center mb-2">大型倉</div>
@@ -288,7 +288,7 @@
                                 <button value="L" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow color-primary store-select text-2xl"><i class="icon wb-check"></i></button>
                             </div>
                         </div>
-                        <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper">
+                        <div class="relative max-w-sm rounded overflow-hidden shadow-lg branchlocation-card-wrapper" value="XL">
                             <img class="branchlocation-card-image mx-auto" src="{{ asset('images/calculator/rooms-xl.jpg') }}" alt="BranchLocation">
                             <div class="px-6 py-4">
                                 <div class="branchlocation-card-title text-center mb-2">特大倉</div>
@@ -309,19 +309,22 @@
             <div class="rentwarehouse-wrapper-title color-primary text-left pt-4">分店位置</div>
             <div id="stores-wrapper" class="grid grid-cols-3 col-gap-4 row-gap-6 pt-5 pl-8 pr-0">
                 @foreach($stores as $store)
-                <div class="relative rounded overflow-hidden shadow-lg location-content-item" data-size-label="{{$store->getSizeLabel()}}">
+                <?php
+                $price = $store->getLowestPrice();
+                ?>
+                <div class="relative rounded overflow-hidden shadow-lg location-content-item" data-price="{{$price}}" data-size-label="{{$store->getSizeLabel()}}">
                     <div class="relative">
                         <div class="ribbon ribbon-badge ribbon-pink">
                             <span class="ribbon-inner">最新優惠</span>
                         </div>
                         <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Sunset in the mountains">
-                        <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ {{$store->getLowestPrice()}} <span class="text-sm">起</span></span>
+                        <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ {{$price}} <span class="text-sm">起</span></span>
                     </div>
                     <div class="p-2">
                         <div class="mb-2 color-primary location-content-title">{{$store->branch}}</div>
                         <div class="flex py-1 mb-2">
                             <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
-                            <p class="color-primary location-content-description">{{$store->address}}</p>
+                            <p class="color-primary location-content-description store-address">{{$store->address}}</p>
                         </div>
                         <div class="flex py-1 mb-1">
                             <img class="" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
@@ -344,7 +347,9 @@
         </div>
     </div>
     <div class="" style="width: 44%;">
-        <img class="w-full p-1 shadow-lg overflow-hidden" src="{{ asset('branchlocation/Group 72@2x.png') }}" />
+        <div id="map" class="w-full">
+            <p class="text-center my-10 state-text">Loading...</p>
+        </div>
     </div>
 </div>
 @endsection
@@ -362,10 +367,13 @@
 <script src="{{asset('branchlocation/ribbon/js/Site.js')}}"></script>
 
 <script>
-    $(function() {
-        OneStorage.BranchLocation('<?= isset($_GET['size']) ? strtoupper($_GET['size']): '' ?>');
-    });
+    function init() {
+        $(function() {
+            OneStorage.BranchLocation('<?= isset($_GET['size']) ? strtoupper($_GET['size']) : '' ?>', '<?= $_GET['location'] ?>');
+        })
+    }
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuF23f8P4mybfOUR2lbLynVZqSI77xn4Q&libraries=places&callback=init"></script>
 @endsection
 
 @section('footer')

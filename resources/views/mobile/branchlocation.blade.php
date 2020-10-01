@@ -6,14 +6,18 @@
 
 @section('styles')
 <style>
-    .accordion {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .accordion1 {
         /* background-color: #E0CBF6; */
         color: #444;
         cursor: pointer;
         padding: 12px;
         margin-top: 10px;
         width: 100%;
-        border: none;
+        /* border: none; */
         text-align: left;
         outline: none;
         font-size: 15px;
@@ -21,7 +25,7 @@
         font-weight: 600;
     }
 
-    .accordion:hover {
+    .accordion1:hover {
         background-color: #9B62D7;
         color: white;
     }
@@ -63,10 +67,10 @@
         color: #B881FD;
     }
 
-    .branchlocation-card-wrapper {
+    /* .branchlocation-card-wrapper {
         min-width: 100px;
         height: 280px;
-    }
+    } */
 
     .branchlocation-card-image {
 
@@ -86,7 +90,7 @@
         color: #4F4540;
     }
 
-    .branchlocation-card-wrapper.active {
+    /* .branchlocation-card-wrapper.active {
         background-color: #56628C;
     }
 
@@ -101,14 +105,14 @@
     .branchlocation-card-wrapper.active div button {
         background-color: #E0CBF6;
         color: white;
-    }
+    } */
 
     .store-select {
         color: #4D5567;
         background: white;
     }
 
-    .location-content-item-m {
+    .location-content-item {
         min-width: 120px;
         max-width: 312px;
         /* height: 350px; */
@@ -130,8 +134,7 @@
     .ribbon-inner {
         background-color: #B881FD;
         font-size: 9px;
-        top: 20px;
-         !important;
+        top: 20px !important;
     }
 
     .location-content-item-price {
@@ -145,7 +148,7 @@
     }
 
     #slider-range {
-        width: 300px;
+        /* width: 300px; */
     }
 
     .branchlocation-m-item {
@@ -177,12 +180,14 @@
     }
 
     .rentwarehouse-select-store-item-area-m {
-        width: 90px;
+        /* width: 90px; */
+        width: 20%;
         height: 34px;
     }
 
     .rentwarehouse-select-store-item-branch-m {
-        width: 132px;
+        /* width: 132px; */
+        width: 50%;
         height: 34px;
     }
 
@@ -218,13 +223,14 @@
 @endsection
 
 @section('content')
-<div class="w-full">
-    <img class="p-1 shadow-lg overflow-hidden" src="{{ asset('branchlocation/Intersection 10@2x.png') }}" />
+<div id="map" class="w-full">
+    <p class="text-center my-10 state-text">Loading...</p>
 </div>
-<div class="p-5">
+
+<div class="p-5 bg-grey">
     <div class="rentwarehouse-wrapper-title color-primary text-center">租倉</div>
 
-    <form id="branchSearchForm" class="flex items-center px-1 py-5 mx-auto" method="get" action="{{url('/rentwarehouse')}}">
+    <form id="branchSearchForm" class="flex justify-between items-center px-1 py-5 mx-auto" method="get" action="{{url('/rentwarehouse')}}">
         <img class="rentwarehouse-select-store-image-m px-0" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
         <input id="storeId" type="hidden" name="storeId" value="{{$stores[0]['id']}}" />
         <div class="flex relative rentwarehouse-select-store-item-area-m mx-1">
@@ -262,7 +268,7 @@
         <label class="flex items-center absolute right-0 rentwarehouse-price-check"><input type="checkbox" class="mr-3" />只顯示有折扣地區</label>
     </div>
     <div class="block">
-        <div class="accordion appearance-none flex relative bg-white border-gray-800">
+        <div class="accordion1 appearance-none flex relative bg-white border border-gray-300">
             <img class="align-middle w-4" src="{{ asset('branchlocation/icons8-ruler-50@2x.png') }}" />
             <span class="pl-2 align-middle">尺寸</span>
             <div class="absolute right-6">
@@ -270,22 +276,22 @@
             </div>
         </div>
         <div class="panel-other">
-            <div class="flex branchlocation-m-item items-center relative">
+            <div class="flex branchlocation-card-wrapper branchlocation-m-item items-center relative" value="S">
                 <span class="pl-8 pr-4 branchlocation-card-title flex-shrink-0">小型倉</span>
                 <span class="pl-0 pt-4 pb-4 pr-7 branchlocation-m-card-content leading-5">換季衣服, 兒童物及玩具,書本</span>
                 <span class="pr-0 pt-4 pb-4 absolute right-2 branchlocation-m-card-check text-white"><i class="icon wb-check"></i></span>
             </div>
-            <div class="flex branchlocation-m-item items-center relative active">
+            <div class="flex branchlocation-card-wrapper branchlocation-m-item items-center relative" value="M">
                 <span class="pl-8 pr-4 branchlocation-card-title flex-shrink-0">中型倉</span>
                 <span class="pl-0 pt-4 pb-4 pr-7 branchlocation-m-card-content leading-5">梳化, 椅, 櫃, 枱, 床縟, 單車, 高爾夫球袋, 箱</span>
                 <span class="pr-0 pt-4 pb-4 absolute right-2 branchlocation-m-card-check text-white"><i class="icon wb-check"></i></span>
             </div>
-            <div class="flex branchlocation-m-item items-center relative">
+            <div class="flex branchlocation-card-wrapper branchlocation-m-item items-center relative" value="L">
                 <span class="pl-8 pr-4 branchlocation-card-title flex-shrink-0">大型倉</span>
                 <span class="pl-0 pt-4 pb-4 pr-7 branchlocation-m-card-content leading-5">梳化, 椅, 櫃, 枱, 床縟, 單車, 高爾夫球袋, 箱</span>
                 <span class="pr-0 pt-4 pb-4 absolute right-2 branchlocation-m-card-check text-white"><i class="icon wb-check"></i></span>
             </div>
-            <div class="flex branchlocation-m-item items-center relative">
+            <div class="flex branchlocation-card-wrapper branchlocation-m-item items-center relative" value="XL">
                 <span class="pl-8 pr-4 branchlocation-card-title flex-shrink-0">特大倉</span>
                 <span class="pl-0 pt-4 pb-4 pr-7 branchlocation-m-card-content leading-5">梳化, 椅, 櫃, 枱, 床縟, 單車, 高爾夫球袋, 箱換季衣服, 兒童物及玩具,書本</span>
                 <span class="pr-0 pt-4 pb-4 absolute right-2 branchlocation-m-card-check text-white"><i class="icon wb-check"></i></span>
@@ -300,32 +306,36 @@
         </div>
         <div class="relative pt-5">
             <div class="cursor-pointer mx-auto">
-                <div id="slider-range"></div>
+                <div id="slider-range" class="w-full"></div>
             </div>
-
         </div>
         <div class="flex pt-5 pb-3">
-            <p class="branchlocation-store-select-description my-auto">唔知自己需要咩size ? 試下我地既<a href="{{url('/calc')}}">空間計算器</a></p>
+            <a href="{{url('/calc')}}">
+                <p class="branchlocation-store-select-description my-auto">唔知自己需要咩size ? 試下我地既空間計算器</p>
+            </a>
             <img class="object-none box-content pl-1 -mt-1" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
         </div>
 
     </div>
     <div class="rentwarehouse-wrapper-title color-primary text-center pb-4">分店位置</div>
-    <div class="grid grid-cols-1 row-gap-2 pt-5 px-6">
+    <div class="grid grid-cols-1 row-gap-2 pt-5 px-6" id="storesList">
         @foreach($stores as $store)
-        <div class="relative rounded overflow-hidden shadow-lg location-content-item-m mx-auto">
+        <?php
+        $price = $store->getLowestPrice();
+        ?>
+        <div class="relative rounded overflow-hidden shadow-lg location-content-item mx-auto mb-4" data-price="{{$price}}" data-size-label="{{$store->getSizeLabel()}}">
             <div class="relative">
                 <div class="ribbon ribbon-badge ribbon-pink">
                     <span class="ribbon-inner">最新優惠</span>
                 </div>
                 <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Sunset in the mountains">
-                <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ 498 起</span>
+                <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ {{$price}} 起</span>
             </div>
             <div class="px-1 py-2 pl-2">
                 <div class="mb-1 mt-2 color-primary location-content-title">{{$store->branch}}</div>
                 <div class="flex pt-1 pl-1 items-center">
                     <img class="w-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
-                    <p class="color-primary location-content-description">{{$store->address}}</p>
+                    <p class="color-primary location-content-description store-address">{{$store->address}}</p>
                 </div>
                 <div class="flex py-1 pl-1 items-center">
                     <img class="w-3" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
@@ -340,6 +350,7 @@
 
         </div>
         @endforeach
+
     </div>
 
 </div>
@@ -356,10 +367,21 @@
 <script src="{{asset('branchlocation/ribbon/js/Site.js')}}"></script>
 <script>
     $(function() {
-        OneStorage.BranchLocation();
+        const search = window.location.search;
+        if (search.includes("page")) {
+            window.location.href = "#storesList";
+        }
     });
+
+    function init() {
+        $(function() {
+            OneStorage.BranchLocation('<?= isset($_GET['size']) ? strtoupper($_GET['size']) : '' ?>', '<?= $_GET['location'] ?>');
+        })
+    }
+
+
     // Script For Accordion
-    var acc = document.getElementsByClassName("accordion");
+    var acc = document.getElementsByClassName("accordion1");
     var i;
 
     for (i = 0; i < acc.length; i++) {
@@ -376,8 +398,9 @@
         });
     }
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuF23f8P4mybfOUR2lbLynVZqSI77xn4Q&libraries=places&callback=init"></script>
 @endsection
 
 @section('footer')
-@include('layouts.footer1')
+@include('layouts.footer')
 @endsection

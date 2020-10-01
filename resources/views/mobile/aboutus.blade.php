@@ -6,114 +6,132 @@
 
 @section('styles')
 <style>
-
     .maintitle-wrapper-m {
-        padding-top:32px;
+        padding-top: 32px;
     }
+
     .maintitle-left-m {
-        padding-top:20px; 
+        padding-top: 20px;
         /* margin-left:163px;  */
-        margin-right:33px;
-        font-size:28px;
+        margin-right: 33px;
+        font-size: 28px;
     }
+
     .maintitle-divider-m {
-        height:65px; 
-        background-color:#707070;
+        height: 65px;
+        background-color: #707070;
     }
+
     .maintitle-right-m {
-        padding-top:20px; 
-        margin-left:27.5px;
-        font-size:29px;
-        font-weight:600;
+        padding-top: 20px;
+        margin-left: 27.5px;
+        font-size: 29px;
+        font-weight: 600;
     }
+
     .maintitle-right-aboutus-english-m {
-        font-family:'Roboto';
-        font-weight:800;
+        font-family: 'Roboto';
+        font-weight: 800;
     }
+
     .maintitle-right-bottom-m {
-        font-size:11px; 
-        color:#B2B5BD;
-        transform:translate(0, 50%);
+        font-size: 11px;
+        color: #B2B5BD;
+        /* transform:translate(0, 50%); */
     }
+
     .color-primary {
-        color:#4D5567;
+        color: #4D5567;
     }
+
     .content-title {
-        font-size:25px;
-        font-weight:800;
-        padding-top:66px;
-        padding-bottom:22px;
+        font-size: 25px;
+        font-weight: 800;
+        padding-top: 46px;
+        padding-bottom: 22px;
     }
+
     .content-description-m {
-        font-size:16px;
+        font-size: 16px;
     }
 
     .aboutus-images-1 {
-        width:191px;
+        width: 191px;
     }
+
     .aboutus-images-2 {
-        width:154px;
+        width: 154px;
     }
 
     /* .aboutus-images-1-container::-webkit-scrollbar { 
         display: none; /* Chrome, Safari and Opera */
     }
-    .aboutus-images-1-container {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
-    } */
 
+    .aboutus-images-1-container {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+    */
 </style>
 @endsection
 
 @section('accessory')
-    @include('partials.accessory')
+@include('partials.accessory')
 @endsection
 
 @section('content')
 <div class="relative block bg-white pb-10">
-    <div class="flex maintitle-wrapper-m color-primary text-center mx-auto w-max-content">
-        <span class="uppercase maintitle-left-m">one</span>
-        <div class="w-px maintitle-divider-m"></div>
+    <div class="flex maintitle-wrapper-m color-primary">
         <div class="relative maintitle-right-m">
             <div class="flex">
                 <span class="">關於</span>
-                <span class="capitalize maintitle-right-aboutus-english-m pt-1">one storage</span>    
+                <span class="capitalize maintitle-right-aboutus-english-m pt-1">one storage</span>
             </div>
-            <div class="capitalize absolute bottom-0 left-0 maintitle-right-bottom-m">one choice one storage</div>
+            <div class="capitalize maintitle-right-bottom-m">one choice one storage</div>
         </div>
     </div>
+
+    <div class="flex overflow-x-auto content-image-wrapper-0 mt-8">
+        <img class="flex-shrink-0 aboutus-images-1 mr-4" src="{{asset('images/aboutus/Web_Photos-03.jpg')}}" />
+        <img class="flex-shrink-0 aboutus-images-1 mr-4" src="{{asset('images/aboutus/Web_Photos-01.jpg')}}" />
+        <img class="flex-shrink-0 aboutus-images-1" src="{{asset('images/aboutus/Web_Photos-02.jpg')}}" />
+    </div>
+
     <div class="color-primary">
-        <p class="pl-5 content-title mt-1 mb-4">背景</p>
-        <p class="leading-relaxed content-description-m px-6">至尊迷你倉為金朝陽集團屬下業務(股票代號：00878.HK)。
-        <br/><br/>
-至尊迷你倉致力為每位客戶打造最安全及最可靠的倉存空間，實力雄厚，自置物業。分店網絡遍佈港、九、新界，並且積極不斷擴充。 特設多種不同呎碼獨立迷你倉，任君選擇。
+        <p class="pl-5 content-title mt-1 mb-4">至尊迷你倉</p>
+        <p class="leading-relaxed content-description-m px-6">為金朝陽集團屬下業務(股票代號： 00878.HK)。
+            <br /><br />
+            分店遍佈港、九及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質的儲存環境及專業的服務。至尊迷你倉是亞洲迷你倉商會(SSAA及香港迷你倉總會會員(HKMSA)。
         </p>
     </div>
 
     <div class="">
         <div class="flex overflow-x-auto pt-10 aboutus-images-1-container">
-            <img class="flex-shrink-0 aboutus-images-1 mx-4" src="{{asset('images/aboutus/9@2x.png')}}"/>
-            <img class="flex-shrink-0 aboutus-images-1 mx-4" src="{{asset('images/aboutus/8@2x.png')}}"/>
-            <img class="flex-shrink-0 aboutus-images-1 mx-4" src="{{asset('images/aboutus/1@2x.png')}}"/>
+            <img class="flex-shrink-0 aboutus-images-1 mr-4" src="{{asset('images/aboutus/Web_SW_Photos-01.jpg')}}" />
+            <img class="flex-shrink-0 aboutus-images-1 mr-4" src="{{asset('images/aboutus/Web_SW_Photos-02.jpg')}}" />
+            <img class="flex-shrink-0 aboutus-images-1" src="{{asset('images/aboutus/Web_SW_Photos-03.jpg')}}" />
         </div>
     </div>
 
     <div class="color-primary">
-        <p class="pl-5 content-title">迷你倉業務</p>
-        <p class="leading-relaxed content-description-m px-6 pt-10">2.4米闊的走廊配以完善的裝置設備，完全符合消防指引。
-        <br/><br/>
-全天候高清保安監察及警報系統，智能保安進出系統，24小時自助式儲存，支援現金、EPS、支票、信用卡、轉數快及免息分期付費，優質的儲存環境及親切專業的客戶服務，用心為每位客戶提升生活空間質素，承傳尊貴享受典範。
+        <p class="pl-5 content-title">設備及付款方式</p>
+        <p class="leading-relaxed content-description-m px-6 pt-10">
+            設備合乎消防處迷伙倉指引，客人可24小時自助儲存，配備全天候保安系統及智能保安系統。
+            <br /><br />
+            付款方式：現金、EPS、支票、信用卡、轉數快及免息分期
         </p>
     </div>
 
     <div class="grid grid-cols-2 col-gap-6 row-gap-6 px-6 pt-10">
-        <img class="aboutus-images-2" src="{{asset('images/aboutus/6@2x.png')}}"/>
-        <img class="aboutus-images-2" src="{{asset('images/aboutus/4@2x.png')}}"/>
-        <img class="aboutus-images-2" src="{{asset('images/aboutus/2@2x.png')}}"/>
-        <img class="aboutus-images-2" src="{{asset('images/aboutus/7@2x.png')}}"/>
-        <img class="aboutus-images-2" src="{{asset('images/aboutus/5@2x.png')}}"/>
-        <img class="aboutus-images-2" src="{{asset('images/aboutus/3@2x.png')}}"/>
+        <img class="aboutus-images-2" src="{{asset('images/aboutus/6@2x.png')}}" />
+        <img class="aboutus-images-2" src="{{asset('images/aboutus/4@2x.png')}}" />
+        <img class="aboutus-images-2" src="{{asset('images/aboutus/2@2x.png')}}" />
+        <img class="aboutus-images-2" src="{{asset('images/aboutus/7@2x.png')}}" />
+        <img class="aboutus-images-2" src="{{asset('images/aboutus/5@2x.png')}}" />
+        <img class="aboutus-images-2" src="{{asset('images/aboutus/3@2x.png')}}" />
     </div>
 
 </div>

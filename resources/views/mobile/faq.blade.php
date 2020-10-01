@@ -102,7 +102,7 @@
 @section('content')
 <div class="relative block bg-white">
 
-    <div class="flex maintitle-wrapper-m color-primary text-center mx-auto w-max-content">
+    <!-- <div class="flex maintitle-wrapper-m color-primary text-center mx-auto w-max-content">
         <span class="uppercase maintitle-left-m">one</span>
         <div class="w-px maintitle-divider-m"></div>
         <div class="relative maintitle-right-m">
@@ -111,7 +111,17 @@
             </div>
             <div class="capitalize absolute bottom-0 left-0 maintitle-right-bottom-m">解答關於迷你倉的疑難</div>
         </div>
+    </div> -->
+
+    <div class="flex maintitle-wrapper-m color-primary">
+        <div class="relative maintitle-right-m">
+            <div class="flex items-center">
+                <span>常見問題</span>
+            </div>
+            <div class="capitalize mt-2 maintitle-right-bottom-m">解答關於迷你倉的疑難</div>
+        </div>
     </div>
+
     <div class="flex pt-10">
         <ul class="w-max-content pr-2 mx-auto" id="faq-menu">
             <!-- <li id="item0" class="p-3 cursor-pointer item category-title text-left active">尺寸選擇</li>
@@ -147,5 +157,5 @@
 @endsection
 
 @section('footer')
-@include('layouts.footer1')
+@include('layouts.footer')
 @endsection

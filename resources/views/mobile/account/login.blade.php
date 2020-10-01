@@ -18,7 +18,7 @@
 @endsection
 
 @section('content')
-<p class=" text-center fontsize-21 regular-color pt-6 pb-8">登入</p>
+<p class=" text-center fontsize-21 regular-color mt-10 pt-6 pb-8">登入</p>
 
 <div class=" register-form w-full border-b pb-6">
 
@@ -38,10 +38,10 @@
     @csrf
     <div class="input-group mb-4">
         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-        <input class="form-control fontsize-14" type="text" placeholder="電話號碼">
+        <input class="form-control fontsize-14" type="text" placeholder="電話號碼" name="phone" required>
     </div>
 
-    <input class="w-full form-control mb-6 fontsize-14 pl-8" type="text" placeholder="密碼">
+    <input class="w-full form-control mb-6 fontsize-14 pl-8" placeholder="密碼" name="password" type="password" required>
 
     <a href="{{url('forgetpwd')}}">
         <p class=" register-subtilte title-violet fontsize-12">忘記密碼?</p>

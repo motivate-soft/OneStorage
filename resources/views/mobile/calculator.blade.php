@@ -154,9 +154,6 @@
         font-weight: 600;
     }
 
-    .calculator-others-item-image {
-        width: 124px;
-    }
 
     .calculator-others-item-divider {
         margin-left: 25px;
@@ -174,14 +171,12 @@
 @section('content')
 <div class="relative block bg-white">
 
-    <div class="flex maintitle-wrapper-m color-primary text-center mx-auto w-max-content">
-        <span class="uppercase maintitle-left-m">one</span>
-        <div class="w-px maintitle-divider-m"></div>
+    <div class="flex maintitle-wrapper-m color-primary">
         <div class="relative maintitle-right-m">
             <div class="flex items-center">
                 <span>空間計算器</span>
             </div>
-            <div class="capitalize absolute bottom-0 left-0 maintitle-right-bottom-m">想知到需要幾大既倉? 幫緊你</div>
+            <div class="capitalize maintitle-right-bottom-m">想知到需要幾大既倉? 幫緊你</div>
         </div>
     </div>
 
@@ -208,7 +203,7 @@
                 <div class="room-card-title text-center mb-2">小型倉</div>
             </div>
             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
+                <button value="S" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
             </div>
         </div>
         <div class="flex-shrink-0 relative max-w-md rounded overflow-hidden shadow-lg room-card-wrapper-m store-select mx-3 active" id="m-store">
@@ -217,7 +212,7 @@
                 <div class="room-card-title text-center mb-2">中型倉</div>
             </div>
             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
+                <button value="M" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
             </div>
         </div>
         <div class="flex-shrink-0 relative max-w-md rounded overflow-hidden shadow-lg room-card-wrapper-m store-select mx-3" id="l-store">
@@ -226,7 +221,7 @@
                 <div class="room-card-title text-center mb-2">大型倉</div>
             </div>
             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
+                <button value="L" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
             </div>
         </div>
         <div class="flex-shrink-0 relative max-w-md rounded overflow-hidden shadow-lg room-card-wrapper-m store-select mx-3" id="xl-store">
@@ -235,7 +230,7 @@
                 <div class="room-card-title text-center mb-2">特大倉</div>
             </div>
             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                <button class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
+                <button value="XL" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
             </div>
         </div>
     </div>
@@ -245,25 +240,20 @@
     </div>
 
     <div class="grid grid-cols-1 row-gap-1 pb-10">
-        <div class="flex p-6">
-            <img class="flex-shrink-0 calculator-others-item-image" src="{{ asset('images/calculator/Image 82@2x.png') }}" />
-            <p class="text-base font-weight-bolder color-primary px-5 leading-6">【搬屋冇煩惱】搬屋前一定要知嘅小貼士</p>
-        </div>
+        <?php
+        $latest_news = App\Blog::orderBy('created_at', 'desc')->take(3)->get();
+        $count = count($latest_news);
+        ?>
+        @foreach($latest_news as $index => $news)
+        <a class="flex p-6" href="{{url('/news/'.$news->id)}}">
+            <img class="h-28 w-28 flex-shrink-0" src="{{asset($news->thumbnail)}}"/>
+            <p class="text-base h-28 overflow-y-hidden font-weight-bolder color-primary px-5 leading-6"><?php echo nl2br($news->content) ?></p>
+        </a>
+        @if($index != $count - 1)
         <div class="calculator-others-item-divider"></div>
-        <div class="flex p-6">
-            <img class="flex-shrink-0 calculator-others-item-image" src="{{ asset('images/calculator/Intersection 39@2x.png') }}" />
-            <p class="text-base font-weight-bolder color-primary px-5 leading-6">政府派1萬蚊 點先最快收到錢？</p>
-        </div>
-        <div class="calculator-others-item-divider"></div>
-        <div class="flex p-6">
-            <img class="flex-shrink-0 calculator-others-item-image" src="{{ asset('images/calculator/Image 84@2x.png') }}" />
-            <p class="text-base font-weight-bolder color-primary px-5 leading-6">蝸居套房</p>
-        </div>
-        <div class="calculator-others-item-divider"></div>
-        <div class="flex p-6">
-            <img class="flex-shrink-0 calculator-others-item-image" src="{{ asset('images/calculator/Image 84@2x.png') }}" />
-            <p class="text-base font-weight-bolder color-primary px-5 leading-6">【迷你倉點揀好 - 2020年四大安全注意要點</p>
-        </div>
+        @endif
+        @endforeach
+        
     </div>
 
 </div>

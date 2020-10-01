@@ -177,9 +177,6 @@
     }
 
     main {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 375px;
         overflow-x: hidden;
         background-color: #F6F6F6;
         /* For Mobile Home Screen */
@@ -235,14 +232,24 @@
 @endsection
 
 @section('content')
-<div class="bg-white w-full pl-10 pr-px pt-10 relative bg-hero">
-    <p class="z-20 page-title leading-snug text-primary">
-        唔想屋企<span class="text-yellow">咁亂</span>?
-    </p>
-    <span class="z-10 page-title title-shadow">
-        搵One Storage 啦
-    </span>
-    <p class="page-desc pt-3">至尊迷你倉 ‧ One Choice ‧ One Storage</p>
+<div class="bg-white w-full pr-px pt-10 relative bg-hero mx-auto">
+    <div class="pl-10">
+        <p class="z-20 page-title leading-snug text-primary">
+            唔想屋企<span class="text-yellow">咁亂</span>?
+        </p>
+        <span class="z-10 page-title title-shadow">
+            搵One Storage 啦
+        </span>
+        <p class="page-desc pt-3">至尊迷你倉 ‧ One Choice ‧ One Storage</p>
+    </div>
+
+
+    <div class="mt-4 mx-4 robert-black text-primary text-center">
+        <span class="my-auto relative font_14 crown pb-8">唔知自己需要咩size ? 試下我地既空間計算器&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <br /><br />
+
+        <a href="{{url('/calc')}}" target="_blank" class="bg-yellow px-4 py-2 font_14 mx-auto rounded-lg">立即計算</a>
+    </div>
 </div>
 
 <form id="branchSearchForm" class="bg-primary px-4 py-5" method="get" action="{{url('/rentwarehouse')}}">
@@ -250,7 +257,7 @@
         <img src="<?php echo e(asset('images/ic_marker.png')); ?>" class="align-middle my-auto" />
         <input id="storeId" type="hidden" name="storeId" />
         <div class="w-5/12 inline-block relative">
-            <?php $locations = App\Store::groupBy('location')->select('location')->get(); ?>
+            <?php $locations = App\Store::getLocations(); ?>
             <select id="location-select" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
                 <option value="" selected disabled class="text-grey">地區</option>
                 @foreach($locations as $location)
@@ -277,23 +284,36 @@
     </button>
 </form>
 
-<form class="bg-primary px-5 pb-4" method="post" action="{{url('/enquiry')}}">
+<form id="discountForm" class="bg-primary px-5 pb-4" method="post" action="{{url('/enquiry')}}">
     @csrf
-    <input type="hidden" name="page" value="Front Page">
+    <input type="hidden" name="page" value="{{Helper::$SS_FROM_FRONT_PAGE1}}">
+    <input type="hidden" name="ajax" value="1">
     <p class="heading1 text-center mb-4">填妥簡單資料，立即領取5% off 獨家優惠</p>
     <div class="flex mb-4 w-full">
         <div class="flex w-1/2 input-group mr-2">
             <img class="form-control-icon" src="<?php echo e(asset('images/contactUs/icons8-account-50@2x.png')); ?>" alt="Mobile">
+            @if(Auth::check())
+            <input class="w-full form-control" type="text" placeholder="姓" name="firstName" value="{{Auth::user()->first_name}}" required>
+            @else
             <input class="w-full form-control" type="text" placeholder="姓" name="firstName" required>
+            @endif
         </div>
         <div class="w-1/2 flex input-group">
-            <input class="w-full form-control" style="padding-left:12px" type="text" placeholder="名" name="lastName" required>
+            @if(Auth::check())
+            <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" value="{{Auth::user()->last_name}}" type="text" placeholder="名" name="lastName" required>
+            @else
+            <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名" name="lastName" required>
+            @endif
         </div>
     </div>
 
     <div class="input-group mb-4">
         <img class="form-control-icon" src="<?php echo e(asset('images/contactUs/icons8-email-50@2x.png')); ?>" alt="Mobile">
-        <input class="form-control" type="text" placeholder="電子郵件" name="email">
+        @if(Auth::check())
+        <input class="form-control" type="email" placeholder="電子郵件" value="{{Auth::user()->email}}" name="email" required>
+        @else
+        <input class="form-control" type="email" placeholder="電子郵件" name="email" required>
+        @endif
     </div>
 
     <button class="button-primary w-full" type="submit">
@@ -319,13 +339,13 @@
 
     <span class="heading2 box-shadow">最新優惠</span>
 
-    <div class="grid grid-cols-1 my-10">
-        <img src="<?php echo e(asset('images/img_2_1.jpg')); ?>" />
-        <img src="<?php echo e(asset('images/img_2_2.jpg')); ?>" />
-        <img src="<?php echo e(asset('images/img_2_3.jpg')); ?>" />
-        <img src="<?php echo e(asset('images/img_2_4.jpg')); ?>" />
-        <img src="<?php echo e(asset('images/img_2_5.jpg')); ?>" />
-        <img src="<?php echo e(asset('images/img_2_6.jpg')); ?>" />
+    <div class="grid grid-cols-1 my-10 mx-auto">
+        <?php
+        $promotions = App\Blog::where('as_promotion', true)->where('state', true)->orderBy('column', 'asc')->get();
+        ?>
+        @foreach($promotions as $promotion)
+        <a href="{{url('/news/'.$promotion->id)}}"><img src="{{asset($promotion->promotion)}}" class="mx-auto" /></a>
+        @endforeach
     </div>
 </div>
 
@@ -436,10 +456,16 @@
 <div class="flex justify-between bg-primary py-3"></div>
 
 <div class="bg-yellow pb-12 text-center">
-    <p class="w-fullpy-6 px-10 py-14 text4 leading-5">
-        至尊迷你倉致力為每位客戶打造最安全及最可靠的倉存空間，實力雄厚，全屬自置物業。分店網絡積極不斷擴充，新蒲崗及火炭分店將於短期內正式投入服務。 特設多種大小不同呎碼獨立迷你倉，任君選擇。2.4米闊的走廊配以完善的裝置設備，完全符合消防指引。全天候高清保安監察及警報系統，智能保安進出系統，24小時自助式儲存，支援現金、EPS、支票、信用卡、轉數快及免息分期付費，優質的儲存環境及親切專業的客戶服務，用心為每位客戶提升生活空間質素，承傳尊貴享受典範。
-    </p>
-    <img src="<?php echo e(asset('images/img_camera.jpg')); ?>" class="yellow-shadow1" />
+    <div class="text-center py-14 leading-5">
+        <p class="font_33 mb-8">至尊迷你倉</p>
+        <p class="font_14 mx-20">
+            為金朝陽集團屬下業務(股票代號： 00878.HK)。<br />
+            分店遍佈港、九及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質的儲存環境及專業的服務。至尊迷你倉是亞洲迷你倉商會(SSAA及香港迷你倉總會會員(HKMSA)。
+
+        </p>
+    </div>
+
+    <img src="<?php echo e(asset('images/img_camera.jpg')); ?>" class="yellow-shadow1 object-fill w-full" />
     <div class="text-left px-4 py-3">
         <p class="heading2 text-center pb-6">迷你倉設施</p>
         <div class="grid grid-cols-1 row-gap-6 mb-8">
@@ -486,34 +512,31 @@
 
 <div class="bg-grey py-8 text-center">
     <span class="heading2 box-shadow1">常見問題</span>
-    <div class="text-left mt-12 px-15">
+    <div class="text-left mt-12 px-10">
         <div class="mb-8">
-            <div class="cursor-pointer home-problem-toggle-item">
-                <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="inline mr-4" />
-                <span class="text4">常見問題1</span>
+            <div class="flex cursor-pointer home-problem-toggle-item">
+                <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="mr-4" />
+                <span class="text4 my-auto">怎樣聯絡至尊迷你倉？</span>
             </div>
-            <div class="hidden py-5">content</div>
+            <div class="hidden px-8 pt-4 leading-normal">可致電：2111 2636、電郵：cs@onestorage.com.hk或Whatapp: 51188503</div>
         </div>
+
         <div class="mb-8">
-            <div class="cursor-pointer home-problem-toggle-item">
-                <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="inline mr-4" />
-                <span class="text4">常見問題1</span>
+            <div class="flex cursor-pointer home-problem-toggle-item">
+                <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="mr-4" />
+                <span class="text4 my-auto">至尊迷你倉分店位於那裡？</span>
             </div>
-            <div class="hidden py-5">content</div>
+            <div class="hidden px-8 pt-4 leading-normal">我們分店遍佈港、九及新界，詳情可查閱分店位置。</div>
         </div>
+
         <div class="mb-8">
-            <div class="cursor-pointer home-problem-toggle-item">
-                <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="inline mr-4" />
-                <span class="text4">常見問題1</span>
+            <div class="flex cursor-pointer home-problem-toggle-item">
+                <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="mr-4" />
+                <span class="text4 my-auto">可以預約實地參觀迷你倉嗎？</span>
             </div>
-            <div class="hidden py-5">content</div>
-        </div>
-        <div class="mb-8">
-            <div class="cursor-pointer home-problem-toggle-item">
-                <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="inline mr-4" />
-                <span class="text4">常見問題1</span>
+            <div class="hidden px-8 pt-4 leading-normal">
+                <p>歡迎致電21112636或whatsapp 51188503預約參觀。星期日及公眾假期，需至少於 1 天前預約。</p>
             </div>
-            <div class="hidden py-5">content</div>
         </div>
     </div>
 
@@ -523,7 +546,7 @@
 
     <form class="form-enquiry" method="post" action="{{url('/enquiry')}}">
         @csrf
-        <input type="hidden" name="page" value="Front Page">
+        <input type="hidden" name="page" value="{{Helper::$SS_FROM_FRONT_PAGE2}}">
         <p class="text2 mb-8">給我們留言</p>
         <div class="flex mb-4 w-full">
             <div class="flex w-1/2 input-group">
@@ -537,7 +560,12 @@
 
         <div class="input-group mb-4">
             <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-            <input class="form-control" type="text" placeholder="" name="phoneNumber">
+            <input class="form-control" type="text" placeholder="電話號碼" name="phoneNumber">
+        </div>
+
+        <div class="input-group mb-8">
+            <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">
+            <input class="form-control" type="email" placeholder="電子郵件" name="email" required>
         </div>
 
         <div class="w-full inline-block relative mb-6">
@@ -558,10 +586,10 @@
 
         <div class="w-full inline-block relative mb-6">
             <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" style="color:#76838f" name="question">
-                <option value="" selected disabled>查詢問題</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
+                <option value="" selected>查詢問題</option>
+                <option value="請問那裡有分店？">請問那裡有分店？</option>
+                <option value="我要預約參觀？">我要預約參觀？</option>
+                <option value="請問尺寸及價錢如何？">請問尺寸及價錢如何？</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -569,7 +597,7 @@
             </div>
         </div>
 
-        <textarea class="w-full border placeholder-gray-400 px-3 py-2 border-gray-200 mb-6" style="padding-left:16px;color:#76838f" type="text" placeholder="你的信息" rows="3" name="message"></textarea>
+        <textarea class="w-full border placeholder-gray-600 px-3 py-2 border-gray-200 mb-6" style="padding-left:16px;color:#76838f" type="text" placeholder="你的信息" rows="3" name="message"></textarea>
 
         <button class="submit-btn hover:bg-purple-400">
             送出
@@ -589,7 +617,7 @@
 <script>
     $(function() {
         OneStorage.Home();
-        
+
         $('.horizon-prev').click(function(event) {
             event.preventDefault();
             const cItem = $(".internal").length;
@@ -646,7 +674,7 @@
             }, "fast");
         });
 
-        
+
     });
 </script>
 @endsection

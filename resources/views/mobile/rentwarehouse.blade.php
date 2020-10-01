@@ -145,7 +145,7 @@
     main {
         margin-left: auto;
         margin-right: auto;
-        max-width: 375px;
+        /* max-width: 375px; */
         overflow-x: hidden;
     }
 
@@ -388,6 +388,14 @@
         z-index: 50 !important;
         /* max-width:375px; */
     }
+
+    .store-image.active {
+        display: block;
+    }
+
+    .store-image {
+        display: none;
+    }
 </style>
 <link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}" />
 @endsection
@@ -401,27 +409,42 @@
 <div class="pb-4">
     <div class="relative items-center">
 
-        <img class="w-full" src="{{asset('images/Intersection 11@2x.png')}}" />
+        <?php
+        $storeImages = $store->storeImages()->where('is_used', true)->get();
+        $count = count($storeImages);
+        ?>
 
+        <div id="rentwarehouse-main-image" class="w-full">
+            @if($store->video_link)
+            <iframe class="w-full h-full store-image" src="{{$store->video_link}}"></iframe>
+            @endif
+            @foreach($storeImages as $image)
+            <img src="{{asset($image->image)}}" class="object-fill w-full h-full store-image" />
+            @endforeach
+
+        </div>
+
+        @if($count)
         <div class="absolute flex w-full h-full left-0 top-0 items-center">
             <p class="flex justify-between p-2 z-10 w-full">
                 <i class="flex icon wb-dropleft position-absolute left-0 rounded-full cursor-pointer bg-gray-600 text-white"></i>
                 <i class="flex icon wb-dropright position-absolute right-0 rounded-full cursor-pointer bg-gray-600 text-white"></i>
             </p>
         </div>
-
+        @endif
     </div>
 
     <p class="text1-m pt-8 pb-2 pl-4">
         詳細資料
     </p>
     <p class="text0-m py-4 px-4 leading-normal">
-        設備完善，提取簡便，環境清潔，光線充足，安全可靠。<br />
+        <!-- 設備完善，提取簡便，環境清潔，光線充足，安全可靠。<br />
         優質服務 優惠價格，適合儲存大小貨物及辦公室物品、生財工具、家居雜物、收藏精品、季節性服飾、健身器材及單車等等。<br />
-        多種面積，適合任何人仕使用。
+        多種面積，適合任何人仕使用。 -->
+        <?php echo nl2br($store->detail) ?>
     </p>
-    <div class="mx-1 fixed bottom-0 flex justify-start z-10 w-full" style="margin-bottom: 5px">
-        <div class="bg-white shadow-lg py-1 px-3" style="width: 367px;">
+    <div class="fixed bottom-0 flex justify-start z-10 w-full" style="margin-bottom: 5px; max-width: 600px">
+        <div class="bg-white shadow-lg py-1 px-3 w-full">
             <div class="rentwarehouse-toggle-item py-2 cursor-pointer text-center"><i class="icon wb-chevron-down"></i></div>
             <div>
                 <p class="color-primary rentwarehouse-space-size-title-m pt-0 pb-4">你需要多大的空間?</p>
@@ -432,7 +455,7 @@
                 </div>
 
                 <div class="flex pt-4">
-                    <p class="rentwarehouse-size-select-description-m my-auto">唔知自己需要咩size ? 試下我地既<a href="{{url('/calc')}}">空間計算器</a></p>
+                    <a target="_blank" href="{{url('/calc')}}" class="rentwarehouse-size-select-description-m my-auto">唔知自己需要咩size ? 試下我地既空間計算器</a>
                     <img class="object-none box-content pl-1 -mt-1" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
                 </div>
 
@@ -484,7 +507,7 @@
     </div>
 
     <div class="flex rentwarehouse-toggle-item selection-none cursor-pointer mb-1 pt-5 pl-5">
-        <span class="rentwarehouse-toggle-item-icon text-white px-1 py-1"><i class="icon wb-chevron-up"></i></span>
+        <span class="rentwarehouse-toggle-item-icon text-white px-1 py-1"><i class="icon wb-chevron-down"></i></span>
         <span class="text1 my-auto self-center pl-2">租用面積</span>
     </div>
 
@@ -494,7 +517,7 @@
             <p class="w-max-content text0-m px-4 py-1">
                 可放換季衣服, 兒童物件及玩具,書本
             </p>
-            <p class="w-max-content text0-m mb-10 px-4">
+            <p class="w-max-content text0-m mb-4 px-4">
                 參照圖片:
             </p>
         </div>
@@ -524,52 +547,50 @@
     <div class="horz-line my-4"></div>
 
     <div class="flex mb-1 rentwarehouse-toggle-item selection-none cursor-pointer pt-1 pl-5">
-        <span class="rentwarehouse-toggle-item-icon text-white px-1 py-1"><i class="icon wb-chevron-up"></i></span>
+        <span class="rentwarehouse-toggle-item-icon text-white px-1 py-1"><i class="icon wb-chevron-down"></i></span>
         <span class="text1 my-auto self-center pl-2 rentwarehouse-content-title-1">地址</span>
     </div>
     <div class="pt-6">
         <p class="text-sm color-primary px-4">地址: {{$store->address}}</p>
         <div class="px-4">
             <p class="text-sm color-deep pt-8 py-2 rentwarehouse-content-title-1">開放時間</p>
-            <p class="text-sm color-primary py-1">全年24小時開放。</p>
-            <p class="text-sm color-deep pt-8 py-2 rentwarehouse-content-title-1">辦公時間</p>
-            <p class="text-sm color-primary py-1">週一至週五，早上10時至晚上7時。</p>
-            <p class="text-sm color-primary py-1">週六，早上10時至晚上5時。</p>
-            <p class="text-sm color-primary py-1">星期日及假期，需於 1 天前預約參觀。</p>
-            <img class="rentware-middle-image px-1 pt-3" src="{{ asset('images/Image 7@2x.png') }}" />
+            <p class="text-sm color-primary py-1">
+                <!-- 全年24小時開放。 -->
+                <?php echo nl2br($store->opening_hours) ?>
+            </p>
+            <p class="text-sm color-deep pt-8 py-2 rentwarehouse-content-title-1">參觀及繳費時間：敬請致電該分店預約或按右面</p>
+            <p class="text-sm color-primary py-1">
+                <!-- 週一至週五，早上10時至晚上7時。 -->
+                <?php echo nl2br($store->text_above_addr) ?>
+            </p>
+
+            <!-- <img class="rentware-middle-image px-1 pt-3" src="{{ asset('images/Image 7@2x.png') }}" /> -->
+
+            <div id="map" class="w-full">
+                <p class="text-center my-10 state-text">Loading...</p>
+            </div>
 
             <p class="text-sm color-deep pt-8 py-2 rentwarehouse-content-title-1">交通:</p>
-            <p class="text-sm color-primary py-1">地鐵: 黃竹坑 (B 出口)</p>
-            <p class="text-sm color-primary py-1">巴士線: 170, 171, 37B, 671, 69, 70, 973</p>
-            <p class="text-sm color-primary py-1">小巴線: 4A, 4B, 4C, 4M, 29, 29A, 36X, 59A, 59B, 69</p>
+            <p class="text-sm color-primary py-1"><?php echo nl2br($store->text_below_addr) ?></p>
         </div>
     </div>
 
     <div class="horz-line my-4"></div>
 
     <div class="flex mb-1 rentwarehouse-toggle-item selection-none cursor-pointer pt-1 pl-5">
-        <span class="rentwarehouse-toggle-item-icon text-white px-1 py-1"><i class="icon wb-chevron-up"></i></span>
+        <span class="rentwarehouse-toggle-item-icon text-white px-1 py-1"><i class="icon wb-chevron-down"></i></span>
         <span class="text1 my-auto self-center pl-2 rentwarehouse-content-title-1">最新優惠</span>
     </div>
     <div class="pl-5 pr-4 pt-6">
-        <p class="text-sm color-primary">黃竹坑新店快閃優惠　低至6折優惠</p>
-        <img class="px-1 mt-10 mb-10" src="{{ asset('images/Image 8@2x.png') }}" />
+        <!-- <p class="text-sm color-primary">黃竹坑新店快閃優惠　低至6折優惠</p>
+        <img class="px-1 mt-10 mb-10" src="{{ asset('images/Image 8@2x.png') }}" /> -->
+        @foreach($store->offerImages()->where('is_used', true)->get() as $image)
+        @if($image->is_used)
+        <img class="pr-20 my-4" src="{{asset('images/offers/'.$image->image)}}" />
+        @endif
+        @endforeach
 
-        <p class="text-sm color-deep py-1 leading-normal">黃竹坑新店快閃優惠　低至6折優惠</p>
-        <p class="text-sm color-deep py-1 leading-normal">震撼筍價HK$300起即可入手</p><br />
-        <p class="text-sm color-deep py-1 leading-normal">黃竹坑分店全新開業，推出快閃驚喜優惠！顧客可享低至6折優惠，以震撼筍價HK$300起即可入手！你仲唔快啲黎搵我哋！！</p>
-        <p class="text-sm color-deep py-1 leading-normal">*詳情請向職員查詢</p><br />
-        <p class="text-sm color-deep py-1 leading-normal">地址：黃竹坑道18號瑞琪工業大廈14樓A室</p>
-        <p class="text-sm color-deep py-1 leading-normal">=========================</p>
-        <p class="text-sm color-deep py-1 leading-normal">立即租倉</p>
-        <p class="text-sm color-deep py-1 leading-normal">客戶專線：2111-2636</p>
-        <p class="text-sm color-deep py-1 leading-normal">WhatsApp：https://bit.ly/2XWPFdJ</p>
-        <p class="text-sm color-deep py-1 leading-normal">網頁：https://bit.ly/2B2Raxy</p>
-        <p class="text-sm color-deep py-1 leading-normal">全港18間分店任你揀，預繳優惠低至$307，仲有免息分期添</p>
-        <p class="text-sm color-deep py-1 leading-normal">熱門地點：</p>
-        <p class="text-sm color-deep py-1 leading-normal">#柴灣｜#小西灣｜#黃竹坑｜#新蒲崗｜#葵涌｜#葵興｜#葵芳｜#荃灣｜#青衣｜#火炭｜#屯門</p>
-        <p class="text-sm color-deep py-1 leading-normal">#至尊迷你倉 #onestorage #迷你倉 #黃竹坑 #隆重開幕 #符合消防最新指引</p>
-
+        <p class="text-sm color-deep py-1 leading-normal"><?php echo nl2br($store->latest_offer) ?></p>
     </div>
 
     <div class="horz-line my-4"></div>
@@ -578,44 +599,62 @@
         <span class="rentwarehouse-toggle-item-icon text-white px-1 py-1"><i class="icon wb-chevron-up"></i></span>
         <span class="text1 my-auto self-center pl-2 rentwarehouse-content-title-1">服務設施</span>
     </div>
-    <div class="pt-2">
+    <div class="pt-2 hidden">
         <div class="grid grid-cols-1 row-gap-6 py-2 pl-8 text-center">
+            @if($store->serviceState(0))
             <div class="flex">
                 <img src="{{asset('images/ic_key_card.png')}}" class="mr-2 object-none" />
                 <p class="text0 my-auto"><span class="font-bold">7 x 24</span>智能保安進出系統</p>
             </div>
+            @endif
+            @if($store->serviceState(1))
             <div class="flex">
                 <img src="{{asset('images/ic_air_con.png')}}" class="mr-2 object-none" />
-                <p class="text1 my-auto">無間斷恆溫空調</p>
+                <p class="text0 my-auto">無間斷恆溫空調</p>
             </div>
+            @endif
+            @if($store->serviceState(2))
             <div class="flex">
                 <img src="{{asset('images/ic_fire.png')}}" class="mr-2 object-none" />
                 <p class="text0 my-auto">消防裝置設備</p>
             </div>
+            @endif
+            @if($store->serviceState(3))
             <div class="flex">
                 <img src="{{asset('images/ic_delivery.png')}}" class="mr-2 object-none" />
                 <p class="text0 my-auto">鋁梯及手推車借用服務</p>
             </div>
+            @endif
+            @if($store->serviceState(4))
             <div class="flex">
                 <img src="{{asset('images/ic_water.png')}}" class="mr-2 object-none" />
                 <p class="text0 my-auto">自助飲用水機</p>
             </div>
+            @endif
+            @if($store->serviceState(5))
             <div class="flex">
                 <img src="{{asset('images/ic_sec_cam.png')}}" class="mr-2 object-none" />
                 <p class="text0 my-auto">全天候高清保安監察及警報系統</p>
             </div>
+            @endif
+            @if($store->serviceState(6))
             <div class="flex">
                 <img src="{{asset('images/ic_24_hours.png')}}" class="mr-2 object-none" />
-                <p class="text0">24小時電話熱線服務</p>
+                <p class="text0 my-auto">24小時電話熱線服務</p>
             </div>
+            @endif
+            @if($store->serviceState(7))
             <div class="flex">
                 <img src="{{asset('images/ic_wifi.png')}}" class="mr-2 object-none" />
                 <p class="text0 my-auto">免費Wi-Fi</p>
             </div>
+            @endif
+            @if($store->serviceState(8))
             <div class="flex">
                 <img class="mr-2 object-none" src="{{ asset('images/icons8-secured-letter-40@2x.png') }}" />
-                <p class="text-sm color-primary">信箱服務</p>
+                <p class="text0 my-auto color-primary">信箱服務</p>
             </div>
+            @endif
         </div>
 
 
@@ -627,12 +666,11 @@
         <span class="rentwarehouse-toggle-item-icon text-white px-1 py-1"><i class="icon wb-chevron-up"></i></span>
         <span class="text1 my-auto self-center pl-2 rentwarehouse-content-title-1">附近設施</span>
     </div>
-    <div class="pt-2">
+    <div class="pt-2 hidden">
         <div class="grid grid-cols-1 row-gap-6 py-2 px-12">
-            <p class="text-sm color-deep">香葉道休憩處</p>
-            <p class="text-sm color-deep">南朗山道熟食市場</p>
-            <p class="text-sm color-deep">香港仔警署</p>
-            <p class="text-sm color-deep">香港仔網球及壁球中心網球場</p>
+            @foreach($store->getNearbyFacilities() as $area)
+            <p class="text-sm color-deep">{{$area}}</p>
+            @endforeach
         </div>
 
     </div>
@@ -641,38 +679,66 @@
 
     <div class="flex mb-1 rentwarehouse-toggle-item selection-none cursor-pointer pt-1 pl-5">
         <span class="rentwarehouse-toggle-item-icon text-white px-1 py-1"><i class="icon wb-chevron-up"></i></span>
-        <span class="text1 my-auto self-center pl-2 rentwarehouse-content-title-1">附近設施</span>
+        <span class="text1 my-auto self-center pl-2 rentwarehouse-content-title-1">常見問題</span>
     </div>
 
-    <div class="pl-11 pt-2 pb-8">
-        <p class="text-sm color-deep py-1">- 問題?</p>
-        <p class="text-sm color-deep py-1">- 答案。</p>
+    <div class="pl-11 pt-2 pb-8 hidden">
+        @foreach($store->questions as $question)
+        <p class="text-sm color-deep py-1">- {{$question->question}}</p>
+        <p class="text-sm color-deep py-1"><?php echo nl2br($question->answer) ?></p>
+        @endforeach
     </div>
 
 </div>
+<?php
+$user = Auth::user();
+?>
+<div id="confirmModal" class="z-50 modal">
+    <div class="modal-content">
+        <div class="text-center p-8">
+            <p class="font_25 mb-8">多謝你的查詢</p>
+            <p class="font_16 leading-normal">
+                我們的客戶服務專員，<br />
+                將會盡快與你聯絡。<br />
+                立刻註冊成為會員可享更多優惠
+            </p>
 
-<div id="bookingModal" class="modal" style="z-index:1000;">
+            <div class="flex justify-between mt-8">
+                <a href="{{url('/register')}}" class="submit-btn hover:bg-purple-400 mr-4" id="confirmBtn">
+                    註冊
+                </a>
+                <button class="cancel-btn ml-4" type="button" id="cancelBtn">
+                    離開
+                </button>
+            </div>
+        </div>
 
+    </div>
+</div>
+
+<div id="bookingModal" class="z-50 modal">
     <div class="modal-content">
 
         <span class="close" id="modalClose">&times;</span>
 
         <div class=" bg-white w-80 mx-auto mt-2 mb-8 pt-2">
 
-            <p class="text-center pt-4 pb-2 font-bold" style="font-size: 21px;">立即申請 </p>
+            <p class="text-center pt-4 mb-6 font-bold" style="font-size: 21px;">查詢/預約</p>
 
-            <form class="px-8 pt-3" method="post" action="{{url('/enquiry')}}">
+            <form class="px-8 pt-3" id="bookingForm" method="post" action="{{url('/enquiry')}}">
                 @csrf
                 <input type="hidden" name="page" value="{{$store->branch}}" required>
                 <input type="hidden" name="branchName" value="{{$store->branch}}" required>
                 <input type="hidden" name="branchSize" id="branchSize" required>
+                <input type="hidden" name="price" id="storePrice" required>
+                <input type="hidden" name="ajax" value="1" type="number">
 
                 <p class=" font-bold mb-3" style="font-size: 25px;">{{$store->branch}} </p>
 
                 <p class=" font-bold mb-3" style="font-size: 20px;"><span style="font-size: 25px" id="branchSizeTxt">12</span>平方呎 </p>
 
-                <div role="alert" class="mb-3">
-                    <div class=" text-center font-bold rounded-t px-4 py-2 mr-4 ml-4" style="font-size: 25px; background-color: #E0CBF6; color:#56628C">
+                <div role="alert" class="mb-2">
+                    <div id="payment-method" class="text-center font-bold rounded-t px-4 py-2 mr-4 ml-4" style="font-size: 25px; background-color: #E0CBF6; color:#56628C">
                         月費
                     </div>
                     <div class="border border-t-0 rounded-b px-4 py-3 text-center mr-4 ml-4">
@@ -680,13 +746,23 @@
                     </div>
                 </div>
 
+                <p class="text-center text-grey mb-6">此價格只供參考</p>
+
                 <div class="flex mb-4 w-full pt-6 border-t">
                     <div class="flex w-1/2 input-group">
                         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">
+                        @if(Auth::check())
+                        <input class="w-full form-control" type="text" placeholder="姓" value="{{$user->first_name}}" name="firstName" required>
+                        @else
                         <input class="w-full form-control" type="text" placeholder="姓" name="firstName" required>
+                        @endif
                     </div>
                     <div class="w-1/2 flex input-group">
+                        @if(Auth::check())
+                        <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名" value="{{$user->last_name}}" name="lastName" required>
+                        @else
                         <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名" name="lastName" required>
+                        @endif
 
                     </div>
                 </div>
@@ -694,15 +770,20 @@
 
                 <div class="input-group mb-3">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
+                    @if(Auth::check())
+                    <input class="form-control" type="text" placeholder="電話號碼" value="{{$user->email}}" name="email">
+                    @else
                     <input class="form-control" type="text" placeholder="電話號碼" name="email">
+                    @endif
                 </div>
 
                 <div class="w-full inline-block relative mb-4">
-                    <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="question">
+                    <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="question" id="question-selector">
                         <option value="" selected>查詢問題</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        <option value="我想預約參觀。">我想預約參觀。</option>
+                        <option value="我想預留迷你倉。">我想預留迷你倉。</option>
+                        <option value="我想續約/或繳款。">我想續約/或繳款。</option>
+                        <option value="其他">其他</option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                         <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -710,9 +791,8 @@
                     </div>
                 </div>
 
-                <div class="w-full inline-block relative pb-3 border-b">
+                <div class="w-full pb-3 border-b hidden" id="message-wrapper">
                     <textarea class="w-full border placeholder-gray-600 px-3 py-2 border-gray-200" style="padding: 16px 8px 16px 16px;color:#76838f" type="text" placeholder="你的信息" rows="1" name="message"></textarea>
-
                 </div>
 
                 <div class=" w-full mt-3 md:flex md:items-center mb-4">
@@ -753,10 +833,44 @@
 
 @section('scripts')
 <script>
+    const imgFrame = $("#rentwarehouse-main-image");
+    const firstImg = $(".store-image").first();
+    firstImg.addClass("active");
+    if (imgFrame.children().length) {
+        imgFrame.height(imgFrame.width());
+    }
+
+    function init() {
+        $(function() {
+            OneStorage.RentwareHouse('<?= $store ? $store->address : '' ?>');
+        });
+    }
+
+
     $(function() {
-        OneStorage.RentwareHouse();
+
+        $(".wb-dropleft").click(function() {
+            const curImg = $(".store-image.active");
+            var prevImg = curImg.prev(".store-image");
+            if (prevImg.length == 0) {
+                prevImg = $(".store-image").last();
+            }
+            curImg.removeClass("active");
+            prevImg.addClass("active");
+        })
+
+        $(".wb-dropright").click(function() {
+            const curImg = $(".store-image.active");
+            var nextImg = curImg.next(".store-image");
+            if (nextImg.length == 0) {
+                nextImg = $(".store-image").first();
+            }
+            curImg.removeClass("active");
+            nextImg.addClass("active");
+        })
     });
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuF23f8P4mybfOUR2lbLynVZqSI77xn4Q&libraries=places&callback=init"></script>
 @endsection
 
 @section('footer')

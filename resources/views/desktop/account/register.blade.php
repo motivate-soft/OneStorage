@@ -202,11 +202,11 @@
                             <p class="radio-title w-4/6">是否One Storage 現有客戶 ? </p>
 
                             <div class="radio-custom w-1/6">
-                                <input type="radio" id="storageyesunchecked" class="radio-gray" value="true" name="isCustomer">
+                                <input type="radio" id="storageyesunchecked" class="radio-gray" value="1" name="isCustomer">
                                 <label for="storageyesunchecked" class="radio-label">是</label>
                             </div>
                             <div class="radio-custom w-1/6">
-                                <input type="radio" id="storagenochecked" class="radio-gray" value="false" name="isCustomer">
+                                <input type="radio" id="storagenochecked" class="radio-gray" value="0" name="isCustomer">
                                 <label for="storagenochecked" class="radio-label">否</label>
                             </div>
                         </div>
@@ -235,11 +235,11 @@
                             <p class="radio-title w-4/6">是否SoundWill Club 會員 ? </p>
 
                             <div class=" radio-custom w-1/6">
-                                <input type="radio" id="clubyesunchecked" class="radio-gray" value="false" name="isMember">
+                                <input type="radio" id="clubyesunchecked" class="radio-gray" value="1" name="isMember">
                                 <label for="clubyesunchecked" class="radio-label">是</label>
                             </div>
                             <div class=" radio-custom w-1/6">
-                                <input type="radio" id="clubnochecked" class="radio-gray" value="true" name="isMember">
+                                <input type="radio" id="clubnochecked" class="radio-gray" value="0" name="isMember">
                                 <label for="clubnochecked" class="radio-label">否</label>
                             </div>
                         </div>
@@ -276,24 +276,6 @@
 <script>
     $(function() {
         OneStorage.Register();
-        $("#registerForm").submit(function(e) {
-            $(".error-msg").hide();
-            e.preventDefault();
-            $.ajax({
-                url: $(this).attr('action'),
-                type: $(this).attr('method'),
-                data: $(this).serialize(),
-                datatype: 'json',
-                success: function(result) {
-                    window.location.href = "{{url('/login')}}";
-                },
-                error:function(error){
-                    if (error.responseJSON.type == "duplication") {
-                        $("#" + error.responseJSON.key + "DuplicateMsg").show();
-                    }
-                }
-            });
-        })
     })
 </script>
 @endsection

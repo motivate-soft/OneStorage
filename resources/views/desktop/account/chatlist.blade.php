@@ -71,7 +71,6 @@
                         <div class="flex justify-between">
                             <span class="leading-none pt-2 font_19 regular-color relative {{$unreadCnt ? 'has-new-msg' : ''}}">
                                 Admin - {{$thread->participantsString(Auth::id(), ['first_name'])}}
-
                             </span>
                             <p class="text-right pt-2 font_14 robert-regular">{{$thread->latestMessage->created_at->format('d-M-Y')}}</p>
                         </div>

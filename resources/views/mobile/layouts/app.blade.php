@@ -29,6 +29,13 @@
 
 
     <style>
+        .crown::after {
+            content: url("../images/header/icons8-crown-48.png");
+            right: -10px;
+            margin-top: -15px;
+            position: absolute;
+        }
+
         .default-color:active {
             color: #C293FC;
         }
@@ -41,7 +48,7 @@
         .app-container {
             margin-left: auto;
             margin-right: auto;
-            max-width: 375px;
+            max-width: 600px;
             overflow-x: hidden
         }
 
@@ -60,7 +67,7 @@
             font-weight: 600;
         }
 
-        .panel {
+        .panel, .footer-panel {
             /* padding: 0 18px; */
             /* background-color: white; */
             max-height: 0;
@@ -106,7 +113,7 @@
     @yield('styles')
 </head>
 
-<body class="bg-gray-50 h-screen antialiased leading-none" ondragstart="return false;" ondrop="return false;">
+<body class="bg-white h-screen antialiased leading-none" ondragstart="return false;" ondrop="return false;">
 
     @yield('accessory')
     <!-- back to top floating button -->
@@ -124,13 +131,13 @@
         @yield('footer')
     </div>
 
-    
+
 
     <script src="{{ asset('js/accessory.js') }}"></script>
     <script src="{{ asset('js/onestorage.js') }}"></script>
 
     @yield('scripts')
-    
+
     <script>
         //Javascript to toggle the menu
         document.getElementById('nav-toggle').onclick = function() {

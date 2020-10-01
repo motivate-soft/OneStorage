@@ -197,6 +197,7 @@ use App\AppConfig;
     <form id="discountForm" class="flex justify-between mt-6 pr-10 pb-4 mx-auto w-3/5" method="post" action="{{url('/enquiry')}}">
         @csrf
         <input type="hidden" name="page" value="{{Helper::$SS_FROM_FRONT_PAGE1}}">
+        <input type="hidden" name="ajax" value="1">
         <div class="flex w-4/5">
             <div class="flex w-1/2 input-group mr-2">
                 <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">
@@ -510,34 +511,6 @@ use App\AppConfig;
 <script>
     $(function() {
         OneStorage.Home();
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': '<?= csrf_token() ?>'
-            }
-        });
-
-        $("#discountForm").submit(function(e) {
-            e.preventDefault();
-            var form = $(this);
-            if (form.attr("state") === "sent") {
-                return;
-            }
-            var submitBtn = form.find("button");
-            $.ajax({
-                url: $(this).attr('action'),
-                type: $(this).attr('method'),
-                data: $(this).serialize(),
-                datatype: 'json',
-                success: function(result) {
-                    submitBtn.css("background-color", "#28e8db");
-                    submitBtn.text('請查看電郵');
-                    submitBtn.prop('disabled', true);
-                    form.find("input").prop('disabled', true);
-                    form.attr("state", "sent");
-                }
-            });
-        })
     });
 </script>
 @endsection

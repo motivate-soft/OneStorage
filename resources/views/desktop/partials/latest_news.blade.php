@@ -1,5 +1,5 @@
 <?php
-$latest_news = App\Blog::orderBy('created_at', 'desc')->first();
+$latest_news = App\Blog::where('used_notify', true)->orderBy('created_at', 'desc')->first();
 ?>
 @if($latest_news)
 <div class="flex w-full justify-center" style="background-color: #8E96FF;">

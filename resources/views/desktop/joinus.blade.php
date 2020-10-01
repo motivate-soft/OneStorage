@@ -119,20 +119,7 @@
 @section('scripts')
 <script>
     $(function() {
-        $(".fileupload-btn").click(function() {
-            $(this).next().click();
-        })
-
-        $(".file-input").change(function() {
-            if (this.files && this.files[0]) {
-                if (this.files[0].size > 2 * 1024 * 1024) {
-                    alert("Max file size is 2M!");
-                    $(this).val('');
-                    return;
-                }
-            }
-            $(this).parent().parent().find(".file-name").text(this.files[0].name);
-        })
+        OneStorage.JoinUs();
     })
 </script>
 @endsection
