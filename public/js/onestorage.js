@@ -106,16 +106,15 @@ $(function () {
             const priceMin = 200;
             const priceMax = 2500;
             var priceRange = [priceMin, priceMax];
-            var map;
+            var map, infoWnd;
             var geocoder = new google.maps.Geocoder();
             var storesMarkers = [];
 
             initMap();
-            filter();
 
             function initMap() {
                 geocoder.geocode({
-                    'address': area
+                    'address': area ? area : '香港島'
                 }, function (results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
                         const location = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
@@ -130,10 +129,14 @@ $(function () {
                             zoomControl: true
                         });
 
+                        infoWnd = new google.maps.InfoWindow();
+
                         var pos = new google.maps.Marker({
                             position: location,
                             map: map
                         });
+
+                        filter();
                     } else {
                         console.log("Geocode was not successful for the following reason: " + status);
                         $(".state-text").text("Geocode was not successful for the following reason: " + status);
@@ -141,21 +144,34 @@ $(function () {
                 });
             }
 
-            function addStoreMarker(address) {
-                geocoder.geocode({
-                    'address': address
-                }, function (results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        const location = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
-                        var marker = new google.maps.Marker({
-                            position: location,
-                            map: map
-                        });
-                        storesMarkers.push(marker);
-                    } else {
-                        console.log("Geocode was not successful for the following reason: " + status);
-                    }
+            function addStoreMarker(data) {
+                if (data.lat == 0 || data.lng == 0) {
+                    return;
+                }
+                const location = new google.maps.LatLng(data.lat, data.lng);
+
+                var pinImage = new google.maps.MarkerImage("/images/ic_marker.png",
+                    new google.maps.Size(33, 33),
+                    new google.maps.Point(0, 0),
+                    new google.maps.Point(16, 6));
+
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map,
+                    icon: pinImage,
                 });
+
+                google.maps.event.addListener(marker, 'click', function () {
+                    var contentString = "<p>Name: " + "<span style='color:black'>" + data.name + "</span></p><p>Address: "
+                        + "<span style='color:black'>" + data.address + "</span></p><p>Price: "
+                        + "<span style='color:black'>$" + data.price + " 起</span></p>";
+
+                    // Replace our Info Window's content and position 
+                    infoWnd.setContent(contentString);
+                    infoWnd.setPosition(marker.position);
+                    infoWnd.open(map)
+                });
+                storesMarkers.push(marker);
             }
 
             function clearMakers() {
@@ -180,14 +196,23 @@ $(function () {
                 $(".location-content-item").each(function () {
                     $(this).hide();
                     const label = JSON.parse($(this).attr('data-size-label'));
+                    const name = $(this).attr("data-name");
                     const price = Number($(this).attr("data-price"));
-                    const address = $(this).find(".store-address").text();
+                    const addressWrapper = $(this).find(".store-address");
+                    const lat = Number(addressWrapper.attr("data-lat"));
+                    const lng = Number(addressWrapper.attr("data-lng"));
+
                     var flag = false;
                     $.each(sizeFilter, function (index, value) {
                         if (label.includes(value) && (price >= priceRange[0] && price <= priceRange[1])) {
                             flag = true;
-                            console.log(address);
-                            addStoreMarker(address);
+                            addStoreMarker({
+                                lat: lat,
+                                lng: lng,
+                                name: name,
+                                address: addressWrapper.text(),
+                                price: price
+                            });
                             return false;
                         }
                     })
@@ -265,7 +290,7 @@ $(function () {
     })();
 
     OneStorage.RentwareHouse = (function () {
-        return function (address) {
+        return function (lat, lng) {
             var branchSize;
             var confirmed = false;
             const bookingModal = document.getElementById("bookingModal");
@@ -274,30 +299,20 @@ $(function () {
             initMap();
 
             function initMap() {
-                var geocoder = new google.maps.Geocoder();
                 var map;
-                geocoder.geocode({
-                    'address': address
-                }, function (results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        const location = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
-                        $("#map").height(400);
-                        map = new google.maps.Map(document.getElementById('map'), {
-                            zoom: 18,
-                            center: location,
-                            disableDefaultUI: true,
-                            mapTypeId: google.maps.MapTypeId.ROADMAP,
-                            zoomControl: true
-                        });
+                const location = new google.maps.LatLng(lat, lng);
+                $("#map").height(400);
+                map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 18,
+                    center: location,
+                    disableDefaultUI: true,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    zoomControl: true
+                });
 
-                        var pos = new google.maps.Marker({
-                            position: location,
-                            map: map
-                        });
-                    } else {
-                        console.log("Geocode was not successful for the following reason: " + status);
-                        $(".state-text").text("Geocode was not successful for the following reason: " + status);
-                    }
+                var pos = new google.maps.Marker({
+                    position: location,
+                    map: map
                 });
             }
 
@@ -842,19 +857,72 @@ $(function () {
             window.location.href = '/branch-location?size=' + $(this).val();
         });
 
+        function makeDeepLink() {
+            var linkData = [];
+            $(".calculator-item-element-input").each(function () {
+                const value = Number($(this).val());
+                if (value == 0) {
+                    return true;
+                }
+                linkData.push({
+                    id: $(this).parent().attr("id"),
+                    value: value
+                })
+            })
+
+            const base64 = btoa(JSON.stringify(linkData));
+            const link = window.location.href + "?data=" + base64;
+            console.log(link);
+            return link;
+        }
+
+        $("#fbLink").click(function () {
+            makeDeepLink();
+        })
+
+        $("#mailLink").click(function () {
+            const link = makeDeepLink();
+            $.ajax({
+                url: '/calc/share',
+                type: 'GET',
+                data: {
+                    type: 'email',
+                    link: link
+                },
+                datatype: 'json',
+                success: function (result) {
+                    
+                }
+            });
+        })
+
+
+
         return function (_template) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlData = urlParams.get('data');
+            var preData = [];
+            if (urlData) {
+                try {
+                    preData = JSON.parse(atob(urlData));
+                } catch (e) {
+                    console.log("error");
+                }
+            }
+
             const menu = $("#category-menu");
             menu.html('');
             var index = 0;
+            var itemIndex = 0;
             itemsWrapper.html('');
             categories.forEach(category => {
                 const active = index == 0 ? 'active' : '';
                 menu.append('<div id="' + index + '" class="calculator-category-title color-primary cursor-pointer ' + active + '">' + category.name + '</div>');
 
                 var content = _template;
-                console.log(content);
                 category.items.forEach(item => {
-                    content += ('<div class="flex relative calculator-item-element">' +
+                    const id = "item" + (itemIndex++);
+                    content += ('<div class="flex relative calculator-item-element" id="' + id + '">' +
                         '<span class="calculator-item-element-title color-primary absolute bottom-0 left-0">' + item.name + '</span>' +
                         '<input type="number" class="calculator-item-element-input absolute bottom-0 right-0" min=0 max=20 size=' + item.size + ' />' +
                         '</div>');
@@ -866,6 +934,12 @@ $(function () {
                 index++;
             });
             $(".calculator-category-title:first").click();
+
+            for (var i = 0; i < preData.length; i++) {
+                $("#" + preData[i].id).find("input").val(preData[i].value);
+            }
+
+            selectStore();
         }
     })();
 

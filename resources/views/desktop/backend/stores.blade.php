@@ -284,12 +284,21 @@
                         地址
                     </p>
                     <div class="px-2">
-                        <div class="flex mb-4">
+                        <div class="flex">
                             <span class="w-1/3 mt-1">
                                 For google map
                             </span>
+
                             <input placeholder="" class="form-input" name="address" value="{{$selected_store ? $selected_store->address : ''}}" type="text" required>
                         </div>
+
+                        <p class="state-text my-2 text-center font_14"></p>
+
+                        <div class="flex mb-4">
+                            <input placeholder="Latitude" class="form-input mr-10" name="lat" value="{{$selected_store ? $selected_store->lat : ''}}" type="number" step="0.0000001" required>
+                            <input placeholder="Longitude" class="form-input" name="lng" value="{{$selected_store ? $selected_store->lng : ''}}" type="number" step="0.0000001" required>
+                        </div>
+
                         <div class="flex mb-4">
                             <span class="w-1/3 mt-1">
                                 Text above map
@@ -343,7 +352,7 @@
                         圖片
                     </p>
                     <div class="image-uploader grid grid-cols-3 row-gap-2 col-gap-2 mb-4">
-                        
+
                         <input type="hidden" name="delete-storeImages" class="initial delete-images" value="" />
                         <input type="hidden" name="active-storeImages" class="active-images" value="{{$selected_store ? $selected_store->activeStoreImages() : ''}}" />
                         @if($selected_store)
@@ -397,10 +406,13 @@
             window.location.href = branch;
         })
 
-        $('input').on('keyup keypress', function(e) {
+        $('input').on('keypress', function(e) {
             var keyCode = e.keyCode || e.which;
             if (keyCode === 13) {
                 e.preventDefault();
+                if($(this).attr("name") === "address"){
+                    getLocation($(this).val());
+                }
                 return false;
             }
         });
@@ -510,5 +522,31 @@
             selImageInput.val(JSON.stringify(value));
         })
     })
+
+    $("input[name='address']").on("change", function() {
+        getLocation($(this).val());
+    })
+
+    function getLocation(address) {
+        if(address == ''){
+            return;
+        }
+        var geocoder = new google.maps.Geocoder();
+        $(".state-text").text("Loading..." + status);
+        geocoder.geocode({
+            'address': address
+        }, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                $(".state-text").text("");
+                $("input[name='lat']").val(results[0].geometry.location.lat());
+                $("input[name='lng']").val(results[0].geometry.location.lng());
+            } else {
+                console.log("Geocode was not successful for the following reason: " + status);
+                $(".state-text").text("Geocode was not successful for the following reason: " + status);
+            }
+        });
+    }
 </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuF23f8P4mybfOUR2lbLynVZqSI77xn4Q&libraries=places"></script>
 @endsection

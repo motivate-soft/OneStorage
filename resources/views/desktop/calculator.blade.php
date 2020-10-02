@@ -270,9 +270,9 @@
             <a class="ml-2" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.onestorage.com.hk" title="Share by Email">
                 <img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-email-50@2x.png') }}" />
             </a> -->
-            <a class="ml-2 cursor-pointer"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-facebook-50@2x.png') }}" /></a>
-            <a class="ml-2 cursor-pointer"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-whatsapp-50@2x.png') }}" /></a>
-            <a class="ml-2 cursor-pointer">
+            <a id="fbLink" class="ml-2 cursor-pointer"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-facebook-50@2x.png') }}" /></a>
+            <a id="waLink" class="ml-2 cursor-pointer"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-whatsapp-50@2x.png') }}" /></a>
+            <a id="mailLink" class="ml-2 cursor-pointer">
                 <img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-email-50@2x.png') }}" />
             </a>
         </p>

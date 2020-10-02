@@ -82,6 +82,8 @@ class StoreController extends Controller
             $store->opening_hours = $data['opening_hours'];
             $store->nearby_facilities = $data['nearby_facilities'];
             $store->video_link = $data['video_link'];
+            $store->lat = $data['lat'];
+            $store->lng = $data['lng'];
             //save services
             $services = '';
             for ($i = 0; $i < Store::$_SERVICE_COUNT; $i++) {
@@ -216,5 +218,11 @@ class StoreController extends Controller
     {
         $store = Store::find($id);
         return view('backend.stores', ['selected_store' => $store]);
+    }
+
+    public function shareCalcPage(Request $request)
+    {
+        
+        return response("success");
     }
 }

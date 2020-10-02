@@ -44,6 +44,7 @@ Route::group(['prefix' => '/'], function () {
     });
     Route::get('/branch-location', 'StoreController@branchLocation');
     Route::get('/rentwarehouse', 'StoreController@showRentwareHouse');
+    Route::get('/calc/share', 'StoreController@shareCalcPage');
 
     Route::get('/contact', function () {
         return view('contact');

@@ -312,7 +312,7 @@
                 <?php
                 $price = $store->getLowestPrice();
                 ?>
-                <div class="relative rounded overflow-hidden shadow-lg location-content-item" data-price="{{$price}}" data-size-label="{{$store->getSizeLabel()}}">
+                <div class="relative rounded overflow-hidden shadow-lg location-content-item" data-name="{{$store->branch}}" data-price="{{$price}}" data-size-label="{{$store->getSizeLabel()}}">
                     <div class="relative">
                         <div class="ribbon ribbon-badge ribbon-pink">
                             <span class="ribbon-inner">最新優惠</span>
@@ -324,7 +324,7 @@
                         <div class="mb-2 color-primary location-content-title">{{$store->branch}}</div>
                         <div class="flex py-1 mb-2">
                             <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
-                            <p class="color-primary location-content-description store-address">{{$store->address}}</p>
+                            <p class="color-primary location-content-description store-address" data-lat="{{$store->lat}}" data-lng="{{$store->lng}}">{{$store->address}}</p>
                         </div>
                         <div class="flex py-1 mb-1">
                             <img class="" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />

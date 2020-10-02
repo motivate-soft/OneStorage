@@ -842,7 +842,7 @@ $user = Auth::user();
 
     function init() {
         $(function() {
-            OneStorage.RentwareHouse('<?= $store ? $store->address : '' ?>');
+            OneStorage.RentwareHouse(Number('<?= $store ? $store->lat : 0 ?>'), Number('<?= $store ? $store->lng : 0 ?>'));
         });
     }
 
