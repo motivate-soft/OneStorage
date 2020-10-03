@@ -290,6 +290,7 @@ $(function () {
     })();
 
     OneStorage.RentwareHouse = (function () {
+
         return function (lat, lng) {
             var branchSize;
             var confirmed = false;
@@ -297,6 +298,7 @@ $(function () {
             const confirmModal = document.getElementById("confirmModal");
 
             initMap();
+            changeRoomImage(Number($(".rentwarehouse-table-item").first().find(".bg-yellow").text()));
 
             function initMap() {
                 var map;
@@ -314,6 +316,20 @@ $(function () {
                     position: location,
                     map: map
                 });
+            }
+
+            function changeRoomImage(size) {
+                var sizeLabel = 's';
+                if (size > 0 && size < 13) {
+                    sizeLabel = 's';
+                } else if (size < 25) {
+                    sizeLabel = 'm';
+                } else if (size < 37) {
+                    sizeLabel = 'l';
+                } else if (size >= 37) {
+                    sizeLabel = 'xl';
+                }
+                $("#rentwarehouse-size-preview").attr("src", "../images/calculator/rooms-" + sizeLabel + ".jpg");
             }
 
             $("#bookingForm").submit(function (e) {
@@ -373,12 +389,12 @@ $(function () {
                 $("#storePrice").val($(this).find(".price-content").text());
             })
 
-            $(".rentwarehouse-table-item").click(function () {
-                $("#rentwarehouse-size-preview").attr("src", "../images/size-" + $(this).find(".bg-yellow").html() + ".jpg");
+            $(".rentwarehouse-table-item").on('click', function () {
+                chnageRoomImage(Number($(this).find(".bg-yellow").text()));
             })
 
             $(".rentwarehouse-table-item").hover(function () {
-                $("#rentwarehouse-size-preview").attr("src", "images/size-" + $(this).find(".bg-yellow").html() + ".jpg");
+                changeRoomImage(Number($(this).find(".bg-yellow").text()));
             })
 
             $(".rentwarehouse-sub-image").click(function () {
@@ -891,7 +907,7 @@ $(function () {
                 },
                 datatype: 'json',
                 success: function (result) {
-                    
+
                 }
             });
         })

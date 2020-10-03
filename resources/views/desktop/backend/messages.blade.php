@@ -58,7 +58,7 @@
                         &nbsp;&nbsp;
                     </span>
                     <p class="{{$unreadCnt ? 'robert-black' : 'robert-regular'}} mt-4">{{ mb_strimwidth($thread->latestMessage->body, 0, 40, "...") }}</p>
-                    
+
                 </div>
                 <p class="flex-auto text-right pt-2 font_14 robert-regular">{{$thread->latestMessage->created_at->format('d-M-Y')}}</p>
                 <!-- <div class="w-full pl-6 pt-2">
@@ -71,12 +71,14 @@
             @endif
             @endforeach
             @if($count)
-            {{ $threads->links() }}
+            <div class="mt-2">
+                {{ $threads->links() }}
+            </div>
             @endif
         </div>
 
 
-        <p class="font_25 mb-1">Broadcase message</p>
+        <p class="font_25 mb-1">Broadcast message</p>
 
         <form class="bg-white border py-2 pl-px pr-8 robert-regular" method="post" action="{{url('/backend/broadcast')}}">
             @csrf

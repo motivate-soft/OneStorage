@@ -323,12 +323,19 @@
         <?php
         $price = $store->getLowestPrice();
         ?>
-        <div class="relative rounded overflow-hidden shadow-lg location-content-item mx-auto mb-4" data-name="{{$store->branch}}" data-price="{{$price}}" data-size-label="{{$store->getSizeLabel()}}">
+        <div class="flex flex-col justify-between relative rounded overflow-hidden shadow-lg location-content-item mx-auto mb-4" data-name="{{$store->branch}}" data-price="{{$price}}" data-size-label="{{$store->getSizeLabel()}}">
             <div class="relative">
                 <div class="ribbon ribbon-badge ribbon-pink">
                     <span class="ribbon-inner">最新優惠</span>
                 </div>
-                <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Sunset in the mountains">
+                <?php
+                $storeImages = $store->storeImages()->where('is_used', true)->get();
+                ?>
+                @if(count($storeImages))
+                <img class="w-full" src="{{asset($storeImages[0]->image)}}" alt="Rentwarehouse">
+                @else
+                <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Rentwarehouse">
+                @endif
                 <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ {{$price}} 起</span>
             </div>
             <div class="px-1 py-2 pl-2">

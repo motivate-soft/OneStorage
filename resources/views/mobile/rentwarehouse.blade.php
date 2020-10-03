@@ -522,7 +522,7 @@
             </p>
         </div>
 
-        <img id="rentwarehouse-size-preview" class="mx-auto mb-4" src="{{asset('images/img_webbox.jpg')}}" />
+        <img id="rentwarehouse-size-preview" class="mx-auto mb-4"/>
 
         <table style="width:92%" class="mx-auto text-center text0">
             <tr class="table-heading">

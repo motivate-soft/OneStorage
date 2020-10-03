@@ -15,6 +15,8 @@
         transition: max-height 0.2s ease-out;
     }
 
+
+
     li {
         color: #9A9CA2;
     }
@@ -312,33 +314,42 @@
                 <?php
                 $price = $store->getLowestPrice();
                 ?>
-                <div class="relative rounded overflow-hidden shadow-lg location-content-item" data-name="{{$store->branch}}" data-price="{{$price}}" data-size-label="{{$store->getSizeLabel()}}">
+                <div class="flex flex-col justify-between relative rounded overflow-hidden shadow-lg location-content-item" data-name="{{$store->branch}}" data-price="{{$price}}" data-size-label="{{$store->getSizeLabel()}}">
                     <div class="relative">
                         <div class="ribbon ribbon-badge ribbon-pink">
                             <span class="ribbon-inner">最新優惠</span>
                         </div>
-                        <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Sunset in the mountains">
+                        <?php
+                        $storeImages = $store->storeImages()->where('is_used', true)->get();
+                        ?>
+                        @if(count($storeImages))
+                        <img class="w-full" src="{{asset($storeImages[0]->image)}}" alt="Rentwarehouse">
+                        @else
+                        <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Rentwarehouse">
+                        @endif
                         <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ {{$price}} <span class="text-sm">起</span></span>
                     </div>
-                    <div class="p-2">
-                        <div class="mb-2 color-primary location-content-title">{{$store->branch}}</div>
-                        <div class="flex py-1 mb-2">
-                            <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
-                            <p class="color-primary location-content-description store-address" data-lat="{{$store->lat}}" data-lng="{{$store->lng}}">{{$store->address}}</p>
+                    <div class="mb-1">
+                        <div class="p-2">
+                            <div class="mb-2 color-primary location-content-title">{{$store->branch}}</div>
+                            <div class="flex py-1 mb-2">
+                                <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
+                                <p class="color-primary location-content-description store-address" data-lat="{{$store->lat}}" data-lng="{{$store->lng}}">{{$store->address}}</p>
+                            </div>
+                            <div class="flex py-1 mb-1">
+                                <img class="" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
+                                <p class="ml-1 color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
+                            </div>
                         </div>
-                        <div class="flex py-1 mb-1">
-                            <img class="" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
-                            <p class="ml-1 color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
+                        <div class="px-2 py-1 bottom-0 w-full">
+                            <a href="{{url('/rentwarehouse?storeId='). $store->id}}">
+                                <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
+                                    選擇
+                                </button>
+                            </a>
                         </div>
                     </div>
-                    <div class="px-2 py-1 bottom-0 w-full">
-                        <a href="{{url('/rentwarehouse?storeId='). $store->id}}">
-                            <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
-                                選擇
-                            </button>
-                        </a>
 
-                    </div>
                 </div>
                 @endforeach
 

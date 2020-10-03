@@ -431,7 +431,7 @@
                                     可放換季衣服, 兒童物件及玩具,書本
                                     參照圖片:
                                 </p>
-                                <img id="rentwarehouse-size-preview" src="{{asset('images/img_webbox.jpg')}}" />
+                                <img id="rentwarehouse-size-preview"/>
                             </div>
                         </div>
                     </div>

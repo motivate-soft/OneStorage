@@ -138,8 +138,14 @@
                     <p class="font_19">{{$member->contact_method}}</p>
                 </td>
                 <td class="item-column">
-                    @foreach($member->enquiries as $enquiry )
-                    <span class="mr-2">E{{str_pad($enquiry->id, 6, '0', STR_PAD_LEFT)}}</span>
+                    @foreach($member->enquiries as $index => $enquiry )
+                    <span class="mr-2">
+
+                        @if($index % 3 == 0)
+                        <br />
+                        @endif
+                        E{{str_pad($enquiry->id, 6, '0', STR_PAD_LEFT)}}
+                    </span>
                     @endforeach
                 </td>
                 <td class="mt-4">
@@ -331,7 +337,7 @@
             $(".select-row[data-id='" + ids[i] + "']").click();
         }
 
-        if(window.localStorage.getItem(allKey) == "1"){
+        if (window.localStorage.getItem(allKey) == "1") {
             $("#selectAll").click();
         }
     }
