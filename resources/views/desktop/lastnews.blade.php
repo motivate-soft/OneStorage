@@ -33,8 +33,8 @@
         <img class="w-32 h-32 mr-10 md:mb-4 object-cover" src="{{asset($news->thumbnail)}}">
         <div class="" style="width: calc(100% - 8rem);">
             <h1 class="font_19 w-4/5 leading-normal px-0 truncate">{{$news->title}}</h1>
-            <p class="font_12 robert-regular mt-2 ml-1"> 刊登日期:{{$news->publish_date->format('d-m-Y')}}</p>
-            <p class="font_16 w-2/3 text-justify mt-6 mb-4 leading-normal ml-1 break-all">{{ mb_strimwidth($news->content, 0, 120, "...")}}</p>
+            <p class="font_12 robert-regular mt-2 "> 刊登日期:{{$news->publish_date->format('d-m-Y')}}</p>
+            <p class="font_16 w-2/3 text-justify mt-6 mb-4 leading-normal break-all">{{ mb_strimwidth($news->content, 0, 120, "...")}}</p>
         </div>
     </a>
     <?php

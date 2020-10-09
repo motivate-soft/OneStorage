@@ -26,10 +26,10 @@
         @foreach($newses as $news)
             <a href="{{url('/news/'.$news->id)}}" class="flex mt-2 py-3">
                 <img class="w-24 h-24 object-cover mr-6" src="{{asset($news->thumbnail)}}">
-                <div class="" style="width: calc(90% - 6rem);">
-                    <p class="font_16 leading-normal pl-2 truncate">{{$news->title}}</p>
-                    <p class="font_12 robert-regular mt-2 ml-1"> 刊登日期:{{$news->created_at->format('d-m-Y')}}</p>
-                    <p class="font_16 my-4 leading-normal pl-2 text-left whitespace-pre-line break-all">{{ mb_strimwidth($news->content, 0, 80, "...")}}</p>
+                <div class="pl-2" style="width: calc(90% - 6rem);">
+                    <p class="font_16 leading-normal truncate">{{$news->title}}</p>
+                    <p class="font_12 robert-regular mt-2"> 刊登日期:{{$news->created_at->format('d-m-Y')}}</p>
+                    <p class="font_16 my-4 leading-normal text-left whitespace-pre-line break-all">{{ mb_strimwidth($news->content, 0, 80, "...")}}</p>
                 </div>
             </a>
             <?php

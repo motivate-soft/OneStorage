@@ -262,7 +262,7 @@
     </div>
 
     <div class="pb-20">
-        <p class="text-center font_34 mb-10" id="sizeText">0 呎</p>
+        <p class="text-center font_34 mb-10">預計需要空間：<span id="sizeText">0</span> 呎</p>
         <p class="flex w-max-content room-footer color-primary mx-auto">
             <span class="pr-4">分享</span>
             <!-- <a class="ml-2" href="https://developers.facebook.com/docs/plugins/share-button/"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-facebook-50@2x.png') }}" /></a>

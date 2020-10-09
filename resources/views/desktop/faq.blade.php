@@ -95,7 +95,7 @@
     }
 
     .content-area {
-        min-height: 500px;
+        min-height: 350px;
     }
 
     .color-primary {
@@ -123,12 +123,11 @@
 @section('content')
 <img class="w-full" src="{{asset('images/faq/shutterstock_1540492397@2x.png')}}" />
 
-<div class="relative block bg-white section mb-10 floating-panel">
+<div class="relative block bg-white section mb-10 pb-10 floating-panel">
 
     <div class="maintitle-wrapper color-primary text-center">
         <div class="maintitle-right">
             <p class="mb-6 self-center">常見問題</p>
-            <div class="maintitle-right-bottom">搵唔到您想要嘅答案，不如直接聯絡我地啦！</div>
         </div>
     </div>
 
@@ -158,14 +157,17 @@
     </div>
 
 
-
-</div>
-
-<div class="bg-white section pt-14 pb-10 mb-10">
-    <div class="w-1/3 mx-auto">
-        @include('partials.enquiryForm', ['page' => Helper::$SS_FROM_FAQ_PAGE])
+    <div class="mt-4 w-full">
+        <p class="maintitle-right-bottom text-center mb-8">搵唔到您想要嘅答案，不如直接聯絡我地啦！</p>
+        <div class="w-1/3 mx-auto px-4">
+            @include('partials.enquiryForm', ['page' => Helper::$SS_FROM_FAQ_PAGE])
+        </div>
     </div>
+
+
 </div>
+
+
 
 @endsection
 

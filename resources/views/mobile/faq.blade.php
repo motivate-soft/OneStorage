@@ -119,7 +119,6 @@
             <div class="flex items-center">
                 <span>常見問題</span>
             </div>
-            <div class="capitalize mt-2 maintitle-right-bottom-m">搵唔到您想要嘅答案，不如直接聯絡我地啦！</div>
         </div>
     </div>
 
@@ -146,7 +145,9 @@
 
     </div>
 
+
     <div class="bg-white px-6 py-10">
+        <div class="capitalize mt-2 maintitle-right-bottom-m mb-8">搵唔到您想要嘅答案，不如直接聯絡我地啦！</div>
         @include('partials.enquiryForm', ['page' => Helper::$SS_FROM_FAQ_PAGE])
     </div>
 

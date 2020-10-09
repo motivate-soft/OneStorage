@@ -865,7 +865,7 @@ $(function () {
             })
             $(".store-select").removeClass('active');
 
-            $("#sizeText").text( sum + " 呎");
+            $("#sizeText").text( sum );
             if (sum <= 0) {
                 return;
             }
