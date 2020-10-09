@@ -12,3 +12,9 @@ npm-debug.log
 yarn-error.log
 /public/images/backgrounds
 /public/images/blogs
+storage
+.idea
+/public/images/avatars
+/public/images/offers
+/public/images/stores
+/public/uploads
