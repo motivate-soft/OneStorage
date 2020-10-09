@@ -128,6 +128,7 @@ class EnquiryController extends Controller
         $enquiry->question = isset($request->question) ? $request->question : '';
         $enquiry->message = isset($request->message) ? $request->message : '';
         $enquiry->store_price = isset($request->price) ? $request->price: null;
+        $enquiry->transported = isset($request->transported) &&  $request->transported == "on";
         $enquiry->page = $request->page;
 
         //save cv file

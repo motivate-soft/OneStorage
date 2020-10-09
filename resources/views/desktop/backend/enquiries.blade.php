@@ -53,10 +53,13 @@
                     @endif
                 </td>
                 <td class="item-column">
-                    <p>{{$enquiry->question}}</p>
+                    <p class="mb-2">{{$enquiry->question}}</p>
+                    @if($enquiry->transported)
+                        <p>-要運輸</p>
+                    @endif
                 </td>
                 <td class="item-column">
-                    {{$enquiry->message}}
+                    <p>{{$enquiry->message}}</p>
                 </td>
                 <td class="item-column">
                     {{$enquiry->page}}

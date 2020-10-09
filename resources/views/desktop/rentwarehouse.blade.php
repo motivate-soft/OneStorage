@@ -744,7 +744,7 @@ $user = Auth::user();
 
                 <div class=" w-full mt-3 md:flex md:items-center mb-4">
                     <label class="md:w-2/3 block text-gray-500 font-bold">
-                        <input class="mr-2 rounded border-gray-400" type="checkbox">
+                        <input class="mr-2 rounded border-gray-400" type="checkbox" name="transported">
                         <span class="text-sm">
                             要運輸
                         </span>
