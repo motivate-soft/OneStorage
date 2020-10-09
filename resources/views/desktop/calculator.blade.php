@@ -270,7 +270,7 @@
             <a class="ml-2" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.onestorage.com.hk" title="Share by Email">
                 <img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-email-50@2x.png') }}" />
             </a> -->
-            <a target="_blank" href="#" data-init="http://www.facebook.com/sharer.php?s=100&p[title]=Share Calculator&quote=" class="ml-2 share-link cursor-pointer"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-facebook-50@2x.png') }}" /></a>
+            <a target="_blank" href="#" data-init="http://www.facebook.com/sharer.php?s=100&p[title]=Share Calculator&text=" class="ml-2 share-link cursor-pointer"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-facebook-50@2x.png') }}" /></a>
             <a class="ml-2 cursor-pointer share-link" target="_blank" data-init="https://api.whatsapp.com/send?text=" href="#" data-action="share/whatsapp/share"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-whatsapp-50@2x.png') }}" /></a>
             <a class="ml-2 cursor-pointer share-link" target="_blank" data-init="mailto:?subject=Share Calculator&amp;body=" href="#">
                 <img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-email-50@2x.png') }}" />

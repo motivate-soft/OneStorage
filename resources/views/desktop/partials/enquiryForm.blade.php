@@ -19,7 +19,7 @@
 
     <div class="input-group mb-8">
         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">
-        <input class="form-control input-form" type="email" placeholder="電子郵件" name="email" required>
+        <input class="form-control input-form" type="email" placeholder="電子郵件" name="email">
     </div>
 
     <div class="w-full inline-block relative mb-6">

@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Helper\Helper;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -33,7 +34,7 @@ class EnquiryEmail extends Mailable
      */
     public function build()
     {
-        $mail = $this->from($this->enquiry->email)
+        $mail = $this->from($this->enquiry->email ? $this->enquiry->email : Helper::$ONESTORAGE_EMAIL)
             ->view('emails.enquiry');
 
         if($this->enquiry->cv_file){

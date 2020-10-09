@@ -235,12 +235,12 @@
 <div class="bg-white w-full pr-px pt-10 relative bg-hero mx-auto">
     <div class="pl-10">
         <p class="z-20 page-title leading-snug text-primary">
-            唔想屋企<span class="text-yellow">咁亂</span>?
+            迷你倉<span class="text-yellow">首選</span>?
         </p>
-        <span class="z-10 page-title title-shadow">
-            搵One Storage 啦
+        <span class="z-10 page-title title-shadow" style="font-size: 30px">
+            One Choice ‧ One Storage
         </span>
-        <p class="page-desc pt-3">至尊迷你倉 ‧ One Choice ‧ One Storage</p>
+        <p class="page-desc pt-3">至尊迷你倉</p>
     </div>
 
 
@@ -271,7 +271,7 @@
             </div>
         </div>
         <div class="w-5/12 inline-block relative">
-            <select id="branch-select" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
+            <select disabled="disabled" id="branch-select" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
                 <option value="" selected disabled class="text-grey">分店</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -330,7 +330,7 @@
         </div>
         <div class="flex-shrink-0 mx-2">
             <a href="https://youtu.be/hxzEMSnO16g" target="_blank"><img src="{{asset('images/video_thumb2.jpg')}}" class="mb-4" /></a>
-            <p class="text-center text1">迷你倉廣告</p>
+            <p class="text-center text1">至尊迷你倉梗有一款岩您用</p>
         </div>
         <div class="flex-shrink-0 ml-2">
             <a href="https://youtu.be/AG_ZbMUNok4" target="_blank"><img src="{{asset('images/video_thumb3.jpg')}}" class="mb-4" /></a>

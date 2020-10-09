@@ -26,9 +26,9 @@ use App\AppConfig;
     .title-shadow:before {
         content: '';
         position: absolute;
-        width: 94%;
-        height: 105%;
-        bottom: 30px;
+        width: 105%;
+        height: 185%;
+        bottom: 10px;
         z-index: -1;
         left: -10px;
         background-color: #E0CBF6;
@@ -146,12 +146,12 @@ use App\AppConfig;
 <div class="bg-white flex w-full pl-20 xl:pl-36 pt-10 bg-hero">
     <div class="lg:w-1/2">
         <p class="z-20 page-title leading-snug text-primary mb-2 source-han">
-            迷你倉<span class="text-yellow">咁亂</span>?
+            迷你倉<span class="text-yellow">首選</span>?
         </p>
-        <span class="z-10 page-title title-shadow source-han">
-            搵One Storage 啦
+        <span class="z-10 title-shadow source-han" style="font-size: 50px;position: relative">
+            One Choice ‧ One Storage
         </span>
-        <p class="page-desc pt-6 source-han">至尊迷你倉 ‧ One Choice ‧ One Storage</p>
+        <p class="page-desc pt-6 source-han z-50">至尊迷你倉</p>
         <form id="branchSearchForm" class="flex bg-primary rounded-lg p-4 mr-4 mt-8 justify-between w-7/10" method="get" action="{{url('/rentwarehouse')}}">
             <img src="{{asset('images/ic_marker.png')}}" class="align-middle my-auto" />
             <input id="storeId" type="hidden" name="storeId" />
@@ -169,7 +169,7 @@ use App\AppConfig;
                 </div>
             </div>
             <div class="w-5/12 inline-block relative">
-                <select id="branch-select" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
+                <select disabled="disabled"  id="branch-select" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
                     <option value="" selected disabled class="text-grey">分店</option>
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -240,7 +240,7 @@ use App\AppConfig;
             </div>
             <div class="mx-4">
                 <a href="https://youtu.be/hxzEMSnO16g" target="_blank"><img src="{{asset('images/video_thumb2.jpg')}}" class="mb-4" /></a>
-                <p class="text-center text1">迷你倉廣告</p>
+                <p class="text-center text1">至尊迷你倉梗有一款岩您用</p>
             </div>
             <div class="ml-4">
                 <a href="https://youtu.be/AG_ZbMUNok4" target="_blank"><img src="{{asset('images/video_thumb3.jpg')}}" class="mb-4" /></a>
