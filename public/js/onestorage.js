@@ -959,7 +959,9 @@ $(function () {
 
 
         $(".share-link").click(function(e){
+            e.preventDefault();
             $(this).attr("href", $(this).attr("data-init") + makeDeepLink());
+            window.open($(this).attr('href'));
         });
 
 
