@@ -33,7 +33,7 @@
     </div>
 
 </div>
-           
+
 <form class=" register-form w-full"  action="{{url('/login')}}" method="post">
     @csrf
     <div class="input-group mb-4">
@@ -43,7 +43,7 @@
 
     <input class="w-full form-control mb-6 fontsize-14 pl-8" placeholder="密碼" name="password" type="password" required>
 
-    <a href="{{url('forgetpwd')}}">
+    <a href="{{url('/forgot-password')}}">
         <p class=" register-subtilte title-violet fontsize-12">忘記密碼?</p>
     </a>
 

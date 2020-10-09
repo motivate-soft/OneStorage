@@ -147,16 +147,20 @@ class EnquiryController extends Controller
             Mail::to($enquiry->email)->queue(new DiscountEmail);
         }
 
-        $ajax = isset($request->ajax) ? $request->ajax : 0;
-        if ($ajax == 1) {
-            $is_member = User::where('email', $enquiry->email)->first() != null;
-            return response([
-                'state' => 'success',
-                'is_member' => $is_member
-            ]);
-        } else {
-            return redirect()->back();
-        }
+//        $ajax = isset($request->ajax) ? $request->ajax : 0;
+        return response([
+            'state' => 'success',
+            'logged_in' => Auth::check()
+        ]);
+
+//        if ($ajax == 1) {
+//            return response([
+//                'state' => 'success',
+//                'logged_in' => Auth::check()
+//            ]);
+//        } else {
+//            return redirect()->back();
+//        }
     }
 
     public function accept()

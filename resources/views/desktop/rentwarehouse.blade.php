@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('Rent Ware House')}}</title>
+<title>{{__('出租屋')}}</title>
 @endsection
 
 @section('styles')
@@ -280,7 +280,7 @@
         /* Hidden by default */
         position: fixed;
         /* Stay in place */
-        padding-top: 100px;
+        padding-top: 130px;
         /* Location of the box */
         left: 0;
         top: 0;
@@ -358,12 +358,12 @@
 @if($store)
 
 
-<div class="mx-auto w-3/5 pt-6">
+<div class="section pt-6">
     <p class="heading2 px-4 mb-3 overflo">{{$store->branch}}</p>
     <div class="flex">
         <div class="w-2/3 pb-8">
-            <p class="text1 px-4 mb-2"><a href="#address-section">{{$store->address}}</a> </p>
-            <div class="bg-white px-4 py-2">
+            <span class="text1 px-4 cursor-pointer address-text">{{$store->address}}</span>
+            <div class="bg-white px-4 py-2 mt-2">
                 <?php
                 $storeImages = $store->storeImages()->where('is_used', true)->get();
                 ?>
@@ -443,23 +443,16 @@
                     </div>
                     <div class="my-4">
                         <p class="text-sm color-primary">地址:{{$store->address}}</p>
-                        <div>
+                        <div class="leading-relaxed">
                             <p class="text-sm color-deep pt-8 py-2">開放時間</p>
                             <p class="text-sm color-primary"><?php echo nl2br($store->opening_hours) ?></p>
                             <p class="text-sm color-deep pt-8 py-2">參觀及繳費時間：敬請致電該分店預約或按右面</p>
-                            <p class="text-sm color-primary py-1 mb-3 leading-none"><?php echo nl2br($store->text_above_addr) ?></p>
-                            <!-- <p class="text-sm color-primary py-1">週六，早上10時至晚上5時。</p>
-                            <p class="text-sm color-primary mb-3 py-1">星期日及假期，需於 1 天前預約參觀。</p> -->
-                            <!-- <img class="rentware-middle-image pr-5 py-1" src="{{ asset('images/Image 7@2x.png') }}" /> -->
-
+                            <p class="text-sm color-primary py-1 mb-3"><?php echo nl2br($store->text_above_addr) ?></p>
                             <div id="map" class="w-full">
                                 <p class="text-center my-10 state-text">Loading...</p>
                             </div>
-
                             <p class="text-sm color-deep pt-8 py-2">交通:</p>
                             <p class="text-sm color-primary py-1 leading-relaxed"><?php echo nl2br($store->text_below_addr) ?></p>
-                            <!-- <p class="text-sm color-primary py-1">巴士線: 170, 171, 37B, 671, 69, 70, 973</p>
-                            <p class="text-sm color-primary py-1">小巴線: 4A, 4B, 4C, 4M, 29, 29A, 36X, 59A, 59B, 69</p> -->
                         </div>
                     </div>
 
@@ -478,7 +471,7 @@
                         @endif
                         @endforeach
 
-                        <p class="text-sm color-deep py-1 leading-snug mt-6"><?php echo nl2br($store->latest_offer) ?></p>
+                        <p class="text-sm color-deep py-1 leading-relaxed mt-6"><?php echo nl2br($store->latest_offer) ?></p>
                         <!-- <p class="text-sm color-deep py-1 leading-normal">黃竹坑新店快閃優惠　低至6折優惠</p> -->
                         <!-- <p class="text-sm color-deep py-1 leading-normal">震撼筍價HK$300起即可入手</p><br />
                         <p class="text-sm color-deep py-1 leading-normal">黃竹坑分店全新開業，推出快閃驚喜優惠！顧客可享低至6折優惠，以震撼筍價HK$300起即可入手！你仲唔快啲黎搵我哋！！</p>
@@ -504,60 +497,14 @@
                     </div>
                     <div class="my-4 hidden">
                         <div class="px-4 grid grid-cols-2 col-gap-2 row-gap-4">
-                            @if($store->serviceState(0))
-                            <div class="flex">
-                                <img src="{{asset('images/ic_key_card.png')}}" class="mr-2 object-none" />
-                                <p class="text0 my-auto"><span class="font-bold">7 x 24</span>智能保安進出系統</p>
-                            </div>
-                            @endif
-                            @if($store->serviceState(1))
-                            <div class="flex">
-                                <img src="{{asset('images/ic_air_con.png')}}" class="mr-2 object-none" />
-                                <p class="text0 my-auto">無間斷恆溫空調</p>
-                            </div>
-                            @endif
-                            @if($store->serviceState(2))
-                            <div class="flex">
-                                <img src="{{asset('images/ic_fire.png')}}" class="mr-2 object-none" />
-                                <p class="text0 my-auto">消防裝置設備</p>
-                            </div>
-                            @endif
-                            @if($store->serviceState(3))
-                            <div class="flex">
-                                <img src="{{asset('images/ic_delivery.png')}}" class="mr-2 object-none" />
-                                <p class="text0 my-auto">鋁梯及手推車借用服務</p>
-                            </div>
-                            @endif
-                            @if($store->serviceState(4))
-                            <div class="flex">
-                                <img src="{{asset('images/ic_water.png')}}" class="mr-2 object-none" />
-                                <p class="text0 my-auto">自助飲用水機</p>
-                            </div>
-                            @endif
-                            @if($store->serviceState(5))
-                            <div class="flex">
-                                <img src="{{asset('images/ic_sec_cam.png')}}" class="mr-2 object-none" />
-                                <p class="text0 my-auto">全天候高清保安監察及警報系統</p>
-                            </div>
-                            @endif
-                            @if($store->serviceState(6))
-                            <div class="flex">
-                                <img src="{{asset('images/ic_24_hours.png')}}" class="mr-2 object-none" />
-                                <p class="text0 my-auto">24小時電話熱線服務</p>
-                            </div>
-                            @endif
-                            @if($store->serviceState(7))
-                            <div class="flex">
-                                <img src="{{asset('images/ic_wifi.png')}}" class="mr-2 object-none" />
-                                <p class="text0 my-auto">免費Wi-Fi</p>
-                            </div>
-                            @endif
-                            @if($store->serviceState(8))
-                            <div class="flex">
-                                <img class="mr-2 object-none" src="{{ asset('images/icons8-secured-letter-40@2x.png') }}" />
-                                <p class="text0 my-auto color-primary">信箱服務</p>
-                            </div>
-                            @endif
+                            @foreach(Helper::$STORAGE_FACILITIES as $index => $facility)
+                                @if($store->serviceState($index))
+                                <div class="flex">
+                                    <img src="{{asset($facility['image'])}}" class="w-8 h-8 mr-2 object-none" alt="Image" />
+                                    <p class="text0 my-auto" style="width: calc(100% - 2rem)">{{$facility['title']}}</p>
+                                </div>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
 
@@ -600,7 +547,7 @@
 
                     <div class="my-4 hidden">
                         @foreach($store->questions as $question)
-                        <div class="mb-4">
+                        <div class="mb-4 leading-relaxed">
                             <p class="text-sm color-deep py-1 px-2">- {{$question->question}}</p>
                             <p class="text-sm color-deep py-1 pl-4"><?php echo nl2br($question->answer) ?></p>
                         </div>
@@ -667,12 +614,12 @@
 
                 <p class="rentwarehouse-price-select-news-title color-primary my-2">最新資訊</p>
                 <?php
-                $lasted_news = App\Blog::orderBy('id', 'desc')->first();
+                $latest_news = \App\Blog::getNewses(1)->first();
                 ?>
-                <a class="flex pt-2" href="{{url('/news/'.$lasted_news->id)}}">
-                    <img class="flex-shrink-0 h-32" src="{{asset($lasted_news->thumbnail)}}" />
-                    <span class="pl-3 color-deep overflow-y-hidden leading-relaxed font_13 h-32">
-                        <?php echo nl2br($lasted_news->content) ?>
+                <a class="flex pt-2" href="{{url('/news/'.$latest_news->id)}}">
+                    <img class="flex-shrink-0 mr-4 w-32 h-32" src="{{asset($latest_news->thumbnail)}}" />
+                    <span class="color-deep break-all overflow-y-hidden leading-relaxed font_13 h-32" style="width; calc(100% - 8rem)">
+                        <?php echo nl2br($latest_news->content) ?>
                     </span>
                 </a>
             </div>
@@ -762,9 +709,18 @@ $user = Auth::user();
                 <div class="input-group mb-3">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
                     @if(Auth::check())
-                    <input class="form-control" type="text" placeholder="電話號碼" value="{{$user->email}}" name="email">
+                    <input class="form-control" type="text" placeholder="電話號碼" value="{{$user->phone}}" name="phoneNumber">
                     @else
                     <input class="form-control" type="text" placeholder="電話號碼" name="email">
+                    @endif
+                </div>
+
+                <div class="input-group mb-3">
+                    <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">
+                    @if(Auth::check())
+                        <input class="form-control" type="text" placeholder="電子郵件" value="{{$user->email}}" name="email">
+                    @else
+                        <input class="form-control" type="text" placeholder="電子郵件" name="email">
                     @endif
                 </div>
 
@@ -799,7 +755,7 @@ $user = Auth::user();
                     送出
                 </button>
 
-                <div class=" flex py-2 mt-2 border-t">
+                <div class=" flex py-2 mt-2 border-t hidden">
                     <div class="w-2/5">
                         <p class=" text-center font-bold" style="font-size: 21px;color: #988F9A">分享</p>
                     </div>

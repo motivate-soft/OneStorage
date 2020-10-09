@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('Join Us')}}</title>
+<title>{{__('免責聲明')}}</title>
 @endsection
 
 @section('styles')
@@ -17,7 +17,7 @@
     <div class="px-4 mx-auto">
         <!-- <p class="heading-font">免責聲明</p> -->
         <p class=" text-center fontsize-21 py-6 regular-color px-5">免責聲明</p>
-        
+
 
         <div class="flex bg-grey p-8 mb-8">
             <p class="font_14 leading-relaxed">

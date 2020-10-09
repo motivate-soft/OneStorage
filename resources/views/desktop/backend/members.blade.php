@@ -194,7 +194,7 @@
 
                 <div class="date-group">
 
-                    <p class=" date-title">生日日期</p>
+                    <p class="date-title">生日日期</p>
 
                     <div class=" date-component">
                         <div class="inline-block relative">
@@ -382,7 +382,6 @@
                     $('input[name="firstName"]').val(data.first_name);
                     $('input[name="lastName"]').val(data.last_name);
                     $('input[name="phone"]').val(data.phone);
-                    $('input[name="email"]').val(data.email);
                     $('input[name="email"]').val(data.email);
                     $('input[name="addr1"]').val(data.profile.address_line1);
 

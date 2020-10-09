@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('Calculator')}}</title>
+<title>{{__('空間計算器')}}</title>
 @endsection
 
 @section('styles')
@@ -65,17 +65,16 @@
     }
 
     .content-image-wrapper-2 {
-        padding-top: 56px;
+        padding-top: 28px;
         padding-left: 121px;
         padding-right: 121px;
-        margin-bottom: 80px;
-
+        margin-bottom: 50px;
     }
 
     .calculator-content-title {
         font-size: 44px;
         padding-left: 56px;
-        padding-top: 30px;
+        padding-top: 40px;
         padding-bottom: 20px;
     }
 
@@ -190,7 +189,7 @@
 
 <img class="w-full" src="{{asset('images/calculator/markus-spiske-QtFAXP6z0Wk-unsplash@2x.png')}}" />
 
-<div class="relative block bg-white w-3/5 mx-auto floating-panel mb-10">
+<div class="relative block bg-white section floating-panel mb-10">
     <!-- <div class="flex maintitle-wrapper color-primary">
         <span class="uppercase maintitle-left">one</span>
         <div class="w-px maintitle-divider"></div>
@@ -206,7 +205,7 @@
     <div class="maintitle-wrapper color-primary text-center">
         <div class="maintitle-right">
             <p class="mb-6">空間計算器</p>
-            <div class="maintitle-right-bottom">想知到需要幾大既倉? 幫緊你</div>
+            <div class="maintitle-right-bottom">唔知道自己需要幾大個倉？不如自己計一計！</div>
         </div>
     </div>
 
@@ -224,7 +223,7 @@
     </div>
 
     <div class="grid grid-cols-4 col-gap-1 content-image-wrapper-2">
-        <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select cursor-pointer" id="s-store">
+        <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select" id="s-store">
             <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-s.jpg') }}" alt="Room">
             <div class="px-6 py-4">
                 <div class="room-card-title text-center mb-2">小型倉</div>
@@ -233,7 +232,7 @@
                 <button value="S" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
             </div>
         </div>
-        <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select cursor-pointer" id="m-store">
+        <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select" id="m-store">
             <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-m.jpg') }}" alt="Room">
             <div class="px-6 py-4">
                 <div class="room-card-title text-center mb-2">中型倉</div>
@@ -242,7 +241,7 @@
                 <button value="M" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
             </div>
         </div>
-        <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select cursor-pointer" id="l-store">
+        <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select" id="l-store">
             <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-l.jpg') }}" alt="Room">
             <div class="px-6 py-4">
                 <div class="room-card-title text-center mb-2">大型倉</div>
@@ -251,7 +250,7 @@
                 <button value="L" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
             </div>
         </div>
-        <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select cursor-pointer" id="xl-store">
+        <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select" id="xl-store">
             <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-xl.jpg') }}" alt="Room">
             <div class="px-6 py-4">
                 <div class="room-card-title text-center mb-2">特大倉</div>
@@ -263,6 +262,7 @@
     </div>
 
     <div class="pb-20">
+        <p class="text-center font_34 mb-10" id="sizeText">0 呎</p>
         <p class="flex w-max-content room-footer color-primary mx-auto">
             <span class="pr-4">分享</span>
             <!-- <a class="ml-2" href="https://developers.facebook.com/docs/plugins/share-button/"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-facebook-50@2x.png') }}" /></a>
@@ -270,9 +270,9 @@
             <a class="ml-2" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.onestorage.com.hk" title="Share by Email">
                 <img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-email-50@2x.png') }}" />
             </a> -->
-            <a id="fbLink" class="ml-2 cursor-pointer"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-facebook-50@2x.png') }}" /></a>
-            <a id="waLink" class="ml-2 cursor-pointer"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-whatsapp-50@2x.png') }}" /></a>
-            <a id="mailLink" class="ml-2 cursor-pointer">
+            <a target="_blank" href="#" data-init="http://www.facebook.com/sharer.php?s=100&p[title]=Share Calculator&p[summary]=" class="ml-2 share-link cursor-pointer"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-facebook-50@2x.png') }}" /></a>
+            <a class="ml-2 cursor-pointer share-link" target="_blank" data-init="https://api.whatsapp.com/send?text=" href="#" data-action="share/whatsapp/share"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-whatsapp-50@2x.png') }}" /></a>
+            <a class="ml-2 cursor-pointer share-link mailto" target="_blank" data-init="mailto:?subject=Share Calculator&amp;body=" href="#">
                 <img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-email-50@2x.png') }}" />
             </a>
         </p>

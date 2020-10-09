@@ -700,3 +700,33 @@ input[type="checkbox"], input[type="radio"] {
 .enquiry-sent{
     background-color: #28e8db;
 }
+
+.section{
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+@media (min-width: 1224px) {
+    .section {
+        width: 90%;
+    }
+}
+
+@media (min-width: 1440px) {
+    .section {
+        width: 70%;
+    }
+}
+
+@media (min-width: 1700px) {
+    .section {
+        width: 60%;
+    }
+}
+
+
+
+
+
+

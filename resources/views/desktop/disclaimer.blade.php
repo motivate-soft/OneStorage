@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('Join Us')}}</title>
+<title>{{__('免責聲明')}}</title>
 @endsection
 
 @section('styles')

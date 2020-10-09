@@ -34,7 +34,7 @@
 
                 <input class="w-full form-control mb-6" name="password" type="password" required style="" type="text" placeholder="密碼">
 
-                <a href="{{url('/forgetpwd')}}">
+                <a href="{{url('/forgot-password')}}">
                     <p class=" register-subtilte title-violet">忘記密碼?</p>
                 </a>
 

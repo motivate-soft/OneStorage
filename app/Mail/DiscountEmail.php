@@ -30,6 +30,7 @@ class DiscountEmail extends Mailable
     public function build()
     {
         return $this->from(Helper::$ONESTORAGE_EMAIL)
-                    ->view('emails.discount');
+                    ->view('emails.discount')
+                    ->subject("至尊迷你倉One Storage 5% off獨家優惠");
     }
 }

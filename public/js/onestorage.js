@@ -21,6 +21,28 @@ $(function () {
         }
     });
 
+    $("#enquiryForm").submit(function(e) {
+        e.preventDefault();
+        var form = $(this);
+        if (form.attr("state") === "sent") {
+            return;
+        }
+        var submitBtn = form.find(".submit-btn");
+        $.ajax({
+            url: $(this).attr('action'),
+            type: $(this).attr('method'),
+            data: $(this).serialize(),
+            datatype: 'json',
+            success: function(result) {
+                submitBtn.css("background-color", "#28e8db");
+                submitBtn.text("已送出");
+                form.find(".input-form").prop('disabled', true);
+                form.find("button").prop('disabled', true);
+                form.attr("state", "sent");
+            }
+        });
+    });
+
     $("#branch-select").change(function () {
         $("#storeId").val($(this).val());
     })
@@ -36,7 +58,13 @@ $(function () {
             msgWrapper.hide();
             msgWrapper.find("textarea").val("");
         }
-    })
+    });
+
+    $('.mailto').click(function (e) {
+        e.preventDefault();
+        var url = $(this).attr('href');
+        window.open(url);
+    });
 
     OneStorage.Home = (function () {
         return function () {
@@ -114,15 +142,20 @@ $(function () {
 
             function initMap() {
                 geocoder.geocode({
-                    'address': area ? area : '香港島'
+                    'address': area ? area : '香港'
                 }, function (results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
                         const location = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
                         const jMap = $("#map");
-                        jMap.height(jMap.width());
+                        if($("body").width() <= 1440){
+                            jMap.height(350);
+                        }else{
+                            jMap.height(jMap.width());
+                        }
+
 
                         map = new google.maps.Map(document.getElementById('map'), {
-                            zoom: 10,
+                            zoom: 12,
                             center: location,
                             disableDefaultUI: true,
                             mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -150,10 +183,10 @@ $(function () {
                 }
                 const location = new google.maps.LatLng(data.lat, data.lng);
 
-                var pinImage = new google.maps.MarkerImage("/images/ic_marker.png",
-                    new google.maps.Size(33, 33),
+                var pinImage = new google.maps.MarkerImage("/images/ic-map-marker.png",
+                    new google.maps.Size(56, 56),
                     new google.maps.Point(0, 0),
-                    new google.maps.Point(16, 6));
+                    new google.maps.Point(28, 12));
 
                 var marker = new google.maps.Marker({
                     position: location,
@@ -162,11 +195,11 @@ $(function () {
                 });
 
                 google.maps.event.addListener(marker, 'click', function () {
-                    var contentString = "<p>Name: " + "<span style='color:black'>" + data.name + "</span></p><p>Address: "
-                        + "<span style='color:black'>" + data.address + "</span></p><p>Price: "
+                    var contentString = "<p>分店: " + "<span style='color:black'>" + data.name + "</span></p><p>地址: "
+                        + "<span style='color:black'>" + data.address + "</span></p><p>價錢: "
                         + "<span style='color:black'>$" + data.price + " 起</span></p>";
 
-                    // Replace our Info Window's content and position 
+                    // Replace our Info Window's content and position
                     infoWnd.setContent(contentString);
                     infoWnd.setPosition(marker.position);
                     infoWnd.open(map)
@@ -189,7 +222,7 @@ $(function () {
                     sizeFilter.push($(this).attr('value'));
                 })
 
-                if (sizeFilter.length == 0) {
+                if (sizeFilter.length === 0) {
                     sizeFilter = ["S", "M", "L", "XL"];
                 }
 
@@ -332,6 +365,16 @@ $(function () {
                 $("#rentwarehouse-size-preview").attr("src", "../images/calculator/rooms-" + sizeLabel + ".jpg");
             }
 
+            $(".address-text").click(function(){
+                const addrSection = $("#address-section");
+                if (addrSection.next().css("display") === "none") {
+                    addrSection.click();
+                }
+                $('html,body').animate({
+                    scrollTop: $("#address-section").offset().top - $("nav").height()
+                });
+            });
+
             $("#bookingForm").submit(function (e) {
 
                 e.preventDefault();
@@ -346,11 +389,12 @@ $(function () {
                     datatype: 'json',
                     success: function (result) {
                         submitBtn.prop('disabled', false);
-                        if (result.state == "success") {
+                        if (result.state === "success") {
+                            alert("Success!");
                             bookingModal.style.display = "none";
-                            confirmModal.style.display = "block";
+                            // confirmModal.style.display = "block";
                             if (!result.logged_in) {
-                                //confirmModal.style.display = "block";
+                                confirmModal.style.display = "block";
                             }
                         } else {
                             alert("Failed!");
@@ -358,7 +402,7 @@ $(function () {
                     }
                 });
 
-            })
+            });
 
             $(".rentwarehouse-toggle-item").click(function () {
                 $(this).next().toggle();
@@ -370,7 +414,7 @@ $(function () {
                     $(this).find("i").removeClass("wb-chevron-up");
                     $(this).find("i").addClass("wb-chevron-down");
                 }
-            })
+            });
 
             $(".rentwarehouse-space-size-select").click(function () {
                 $(".rentwarehouse-space-size-select").removeClass("active");
@@ -379,7 +423,7 @@ $(function () {
                 $("#price-wrapper").html(numberFormat($(this).attr('data-price')));
                 $(".rentwarehouse-price-select:first").click();
                 branchSize = Number($(this).attr('data-size'));
-            })
+            });
 
             $(".rentwarehouse-price-select").click(function () {
                 $(".rentwarehouse-price-select").removeClass("active");
@@ -387,28 +431,28 @@ $(function () {
                 $(".selected-price").html($(this).find(".price-content").html());
                 $("#payment-method").text($(this).find(".rentwarehouse-mode-select-item-title").text());
                 $("#storePrice").val($(this).find(".price-content").text());
-            })
+            });
 
             $(".rentwarehouse-table-item").on('click', function () {
                 chnageRoomImage(Number($(this).find(".bg-yellow").text()));
-            })
+            });
 
             $(".rentwarehouse-table-item").hover(function () {
                 changeRoomImage(Number($(this).find(".bg-yellow").text()));
-            })
+            });
 
             $(".rentwarehouse-sub-image").click(function () {
                 const mainImage = $("#rentwarehouse-main-image");
                 mainImage.attr("src", $(this).attr("src"));
                 mainImage.show();
-            })
+            });
 
             $("#modalTrigger").click(function () {
                 $("#branchSize").val(branchSize);
                 $("#branchSizeTxt").html(branchSize);
                 confirmed = false;
                 bookingModal.style.display = "block"
-            })
+            });
 
             $("#modalClose").click(function () {
                 bookingModal.style.display = "none"
@@ -417,12 +461,12 @@ $(function () {
             $("#confirmBtn").click(function () {
                 confirmed = true;
                 confirmModal.style.display = "none"
-            })
+            });
 
             $("#cancelBtn").click(function () {
                 confirmed = false;
                 confirmModal.style.display = "none"
-            })
+            });
 
             window.onclick = function (event) {
                 if (event.target == bookingModal) {
@@ -430,7 +474,7 @@ $(function () {
                 } else if (event.target == confirmModal) {
                     confirmModal.style.display = "none"
                 }
-            }
+            };
 
             $(".rentwarehouse-space-size-select:first").click();
         }
@@ -820,18 +864,37 @@ $(function () {
                 sum += (Number($(this).val()) * Number($(this).attr("size")));
             })
             $(".store-select").removeClass('active');
+
+            $("#sizeText").text( sum + " 呎");
             if (sum <= 0) {
                 return;
             }
+
+            $(".store-select").removeClass('active');
+            var label = '';
             if (sum > 0 && sum < 13) {
-                $("#s-store").click();
+                label = "s";
             } else if (sum < 25) {
-                $("#m-store").click();
+                label = "m";
             } else if (sum < 37) {
-                $("#l-store").click();
+                label = "l";
             } else if (sum >= 37) {
-                $("#xl-store").click();
+                label = "xl";
             }
+            const storeWrapper = $("#" + label + "-store");
+            storeWrapper.addClass("active");
+            if(label == "l" || label == "xl"){
+                storeWrapper.parent().animate({
+                    scrollLeft: "+=" + "1000px"
+                }, "fast");
+            }else{
+                storeWrapper.parent().animate({
+                    scrollLeft: "-=" + "1000px"
+                }, "fast");
+            }
+
+
+
         }
 
         $(document).on("click", ".calculator-category-title", function () {
@@ -863,15 +926,17 @@ $(function () {
         $(document).on("change", ".calculator-item-element-input", selectStore);
 
 
-        $(".store-select").click(function () {
-            $(".store-select").removeClass('active');
-            $(this).addClass("active");
-        });
+        // $(".store-select").click(function () {
+        //     $(".store-select").removeClass('active');
+        //     $(this).addClass("active");
+        // });
 
         $(".store-select-button").click(function () {
             console.log("selected");
             window.location.href = '/branch-location?size=' + $(this).val();
         });
+
+
 
         function makeDeepLink() {
             var linkData = [];
@@ -880,11 +945,10 @@ $(function () {
                 if (value == 0) {
                     return true;
                 }
-                linkData.push({
-                    id: $(this).parent().attr("id"),
-                    value: value
-                })
-            })
+                linkData.push(Number($(this).parent().attr("id").substr(4)));
+                linkData.push(value);
+            });
+            console.log(JSON.stringify(linkData));
 
             const base64 = btoa(JSON.stringify(linkData));
             const link = window.location.href + "?data=" + base64;
@@ -892,25 +956,11 @@ $(function () {
             return link;
         }
 
-        $("#fbLink").click(function () {
-            makeDeepLink();
-        })
 
-        $("#mailLink").click(function () {
-            const link = makeDeepLink();
-            $.ajax({
-                url: '/calc/share',
-                type: 'GET',
-                data: {
-                    type: 'email',
-                    link: link
-                },
-                datatype: 'json',
-                success: function (result) {
 
-                }
-            });
-        })
+        $(".share-link").click(function(e){
+            $(this).attr("href", $(this).attr("data-init") + makeDeepLink());
+        });
 
 
 
@@ -951,8 +1001,9 @@ $(function () {
             });
             $(".calculator-category-title:first").click();
 
-            for (var i = 0; i < preData.length; i++) {
-                $("#" + preData[i].id).find("input").val(preData[i].value);
+            console.log(preData);
+            for (var i = 0; i < preData.length; i += 2) {
+                $("#item" + preData[i]).find("input").val(preData[i + 1]);
             }
 
             selectStore();
@@ -1119,6 +1170,11 @@ $(function () {
             });
 
             init();
+        }
+    })();
+
+    OneStorage.Contact = (function(){
+        return function(){
         }
     })();
 

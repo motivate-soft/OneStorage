@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Auth;
 use DB;
 use Illuminate\Database\QueryException;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\PasswordReset;
 
 class AuthController extends Controller
 {
@@ -129,9 +133,48 @@ class AuthController extends Controller
         return view('account.register');
     }
 
-    public function forgetPwdPage()
+    public function forgotPwdPage()
     {
-        return view('account.forgetpassword');
+        return view('account.forgot-password');
+    }
+
+    public function forgotPwd(Request $request)
+    {
+        $request->validate(['email' => 'required|email']);
+
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+
+        return $status === Password::RESET_LINK_SENT
+            ? back()->with(['status' => __($status)])
+            : back()->withErrors(['email' => __($status)]);
+    }
+
+    public function resetPwd(Request $request)
+    {
+        $request->validate([
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        $status = Password::reset(
+            $request->only('email', 'password', 'password_confirmation', 'token'),
+            function ($user, $password) use ($request) {
+                $user->forceFill([
+                    'password' => Hash::make($password)
+                ])->save();
+
+                $user->setRememberToken(Str::random(60));
+
+                event(new PasswordReset($user));
+            }
+        );
+
+        return $status == Password::PASSWORD_RESET
+            ? redirect()->route('login')->with('status', __($status))
+            : back()->withErrors(['password' => __($status)]);
     }
 
     public function updateByAdmin(Request $request)

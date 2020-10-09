@@ -10,12 +10,48 @@ class Helper
     public static $MESSAGE_TYPE_NORMAL = "For Support";
     public static $MESSAGE_TYPE_BYADMIN = "Created By Admin";
     public static $MESSAGE_TYPE_BROADCAST = "Broadcast";
-    
+
     public static $SS_FROM_FRONT_PAGE1 = "Front Page(discount)";
     public static $SS_FROM_FRONT_PAGE2 = "Front Page";
     public static $SS_FROM_NEWS_PAGE = "News";
     public static $SS_FROM_CONTACTUS_PAGE = "Contact us";
     public static $SS_FROM_JOINUS_PAGE = "Join us";
+    public static $SS_FROM_FAQ_PAGE = "FAQ";
+
+    public static $STORAGE_FACILITIES = [
+        [
+            'image'   => 'images/ic_key_card.png',
+            'title'   => '7 x 24智能保安進出系統'
+        ],
+        [
+            'image'   => 'images/ic_air_con.png',
+            'title'   => '無間斷恆溫空調'
+        ],
+        [
+            'image'   => 'images/ic_fire.png',
+            'title'   => '消防裝置設備'
+        ],
+        [
+            'image'   => 'images/ic_delivery.png',
+            'title'   => '鋁梯及手推車借用服務'
+        ],
+        [
+            'image'   => 'images/ic_water.png',
+            'title'   => '自助飲用水機'
+        ],
+        [
+            'image'   => 'images/ic_sec_cam.png',
+            'title'   => '全天候高清保安監察及警報系統'
+        ],
+        [
+            'image'   => 'images/ic_24_hours.png',
+            'title'   => '24小時電話熱線服務'
+        ],
+        [
+            'image'   => 'images/ic_wifi.png',
+            'title'   => '免費Wi-Fi'
+        ],
+    ];
 
     public static function getRandomString($length = 10)
     {

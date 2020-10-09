@@ -1,82 +1,12 @@
 ﻿@extends('layouts.app')
 
 @section('title')
-<title>{{__('Rent Ware House')}}</title>
+<title>{{__('出租屋')}}</title>
 @endsection
 
 @section('styles')
 <style>
-    .bg-hero {
-        background-image: url(images/bg_hero1.jpg);
-        background-repeat: no-repeat;
-        background-position: bottom right;
-        min-height: 520px;
-    }
 
-    .page-title {
-        font-size: 61px;
-        position: relative;
-        font-weight: bold;
-    }
-
-    .page-title:before {
-        content: '';
-        position: absolute;
-        width: 97%;
-        height: 88px;
-        bottom: 30px;
-        z-index: -1;
-        left: -10px;
-        background-color: #E0CBF6;
-    }
-
-    .page-desc {
-        font-size: 26px;
-        font-weight: bold;
-        color: #B2B5BD;
-    }
-
-    .heading1 {
-        font-size: 24px;
-        color: white;
-    }
-
-    .heading2 {
-        font-size: 30px;
-        color: #4D5567;
-    }
-
-    .box-shadow {
-        position: relative;
-        z-index: 10;
-    }
-
-    .box-shadow:before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background-color: #FABD02;
-        bottom: -18px;
-        left: 18px;
-    }
-
-    .box-shadow1 {
-        position: relative;
-        z-index: 10;
-    }
-
-    .box-shadow1:before {
-        content: '';
-        position: absolute;
-        width: 130%;
-        height: 100%;
-        z-index: -1;
-        background-color: #FABD02;
-        top: 15px;
-        left: -15%;
-    }
 
     .text0-m {
         font-size: 14px;
@@ -89,77 +19,11 @@
         color: #4D5567;
     }
 
-    .text2 {
-        /* 19px */
-        font-size: 19px;
-        color: #4D5567;
-    }
-
-    .text3 {
-        font-size: 20px;
-        color: white
-    }
-
-    .text4 {
-        /* 21px */
-        font-size: 21px;
-        color: #4D5567;
-    }
-
-    .text-name {
-        font-size: 17px;
-        color: #AFAFAF;
-    }
-
-    .score-lg {
-        display: flex;
-        font-size: 28px;
-        font-weight: bold;
-        background-color: #FABD02;
-        border-radius: 9999px;
-        color: #56628C;
-        width: 62px;
-        height: 62px;
-    }
-
-    .score-base {
-        display: flex;
-        font-size: 22px;
-        font-weight: bold;
-        background-color: #FABD02;
-        border-radius: 9999px;
-        color: #56628C;
-        width: 52px;
-        height: 52px;
-    }
-
-    .button-primary {
-        font-size: 18px;
-        border-radius: 0.3rem;
-        color: #56628C;
-        background-color: #E0CBF6;
-        padding-left: 18px;
-        padding-right: 18px;
-    }
-
     main {
         margin-left: auto;
         margin-right: auto;
         /* max-width: 375px; */
         overflow-x: hidden;
-    }
-
-    .yellow-shadow {
-        box-shadow: 10px 15px #FABD02;
-    }
-
-    .yellow-shadow1 {
-        box-shadow: 18px 18px #FABD02;
-    }
-
-    .contact-icon {
-        width: 20px;
-        height: 20px;
     }
 
     .horz-line {
@@ -338,23 +202,15 @@
     /* The Modal (background) */
     .modal {
         display: none;
-        /* Hidden by default */
         position: fixed;
-        /* Stay in place */
-        padding-top: 100px;
-        /* Location of the box */
+        padding-top: 50px;
         left: 0;
         top: 0;
         width: 100%;
-        /* Full width */
         height: 100%;
-        /* Full height */
         overflow: auto;
-        /* Enable scroll if needed */
         background-color: rgb(0, 0, 0);
-        /* Fallback color */
         background-color: rgba(0, 0, 0, 0.4);
-        /* Black w/ opacity */
     }
 
     /* Modal Content */
@@ -365,7 +221,6 @@
         border: 1px solid #888;
         /* width: 80%; */
         max-width: 350px;
-
     }
 
     /* The Close Button */
@@ -445,8 +300,8 @@
     </p>
     <div class="fixed bottom-0 flex justify-start z-10 w-full" style="margin-bottom: 5px; max-width: 600px">
         <div class="bg-white shadow-lg py-1 px-3 w-full">
-            <div class="rentwarehouse-toggle-item py-2 cursor-pointer text-center"><i class="icon wb-chevron-down"></i></div>
-            <div>
+            <div class="rentwarehouse-toggle-item py-2 cursor-pointer text-center"><i class="icon wb-chevron-up"></i></div>
+            <div class="hidden">
                 <p class="color-primary rentwarehouse-space-size-title-m pt-0 pb-4">你需要多大的空間?</p>
                 <div class="grid grid-cols-2 col-gap-4 row-gap-2">
                     @foreach($store->sizes as $key=>$size)
@@ -552,7 +407,7 @@
     </div>
     <div class="pt-6">
         <p class="text-sm color-primary px-4">地址: {{$store->address}}</p>
-        <div class="px-4">
+        <div class="px-4 leading-relaxed">
             <p class="text-sm color-deep pt-8 py-2 rentwarehouse-content-title-1">開放時間</p>
             <p class="text-sm color-primary py-1">
                 <!-- 全年24小時開放。 -->
@@ -600,61 +455,15 @@
         <span class="text1 my-auto self-center pl-2 rentwarehouse-content-title-1">服務設施</span>
     </div>
     <div class="pt-2 hidden">
-        <div class="grid grid-cols-1 row-gap-6 py-2 pl-8 text-center">
-            @if($store->serviceState(0))
-            <div class="flex">
-                <img src="{{asset('images/ic_key_card.png')}}" class="mr-2 object-none" />
-                <p class="text0 my-auto"><span class="font-bold">7 x 24</span>智能保安進出系統</p>
-            </div>
-            @endif
-            @if($store->serviceState(1))
-            <div class="flex">
-                <img src="{{asset('images/ic_air_con.png')}}" class="mr-2 object-none" />
-                <p class="text0 my-auto">無間斷恆溫空調</p>
-            </div>
-            @endif
-            @if($store->serviceState(2))
-            <div class="flex">
-                <img src="{{asset('images/ic_fire.png')}}" class="mr-2 object-none" />
-                <p class="text0 my-auto">消防裝置設備</p>
-            </div>
-            @endif
-            @if($store->serviceState(3))
-            <div class="flex">
-                <img src="{{asset('images/ic_delivery.png')}}" class="mr-2 object-none" />
-                <p class="text0 my-auto">鋁梯及手推車借用服務</p>
-            </div>
-            @endif
-            @if($store->serviceState(4))
-            <div class="flex">
-                <img src="{{asset('images/ic_water.png')}}" class="mr-2 object-none" />
-                <p class="text0 my-auto">自助飲用水機</p>
-            </div>
-            @endif
-            @if($store->serviceState(5))
-            <div class="flex">
-                <img src="{{asset('images/ic_sec_cam.png')}}" class="mr-2 object-none" />
-                <p class="text0 my-auto">全天候高清保安監察及警報系統</p>
-            </div>
-            @endif
-            @if($store->serviceState(6))
-            <div class="flex">
-                <img src="{{asset('images/ic_24_hours.png')}}" class="mr-2 object-none" />
-                <p class="text0 my-auto">24小時電話熱線服務</p>
-            </div>
-            @endif
-            @if($store->serviceState(7))
-            <div class="flex">
-                <img src="{{asset('images/ic_wifi.png')}}" class="mr-2 object-none" />
-                <p class="text0 my-auto">免費Wi-Fi</p>
-            </div>
-            @endif
-            @if($store->serviceState(8))
-            <div class="flex">
-                <img class="mr-2 object-none" src="{{ asset('images/icons8-secured-letter-40@2x.png') }}" />
-                <p class="text0 my-auto color-primary">信箱服務</p>
-            </div>
-            @endif
+        <div class="grid grid-cols-1 row-gap-3 py-2 pl-8">
+            @foreach(Helper::$STORAGE_FACILITIES as $index => $facility)
+                @if($store->serviceState($index))
+                    <div class="flex">
+                        <img src="{{asset($facility['image'])}}" class="w-8 h-8 mr-2 object-none" alt="Image" />
+                        <p class="text0 my-auto" style="width: calc(100% - 2rem)">{{$facility['title']}}</p>
+                    </div>
+                @endif
+            @endforeach
         </div>
 
 
@@ -682,7 +491,7 @@
         <span class="text1 my-auto self-center pl-2 rentwarehouse-content-title-1">常見問題</span>
     </div>
 
-    <div class="pl-11 pt-2 pb-8 hidden">
+    <div class="pl-11 pt-2 pb-8 hidden leading-relaxed">
         @foreach($store->questions as $question)
         <p class="text-sm color-deep py-1">- {{$question->question}}</p>
         <p class="text-sm color-deep py-1"><?php echo nl2br($question->answer) ?></p>
@@ -731,7 +540,7 @@ $user = Auth::user();
                 <input type="hidden" name="branchName" value="{{$store->branch}}" required>
                 <input type="hidden" name="branchSize" id="branchSize" required>
                 <input type="hidden" name="price" id="storePrice" required>
-                <input type="hidden" name="ajax" value="1" type="number">
+                <input type="hidden" name="ajax" value="1">
 
                 <p class=" font-bold mb-3" style="font-size: 25px;">{{$store->branch}} </p>
 
@@ -771,9 +580,18 @@ $user = Auth::user();
                 <div class="input-group mb-3">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
                     @if(Auth::check())
-                    <input class="form-control" type="text" placeholder="電話號碼" value="{{$user->email}}" name="email">
+                        <input class="form-control" type="text" placeholder="電話號碼" value="{{$user->phone}}" name="phoneNumber">
                     @else
-                    <input class="form-control" type="text" placeholder="電話號碼" name="email">
+                        <input class="form-control" type="text" placeholder="電話號碼" name="email">
+                    @endif
+                </div>
+
+                <div class="input-group mb-3">
+                    <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">
+                    @if(Auth::check())
+                        <input class="form-control" type="text" placeholder="電子郵件" value="{{$user->email}}" name="email">
+                    @else
+                        <input class="form-control" type="text" placeholder="電子郵件" name="email">
                     @endif
                 </div>
 
@@ -808,7 +626,7 @@ $user = Auth::user();
                     送出
                 </button>
 
-                <div class=" flex py-2 mt-2 border-t">
+                <div class="flex py-2 mt-2 border-t hidden">
                     <div class="w-2/5">
                         <p class=" text-center font-bold" style="font-size: 21px;color: #988F9A">分享</p>
                     </div>
@@ -845,7 +663,6 @@ $user = Auth::user();
             OneStorage.RentwareHouse(Number('<?= $store ? $store->lat : 0 ?>'), Number('<?= $store ? $store->lng : 0 ?>'));
         });
     }
-
 
     $(function() {
 

@@ -233,34 +233,80 @@
                             <p class="font_26 mb-2">題目</p>
                             <input placeholder="Title" class="form-input w-full appearance-none bg-white border border-gray-300 p-2 text-base" name="title" required type="text" id="title">
                         </div>
-                        <div class="mb-8">
+                        <div class="mb-4">
                             <p class="font_26 mb-2">題目</p>
                             <textarea placeholder="Content" name="content" required rows="4" class="form-input w-full appearance-none bg-white border border-gray-300 p-2 text-base" id="content"></textarea>
                         </div>
+                        <p class="font_26 mb-2">刊登日期</p>
+                        <div class="date-group">
+                            <div class="date-component">
+                                <div class="relative mr-4">
+                                    <select id="daySelector" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日" name="day" required>
+                                        <option value="" selected disabled>日</option>
+                                        @for($i = 1; $i < 32; $i++) <option value="{{$i}}">{{$i}}</option>
+                                        @endfor
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                        <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="date-component">
+                                <div class="relative mr-4">
+                                    <select id="monthSelector" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="month" required>
+                                        <option value="" selected disabled>月</option>
+                                        @for($i = 1; $i < 13; $i++) <option value="{{$i}}">{{$i}}</option>
+                                        @endfor
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                        <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="date-component">
+                                <div class="relative">
+                                    <select id="yearSelector" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="year" required>
+                                        <option value="" selected disabled>年</option>
+                                        @for($i = 1990; $i < 2021; $i++) <option value="{{$i}}">{{$i}}</option>
+                                        @endfor
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                        <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    
+
 
                     <div>
                         <p class="font_26 mb-2">Title</p>
 
                         <?php
-                        $blogs = App\Blog::orderBy('updated_at', 'desc')->paginate(5);
+                        $newses = \App\Blog::getNewses()->paginate(5);
                         ?>
-                        @foreach ($blogs as $blog)
-                        <div class="flex justify-between mb-2 robert-regular cursor-pointer blog-item" id="{{$blog->id}}">
-                            <span class="blog-title my-auto">{{ $blog->title }}</span>
+                        @foreach ($newses as $news)
+                        <div class="flex justify-between mb-2 robert-regular cursor-pointer blog-item" id="{{$news->id}}">
+                            <span class="blog-title my-auto truncate">{{ $news->title }}</span>
                             <div class="flex justify-end flex-shrink-0">
                                 <div class="action-bar hidden">
                                     <img src="{{asset('images/icons8-edit-48@2x.png')}}" class="inline" />
                                     <img src="{{asset('images/ic-recycle-bin-50.png')}}" class="inline deleteBtn ml-2 w-8 h-8" />
                                 </div>
-                                <span class="ml-4 float-right font_12 my-auto">{{$blog->updated_at->format('d/m/Y')}}</span>
+                                <span class="ml-4 float-right font_12 my-auto">
+                                    {{$news->publish_date->format('d/m/Y')}}
+                                </span>
                             </div>
                         </div>
                         @endforeach
 
-                        {{ $blogs->links() }}
+                        {{ $newses->links() }}
                     </div>
                 </div>
 
@@ -339,7 +385,7 @@
         $('.action-bar').hide();
         const actionBar = $(this).find('.action-bar');
         const blogId = $(this).attr('id');
-        //load blog data 
+        //load blog data
         $.ajax({
             url: '/blog/' + blogId,
             type: 'GET',
@@ -355,7 +401,8 @@
                 $("#content").val(blog.content);
                 $("#method").val('PUT');
                 $("#blogId").val(blog.id);
-
+                const date = new Date(blog.publish_date.date);
+                OneStorage.DOB(date !== undefined ? date : new Date());
                 actionBar.show();
             }
         });
@@ -420,6 +467,7 @@
         $("#position-select").val('');
         $("#news-select").val('');
         $("#resetBtn").click();
+        OneStorage.DOB(new Date());
     });
 </script>
 @endsection

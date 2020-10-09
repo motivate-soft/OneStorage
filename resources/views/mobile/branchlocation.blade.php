@@ -1,7 +1,7 @@
 ﻿@extends('layouts.app')
 
 @section('title')
-<title>{{__('Branch Location')}}</title>
+<title>{{__('分店位置')}}</title>
 @endsection
 
 @section('styles')
@@ -324,7 +324,7 @@
         $price = $store->getLowestPrice();
         ?>
         <div class="flex flex-col justify-between relative rounded overflow-hidden shadow-lg location-content-item mx-auto mb-4" data-name="{{$store->branch}}" data-price="{{$price}}" data-size-label="{{$store->getSizeLabel()}}">
-            <div class="relative">
+            <a href="{{url('/rentwarehouse?storeId='). $store->id}}" class="relative">
                 <div class="ribbon ribbon-badge ribbon-pink">
                     <span class="ribbon-inner">最新優惠</span>
                 </div>
@@ -337,7 +337,7 @@
                 <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Rentwarehouse">
                 @endif
                 <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ {{$price}} 起</span>
-            </div>
+            </a>
             <div class="px-1 py-2 pl-2">
                 <div class="mb-1 mt-2 color-primary location-content-title">{{$store->branch}}</div>
                 <div class="flex pt-1 pl-1 items-center">

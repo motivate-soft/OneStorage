@@ -63,6 +63,7 @@ class BlogController extends Controller
         }
 
         $blog->used_notify = isset($request->usedNotify) &&  $request->usedNotify == "on";
+        $blog->publish_date = $request->year . '/' . $request->month . '/' . $request->day;
 
         $this->saveImage($blog, $request, "image");
         $this->saveImage($blog, $request, "thumbnail");

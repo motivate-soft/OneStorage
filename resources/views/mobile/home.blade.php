@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('Home')}}</title>
+<title>{{__('至尊迷你仓')}}</title>
 @endsection
 
 @section('styles')
@@ -15,7 +15,7 @@
     }
 
     div.internal {
-        width: 211px;
+        width: 215px;
         height: 250px;
         margin-top: 0px;
         font-family: "RobertRegular";
@@ -244,9 +244,10 @@
     </div>
 
 
-    <div class="mt-4 mx-4 robert-black text-primary text-center">
-        <span class="my-auto relative font_14 crown pb-8">唔知自己需要咩size ? 試下我地既空間計算器&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <br /><br />
+    <div class="mt-4 mx-4 robert-black text-primary text-center flex flex-col">
+        <div class="mb-4">
+            <span class="my-auto relative font_14 crown">唔知自己需要咩size ? 試下我地既空間計算器&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </div>
 
         <a href="{{url('/calc')}}" target="_blank" class="bg-yellow px-4 py-2 font_14 mx-auto rounded-lg">立即計算</a>
     </div>
@@ -322,18 +323,18 @@
 </form>
 
 <div class="py-4 mb-4 text-center">
-    <div class="flex overflow-x-auto overflow-y-hidden mb-8">
+    <div class="flex overflow-x-auto overflow-y-hidden pb-4 mb-8">
         <div class="flex-shrink-0 mr-2">
-            <img src="<?php echo e(asset('images/img_1.jpg')); ?>" class="home-image-1 mb-4" />
-            <p class="text-center text1">迷你倉廣告</p>
+            <a href="https://youtu.be/GdBSugr-vY8" target="_blank"><img src="{{asset('images/video_thumb1.jpg')}}" class="mb-4" /></a>
+            <p class="text-center text1">至尊迷你倉幫您解決一切空間煩惱</p>
         </div>
         <div class="flex-shrink-0 mx-2">
-            <img src="<?php echo e(asset('images/img_2.jpg')); ?>" class="home-image-1 mb-4" />
+            <a href="https://youtu.be/hxzEMSnO16g" target="_blank"><img src="{{asset('images/video_thumb2.jpg')}}" class="mb-4" /></a>
             <p class="text-center text1">迷你倉廣告</p>
         </div>
         <div class="flex-shrink-0 ml-2">
-            <img src="<?php echo e(asset('images/img_3.jpg')); ?>" class="home-image-1 mb-4" />
-            <p class="text-center text1">迷你倉廣告</p>
+            <a href="https://youtu.be/AG_ZbMUNok4" target="_blank"><img src="{{asset('images/video_thumb3.jpg')}}" class="mb-4" /></a>
+            <p class="text-center text1">租用 One Storage 就係咁簡單 </p>
         </div>
     </div>
 
@@ -351,12 +352,16 @@
 
 <div class="home-screen-background pb-8 text-center">
     <span class="heading2 box-shadow1 relative" style="top:-26px">客戶感言</span>
-    <p class="text4 ml-10">用戶好評來自 <span class="text-blue-900 font-extrabold">facebook</span></p>
-    <div class="flex justify-center mb-10">
-        <div class="score-lg relative" style="top: -20px">
+    <p class="text4 ml-10 mt-8 mb-1">用戶好評來自
+        <span class="text-blue-900 font-extrabold">
+            <a href="https://www.facebook.com/onestorage/" target="_blank">facebook</a>
+        </span>
+    </p>
+    <div class="flex justify-center mb-4">
+        <div class="score-lg relative" style="top: -30px">
             <p class="m-auto">5.0</p>
         </div>
-        <p class="text4">（滿分為 <span class="font-bold">5</span>） 根據 <span class="font-bold">205</span> 位用戶的意見</p>
+        <p class="text4">（滿分為 <span class="font-bold">5</span>） 根據 <span class="font-bold">逾180</span> 位用戶的意見</p>
     </div>
 
 
@@ -379,15 +384,12 @@
                         <p class="m-auto">5.0</p>
                     </div>
                     <p class="text1 mb-8 whitespace-normal">
-                        The storage is clean and
-                        tidy.
-                        The office girl is very
-                        helpful and kind
+                        方便、簡潔、員工友好。
                     </p>
                 </div>
 
                 <div class="inline-block">
-                    <span class="text-name">劉美英</span>
+                    <span class="text-name">Wyman Dana Tsui</span>
                     <img src="<?php echo e(asset('images/ic_recommend.png')); ?>" class="inline ml-2" />
                 </div>
             </div>
@@ -397,15 +399,16 @@
                         <p class="m-auto">5.0</p>
                     </div>
                     <p class="text1 mb-8 whitespace-normal">
-                        The storage is clean and
-                        tidy.
-                        The office girl is very
-                        helpful and kind
+                        Excellent customer service,
+                        very fast response even at
+                        midnight on facebook
+                        messenger. Save me a lot
+                        of time.
                     </p>
                 </div>
 
                 <div class="inline-block">
-                    <span class="text-name">劉美英</span>
+                    <span class="text-name">Doris Yu</span>
                     <img src="<?php echo e(asset('images/ic_recommend.png')); ?>" class="inline ml-2" />
                 </div>
             </div>
@@ -415,33 +418,12 @@
                         <p class="m-auto">5.0</p>
                     </div>
                     <p class="text1 mb-8 whitespace-normal">
-                        The storage is clean and
-                        tidy.
-                        The office girl is very
-                        helpful and kind
+                        二十四小時，十分方便，搬屋雜物多，好夠用！very good
                     </p>
                 </div>
 
                 <div class="inline-block">
-                    <span class="text-name">劉美英</span>
-                    <img src="<?php echo e(asset('images/ic_recommend.png')); ?>" class="inline ml-2" />
-                </div>
-            </div>
-            <div class="internal flex flex-col justify-between bg-white border border-gray-600 p-4 ml-2">
-                <div>
-                    <div class="score-base mb-4">
-                        <p class="m-auto">5.0</p>
-                    </div>
-                    <p class="text1 mb-8 whitespace-normal">
-                        The storage is clean and
-                        tidy.
-                        The office girl is very
-                        helpful and kind
-                    </p>
-                </div>
-
-                <div class="inline-block">
-                    <span class="text-name">劉美英</span>
+                    <span class="text-name">Carrie Chiu</span>
                     <img src="<?php echo e(asset('images/ic_recommend.png')); ?>" class="inline ml-2" />
                 </div>
             </div>
@@ -460,7 +442,7 @@
         <p class="font_33 mb-8">至尊迷你倉</p>
         <p class="font_14 mx-20">
             為金朝陽集團屬下業務(股票代號： 00878.HK)。<br />
-            分店遍佈港、九及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質的儲存環境及專業的服務。至尊迷你倉是亞洲迷你倉商會(SSAA及香港迷你倉總會會員(HKMSA)。
+            分店遍佈港、九及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質的儲存環境及專業的服務。至尊迷你倉是亞洲迷你倉商會(SSAA)及香港迷你倉總會會員(HKMSA)。
 
         </p>
     </div>
@@ -468,42 +450,42 @@
     <img src="<?php echo e(asset('images/img_camera.jpg')); ?>" class="yellow-shadow1 object-fill w-full" />
     <div class="text-left px-4 py-3">
         <p class="heading2 text-center pb-6">迷你倉設施</p>
-        <div class="grid grid-cols-1 row-gap-6 mb-8">
+        <div class="grid grid-cols-1 row-gap-3 mb-8">
             <div class="flex">
-                <img src="<?php echo e(asset('images/ic_key_card.png')); ?>" class="mr-2 object-none" />
-                <p class="text0 my-auto"><span class="font-bold">7 x 24</span>智能保安進出系統</p>
+                <img src="<?php echo e(asset('images/ic_key_card.png')); ?>" class="w-8 h-8 mr-2 object-none" />
+                <p class="text0 my-auto" style="width: calc(100% - 2rem)">7 x 24智能保安進出系統</p>
             </div>
             <div class="flex">
-                <img src="<?php echo e(asset('images/ic_fire.png')); ?>" class="mr-2 object-none" />
-                <p class="text0 my-auto">消防裝置設備</p>
+                <img src="<?php echo e(asset('images/ic_fire.png')); ?>" class="w-8 h-8 mr-2 object-none" />
+                <p class="text0 my-auto" style="width: calc(100% - 2rem)">消防裝置設備</p>
             </div>
             <div class="flex">
-                <img src="<?php echo e(asset('images/ic_water.png')); ?>" class="mr-2 object-none" />
-                <p class="text0 my-auto">自助飲用水機</p>
+                <img src="<?php echo e(asset('images/ic_water.png')); ?>" class="w-8 h-8 mr-2 object-none" />
+                <p class="text0 my-auto" style="width: calc(100% - 2rem)">自助飲用水機</p>
             </div>
             <div class="flex">
-                <img src="<?php echo e(asset('images/ic_24_hours.png')); ?>" class="mr-2 object-none" />
-                <p class="text0">24小時電話熱線服務</p>
+                <img src="<?php echo e(asset('images/ic_24_hours.png')); ?>" class="w-8 h-8 mr-2 object-none" />
+                <p class="text0 my-auto" style="width: calc(100% - 2rem)">24小時電話熱線服務</p>
             </div>
         </div>
-        <div class="grid grid-cols-1 row-gap-6">
+        <div class="grid grid-cols-1 row-gap-3">
             <div class="flex flex-row-reverse">
-                <img src="<?php echo e(asset('images/ic_air_con.png')); ?>" class="ml-2 object-none" />
+                <img src="<?php echo e(asset('images/ic_air_con.png')); ?>" class="w-8 h-8 ml-2 object-none" />
                 <p class="text1 my-auto">無間斷恆溫空調</p>
             </div>
 
             <div class="flex flex-row-reverse">
-                <img src="<?php echo e(asset('images/ic_delivery.png')); ?>" class="ml-2 object-none" />
+                <img src="<?php echo e(asset('images/ic_delivery.png')); ?>" class="w-8 h-8 ml-2 object-none" />
                 <p class="text0 my-auto">鋁梯及手推車借用服務</p>
             </div>
 
             <div class="flex flex-row-reverse">
-                <img src="<?php echo e(asset('images/ic_sec_cam.png')); ?>" class="ml-2 object-none" />
+                <img src="<?php echo e(asset('images/ic_sec_cam.png')); ?>" class="w-8 h-8 ml-2 object-none" />
                 <p class="text0 my-auto">全天候高清保安監察及警報系統</p>
             </div>
 
             <div class="flex flex-row-reverse">
-                <img src="<?php echo e(asset('images/ic_wifi.png')); ?>" class="ml-2 object-none" />
+                <img src="<?php echo e(asset('images/ic_wifi.png')); ?>" class="w-8 h-8 ml-2 object-none" />
                 <p class="text0 my-auto">免費Wi-Fi</p>
             </div>
         </div>
@@ -543,66 +525,7 @@
 </div>
 
 <div class="bg-white px-6 py-10">
-
-    <form class="form-enquiry" method="post" action="{{url('/enquiry')}}">
-        @csrf
-        <input type="hidden" name="page" value="{{Helper::$SS_FROM_FRONT_PAGE2}}">
-        <p class="text2 mb-8">給我們留言</p>
-        <div class="flex mb-4 w-full">
-            <div class="flex w-1/2 input-group">
-                <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">
-                <input class="w-full form-control" type="text" placeholder="姓" name="firstName" required>
-            </div>
-            <div class="w-1/2 flex input-group">
-                <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名" name="lastName" required>
-            </div>
-        </div>
-
-        <div class="input-group mb-4">
-            <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-            <input class="form-control" type="text" placeholder="電話號碼" name="phoneNumber">
-        </div>
-
-        <div class="input-group mb-8">
-            <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">
-            <input class="form-control" type="email" placeholder="電子郵件" name="email" required>
-        </div>
-
-        <div class="w-full inline-block relative mb-6">
-            <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" style="color:#76838f" name="branchName">
-                <option value="" selected disabled>分店</option>
-                <?php
-                $branches = App\Store::select('branch')->get();
-                ?>
-                @foreach($branches as $branch)
-                <option value="{{$branch->branch}}">{{$branch->branch}}</option>
-                @endforeach
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-            </div>
-        </div>
-
-        <div class="w-full inline-block relative mb-6">
-            <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" style="color:#76838f" name="question">
-                <option value="" selected>查詢問題</option>
-                <option value="請問那裡有分店？">請問那裡有分店？</option>
-                <option value="我要預約參觀？">我要預約參觀？</option>
-                <option value="請問尺寸及價錢如何？">請問尺寸及價錢如何？</option>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-            </div>
-        </div>
-
-        <textarea class="w-full border placeholder-gray-600 px-3 py-2 border-gray-200 mb-6" style="padding-left:16px;color:#76838f" type="text" placeholder="你的信息" rows="3" name="message"></textarea>
-
-        <button class="submit-btn hover:bg-purple-400">
-            送出
-        </button>
-    </form>
+    @include('partials.enquiryForm', ['page' => Helper::$SS_FROM_FRONT_PAGE2])
 </div>
 
 @section('footer')

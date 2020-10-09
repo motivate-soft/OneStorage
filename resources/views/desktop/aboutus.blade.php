@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('About Us')}}</title>
+<title>{{__('关于我们')}}</title>
 @endsection
 
 @section('styles')
@@ -95,7 +95,7 @@
 @section('content')
 <img class="w-full" src="{{asset('images/aboutus/bg_about.jpg')}}" />
 
-<div class="relative block bg-white w-3/5 mx-auto mb-10 floating-panel">
+<div class="relative block bg-white section mb-10 floating-panel">
     <div class="flex maintitle-wrapper color-primary mx-auto mb-8">
         <div class="maintitle-right mx-auto">
             <div class="ml-1 mb-4">
@@ -116,7 +116,7 @@
         <p class="text-center content-title-1">至尊迷你倉</p>
         <p class="leading-relaxed content-description">為金朝陽集團屬下業務(股票代號： 00878.HK)。
             <br /><br />
-            分店遍佈港、九及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質的儲存環境及專業的服務。至尊迷你倉是亞洲迷你倉商會(SSAA及香港迷你倉總會會員(HKMSA)。
+            分店遍佈港、九及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質的儲存環境及專業的服務。至尊迷你倉是亞洲迷你倉商會(SSAA)及香港迷你倉總會會員(HKMSA)。
         </p>
     </div>
 
@@ -129,7 +129,7 @@
     <div class="color-primary">
         <p class="text-center content-title-2">設備及付款方式</p>
         <p class="leading-relaxed content-description">
-            設備合乎消防處迷伙倉指引，客人可24小時自助儲存，配備全天候保安系統及智能保安系統。
+            設備合乎消防處迷你倉指引，客人可24小時自助儲存，配備全天候保安系統及智能保安系統。
             <br /><br />
             付款方式：現金、EPS、支票、信用卡、轉數快及免息分期
         </p>

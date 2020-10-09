@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('Location')}}</title>
+<title>{{__('分店位置')}}</title>
 @endsection
 
 @section('styles')
@@ -47,15 +47,15 @@
 
     .branchlocation-card-wrapper {
         min-width: 100px;
-        height: 280px;
+        height: 320px;
         /* background-color: whi; */
     }
 
     .branchlocation-card-image {
 
-        width: 100px;
-        height: 80px;
-        margin-top: 30px;
+        width: 180px;
+        height: 140px;
+        margin-top: 20px;
 
     }
 
@@ -144,11 +144,6 @@
         color: #56628C;
     }
 
-    .rentwarehouse-selects-store-item-option {
-        font-size: 20px;
-        color: #56628C;
-    }
-
     .rentwarehouse-select-store-button {
         font-size: 25px;
         background-color: #E0CBF6;
@@ -165,6 +160,11 @@
     .rentwarehouse-price-toggle-button {
         color: #B881FD;
     }
+
+    .rentwarehouse-image{
+        width: 100%;
+        height: 246px;
+    }
 </style>
 
 <link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}" />
@@ -180,8 +180,8 @@
 
 
 @section('content')
-<div class="flex px-5 w-full">
-    <div class="" style="width: 56%">
+<div class="flex flex-col-reverse lg:flex-row w-full">
+    <div class="w-full lg:w-3/5 px-5">
         <div class="p-5">
             <div class="rentwarehouse-wrapper-title color-primary text-left font-bold">選擇分店位置</div>
             <form id="branchSearchForm" class="flex items-center pl-6 py-5" method="get" action="{{url('/rentwarehouse')}}">
@@ -309,45 +309,38 @@
             </div>
 
             <div class="rentwarehouse-wrapper-title color-primary text-left pt-4">分店位置</div>
-            <div id="stores-wrapper" class="grid grid-cols-3 col-gap-4 row-gap-6 pt-5 pl-8 pr-0">
+            <div id="stores-wrapper" class="grid grid-cols-3 col-gap-4 row-gap-6 pt-5 pl-8 pr-0 md:w-4/5 lg:w-full">
                 @foreach($stores as $store)
                 <?php
                 $price = $store->getLowestPrice();
                 ?>
-                <div class="flex flex-col justify-between relative rounded overflow-hidden shadow-lg location-content-item" data-name="{{$store->branch}}" data-price="{{$price}}" data-size-label="{{$store->getSizeLabel()}}">
-                    <div class="relative">
+                <div class="flex flex-col relative rounded overflow-hidden shadow-lg location-content-item" data-name="{{$store->branch}}" data-price="{{$price}}" data-size-label="{{$store->getSizeLabel()}}">
+                    <a href="{{url('/rentwarehouse?storeId='). $store->id}}" class="relative">
                         <div class="ribbon ribbon-badge ribbon-pink">
                             <span class="ribbon-inner">最新優惠</span>
                         </div>
                         <?php
                         $storeImages = $store->storeImages()->where('is_used', true)->get();
                         ?>
-                        @if(count($storeImages))
-                        <img class="w-full" src="{{asset($storeImages[0]->image)}}" alt="Rentwarehouse">
-                        @else
-                        <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Rentwarehouse">
-                        @endif
+                        <img class="rentwarehouse-image" style="height: 246px;" src="{{count($storeImages) ? asset($storeImages[0]->image) : asset('branchlocation/Intersection 7@2x.png')}}" alt="Rentwarehouse">
                         <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ {{$price}} <span class="text-sm">起</span></span>
-                    </div>
-                    <div class="mb-1">
-                        <div class="p-2">
-                            <div class="mb-2 color-primary location-content-title">{{$store->branch}}</div>
-                            <div class="flex py-1 mb-2">
-                                <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
-                                <p class="color-primary location-content-description store-address" data-lat="{{$store->lat}}" data-lng="{{$store->lng}}">{{$store->address}}</p>
-                            </div>
-                            <div class="flex py-1 mb-1">
-                                <img class="" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
-                                <p class="ml-1 color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
-                            </div>
+                    </a>
+                    <div class="flex flex-col justify-between p-2 flex-auto">
+                        <div class="mb-2 color-primary location-content-title">{{$store->branch}}</div>
+                        <div class="flex py-1 mb-2">
+                            <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
+                            <p class="ml-1 color-primary my-auto location-content-description store-address" data-lat="{{$store->lat}}" data-lng="{{$store->lng}}">{{$store->address}}</p>
                         </div>
-                        <div class="px-2 py-1 bottom-0 w-full">
-                            <a href="{{url('/rentwarehouse?storeId='). $store->id}}">
-                                <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
-                                    選擇
-                                </button>
-                            </a>
+                        <div class="flex py-1 mb-1">
+                            <img class="w-4 h-4 object-none" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
+                            <p class="ml-1 color-primary my-auto location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                         </div>
+
+                        <a href="{{url('/rentwarehouse?storeId='). $store->id}}">
+                            <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
+                                選擇
+                            </button>
+                        </a>
                     </div>
 
                 </div>
@@ -357,7 +350,7 @@
 
         </div>
     </div>
-    <div class="" style="width: 44%;">
+    <div class="w-full lg:w-2/5 lg:ml-5">
         <div id="map" class="w-full">
             <p class="text-center my-10 state-text">Loading...</p>
         </div>

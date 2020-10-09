@@ -1,7 +1,7 @@
 ﻿@extends('layouts.app')
 
 @section('title')
-<title>{{__('Location')}}</title>
+<title>{{__('常見問題')}}</title>
 @endsection
 
 @section('styles')
@@ -69,7 +69,7 @@
 
     .maintitle-right-bottom-m {
         font-size: 11px;
-        color: #B2B5BD;
+        color: #444444;
         transform: translate(0, 50%);
     }
 
@@ -83,7 +83,8 @@
     }
 
     .content-area {
-        min-height: 500px;
+        /*min-height: 500px;*/
+        margin-bottom: 30px;
     }
 
     .color-primary {
@@ -118,7 +119,7 @@
             <div class="flex items-center">
                 <span>常見問題</span>
             </div>
-            <div class="capitalize mt-2 maintitle-right-bottom-m">解答關於迷你倉的疑難</div>
+            <div class="capitalize mt-2 maintitle-right-bottom-m">搵唔到您想要嘅答案，不如直接聯絡我地啦！</div>
         </div>
     </div>
 
@@ -143,6 +144,10 @@
     </div>
     <div id="faq-content" class="bg-gray content-area px-6">
 
+    </div>
+
+    <div class="bg-white px-6 py-10">
+        @include('partials.enquiryForm', ['page' => Helper::$SS_FROM_FAQ_PAGE])
     </div>
 
 </div>

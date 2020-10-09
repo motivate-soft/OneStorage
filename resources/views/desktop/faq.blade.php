@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('FAQ')}}</title>
+<title>{{__('常見問題')}}</title>
 @endsection
 
 @section('styles')
@@ -77,7 +77,7 @@
 
     .maintitle-right-bottom {
         font-size: 19px;
-        color: #B2B5BD;
+        color: #444444;
         /* transform: translate(0, 50%); */
     }
 
@@ -123,12 +123,12 @@
 @section('content')
 <img class="w-full" src="{{asset('images/faq/shutterstock_1540492397@2x.png')}}" />
 
-<div class="relative block bg-white w-3/5 mx-auto mb-10 floating-panel">
+<div class="relative block bg-white section mb-10 floating-panel">
 
     <div class="maintitle-wrapper color-primary text-center">
         <div class="maintitle-right">
             <p class="mb-6 self-center">常見問題</p>
-            <div class="maintitle-right-bottom">解答關於迷你倉的疑難</div>
+            <div class="maintitle-right-bottom">搵唔到您想要嘅答案，不如直接聯絡我地啦！</div>
         </div>
     </div>
 
@@ -157,6 +157,14 @@
 
     </div>
 
+
+
+</div>
+
+<div class="bg-white section pt-14 pb-10 mb-10">
+    <div class="w-1/3 mx-auto">
+        @include('partials.enquiryForm', ['page' => Helper::$SS_FROM_FAQ_PAGE])
+    </div>
 </div>
 
 @endsection

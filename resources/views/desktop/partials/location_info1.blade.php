@@ -1,7 +1,7 @@
 <div class="font_13">
     <div class="footer-accordion relative appearance-none items-center">
         <div class="flex">
-            <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
+            <img class="mr-4" src="{{asset('images/footer/Group 22.png')}}" />
             <span class="self-center text-primary">{{$location['name']}}</span>
         </div>
     </div>

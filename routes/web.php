@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login', 'AuthController@login');
 Route::post('register', 'AuthController@register');
+Route::post('forgot-password', 'AuthController@forgotPwd')->middleware(['guest'])->name('password.email');;
+Route::post('reset-password', 'AuthController@resetPwd')->middleware(['guest'])->name('password.update');;
 Route::get('logout', 'AuthController@logout');
 
 Route::post('/enquiry', 'EnquiryController@store');
@@ -76,9 +78,12 @@ Route::group(['prefix' => '/'], function () {
         return view('disclaimer');
     });
 
-    Route::get('/login', 'AuthController@loginPage');
+    Route::get('/login', 'AuthController@loginPage')->name('login');
     Route::get('/register', 'AuthController@registerPage');
-    Route::get('/forgetpwd', 'AuthController@forgetPwdPage');
+    Route::get('/forgot-password', 'AuthController@forgotPwdPage')->middleware(['guest'])->name('password.request');
+    Route::get('/reset-password/{token}', function ($token) {
+        return view('account.reset-password', ['token' => $token]);
+    })->middleware(['guest'])->name('password.reset');
 
     Route::group(['middleware' => ['user']], function () {
         //
@@ -96,7 +101,7 @@ Route::group(['prefix' => '/'], function () {
         //     return view('account.chatroom');
         // });
         Route::get('/chatroom/{id?}', ['as' => 'chatroom.show', 'uses' => 'MessagesController@show']);
-        
+
         Route::post('/messages', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
     });
 });
@@ -104,7 +109,7 @@ Route::group(['prefix' => '/'], function () {
 Route::put('/messages/{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
 
 
-//Backend 
+//Backend
 Route::group(['prefix' => '/backend', 'as' => 'backend'], function () {
 
     Route::post('login', 'AuthController@adminLogin');

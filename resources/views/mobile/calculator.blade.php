@@ -1,12 +1,28 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('Calculator')}}</title>
+<title>{{__('空間計算器')}}</title>
 @endsection
 
 @section('styles')
 <style>
     .color-primary {}
+
+    .news-short-content{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* number of lines to show */
+        -webkit-box-orient: vertical;
+    }
+
+    .news-short-title{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1; /* number of lines to show */
+        -webkit-box-orient: vertical;
+    }
 
     .content-title {
         font-size: 25px;
@@ -176,7 +192,7 @@
             <div class="flex items-center">
                 <span>空間計算器</span>
             </div>
-            <div class="capitalize maintitle-right-bottom-m">想知到需要幾大既倉? 幫緊你</div>
+            <div class="capitalize maintitle-right-bottom-m">唔知道自己需要幾大個倉？不如自己計一計！</div>
         </div>
     </div>
 
@@ -196,9 +212,9 @@
         <p class="color-primary text-left calculator-content-title-m">你需要租</p>
     </div>
 
-    <div class="flex overflow-x-auto pt-10 px-10 pb-5">
+    <div class="flex overflow-x-auto pt-10 pb-5">
         <div class="flex-shrink-0 relative max-w-md rounded overflow-hidden shadow-lg room-card-wrapper-m store-select mx-3" id="s-store">
-            <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-03@2x.png') }}" alt="Room">
+            <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-s.jpg') }}" alt="Room">
             <div class="px-6 py-4">
                 <div class="room-card-title text-center mb-2">小型倉</div>
             </div>
@@ -207,7 +223,7 @@
             </div>
         </div>
         <div class="flex-shrink-0 relative max-w-md rounded overflow-hidden shadow-lg room-card-wrapper-m store-select mx-3 active" id="m-store">
-            <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-04@2x.png') }}" alt="Room">
+            <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-m.jpg') }}" alt="Room">
             <div class="px-6 py-4">
                 <div class="room-card-title text-center mb-2">中型倉</div>
             </div>
@@ -216,7 +232,7 @@
             </div>
         </div>
         <div class="flex-shrink-0 relative max-w-md rounded overflow-hidden shadow-lg room-card-wrapper-m store-select mx-3" id="l-store">
-            <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-05@2x.png') }}" alt="Room">
+            <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-l.jpg') }}" alt="Room">
             <div class="px-6 py-4">
                 <div class="room-card-title text-center mb-2">大型倉</div>
             </div>
@@ -225,7 +241,7 @@
             </div>
         </div>
         <div class="flex-shrink-0 relative max-w-md rounded overflow-hidden shadow-lg room-card-wrapper-m store-select mx-3" id="xl-store">
-            <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-06@2x.png') }}" alt="Room">
+            <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-xl.jpg') }}" alt="Room">
             <div class="px-6 py-4">
                 <div class="room-card-title text-center mb-2">特大倉</div>
             </div>
@@ -236,24 +252,32 @@
     </div>
 
     <div>
+        <p class="text-center font_34 mt-10" id="sizeText">0 呎</p>
         <p class="color-primary text-left calculator-others-title-m">其他資訊</p>
     </div>
 
-    <div class="grid grid-cols-1 row-gap-1 pb-10">
+    <div class="grid grid-cols-1 row-gap-1 pb-10 px-6">
         <?php
-        $latest_news = App\Blog::orderBy('created_at', 'desc')->take(3)->get();
+        $latest_news = App\Blog::getNewses(4);
         $count = count($latest_news);
         ?>
         @foreach($latest_news as $index => $news)
-        <a class="flex p-6" href="{{url('/news/'.$news->id)}}">
-            <img class="h-28 w-28 flex-shrink-0" src="{{asset($news->thumbnail)}}"/>
-            <p class="text-base h-28 overflow-y-hidden font-weight-bolder color-primary px-5 leading-6"><?php echo nl2br($news->content) ?></p>
-        </a>
-        @if($index != $count - 1)
-        <div class="calculator-others-item-divider"></div>
-        @endif
+            <a href="{{url('/news/'.$news->id)}}" class="flex  rounded-lg mt-2 lg:py-3  px-2">
+                <img class="h-24 w-24 ml-0 mb-4" src="{{asset($news->thumbnail)}}">
+                <div class="px-3 font_19 leading-normal" style="width: calc(100% - 6rem)">
+                    <p class="break-all news-short-title mb-1"><strong>{{$news->title}}</strong></p>
+                    <p class="leading-normal break-all news-short-content pt-2" >
+                        <?php echo nl2br($news->content) ?>
+                    </p>
+                </div>
+            </a>
+            @if($index != $count - 1)
+                <div class="rounded-lg  px-2">
+                    <hr>
+                </div>
+            @endif
         @endforeach
-        
+
     </div>
 
 </div>

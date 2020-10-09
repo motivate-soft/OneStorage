@@ -246,6 +246,11 @@ class MessagesController extends Controller
                 'body' => Request::input('message'),
             ]);
 
+            if($thread->subject == Helper::$MESSAGE_TYPE_BYADMIN){
+                $thread->subject = Helper::$MESSAGE_TYPE_NORMAL;
+                $thread->save();
+            }
+
             // Add replier as a participant
             $participant = Participant::firstOrCreate([
                 'thread_id' => $thread->id,

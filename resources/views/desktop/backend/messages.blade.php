@@ -20,7 +20,12 @@
 
         <div class="border bg-white mb-6 px-2">
             <?php
-            $threads = Cmgmyr\Messenger\Models\Thread::forUser(Auth::id())->latest('updated_at')->orderBy('subject')->paginate(5);
+            $threads = Cmgmyr\Messenger\Models\Thread::forUser(Auth::id())
+                ->where('subject', '!=' ,\App\Helper\Helper::$MESSAGE_TYPE_BYADMIN)
+                ->latest('updated_at')
+                ->orderBy('subject')
+                ->paginate(5);
+
             $count = count($threads);
             // $i = 0;
             ?>
@@ -28,7 +33,6 @@
             <?php
             $receipient = $thread->participants()->where('user_id', '!=', Auth::id())->first();
             ?>
-            @if($thread->subject != App\Helper\Helper::$MESSAGE_TYPE_BYADMIN || Cmgmyr\Messenger\Models\Message::where('thread_id', $thread->id)->where('user_id', $receipient->user_id)->first())
             <a class="flex justify-between border-b py-3 px-4 cursor-pointer" href="{{url('backend/chatroom/'.$thread->id)}}">
                 <!-- <img class=" object-center rounded-full inline" style="height: 72px" src="{{asset($thread->subject == App\Helper\Helper::$MESSAGE_TYPE_BROADCAST ? 'images/contactUs/Intersection18@2x.png' : 'images/contactUs/Intersection15.png')}}" alt="Avatar of Jonathan Reinink"> -->
                 @if($thread->subject == App\Helper\Helper::$MESSAGE_TYPE_BROADCAST)
@@ -68,8 +72,8 @@
                     </div>
                 </div> -->
             </a>
-            @endif
             @endforeach
+
             @if($count)
             <div class="mt-2">
                 {{ $threads->links() }}
@@ -85,7 +89,7 @@
             <div class="flex mb-4">
                 <span class="text-right w-1/6 mr-2 mt-4">To:</span>
                 <div class="w-1/2">
-                    <input required placeholder="" class="form-input w-full appearance-none bg-white border border-gray-300 p-2 text-base" name="recipient" type="text" id="title">
+                    <input required placeholder="" class="form-input w-full appearance-none bg-white border border-gray-300 p-2 text-base" name="recipient" type="text" value="All">
                     <span class="font_13 pl-2">*type user ID (separate by comma if multiple) or ALL</span>
                 </div>
             </div>
@@ -124,7 +128,7 @@
                     recipients += ',';
                 }
             }
-            $("input[name='recipient']").val(recipients);
+            $("input[name='recipient']").val(recipients ? recipients : "All");
         }
     })
 </script>

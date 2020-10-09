@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('Join Us')}}</title>
+<title>{{__('職位空缺')}}</title>
 @endsection
 
 @section('styles')
@@ -10,6 +10,21 @@
 <style>
     .jointitle-color {
         color: #7F3E98
+    }
+    .news-short-content{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* number of lines to show */
+        -webkit-box-orient: vertical;
+    }
+
+    .news-short-title{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1; /* number of lines to show */
+        -webkit-box-orient: vertical;
     }
 </style>
 @endsection
@@ -58,9 +73,11 @@
 </div>
 
 
-<form class="w-full mt-12" method="post" action="{{url('/enquiry')}}" enctype="multipart/form-data">
-    <p class=" font-bold mb-10 fontsize-19 regular-color">立即申請 </p>
+<form class="w-full mt-12" id="enquiryForm" method="post" action="{{url('/enquiry')}}" enctype="multipart/form-data">
+    @csrf
+    <input type="hidden" name="page" value="{{Helper::$SS_FROM_JOINUS_PAGE}}">
 
+    <p class=" font-bold mb-10 fontsize-19 regular-color">立即申請 </p>
     <div class="flex mb-4 w-full">
         <div class="flex w-1/2 input-group">
             <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">
@@ -104,32 +121,33 @@
     <button class="submit-btn hover:bg-purple-400 fontsize-21 regular-color">
         送出
     </button>
+</form>
 
     <div class="mt-14 mb-8">
         <p class=" text-left fontsize-21 regular-color font-bold">其他資訊</p>
     </div>
     <div class="mb-8">
         <?php
-        $latest_news = App\Blog::orderBy('created_at', 'desc')->take(4)->get();
+        $latest_news = App\Blog::getNewses(4);
         $count = count($latest_news);
         ?>
         @foreach($latest_news as $index => $news)
-        <a href="{{url('/news/'.$news->id)}}" class="flex  rounded-lg px-2">
-            <img class="h-24 w-24 ml-0" src="{{asset($news->thumbnail)}}">
-            <div class="text-left">
-                <p class="h-24 font_19 md:text-left lg:text-left leading-normal px-3 overflow-y-hidden">
-                    <?php echo nl2br($news->content) ?>
-                </p>
-            </div>
-        </a>
-        @if($index != $count - 1)
-        <div class="rounded-lg py-4  px-2">
-            <hr>
-        </div>
-        @endif
+            <a href="{{url('/news/'.$news->id)}}" class="flex  rounded-lg mt-2 lg:py-3  px-2">
+                <img class="h-24 w-24 ml-0 mb-4" src="{{asset($news->thumbnail)}}">
+                <div class="px-3 font_19 leading-normal" style="width: calc(100% - 6rem)">
+                    <p class="break-all news-short-title mb-1"><strong>{{$news->title}}</strong></p>
+                    <p class="leading-normal break-all news-short-content pt-2" >
+                        <?php echo nl2br($news->content) ?>
+                    </p>
+                </div>
+            </a>
+            @if($index != $count - 1)
+                <div class="rounded-lg  px-2">
+                    <hr>
+                </div>
+            @endif
         @endforeach
     </div>
-</form>
 @endsection
 
 @section('scripts')

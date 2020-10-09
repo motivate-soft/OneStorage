@@ -5,13 +5,12 @@ use App\AppConfig;
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('Home')}}</title>
+<title>{{__('至尊迷你仓')}}</title>
 @endsection
 
 @section('styles')
 <style>
     .bg-hero {
-
         background-image: url(<?= AppConfig::first()->background ?>);
         background-repeat: no-repeat;
         background-position: bottom right;
@@ -144,10 +143,10 @@ use App\AppConfig;
 
 @section('content')
 
-<div class="bg-white flex w-full pl-36 pt-10 bg-hero">
-    <div class="w-1/2">
+<div class="bg-white flex w-full pl-20 xl:pl-36 pt-10 bg-hero">
+    <div class="lg:w-1/2">
         <p class="z-20 page-title leading-snug text-primary mb-2 source-han">
-            唔想屋企<span class="text-yellow">咁亂</span>?
+            迷你倉<span class="text-yellow">咁亂</span>?
         </p>
         <span class="z-10 page-title title-shadow source-han">
             搵One Storage 啦
@@ -183,7 +182,7 @@ use App\AppConfig;
             </button>
         </form>
 
-        <div class="flex mt-16 robert-black text-primary">
+        <div class="flex mt-16 robert-black text-primary mb-8">
             <span class="my-auto relative mr-6 font_24 crown">唔知自己需要咩size ? 試下我地既空間計算器&nbsp;&nbsp;&nbsp;</span>
             <a href="{{url('/calc')}}" target="_blank" class="bg-yellow px-6 py-2 font_18">立即計算</a>
         </div>
@@ -194,7 +193,7 @@ use App\AppConfig;
 <div class="bg-primary py-4">
     <p class="heading1 text-center">填妥簡單資料，立即領取5% off 獨家優惠</p>
 
-    <form id="discountForm" class="flex justify-between mt-6 pr-10 pb-4 mx-auto w-3/5" method="post" action="{{url('/enquiry')}}">
+    <form id="discountForm" class="flex justify-between mt-6 pr-10 pb-4 section" method="post" action="{{url('/enquiry')}}">
         @csrf
         <input type="hidden" name="page" value="{{Helper::$SS_FROM_FRONT_PAGE1}}">
         <input type="hidden" name="ajax" value="1">
@@ -232,20 +231,20 @@ use App\AppConfig;
 </div>
 
 <div class="bg-white py-16">
-    <div class="mx-auto w-3/5">
+    <div class="section">
         <!-- <div class="grid grid-cols-3 col-gap-6 mb-8 justify-between"> -->
         <div class="flex justify-between mb-20">
             <div class="mr-4">
-                <a href="https://youtu.be/AG_ZbMUNok4"><img src="{{asset('images/img_1.jpg')}}" class="mb-4" /></a>
-                <p class="text-center text1">迷你倉廣告</p>
+                <a href="https://youtu.be/GdBSugr-vY8" target="_blank"><img src="{{asset('images/video_thumb1.jpg')}}" class="mb-4" /></a>
+                <p class="text-center text1">至尊迷你倉幫您解決一切空間煩惱</p>
             </div>
             <div class="mx-4">
-                <a href="https://youtu.be/hxzEMSnO16g"><img src="{{asset('images/img_2.jpg')}}" class="mb-4" /></a>
+                <a href="https://youtu.be/hxzEMSnO16g" target="_blank"><img src="{{asset('images/video_thumb2.jpg')}}" class="mb-4" /></a>
                 <p class="text-center text1">迷你倉廣告</p>
             </div>
             <div class="ml-4">
-                <a href="https://youtu.be/GdBSugr-vY8"><img src="{{asset('images/img_3.jpg')}}" class="mb-4" /></a>
-                <p class="text-center text1">迷你倉廣告</p>
+                <a href="https://youtu.be/AG_ZbMUNok4" target="_blank"><img src="{{asset('images/video_thumb3.jpg')}}" class="mb-4" /></a>
+                <p class="text-center text1">租用 One Storage 就係咁簡單 </p>
             </div>
         </div>
 
@@ -261,38 +260,34 @@ use App\AppConfig;
             @foreach($promotions as $promotion)
             <a href="{{url('/news/'.$promotion->id)}}"><img src="{{asset($promotion->promotion)}}" class="yellow-shadow promotion h-52" /></a>
             @endforeach
-
-            <!-- <img src="{{asset('images/img_2_2.jpg')}}" class="yellow-shadow" />
-            <img src="{{asset('images/img_2_3.jpg')}}" class="yellow-shadow" />
-            <img src="{{asset('images/img_2_4.jpg')}}" class="yellow-shadow" />
-            <img src="{{asset('images/img_2_5.jpg')}}" class="yellow-shadow" />
-            <img src="{{asset('images/img_2_6.jpg')}}" class="yellow-shadow" /> -->
         </div>
     </div>
 </div>
 
 <div class="bg-grey pb-20 text-center">
     <span class="heading2 box-shadow1 relative" style="top:-26px">客戶感言</span>
-    <p class="text4 my-4 ml-10">用戶好評來自 <span class="text-blue-900 font-extrabold">facebook</span></p>
+    <p class="text4 my-4 ml-10">
+        用戶好評來自
+        <span class="text-blue-900 font-extrabold">
+            <a href="https://www.facebook.com/onestorage/" target="_blank">facebook</a>
+        </span>
+    </p>
     <div class="flex justify-center mb-10">
         <div class="score-lg relative" style="top: -20px">
             <p class="m-auto">5.0</p>
         </div>
-        <p class="text4">（滿分為 <span class="font-bold">5</span>） 根據 <span class="font-bold">205</span> 位用戶的意見</p>
+        <p class="text4">（滿分為 <span class="font-bold">5</span>） 根據 <span class="font-bold">逾180</span> 位用戶的意見</p>
     </div>
-    <div class="grid grid-cols-3 col-gap-14 text-left mx-auto w-3/5">
+    <div class="grid grid-cols-3 col-gap-14 text-left section">
         <div class="bg-white border border-gray-600 p-4 relative">
             <div class="score-base mb-4">
                 <p class="m-auto">5.0</p>
             </div>
             <p class="text1 mb-12">
-                The storage is clean and
-                tidy.
-                The office girl is very
-                helpful and kind
+                方便、簡潔、員工友好。
             </p>
             <div class="absolute bottom-4">
-                <span class="text-name">劉美英</span>
+                <span class="text-name">Wyman Dana Tsui</span>
                 <img src="{{asset('images/ic_recommend.png')}}" class="inline ml-2" />
             </div>
         </div>
@@ -317,13 +312,10 @@ use App\AppConfig;
                 <p class="m-auto">5.0</p>
             </div>
             <p class="text1 mb-12">
-                Finally got a place to put our
-                extra stuff, 24 hrs air con and
-                just 5 mins distance away
-                from us.
+                二十四小時，十分方便，搬屋雜物多，好夠用！very good
             </p>
             <div class="absolute bottom-4">
-                <span class="text-name">Susanna Leung</span>
+                <span class="text-name">Carrie Chiu</span>
                 <img src="{{asset('images/ic_recommend.png')}}" class="inline ml-2" />
             </div>
         </div>
@@ -331,36 +323,36 @@ use App\AppConfig;
 </div>
 
 <div class="bg-primary py-6 text3">
-    <div class="flex justify-between mx-auto pl-14 w-3/5" style="font-family: 'RobertRegular';">
-        <a class="my-auto" href="Tel: 852-21112636">
+    <div class="flex justify-between pl-14 section" style="font-family: 'RobertRegular';">
+        <a class="my-auto" href="Tel: 852-21112636" target="_blank">
             <img src="{{asset('images/ic_phone.png')}}" class="inline mr-2 contact-icon" />
             (852) 2111 2636
         </a>
 
-        <a class="my-auto" href="mailto:cs@onestorage.com.hk">
+        <a class="my-auto mailto" href="mailto:cs@onestorage.com.hk" target="_blank">
             <img src="{{asset('images/ic_email.png')}}" class="inline mr-2 contact-icon" />
             cs@onestorage.com.hk
         </a>
 
-        <a class="my-auto" href="https://wa.me/85251188503">
+        <a class="my-auto" href="https://wa.me/85251188503" target="_blank">
             <img src="{{asset('images/ic_wa.png')}}" class="inline mr-2 contact-icon" />
             (852) 5118 8503
         </a>
         <div>
-            <a href="https://www.facebook.com/onestorage/"><img src="{{asset('images/ic_fb.png')}}" class="inline mx-2 contact-icon" /></a>
-            <a href="https://www.instagram.com/onestorage_hk/"><img src="{{asset('images/ic_in.png')}}" class="inline mx-2 contact-icon" /></a>
-            <a href="https://www.youtube.com/channel/UCp91DP8DqA1_4zWhzum1NDQ"><img src="{{asset('images/ic_play.png')}}" class="inline mx-2" /></a>
+            <a target="_blank" href="https://www.facebook.com/onestorage/"><img src="{{asset('images/ic_fb.png')}}" class="inline mx-2 contact-icon" /></a>
+            <a target="_blank" href="https://www.instagram.com/onestorage_hk/"><img src="{{asset('images/ic_in.png')}}" class="inline mx-2 contact-icon" /></a>
+            <a target="_blank" href="https://www.youtube.com/channel/UCp91DP8DqA1_4zWhzum1NDQ"><img src="{{asset('images/ic_play.png')}}" class="inline mx-2" /></a>
         </div>
     </div>
 </div>
 
 <div class="bg-white pt-10 pb-20 text-center">
     <span class="heading2 box-shadow1">至尊迷你倉</span>
-    <div class="mx-auto w-3/5">
+    <div class="section">
         <p class="w-full bg-yellow py-6 px-10 text4 my-10 leading-snug font-medium">
             <!-- 至尊迷你倉致力為每位客戶打造最安全及最可靠的倉存空間，實力雄厚，全屬自置物業。分店網絡積極不斷擴充，新蒲崗及火炭分店將於短期內正式投入服務。 特設多種大小不同呎碼獨立迷你倉，任君選擇。2.4米闊的走廊配以完善的裝置設備，完全符合消防指引。全天候高清保安監察及警報系統，智能保安進出系統，24小時自助式儲存，支援現金、EPS、支票、信用卡、轉數快及免息分期付費，優質的儲存環境及親切專業的客戶服務，用心為每位客戶提升生活空間質素，承傳尊貴享受典範。 -->
             為金朝陽集團屬下業務(股票代號： 00878.HK)。<br />
-            分店遍佈港、九及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質的儲存環境及專業的服務。至尊迷你倉是亞洲迷你倉商會(SSAA及香港迷你倉總會會員(HKMSA)。
+            分店遍佈港、九及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質的儲存環境及專業的服務。至尊迷你倉是亞洲迷你倉商會(SSAA)及香港迷你倉總會會員(HKMSA)。
 
         </p>
         <div class="flex">
@@ -368,38 +360,12 @@ use App\AppConfig;
             <div class="bg-yellow w-3/5 mr-12 ml-10 mt-6 mb-4 text-left px-4 pb-6">
                 <p class="heading2 relative" style="top: -20px">迷你倉設施</p>
                 <div class="grid grid-cols-2 col-gap-2 row-gap-4 font_21 mt-2">
-                    <div class="flex">
-                        <img src="{{asset('images/ic_key_card.png')}}" class="mr-2 object-none" />
-                        <p class="my-auto"><span class="font-bold">7 x 24</span>智能保安進出系統</p>
-                    </div>
-                    <div class="flex">
-                        <img src="{{asset('images/ic_air_con.png')}}" class="mr-2 object-none" />
-                        <p class="my-auto">無間斷恆溫空調</p>
-                    </div>
-                    <div class="flex">
-                        <img src="{{asset('images/ic_fire.png')}}" class="mr-2 object-none" />
-                        <p class="my-auto">消防裝置設備</p>
-                    </div>
-                    <div class="flex">
-                        <img src="{{asset('images/ic_delivery.png')}}" class="mr-2 object-none" />
-                        <p class="my-auto">鋁梯及手推車借用服務</p>
-                    </div>
-                    <div class="flex">
-                        <img src="{{asset('images/ic_water.png')}}" class="mr-2 object-none" />
-                        <p class="my-auto">自助飲用水機</p>
-                    </div>
-                    <div class="flex">
-                        <img src="{{asset('images/ic_sec_cam.png')}}" class="mr-2 object-none" />
-                        <p class="my-auto">全天候高清保安監察及警報系統</p>
-                    </div>
-                    <div class="flex">
-                        <img src="{{asset('images/ic_24_hours.png')}}" class="mr-2 object-none" />
-                        <p class="my-auto">24小時電話熱線服務</p>
-                    </div>
-                    <div class="flex">
-                        <img src="{{asset('images/ic_wifi.png')}}" class="mr-2 object-none" />
-                        <p class="my-auto">免費Wi-Fi</p>
-                    </div>
+                    @foreach(Helper::$STORAGE_FACILITIES as $facility)
+                        <div class="flex my-auto">
+                            <img src="{{asset($facility['image'])}}" class="w-8 h-8 mr-2 object-none" alt="Image" />
+                            <p class="my-auto" style="width: calc(100% - 2rem)">{{$facility['title']}}</p>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -408,7 +374,7 @@ use App\AppConfig;
 
 <div class="bg-grey pb-8 text-center">
     <span class="heading2 box-shadow1 relative" style="top:-26px">常見問題</span>
-    <div class="text-left mt-12 mx-auto w-3/5">
+    <div class="text-left mt-12 section">
         <div class="mb-8">
             <div class="flex cursor-pointer home-problem-toggle-item">
                 <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="mr-4" />
@@ -441,66 +407,8 @@ use App\AppConfig;
 
 
 <div class="bg-white py-14">
-    <div class="mx-auto w-1/5">
-        <form class="form-enquiry" method="post" action="{{url('/enquiry')}}">
-            @csrf
-            <input type="hidden" name="page" value="{{Helper::$SS_FROM_FRONT_PAGE2}}">
-            <p class="text2 mb-8">給我們留言</p>
-            <div class="flex mb-4 w-full">
-                <div class="flex w-1/2 input-group">
-                    <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">
-                    <input class="w-full form-control" type="text" placeholder="姓" name="firstName" required>
-                </div>
-                <div class="w-1/2 flex input-group">
-                    <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名" name="lastName" required>
-                </div>
-            </div>
-
-            <div class="input-group mb-4">
-                <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-                <input class="form-control" type="text" placeholder="電話號碼" name="phoneNumber">
-            </div>
-
-            <div class="input-group mb-8">
-                <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">
-                <input class="form-control" type="email" placeholder="電子郵件" name="email" required>
-            </div>
-
-            <div class="w-full inline-block relative mb-6">
-                <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" style="color:#76838f" name="branchName">
-                    <option value="" selected disabled>分店</option>
-                    <?php
-                    $branches = App\Store::select('branch')->get();
-                    ?>
-                    @foreach($branches as $branch)
-                    <option value="{{$branch->branch}}">{{$branch->branch}}</option>
-                    @endforeach
-                </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                    <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                </div>
-            </div>
-
-            <div class="w-full inline-block relative mb-6">
-                <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" style="color:#76838f" name="question">
-                    <option value="" selected>查詢問題</option>
-                    <option value="請問那裡有分店？">請問那裡有分店？</option>
-                    <option value="我要預約參觀？">我要預約參觀？</option>
-                    <option value="請問尺寸及價錢如何？">請問尺寸及價錢如何？</option>
-                </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                    <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                </div>
-            </div>
-
-            <textarea class="w-full border placeholder-gray-600 px-3 py-2 border-gray-200 mb-6" style="padding-left:16px;color:#76838f" type="text" placeholder="你的信息" rows="3" name="message"></textarea>
-
-            <button class="submit-btn hover:bg-purple-400">
-                送出
-            </button>
-        </form>
+    <div class="mx-auto w-1/3 lg:w-1/4 xl:w-1/5">
+        @include('partials.enquiryForm', ['page' => Helper::$SS_FROM_FRONT_PAGE2])
     </div>
 </div>
 
