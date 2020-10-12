@@ -131,7 +131,7 @@
 
 @section('content')
 
-<div class="bg-white flex w-full pl-20 xl:pl-36 pt-10">
+<div class="bg-white flex justify-between w-full pl-20 xl:pl-36 pt-10">
     <div class="w-2/5">
         <p class="z-20 page-title leading-snug text-primary mb-2 source-han">
             迷你倉<span class="text-yellow">首選</span>
@@ -175,7 +175,7 @@
             <a href="{{url('/calc')}}" target="_blank" class="bg-yellow px-6 py-2 font_18">立即計算</a>
         </div>
     </div>
-    <img src="{{App\AppConfig::first()->background}}" class="w-3/5 max-w-6xl object-contain my-auto lg:-mt-10"/>
+    <img src="{{App\AppConfig::first()->background}}" class="w-3/5 object-contain lg:-mt-10" style="max-width: 1100px"/>
 </div>
 
 <div class="bg-primary py-4">
