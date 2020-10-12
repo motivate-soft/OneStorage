@@ -62,19 +62,6 @@
     .aboutus-images-2 {
         width: 154px;
     }
-
-    /* .aboutus-images-1-container::-webkit-scrollbar {
-        display: none; /* Chrome, Safari and Opera */
-    }
-
-    .aboutus-images-1-container {
-        -ms-overflow-style: none;
-        /* IE and Edge */
-        scrollbar-width: none;
-        /* Firefox */
-    }
-
-    */
 </style>
 @endsection
 
@@ -94,7 +81,7 @@
         </div>
     </div>
 
-    <div class="flex overflow-x-auto content-image-wrapper-0 mt-8 pb-4">
+    <div class="flex overflow-x-auto mt-8 pb-4">
         <img class="flex-shrink-0 aboutus-images-1 object-fill mr-4" src="{{asset('images/aboutus/Web_Photos-03.jpg')}}" />
         <img class="flex-shrink-0 aboutus-images-1 object-fill mr-4" src="{{asset('images/aboutus/Web_Photos-01.jpg')}}" />
         <img class="flex-shrink-0 aboutus-images-1 object-fill" src="{{asset('images/aboutus/Web_Photos-02.jpg')}}" />
@@ -121,7 +108,7 @@
         <p class="leading-relaxed content-description-m px-6 pt-10">
             設備合乎消防處迷你倉指引，客人可24小時自助儲存，配備全天候保安系統及智能保安系統。
             <br /><br />
-            付款方式：現金、EPS、支票、信用卡、轉數快及免息分期
+            付款方式：EPS、支票、信用卡、轉數快及免息分期
         </p>
     </div>
 

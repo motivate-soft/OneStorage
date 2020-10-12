@@ -595,16 +595,16 @@
                         月費
                     </div>
                     <div class="border-b border-l border-r border-grey rounded-b px-4 py-3 text-center">
-                        <p class="rentwarehouse-price-select-result-card-content pt-3 pb-5 text-center">$<span class="selected-price">380</span></p>
+                        <p class="rentwarehouse-price-select-result-card-content pt-3 pb-5 text-center">$<span class="selected-price">---</span></p>
                         <div class="px-5">
                             <p class="w-max-content rentwarehouse-price-select-result-card-footer-title color-primary">付費方式:</p>
                             <div class="w-max-content flex color-primary pb-2 pt-2">
-                                <span class="rentwarehouse-price-select-result-card-footer-content color-deep my-auto mr-2">現金</span>
+                                {{--<span class="rentwarehouse-price-select-result-card-footer-content color-deep my-auto mr-2">現金</span>--}}
                                 <img class="mx-1 object-none" src="{{ asset('images/Image 60@2x.png') }}" />
                                 <img class="mx-1 object-none" src="{{ asset('images/Image 59@2x.png') }}" />
                                 <img class="mx-1 object-none" src="{{ asset('images/Image 58@2x.png') }}" />
                                 <img class="mx-1 object-none" src="{{ asset('images/fps_color_tc@2x.png') }}" />
-                                <img class="mx-1 object-none" src="{{ asset('images/Intersection 41@2x.png') }}" />
+                                {{--<img class="mx-1 object-none" src="{{ asset('images/Intersection 41@2x.png') }}" />--}}
                             </div>
                         </div>
                     </div>

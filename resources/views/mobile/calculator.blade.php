@@ -252,7 +252,7 @@
     </div>
 
     <div>
-        <p class="text-center font_34 mt-10" id="sizeText">0 呎</p>
+        <p class="text-center font_34 mt-10 px-2">預計需要空間：<span id="sizeText">0</span> 呎</p>
         <p class="color-primary text-left calculator-others-title-m">其他資訊</p>
     </div>
 

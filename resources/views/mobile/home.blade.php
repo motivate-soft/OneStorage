@@ -40,14 +40,6 @@
         font-family: "RobertRegular";
     }
 
-
-    .bg-hero {
-        background-image: url(images/Image-31-m@2x.jpg);
-        background-repeat: no-repeat;
-        background-position: bottom left;
-        min-height: 470px;
-    }
-
     .page-title {
         font-size: 38px;
         position: relative;
@@ -232,10 +224,10 @@
 @endsection
 
 @section('content')
-<div class="bg-white w-full pr-px pt-10 relative bg-hero mx-auto">
+<div class="bg-white w-full pr-px pt-10 relative mx-auto">
     <div class="pl-10">
         <p class="z-20 page-title leading-snug text-primary">
-            迷你倉<span class="text-yellow">首選</span>?
+            迷你倉<span class="text-yellow">首選</span>
         </p>
         <span class="z-10 page-title title-shadow" style="font-size: 30px">
             One Choice ‧ One Storage
@@ -244,13 +236,15 @@
     </div>
 
 
-    <div class="mt-4 mx-4 robert-black text-primary text-center flex flex-col">
+    <div class="mt-4 mb-1 mx-4 robert-black text-primary text-center flex flex-col">
         <div class="mb-4">
             <span class="my-auto relative font_14 crown">唔知自己需要咩size ? 試下我地既空間計算器&nbsp;&nbsp;&nbsp;&nbsp;</span>
         </div>
 
         <a href="{{url('/calc')}}" target="_blank" class="bg-yellow px-4 py-2 font_14 mx-auto rounded-lg">立即計算</a>
     </div>
+
+    <img src="{{App\AppConfig::first()->background}}" class="w-full object-fill"/>
 </div>
 
 <form id="branchSearchForm" class="bg-primary px-4 py-5" method="get" action="{{url('/rentwarehouse')}}">
@@ -329,11 +323,11 @@
             <p class="text-center text1">至尊迷你倉幫您解決一切空間煩惱</p>
         </div>
         <div class="flex-shrink-0 mx-2">
-            <a href="https://youtu.be/hxzEMSnO16g" target="_blank"><img src="{{asset('images/video_thumb2.jpg')}}" class="mb-4" /></a>
+            <a href="https://youtu.be/AG_ZbMUNok4" target="_blank"><img src="{{asset('images/video_thumb2.jpg')}}" class="mb-4" /></a>
             <p class="text-center text1">至尊迷你倉梗有一款岩您用</p>
         </div>
         <div class="flex-shrink-0 ml-2">
-            <a href="https://youtu.be/AG_ZbMUNok4" target="_blank"><img src="{{asset('images/video_thumb3.jpg')}}" class="mb-4" /></a>
+            <a href="https://youtu.be/hxzEMSnO16g" target="_blank"><img src="{{asset('images/video_thumb3.jpg')}}" class="mb-4" /></a>
             <p class="text-center text1">租用 One Storage 就係咁簡單 </p>
         </div>
     </div>

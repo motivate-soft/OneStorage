@@ -1,7 +1,3 @@
-<?php
-
-use App\AppConfig;
-?>
 @extends('layouts.app')
 
 @section('title')
@@ -10,14 +6,6 @@ use App\AppConfig;
 
 @section('styles')
 <style>
-    .bg-hero {
-        background-image: url(<?= AppConfig::first()->background ?>);
-        background-repeat: no-repeat;
-        background-position: bottom right;
-        min-height: 647px;
-    }
-
-
     .page-title {
         font-size: 91px;
         position: relative;
@@ -143,16 +131,16 @@ use App\AppConfig;
 
 @section('content')
 
-<div class="bg-white flex w-full pl-20 xl:pl-36 pt-10 bg-hero">
-    <div class="lg:w-1/2">
+<div class="bg-white flex flex-col lg:flex-row w-full pl-20 xl:pl-36 pt-10">
+    <div class="lg:w-2/5">
         <p class="z-20 page-title leading-snug text-primary mb-2 source-han">
-            迷你倉<span class="text-yellow">首選</span>?
+            迷你倉<span class="text-yellow">首選</span>
         </p>
         <span class="z-10 title-shadow source-han" style="font-size: 50px;position: relative">
             One Choice ‧ One Storage
         </span>
         <p class="page-desc pt-6 source-han z-50">至尊迷你倉</p>
-        <form id="branchSearchForm" class="flex bg-primary rounded-lg p-4 mr-4 mt-8 justify-between w-7/10" method="get" action="{{url('/rentwarehouse')}}">
+        <form id="branchSearchForm" class="flex bg-primary rounded-lg p-4 mr-4 mt-8 justify-between w-8/10" method="get" action="{{url('/rentwarehouse')}}">
             <img src="{{asset('images/ic_marker.png')}}" class="align-middle my-auto" />
             <input id="storeId" type="hidden" name="storeId" />
             <div class="w-3/12 inline-block relative">
@@ -187,7 +175,7 @@ use App\AppConfig;
             <a href="{{url('/calc')}}" target="_blank" class="bg-yellow px-6 py-2 font_18">立即計算</a>
         </div>
     </div>
-    <!-- <img class="relative" style="right:-100px;" src="{{asset('images/bg_hero.jpg')}}" /> -->
+    <img src="{{App\AppConfig::first()->background}}" class="w-full lg:w-3/5 object-fill lg:-mt-10"/>
 </div>
 
 <div class="bg-primary py-4">
@@ -239,11 +227,11 @@ use App\AppConfig;
                 <p class="text-center text1">至尊迷你倉幫您解決一切空間煩惱</p>
             </div>
             <div class="mx-4">
-                <a href="https://youtu.be/hxzEMSnO16g" target="_blank"><img src="{{asset('images/video_thumb2.jpg')}}" class="mb-4" /></a>
+                <a href="https://youtu.be/AG_ZbMUNok4" target="_blank"><img src="{{asset('images/video_thumb2.jpg')}}" class="mb-4" /></a>
                 <p class="text-center text1">至尊迷你倉梗有一款岩您用</p>
             </div>
             <div class="ml-4">
-                <a href="https://youtu.be/AG_ZbMUNok4" target="_blank"><img src="{{asset('images/video_thumb3.jpg')}}" class="mb-4" /></a>
+                <a href="https://youtu.be/hxzEMSnO16g" target="_blank"><img src="{{asset('images/video_thumb3.jpg')}}" class="mb-4" /></a>
                 <p class="text-center text1">租用 One Storage 就係咁簡單 </p>
             </div>
         </div>

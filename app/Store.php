@@ -57,7 +57,7 @@ class Store extends Model
 
     public function getLowestPrice()
     {
-        return $this->sizes->min('price');
+        return $this->sizes->min('prepaid_price');
     }
 
     public function getSizeLabel()
@@ -78,7 +78,7 @@ class Store extends Model
                 $sizeLabels[] = $label;
             }
         }
-        
+
         return json_encode($sizeLabels);
     }
 
@@ -102,7 +102,7 @@ class Store extends Model
 
     public function delete()
     {
-        DB::transaction(function() 
+        DB::transaction(function()
         {
             $this->sizes()->delete();
             $this->questions()->delete();

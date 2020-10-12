@@ -335,11 +335,12 @@
                         <div class="w-max-content pl-4">
                             <p class="w-max-content rentwarehouse-price-select-result-card-footer-title color-primary">付費方式:</p>
                             <div class="w-max-content flex color-primary items-center pb-2 pt-2">
-                                <p class="rentwarehouse-price-select-result-card-footer-content color-deep">現金</p>
+                                {{--<p class="rentwarehouse-price-select-result-card-footer-content color-deep">現金</p>--}}
                                 <img class="mx-1" src="{{ asset('images/Image 60@2x.png') }}" />
                                 <img class="mx-1" src="{{ asset('images/Image 59@2x.png') }}" />
                                 <img class="mx-1" src="{{ asset('images/Image 58@2x.png') }}" />
                                 <img class="mx-1" src="{{ asset('images/fps_color_tc@2x.png') }}" />
+                                {{--<img class="mx-1" src="{{ asset('images/fps_color_tc@2x.png') }}" />--}}
                             </div>
                         </div>
                     </div>

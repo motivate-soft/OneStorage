@@ -57,8 +57,8 @@
                     <a href="{{url('/news/'.$news->id)}}" class="flex  rounded-lg mt-2 lg:py-3  px-2">
                         <img class="h-24 w-24 ml-0 mb-4" src="{{asset($news->thumbnail)}}">
                         <div class="text-left px-3 font_17" style="width: calc(100% - 6rem)">
-                            <p class="truncate"><strong>{{$news->title}}</strong></p>
-                            <p class="leading-normal break-all news-short-content pt-2" >
+                            <p class="truncate font-bold leading-relaxed mb-1">{{$news->title}}</p>
+                            <p class="leading-normal break-all news-short-content pt-1" >
                                 <?php echo nl2br($news->content) ?>
                             </p>
                         </div>
