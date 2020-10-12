@@ -57,6 +57,7 @@
 
     .aboutus-images-1 {
         width: 191px;
+        height: 270px;
     }
 
     .aboutus-images-2 {
@@ -82,9 +83,9 @@
     </div>
 
     <div class="flex overflow-x-auto mt-8 pb-4">
-        <img class="flex-shrink-0 aboutus-images-1 object-fill mr-4" src="{{asset('images/aboutus/Web_Photos-03.jpg')}}" />
-        <img class="flex-shrink-0 aboutus-images-1 object-fill mr-4" src="{{asset('images/aboutus/Web_Photos-01.jpg')}}" />
-        <img class="flex-shrink-0 aboutus-images-1 object-fill" src="{{asset('images/aboutus/Web_Photos-02.jpg')}}" />
+        <img class="flex-shrink-0 aboutus-images-1 object-contain mr-4" src="{{asset('images/aboutus/Web_Photos-03.jpg')}}" />
+        <img class="flex-shrink-0 aboutus-images-1 object-contain mr-4" src="{{asset('images/aboutus/Web_Photos-01.jpg')}}" />
+        <img class="flex-shrink-0 aboutus-images-1 object-contain" src="{{asset('images/aboutus/Web_Photos-02.jpg')}}" />
     </div>
 
     <div class="color-primary">
@@ -97,9 +98,9 @@
 
     <div class="">
         <div class="flex overflow-x-auto pt-10 aboutus-images-1-container pb-4">
-            <img class="flex-shrink-0 aboutus-images-1 mr-4 object-fill" src="{{asset('images/aboutus/Web_SW_Photos-01.jpg')}}" />
-            <img class="flex-shrink-0 aboutus-images-1 mr-4 object-fill" src="{{asset('images/aboutus/Web_SW_Photos-02.jpg')}}" />
-            <img class="flex-shrink-0 aboutus-images-1 object-fill" src="{{asset('images/aboutus/Web_SW_Photos-03.jpg')}}" />
+            <img class="flex-shrink-0 aboutus-images-1 mr-4 object-contain" src="{{asset('images/aboutus/Web_SW_Photos-01.jpg')}}" />
+            <img class="flex-shrink-0 aboutus-images-1 mr-4 object-contain" src="{{asset('images/aboutus/Web_SW_Photos-02.jpg')}}" />
+            <img class="flex-shrink-0 aboutus-images-1 object-contain" src="{{asset('images/aboutus/Web_SW_Photos-03.jpg')}}" />
         </div>
     </div>
 
