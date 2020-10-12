@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('Forget Password')}}</title>
+<title>{{__('Forgot Password')}}</title>
 @endsection
 
 @section('styles')

@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('新闻')}}</title>
+    @if($blog)
+        <title>{{__('迷你倉 | '. $blog->title .' | 至尊迷你倉 One Storage')}}</title>
+    @else
+        <title>{{__('迷你倉 | 至尊迷你倉 One Storage')}}</title>
+    @endif
 @endsection
 
 @section('styles')
