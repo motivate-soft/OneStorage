@@ -28,6 +28,8 @@ $(function () {
             return;
         }
         var submitBtn = form.find(".submit-btn");
+        submitBtn.prop('disabled', true);
+        submitBtn.html(submitBtn.attr('data-text') + `&nbsp;<i class="fas fa-spinner fa-spin"></i>`);
         $.ajax({
             url: $(this).attr('action'),
             type: $(this).attr('method'),
@@ -39,6 +41,11 @@ $(function () {
                 form.find(".input-form").prop('disabled', true);
                 form.find("button").prop('disabled', true);
                 form.attr("state", "sent");
+            },
+            error: function () {
+                alert("Error");
+                submitBtn.text(submitBtn.attr('data-text'));
+                submitBtn.prop('disabled', false);
             }
         });
     });
@@ -82,6 +89,8 @@ $(function () {
                     return;
                 }
                 var submitBtn = form.find("button");
+                submitBtn.prop('disabled', true);
+                submitBtn.html(submitBtn.attr('data-text') + `&nbsp;<i class="fas fa-spinner fa-spin"></i>`);
                 $.ajax({
                     url: $(this).attr('action'),
                     type: $(this).attr('method'),
@@ -90,9 +99,14 @@ $(function () {
                     success: function (result) {
                         submitBtn.css("background-color", "#28e8db");
                         submitBtn.text('請查看電郵');
-                        submitBtn.prop('disabled', true);
+
                         form.find("input").prop('disabled', true);
                         form.attr("state", "sent");
+                    },
+                    error: function () {
+                        alert("Error");
+                        submitBtn.text(submitBtn.attr('data-text'));
+                        submitBtn.removeProp('disabled');
                     }
                 });
             })
@@ -382,6 +396,8 @@ $(function () {
                 var form = $(this);
                 var submitBtn = form.find("button");
                 submitBtn.prop('disabled', true);
+                submitBtn.html(submitBtn.attr('data-text') + `&nbsp;<i class="fas fa-spinner fa-spin"></i>`);
+
                 $.ajax({
                     url: $(this).attr('action'),
                     type: $(this).attr('method'),
@@ -389,16 +405,21 @@ $(function () {
                     datatype: 'json',
                     success: function (result) {
                         submitBtn.prop('disabled', false);
+                        submitBtn.text(submitBtn.attr('data-text'));
                         if (result.state === "success") {
-                            alert("Success!");
+                            alert("Success");
                             bookingModal.style.display = "none";
-                            // confirmModal.style.display = "block";
                             if (!result.logged_in) {
                                 confirmModal.style.display = "block";
                             }
                         } else {
-                            alert("Failed!");
+                            alert("Error");
                         }
+                    },
+                    error: function(){
+                        alert("Error");
+                        submitBtn.prop('disabled', false);
+                        submitBtn.text(submitBtn.attr('data-text'));
                     }
                 });
 

@@ -716,7 +716,7 @@ $user = Auth::user();
                     @if(Auth::check())
                     <input class="form-control" type="text" placeholder="電話號碼" value="{{$user->phone}}" name="phoneNumber">
                     @else
-                    <input class="form-control" type="text" placeholder="電話號碼" name="email">
+                    <input class="form-control" type="text" placeholder="電話號碼" name="phoneNumber">
                     @endif
                 </div>
 
@@ -756,7 +756,7 @@ $user = Auth::user();
                     </label>
                 </div>
 
-                <button class="submit-btn hover:bg-purple-400" type="submit">
+                <button class="submit-btn hover:bg-purple-400" type="submit" data-text="送出">
                     送出
                 </button>
 

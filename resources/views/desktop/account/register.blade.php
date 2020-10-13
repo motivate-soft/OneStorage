@@ -19,13 +19,15 @@
 
 
 @section('content')
-<div class="w-7/10 px-14 mx-auto" style="padding-top: 81px; padding-bottom: 20px;">
+<div class="w-full xl:w-7/10 px-14 mx-auto" style="padding-top: 81px; padding-bottom: 20px;">
     <p class="subheader-title">註冊</p>
 
-    <div class="flex flex-col lg:flex-row pt-10">
+    <div class="flex flex-col justify-center lg:flex-row pt-10">
 
-        <div class="w-full lg:w-2/3 border-r-none lg:border-r">
-            <form id="registerForm" class="flex register-form1 mr-8" method="post" action="{{url('/register')}}">
+        {{--border-r-none lg:border-r--}}
+        <div class="w-full lg:w-2/3">
+            {{--mr-8--}}
+            <form id="registerForm" class="flex register-form1" method="post" action="{{url('/register')}}">
                 @csrf
                 <div class="w-1/2 mr-4">
                     <p style="color: red;" class="mb-4">*</p>
@@ -252,7 +254,7 @@
             </form>
         </div>
 
-        <div class="w-full px-8  pt-8 lg:w-1/3">
+        <div class="w-full px-8  pt-8 lg:w-1/3 hidden">
             <div class="login-alt-panel1">
                 <div class="input-group mb-4">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-gmail-50@2x.png')}}" alt="Mobile">

@@ -91,7 +91,7 @@
 
     <div class="input-group mb-4">
         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-        <input class="form-control placeholder-color" type="text" placeholder="電話號碼" name="phoneNumber">
+        <input class="form-control placeholder-color" type="text" placeholder="電話號碼" name="phoneNumber" required>
     </div>
 
     <div class="input-group mb-8">
@@ -118,7 +118,7 @@
         </div>
     </div>
 
-    <button class="submit-btn hover:bg-purple-400 fontsize-21 regular-color">
+    <button class="submit-btn hover:bg-purple-400 fontsize-21 regular-color" data-text="送出">
         送出
     </button>
 </form>

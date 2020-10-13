@@ -100,7 +100,7 @@
                 </div>
             </div>
 
-            <button class="submit-btn hover:bg-purple-400" type="submit">
+            <button class="submit-btn hover:bg-purple-400" type="submit" data-text="送出">
                 送出
             </button>
         </form>

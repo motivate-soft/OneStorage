@@ -311,7 +311,7 @@
         @endif
     </div>
 
-    <button class="button-primary w-full" type="submit">
+    <button class="button-primary w-full" type="submit" data-text="領取優惠">
         領取優惠
     </button>
 </form>

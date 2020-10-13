@@ -20,7 +20,7 @@
 @section('content')
 <p class=" text-center fontsize-21 regular-color mt-10 pt-6 pb-8">登入</p>
 
-<div class=" register-form w-full border-b pb-6">
+<div class=" register-form w-full border-b pb-6 hidden">
 
     <div class="input-group mb-4">
         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-gmail-50@2x.png')}}" alt="Mobile">

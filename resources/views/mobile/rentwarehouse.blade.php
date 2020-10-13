@@ -518,10 +518,10 @@ $user = Auth::user();
             </p>
 
             <div class="flex justify-between mt-8">
-                <a href="{{url('/register')}}" class="submit-btn hover:bg-purple-400 mr-4" id="confirmBtn">
+                <a href="{{url('/register')}}" class="submit-btn hover:bg-purple-400 mr-4" id="confirmBtn" style="width: 50% !important;">
                     註冊
                 </a>
-                <button class="cancel-btn ml-4" type="button" id="cancelBtn">
+                <button class="cancel-btn ml-4 w-1/2" type="button" id="cancelBtn">
                     離開
                 </button>
             </div>
@@ -587,7 +587,7 @@ $user = Auth::user();
                     @if(Auth::check())
                         <input class="form-control" type="text" placeholder="電話號碼" value="{{$user->phone}}" name="phoneNumber">
                     @else
-                        <input class="form-control" type="text" placeholder="電話號碼" name="email">
+                        <input class="form-control" type="text" placeholder="電話號碼" name="phoneNumber">
                     @endif
                 </div>
 
@@ -627,7 +627,7 @@ $user = Auth::user();
                     </label>
                 </div>
 
-                <button class="submit-btn hover:bg-purple-400" type="submit">
+                <button class="submit-btn hover:bg-purple-400" type="submit" data-text="送出">
                     送出
                 </button>
 

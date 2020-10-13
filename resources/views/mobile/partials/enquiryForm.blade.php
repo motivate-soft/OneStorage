@@ -19,7 +19,7 @@
 
     <div class="input-group mb-8">
         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">
-        <input class="form-control input-form" type="email" placeholder="電子郵件" name="email" required>
+        <input class="form-control input-form" type="email" placeholder="電子郵件" name="email">
     </div>
 
     <div class="w-full inline-block relative mb-6">
@@ -62,7 +62,7 @@
         <textarea class="w-full input-form border placeholder-gray-600 px-3 py-2 border-gray-200 mb-6" style="padding-left:16px;color:#76838f" placeholder="你的信息" rows="3" name="message"></textarea>
     </div>
 
-    <button class="submit-btn hover:bg-purple-400">
+    <button class="submit-btn hover:bg-purple-400" data-text="送出">
         送出
     </button>
 </form>

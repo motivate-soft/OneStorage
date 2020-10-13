@@ -175,7 +175,7 @@
             <a href="{{url('/calc')}}" target="_blank" class="bg-yellow px-6 py-2 font_18">立即計算</a>
         </div>
     </div>
-    <img src="{{App\AppConfig::first()->background}}" class="w-3/5 object-contain lg:-mt-10" style="max-width: 1100px"/>
+    <img src="{{App\AppConfig::first()->background}}" class="w-3/5 object-contain lg:-mt-10 object-right" style="max-width: 1100px"/>
 </div>
 
 <div class="bg-primary py-4">
@@ -212,7 +212,7 @@
             @endif
         </div>
 
-        <button class="w-1/3 button-second" type="submit">
+        <button class="w-1/3 button-second" type="submit" data-text="領取優惠">
             領取優惠
         </button>
     </form>

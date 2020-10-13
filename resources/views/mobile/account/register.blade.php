@@ -22,15 +22,15 @@
 
 <div class="w-full px-6">
     <p class="text-center font_21 regular-color mt-10 pb-12 pt-6 px-9">註冊</p>
-    <div class="input-group mb-4">
-        <img class="form-control-icon" src="{{asset('images/contactUs/icons8-gmail-50@2x.png')}}" alt="Mobile">
-        <input class="form-control  py-10 cursor-pointer btn text-left gmail-btn-mobile hover:bg-red-500" type="button" value="以 Gmail 登入">
-    </div>
+    {{--<div class="input-group mb-4">--}}
+        {{--<img class="form-control-icon" src="{{asset('images/contactUs/icons8-gmail-50@2x.png')}}" alt="Mobile">--}}
+        {{--<input class="form-control  py-10 cursor-pointer btn text-left gmail-btn-mobile hover:bg-red-500" type="button" value="以 Gmail 登入">--}}
+    {{--</div>--}}
 
-    <div class="input-group mb-4">
-        <img class="form-control-icon" src="{{asset('images/contactUs/icons8-facebook-50@2x.png')}}" alt="Mobile">
-        <input class="form-control cursor-pointer btn text-left facebook-btn-mobile hover:bg-blue-500" type="button" value="以 Facebook 登入">
-    </div>
+    {{--<div class="input-group mb-4">--}}
+        {{--<img class="form-control-icon" src="{{asset('images/contactUs/icons8-facebook-50@2x.png')}}" alt="Mobile">--}}
+        {{--<input class="form-control cursor-pointer btn text-left facebook-btn-mobile hover:bg-blue-500" type="button" value="以 Facebook 登入">--}}
+    {{--</div>--}}
 
     <div class=" flex py-4">
         <div class=" w-2/5 border-b my-2"></div>

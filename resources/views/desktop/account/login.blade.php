@@ -22,9 +22,10 @@
 <div class="mx-auto w-3/5 h-full" style="padding-top: 81px;">
     <p class="subheader-title">登入</p>
 
-    <div class="flex flex-col lg:flex-row">
+    <div class="flex flex-col justify-center lg:flex-row">
 
-        <div class="w-full lg:w-1/2 px-4 border-r-none lg:border-r">
+        {{--border-r-none lg:border-r--}}
+        <div class="w-full lg:w-1/2 px-4">
             <form class="register-form" action="{{url('/login')}}" method="post">
                 @csrf
                 <div class="input-group mb-4">
@@ -44,7 +45,7 @@
             </form>
         </div>
 
-        <div class="w-full px-4 lg:w-1/2">
+        <div class="w-full px-4 lg:w-1/2 hidden">
             <div class="login-alt-panel">
                 <div class="input-group mb-4">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-gmail-50@2x.png')}}" alt="Mobile">

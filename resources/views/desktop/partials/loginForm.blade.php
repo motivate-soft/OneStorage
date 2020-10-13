@@ -9,7 +9,7 @@
             <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名">
         </div>
     </div>
-    
+
     <div class="input-group mb-4">
         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
         <input class="form-control" type="text" placeholder="">
@@ -43,8 +43,8 @@
     </div>
 
     <textarea class="w-full border placeholder-gray-600 px-3 py-2 border-gray-200 mb-6" style="padding-left:16px;color:#76838f" type="text" placeholder="你的信息" rows="3"></textarea>
-    
-    <button class="submit-btn hover:bg-purple-400">
+
+    <button class="submit-btn hover:bg-purple-400" data-text="送出">
         送出
     </button>
 </form>

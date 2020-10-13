@@ -62,7 +62,7 @@
         <textarea class="w-full input-form border placeholder-gray-600 px-3 py-2 border-gray-200 mb-6" style="padding-left:16px;color:#76838f" placeholder="你的信息" rows="3" name="message"></textarea>
     </div>
 
-    <button class="submit-btn hover:bg-purple-400">
+    <button class="submit-btn hover:bg-purple-400" data-text="送出">
         送出
     </button>
 </form>
