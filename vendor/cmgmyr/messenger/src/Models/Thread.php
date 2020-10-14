@@ -172,6 +172,8 @@ class Thread extends Eloquent
             ->select($threadsTable . '.*');
     }
 
+    // added by robert!
+
     public function scopeForUsers(Builder $query, $user1Id, $user2Id)
     {
         $participantsTable = Models::table('participants');
