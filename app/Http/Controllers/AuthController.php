@@ -8,7 +8,7 @@ use App\Profile;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Password;
@@ -193,8 +193,8 @@ class AuthController extends Controller
             $profile->is_soundwill_member = isset($request->isMember) ? $request->isMember == '1' : false;
             $profile->save();
         }
-
-        return redirect('/backend/members');
+//        return redirect('/backend/members');
+        return redirect()->route('backend.members');
     }
 
     public function register(Request $request)
@@ -222,31 +222,8 @@ class AuthController extends Controller
                     'message' => $duplicationMsg[$key]
                 ], 500);
             }
-            // print_r($e->errorInfo);
         }
         return response("success");
-        // $user->first_name = $request->firstName;
-        // $user->last_name = $request->lastName;
-        // $user->phone = $request->phone;
-        // $user->email = $request->email;
-        // $user->password = bcrypt($request->password);
-        // $user->save();
-
-        // $profile = new Profile;
-        // $profile->gender = $request->gender;
-        // $profile->birthday = $request->year . '/' . $request->month . '/' . $request->day;
-        // $profile->area = isset($request->area) ? $request->area : '';
-        // $profile->place = isset($request->place) ? $request->place : '';
-        // $profile->address_line1 = isset($request->addr1) ? $request->addr1 : '';
-        // $profile->address_line2 = isset($request->addr2) ? $request->addr2 : '';
-        // $profile->contact_method = isset($request->contactMethod) ? $request->contacatMethod : '';
-        // $profile->is_existing_customer = isset($request->isCustomer) ? (bool)$request->isCustomer : false;
-        // $profile->is_soundwill_member = isset($request->isMember) ? (bool)$request->isMember : false;
-        // $profile->branch_id = isset($request->branch) ? $request->branch : 0;
-        // $profile->user_id = $user->id;
-        // $profile->save();
-
-        // return redirect('/login');
     }
 
     public function update(Request $request)
@@ -267,7 +244,7 @@ class AuthController extends Controller
         return Excel::download(new UsersExport, 'members.xlsx');
     }
 
-    public function get($id)
+    public function show($id)
     {
         return User::with('profile')->find($id);
     }

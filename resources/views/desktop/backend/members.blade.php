@@ -63,7 +63,7 @@
 @section('content')
 <div class="bg-grey w-full h-screen pl-16 pr-5 pt-10 pb-24">
     <div class="flex justify-between">
-        <a href="{{url('/backend/members')}}" class="font_25 mb-6">Members</a>
+        <a href="{{route('backend.members')}}" class="font_25 mb-6">Members</a>
         @include('backend.partials.searchbar')
     </div>
 
@@ -165,10 +165,9 @@
 <div id="confirmModal" class="z-50 modal">
     <div class="modal-content">
         <span class="close" id="modalClose">&times;</span>
-        <form class="flex register-form1 my-8" method="POST" action="{{url('/backend/member')}}">
+        <form class="flex register-form1 my-8" method="POST" action="{{route('backend.members.update')}}">
             @csrf
             <input type="hidden" name="id" />
-            <input type="hidden" name='_method' value="PUT">
             <div class="w-full mx-4">
                 <p style="color: red;" class="mb-4">*</p>
                 <div class="flex mb-4 w-full">
@@ -424,12 +423,9 @@
 
     window.onbeforeunload = function(event) {
         // do stuff here
-        // alert("1");
         selectionChange();
         return "you have unsaved changes. Are you sure you want to navigate away?";
     };
-
-
 
     $(function() {
         OneStorage.DOB(new Date(2000, 1, 1));

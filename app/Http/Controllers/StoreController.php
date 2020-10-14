@@ -208,7 +208,7 @@ class StoreController extends Controller
         $locations = Store::getLocations();
         $location = isset($_GET['location']) ? $_GET['location'] : '';
         $_GET['location'] = $location;
-        
+
         $stores = $location == '' ? Store::all() : Store::where('location', $location)->get();
 
         return view('branchlocation', ['locations' => $locations, 'stores' => $stores]);
@@ -218,11 +218,5 @@ class StoreController extends Controller
     {
         $store = Store::find($id);
         return view('backend.stores', ['selected_store' => $store]);
-    }
-
-    public function shareCalcPage(Request $request)
-    {
-        
-        return response("success");
     }
 }

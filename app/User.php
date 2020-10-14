@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Helper\Helper;
+use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -91,7 +92,7 @@ class User extends Authenticatable
         return User::where('role', 'admin')->whereNotIn('id', $ids)->get();
     }
 
-    public function setData($data)
+    public function setData(Request $data)
     {
         $this->first_name = $data->firstName;
         $this->last_name = $data->lastName;
@@ -109,7 +110,7 @@ class User extends Authenticatable
         if(isset($data->gender)){
             $profile->gender = $data->gender;
         }
-        
+
         $profile->birthday = $data->year . '/' . $data->month . '/' . $data->day;
         $profile->area = isset($data->area) ? $data->area : '';
         $profile->place = isset($data->place) ? $data->place : '';

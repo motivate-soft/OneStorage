@@ -1287,8 +1287,8 @@ $(function () {
 
             $(".file-input").change(function () {
                 if (this.files && this.files[0]) {
-                    if (this.files[0].size > 2 * 1024 * 1024) {
-                        alert("Max file size is 2M!");
+                    if (this.files[0].size > 6 * 1024 * 1024) {
+                        alert("Max file size is 6M!");
                         $(this).val('');
                         return;
                     }

@@ -99,10 +99,10 @@
                     <div class="container {{$background->isActive() ? 'bk-active' : ''}}">
                         <img class="background" src="{{asset('images/backgrounds/'.$background->image)}}" />
                         <div class="middle flex justify-center">
-                            <form class="flex flex-col justify-center" action="{{url('/background/delete/'.$background->id)}}" method="get">
+                            <form class="flex flex-col justify-center" action="{{url('/backend/background/delete/'.$background->id)}}" method="get">
                                 <button type="submit" class="mx-4 my-auto cursor-pointer"><img class="object-none" id="bkDelBtn" src="{{asset('images/icons8-delete-bin-48@2x.png')}}" /></button>
                             </form>
-                            <form class="flex flex-col justify-center" action="{{url('/background/set/'.$background->id)}}">
+                            <form class="flex flex-col justify-center" action="{{url('/backend/background/set/'.$background->id)}}">
                                 <button type="submit" class="mx-4 my-auto cursor-pointer"><img class="object-none" id="bkSelBtn" src="{{asset('images/icons8-tick-box-48@2x.png')}}" /></button>
                             </form>
                         </div>
@@ -110,7 +110,7 @@
                     <!-- <img class="mr-4 background" src="{{asset('images/backgrounds/'.$background->image)}}" /> -->
                     @endforeach
 
-                    <form id="backgroundForm" class="flex flex-col justify-center mr-4" action="{{url('/background')}}" method="post" enctype="multipart/form-data">
+                    <form id="backgroundForm" class="flex flex-col justify-center mr-4" action="{{url('/backend/background')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <!-- <button type="button" id="bkAddBtn" class="h-7 font_14 px-3 align-middle rounded border border-third bg-grey-2">選擇圖片</button> -->
                         <img class="object-fill mx-auto cursor-pointer" id="bkAddBtn" src="{{asset('images/icons8-plus-64@2x.png')}}" />
@@ -174,7 +174,7 @@
         </div>
     </div>
     <div class="w-1/2 ml-12">
-        <form id="blogForm" method="POST" action="{{url('/blog')}}" enctype="multipart/form-data">
+        <form id="blogForm" method="POST" action="{{url('/backend/blog')}}" enctype="multipart/form-data">
             <input type="hidden" name="id" id="blogId" />
             <input type="hidden" name='_method' id="method" value="POST">
             @csrf
@@ -362,7 +362,7 @@
                 }
             });
             $.ajax({
-                url: '/blog/' + blogId,
+                url: '/backend/blog/' + blogId,
                 type: 'DELETE',
                 datatype: 'json',
                 success: function(result) {
@@ -387,7 +387,7 @@
         const blogId = $(this).attr('id');
         //load blog data
         $.ajax({
-            url: '/blog/' + blogId,
+            url: '/backend/blog/' + blogId,
             type: 'GET',
             datatype: 'json',
             success: function(blog) {
@@ -427,7 +427,7 @@
         }
 
         $.ajax({
-            url: '/blog/set-promotion/' + id + '/' + (this.checked ? 1 : 0),
+            url: '/backend/blog/set-promotion/' + id + '/' + (this.checked ? 1 : 0),
             type: 'GET',
             success: function(result) {
                 alert(result ? "ok" : "fail");
@@ -445,7 +445,7 @@
                 return;
             }
             $.ajax({
-                url: '/blog/as-promotion/' + news + '/' + position,
+                url: '/backend/blog/as-promotion/' + news + '/' + position,
                 type: 'GET',
                 success: function(result) {
                     alert(result ? "ok" : "fail");

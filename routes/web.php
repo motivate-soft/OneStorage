@@ -1,6 +1,5 @@
 <?php
 
-use App\Store;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,69 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('login', 'AuthController@login');
-Route::post('register', 'AuthController@register');
-Route::post('forgot-password', 'AuthController@forgotPwd')->middleware(['guest'])->name('password.email');;
-Route::post('reset-password', 'AuthController@resetPwd')->middleware(['guest'])->name('password.update');;
-Route::get('logout', 'AuthController@logout');
-
-Route::post('/enquiry', 'EnquiryController@store');
+// Common routes
 Route::get('/branches', 'StoreController@getBranch');
-
-Route::post('/blog', 'BlogController@store');
-Route::put('/blog', 'BlogController@update');
-Route::delete('/blog/{id}', 'BlogController@delete');
-Route::get('/blog/{id}', 'BlogController@get');
-
-Route::get('/blog/as-promotion/{id}/{column}', 'BlogController@asPromotion');
-Route::get('/blog/set-promotion/{id}/{state}', 'BlogController@setPromotion');
-
-Route::post('/background', 'BackgroundController@store');
-Route::get('/background/delete/{id}', 'BackgroundController@delete');
-Route::get('/background/set/{id}', 'BackgroundController@set');
+Route::put('/messages/{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
 
 
-
-
-// Desktop version pages routes
+// User pages routes
 Route::group(['prefix' => '/'], function () {
-
-    Route::get('/', function () {
-        return view('home');
-    });
+    Route::view('/', 'home');
+    Route::view('/contact', 'contact');
+    Route::view('/joinus', 'joinus');
+    Route::view('/about', 'aboutus');
+    Route::view('/calc', 'calculator');
+    Route::view('/faq', 'faq');
+    Route::view('/lastnews', 'lastnews');
+    Route::view('/disclaimer', 'disclaimer');
     Route::get('/branch-location', 'StoreController@branchLocation');
     Route::get('/rentwarehouse', 'StoreController@showRentwareHouse');
     Route::get('/calc/share', 'StoreController@shareCalcPage');
-
-    Route::get('/contact', function () {
-        return view('contact');
-    });
-
-    Route::get('/joinus', function () {
-        return view('joinus');
-    });
-
-    Route::get('/about', function () {
-        return view('aboutus');
-    });
-
-    Route::get('/calc', function () {
-        return view('calculator');
-    });
-
-    Route::get('/faq', function () {
-        return view('faq');
-    });
-
-    Route::get('/lastnews', function () {
-        return view('lastnews');
-    });
-
     Route::get('/news/{id}', 'BlogController@show');
-
-    Route::get('/disclaimer', function(){
-        return view('disclaimer');
-    });
 
     Route::get('/login', 'AuthController@loginPage')->name('login');
     Route::get('/register', 'AuthController@registerPage');
@@ -85,70 +40,67 @@ Route::group(['prefix' => '/'], function () {
         return view('account.reset-password', ['token' => $token]);
     })->middleware(['guest'])->name('password.reset');
 
+    Route::post('/enquiry', ['as' => 'enquiries.store', 'uses' => 'EnquiryController@store']);
+
+    Route::post('login', 'AuthController@login');
+    Route::post('register', 'AuthController@register');
+    Route::post('forgot-password', 'AuthController@forgotPwd')->middleware(['guest'])->name('password.email');
+    Route::post('reset-password', 'AuthController@resetPwd')->middleware(['guest'])->name('password.update');
+    Route::get('logout', 'AuthController@logout');
+
     Route::group(['middleware' => ['user']], function () {
-        //
-        Route::get('/account', function () {
-            return view('account.accountinfo');
-        });
+        Route::view('/account', 'account.accountinfo');
+        Route::view('/chatlist', 'account.chatlist');
 
         Route::post('/account/update', 'AuthController@update');
-
-        Route::get('/chatlist', function () {
-            return view('account.chatlist');
-        });
-
-        // Route::get('/chatroom', function () {
-        //     return view('account.chatroom');
-        // });
         Route::get('/chatroom/{id?}', ['as' => 'chatroom.show', 'uses' => 'MessagesController@show']);
-
         Route::post('/messages', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
     });
 });
 
-Route::put('/messages/{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
-
-
 //Backend
-Route::group(['prefix' => '/backend', 'as' => 'backend'], function () {
-
+Route::group(['prefix' => '/backend', 'as' => 'backend.'], function () {
     Route::post('login', 'AuthController@adminLogin');
-
-    Route::get('/login', function () {
-        return view('backend.login');
-    });
+    Route::view('/login', 'backend.login');
 
     Route::group(['middleware' => ['admin']], function () {
-        Route::get('/', function(){
-            return redirect('/backend/enquiries');
-        });
-        Route::get('/enquiries', 'EnquiryController@index');
-        Route::get('/enquiries/export', 'EnquiryController@export');
-        Route::get('/members', 'AuthController@index');
-        Route::get('/member/{id}', 'AuthController@get');
-        Route::get('/members/export', 'AuthController@export');
-        Route::put('/member', 'AuthController@updateByAdmin');
-        Route::get('/pages', function () {
-            return view('backend.pages');
-        });
-        Route::get('/messages', function () {
-            return view('backend.messages');
-        });
+        Route::get('/', function(){ return redirect()->route('backend.enquiries'); });
+
+        //--------------enquiries--------------
+        Route::get('/enquiries', ['as' => 'enquiries', 'uses' => 'EnquiryController@index']);
+        Route::get('/enquiries/export', ['as' => 'enquiries.export', 'uses' => 'EnquiryController@export']);
+        Route::get('/enquiries/{id}/accept', ['as' => 'enquiries.accept', 'uses' => 'EnquiryController@accept']);
+
+        //--------------members--------------
+        Route::get('/members', ['as' => 'members', 'uses' => 'AuthController@index']);
+        Route::get('/member/{id}', ['as' => 'members.show', 'uses' => 'AuthController@show']);
+        Route::get('/members/export', ['as' => 'members.export', 'uses' => 'AuthController@export']);
+        Route::post('/members/update', ['as' => 'members.update', 'uses' => 'AuthController@updateByAdmin']);
+
+        Route::view('pages', 'backend.pages');
+        Route::view('messages', 'backend.messages');
+
+        //-------------messages--------------
         Route::get('/chatroom/{id?}', 'MessagesController@showAdminRoom');
         Route::post('/broadcast', 'MessagesController@broadcast');
-        Route::get('/accept-enquiry', 'EnquiryController@accept');
-        Route::get('/store/{id?}', 'StoreController@show');
-        Route::post('/store', 'StoreController@store');
-        Route::put('/store', 'StoreController@update');
-        Route::delete('/store/{id}', 'StoreController@delete');
+
+        //--------------stores--------------
+        Route::get('/stores/{id?}', ['as' => 'stores.show', 'uses' => 'StoreController@show']);
+        Route::post('/stores', ['as' => 'stores.store', 'uses' => 'StoreController@store']);
+        Route::put('/stores', ['as' => 'stores.update', 'uses' => 'StoreController@update']);
+        Route::delete('/stores/{id}', ['as' => 'stores.delete', 'uses' => 'StoreController@delete']);
+
+        //--------------newses--------------
+        Route::post('/blog', ['as' => 'newses.store', 'uses' => 'BlogController@store']);
+        Route::put('/blog', ['as' => 'newses.update', 'uses' => 'BlogController@update']);
+        Route::delete('/blog/{id}', ['as' => 'newses.delete', 'uses' => 'BlogController@delete']);
+        Route::get('/blog/{id}', ['as' => 'newses.get', 'uses' => 'BlogController@get']);
+        Route::get('/blog/as-promotion/{id}/{column}', ['as' => 'newses.asPromotion', 'uses' => 'BlogController@asPromotion']);
+        Route::get('/blog/set-promotion/{id}/{state}', ['as' => 'newses.setPromotion', 'uses' => 'BlogController@setPromotion']);
+
+        //--------------background--------------
+        Route::post('/background', ['as' => 'backgrounds.store', 'uses' => 'BackgroundController@store']);
+        Route::get('/background/delete/{id}', ['as' => 'backgrounds.delete', 'uses' => 'BackgroundController@delete']);
+        Route::get('/background/set/{id}', 'BackgroundController@set');
     });
-});
-
-
-Route::group(['prefix' => 'messages'], function () {
-    //    Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
-    //   Route::get('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
-    //   Route::post('/', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
-    //   Route::get('{id}', ['as' => 'messages.show', 'uses' => 'MessagesController@show']);
-    //  Route::put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
 });

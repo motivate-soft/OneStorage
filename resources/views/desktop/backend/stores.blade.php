@@ -82,7 +82,7 @@
 
 @section('content')
 <div class="bg-grey w-full h-screen pl-16 pr-5 pt-10 pb-24">
-    <form class="w-4/5" id="storeForm" method="POST" action="{{url('/backend/store')}}" enctype="multipart/form-data">
+    <form class="w-4/5" id="storeForm" method="POST" action="{{route('backend.stores.store')}}" enctype="multipart/form-data">
         @csrf
         @if($selected_store)
         <input type="hidden" name="id" value="{{$selected_store->id}}" />
@@ -109,7 +109,7 @@
                     <option value="" selected disabled class="text-grey">分店</option>
                     <?php $stores = App\Store::all() ?>
                     @foreach($stores as $store)
-                    <option value="{{url('/backend/store/'.$store->id)}}" class="py-2 text-grey-2" {{($selected_store && ($selected_store->id == $store->id)) ? 'selected' : ''}}>
+                    <option value="{{route('backend.stores.show', $store->id)}}" class="py-2 text-grey-2" {{($selected_store && ($selected_store->id == $store->id)) ? 'selected' : ''}}>
                         {{$store->branch}}
                     </option>
                     @endforeach
@@ -429,11 +429,11 @@
         })
 
         $("#storeAddBtn").click(function() {
-            window.location.href = '<?php echo url('/backend/store') ?>';
+            window.location.href = '<?= route('backend.stores.show') ?>';
         })
 
         $("#deleteBtn").click(function() {
-            const id = <?php echo  $selected_store ? $selected_store->id : 0 ?>;
+            const id = <?=  $selected_store ? $selected_store->id : 0 ?>;
             if (id <= 0) {
                 return;
             }
@@ -445,12 +445,12 @@
                 });
 
                 $.ajax({
-                    url: '/backend/store/' + id,
+                    url: '/backend/stores/' + id,
                     type: 'DELETE',
                     datatype: 'json',
                     success: function(result) {
                         if (result) {
-                            window.location.href = '<?php echo url('/backend/store') ?>';
+                            window.location.href = '<?= route('backend.stores.show') ?>';
                         }
                     }
                 });
@@ -460,8 +460,8 @@
 
         function readURL(input, preview) {
             if (input.files && input.files[0]) {
-                if (input.files[0].size > 2 * 1024 * 1024) {
-                    alert("Max file size is 2M!");
+                if (input.files[0].size > 6 * 1024 * 1024) {
+                    alert("Max file size is 6M!");
                     return;
                 }
                 var reader = new FileReader();

@@ -65,7 +65,7 @@
                     {{$enquiry->page}}
                 </td>
                 <td class="px-7 py-6 font_14 text-primary">
-                    <a href="{{url('/backend/accept-enquiry?id='.$enquiry->id)}}" class="{{$enquiry->status=='未' ? 'bg-yellow-1' : 'bg-green'}} px-6 py-2 rounded-md">{{$enquiry->status}}follow</a>
+                    <a href="{{route('backend.enquiries.accept', $enquiry->id)}}" class="{{$enquiry->status=='未' ? 'bg-yellow-1' : 'bg-green'}} px-6 py-2 rounded-md">{{$enquiry->status}}follow</a>
                 </td>
                 <td class="item-column">
                     {{$enquiry->principal}}
