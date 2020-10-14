@@ -18,3 +18,4 @@ storage
 /public/images/offers
 /public/images/stores
 /public/uploads
+/config/mail.php
