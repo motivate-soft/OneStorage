@@ -61,16 +61,13 @@
                         {{$string}}
                         &nbsp;&nbsp;
                     </span>
+                    @if($thread->latestMessage)
                     <p class="{{$unreadCnt ? 'robert-black' : 'robert-regular'}} mt-4">{{ mb_strimwidth($thread->latestMessage->body, 0, 40, "...") }}</p>
-
+                    @endif
                 </div>
-                <p class="flex-auto text-right pt-2 font_14 robert-regular">{{$thread->latestMessage->created_at->format('d-M-Y')}}</p>
-                <!-- <div class="w-full pl-6 pt-2">
-
-                    <div class="flex justify-between font_19 mt-2">
-                        <span class="{{$unreadCnt ? 'robert-black' : 'robert-regular'}}">{{ mb_strimwidth($thread->latestMessage->body, 0, 40, "...") }}</span>
-                    </div>
-                </div> -->
+                    @if($thread->latestMessage)
+                        <p class="flex-auto text-right pt-2 font_14 robert-regular">{{$thread->latestMessage->created_at->format('d-M-Y')}}</p>
+                    @endif
             </a>
             @endforeach
 
