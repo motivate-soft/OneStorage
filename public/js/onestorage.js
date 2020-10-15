@@ -1274,7 +1274,10 @@ $(function () {
                         window.location.href = "/login";
                     },
                     error: function (error) {
-                        if (error.responseJSON.type == "duplication") {
+                        if (error.responseJSON.type === "duplication") {
+                            if(error.responseJSON.key !== 'phone'){
+                                error.responseJSON.key = 'email';
+                            }
                             $("#" + error.responseJSON.key + "DuplicateMsg").show();
                         }
                     }

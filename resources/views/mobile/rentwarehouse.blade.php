@@ -255,6 +255,19 @@
     .store-image {
         display: none;
     }
+
+    .left-indicator{
+        position: absolute;
+        top: 50%; left: 0;
+        transform: translate(50%,-50%);
+        z-index: 10;
+    }
+    .right-indicator{
+        position: absolute;
+        top: 50%; right: 15px;
+        transform: translate(50%,-50%);
+        z-index: 10;
+    }
 </style>
 <link rel="stylesheet" href="{{ asset('web-icons/web-icons.min.css') }}" />
 @endsection
@@ -284,12 +297,19 @@
         </div>
 
         @if($count)
-        <div class="absolute flex w-full h-full left-0 top-0 items-center">
-            <p class="flex justify-between p-2 z-10 w-full">
-                <i class="flex icon wb-dropleft position-absolute left-0 rounded-full cursor-pointer bg-gray-600 text-white"></i>
-                <i class="flex icon wb-dropright position-absolute right-0 rounded-full cursor-pointer bg-gray-600 text-white"></i>
-            </p>
-        </div>
+        {{--<div class="absolute flex w-full h-full left-0 top-0 items-center">--}}
+            {{--<p class="flex justify-between p-2 z-10 w-full">--}}
+                {{----}}
+            {{--</p>--}}
+        {{--</div>--}}
+            <span class="left-indicator">
+                <i class="icon wb-dropleft rounded-full cursor-pointer bg-gray-600 text-white"></i>
+            </span>
+                <span class="right-indicator">
+                <i class="icon wb-dropright rounded-full cursor-pointer bg-gray-600 text-white"></i>
+            </span>
+
+
         @endif
     </div>
 
