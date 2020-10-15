@@ -64,7 +64,7 @@
                 @if(count($threads))
                 @foreach($threads as $thread)
                 <a class="flex border py-3 px-4 cursor-pointer" href="{{url('chatroom/'.$thread->id)}}">
-                    <img class="object-center rounded-full inline" width="72" height="72" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
+                    <img class="object-center rounded-full inline w-20 h-20" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
 
                     <?php $unreadCnt = $thread->userUnreadMessagesCount(Auth::id()) ?>
                     <div class="w-9/10 pl-6 pt-2">
@@ -84,7 +84,7 @@
                 @endif
                 @foreach(Auth::user()->getUnConnectedAdmins() as $admin)
                 <a class="flex border py-3 px-4 cursor-pointer" href="{{url('chatroom?id='.$admin->id)}}">
-                    <img class="object-center rounded-full inline" width="72" height="72" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
+                    <img class="object-center rounded-full inline w-20 h-20" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
 
                     <div class="w-9/10 pl-6 pt-2">
                         <div class="flex justify-between">
