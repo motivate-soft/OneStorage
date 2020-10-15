@@ -41,6 +41,8 @@ return [
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'username' => 'noreply@onestorage.com.hk',
             'password' => 'ones@2020stanley',
+            'from_address' => 'cs@onestorage.com.hk',
+            'from_name' => 'OneStorage',
             'timeout' => null,
             'auth_mode' => null,
         ],

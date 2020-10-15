@@ -207,12 +207,17 @@ class AuthController extends Controller
             if($errorCode == '1062'){
                 $value = "";
                 $key = "";
+                echo $e->errorInfo[2];
                 sscanf($e->errorInfo[2], "Duplicate entry %s for key 'users_%s_unique'", $value, $key);
                 $key = explode("_", $key)[0];
+                if($key != 'phone' && $key = 'email'){
+                    $key = 'other';
+                }
 
                 $duplicationMsg = [
                     'phone' =>  '此電話號碼已被使用',
-                    'email' => '此電話號碼已被使用'
+                    'email' => '此電話號碼已被使用',
+                    'other' => 'error'
                 ];
 
                 return response([
