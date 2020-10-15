@@ -208,7 +208,7 @@ class AuthController extends Controller
                 $value = "";
                 $key = "";
                 echo $e->errorInfo[2];
-                sscanf($e->errorInfo[2], "Duplicate entry %s for key 'users_%s_unique'", $value, $key);
+                sscanf($e->errorInfo[2], "Duplicate entry %s for key 'users.users_%s_unique'", $value, $key);
                 $key = explode("_", $key)[0];
                 if($key != 'phone' && $key = 'email'){
                     $key = 'other';
