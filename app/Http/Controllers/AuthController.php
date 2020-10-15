@@ -106,7 +106,7 @@ class AuthController extends Controller
             // Authentication passed...
             return redirect()->intended();
         }
-        return redirect('login');
+        return redirect('login')->withErrors(['error' => '電話號碼或密碼錯誤']);
     }
 
     public function adminLogin(Request $request)

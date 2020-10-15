@@ -17,7 +17,7 @@
 @endsection
 
 @section('content')
-<div class="mx-auto w-1/2 py-16">
+<div class="mx-auto w-full md:w-4/5 lg:w-1/2 px-2 sm:px-10 lg:px-0 py-16">
 
     <div class="flex mb-24">
         <img class="mx-15 w-40 h-40 rounded-full object-fill" src="{{asset(Auth::user()->profile->avatar)}}" alt="Avatar of Jonathan Reinink">
@@ -58,7 +58,7 @@
                         ?>
                         <div>
                             @if($message->user->isAdmin())
-                            <img class="object-none w-20 h-20" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Admin">
+                            <img class="object-cover w-20 h-20 rounded-full" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Admin">
                             @else
                             <img class="object-fill w-20 h-20 rounded-full" src="{{asset(Auth::user()->profile->avatar)}}" alt="Avatar">
                             @endif

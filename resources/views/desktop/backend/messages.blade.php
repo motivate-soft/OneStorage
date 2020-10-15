@@ -36,7 +36,7 @@
             <a class="flex justify-between border-b py-3 px-4 cursor-pointer" href="{{url('backend/chatroom/'.$thread->id)}}">
                 <!-- <img class=" object-center rounded-full inline" style="height: 72px" src="{{asset($thread->subject == App\Helper\Helper::$MESSAGE_TYPE_BROADCAST ? 'images/contactUs/Intersection18@2x.png' : 'images/contactUs/Intersection15.png')}}" alt="Avatar of Jonathan Reinink"> -->
                 @if($thread->subject == App\Helper\Helper::$MESSAGE_TYPE_BROADCAST)
-                <img class="object-cover rounded-full inline w-20 h-20" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Admin">
+                <img class="object-cover inline w-20 h-20" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Admin">
                 @else
                 <?php
                 $user = App\User::find($receipient->user_id);

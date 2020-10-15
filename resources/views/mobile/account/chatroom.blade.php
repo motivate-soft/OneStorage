@@ -47,7 +47,7 @@
             <div class="flex py-2 mx-4 mb-4 {{$key == count($thread->messages) - 1 ? '' : 'border-b'}} ">
                 <div class="w-1/5">
                     @if($message->user->isAdmin())
-                    <img class="w-12 h-12 mt-2" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Admin">
+                    <img class="w-12 h-12 rounded-full object-cover mt-2" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Admin">
                     @else
                     <img class="w-12 h-12 mt-2 rounded-full object-fill" src="{{asset(Auth::user()->profile->avatar)}}" alt="Avatar">
                     @endif

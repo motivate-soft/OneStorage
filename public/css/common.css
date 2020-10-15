@@ -697,6 +697,13 @@ input[type="checkbox"], input[type="radio"] {
     position: absolute;
 }
 
+.crown1::after {
+    content: url("../images/header/icons8-crown-48.png");
+    position: absolute;
+    right: -17px;
+    top: -12px;
+}
+
 .enquiry-sent{
     background-color: #28e8db;
 }

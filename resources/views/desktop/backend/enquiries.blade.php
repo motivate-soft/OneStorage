@@ -49,7 +49,7 @@
                     <p class="font_34">{{$enquiry->branch_size}}"</p>
                     @endif
                     @if($enquiry->store_price > 0)
-                    <p class="font_24">${{$enquiry->store_price}}</p>
+                    <p class="font_24">${{number_format($enquiry->store_price)}}</p>
                     @endif
                 </td>
                 <td class="item-column">

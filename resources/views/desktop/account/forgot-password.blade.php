@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('Forgot Password')}}</title>
+<title>{{__('迷你倉 | 忘記密碼 | 至尊迷你倉 One Storage')}}</title>
 @endsection
 
 @section('styles')
@@ -16,10 +16,10 @@
     <form action="{{route('password.request')}}" method="post">
         @csrf
         @if(Session::has('errors'))
-            <p class="my-2 text-red-700">{{Session::get('errors')->first('email')}}</p>
+            <p class="my-2 text-red-600">{{Session::get('errors')->first('email')}}</p>
         @endif
         @if(Session::has('status'))
-            <p class="my-2 text-green-700">{{Session::get('status')}}</p>
+            <p class="my-2 text-green-600">{{Session::get('status')}}</p>
         @endif
         <div class="input-group mb-8">
             <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">

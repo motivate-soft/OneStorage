@@ -17,7 +17,7 @@
 @endsection
 
 @section('content')
-<div class="mx-auto w-1/2 py-16">
+<div class="mx-auto w-full md:w-4/5 lg:w-1/2 px-2 sm:px-10 lg:px-0 py-16">
     <?php
     $user = Auth::user();
     ?>

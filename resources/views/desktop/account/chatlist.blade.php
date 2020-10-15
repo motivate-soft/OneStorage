@@ -32,7 +32,7 @@
 @endsection
 
 @section('content')
-<div class="mx-auto w-1/2 py-16">
+<div class="mx-auto w-full md:w-4/5 lg:w-1/2 px-2 sm:px-10 lg:px-0 py-16">
 
     <div class="flex mb-24">
         <!-- <img class="mx-15 object-none" src="{{asset('images/contactUs/Intersection 15@2x.png')}}" alt="Avatar of Jonathan Reinink"> -->
@@ -84,7 +84,7 @@
                 @endif
                 @foreach(Auth::user()->getUnConnectedAdmins() as $admin)
                 <a class="flex border py-3 px-4 cursor-pointer" href="{{url('chatroom?id='.$admin->id)}}">
-                    <img class=" object-center rounded-full inline" width="72" height="72" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
+                    <img class="object-center rounded-full inline" width="72" height="72" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
 
                     <div class="w-9/10 pl-6 pt-2">
                         <div class="flex justify-between">

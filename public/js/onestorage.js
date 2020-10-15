@@ -440,8 +440,15 @@ $(function () {
             $(".rentwarehouse-space-size-select").click(function () {
                 $(".rentwarehouse-space-size-select").removeClass("active");
                 $(this).addClass("active");
-                $("#prepaid-price-wrapper").html(numberFormat($(this).attr('data-prepaid-price')));
-                $("#price-wrapper").html(numberFormat($(this).attr('data-price')));
+
+                const prepaidPriceWrapper = $("#prepaid-price-wrapper");
+                const priceWrapper = $("#price-wrapper");
+                prepaidPriceWrapper.html(numberFormat($(this).attr('data-prepaid-price')));
+                prepaidPriceWrapper.attr('data-price', $(this).attr('data-prepaid-price'));
+
+                priceWrapper.html(numberFormat($(this).attr('data-price')));
+                priceWrapper.attr('data-price', $(this).attr('data-price'));
+
                 $(".rentwarehouse-price-select:first").click();
                 branchSize = Number($(this).attr('data-size'));
             });
@@ -451,11 +458,11 @@ $(function () {
                 $(this).addClass("active");
                 $(".selected-price").html($(this).find(".price-content").html());
                 $("#payment-method").text($(this).find(".rentwarehouse-mode-select-item-title").text());
-                $("#storePrice").val($(this).find(".price-content").text());
+                $("#storePrice").val(Number($(this).find(".price-content").attr('data-price')));
             });
 
             $(".rentwarehouse-table-item").on('click', function () {
-                chnageRoomImage(Number($(this).find(".bg-yellow").text()));
+                changeRoomImage(Number($(this).find(".bg-yellow").text()));
             });
 
             $(".rentwarehouse-table-item").hover(function () {

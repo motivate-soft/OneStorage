@@ -131,8 +131,8 @@
 
 @section('content')
 
-<div class="bg-white flex justify-between w-full pl-20 xl:pl-36 pt-10">
-    <div class="w-2/5">
+<div class="bg-white flex justify-between w-full ">
+    <div class="w-1/2 pl-20 xl:pl-36 pt-10">
         <p class="z-20 page-title leading-snug text-primary mb-2 source-han">
             迷你倉<span class="text-yellow">首選</span>
         </p>
@@ -171,11 +171,15 @@
         </form>
 
         <div class="flex mt-16 robert-black text-primary mb-8">
-            <span class="my-auto relative mr-6 font_24 crown">唔知自己需要咩size ? 試下我地既空間計算器&nbsp;&nbsp;&nbsp;</span>
-            <a href="{{url('/calc')}}" target="_blank" class="bg-yellow px-6 py-2 font_18">立即計算</a>
+            <p class="my-auto font_24 break-all leading-tight">
+                <span>唔知自己需要咩size ? </span>
+                <br class="block xl:hidden"/>
+                <span class="relative crown1"> 試下我地既空間計算器</span>
+            </p>
+            <a href="{{url('/calc')}}" target="_blank" class="ml-10 my-auto bg-yellow px-6 py-2 font_18">立即計算</a>
         </div>
     </div>
-    <img src="{{App\AppConfig::first()->background}}" class="w-3/5 object-contain lg:-mt-10 object-right" style="max-width: 1100px"/>
+    <img src="{{App\AppConfig::first()->background}}" class="w-1/2 object-contain lg:-mt-10 object-right" style="max-width: 1100px"/>
 </div>
 
 <div class="bg-primary py-4">

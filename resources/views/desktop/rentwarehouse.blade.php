@@ -674,7 +674,6 @@ $user = Auth::user();
                 <input type="hidden" name="branchName" value="{{$store->branch}}" required>
                 <input type="hidden" name="branchSize" id="branchSize" required>
                 <input type="hidden" name="price" id="storePrice" required>
-                <input type="hidden" name="ajax" value="1" type="number">
 
                 <p class=" font-bold mb-3" style="font-size: 25px;">{{$store->branch}} </p>
 

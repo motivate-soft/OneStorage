@@ -200,7 +200,11 @@ class StoreController extends Controller
     {
         $id = isset($_GET['storeId']) ? $_GET['storeId'] : -1;
         $store = Store::find($id);
-        return view('rentwarehouse', ['store' => $store]);
+        if($store){
+            return view('rentwarehouse', ['store' => $store]);
+        }
+
+        return redirect('/branch-location');
     }
 
     public function branchLocation()

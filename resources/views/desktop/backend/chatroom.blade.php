@@ -63,7 +63,7 @@
                 {{ method_field('put') }}
                 @csrf
                 <div>
-                    <img class="object-fill" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
+                    <img class="object-fill w-20 h-20 rounded-full" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
                 </div>
 
                 <div class="w-9/10 pl-6">

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('Sign In')}}</title>
+<title>{{__('迷你倉 | 登入 | 至尊迷你倉 One Storage')}}</title>
 @endsection
 
 @section('styles')
@@ -33,10 +33,14 @@
                     <input class="form-control" name="phone" required type="text" placeholder="電話號碼">
                 </div>
 
-                <input class="w-full form-control mb-6" name="password" type="password" required style="" type="text" placeholder="密碼">
+                <input class="w-full form-control mb-2" name="password" type="password" required style="" type="text" placeholder="密碼">
+
+                @if(Session::has('errors'))
+                    <p class="mt-3 text-red-600">{{Session::get('errors')->first('error')}}</p>
+                @endif
 
                 <a href="{{url('/forgot-password')}}">
-                    <p class=" register-subtilte title-violet">忘記密碼?</p>
+                    <p class="register-subtilte title-violet mt-4">忘記密碼?</p>
                 </a>
 
                 <button class="submit-btn hover:bg-purple-400" type="submit">

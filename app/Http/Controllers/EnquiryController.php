@@ -117,7 +117,7 @@ class EnquiryController extends Controller
         $enquiry->branch_size = isset($request->branchSize) ? $request->branchSize : null;
         $enquiry->question = isset($request->question) ? $request->question : '';
         $enquiry->message = isset($request->message) ? $request->message : '';
-        $enquiry->store_price = isset($request->price) ? $request->price: null;
+        $enquiry->store_price = isset($request->price) ? (int)$request->price: null;
         $enquiry->transported = isset($request->transported) &&  $request->transported == "on";
         $enquiry->page = $request->page;
 
