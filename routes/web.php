@@ -20,7 +20,7 @@ Route::put('/messages/{id}', ['as' => 'messages.update', 'uses' => 'MessagesCont
 
 // User pages routes
 Route::group(['prefix' => '/'], function () {
-    Route::view('/', 'home');
+    Route::view('/', 'home')->name('home');
     Route::view('/contact', 'contact');
     Route::view('/joinus', 'joinus');
     Route::view('/about', 'aboutus');
