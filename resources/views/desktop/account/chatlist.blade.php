@@ -70,7 +70,8 @@
                     <div class="w-9/10 pl-6 pt-2">
                         <div class="flex justify-between">
                             <span class="leading-none pt-2 font_19 regular-color relative {{$unreadCnt ? 'has-new-msg' : ''}}">
-                                Admin - {{$thread->participantsString(Auth::id(), ['first_name'])}}
+                                {{--Admin - {{$thread->participantsString(Auth::id(), ['first_name'])}}--}}
+                                Admin
                             </span>
                             <p class="text-right pt-2 font_14 robert-regular">{{$thread->latestMessage->created_at->format('d-M-Y')}}</p>
                         </div>
@@ -81,7 +82,7 @@
                     </div>
                 </a>
                 @endforeach
-                @endif
+                @else
                 @foreach(Auth::user()->getUnConnectedAdmins() as $admin)
                 <a class="flex border py-3 px-4 cursor-pointer" href="{{url('chatroom?id='.$admin->id)}}">
                     <img class="object-center rounded-full inline w-20 h-20" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
@@ -89,7 +90,8 @@
                     <div class="w-9/10 pl-6 pt-2">
                         <div class="flex justify-between">
                             <p class="leading-none pt-2 font_19 regular-color">
-                                Admin - {{$admin->first_name}}
+                                {{--Admin - {{$admin->first_name}}--}}
+                                Admin
                             </p>
                             <!-- <p class="text-right pt-2 font_14 robert-regular">28-Jul-2020</p> -->
                         </div>
@@ -98,7 +100,9 @@
                         </div>
                     </div>
                 </a>
+                @break
                 @endforeach
+                @endif
             </div>
         </div>
     </div>

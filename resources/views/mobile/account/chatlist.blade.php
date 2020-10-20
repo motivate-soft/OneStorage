@@ -54,7 +54,8 @@ $user = Auth::user();
             <div class=" w-5/6">
                 <div class="flex justify-between">
                     <span class="robert-font leading-none pt-1 fontsize-14 regular-color relative {{$unreadCnt ? 'has-new-msg' : ''}}">
-                        Admin - {{$thread->participantsString(Auth::id(), ['first_name'])}}
+                        {{--Admin - {{$thread->participantsString(Auth::id(), ['first_name'])}}--}}
+                        Admin
                     </span>
                     <p class="text-right pt-1 pr-2 font_11 font-robert">{{$thread->latestMessage->created_at->format('d-M-Y')}}</p>
                 </div>
@@ -62,7 +63,7 @@ $user = Auth::user();
             </div>
         </a>
         @endforeach
-        @endif
+        @else
         @foreach(Auth::user()->getUnConnectedAdmins() as $admin)
         <a class="flex items-center border-b pt-1 pb-2 mx-2" href="{{url('chatroom?id='.$admin->id)}}">
             <div class=" w-1/6">
@@ -70,12 +71,17 @@ $user = Auth::user();
             </div>
             <div class="w-5/6">
                 <div class="flex">
-                    <p class="robert-font w-4/6 leading-none pt-1 fontsize-14 regular-color">Admin - {{$admin->first_name}}</p>
+                    <p class="robert-font w-4/6 leading-none pt-1 fontsize-14 regular-color">
+                        {{--Admin - {{$admin->first_name}}--}}
+                        Admin
+                    </p>
                 </div>
                 <p class="text-xs text-blue-500 mt-1">Click here to chat with Admin</p>
             </div>
         </a>
+        @break
         @endforeach
+        @endif
     </div>
 </div>
 @endsection
