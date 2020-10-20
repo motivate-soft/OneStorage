@@ -44,7 +44,7 @@
                         <div class="flex justify-between">
                             <p class="leading-none pt-2 font_19 regular-color">
                                 @if($message->user->isAdmin())
-                                Admin - {{$message->user->first_name}} <span class="text-grey font-normal ml-2 robert-regular">Admin at OneStorage</span>
+                                Admin <span class="text-grey font-normal ml-2 robert-regular">Admin at OneStorage</span>
                                 @else
                                 {{$message->user->getName()}}
                                 @endif

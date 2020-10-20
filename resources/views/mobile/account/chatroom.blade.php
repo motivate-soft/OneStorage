@@ -58,7 +58,7 @@
                         <div class="flex regular-color">
                             <div class="robert-font w-1/2 leading-none pt-2 fontsize-14">
                                 @if($message->user->isAdmin())
-                                Admin - {{$message->user->first_name}}
+                                Admin
                                 @else
                                 {{$message->user->getName()}}
                                 @endif
