@@ -26,7 +26,7 @@ class Blog extends Model
     }
 
     public static function getNewses($count = 0){
-        $newses = Blog::orderBy('publish_date', 'desc')->orderBy('created_at', 'desc');
+        $newses = Blog::where('_id', '!=', null)->orderBy('publish_date', 'desc')->orderBy('created_at', 'desc');
         if($count > 0){
             $newses = $newses->take($count)->get();
         }
@@ -34,7 +34,8 @@ class Blog extends Model
     }
 
     public static function getLatestNotifyNews(){
-        $latest_news = Blog::where('used_notify', true)
+        $latest_news = Blog::where('_id', '!=', null)
+            ->where('used_notify', true)
             ->orderBy('publish_date', 'desc')
             ->orderBy('created_at', 'desc')
             ->first();

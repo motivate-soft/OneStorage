@@ -241,13 +241,13 @@
             <span class="my-auto relative font_14 crown">唔知自己需要咩size ? 試下我地既空間計算器&nbsp;&nbsp;&nbsp;&nbsp;</span>
         </div>
 
-        <a href="{{url('/calc')}}" target="_blank" class="bg-yellow px-4 py-2 font_14 mx-auto rounded-lg">立即計算</a>
+        <a href="{{route('pages.calculator')}}" target="_blank" class="bg-yellow px-4 py-2 font_14 mx-auto rounded-lg">立即計算</a>
     </div>
 
     <img src="{{App\AppConfig::first()->background}}" class="w-full object-fill"/>
 </div>
 
-<form id="branchSearchForm" class="bg-primary px-4 py-5" method="get" action="{{url('/rentwarehouse')}}">
+<div id="branchSearchForm" class="bg-primary px-4 py-5">
     <div class="flex mb-4 justify-between">
         <img src="<?php echo e(asset('images/ic_marker.png')); ?>" class="align-middle my-auto" />
         <input id="storeId" type="hidden" name="storeId" />
@@ -265,7 +265,7 @@
             </div>
         </div>
         <div class="w-5/12 inline-block relative">
-            <select disabled="disabled" id="branch-select" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
+            <select disabled="disabled" id="branch-select" data-url="{{route('pages.rentWareHouse')}}" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
                 <option value="" selected disabled class="text-grey">分店</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -274,12 +274,12 @@
             </div>
         </div>
     </div>
-    <button class="button-primary w-full" type="submit">
+    <button id="goToStore" class="button-primary w-full" type="submit">
         租倉
     </button>
-</form>
+</div>
 
-<form id="discountForm" class="bg-primary px-5 pb-4" method="post" action="{{url('/enquiry')}}">
+<form id="discountForm" class="bg-primary px-5 pb-4" method="post" action="{{route('enquiries.store')}}">
     @csrf
     <input type="hidden" name="page" value="{{Helper::$SS_FROM_FRONT_PAGE1}}">
     <input type="hidden" name="ajax" value="1">
@@ -332,14 +332,14 @@
         </div>
     </div>
 
-    <span class="heading2 box-shadow">最新優惠</span>
+    <span class="heading2 box-shadow">最新租倉優惠</span>
 
     <div class="grid grid-cols-1 my-10 mx-auto">
         <?php
         $promotions = App\Blog::where('as_promotion', true)->where('state', true)->orderBy('column', 'asc')->get();
         ?>
         @foreach($promotions as $promotion)
-        <a href="{{url('/news/'.$promotion->id)}}"><img src="{{asset($promotion->promotion)}}" class="mx-auto" /></a>
+        <a href="{{route('pages.news', $promotion->_id)}}"><img src="{{asset($promotion->promotion)}}" class="mx-auto" /></a>
         @endforeach
     </div>
 </div>

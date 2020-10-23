@@ -21,6 +21,11 @@ $(function () {
         }
     });
 
+    $("#goToStore").click(function(){
+        const branchSelect = $("#branch-select");
+        window.location.href = branchSelect.val() ? branchSelect.val() : branchSelect.attr('data-url');
+    });
+
     $("#enquiryForm").submit(function(e) {
         e.preventDefault();
         var form = $(this);
@@ -116,30 +121,30 @@ $(function () {
             })
             $("#location-select").change(function () {
                 const location = $(this).val();
-                if (location == "") {
+                if (location === "") {
                     return;
                 }
                 const branchSelect = $("#branch-select");
+                const route = branchSelect.attr('data-url') + '/';
                 branchSelect.prop('disabled', true);
                 $.ajax({
                     url: '/branches?location=' + location,
                     type: 'GET',
                     datatype: 'json',
                     success: function (result) {
+                        console.log(result);
                         branchSelect.prop('disabled', false);
                         branchSelect.html('');
                         branchSelect.append('<option value="" selected disabled class="text-grey">分店</option>');
                         result.forEach(data => {
-                            branchSelect.append('<option value="' + data.id + '" class="text-grey-2">' + data.branch + '</option>');
+                            branchSelect.append('<option value="' + route +  data._id + '" class="text-grey-2">' + data.branch + '</option>');
                         });
                     }
                 });
-            })
-            const form = document.getElementById("branchSearchForm");
-            if (form) {
-                form.reset();
-                $("#storeId").val('');
-            }
+            });
+
+            $("#location-select").val("");
+            $("#branch-select").val("");
         }
     })();
 
@@ -301,10 +306,10 @@ $(function () {
 
             $("#location-select").change(function () {
                 const location = $(this).val();
-                if (location == "") {
+                if (location === "") {
                     return;
                 }
-                window.location.href = ('/branch-location?location=' + location);
+                window.location.href = $(this).attr('data-url') + '?location=' + location;
             })
 
             $(".store-select").click(function () {
@@ -1271,7 +1276,7 @@ $(function () {
                     data: $(this).serialize(),
                     datatype: 'json',
                     success: function (result) {
-                        window.location.href = "/login";
+                        window.location.href = "/one-storage-login";
                     },
                     error: function (error) {
                         if (error.responseJSON.type === "duplication") {

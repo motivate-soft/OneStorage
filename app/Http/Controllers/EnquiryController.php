@@ -112,7 +112,7 @@ class EnquiryController extends Controller
         $enquiry->first_name = $request->firstName;
         $enquiry->last_name = $request->lastName;
         $enquiry->phone_number = isset($request->phoneNumber) ? $request->phoneNumber : '';
-        $enquiry->email = isset($request->email) ? $request->email : '';
+        $enquiry->email = isset($request->email) ? $request->email : Helper::$ONESTORAGE_EMAIL;
         $enquiry->branch_name = isset($request->branchName) ? $request->branchName : '';
         $enquiry->branch_size = isset($request->branchSize) ? $request->branchSize : null;
         $enquiry->question = isset($request->question) ? $request->question : '';
@@ -136,6 +136,9 @@ class EnquiryController extends Controller
         if ($enquiry->page == Helper::$SS_FROM_FRONT_PAGE1) {
             Mail::to($enquiry->email)->queue(new DiscountEmail);
         }
+//        else if($enquiry->email != Helper::$ONESTORAGE_EMAIL){
+//            Mail::to($enquiry->email)->queue(new EnquiryEmail($enquiry, false));
+//        }
 
         return response([
             'state' => 'success',

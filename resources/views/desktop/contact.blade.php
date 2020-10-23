@@ -217,7 +217,7 @@
 <div class="relative block bg-white section mb-10 floating-panel">
     <div class="maintitle-wrapper color-primary text-center">
         <div class="maintitle-right">
-            <p class="mb-6">聯絡我們</p>
+            <p class="mb-6">迷你倉租賃－聯絡我們</p>
             <div class="capitalize maintitle-right-bottom">我們會在24小時內回覆</div>
         </div>
     </div>
@@ -225,7 +225,7 @@
     <div class="grid grid-cols-5 gap-4 pt-20 pb-10">
         <div class="col-span-3">
             <div class="ml-10">
-                <p class="form_header font_19 mb-8">連絡我們</p>
+                <p class="form_header font_19 mb-8">聯絡至尊迷你倉</p>
                 <div class="grid grid-cols-6 gap-4">
                     <a href="tel: 852-21112636" target="_blank" class="flex col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-5 xl:col-span-2...">
                         <img class="fill-current mr-4" src="{{asset('images/footer/icons8-phone-50@2x.png')}}" />
@@ -250,7 +250,7 @@
 
             <div class="grid grid-cols-2 mt-12 ml-10">
                 <div class="col-span-1">
-                    <p class="font_19 pl-10 pb-3">香港島</p>
+                    <p class="font_19 pl-10 pb-3">香港島迷你倉</p>
                     <?php
                     $locations = App\LocationInfo::getHongKong();
                     ?>
@@ -258,7 +258,7 @@
                 </div>
 
                 <div class="col-span-1">
-                    <p class="font_19 pl-10 pb-3">九龍</p>
+                    <p class="font_19 pl-10 pb-3">九龍迷你倉</p>
                     <?php
                     $locations = App\LocationInfo::getKowloon();
                     ?>
@@ -266,7 +266,7 @@
                 </div>
             </div>
 
-            <p class="font_19 pl-10 pb-3 mt-12 ml-10">新界</p>
+            <p class="font_19 pl-10 pb-3 mt-12 ml-10">新界迷你倉</p>
             <div class="grid grid-cols-2 ml-10">
                 <?php
                 $locations = App\LocationInfo::getNew();

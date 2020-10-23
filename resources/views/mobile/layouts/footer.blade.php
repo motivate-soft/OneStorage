@@ -5,12 +5,12 @@
                 <h2 class="font_15 mt-4 mb-8 font-bold">關於至尊迷你倉</h2>
                 <div class="text-justify mb-4 leading-5 font_13">為金朝陽集團屬下業務(股票代號： 00878.HK)。
                     <br><br>
-                    分店遍佈港、九及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質的儲存環境及專業的服務。
+                    分店遍佈香港、九龍及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質及專業的儲物收納服務。
                     <br><br>
                     至尊迷你倉是亞洲迷你倉商會(SSAA)及香港迷你倉總會會員(HKMSA)。
                 </div>
                 <span class="w-auto my-8 font_15 font-bold">
-                        <a href="{{url('/joinus')}}">職位空缺</a> | <a href="{{url('/disclaimer')}}">免責聲明</a>
+                        <a href="{{route('pages.joinUs')}}">職位空缺</a> | <a href="{{route('pages.disclaimer')}}">免責聲明</a>
                     </span>
                 <p class="font_15">©2020 至尊迷你倉 版權所有</p>
             </div>
@@ -20,7 +20,7 @@
                 $latest_news = App\Blog::getNewses(3);
                 ?>
                 @foreach($latest_news as $news)
-                    <a class="flex mb-5" href="{{url('/news/'.$news->id)}}">
+                    <a class="flex mb-5" href="{{route('pages.news', $news->_id)}}">
                         <img class="h-32 w-32 mr-4 object-cover" src="{{asset($news->thumbnail)}}">
                         <span class="h-32 break-all leading-4 font_13 overflow-y-hidden robert-black" style="width: calc(100% - 8rem)">
                         <?php echo nl2br($news->content) ?>
@@ -53,48 +53,23 @@
                 </div>
 
                 <div class="grid grid-cols-1  mt-8 z-10">
-                    <p class="font_18 pl-10 pb-3">香港島</p>
+                    <p class="font_18 pl-10 pb-3">香港島迷你倉</p>
                     <?php
                     $locations = App\LocationInfo::getHongKong();
                     ?>
                     @each('partials.location_info1', $locations, 'location')
 
-                    <p class="font_18 pl-10 pb-3 pt-5">九龍</p>
+                    <p class="font_18 pl-10 pb-3 pt-5">九龍迷你倉</p>
                     <?php
                     $locations = App\LocationInfo::getKowloon();
                     ?>
                     @each('partials.location_info1', $locations, 'location')
 
-                    <p class="font_18 pl-10 pb-3 pt-5">新界</p>
+                    <p class="font_18 pl-10 pb-3 pt-5">新界迷你倉</p>
                     <?php
                     $locations = App\LocationInfo::getNew();
                     ?>
                     @each('partials.location_info1', $locations, 'location')
-                    <!-- <div>
-                        <div class="footer-accordion relative appearance-none items-center">
-                            <div class="flex font_13">
-                                <img class="fill-current mr-4" src="{{asset('images/footer/Group 22.png')}}" />
-                                <span class="self-center text-primary"></span>
-                            </div>
-                        </div>
-                        <div class="panel flex">
-                            <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
-                            <div class=" leading-5 ">
-                                <p class="font_13">
-                                    電話 : <span></span>
-                                </p>
-                                <a href="mailto:cs@onestorage.com.hk" class="font_13">
-                                    電郵 : <span></span>
-                                </a>
-                                <p class="font_13">
-                                    <a href="{{'http://maps.google.com/?q='}}" target="_blank" rel="noopener noreferrer">
-                                        地址 :
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div> -->
-
 
                 </div>
             </div>

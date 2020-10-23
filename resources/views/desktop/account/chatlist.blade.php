@@ -46,13 +46,13 @@
 
         <div class="flex w-full mb-4">
             <div class="w-1/5">
-                <a href="{{url('account')}}">
-                    <div class="border text-center branch-tab py-6">個人資料</div>
+                <a href="{{route('pages.account')}}">
+                    <div class="border text-center branch-tab-active py-6">個人資料</div>
                 </a>
-                <a href="{{url('chatlist')}}">
-                    <div class="border text-center branch-tab-active py-6">信息</div>
+                <a href="{{route('pages.chatList')}}">
+                    <div class="border text-center branch-tab py-6">信息</div>
                 </a>
-                <a href="{{url('logout')}}">
+                <a href="{{route('logout')}}">
                     <div class="border text-center branch-tab py-6" style="background-color: white !important;">登出</div>
                 </a>
             </div>
@@ -63,7 +63,7 @@
                 ?>
                 @if(count($threads))
                 @foreach($threads as $thread)
-                <a class="flex border py-3 px-4 cursor-pointer" href="{{url('chatroom/'.$thread->id)}}">
+                <a class="flex border py-3 px-4 cursor-pointer" href="{{route('pages.chatRoom', $thread->id)}}">
                     <img class="object-center rounded-full inline w-20 h-20" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
 
                     <?php $unreadCnt = $thread->userUnreadMessagesCount(Auth::id()) ?>
@@ -84,7 +84,7 @@
                 @endforeach
                 @else
                 @foreach(Auth::user()->getUnConnectedAdmins() as $admin)
-                <a class="flex border py-3 px-4 cursor-pointer" href="{{url('chatroom?id='.$admin->id)}}">
+                <a class="flex border py-3 px-4 cursor-pointer" href="{{route('pages.chatRoom').'?id='.$admin->id}}">
                     <img class="object-center rounded-full inline w-20 h-20" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
 
                     <div class="w-9/10 pl-6 pt-2">

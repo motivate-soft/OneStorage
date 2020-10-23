@@ -30,20 +30,20 @@
 
         <div class="flex w-full mb-4">
             <div class="w-1/5">
-                <a href="{{url('account')}}">
-                    <div class="border text-center branch-tab py-6">個人資料</div>
+                <a href="{{route('pages.account')}}">
+                    <div class="border text-center branch-tab-active py-6">個人資料</div>
                 </a>
-                <a href="{{url('chatlist')}}">
-                    <div class="border text-center branch-tab-active py-6">信息</div>
+                <a href="{{route('pages.chatList')}}">
+                    <div class="border text-center branch-tab py-6">信息</div>
                 </a>
-                <a href="{{url('logout')}}">
+                <a href="{{route('logout')}}">
                     <div class="border text-center branch-tab py-6" style="background-color: white !important;">登出</div>
                 </a>
             </div>
 
             <div class="w-4/5 ml-2 border">
                 <p class="border-b py-2">
-                    <a class="mx-4 font_19 robert-regular" href="{{url('chatlist')}}" style="color: #C293FC">
+                    <a class="mx-4 font_19 robert-regular" href="{{route('pages.chatList')}}" style="color: #C293FC">
                         &lt; Back
                     </a>
                 </p>

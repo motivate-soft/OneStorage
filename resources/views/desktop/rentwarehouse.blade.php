@@ -11,77 +11,14 @@
 
 @section('styles')
 <style>
-    .bg-hero {
-        background-image: url(images/bg_hero1.jpg);
-        background-repeat: no-repeat;
-        background-position: bottom right;
-        min-height: 520px;
-    }
 
-    .page-title {
-        font-size: 61px;
-        position: relative;
-        font-weight: bold;
-    }
-
-    .page-title:before {
-        content: '';
-        position: absolute;
-        width: 97%;
-        height: 88px;
-        bottom: 30px;
-        z-index: -1;
-        left: -10px;
-        background-color: #E0CBF6;
-    }
-
-    .page-desc {
-        font-size: 26px;
-        font-weight: bold;
-        color: #B2B5BD;
-    }
-
-    .heading1 {
-        font-size: 24px;
-        color: white;
-    }
 
     .heading2 {
         font-size: 30px;
         color: #4D5567;
     }
 
-    .box-shadow {
-        position: relative;
-        z-index: 10;
-    }
 
-    .box-shadow:before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background-color: #FABD02;
-        bottom: -18px;
-        left: 18px;
-    }
-
-    .box-shadow1 {
-        position: relative;
-        z-index: 10;
-    }
-
-    .box-shadow1:before {
-        content: '';
-        position: absolute;
-        width: 130%;
-        height: 100%;
-        z-index: -1;
-        background-color: #FABD02;
-        top: 15px;
-        left: -15%;
-    }
 
     .text0 {
         font-size: 14px;
@@ -91,73 +28,6 @@
     .text1 {
         font-size: 16px;
         color: #4D5567;
-    }
-
-    .text2 {
-        /* 19px */
-        font-size: 19px;
-        color: #4D5567;
-    }
-
-    .text3 {
-        font-size: 20px;
-        color: white
-    }
-
-    .text4 {
-        /* 21px */
-        font-size: 21px;
-        color: #4D5567;
-    }
-
-    .text-name {
-        font-size: 17px;
-        color: #AFAFAF;
-    }
-
-    .score-lg {
-        display: flex;
-        font-size: 28px;
-        font-weight: bold;
-        background-color: #FABD02;
-        border-radius: 9999px;
-        color: #56628C;
-        width: 62px;
-        height: 62px;
-    }
-
-    .score-base {
-        display: flex;
-        font-size: 22px;
-        font-weight: bold;
-        background-color: #FABD02;
-        border-radius: 9999px;
-        color: #56628C;
-        width: 52px;
-        height: 52px;
-    }
-
-    .button-primary {
-        font-size: 18px;
-        border-radius: 0.3rem;
-        color: #56628C;
-        background-color: #E0CBF6;
-        padding-left: 18px;
-        padding-right: 18px;
-    }
-
-
-    .yellow-shadow {
-        box-shadow: 10px 15px #FABD02;
-    }
-
-    .yellow-shadow1 {
-        box-shadow: 18px 18px #FABD02;
-    }
-
-    .contact-icon {
-        width: 20px;
-        height: 20px;
     }
 
     .horz-line {
@@ -576,7 +446,7 @@
                 </div>
 
                 <div class="flex pt-4">
-                    <p class="rentwarehouse-size-select-description my-auto"><a target="_blank" href="{{url('/calc')}}">唔知自己需要咩size ? 試下我地既空間計算器</a></p>
+                    <p class="rentwarehouse-size-select-description my-auto"><a target="_blank" href="{{route('pages.calculator')}}">租迷你倉唔知自己需要咩size ? 試下我地既空間計算器</a></p>
                     <img class="object-none box-content pl-1 -mt-1" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
                 </div>
 
@@ -621,7 +491,7 @@
                 <?php
                 $latest_news = \App\Blog::getNewses(1)->first();
                 ?>
-                <a class="flex pt-2" href="{{url('/news/'.$latest_news->id)}}">
+                <a class="flex pt-2" href="{{route('pages.news', $latest_news->_id)}}">
                     <img class="flex-shrink-0 mr-4 w-32 h-32" src="{{asset($latest_news->thumbnail)}}" />
                     <span class="color-deep break-all overflow-y-hidden leading-relaxed font_13 h-32" style="width; calc(100% - 8rem)">
                         <?php echo nl2br($latest_news->content) ?>
@@ -647,7 +517,7 @@ $user = Auth::user();
             </p>
 
             <div class="flex justify-between mt-8">
-                <a href="{{url('/register')}}" class="submit-btn hover:bg-purple-400 mr-4" id="confirmBtn">
+                <a href="{{route('register')}}" class="submit-btn hover:bg-purple-400 mr-4" id="confirmBtn">
                     註冊
                 </a>
                 <button class="cancel-btn ml-4" type="button" id="cancelBtn">
@@ -668,7 +538,7 @@ $user = Auth::user();
 
             <p class="text-center pt-4 mb-6 font-bold" style="font-size: 21px;">查詢/預約</p>
 
-            <form class="px-8 pt-3" id="bookingForm" method="post" action="{{url('/enquiry')}}">
+            <form class="px-8 pt-3" id="bookingForm" method="post" action="{{route('enquiries.store')}}">
                 @csrf
                 <input type="hidden" name="page" value="{{$store->branch}}" required>
                 <input type="hidden" name="branchName" value="{{$store->branch}}" required>
@@ -713,7 +583,7 @@ $user = Auth::user();
                 <div class="input-group mb-3">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
                     @if(Auth::check())
-                    <input class="form-control" type="text" placeholder="電話號碼" value="{{$user->phone}}" name="phoneNumber">
+                    <input class="form-control" type="text" placeholder="手機號碼" value="{{$user->phone}}" name="phoneNumber">
                     @else
                     <input class="form-control" type="text" placeholder="電話號碼" name="phoneNumber">
                     @endif

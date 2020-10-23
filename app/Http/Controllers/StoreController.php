@@ -7,7 +7,9 @@ use App\StoreOfferImage;
 use App\StoreImage;
 use App\StoreQuestion;
 use App\StoreSize;
+use App\AppConfig;
 use Illuminate\Http\Request;
+use DB;
 use Image;
 use Helper;
 
@@ -71,6 +73,7 @@ class StoreController extends Controller
     private function setData($store, $data)
     {
         if ($store) {
+            $store->_id = $data['_id'];
             $store->location = $data['location'];
             $store->branch = $data['branch'];
             $store->suburb = $data['suburb'];
@@ -192,19 +195,18 @@ class StoreController extends Controller
     public function getBranch()
     {
         $location = isset($_GET['location']) ? $_GET['location'] : '';
-        $branches = Store::where('location', $location)->select('branch', 'id', 'address')->get();
+        $branches = Store::where('location', $location)->select('branch', '_id', 'address')->get();
         return $branches;
     }
 
-    public function showRentwareHouse(Request $request)
+    public function showRentwareHouse($id = '')
     {
-        $id = isset($_GET['storeId']) ? $_GET['storeId'] : -1;
-        $store = Store::find($id);
+        $store = Store::where('_id', $id)->first();
         if($store){
             return view('rentwarehouse', ['store' => $store]);
         }
 
-        return redirect('/branch-location');
+        return redirect()->route('pages.branchLocation');
     }
 
     public function branchLocation()
@@ -213,7 +215,18 @@ class StoreController extends Controller
         $location = isset($_GET['location']) ? $_GET['location'] : '';
         $_GET['location'] = $location;
 
-        $stores = $location == '' ? Store::all() : Store::where('location', $location)->get();
+        $stores = DB::table('stores')->join('store_sizes', 'store_sizes.store_id', '=', 'stores.id')
+            ->groupBy('stores.id')
+            ->selectRaw('stores.*, min(store_sizes.prepaid_price) as price');
+
+        $appConfig = AppConfig::first();
+        if($appConfig){
+            $stores->orderByRaw($appConfig->store_order);
+        }else{
+            $stores->orderByRaw("price ASC");
+        }
+
+        $stores = $location == '' ? $stores->get() : $stores->where('location', $location)->get();
 
         return view('branchlocation', ['locations' => $locations, 'stores' => $stores]);
     }
@@ -222,5 +235,16 @@ class StoreController extends Controller
     {
         $store = Store::find($id);
         return view('backend.stores', ['selected_store' => $store]);
+    }
+
+    public function changeOrder(Request $request)
+    {
+        $appConfig = AppConfig::first();
+        if ($appConfig && isset($request->order)) {
+            $appConfig->store_order = $request->order;
+            $appConfig->save();
+            return true;
+        }
+        return false;
     }
 }

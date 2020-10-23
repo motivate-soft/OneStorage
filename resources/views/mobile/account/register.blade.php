@@ -57,7 +57,7 @@
 
     <div class="input-group mb-1">
         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-        <input class="form-control fontsize-14" type="text" placeholder="電話號碼" name="phone" required>
+        <input class="form-control fontsize-14" type="text" placeholder="手機號碼" name="phone" required>
     </div>
 
     <div class="mt-1 mb-4 text-red-600"><span class="hidden error-msg" id="phoneDuplicateMsg">此電話號碼已被使用</span></div>

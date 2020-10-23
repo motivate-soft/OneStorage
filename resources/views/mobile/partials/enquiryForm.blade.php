@@ -1,7 +1,7 @@
-<form class="form-enquiry" id="enquiryForm" method="post" action="{{url('/enquiry')}}">
+<form class="form-enquiry" id="enquiryForm" method="post" action="{{route('enquiries.store')}}">
     @csrf
     <input type="hidden" name="page" value="{{$page}}">
-    <p class="text2 mb-8">給我們留言</p>
+    <p class="text2 mb-8">查詢迷你倉租賃</p>
     <div class="flex mb-4 w-full">
         <div class="flex w-1/2 input-group">
             <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">
@@ -14,7 +14,7 @@
 
     <div class="input-group mb-4">
         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-        <input class="form-control input-form" type="text" placeholder="電話號碼" name="phoneNumber" required>
+        <input class="form-control input-form" type="text" placeholder="手機號碼" name="phoneNumber" required>
     </div>
 
     <div class="input-group mb-8">

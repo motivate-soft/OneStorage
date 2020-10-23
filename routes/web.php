@@ -21,20 +21,19 @@ Route::put('/messages/{id}', ['as' => 'messages.update', 'uses' => 'MessagesCont
 // User pages routes
 Route::group(['prefix' => '/'], function () {
     Route::view('/', 'home')->name('home');
-    Route::view('/contact', 'contact');
-    Route::view('/joinus', 'joinus');
-    Route::view('/about', 'aboutus');
-    Route::view('/calc', 'calculator');
-    Route::view('/faq', 'faq');
-    Route::view('/lastnews', 'lastnews');
-    Route::view('/disclaimer', 'disclaimer');
-    Route::get('/branch-location', 'StoreController@branchLocation');
-    Route::get('/rentwarehouse', 'StoreController@showRentwareHouse');
-    Route::get('/calc/share', 'StoreController@shareCalcPage');
-    Route::get('/news/{id}', 'BlogController@show');
+    Route::view('/contact-one-storage', 'contact')->name('pages.contactUs');
+    Route::view('/join-one-storage', 'joinus')->name('pages.joinUs');
+    Route::view('/about-one-storage', 'aboutus')->name('pages.aboutUs');
+    Route::view('/mini-storage-space-calculator', 'calculator')->name('pages.calculator');
+    Route::view('/mini-storage-faq', 'faq')->name('pages.faq');
+    Route::view('/mini-storage-latest-news', 'lastnews')->name('pages.lastNews');
+    Route::view('/one-storage-privacy-policy-disclaimer', 'disclaimer')->name('pages.disclaimer');
+    Route::get('/mini-storage-branch-location', ['as' => 'pages.branchLocation', 'uses' => 'StoreController@branchLocation']);
+    Route::get('/rent-mini-storage/{id?}', ['as' => 'pages.rentWareHouse', 'uses' => 'StoreController@showRentwareHouse']);
+    Route::get('/one-storage-promo-news/{id}', ['as' => 'pages.news', 'uses' => 'BlogController@show']);
 
-    Route::get('/login', 'AuthController@loginPage')->name('login');
-    Route::get('/register', 'AuthController@registerPage');
+    Route::get('/one-storage-login', 'AuthController@loginPage')->name('login');
+    Route::get('/one-storage-register', 'AuthController@registerPage')->name('register');
     Route::get('/forgot-password', 'AuthController@forgotPwdPage')->middleware(['guest'])->name('password.request');
     Route::get('/reset-password/{token}', function ($token) {
         return view('account.reset-password', ['token' => $token]);
@@ -46,14 +45,14 @@ Route::group(['prefix' => '/'], function () {
     Route::post('register', 'AuthController@register');
     Route::post('forgot-password', 'AuthController@forgotPwd')->middleware(['guest'])->name('password.email');
     Route::post('reset-password', 'AuthController@resetPwd')->middleware(['guest'])->name('password.update');
-    Route::get('logout', 'AuthController@logout');
+    Route::get('logout', 'AuthController@logout')->name('logout');
 
     Route::group(['middleware' => ['user']], function () {
-        Route::view('/account', 'account.accountinfo');
-        Route::view('/chatlist', 'account.chatlist');
+        Route::view('/account', 'account.accountinfo')->name('pages.account');
+        Route::view('/chatlist', 'account.chatlist')->name('pages.chatList');
 
-        Route::post('/account/update', 'AuthController@update');
-        Route::get('/chatroom/{id?}', ['as' => 'chatroom.show', 'uses' => 'MessagesController@show']);
+        Route::post('/account/update', ['as' => 'account.update', 'uses' => 'AuthController@update']);
+        Route::get('/chatroom/{id?}', ['as' => 'pages.chatRoom', 'uses' => 'MessagesController@show']);
         Route::post('/messages', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
     });
 });
@@ -85,6 +84,7 @@ Route::group(['prefix' => '/backend', 'as' => 'backend.'], function () {
         Route::post('/broadcast', 'MessagesController@broadcast');
 
         //--------------stores--------------
+        Route::post('/stores/change-order', ['as' => 'stores.changeOrder', 'uses' => 'StoreController@changeOrder']);
         Route::get('/stores/{id?}', ['as' => 'stores.show', 'uses' => 'StoreController@show']);
         Route::post('/stores', ['as' => 'stores.store', 'uses' => 'StoreController@store']);
         Route::put('/stores', ['as' => 'stores.update', 'uses' => 'StoreController@update']);

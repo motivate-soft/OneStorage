@@ -53,6 +53,7 @@ class BlogController extends Controller
         if(!$blog){
             return;
         }
+        $blog->_id = $request->_id;
         $blog->title = $request->title;
         $blog->content = $request->content;
         $blog->used_promotion = isset($request->usedPromition) &&  $request->usedPromition == "on";
@@ -100,7 +101,7 @@ class BlogController extends Controller
     public function show($id)
     {
         //
-        $blog = Blog::find($id);
+        $blog = Blog::where('_id', $id)->first();
         return view('news', compact('blog'));
     }
 

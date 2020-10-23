@@ -33,9 +33,9 @@ $user = Auth::user();
 
     <div class=" flex w-full">
         <div class="w-1/5"></div>
-        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color bg-grey" href="{{url('account')}}">個人資料</a>
-        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{url('chatlist')}}">信息</a>
-        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{url('logout')}}">登出</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{route('pages.account')}}">個人資料</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color bg-grey" href="{{route('pages.chatList')}}">信息</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{route('logout')}}">登出</a>
         <div class="w-1/5"></div>
     </div>
 
@@ -46,7 +46,7 @@ $user = Auth::user();
         @if(count($threads))
         @foreach($threads as $thread)
 
-        <a class="flex items-center border-b pt-1 pb-2 mx-2" href="{{url('chatroom/'.$thread->id)}}">
+        <a class="flex items-center border-b pt-1 pb-2 mx-2" href="{{route('pages.chatRoom', $thread->id)}}">
             <div class=" w-1/6">
                 <img class="w-12 h-12 mr-4 rounded-full" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
             </div>
@@ -65,7 +65,7 @@ $user = Auth::user();
         @endforeach
         @else
         @foreach(Auth::user()->getUnConnectedAdmins() as $admin)
-        <a class="flex items-center border-b pt-1 pb-2 mx-2" href="{{url('chatroom?id='.$admin->id)}}">
+        <a class="flex items-center border-b pt-1 pb-2 mx-2" href="{{route('pages.chatRoom'). '?id='.$admin->id}}">
             <div class=" w-1/6">
                 <img class=" w-12 h-12 mr-4 rounded-full" src="{{asset('images/contactUs/Intersection18@2x.png')}}" alt="Avatar of Jonathan Reinink">
             </div>

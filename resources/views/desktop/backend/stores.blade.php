@@ -103,23 +103,43 @@
             </div>
         </div>
 
-        <div class="w-1/2 mb-4 pr-4">
-            <div class="w-full inline-block relative">
-                <select id="branch-select" class="text-primary shadow-md block appearance-none w-full bg-white border border-gray-200 px-4 py-4 pr-8 leading-tight focus:outline-none">
-                    <option value="" selected disabled class="text-grey">分店</option>
-                    <?php $stores = App\Store::all() ?>
-                    @foreach($stores as $store)
-                    <option value="{{route('backend.stores.show', $store->id)}}" class="py-2 text-grey-2" {{($selected_store && ($selected_store->id == $store->id)) ? 'selected' : ''}}>
-                        {{$store->branch}}
-                    </option>
-                    @endforeach
-                </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                    <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+        <div class="flex">
+            <div class="w-1/2 mb-4 pr-4">
+                <div class="w-full inline-block relative">
+                    <select id="branch-select" class="text-primary shadow-md block appearance-none w-full bg-white border border-gray-200 px-4 py-4 pr-8 leading-tight focus:outline-none">
+                        <option value="" selected disabled class="text-grey">分店</option>
+                        <?php $stores = App\Store::all() ?>
+                        @foreach($stores as $store)
+                            <option value="{{route('backend.stores.show', $store->id)}}" class="py-2 text-grey-2" {{($selected_store && ($selected_store->id == $store->id)) ? 'selected' : ''}}>
+                                {{$store->branch}}
+                            </option>
+                        @endforeach
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="w-1/2 mb-4 pl-4">
+                <div class="w-full inline-block relative">
+                    <select id="order-select" class="text-primary shadow-md block appearance-none w-full bg-white border border-gray-200 px-4 py-4 pr-8 leading-tight focus:outline-none">
+                        <option value="" selected disabled class="text-grey">Order of Stores</option>
+                        <?php $orderOptions = \App\Helper\Helper::$STORE_ORDER_OPTIONS ?>
+                        @foreach($orderOptions as $orderOption)
+                            <option value="{{$orderOption['value']}}" class="py-2 text-grey-2" {{(App\AppConfig::first()->store_order == $orderOption['value']) ? 'selected' : ''}}>
+                                {{$orderOption['name']}}
+                            </option>
+                        @endforeach
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                    </div>
                 </div>
             </div>
         </div>
+
 
         <div class="flex">
             <div class="w-1/2 pr-4">
@@ -136,6 +156,12 @@
                         詳細資料
                     </p>
                     <div class="px-2">
+                        <div class="flex mb-4">
+                            <span class="w-1/5 mt-1">
+                                Id
+                            </span>
+                            <input placeholder="" value="{{$selected_store ? $selected_store->_id : ''}}" class="form-input" name="_id" type="text" required>
+                        </div>
                         <div class="flex mb-4">
                             <span class="w-1/5 mt-1">
                                 分店名
@@ -525,7 +551,33 @@
 
     $("input[name='address']").on("change", function() {
         getLocation($(this).val());
-    })
+    });
+
+    $("#order-select").change(function(){
+        const order = $(this).val();
+        const selector = $(this);
+        if (order === "") {
+            return;
+        }
+        selector.prop('disabled', true);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': '<?= csrf_token() ?>'
+            }
+        });
+        $.ajax({
+            url: '<?= route('backend.stores.changeOrder') ?>',
+            type: 'POST',
+            data: {
+                order: order
+            },
+            datatype: 'json',
+            success: function (result) {
+                alert(result == 1 ? 'success' : 'fail');
+                selector.prop('disabled', false);
+            }
+        });
+    });
 
     function getLocation(address) {
         if(address == ''){

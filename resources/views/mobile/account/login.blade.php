@@ -38,7 +38,7 @@
     @csrf
     <div class="input-group mb-4">
         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-        <input class="form-control fontsize-14" type="text" placeholder="電話號碼" name="phone" required>
+        <input class="form-control fontsize-14" type="text" placeholder="手機號碼" name="phone" required>
     </div>
 
     <input class="w-full form-control mb-2 fontsize-14 pl-8" placeholder="密碼" name="password" type="password" required>

@@ -230,6 +230,10 @@
                     </label>
                     <div class="border-b border-gray-300 mb-4">
                         <div class="mb-4">
+                            <p class="font_26 mb-2">Id</p>
+                            <input placeholder="Id" class="form-input w-full appearance-none bg-white border border-gray-300 p-2 text-base" name="_id" required type="text" id="id">
+                        </div>
+                        <div class="mb-4">
                             <p class="font_26 mb-2">題目</p>
                             <input placeholder="Title" class="form-input w-full appearance-none bg-white border border-gray-300 p-2 text-base" name="title" required type="text" id="title">
                         </div>
@@ -397,6 +401,7 @@
 
                 $("#usedPromition").prop("checked", blog.used_promotion);
                 $("#usedNotify").prop("checked", blog.used_notify);
+                $("#id").val(blog._id);
                 $("#title").val(blog.title);
                 $("#content").val(blog.content);
                 $("#method").val('PUT');

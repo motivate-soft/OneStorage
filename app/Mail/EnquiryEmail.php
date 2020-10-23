@@ -14,17 +14,14 @@ class EnquiryEmail extends Mailable
     use Queueable, SerializesModels;
 
     public $enquiry;
+    public $toSupport;
 
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct(Enquiry $enquiry)
+    public function __construct(Enquiry $enquiry, bool $toSupport = true)
     {
         //
         $this->enquiry = $enquiry;
+        $this->toSupport = $toSupport;
     }
 
     /**
@@ -34,15 +31,15 @@ class EnquiryEmail extends Mailable
      */
     public function build()
     {
-        $mail = $this->from($this->enquiry->email ? $this->enquiry->email : Helper::$ONESTORAGE_EMAIL)
-            ->view('emails.enquiry');
+        $mail = $this->from($this->toSupport ? $this->enquiry->email : Helper::$ONESTORAGE_EMAIL)
+                ->view('emails.enquiry');
 
-        if($this->enquiry->cv_file){
+        if($this->toSupport && $this->enquiry->cv_file){
             $mail->attach(public_path($this->enquiry->cv_file), [
                 'as' => 'CV.'.pathinfo($this->enquiry->cv_file, PATHINFO_EXTENSION),
             ]);
         }
-        if($this->enquiry->cl_file){
+        if($this->toSupport && $this->enquiry->cl_file){
             $mail->attach(public_path($this->enquiry->cl_file), [
                 'as' => 'CoverLetter.'.pathinfo($this->enquiry->cl_file, PATHINFO_EXTENSION),
             ]);

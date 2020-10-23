@@ -230,11 +230,10 @@
 <div class="p-5 bg-grey">
     <div class="rentwarehouse-wrapper-title color-primary text-center">租倉</div>
 
-    <form id="branchSearchForm" class="flex justify-between items-center px-1 py-5 mx-auto" method="get" action="{{url('/rentwarehouse')}}">
+    <div id="branchSearchForm" class="flex justify-between items-center px-1 py-5 mx-auto">
         <img class="rentwarehouse-select-store-image-m px-0" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
-        <input id="storeId" type="hidden" name="storeId" value="{{$stores[0]['id']}}" />
         <div class="flex relative rentwarehouse-select-store-item-area-m mx-1">
-            <select id="location-select" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-1 py-2 pr-8 shadow leading-tight focus:outline-none focus:shadow-outline rentwarehouse-selects-store-item-select-m">
+            <select id="location-select" data-url="{{route('pages.branchLocation')}}" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-1 py-2 pr-8 shadow leading-tight focus:outline-none focus:shadow-outline rentwarehouse-selects-store-item-select-m">
                 <option class="rentwarehouse-selects-store-item-option-m" selected disabled>地區</option>
                 @foreach($locations as $location)
 
@@ -253,7 +252,7 @@
             <select id="branch-select" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-1 py-2 pr-8 shadow leading-tight focus:outline-none focus:shadow-outline rentwarehouse-selects-store-item-select-m">
                 <!-- <option class="rentwarehouse-selects-store-item-option-m" selected disabled>分店</option> -->
                 @foreach($stores as $store)
-                <option value="{{$store->id}}" class="rentwarehouse-selects-store-item-option-m">{{$store->branch}}</option>
+                <option value="{{route('pages.rentWareHouse', $store->_id)}}" class="rentwarehouse-selects-store-item-option-m">{{$store->branch}}</option>
                 @endforeach
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -261,8 +260,8 @@
                     <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
             </div>
         </div>
-        <button class="rentwarehouse-select-store-button-m items-center ml-2 px-2">租倉</button>
-    </form>
+        <button id="goToStore" class="rentwarehouse-select-store-button-m items-center ml-2 px-2">租倉</button>
+    </div>
 
     <div class="flex relative pt-4 mb-12">
         <label class="flex items-center absolute right-0 rentwarehouse-price-check"><input type="checkbox" class="mr-3" />只顯示有折扣地區</label>
@@ -310,33 +309,33 @@
             </div>
         </div>
         <div class="flex pt-5 pb-3">
-            <a href="{{url('/calc')}}">
-                <p class="branchlocation-store-select-description my-auto">唔知自己需要咩size ? 試下我地既空間計算器</p>
+            <a href="{{route('pages.calculator')}}">
+                <p class="branchlocation-store-select-description my-auto">租迷你倉唔知自己需要咩size ? 試下我地既空間計算器</p>
             </a>
             <img class="object-none box-content pl-1 -mt-1" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
         </div>
 
     </div>
-    <div class="rentwarehouse-wrapper-title color-primary text-center pb-4">分店位置</div>
+    <div class="rentwarehouse-wrapper-title color-primary text-center pb-4">迷你倉分店位置</div>
     <div class="grid grid-cols-1 row-gap-2 pt-5 px-6" id="storesList">
         @foreach($stores as $store)
-        <?php
-        $price = $store->getLowestPrice();
-        ?>
-        <div class="flex flex-col justify-between relative rounded overflow-hidden shadow-lg location-content-item mx-auto mb-4" data-name="{{$store->branch}}" data-price="{{$price}}" data-size-label="{{$store->getSizeLabel()}}">
-            <a href="{{url('/rentwarehouse?storeId='). $store->id}}" class="relative">
+            <?php
+            $store_model = App\Store::find($store->id);
+            ?>
+        <div class="flex flex-col justify-between relative rounded overflow-hidden shadow-lg location-content-item mx-auto mb-4" data-name="{{$store->branch}}" data-price="{{$store->price}}" data-size-label="{{$store_model->getSizeLabel()}}">
+            <a href="{{route('pages.rentWareHouse', $store->_id)}}" class="relative">
                 <div class="ribbon ribbon-badge ribbon-pink">
                     <span class="ribbon-inner">最新優惠</span>
                 </div>
                 <?php
-                $storeImages = $store->storeImages()->where('is_used', true)->get();
+                $storeImages = $store_model->storeImages()->where('is_used', true)->get();
                 ?>
                 @if(count($storeImages))
                 <img class="w-full" src="{{asset($storeImages[0]->image)}}" alt="Rentwarehouse">
                 @else
                 <img class="w-full" src="{{ asset('branchlocation/Intersection 7@2x.png') }}" alt="Rentwarehouse">
                 @endif
-                <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ {{$price}} 起</span>
+                <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ {{$store->price}} 起</span>
             </a>
             <div class="px-1 py-2 pl-2">
                 <div class="mb-1 mt-2 color-primary location-content-title">{{$store->branch}}</div>
@@ -348,7 +347,7 @@
                     <img class="w-3" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
                     <p class="color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
                 </div>
-                <a href="{{url('/rentwarehouse?storeId='). $store->id}}">
+                <a href="{{route('pages.rentWareHouse', $store->_id)}}">
                     <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
                         選擇
                     </button>
@@ -378,6 +377,7 @@
         if (search.includes("page")) {
             window.location.href = "#storesList";
         }
+
     });
 
     function init() {

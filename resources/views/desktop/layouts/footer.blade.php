@@ -6,12 +6,12 @@
                     <h2 class="text-lg mt-4 mb-8 font-bold">關於至尊迷你倉</h2>
                     <div class="text-justify mb-4 leading-5 font_13">為金朝陽集團屬下業務(股票代號： 00878.HK)。
                         <br><br>
-                        分店遍佈港、九及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質的儲存環境及專業的服務。
+                        分店遍佈香港、九龍及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質及專業的儲物收納服務。
                         <br><br>
                         至尊迷你倉是亞洲迷你倉商會(SSAA)及香港迷你倉總會會員(HKMSA)。
                     </div>
                     <span class="w-auto my-8 font_15 font-bold">
-                        <a href="{{url('/joinus')}}">職位空缺</a> | <a href="{{url('/disclaimer')}}">免責聲明</a>
+                        <a href="{{route('pages.joinUs')}}">職位空缺</a> | <a href="{{route('pages.disclaimer')}}">免責聲明</a>
                     </span>
                     <p class="font_15">©2020 至尊迷你倉 版權所有</p>
                 </div>
@@ -47,7 +47,7 @@
                     <div class="flex">
                         <div class="grid grid-cols-2">
                             <div class="col-span-1">
-                                <p class="font_19 pl-10 pb-3">香港島</p>
+                                <p class="font_19 pl-10 pb-3">香港島迷你倉</p>
                                 <?php
                                 $locations = App\LocationInfo::getHongKong();
                                 ?>
@@ -55,7 +55,7 @@
                             </div>
 
                             <div class="col-span-1">
-                                <p class="font_19 pl-10 pb-3">九龍</p>
+                                <p class="font_19 pl-10 pb-3">九龍迷你倉</p>
                                 <?php
                                 $locations = App\LocationInfo::getKowloon();
                                 ?>
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="font_19 pl-10 pb-3 mt-6">新界</p>
+                    <p class="font_19 pl-10 pb-3 mt-6">新界迷你倉</p>
                     <div class="grid grid-cols-2">
                         <?php
                         $locations = App\LocationInfo::getNew();
@@ -93,7 +93,7 @@
                 $latest_news = App\Blog::getNewses(3);
                 ?>
                 @foreach($latest_news as $news)
-                <a class="flex mb-5" href="{{url('/news/'.$news->id)}}">
+                <a class="flex mb-5" href="{{route('pages.news', $news->_id)}}">
                     <img class="h-32 w-32 mr-4 object-cover" src="{{asset($news->thumbnail)}}">
                     <span class="h-32 break-all leading-4 font_13 overflow-y-hidden robert-black" style="width: calc(100% - 8rem)">
                         <?php echo nl2br($news->content) ?>

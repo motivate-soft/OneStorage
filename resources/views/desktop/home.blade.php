@@ -140,7 +140,7 @@
             One Choice ‧ One Storage
         </span>
         <p class="page-desc pt-6 source-han z-50">至尊迷你倉</p>
-        <form id="branchSearchForm" class="flex bg-primary rounded-lg p-4 mr-4 mt-8 justify-between w-8/10" method="get" action="{{url('/rentwarehouse')}}">
+        <div id="branchSearchForm" class="flex bg-primary rounded-lg p-4 mr-4 mt-8 justify-between w-8/10">
             <img src="{{asset('images/ic_marker.png')}}" class="align-middle my-auto" />
             <input id="storeId" type="hidden" name="storeId" />
             <div class="w-3/12 inline-block relative">
@@ -157,7 +157,7 @@
                 </div>
             </div>
             <div class="w-5/12 inline-block relative">
-                <select disabled="disabled"  id="branch-select" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
+                <select disabled="disabled"  id="branch-select" data-url="{{route('pages.rentWareHouse')}}" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
                     <option value="" selected disabled class="text-grey">分店</option>
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -165,10 +165,10 @@
                         <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                 </div>
             </div>
-            <button class="button-primary" type="submit">
+            <button class="button-primary" id="goToStore">
                 租倉
             </button>
-        </form>
+        </div>
 
         <div class="flex mt-16 robert-black text-primary mb-8">
             <p class="my-auto font_24 break-all leading-tight">
@@ -176,7 +176,7 @@
                 <br class="block xl:hidden"/>
                 <span class="relative crown1"> 試下我地既空間計算器</span>
             </p>
-            <a href="{{url('/calc')}}" target="_blank" class="ml-10 my-auto bg-yellow px-6 py-2 font_18">立即計算</a>
+            <a href="{{route('pages.calculator')}}" target="_blank" class="ml-10 my-auto bg-yellow px-6 py-2 font_18">立即計算</a>
         </div>
     </div>
     <img src="{{App\AppConfig::first()->background}}" class="w-1/2 object-contain lg:-mt-10 object-right" style="max-width: 1100px"/>
@@ -185,7 +185,7 @@
 <div class="bg-primary py-4">
     <p class="heading1 text-center">填妥簡單資料，立即領取5% off 獨家優惠</p>
 
-    <form id="discountForm" class="flex justify-between mt-6 pr-10 pb-4 section" method="post" action="{{url('/enquiry')}}">
+    <form id="discountForm" class="flex justify-between mt-6 pr-10 pb-4 section" method="post" action="{{route('enquiries.store')}}">
         @csrf
         <input type="hidden" name="page" value="{{Helper::$SS_FROM_FRONT_PAGE1}}">
         <input type="hidden" name="ajax" value="1">
@@ -241,7 +241,7 @@
         </div>
 
         <div class="text-center">
-            <span class="heading2 text-center box-shadow">最新優惠</span>
+            <span class="heading2 text-center box-shadow">最新租倉優惠</span>
         </div>
 
 
@@ -250,7 +250,7 @@
             $promotions = App\Blog::where('as_promotion', true)->where('state', true)->orderBy('column', 'asc')->get();
             ?>
             @foreach($promotions as $promotion)
-            <a href="{{url('/news/'.$promotion->id)}}"><img src="{{asset($promotion->promotion)}}" class="yellow-shadow promotion h-52" /></a>
+            <a href="{{route('pages.news', $promotion->_id)}}"><img src="{{asset($promotion->promotion)}}" class="yellow-shadow promotion h-52" /></a>
             @endforeach
         </div>
     </div>

@@ -17,6 +17,40 @@ class Helper
     public static $SS_FROM_CONTACTUS_PAGE = "Contact us";
     public static $SS_FROM_JOINUS_PAGE = "Join us";
     public static $SS_FROM_FAQ_PAGE = "FAQ";
+    public static $STORE_ORDER_OPTIONS = [
+        [
+            'name' => 'Order By Id (ascending)',
+            'value' => 'stores._id ASC'
+        ],
+        [
+            'name' => 'Order By Id (descending)',
+            'value' => 'stores._id DESC'
+        ],
+        [
+            'name' => 'Order By Name (ascending)',
+            'value' => 'stores.name ASC'
+        ],
+        [
+            'name' => 'Order By Name (descending)',
+            'value' => 'stores.name DESC'
+        ],
+        [
+            'name' => 'Order By Price (ascending)',
+            'value' => 'price ASC'
+        ],
+        [
+            'name' => 'Order By Price (descending)',
+            'value' => 'price DESC'
+        ],
+        [
+            'name' => 'Order By Date (ascending)',
+            'value' => 'stores.created_at ASC'
+        ],
+        [
+            'name' => 'Order By Date (descending)',
+            'value' => 'stores.created_at DESC'
+        ]
+    ];
 
     public static $STORAGE_FACILITIES = [
         [

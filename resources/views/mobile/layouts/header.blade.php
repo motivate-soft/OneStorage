@@ -20,14 +20,14 @@
     <div class="w-full flex-grow z-50  hidden pt-6" id="nav-content" style="background-color:#F6F6F6;">
         <div class="my-2 px-2">
             <div class="text-left px-4 py-2 m-2 font_16 default-color">
-                <a href="{{url('/about')}}">關於我們</a>
+                <a href="{{route('pages.aboutUs')}}">關於我們</a>
             </div>
             <div class="text-left px-4 py-2 m-2 font_16 default-color">
-                <a href="{{url('/lastnews')}}">最新資訊</a>
+                <a href="{{route('pages.lastNews')}}">最新資訊</a>
             </div>
             <div class="text-left px-4 pt-2 py-2 m-2 font_16 default-color">
                 <div class="flex ">
-                    <a class="inline-block font_16 default-color no-underline " href="{{url('/branch-location')}}">分店位置
+                    <a class="inline-block font_16 default-color no-underline " href="{{route('pages.branchLocation')}}">分店位置
                     </a>
                     <div class="inset-y-0 accordion_1 right-0 items-center px-2 text-gray-700" style="margin-left: 84px; ">
                         <a href="javascript:void(0)"><i class="icon wb-chevron-down"></i></a>
@@ -38,7 +38,7 @@
                     @foreach($locations as $location)
                     <div class="text-left w-full px-4  m-2 font_16 default-color">
                         <div class="flex">
-                            <a class="inline-block font_16 default-color no-underline" href="{{url('/branch-location?location='.$location->location)}}">
+                            <a class="inline-block font_16 default-color no-underline" href="{{route('pages.branchLocation').'?location='.$location->location}}">
                                 {{$location->location}}
                             </a>
                         </div>
@@ -48,23 +48,15 @@
 
             </div>
             <div class="text-left flex px-4 py-2 m-2 font_16 default-color">
-                <a class="inline-block font_16 default-color no-underline" href="{{url('/calc')}}">空間計算器
+                <a class="inline-block font_16 default-color no-underline" href="{{route('pages.calculator')}}">空間計算器
                 </a>
                 <img src="{{asset('images/header/icons8-crown-48.png')}}" class="ml-5 relative" style="margin-top: -5px;">
             </div>
             <div class="text-left px-4 py-2 m-2 font_16 default-color">
-                <a href="{{url('/faq')}}">常見問題</a>
+                <a href="{{route('pages.faq')}}">常見問題</a>
             </div>
             <div class="text-left px-4 py-2 m-2 font_16 default-color">
-                <a href="{{url('/contact')}}">聯絡我們</a>
-            </div>
-
-            <div class="text-left px-4 py-2 m-2 font_16 default-color cursor-pointer">
-                <!-- <a href="{{url('/')}}">Desktop Demo</a> -->
-            </div>
-
-            <div class="text-left px-4 py-2 m-2 font_16 default-color cursor-pointer">
-                <!-- <a href="{{url('/backend')}}">Backend Demo</a> -->
+                <a href="{{route('pages.contactUs')}}">聯絡我們</a>
             </div>
 
             <div class="flex text-left px-4 py-2 m-2 font_16 default-color">
@@ -72,7 +64,7 @@
                 if (Auth::check()) {
                 ?>
                     <div class="text-left w-1/2 py-1 font_16 default-color">
-                        <a class="inline-block font_16 default-color no-underline py-2" href="{{url('/account')}}" style="display: flex;">
+                        <a class="inline-block font_16 default-color no-underline py-2" href="{{route('pages.account')}}" style="display: flex;">
                             <img class="mr-1" src="{{asset('images/header/icons8-user-50@2x.png')}}" />
                             <span class=" self-center text-primary">帳戶</span>
                         </a>
@@ -81,7 +73,7 @@
                         <?php
                         $hasMsg = Auth::user()->hasUnreadMsg();
                         ?>
-                        <a class="{{$hasMsg ? 'inbox new-msg' : ' '}} flex-shrink-0 inline-block  font_16 default-color no-underline  py-2" href="{{url('/chatlist')}}" style="display: flex;">
+                        <a class="{{$hasMsg ? 'inbox new-msg' : ' '}} flex-shrink-0 inline-block  font_16 default-color no-underline  py-2" href="{{route('pages.chatList')}}" style="display: flex;">
                             <img class="" src="{{asset('images/header/icons8-secured-letter-40@2x.png')}}" />
                             <span class="self-center text-primary mx-2">
                                 信息
@@ -92,13 +84,13 @@
                 } else {
                 ?>
                     <div class="text-left w-1/2 py-1 font_16 default-color">
-                        <a class="inline-block font_16 default-color no-underline py-2" href="{{url('/login')}}" style="display: flex;">
+                        <a class="inline-block font_16 default-color no-underline py-2" href="{{route('login')}}" style="display: flex;">
                             <img class=" mr-1" src="{{asset('images/header/icons8-user-50@2x.png')}}" />
                             <span class=" self-center text-primary">登入</span>
                         </a>
                     </div>
                     <div class="text-left w-1/2 py-1 font_16 default-color">
-                        <a class=" inline-block  font_16 default-color no-underline  py-2" href="{{url('/register')}}" style="display: flex;">
+                        <a class=" inline-block  font_16 default-color no-underline  py-2" href="{{route('register')}}" style="display: flex;">
                             <img class="mr-1" src="{{asset('images/header/icons8-join-50@2x.png')}}" />
                             <span class="self-center text-primary">
                                 註冊

@@ -16,21 +16,21 @@
             <ul class="pl-20 xl:pl-36 list-reset flex flex-col md:flex-row lg:ml-0 lg:justify-end justify-between flex-1 items-center font_15 source-han" style="z-index: 50;">
 
                 <li class="mr-1 md:mr-0 dropdown">
-                    <a class="dropbtn inline-block default-color no-underline py-2 px-2" href="{{url('/about')}}">關於我們</a>
+                    <a class="dropbtn inline-block default-color no-underline py-2 px-2" href="{{route('pages.aboutUs')}}">關於我們</a>
                 </li>
 
                 <li class="mr-1 md:mr-0 dropdown">
-                    <a class="dropbtn inline-block default-color no-underline  py-2 px-2" href="{{url('/lastnews')}}">最新資訊</a>
+                    <a class="dropbtn inline-block default-color no-underline  py-2 px-2" href="{{route('pages.lastNews')}}">最新資訊</a>
                 </li>
 
                 <li class="mr-1 md:mr-0 dropdown">
-                    <a class="dropbtn inline-block default-color no-underline py-2 px-2" href="{{url('/branch-location')}}">分店位置</a>
+                    <a class="dropbtn inline-block default-color no-underline py-2 px-2" href="{{route('pages.branchLocation')}}">分店位置</a>
 
                     <ul class="dropdown-content">
                         <?php $locations = App\Store::getLocations(); ?>
                         @foreach($locations as $location)
                         <li class="py-1">
-                            <a class="block hover:text-purple-700 cursor-pointer font_15" href="{{url('/branch-location?location='.$location->location)}}">
+                            <a class="block hover:text-purple-700 cursor-pointer font_15" href="{{route('pages.branchLocation').'?location='.$location->location}}">
                                 {{$location->location}}
                             </a>
                         </li>
@@ -38,20 +38,15 @@
                     </ul>
                 </li>
                 <li class="relative mr-1 md:mr-0 dropdown">
-                    <a class="dropbtn crown inline-block default-color no-underline py-2 px-2" href="{{url('/calc')}}">空間計算器</a>
+                    <a class="dropbtn crown inline-block default-color no-underline py-2 px-2" href="{{route('pages.calculator')}}">空間計算器</a>
                 </li>
                 <li class="relative mr-1 md:mr-0 dropdown">
-                    <a class="dropbtn inline-block default-color no-underline  py-2 px-2" href="{{url('/faq')}}">常見問題</a>
+                    <a class="dropbtn inline-block default-color no-underline  py-2 px-2" href="{{route('pages.faq')}}">常見問題</a>
                 </li>
 
                 <li class="relative mr-0 md:mr-8 dropdown">
-                    <a class="dropbtn inline-block default-color no-underline  py-2 px-2" href="{{url('/contact')}}">聯絡我們</a>
+                    <a class="dropbtn inline-block default-color no-underline  py-2 px-2" href="{{route('pages.contactUs')}}">聯絡我們</a>
                 </li>
-
-                {{--<li class="relative mr-4 text-white font-thin">--}}
-                    {{--<!-- <a href="{{url('/mobile')}}" class="bg-gray-500 px-3 py-px text-xs w-full">Mobile Demo</a><br /> -->--}}
-                    {{--<a href="{{url('/backend')}}" target="_blank" class="bg-gray-700 px-3 py-px text-xs w-full robert-bold">Backend Demo</a><br />--}}
-                {{--</li>--}}
 
                 <li class="sm:mr-5 md:mr-10 lg:mr-15">
                     <a href="https://wa.me/85251188503" target="_blank" class="flex">
@@ -64,7 +59,7 @@
                     if (Auth::check()) {
                     ?>
                     <li class="mr-1 md:mr-0">
-                        <a class="inline-block font_16 default-color no-underline py-2 px-2" href="{{url('/account')}}" style="display: flex;">
+                        <a class="inline-block font_16 default-color no-underline py-2 px-2" href="{{route('pages.account')}}" style="display: flex;">
                             <img class=" mr-1" src="{{asset('images/header/icons8-user-50@2x.png')}}" />
                             <span class=" self-center text-primary">帳戶</span>
                         </a>
@@ -73,7 +68,7 @@
                         <?php
                         $hasMsg = Auth::user()->hasUnreadMsg();
                         ?>
-                        <a class="{{$hasMsg ? 'inbox new-msg' : ' '}} inline-block font_16 default-color no-underline py-2 px-2" href="{{url('/chatlist')}}" style="display: flex;">
+                        <a class="{{$hasMsg ? 'inbox new-msg' : ' '}} inline-block font_16 default-color no-underline py-2 px-2" href="{{route('pages.chatList')}}" style="display: flex;">
                             <img class="mr-1" src="{{asset('images/header/icons8-secured-letter-40@2x.png')}}" />
                             <span class="self-center text-primary">
                                         信息
@@ -84,13 +79,13 @@
                     } else {
                     ?>
                     <li class="mr-1 md:mr-0">
-                        <a class="inline-block font_16 default-color no-underline py-2 px-2" href="{{url('/login')}}" style="display: flex;">
+                        <a class="inline-block font_16 default-color no-underline py-2 px-2" href="{{route('login')}}" style="display: flex;">
                             <img class=" mr-1" src="{{asset('images/header/icons8-user-50@2x.png')}}" />
                             <span class=" self-center text-primary">登入</span>
                         </a>
                     </li>
                     <li class="mr-1 md:mr-0">
-                        <a class=" inline-block  font_16 default-color no-underline  py-2 px-2" href="{{url('/register')}}" style="display: flex;">
+                        <a class=" inline-block  font_16 default-color no-underline  py-2 px-2" href="{{route('register')}}" style="display: flex;">
                             <img class="mr-1" src="{{asset('images/header/icons8-join-50@2x.png')}}" />
                             <span class="self-center text-primary">
                                         註冊

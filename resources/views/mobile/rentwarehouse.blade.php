@@ -334,7 +334,7 @@
                 </div>
 
                 <div class="flex pt-4">
-                    <a target="_blank" href="{{url('/calc')}}" class="rentwarehouse-size-select-description-m my-auto">唔知自己需要咩size ? 試下我地既空間計算器</a>
+                    <a target="_blank" href="{{route('pages.calculator')}}" class="rentwarehouse-size-select-description-m my-auto">租迷你倉唔知自己需要咩size ? 試下我地既空間計算器</a>
                     <img class="object-none box-content pl-1 -mt-1" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
                 </div>
 
@@ -538,7 +538,7 @@ $user = Auth::user();
             </p>
 
             <div class="flex justify-between mt-8">
-                <a href="{{url('/register')}}" class="submit-btn hover:bg-purple-400 mr-4" id="confirmBtn" style="width: 50% !important;">
+                <a href="{{route('register')}}" class="submit-btn hover:bg-purple-400 mr-4" id="confirmBtn" style="width: 50% !important;">
                     註冊
                 </a>
                 <button class="cancel-btn ml-4 w-1/2" type="button" id="cancelBtn">
@@ -559,7 +559,7 @@ $user = Auth::user();
 
             <p class="text-center pt-4 mb-6 font-bold" style="font-size: 21px;">查詢/預約</p>
 
-            <form class="px-8 pt-3" id="bookingForm" method="post" action="{{url('/enquiry')}}">
+            <form class="px-8 pt-3" id="bookingForm" method="post" action="{{route('enquiries.store')}}">
                 @csrf
                 <input type="hidden" name="page" value="{{$store->branch}}" required>
                 <input type="hidden" name="branchName" value="{{$store->branch}}" required>
@@ -605,9 +605,9 @@ $user = Auth::user();
                 <div class="input-group mb-3">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
                     @if(Auth::check())
-                        <input class="form-control" type="text" placeholder="電話號碼" value="{{$user->phone}}" name="phoneNumber">
+                        <input class="form-control" type="text" placeholder="手機號碼" value="{{$user->phone}}" name="phoneNumber">
                     @else
-                        <input class="form-control" type="text" placeholder="電話號碼" name="phoneNumber">
+                        <input class="form-control" type="text" placeholder="手機號碼" name="phoneNumber">
                     @endif
                 </div>
 

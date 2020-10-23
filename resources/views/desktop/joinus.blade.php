@@ -14,7 +14,7 @@
 
 @section('content')
 <div class="bg-white">
-    <div class="px-4 mx-auto py-13 w-3/5">
+    <div class="px-4 mx-auto py-13 section">
         <p class="heading-font">職位空缺</p>
         <div class="horizontal-line">
         </div>
@@ -55,7 +55,7 @@
             </div>
         </div>
 
-        <form class="w-1/2 mx-auto px-14 mt-24 mb-10" id="enquiryForm" method="post" action="{{url('/enquiry')}}" enctype="multipart/form-data">
+        <form class="w-1/2 mx-auto px-14 mt-24 mb-10" id="enquiryForm" method="post" action="{{route('enquiries.store')}}" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="page" value="{{Helper::$SS_FROM_JOINUS_PAGE}}">
             <p class="content-font mb-10">立即申請 </p>
@@ -73,7 +73,7 @@
 
             <div class="input-group mb-4">
                 <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-                <input class="form-control input-form" type="text" placeholder="電話號碼" name="phoneNumber" required>
+                <input class="form-control input-form" type="text" placeholder="手機號碼" name="phoneNumber" required>
             </div>
 
             <div class="input-group mb-8">

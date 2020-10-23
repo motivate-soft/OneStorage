@@ -12,7 +12,7 @@ class Store extends Model
     public static $_MAX_QUESTION_COUNT = 5;
 
     protected $fillable = [
-        'detail', 'branch', 'location', 'suburb', 'address', 'latest_offer', 'text_above_addr',
+        '_id', 'detail', 'branch', 'location', 'suburb', 'address', 'latest_offer', 'text_above_addr',
         'text_below_addr', 'opening_hours', 'nearby_facilities'
     ];
     //

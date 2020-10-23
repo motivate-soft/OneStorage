@@ -92,7 +92,7 @@
         <p class="pl-5 content-title mt-1 mb-4">至尊迷你倉</p>
         <p class="leading-relaxed content-description-m px-6">為金朝陽集團屬下業務(股票代號： 00878.HK)。
             <br /><br />
-            分店遍佈港、九及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質的儲存環境及專業的服務。至尊迷你倉是亞洲迷你倉商會(SSAA)及香港迷你倉總會會員(HKMSA)。
+            分店遍佈香港、九龍及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質及專業的儲物收納服務。至尊迷你倉是亞洲迷你倉商會(Self Storage Association Asia, SSAA)及香港迷你倉總會會員(Hong Kong Mini-Storages Association, HKMSA)。
         </p>
     </div>
 
@@ -107,9 +107,11 @@
     <div class="color-primary">
         <p class="pl-5 content-title">設備及付款方式</p>
         <p class="leading-relaxed content-description-m px-6 pt-10">
-            設備合乎消防處迷你倉指引，客人可24小時自助儲存，配備全天候保安系統及智能保安系統。
+            迷你倉裝修及設備合乎消防處迷你倉指引，客人可24小時自助儲存，配備全天候保安系統及智能保安系統。
             <br /><br />
-            付款方式：EPS、支票、信用卡、轉數快及免息分期
+            租賃迷你倉可以用以下方式付款：
+            <br/>
+            EPS、支票、信用卡、轉數快及免息分期
         </p>
     </div>
 

@@ -29,15 +29,15 @@
 
     <div class=" flex w-full">
         <div class="w-1/5"></div>
-        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color bg-grey" href="{{url('account')}}">個人資料</a>
-        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{url('chatlist')}}">信息</a>
-        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{url('logout')}}">登出</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{route('pages.account')}}">個人資料</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color bg-grey" href="{{route('pages.chatList')}}">信息</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{route('logout')}}">登出</a>
         <div class="w-1/5"></div>
     </div>
 
     <div class="border">
         <p class="border-b py-2">
-            <a class="mx-4" href="{{url('chatlist')}}" style="font-size: 19px; color: #C293FC">
+            <a class="mx-4" href="{{route('pages.chatList')}}" style="font-size: 19px; color: #C293FC">
                 &lt; Back
             </a>
         </p>

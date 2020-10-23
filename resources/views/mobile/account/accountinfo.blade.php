@@ -35,13 +35,13 @@ $user = Auth::user();
 
     <div class="flex w-full">
         <div class="w-1/5"></div>
-        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{url('account')}}">個人資料</a>
-        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color bg-grey" href="{{url('chatlist')}}">信息</a>
-        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{url('logout')}}">登出</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{route('pages.account')}}">個人資料</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color bg-grey" href="{{route('pages.chatList')}}">信息</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{route('logout')}}">登出</a>
         <div class="w-1/5"></div>
     </div>
 
-    <form class=" w-full border py-4 px-8" method="POST" action="{{url('/account/update')}}" enctype="multipart/form-data">
+    <form class=" w-full border py-4 px-8" method="POST" action="{{route('account.update')}}" enctype="multipart/form-data">
         @csrf
         <!-- <p class=" text-center py-3 fontsize-11" id="notification" style="color: #18B84D">更新成功!</p> -->
         <div>

@@ -124,7 +124,7 @@ class MessagesController extends Controller
             $thread->addParticipant($input['recipient']);
         }
 
-        return redirect()->route('chatroom.show', $thread->id);
+        return redirect()->route('pages.chatRoom', $thread->id);
     }
 
     private function broadcastMsg($thread, $message)

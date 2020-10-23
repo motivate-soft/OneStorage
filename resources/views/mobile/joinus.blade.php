@@ -73,7 +73,7 @@
 </div>
 
 
-<form class="w-full mt-12" id="enquiryForm" method="post" action="{{url('/enquiry')}}" enctype="multipart/form-data">
+<form class="w-full mt-12" id="enquiryForm" method="post" action="{{route('enquiries.store')}}" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="page" value="{{Helper::$SS_FROM_JOINUS_PAGE}}">
 
@@ -91,7 +91,7 @@
 
     <div class="input-group mb-4">
         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-        <input class="form-control placeholder-color" type="text" placeholder="電話號碼" name="phoneNumber" required>
+        <input class="form-control placeholder-color" type="text" placeholder="手機號碼" name="phoneNumber" required>
     </div>
 
     <div class="input-group mb-8">
@@ -132,7 +132,7 @@
         $count = count($latest_news);
         ?>
         @foreach($latest_news as $index => $news)
-            <a href="{{url('/news/'.$news->id)}}" class="flex  rounded-lg mt-2 lg:py-3  px-2">
+            <a href="{{route('pages.news', $news->id)}}" class="flex  rounded-lg mt-2 lg:py-3  px-2">
                 <img class="h-24 w-24 ml-0 mb-4" src="{{asset($news->thumbnail)}}">
                 <div class="px-3 font_19 leading-normal" style="width: calc(100% - 6rem)">
                     <p class="break-all news-short-title mb-1"><strong>{{$news->title}}</strong></p>

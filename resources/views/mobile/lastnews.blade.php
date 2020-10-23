@@ -15,7 +15,7 @@
 @section('content')
 <div class="bg-white py-10">
     <div class=" text-center text-5xl mb-16">
-        <h1 class="font_21 pt-4">最新資訊</h1>
+        <h1 class="font_21 pt-4">迷你倉最新資訊</h1>
     </div>
     <div class="mx-5">
         <?php
@@ -24,7 +24,7 @@
         $count = count($newses);
         ?>
         @foreach($newses as $news)
-            <a href="{{url('/news/'.$news->id)}}" class="flex mt-2 py-3">
+            <a href="{{route('pages.news', $news->_id)}}" class="flex mt-2 py-3">
                 <img class="w-24 h-24 object-cover mr-6" src="{{asset($news->thumbnail)}}">
                 <div class="pl-2" style="width: calc(90% - 6rem);">
                     <p class="font_16 leading-normal truncate">{{$news->title}}</p>

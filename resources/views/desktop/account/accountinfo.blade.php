@@ -39,18 +39,18 @@
 
         <div class="flex w-full mb-4">
             <div class="w-1/5">
-                <a href="{{url('account')}}">
+                <a href="{{route('pages.account')}}">
                     <div class="border text-center branch-tab-active py-6">個人資料</div>
                 </a>
-                <a href="{{url('chatlist')}}">
+                <a href="{{route('pages.chatList')}}">
                     <div class="border text-center branch-tab py-6">信息</div>
                 </a>
-                <a href="{{url('logout')}}">
+                <a href="{{route('logout')}}">
                     <div class="border text-center branch-tab py-6" style="background-color: white !important;">登出</div>
                 </a>
             </div>
 
-            <form class="flex w-4/5 ml-2 border" method="POST" action="{{url('/account/update')}}" enctype="multipart/form-data">
+            <form class="flex w-4/5 ml-2 border" method="POST" action="{{route('account.update')}}" enctype="multipart/form-data">
                 @csrf
                 <div class=" w-3/5 pl-12">
                     <div class=" sub-content">
