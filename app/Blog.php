@@ -26,7 +26,7 @@ class Blog extends Model
     }
 
     public static function getNewses($count = 0){
-        $newses = Blog::where('_id', '!=', null)->orderBy('publish_date', 'desc')->orderBy('created_at', 'desc');
+        $newses = Blog::orderBy('publish_date', 'desc')->orderBy('created_at', 'desc');
         if($count > 0){
             $newses = $newses->take($count)->get();
         }
