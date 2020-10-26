@@ -77,7 +77,7 @@
                         </div>
 
                         <div class=" flex relative py-2 mb-8">
-                            <p class=" w-1/4 input-label text-right ">電話號碼 :</p>
+                            <p class=" w-1/4 input-label text-right ">手機號碼 :</p>
                             <div class=" w-3/4 items-center border-b">
                                 <input name="phone" required id="phone" class="ischanged appearance-none bg-transparent text-center border-none w-full  px-2 leading-tight" type="text" value="{{$user->phone}}" readonly>
                             </div>

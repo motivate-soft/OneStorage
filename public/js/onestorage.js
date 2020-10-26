@@ -1156,38 +1156,20 @@ $(function () {
             const contentWrapper = $("#faq-content");
 
             function init() {
-                faqMenu.html('');
-                var index = 0;
-                faqData.forEach(faq => {
-                    const active = index == 0 ? 'active' : '';
-                    faqMenu.append('<li id="' + index + '" class="p-3 cursor-pointer item category-title ' + active + '">' + faq.category + '</li>');
-                    index++;
-                });
+                faqMenu.children().first().addClass('active');
+                selectCategory(0);
+            }
 
-                //set items to content-items
-
-                contentWrapper.html('');
-                faqData[0].faqs.forEach(faq => {
-                    contentWrapper.append('<div class="accordion flex justify-between appearance-none "><p class="break-words">' + faq.question +
-                        '</p><i class="icon wb-chevron-down text-gray-700 ml-4"></i>' +
-                        '</div>' +
-                        '<div class="answer-panel">' +
-                        '<p class="leading-normal py-4 color-primary">' + faq.answer + '</p>' +
-                        '</div>');
-                });
+            function selectCategory(index){
+                $(".faq-wrapper").hide();
+                const faqContent = contentWrapper.children().eq(index);
+                faqContent.find(".answer-panel").css('maxHeight', "0px");
+                faqContent.show();
             }
             $(document).on("click", ".category-title", function () {
                 faqMenu.find(".active").removeClass("active");
                 $(this).addClass("active");
-                contentWrapper.html('');
-                faqData[$(this).attr('id')].faqs.forEach(faq => {
-                    contentWrapper.append('<div class="accordion flex justify-between appearance-none "><p class="break-words">' + faq.question +
-                        '</p><i class="icon wb-chevron-down text-gray-700 ml-4"></i>' +
-                        '</div>' +
-                        '<div class="answer-panel">' +
-                        '<p class="leading-normal py-4 color-primary">' + faq.answer + '</p>' +
-                        '</div>');
-                });
+                selectCategory($(this).attr('data-index'));
             });
 
 

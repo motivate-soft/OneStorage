@@ -106,7 +106,7 @@ class AuthController extends Controller
             // Authentication passed...
             return redirect()->intended();
         }
-        return redirect()->route('login')->withErrors(['error' => '電話號碼或密碼錯誤']);
+        return redirect()->route('login')->withErrors(['error' => '手機號碼或密碼錯誤']);
     }
 
     public function adminLogin(Request $request)
@@ -215,8 +215,8 @@ class AuthController extends Controller
                 }
 
                 $duplicationMsg = [
-                    'phone' =>  '此電話號碼已被使用',
-                    'email' => '此電話號碼已被使用',
+                    'phone' =>  '此手機號碼已被使用',
+                    'email' => '此手機號碼已被使用',
                     'other' => 'error'
                 ];
 

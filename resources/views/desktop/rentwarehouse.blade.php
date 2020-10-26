@@ -585,7 +585,7 @@ $user = Auth::user();
                     @if(Auth::check())
                     <input class="form-control" type="text" placeholder="手機號碼" value="{{$user->phone}}" name="phoneNumber">
                     @else
-                    <input class="form-control" type="text" placeholder="電話號碼" name="phoneNumber">
+                    <input class="form-control" type="text" placeholder="手機號碼" name="phoneNumber">
                     @endif
                 </div>
 

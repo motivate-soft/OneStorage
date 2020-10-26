@@ -124,25 +124,25 @@
 
     <div class="flex pt-10">
         <ul class="w-max-content pr-2 mx-auto" id="faq-menu">
-            <!-- <li id="item0" class="p-3 cursor-pointer item category-title text-left active">尺寸選擇</li>
-            <li id="item1" class="p-3 cursor-pointer item category-title text-left">環境設施
-                <ul class="w-max-content pl-2 ">
-                    <li id="item2" class="p-3 item cursor-pointer category-title text-left">睇倉</li>
-                    <li id="item3" class="p-3 item cursor-pointer category-title text-left">消防安保</li>
-                    <li id="item4" class="p-3 item cursor-pointer category-title text-left">增值服務</li>
-                </ul>
-            </li>
-            <li id="item5" class="p-3 cursor-pointer item category-title text-left">合約與條款
-                <ul class="w-max-content pl-2 ">
-                    <li id="item6" class="p-3 item cursor-pointer category-title text-left">合約與條款</li>
-                    <li id="item7" class="p-3 item cursor-pointer category-title text-left">合約與條款</li>
-                    <li id="item8" class="p-3 item cursor-pointer category-title text-left">合約與條款</li>
-                </ul>
-            </li> -->
+            @foreach(Helper::$FAQ_DATA as $index => $data)
+                <li data-index="{{$index}}" class="p-3 cursor-pointer item category-title">{{$data['category']}}</li>
+            @endforeach
         </ul>
     </div>
     <div id="faq-content" class="bg-gray content-area px-6">
-
+        @foreach(Helper::$FAQ_DATA as $data)
+            <div id=`{{'content'.$index}}` class="faq-wrapper">
+                @foreach($data['faqs'] as $faq)
+                    <div class="accordion flex justify-between appearance-none ">
+                        <p class="break-words">{{$faq['question']}}</p>
+                        <i class="icon wb-chevron-down text-gray-700 ml-4"></i>
+                    </div>
+                    <div class="answer-panel">
+                        <p class="leading-normal py-4 color-primary">{{$faq['answer']}}</p>
+                    </div>
+                @endforeach
+            </div>
+        @endforeach
     </div>
 
 

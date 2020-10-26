@@ -20,7 +20,7 @@
 
     <div class=" flex">
         <img class=" w-7 h-7 left-20 z-20 mt-4" onclick="javascript:history.go(-1)" src="{{asset('images/contactUs/Backward_arrow@2x.png')}}" alt="Back">
-        <p class=" text-center w-full pt-4 pb-2 font-bold regular-color fontsize-18">立即申請 </p>    
+        <p class=" text-center w-full pt-4 pb-2 font-bold regular-color fontsize-18">立即申請 </p>
     </div>
 
     <form class="px-8 pt-5">
@@ -51,7 +51,7 @@
 
         <div class="input-group mb-4">
             <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-            <input class="form-control" type="text" placeholder="電話號碼">
+            <input class="form-control" type="text" placeholder="手機號碼">
         </div>
 
         <div class="w-full inline-block relative mb-6">
