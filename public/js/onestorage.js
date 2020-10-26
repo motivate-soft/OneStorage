@@ -966,7 +966,7 @@ $(function () {
 
         $(".store-select-button").click(function () {
             console.log("selected");
-            window.location.href = '/branch-location?size=' + $(this).val();
+            window.location.href = '/mini-storage-branch-location?size=' + $(this).val();
         });
 
 
