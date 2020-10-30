@@ -19,3 +19,5 @@ storage
 /public/images/stores
 /public/uploads
 /config/mail.php
+/composer.lock
+/package-lock.json
