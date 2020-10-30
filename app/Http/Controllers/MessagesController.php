@@ -25,12 +25,6 @@ class MessagesController extends Controller
         // All threads, ignore deleted/archived participants
         $threads = Thread::getAllLatest()->get();
 
-        // All threads that user is participating in
-        // $threads = Thread::forUser(Auth::id())->latest('updated_at')->get();
-
-        // All threads that user is participating in, with new messages
-        // $threads = Thread::forUserWithNewMessages(Auth::id())->latest('updated_at')->get();
-
         return view('msg.messenger.index', compact('threads'));
     }
 
@@ -155,9 +149,7 @@ class MessagesController extends Controller
             Message::create(['thread_id' => $t->id, 'user_id' => Auth::id(), 'body' => $message]);
         }
 
-        // usleep(1000000);
 
-        // $thread->activateAllParticipants();
         if ($thread->subject == Helper::$MESSAGE_TYPE_BROADCAST) {
             Message::create([
                 'thread_id' => $thread->id,
@@ -260,11 +252,6 @@ class MessagesController extends Controller
             $participant->save();
         }
 
-        // // Recipients
-        // if (Request::has('recipients')) {
-        //     $thread->addParticipant(Request::input('recipients'));
-        // }
         return redirect()->back();
-        // return redirect()->route('chatroom.show', $id);
     }
 }

@@ -174,6 +174,7 @@ class StoreController extends Controller
     public function delete($id)
     {
         $store = Store::find($id);
+        
         if ($store) {
             $store->delete();
             return true;
@@ -202,6 +203,7 @@ class StoreController extends Controller
     public function showRentwareHouse($id = '')
     {
         $store = Store::where('_id', $id)->first();
+
         if($store){
             return view('rentwarehouse', ['store' => $store]);
         }
@@ -220,6 +222,7 @@ class StoreController extends Controller
             ->selectRaw('stores.*, min(store_sizes.prepaid_price) as price');
 
         $appConfig = AppConfig::first();
+
         if($appConfig){
             $stores->orderByRaw($appConfig->store_order);
         }else{
@@ -240,11 +243,13 @@ class StoreController extends Controller
     public function changeOrder(Request $request)
     {
         $appConfig = AppConfig::first();
+
         if ($appConfig && isset($request->order)) {
             $appConfig->store_order = $request->order;
             $appConfig->save();
             return true;
         }
+
         return false;
     }
 }
