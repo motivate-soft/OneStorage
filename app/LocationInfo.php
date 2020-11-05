@@ -159,23 +159,32 @@ class LocationInfo
             ]
         ]
     ];
-    public static function getAll()
-    {
+
+    /**
+     * @return array
+     */
+    public static function getAll(){
         return array_merge(static::$HK_LOCATIONS, static::$KOWLOON_LOCATIONS, static::$NEW_LOCATIONS);
     }
 
-    public static function getHongKong()
-    {
+    /**
+     * @return array
+     */
+    public static function getHongKong(){
         return static::$HK_LOCATIONS;
     }
 
-    public static function getKowloon()
-    {
+    /**
+     * @return array
+     */
+    public static function getKowloon(){
         return static::$KOWLOON_LOCATIONS;
     }
 
-    public static function getNew()
-    {
+    /**
+     * @return array
+     */
+    public static function getNew(){
         return static::$NEW_LOCATIONS;
     }
 }

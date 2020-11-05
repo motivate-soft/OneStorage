@@ -179,7 +179,12 @@
             <a href="{{route('pages.calculator')}}" target="_blank" class="ml-10 my-auto bg-yellow px-6 py-2 font_18">立即計算</a>
         </div>
     </div>
-    <img src="{{App\AppConfig::first()->background}}" class="w-1/2 object-contain lg:-mt-10 object-right" style="max-width: 1100px"/>
+    <?php
+        $background = App\AppConfig::getBackground();
+    ?>
+    @if($background)
+        <img alt="Background" src="{{$background}}" class="w-1/2 object-contain lg:-mt-10 object-right" style="max-width: 1100px"/>
+    @endif
 </div>
 
 <div class="bg-primary py-4">

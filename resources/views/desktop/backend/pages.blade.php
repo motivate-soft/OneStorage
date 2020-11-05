@@ -97,7 +97,7 @@
 
                     @foreach($backgrounds as $background)
                     <div class="container {{$background->isActive() ? 'bk-active' : ''}}">
-                        <img class="background" src="{{asset('images/backgrounds/'.$background->image)}}" />
+                        <img class="background" src="{{asset($background->image)}}" />
                         <div class="middle flex justify-center">
                             <form class="flex flex-col justify-center" action="{{url('/backend/background/delete/'.$background->id)}}" method="get">
                                 <button type="submit" class="mx-4 my-auto cursor-pointer"><img class="object-none" id="bkDelBtn" src="{{asset('images/icons8-delete-bin-48@2x.png')}}" /></button>
@@ -107,12 +107,10 @@
                             </form>
                         </div>
                     </div>
-                    <!-- <img class="mr-4 background" src="{{asset('images/backgrounds/'.$background->image)}}" /> -->
                     @endforeach
 
                     <form id="backgroundForm" class="flex flex-col justify-center mr-4" action="{{url('/backend/background')}}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <!-- <button type="button" id="bkAddBtn" class="h-7 font_14 px-3 align-middle rounded border border-third bg-grey-2">選擇圖片</button> -->
                         <img class="object-fill mx-auto cursor-pointer" id="bkAddBtn" src="{{asset('images/icons8-plus-64@2x.png')}}" />
                         <input type="file" id="bkInput" name="image" class="hidden" accept=".jpg,.png,.gif" />
                     </form>

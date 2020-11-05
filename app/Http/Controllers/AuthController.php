@@ -16,6 +16,10 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\PasswordReset;
 
+/**
+ * Class AuthController
+ * @package App\Http\Controllers
+ */
 class AuthController extends Controller
 {
     public static $SEARCH_KEYS = [
@@ -65,8 +69,10 @@ class AuthController extends Controller
         ],
     ];
 
-    public function index()
-    {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index(){
         //
         $key = isset($_GET['key']) ? $_GET['key'] : '';
         $value = isset($_GET['value']) ? $_GET['value'] : '';
@@ -93,13 +99,10 @@ class AuthController extends Controller
 
     /**
      * Handle an authentication attempt.
-     *
-     * @param  \Illuminate\Http\Request $request
-     *
-     * @return Response
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function login(Request $request)
-    {
+    public function login(Request $request){
         $credentials = $request->only('phone', 'password');
 
         if (Auth::attempt($credentials, true)) {
@@ -109,8 +112,11 @@ class AuthController extends Controller
         return redirect()->route('login')->withErrors(['error' => '手機號碼或密碼錯誤']);
     }
 
-    public function adminLogin(Request $request)
-    {
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function adminLogin(Request $request){
         $credentials = $request->only('first_name', 'password', 'role');
 
         if (Auth::attempt($credentials, true)) {
@@ -120,26 +126,35 @@ class AuthController extends Controller
         return redirect('backend/login');
     }
 
-    public function loginPage()
-    {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function loginPage(){
         if (Auth::check()) {
             return redirect()->intended();
         }
         return view('account.login');
     }
 
-    public function registerPage()
-    {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function registerPage(){
         return view('account.register');
     }
 
-    public function forgotPwdPage()
-    {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function forgotPwdPage(){
         return view('account.forgot-password');
     }
 
-    public function forgotPwd(Request $request)
-    {
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function forgotPwd(Request $request){
         $request->validate(['email' => 'required|email']);
 
         $status = Password::sendResetLink(
@@ -151,8 +166,11 @@ class AuthController extends Controller
             : back()->withErrors(['email' => __($status)]);
     }
 
-    public function resetPwd(Request $request)
-    {
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function resetPwd(Request $request){
         $request->validate([
             'token' => 'required',
             'email' => 'required|email',
@@ -177,28 +195,31 @@ class AuthController extends Controller
             : back()->withErrors(['password' => __($status)]);
     }
 
-    public function updateByAdmin(Request $request)
-    {
-        $user = User::find($request->id);
-        if($user){
-            $user->first_name = $request->firstName;
-            $user->last_name = $request->lastName;
-            $user->phone = $request->phone;
-            $user->email = $request->email;
-            $user->save();
-            $profile = $user->profile;
-            $profile->birthday = $request->year . '/' . $request->month . '/' . $request->day;
-            $profile->address_line1 = isset($request->addr1) ? $request->addr1 : '';
-            $profile->is_existing_customer = isset($request->isCustomer) ? $request->isCustomer == '1' : false;
-            $profile->is_soundwill_member = isset($request->isMember) ? $request->isMember == '1' : false;
-            $profile->save();
-        }
-//        return redirect('/backend/members');
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateByAdmin(Request $request){
+        $user = User::findOrFail($request->id);
+        $user->first_name = $request->firstName;
+        $user->last_name = $request->lastName;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->save();
+        $profile = $user->profile;
+        $profile->birthday = $request->year . '/' . $request->month . '/' . $request->day;
+        $profile->address_line1 = isset($request->addr1) ? $request->addr1 : '';
+        $profile->is_existing_customer = isset($request->isCustomer) ? $request->isCustomer == '1' : false;
+        $profile->is_soundwill_member = isset($request->isMember) ? $request->isMember == '1' : false;
+        $profile->save();
         return redirect()->route('backend.members');
     }
 
-    public function register(Request $request)
-    {
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function register(Request $request){
         $user = new User;
         try{
             $user->setData($request);
@@ -230,26 +251,33 @@ class AuthController extends Controller
         return response("success");
     }
 
-    public function update(Request $request)
-    {
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request){
         $user = Auth::user();
         $user->setData($request);
         return redirect()->back();
     }
 
-    public function logout()
-    {
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logout(){
         Auth::logout();
         return redirect()->route('home');
     }
 
-    public function export()
-    {
+    /**
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
+    public function export(){
         return Excel::download(new UsersExport, 'members.xlsx');
     }
 
-    public function show($id)
-    {
+
+    public function show($id){
         return User::with('profile')->find($id);
     }
 }

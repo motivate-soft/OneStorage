@@ -12,6 +12,10 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Mail;
 
+/**
+ * Class EnquiryController
+ * @package App\Http\Controllers
+ */
 class EnquiryController extends Controller
 {
     public static $SEARCH_KEYS = [
@@ -61,15 +65,13 @@ class EnquiryController extends Controller
         ]
     ];
     public static $EXPORT_NAME = "enquiries.xlsx";
-    public static $UPLOAD_PATH = "/uploads";
+    public static $ROWS_PER_PAGE = 10;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
         $key = isset($_GET['key']) ? $_GET['key'] : '';
         $value = isset($_GET['value']) ? $_GET['value'] : '';
 
@@ -79,22 +81,9 @@ class EnquiryController extends Controller
             $enquiries = Enquiry::orderBy('id', 'desc');
         }
 
-        $enquiries = $enquiries->paginate(10)->appends(request()->query());
-
+        $enquiries = $enquiries->paginate(static::$ROWS_PER_PAGE)->appends(request()->query());
 
         return view('backend.enquiries', ['enquiries' => $enquiries, 'keys' => static::$SEARCH_KEYS]);
-    }
-
-    public function saveFile(Request $request, $name)
-    {
-        if ($request->hasFile($name)) {
-            $file = $request->file($name);
-            $fileName = time() . Helper::getRandomString() . '.' . $file->getClientOriginalExtension();
-            $destinationPath = public_path(static::$UPLOAD_PATH);
-            $file->move($destinationPath, $fileName);
-            return static::$UPLOAD_PATH.'/'. $fileName;
-        }
-        return null;
     }
 
     /**
@@ -103,42 +92,15 @@ class EnquiryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
         $enquiry = new Enquiry;
-        $enquiry->first_name = $request->firstName;
-        $enquiry->last_name = $request->lastName;
-        $enquiry->phone_number = isset($request->phoneNumber) ? $request->phoneNumber : '';
-        $enquiry->email = isset($request->email) ? $request->email : Helper::$ONESTORAGE_EMAIL;
-        $enquiry->branch_name = isset($request->branchName) ? $request->branchName : '';
-        $enquiry->branch_size = isset($request->branchSize) ? $request->branchSize : null;
-        $enquiry->question = isset($request->question) ? $request->question : '';
-        $enquiry->message = isset($request->message) ? $request->message : '';
-        $enquiry->store_price = isset($request->price) ? (int)$request->price: null;
-        $enquiry->transported = isset($request->transported) &&  $request->transported == "on";
-        $enquiry->page = $request->page;
-
-        //save cv file
-        $enquiry->cv_file = $this->saveFile($request, "fileCV");
-        $enquiry->cl_file = $this->saveFile($request, "fileCL");
-
-        $user = Auth::user();
-        if ($user && !$user->isAdmin()) {
-            $enquiry->user_id = $user->id;
-        }
-        $enquiry->save();
+        $enquiry->setData($request);
 
         //send email
         Mail::to(Helper::$ONESTORAGE_EMAIL)->queue(new EnquiryEmail($enquiry));
         if ($enquiry->page == Helper::$SS_FROM_FRONT_PAGE1) {
             Mail::to($enquiry->email)->queue(new DiscountEmail);
         }
-//        else if($enquiry->email != Helper::$ONESTORAGE_EMAIL){
-//            Mail::to($enquiry->email)->queue(new EnquiryEmail($enquiry, false));
-//        }
 
         return response([
             'state' => 'success',
@@ -146,19 +108,22 @@ class EnquiryController extends Controller
         ]);
     }
 
-    public function accept($id)
-    {
-        $enquiry = Enquiry::find($id);
-        if ($enquiry) {
-            $enquiry->status = $enquiry->status == '未' ? '已' : '未';
-            $enquiry->principal = Auth::user()->getName();
-            $enquiry->save();
-        }
+    /**
+     * Change enquiry state by Admin
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function accept($id){
+        $enquiry = Enquiry::findOrFail($id);
+        $enquiry->changeState();
         return redirect()->route('backend.enquiries');
     }
 
-    public function export()
-    {
+    /**
+     * Export Enquiry list to excel file
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
+    public function export(){
         return Excel::download(new EnquiriesExport, static::$EXPORT_NAME);
     }
 }

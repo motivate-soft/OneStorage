@@ -6,13 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class StoreImage extends Model
 {
-    //
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function store(){
         return $this->belongsTo('App\Store');
     }
 
-    public function getImageAttribute($value)
-    {
+    /**
+     * @param $value
+     * @return string
+     */
+    public function getImageAttribute($value){
         return 'images/stores/'.$value;
     }
 }

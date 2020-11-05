@@ -44,28 +44,38 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function profile()
-    {
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function profile(){
         return $this->hasOne('App\Profile');
     }
 
-    public function enquiries()
-    {
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function enquiries(){
         return $this->hasMany('App\Enquiry');
     }
 
-    public function getName()
-    {
+    /**
+     * @return string
+     */
+    public function getName(){
         return $this->first_name . ' ' . $this->last_name;
     }
 
-    public function isAdmin()
-    {
+    /**
+     * @return bool
+     */
+    public function isAdmin(){
         return $this->role == "admin";
     }
 
-    public function hasUnreadMsg()
-    {
+    /**
+     * @return bool
+     */
+    public function hasUnreadMsg(){
         $threads = Thread::where('subject', '!=', Helper::$MESSAGE_TYPE_BROADCAST)->forUser($this->id)->get();
         $msgCnt = 0;
         foreach ($threads as $thread) {
@@ -77,13 +87,17 @@ class User extends Authenticatable
         return false;
     }
 
-    public static function getAdmins()
-    {
+    /**
+     * @return mixed
+     */
+    public static function getAdmins(){
         return User::where('role', 'admin')->get();
     }
 
-    public function getUnConnectedAdmins()
-    {
+    /**
+     * @return mixed
+     */
+    public function getUnConnectedAdmins(){
         $threads = Thread::forUser($this->id)->get();
         $ids = [];
         foreach ($threads as $thread) {
@@ -92,8 +106,10 @@ class User extends Authenticatable
         return User::where('role', 'admin')->whereNotIn('id', $ids)->get();
     }
 
-    public function setData(Request $data)
-    {
+    /**
+     * @param Request $data
+     */
+    public function setData(Request $data){
         $this->first_name = $data->firstName;
         $this->last_name = $data->lastName;
         $this->phone = $data->phone;

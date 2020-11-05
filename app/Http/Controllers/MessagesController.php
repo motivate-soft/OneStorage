@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 
+/**
+ * Class MessagesController
+ * @package App\Http\Controllers
+ */
 class MessagesController extends Controller
 {
     /**
@@ -34,8 +38,7 @@ class MessagesController extends Controller
      * @param $id
      * @return mixed
      */
-    public function show($id = 0)
-    {
+    public function show($id = 0){
         if (!$id) {
             return view('account.chatroom');
         }
@@ -59,8 +62,11 @@ class MessagesController extends Controller
         return view('account.chatroom', compact('thread', 'users'));
     }
 
-    public function showAdminRoom($id)
-    {
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function showAdminRoom($id){
         try {
             $thread = Thread::findOrFail($id);
         } catch (ModelNotFoundException $e) {
@@ -81,20 +87,17 @@ class MessagesController extends Controller
      *
      * @return mixed
      */
-    public function create()
-    {
+    public function create(){
         $users = User::where('id', '!=', Auth::id())->get();
 
         return view('msg.messenger.create', compact('users'));
     }
 
     /**
-     * Stores a new message thread.
-     *
-     * @return mixed
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
-    public function store()
-    {
+    public function store(){
         $input = Request::all();
 
         $thread = Thread::create(['subject' => Helper::$MESSAGE_TYPE_NORMAL]);
@@ -121,8 +124,12 @@ class MessagesController extends Controller
         return redirect()->route('pages.chatRoom', $thread->id);
     }
 
-    private function broadcastMsg($thread, $message)
-    {
+    /**
+     * @param $thread
+     * @param $message
+     * @throws \Exception
+     */
+    private function broadcastMsg($thread, $message){
         $receipients = $thread->participants()->whereNotIn('user_id', [Auth::id()])->select('user_id as id')->get();
 
         if (count($receipients) == 0) {
@@ -159,8 +166,11 @@ class MessagesController extends Controller
         }
     }
 
-    public function broadcast()
-    {
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
+    public function broadcast(){
         $input = Request::all();
 
         $data = explode(',', $input['recipient']);
@@ -211,13 +221,11 @@ class MessagesController extends Controller
     }
 
     /**
-     * Adds a new message to a current thread.
-     *
      * @param $id
-     * @return mixed
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
-    public function update($id)
-    {
+    public function update($id){
         try {
             $thread = Thread::findOrFail($id);
         } catch (ModelNotFoundException $e) {

@@ -4,73 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Blog;
 use Illuminate\Http\Request;
-use Helper;
 
-
-
+/**
+ * Class BlogController
+ * @package App\Http\Controllers
+ */
 class BlogController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Get a Blog using Id
      *
-     * @return \Illuminate\Http\Response
+     * @param  $id
+     * @return \App\Blog
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    public function get($id)
-    {
-        $blog = Blog::find($id);
+    public function get($id){
+        $blog = Blog::findOrFail($id);
         return $blog;
-    }
-
-    private function saveImage($blog, $request, $name)
-    {
-        if ($request->hasFile($name)) {
-
-            $image = $request->file($name);
-            $imgName = time() . Helper::getRandomString() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/blogs');
-            $image->move($destinationPath, $imgName);
-            $blog[$name] = $imgName;
-        }
-    }
-
-    private function setData($blog, $request)
-    {
-        if(!$blog){
-            return;
-        }
-        $blog->_id = $request->_id;
-        $blog->title = $request->title;
-        $blog->content = $request->content;
-        $blog->used_promotion = isset($request->usedPromition) &&  $request->usedPromition == "on";
-        if(!$blog->used_promotion){
-            $blog->as_promotion = false;
-            $blog->column = 0;
-            $blog->state = false;
-        }
-
-        $blog->used_notify = isset($request->usedNotify) &&  $request->usedNotify == "on";
-        $blog->publish_date = $request->year . '/' . $request->month . '/' . $request->day;
-
-        $this->saveImage($blog, $request, "image");
-        $this->saveImage($blog, $request, "thumbnail");
-        $this->saveImage($blog, $request, "promotion");
-
-        $blog->save();
     }
 
     /**
@@ -79,71 +29,41 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //file upload
-        // $this->validate($request, [
-        //     'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        // ]);
-
+    public function store(Request $request){
         $blog = new Blog;
-        $this->setData($blog, $request);
-
+        $blog->setData($request);
         return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Blog  $blog
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id){
         $blog = Blog::where('_id', $id)->first();
         return view('news', compact('blog'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Blog  $blog
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Blog $blog)
-    {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
-    {
-        //
+    public function update(Request $request){
         $blog = Blog::find(isset($request->id) ?  $request->id : 0);
-        $this->setData($blog, $request);
+        $blog->setData($request);
         return redirect()->back();
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Blog  $blog
-     * @return \Illuminate\Http\Response
+     * Delete blog using {$id}
+     * @param $id
+     * @return bool
      */
-    public function destroy(Blog $blog)
-    {
-        //
-    }
-
-    public function delete($id)
-    {
+    public function delete($id){
         $blog = Blog::find($id);
         if($blog){
             $blog->delete();
@@ -152,32 +72,31 @@ class BlogController extends Controller
         return false;
     }
 
-    public function asPromotion($id, $column)
-    {
+    /**
+     * Set blog as Promotion
+     * @param $id
+     * @param $column
+     * @return bool
+     */
+    public function asPromotion($id, $column){
         $blog = Blog::find($id);
         if($blog){
-            $old = Blog::where('column', $column)->first();
-            if($old){
-                $old->as_promotion = false;
-                $old->column = 0;
-                $old->state = false;
-                $old->save();
-            }
-            $blog->as_promotion = true;
-            $blog->column = $column;
-            $blog->state = false;
-            $blog->save();
+            $blog->setAsPromotion($column);
             return true;
         }
         return false;
     }
 
-    public function setPromotion($id, $state)
-    {
+    /**
+     * Set blog promotion state
+     * @param $id
+     * @param $state
+     * @return bool
+     */
+    public function setPromotion($id, $state){
         $blog = Blog::find($id);
         if($blog){
-            $blog->state = $state;
-            $blog->save();
+            $blog->setPromotion($state);
             return true;
         }
         return false;

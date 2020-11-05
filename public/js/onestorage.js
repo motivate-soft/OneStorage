@@ -9,11 +9,10 @@ String.prototype.padFunction = function (padStr, len) {
     while (str.length < len)
         str = padStr + str;
     return str;
-}
+};
 
 const allKey = "SELECTED_ALL";
 const key = "SELECTED_MEMBERS";
-
 $(function () {
     $.ajaxSetup({
         headers: {
@@ -38,8 +37,11 @@ $(function () {
         $.ajax({
             url: $(this).attr('action'),
             type: $(this).attr('method'),
-            data: $(this).serialize(),
-            datatype: 'json',
+            dataType: "json",
+            data: new FormData(this),
+            processData: false,
+            contentType: false,
+            mimeType: 'multipart/form-data',
             success: function(result) {
                 submitBtn.css("background-color", "#28e8db");
                 submitBtn.text("已送出");

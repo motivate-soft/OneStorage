@@ -244,7 +244,12 @@
         <a href="{{route('pages.calculator')}}" target="_blank" class="bg-yellow px-4 py-2 font_14 mx-auto rounded-lg">立即計算</a>
     </div>
 
-    <img src="{{App\AppConfig::first()->background}}" class="w-full object-fill"/>
+    <?php
+    $background = App\AppConfig::getBackground();
+    ?>
+    @if($background)
+        <img src="{{$background}}" class="w-full object-fill"/>
+    @endif
 </div>
 
 <div id="branchSearchForm" class="bg-primary px-4 py-5">

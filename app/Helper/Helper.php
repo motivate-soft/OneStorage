@@ -6,11 +6,9 @@ class Helper
 {
 
     public static $ONESTORAGE_EMAIL = "cs@onestorage.com.hk";
-
     public static $MESSAGE_TYPE_NORMAL = "For Support";
     public static $MESSAGE_TYPE_BYADMIN = "Created By Admin";
     public static $MESSAGE_TYPE_BROADCAST = "Broadcast";
-
     public static $SS_FROM_FRONT_PAGE1 = "Front Page(discount)";
     public static $SS_FROM_FRONT_PAGE2 = "Front Page";
     public static $SS_FROM_NEWS_PAGE = "News";
@@ -51,7 +49,6 @@ class Helper
             'value' => 'stores.created_at DESC'
         ]
     ];
-
     public static $STORAGE_FACILITIES = [
         [
             'image'   => 'images/ic_key_card.png',
@@ -86,7 +83,6 @@ class Helper
             'title'   => '免費Wi-Fi'
         ],
     ];
-
     public static $FAQ_DATA = [
         [
             'category' => '聯絡我們',
@@ -201,8 +197,11 @@ class Helper
         ]
     ];
 
-    public static function getRandomString($length = 10)
-    {
+    /**
+     * @param int $length
+     * @return bool|string
+     */
+    public static function getRandomString($length = 10){
         return substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length / strlen($x)))), 1, $length);;
     }
 }
