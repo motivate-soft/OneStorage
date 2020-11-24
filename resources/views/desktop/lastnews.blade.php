@@ -22,7 +22,7 @@
 <img class="w-full" src="{{asset('images/latest_news/bg_lastnews.jpg')}}" />
 
 <div class="bg-white section mb-10 floating-panel">
-    <p class="font_35 text-center py-10 font-bold">迷你倉最新資訊</p>
+    <p class="font_35 text-center py-10 font-bold"> {{ __('frontend_latestNews.title') }}</p>
     <?php
     $index = 0;
     $newses = \App\Blog::getNewses()->paginate(10);
@@ -32,9 +32,9 @@
         <a href="{{route('pages.news', $news->_id)}}" class="flex justify-between rounded-lg mt-2 py-3 px-10">
             <img class="w-32 h-32 mr-10 md:mb-4 object-cover" src="{{asset($news->thumbnail)}}">
             <div class="" style="width: calc(100% - 8rem);">
-                <h1 class="font_19 w-4/5 leading-normal px-0 break-all">{{$news->title}}</h1>
-                <p class="font_12 robert-regular mt-2 "> 刊登日期:{{$news->publish_date->format('d-m-Y')}}</p>
-                <p class="font_16 w-2/3 text-justify mt-6 mb-4 leading-normal break-all">{{ mb_strimwidth($news->content, 0, 120, "...")}}</p>
+                <h1 class="font_19 w-4/5 leading-normal px-0 break-all">{!! $news->title !!}</h1>
+                <p class="font_12 robert-regular mt-2 "> {{ __('frontend_latestNews.publishDate') }}:{{$news->publish_date->format('d-m-Y')}}</p>
+                <p class="font_16 w-2/3 text-justify mt-6 mb-4 leading-normal break-all">{!! strip_tags(mb_strimwidth($news->content, 0, 120, "...")) !!}</p>
             </div>
         </a>
         <?php

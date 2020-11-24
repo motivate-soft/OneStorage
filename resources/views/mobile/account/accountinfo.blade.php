@@ -28,16 +28,16 @@
 
 <?php
 $user = Auth::user();
-?>
-<div class=" mt-10 robert-font mb-8 fontsize-25 regular-color pt-4 text-center px-5">{{$user->getName()}}, 歡迎你回來!</div>
+use Illuminate\Support\Facades\Session;?>
+<div class=" mt-10 robert-font mb-8 fontsize-25 regular-color pt-4 text-center px-5">{{$user->getName()}}, {{__('frontend_accountinfo.welcomeBack')}}</div>
 
 <div class="w-full pb-8">
 
     <div class="flex w-full">
         <div class="w-1/5"></div>
-        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{route('pages.account')}}">個人資料</a>
-        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color bg-grey" href="{{route('pages.chatList')}}">信息</a>
-        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{route('logout')}}">登出</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{route('pages.account')}}">{{__('frontend_accountinfo.personalInformation')}}</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color bg-grey" href="{{route('pages.chatList')}}">{{__('frontend_accountinfo.information')}}</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{route('logout')}}">{{__('frontend_accountinfo.logout')}}</a>
         <div class="w-1/5"></div>
     </div>
 
@@ -49,16 +49,16 @@ $user = Auth::user();
             <input type="file" name="avatar" class="hidden img-input" accept=".jpg,.png,.gif" />
         </div>
 
-        <p class=" text-center py-1 fontsize-8 regular-color">更改相片</p>
+        <p class=" text-center py-1 fontsize-8 regular-color">{{__('frontend_accountinfo.changePhoto')}}</p>
         <div class="sub-content">
-            <p class="subcontent-header my-2  fontsize-15">個人資料</p>
+            <p class="subcontent-header my-2  fontsize-15">{{__('frontend_accountinfo.personalInformation')}}</p>
 
             <div class=" flex relative py-2">
-                <p class=" w-1/4 input-label text-right fontsize-14">姓 :</p>
+                <p class=" w-1/4 input-label text-right fontsize-14">{{__('frontend_common.firstName')}} :</p>
                 <div class=" flex w-1/4 items-center border-b">
                     <input name="firstName" id="firstName" class="ischanged appearance-none bg-transparent border-none text-center fontsize-14 w-full px-2 leading-tight" type="text" value="{{$user->first_name}}" readonly>
                 </div>
-                <p class=" w-1/4 input-label text-right fontsize-14">名 :</p>
+                <p class=" w-1/4 input-label text-right fontsize-14">{{__('frontend_common.lastName')}} :</p>
                 <div class=" w-1/4 items-center border-b">
                     <input name="lastName" required id="lastName" class="ischanged appearance-none bg-transparent border-none w-full text-center fontsize-14 px-2 leading-tight" type="text" readonly value="{{$user->last_name}}">
                 </div>
@@ -66,7 +66,7 @@ $user = Auth::user();
             </div>
 
             <div class=" flex relative py-2">
-                <p class=" w-1/4 input-label text-right fontsize-14">電子郵件 :</p>
+                <p class=" w-1/4 input-label text-right fontsize-14">{{__('frontend_common.email')}} :</p>
                 <div class=" w-3/4 items-center border-b">
                     <input name="email" required id="email" class="ischanged appearance-none bg-transparent border-none text-center w-full fontsize-14 px-2 leading-tight" type="text" readonly value="{{$user->email}}">
                 </div>
@@ -74,17 +74,17 @@ $user = Auth::user();
             </div>
 
             <div class=" flex relative py-2 mb-8">
-                <p class=" w-1/4 input-label text-right fontsize-14">手機號碼 :</p>
+                <p class=" w-1/4 input-label text-right fontsize-14">{{__('frontend_accountinfo.mobilePhoneNumber')}} :</p>
                 <div class=" w-3/4 items-center border-b">
                     <input name="phone" required id="phone" class="ischanged appearance-none bg-transparent text-center border-none w-full fontsize-14 px-2 leading-tight" type="text" value="{{$user->phone}}" readonly>
                 </div>
                 <a href="javascript:void(0);" class=" w-4 h-4" onclick="modifyData(3)"><img class=" w-4 h-4" src="{{asset('images/contactUs/icons8-edit-48@2x.png')}}" style="right:0;margin-right: -16px" alt="Pencil"></a>
             </div>
 
-            <p class="subcontent-header py-4 mb-2  fontsize-13">更改密碼</p>
+            <p class="subcontent-header py-4 mb-2  fontsize-13">{{__('frontend_accountinfo.changePassword')}}</p>
 
             <div class=" flex relative mb-8">
-                <p class=" w-1/4 input-label text-right fontsize-14">密碼 :</p>
+                <p class=" w-1/4 input-label text-right fontsize-14">{{__('frontend_accountinfo.password')}} :</p>
                 <div class=" w-3/4 items-center border-b">
                     <input name="password" id="password" class=" ischanged appearance-none bg-transparent border-none text-center w-full px-2 leading-tight" type="password" value="" readonly>
                 </div>
@@ -93,12 +93,12 @@ $user = Auth::user();
 
             <div class="date-group">
 
-                <p class=" date-title text-right  mr-2 fontsize-13">生日日期</p>
+                <p class=" date-title text-right  mr-2 fontsize-13">{{__('frontend_accountinfo.birthdayDate')}}</p>
 
                 <div class=" date-component">
                     <div class="inline-block relative">
-                        <select id="daySelector" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-2 py-2 pr-6 leading-tight focus:outline-none" aria-placeholder="日" name="day" required>
-                            <option value="" selected>日</option>
+                        <select id="daySelector" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-2 py-2 pr-6 leading-tight focus:outline-none" aria-placeholder="{{__('frontend_accountinfo.day')}}" name="day" required>
+                            <option value="" selected>{{__('frontend_accountinfo.day')}}</option>
                             @for($i = 1; $i < 32; $i++) <option value="{{$i}}">{{$i}}</option>
                                 @endfor
                         </select>
@@ -112,7 +112,7 @@ $user = Auth::user();
                 <div class=" date-component">
                     <div class="inline-block relative">
                         <select id="monthSelector" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-2 py-2 pr-6 leading-tight focus:outline-none" name="month" required>
-                            <option value="" selected>月</option>
+                            <option value="" selected>{{__('frontend_accountinfo.month')}}</option>
                             @for($i = 1; $i < 13; $i++) <option value="{{$i}}">{{$i}}</option>
                                 @endfor
                         </select>
@@ -126,7 +126,7 @@ $user = Auth::user();
                 <div class=" date-component">
                     <div class="inline-block relative">
                         <select id="yearSelector" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-2 py-2 pr-6 leading-tight focus:outline-none" name="year" required>
-                            <option value="" selected>年</option>
+                            <option value="" selected>{{__('frontend_accountinfo.year')}}</option>
                             @for($i = 1920; $i < 2021; $i++) <option value="{{$i}}">{{$i}}</option>
                                 @endfor
                         </select>
@@ -138,15 +138,22 @@ $user = Auth::user();
                 </div>
             </div>
 
-            <p class="subcontent-header py-4 mb-2  fontsize-13">住址</p>
+            <p class="subcontent-header py-4 mb-2  fontsize-13">{{__('frontend_accountinfo.address')}}</p>
 
             <div class=" flex mb-8 py-4">
                 <div class=" w-1/3">
                     <div class="inline-block relative w-full px-2">
                         <select class="block appearance-none w-full bg-gray-100 fontsize-14 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="area">
-                            <option value="" selected>地域</option>
+                            <option value="" selected>{{__('frontend_accountinfo.part')}}</option>
                             <?php
-                            $areas = ["香港", "九龍", "新界"];
+                            $areas = null;
+                            if(Session::has('locale') && Session::get('locale')=="en") {
+                                $areas = ["Hong Kong", "Kowloon", "New Territories"];
+                            }
+                            else {
+                                $areas = ["香港", "九龍", "新界"];
+                            }
+
                             ?>
                             @foreach($areas as $area)
                             <option value="{{$area}}" {{$user->profile->area == $area ? 'selected' : ''}}>{{$area}}</option>
@@ -162,9 +169,15 @@ $user = Auth::user();
                 <div class=" w-2/3">
                     <div class="inline-block relative w-full px-2">
                         <select class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none fontsize-14" name="place">
-                            <option value="" selected>地區</option>
+                            <option value="" selected>{{__('frontend_accountinfo.area')}}</option>
                             <?php
-                            $places = ["中西區", "灣仔", "東區", "南區", "深水埗", "油尖旺", "九龍城", "黃大仙", "觀塘", "屯門", "元朗", "荃灣", "葵青", "離島", "北區", "大埔", "沙田", "西貢"];
+                            $places = null;
+                            if(Session::has('locale') && Session::get('locale')=="en") {
+                                $places = ["Central and Western District", "Wanchai", "East District", "South District", "Sham shui po", "Yau Tsim Mong", "Kowloon City", "Wong Tai Sin", "Kwun Tong", "Tuen Mun", "Yuen Long", "Tsuen Wan", "Kwai Tsing", "Outlying islands", "North District", "Tai Po", "Sha Tin", "Saigon"];
+                            }
+                            else {
+                                $places = ["中西區", "灣仔", "東區", "南區", "深水埗", "油尖旺", "九龍城", "黃大仙", "觀塘", "屯門", "元朗", "荃灣", "葵青", "離島", "北區", "大埔", "沙田", "西貢"];
+                            }
                             ?>
                             @foreach($places as $place)
                             <option value="{{$place}}" {{$user->profile->place == $place ? 'selected' : ''}}>{{$place}}</option>
@@ -180,24 +193,24 @@ $user = Auth::user();
 
             <div class=" relative mb-8 px-2">
                 <div class=" w-full items-center border-b">
-                    <input value="{{$user->profile->address_line1}}" name="addr1" class="appearance-none bg-transparent border-none w-full px-2 py-1 leading-tight fontsize-14" type="text" placeholder="地址第一行">
+                    <input value="{{$user->profile->address_line1}}" name="addr1" class="appearance-none bg-transparent border-none w-full px-2 py-1 leading-tight fontsize-14" type="text" placeholder="{{__('frontend_accountinfo.addressLine1')}}">
                 </div>
             </div>
 
             <div class=" relative mb-8 px-2">
                 <div class=" w-full items-center border-b">
-                    <input value="{{$user->profile->address_line2}}" name="addr2" class="appearance-none bg-transparent border-none w-full px-2 py-1 leading-tight fontsize-14" type="text" placeholder="地址第二行">
+                    <input value="{{$user->profile->address_line2}}" name="addr2" class="appearance-none bg-transparent border-none w-full px-2 py-1 leading-tight fontsize-14" type="text" placeholder="{{__('frontend_accountinfo.addressLine2')}}">
                 </div>
             </div>
 
             <div class=" w-full mb-8">
 
                 <div class="inline-block relative w-full px-2">
-                    <select name="contactMethod" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 fontsize-14 px-2 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日">
+                    <select name="contactMethod" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 fontsize-14 px-2 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="{{__('frontend_common.day')}}">
                         <?php
                         $methods = ["Whatsapp", "Email", "Call"];
                         ?>
-                        <option value="" selected>最佳聯絡方式</option>
+                        <option value="" selected>{{__('frontend_accountinfo.bestContactUs')}}</option>
                         @foreach($methods as $method)
                         <option value="{{$method}}" {{$user->profile->contact_method == $method ? 'selected' : ''}}>{{$method}}</option>
                         @endforeach
@@ -212,15 +225,15 @@ $user = Auth::user();
 
             <div class="radio-group">
 
-                <p class="radio-title w-4/6  fontsize-14">是否One Storage 現有客戶 ? </p>
+                <p class="radio-title w-4/6  fontsize-14">{{__('frontend_accountinfo.customerOneStorage')}}</p>
 
                 <div class=" radio-custom w-1/6">
                     <input type="radio" id="storageyesunchecked" class="radio-gray" value="1" name="isCustomer">
-                    <label for="storageyesunchecked" class="radio-label">是</label>
+                    <label for="storageyesunchecked" class="radio-label">{{__('frontend_common.yes')}}</label>
                 </div>
                 <div class=" radio-custom w-1/6">
                     <input type="radio" id="storagenochecked" checked class="radio-gray" value="0" name="isCustomer">
-                    <label for="storagenochecked" class="radio-label">否</label>
+                    <label for="storagenochecked" class="radio-label">{{__('frontend_common.no')}}</label>
                 </div>
             </div>
 
@@ -244,20 +257,20 @@ $user = Auth::user();
 
             <div class="radio-group">
 
-                <p class="radio-title w-4/6  fontsize-14">是否SoundWill Club 會員 ? </p>
+                <p class="radio-title w-4/6  fontsize-14">{{__('frontend_common.soundWillClub')}}</p>
 
                 <div class=" radio-custom w-1/6">
                     <input type="radio" id="clubyesunchecked" class="radio-gray" value="1" name="isMember">
-                    <label for="clubyesunchecked" class="radio-label">是</label>
+                    <label for="clubyesunchecked" class="radio-label">{{__('frontend_common.yes')}}</label>
                 </div>
                 <div class=" radio-custom w-1/6">
                     <input type="radio" id="clubnochecked" checked class="radio-gray" value="0" name="isMember">
-                    <label for="clubnochecked" class="radio-label">否</label>
+                    <label for="clubnochecked" class="radio-label">{{__('frontend_common.no')}}</label>
                 </div>
             </div>
 
             <button class="submit-btn hover:bg-purple-400 my-4">
-                更新
+                {{__('frontend_common.update')}}
             </button>
 
         </div>

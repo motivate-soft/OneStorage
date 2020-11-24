@@ -4,7 +4,8 @@ namespace App;
 
 class LocationInfo
 {
-    private static $HK_LOCATIONS = [
+
+    private static $HK_LOCATIONS_CH = [
         [
             'name' => '小西灣',
             'items' => [
@@ -42,7 +43,7 @@ class LocationInfo
          ],
     ];
 
-    private static $KOWLOON_LOCATIONS = [
+    private static $KOWLOON_LOCATIONS_CH = [
         [
             'name' => '新蒲崗',
             'items' => [
@@ -58,7 +59,7 @@ class LocationInfo
         ]
     ];
 
-    private static $NEW_LOCATIONS = [
+    private static $NEW_LOCATIONS_CH = [
         [
             'name' => '葵涌',
             'items' => [
@@ -163,28 +164,214 @@ class LocationInfo
     /**
      * @return array
      */
-    public static function getAll(){
-        return array_merge(static::$HK_LOCATIONS, static::$KOWLOON_LOCATIONS, static::$NEW_LOCATIONS);
+    public static function getAllCH(){
+        return array_merge(static::$HK_LOCATIONS_CH, static::$KOWLOON_LOCATIONS_CH, static::$NEW_LOCATIONS_CH);
     }
 
     /**
      * @return array
      */
-    public static function getHongKong(){
-        return static::$HK_LOCATIONS;
+    public static function getHongKongCH(){
+
+        return static::$HK_LOCATIONS_CH;
     }
 
     /**
      * @return array
      */
-    public static function getKowloon(){
-        return static::$KOWLOON_LOCATIONS;
+    public static function getKowloonCH(){
+        return static::$KOWLOON_LOCATIONS_CH;
     }
 
     /**
      * @return array
      */
-    public static function getNew(){
-        return static::$NEW_LOCATIONS;
+    public static function getNewCH(){
+        return static::$NEW_LOCATIONS_CH;
+    }
+
+    private static $HK_LOCATIONS_EN = [
+        [
+            'name' => 'Xiaoxiwan',
+            'items' => [
+                [
+                    'phone'   => '2111 1062',
+                    'address' => '4th Floor, Prince Industrial Building, 5 Xin Yip Street, Chai Wan'
+                ],
+                [
+                    'phone'   => '2116 0071',
+                    'address' => 'Room B, 7th Floor, Sun Dragon Industrial Building, 11 Xin Yip Street, Chai Wan'
+                ]
+            ]
+        ],
+        [
+            'name' => 'Chai wan',
+            'items' => [
+                [
+                    'phone'   => '2194 0038',
+                    'address' => 'Room C, 6th Floor, Wanfeng Industrial Building, 7 Cheung Lee Street, Chai Wan'
+                ],
+                [
+                    'phone'   => '2116 0460',
+                    'address' => 'Room B1, 14th Floor, Chai Wan Centre Industrial Building, 20 Lee Chung Street, Chai Wan'
+                ]
+            ]
+        ],
+        [
+            'name' => 'Wong Chuk Hang',
+            'items' => [
+                [
+                    'phone'   => '2680 9691',
+                    'address' => 'Room A, 14th Floor, Ruiqi Industrial Building, 18 Wong Chuk Hang Road'
+                ]
+            ]
+        ],
+    ];
+
+    private static $KOWLOON_LOCATIONS_EN = [
+        [
+            'name' => 'San Po Kong',
+            'items' => [
+                [
+                    'phone'   => '2111 0509',
+                    'address' => 'Unit B, 9th Floor, Jie King Industrial Building, 114 King Fuk Street, San Po Kong'
+                ],
+                [
+                    'phone'   => '2111 2739',
+                    'address' => 'Room CD, 9th Floor, Lijia Industrial Building, 8 Wufang Street, San Po Kong'
+                ]
+            ]
+        ]
+    ];
+
+    private static $NEW_LOCATIONS_EN = [
+        [
+            'name' => 'Kwai Chung',
+            'items' => [
+                [
+                    'phone'   => '2111 2683',
+                    'address' => '2-3/F, Block A, Phase 1, Tongzhen Industrial Building, 9-11 Cheong Wing Road, Kwai Chung'
+                ],
+                [
+                    'phone'   => '2111 0389',
+                    'address' => 'Unit D, 2/F, Yield Industrial Warehouse Building, 16 Ta Chuen Ping Street, Kwai Chung'
+                ],
+                // [
+                //     'phone'   => '2111 1629',
+                //     'address' => '3rd Floor, Block A, Phase 1, Tongzhen Industrial Building, 9-11 Changrong Road'
+                // ]
+            ]
+        ],
+        [
+            'name' => 'Tsing Yi',
+            'items' => [
+                [
+                    'phone'   => '2111 1063',
+                    'address' => '5&7 Floor, Block D, Phase 2, Tsing Yi Industrial Centre, 1-33 Cheung Tat Road, Tsing Yi'
+                ],
+                // [
+                //     'phone'   => '2111 1063',
+                //     'address' => '7th Floor, Block D, Phase 2, Tsing Yi Industrial Centre, 1-33 Cheung Tat Road'
+                // ]
+            ]
+        ],
+        [
+            'name' => 'Kwai Hing',
+            'items' => [
+                [
+                    'phone'   => '2111 1629',
+                    'address' => 'Room B, 8th Floor, Kwai Fung Industrial Building, 9-15 Kwai Cheong Road, Kwai Hing'
+                ]
+            ]
+        ],
+        [
+            'name' => 'Fo Tan',
+            'items' => [
+                [
+                    'phone'   => '2111 3536',
+                    'address' => 'Room E, H-J, 6th Floor, Fu Cheong Center, 5-7 Wong Chuk Yeung Street, Fotan'
+                ],
+                [
+                    'phone'   => '2111 3525',
+                    'address' => 'Room C, 3/F, Warwick Industrial Building, 1-7 Wo Heung Street, Fotan'
+                ],
+                [
+                    'phone'   => '2116 8955',
+                    'address' => 'Room AB, 3rd Floor, Universe Industrial Centre, 19-25 Shan Mei Street, Fo Tan'
+                ],
+                // [
+                //     'phone'   => 'TBC',
+                //     'address' => 'Room AB, 3rd Floor, Universe Industrial Center, 19-25 Shanwei Street'
+                // ]
+            ]
+        ],
+        [
+            'name' => 'Kwai Fong',
+            'items' => [
+                [
+                    'phone'   => '2111 4528',
+                    'address' => 'Room B, 3rd Floor, Meisik Industrial Building, 1-11 Kwai Ting Road, Kwai Fong'
+                ]
+            ]
+        ],
+        [
+            'name' => 'Tuen Mun',
+            'items' => [
+                [
+                    'phone'   => '2374 2022',
+                    'address' => '1, 4 and 5 floors, Tong Ming Industrial Building, 3 Sun Yick Lane, Tuen Mun'
+                ],
+                // [
+                //     'phone'   => '2374 2022',
+                //     'address' => '4th Floor, Tongming Industrial Building, No. 3 Xinyi Lane'
+                // ],
+                // [
+                //     'phone'   => '2374 2022',
+                //     'address' => '1st Floor, Tongming Industrial Building, No. 3, Xinyi Lane'
+                // ]
+            ]
+        ],
+        [
+            'name' => 'Tsuen Wan',
+            'items' => [
+                [
+                    'phone'   => '2111 2663',
+                    'address' => '14th Floor, Phase 2, Metropolitan Industrial Warehouse Building, 216-218 Texaco Road, Tsuen Wan'
+                ],
+                [
+                    'phone'   => '2116 9327',
+                    'address' => 'Room B, 7th Floor, Wah Hing Industrial Building, 2-6 Ma Kok Street, Tsuen Wan'
+                ]
+            ]
+        ]
+    ];
+
+    /**
+     * @return array
+     */
+    public static function getAllEN(){
+        return array_merge(static::$HK_LOCATIONS_EN, static::$KOWLOON_LOCATIONS_EN, static::$NEW_LOCATIONS_EN);
+    }
+
+    /**
+     * @return array
+     */
+    public static function getHongKongEN(){
+
+        return static::$HK_LOCATIONS_EN;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getKowloonEN(){
+        return static::$KOWLOON_LOCATIONS_EN;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getNewEN(){
+        return static::$NEW_LOCATIONS_EN;
     }
 }

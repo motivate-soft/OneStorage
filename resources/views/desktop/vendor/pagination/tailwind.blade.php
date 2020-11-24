@@ -25,6 +25,7 @@
 
                 {{-- Pagination Elements --}}
                 @foreach ($elements as $element)
+
                 {{-- "Three Dots" Separator --}}
                 @if (is_string($element))
                 <span aria-disabled="true">

@@ -254,16 +254,16 @@
     <div class="flex maintitle-wrapper-m color-primary">
         <div class="relative maintitle-right-m">
             <div class="flex items-center">
-                <span>迷你倉租賃－聯絡我們</span>
+                <span>{{__('frontend_contact_us.pageSubTitle')}}</span>
             </div>
-            <div class="capitalize mt-2 maintitle-right-bottom-m">我們會在24小時內回覆</div>
+            <div class="capitalize mt-2 maintitle-right-bottom-m">{{__('frontend_contact_us.replyHours')}}</div>
         </div>
     </div>
 
     <div class="grid grid-cols-2 gap-4 pb-10">
         <div class="col-span-2">
             <div class="mt-2 ml-10">
-                <p class=" form_header my-8">聯絡至尊迷你倉</p>
+                <p class=" form_header my-8">{{__('frontend_contact_us.supremeStorage')}}</p>
                 <div class="grid grid-cols-6 gap-4">
                     <a href="Tel: 852-21112636" class="flex col-span-6">
                         <img class="fill-current mr-4" src="{{asset('images/footer/icons8-phone-50@2x.png')}}" />
@@ -279,27 +279,47 @@
                     </a>
                     <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" class="flex col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-5 xl:col-span-2...">
                         <img class="fill-current mr-4" src="{{asset('images/footer/icons8-home-50@2x.png')}}" />
-                        <span class="self-center text-primary font_19">查看分店地址</span>
+                        <span class="self-center text-primary font_19">{{__('frontend_contact_us.viewBranchAddress')}}</span>
                     </a>
                 </div>
             </div>
 
             <div class="grid grid-cols-1  mt-8 z-10 mx-10">
-                <p class="font_21 pl-10 pb-3">香港島迷你倉</p>
+                <p class="font_21 pl-10 pb-3">{{__('frontend_contact_us.hkMiniStorage')}}</p>
                 <?php
-                $locations = App\LocationInfo::getHongKong();
+                use Illuminate\Support\Facades\Session;
+                $locations = null;
+                if(Session::has('locale') && Session::get('locale') == "en") {
+                    $locations = App\LocationInfo::getHongKongEN();
+                }
+                else {
+                    $locations = App\LocationInfo::getHongKongCH();
+                }
                 ?>
                 @each('partials.location_info', $locations, 'location')
 
-                <p class="font_21 pl-10 pb-3 pt-5">九龍迷你倉</p>
+                <p class="font_21 pl-10 pb-3 pt-5">{{__('frontend_contact_us.kowloonMiniStorage')}}</p>
                 <?php
-                $locations = App\LocationInfo::getKowloon();
+                $locations = null;
+                if(Session::has('locale') && Session::get('locale') == "en") {
+                    $locations = App\LocationInfo::getKowloonEN();
+                }
+                else {
+                    $locations = App\LocationInfo::getKowloonCH();
+                }
                 ?>
                 @each('partials.location_info', $locations, 'location')
 
-                <p class="font_21 pl-10 pb-3 pt-5">新界迷你倉</p>
+                <p class="font_21 pl-10 pb-3 pt-5">{{__('frontend_contact_us.newTerritoriesMiniStorage')}}</p>
                 <?php
-                $locations = App\LocationInfo::getNew();
+                $locations = null;
+
+                if(Session::has('locale') && Session::get('locale') == "en") {
+                    $locations = App\LocationInfo::getNewEN();
+                }
+                else {
+                    $locations = App\LocationInfo::getNewCH();
+                }
                 ?>
                 @each('partials.location_info', $locations, 'location')
             </div>
@@ -308,7 +328,7 @@
         <div class="col-span-2 px-2 mt-6 mx-10">
             @include('partials.enquiryForm',[
                 'page' => Helper::$SS_FROM_CONTACTUS_PAGE,
-                'questions' => ['我想預約參觀', '我想續約', '我想要尺寸及價錢資料', '其他']
+                'questions' => [__('frontend_contact_us.appointmentVisit'), __('frontend_contact_us.renew'), __('frontend_contact_us.sizePrice'), __('frontend_contact_us.other')]
             ])
         </div>
     </div>

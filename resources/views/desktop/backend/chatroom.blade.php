@@ -6,23 +6,23 @@
 
 @section('content')
 <div class="bg-grey w-full h-screen pl-16 pr-5 pt-10 pb-24">
-    <p class="font_25 mb-6">Chat Room</p>
+    <p class="font_25 mb-6">{{ __('backend_messages.chatRoom') }}</p>
     <div class="bg-white border w-1/2">
         <div class="">
             <div class="flex justify-between border-b py-2">
                 <a class="mx-4 font_19 robert-regular" href="{{url('/backend/messages')}}" style="color: #C293FC">
-                    &lt; Back
+                    &lt; {{ __('backend_messages.back') }}
                 </a>
-                <span class="mr-4">To: <?php
+                <span class="mr-4">{{ __('backend_messages.to') }}: <?php
                         $names = $thread->participantsString(Auth::id(), ['first_name']);
-                        $string = $names ? $names : ('All +' . (App\User::where('role', '!=', 'admin')->count()));
+                        $replyTo = $names ? $names : ('All +' . (App\User::where('role', '!=', 'admin')->count()));
                         $names = explode(',', $names);
                         $count = count($names);
                         if ($count > 3) {
-                            $string = $names[0] . ', ' . $names[1] . ', ' . $names[2] . ' ....+' . ($count - 3);
+                            $replyTo = $names[0] . ', ' . $names[1] . ', ' . $names[2] . ' ....+' . ($count - 3);
                         }
                         ?>
-                    {{$string}}</span>
+                    {{$replyTo}}</span>
             </div>
 
             <div id="msgWrapper" class="overflow-y-auto" style="max-height: 400px;">
@@ -73,8 +73,8 @@
                         </p>
                     </div>
                     <div class="font_16 robert-regular mt-6">
-                        <textarea class="border placeholder-gray-600 px-3 py-2 w-full border-gray-300" name="message" placeholder="Reply to Tom..." rows="3"></textarea>
-                        <button class="mt-4 mb-3 px-4 py-2 text-center" style="font-size: 17px;background-color: #3F81C7; color:white">送出</button>
+                        <textarea class="border placeholder-gray-600 px-3 py-2 w-full border-gray-300" name="message" placeholder="{{ __('backend_messages.replyTo').$replyTo }}" rows="3"></textarea>
+                        <button class="mt-4 mb-3 px-4 py-2 text-center" style="font-size: 17px;background-color: #3F81C7; color:white">{{ __('backend_messages.send') }}</button>
                     </div>
                 </div>
             </form>

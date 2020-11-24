@@ -2,7 +2,7 @@
 <div class="mx-5">
             <div class="flex">
                 <div class="self-center my-5  mx-auto">
-                    <p class="text-base"><b>One Storage</b> 是以下組織的成員:</p>
+                    <p class="text-base"><b>One Storage</b> {{__('frontend_footer.isMember')}}</p>
                 </div>
             </div>
             <div >
@@ -19,7 +19,7 @@
             </div>
             <div class="flex">
                 <div class="self-center my-5  mx-auto">
-                    <p class=" text-center text-base self-center"><b>© 2020</b> 至尊迷你倉 | 版權所有 | 免責聲明</p>
+                    <p class=" text-center text-base self-center"><b>© 2020</b> {{__('frontend_footer.copyright_')}}</p>
                 </div>
             </div>
         </div>

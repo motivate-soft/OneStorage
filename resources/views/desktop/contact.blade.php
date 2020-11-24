@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('迷你倉 | 聯絡我們 | 至尊迷你倉 One Storage')}}</title>
+<title>{{__('frontend_contact_us.title')}}</title>
 @endsection
 
 @section('styles')
@@ -217,15 +217,15 @@
 <div class="relative block bg-white section mb-10 floating-panel">
     <div class="maintitle-wrapper color-primary text-center">
         <div class="maintitle-right">
-            <p class="mb-6">迷你倉租賃－聯絡我們</p>
-            <div class="capitalize maintitle-right-bottom">我們會在24小時內回覆</div>
+            <p class="mb-6">{{__('frontend_contact_us.pageSubTitle')}}</p>
+            <div class="capitalize maintitle-right-bottom">{{__('frontend_contact_us.replyHours')}}</div>
         </div>
     </div>
 
     <div class="grid grid-cols-5 gap-4 pt-20 pb-10">
         <div class="col-span-3">
             <div class="ml-10">
-                <p class="form_header font_19 mb-8">聯絡至尊迷你倉</p>
+                <p class="form_header font_19 mb-8">{{__('frontend_contact_us.supremeStorage')}}</p>
                 <div class="grid grid-cols-6 gap-4">
                     <a href="tel: 852-21112636" target="_blank" class="flex col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-5 xl:col-span-2...">
                         <img class="fill-current mr-4" src="{{asset('images/footer/icons8-phone-50@2x.png')}}" />
@@ -239,9 +239,9 @@
                         <img class="fill-current mr-4" src="{{asset('images/footer/icons8-whatsapp-50@2x.png')}}" />
                         <span class="self-center text-primary font_19">(852) 5118 8503</span>
                     </a>
-                    <a class="flex col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-5 xl:col-span-2...">
+                    <a href="http://maps.google.com/?q=新界屯門新益里3號通明工業大廈+4/5樓" class="flex col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-5 xl:col-span-2...">
                         <img class="fill-current mr-4" src="{{asset('images/footer/icons8-home-50@2x.png')}}" />
-                        <span class="self-center text-primary font_19">查看分店地址</span>
+                        <span class="self-center text-primary font_19">{{__('frontend_contact_us.viewBranchAddress')}}</span>
                     </a>
                 </div>
             </div>
@@ -250,32 +250,55 @@
 
             <div class="grid grid-cols-2 mt-12 ml-10">
                 <div class="col-span-1">
-                    <p class="font_19 pl-10 pb-3">香港島迷你倉</p>
+                    <p class="font_19 pl-10 pb-3">{{__('frontend_contact_us.hkMiniStorage')}}</p>
                     <?php
-                    $locations = App\LocationInfo::getHongKong();
+                    use Illuminate\Support\Facades\Session;
+                    $locations = null;
+                        if(Session::has('locale') && Session::get('locale') == "en") {
+                            $locations = App\LocationInfo::getHongKongEN();
+                        }
+                        else {
+                            $locations = App\LocationInfo::getHongKongCH();
+                        }
                     ?>
                     @each('partials.location_info', $locations, 'location')
                 </div>
 
                 <div class="col-span-1">
-                    <p class="font_19 pl-10 pb-3">九龍迷你倉</p>
+                    <p class="font_19 pl-10 pb-3">{{__('frontend_contact_us.kowloonMiniStorage')}}</p>
                     <?php
-                    $locations = App\LocationInfo::getKowloon();
+                        $locations = null;
+                        if(Session::has('locale') && Session::get('locale') == "en") {
+                            $locations = App\LocationInfo::getKowloonEN();
+                        }
+                        else {
+                            $locations = App\LocationInfo::getKowloonCH();
+                        }
+
                     ?>
                     @each('partials.location_info', $locations, 'location')
                 </div>
             </div>
 
-            <p class="font_19 pl-10 pb-3 mt-12 ml-10">新界迷你倉</p>
+            <p class="font_19 pl-10 pb-3 mt-12 ml-10">{{__('frontend_contact_us.newTerritoriesMiniStorage')}}</p>
             <div class="grid grid-cols-2 ml-10">
                 <?php
-                $locations = App\LocationInfo::getNew();
-                $even = array_filter($locations, function ($input) {
-                    return !($input & 1);
-                }, ARRAY_FILTER_USE_KEY);
-                $odd = array_filter($locations, function ($input) {
-                    return $input & 1;
-                }, ARRAY_FILTER_USE_KEY);
+
+                    $locations = null;
+
+                    if(Session::has('locale') && Session::get('locale') == "en") {
+                        $locations = App\LocationInfo::getNewEN();
+                    }
+                    else {
+                        $locations = App\LocationInfo::getNewCH();
+                    }
+
+                    $even = array_filter($locations, function ($input) {
+                        return !($input & 1);
+                    }, ARRAY_FILTER_USE_KEY);
+                    $odd = array_filter($locations, function ($input) {
+                        return $input & 1;
+                    }, ARRAY_FILTER_USE_KEY);
                 ?>
                 <div class="col-span-1">
                     @each('partials.location_info', $even, 'location')
@@ -289,7 +312,7 @@
         <div class="col-span-2 pr-10">
             @include('partials.enquiryForm',[
                 'page' => Helper::$SS_FROM_CONTACTUS_PAGE,
-                'questions' => ['我想預約參觀', '我想續約', '我想要尺寸及價錢資料', '其他']
+                'questions' => [__('frontend_contact_us.appointmentVisit'), __('frontend_contact_us.renew'), __('frontend_contact_us.sizePrice'), __('frontend_contact_us.other')]
             ])
         </div>
     </div>

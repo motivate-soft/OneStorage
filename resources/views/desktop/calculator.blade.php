@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('迷你倉 | 空間計算器 | 至尊迷你倉 One Storage')}}</title>
+<title>{{__('frontend_calculator.title')}}</title>
 @endsection
 
 @section('styles')
@@ -204,14 +204,13 @@
 
     <div class="maintitle-wrapper color-primary text-center">
         <div class="maintitle-right">
-            <p class="mb-6">空間計算器</p>
-            <div class="maintitle-right-bottom">唔知道自己需要幾大個倉？不如自己計一計！</div>
+            <p class="mb-6">{{__('frontend_calculator.menuTitle')}}</p>
+            <div class="maintitle-right-bottom">{{__('frontend_calculator.pageSubTitle')}}</div>
         </div>
     </div>
 
     <div class="grid grid-cols-12 col-gap-0 mt-16 mx-16 lg:mx-32">
         <div class="col-start-1 col-span-3" id="category-menu">
-
         </div>
         <div id="content-wrapper" class="flex flex-col col-start-4 col-span-9 ">
         </div>
@@ -219,52 +218,52 @@
     </div>
 
     <div>
-        <p class="color-primary text-left calculator-content-title">你需要租</p>
+        <p class="color-primary text-left calculator-content-title">{{__('frontend_calculator.needRent')}}</p>
     </div>
 
     <div class="grid grid-cols-4 col-gap-1 content-image-wrapper-2">
         <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select" id="s-store">
             <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-s.jpg') }}" alt="Room">
             <div class="px-6 py-4">
-                <div class="room-card-title text-center mb-2">小型倉</div>
+                <div class="room-card-title text-center mb-2">{{__('frontend_calculator.smallWarehouse')}}</div>
             </div>
             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                <button value="S" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
+                <button value="S" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">{{__('frontend_calculator.search')}}</button>
             </div>
         </div>
         <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select" id="m-store">
             <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-m.jpg') }}" alt="Room">
             <div class="px-6 py-4">
-                <div class="room-card-title text-center mb-2">中型倉</div>
+                <div class="room-card-title text-center mb-2">{{__('frontend_calculator.mediumWarehouse')}}</div>
             </div>
             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                <button value="M" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
+                <button value="M" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">{{__('frontend_calculator.search')}}</button>
             </div>
         </div>
         <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select" id="l-store">
             <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-l.jpg') }}" alt="Room">
             <div class="px-6 py-4">
-                <div class="room-card-title text-center mb-2">大型倉</div>
+                <div class="room-card-title text-center mb-2">{{__('frontend_calculator.largeWarehouse')}}</div>
             </div>
             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                <button value="L" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
+                <button value="L" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">{{__('frontend_calculator.search')}}</button>
             </div>
         </div>
         <div class="relative max-w-sm rounded overflow-hidden shadow-lg room-card-wrapper store-select" id="xl-store">
             <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-xl.jpg') }}" alt="Room">
             <div class="px-6 py-4">
-                <div class="room-card-title text-center mb-2">特大倉</div>
+                <div class="room-card-title text-center mb-2">{{__('frontend_calculator.extraWarehouse')}}</div>
             </div>
             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                <button value="XL" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
+                <button value="XL" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">{{__('frontend_calculator.search')}}</button>
             </div>
         </div>
     </div>
 
     <div class="pb-20">
-        <p class="text-center font_34 mb-10">預計需要空間：<span id="sizeText">0</span> 呎</p>
+        <p class="text-center font_34 mb-10">{{__('frontend_calculator.expectNeedSpace')}}：<span id="sizeText">0</span> {{__('frontend_calculator.feet')}}</p>
         <p class="flex w-max-content room-footer color-primary mx-auto">
-            <span class="pr-4">分享</span>
+            <span class="pr-4">{{__('frontend_calculator.shareIt')}}</span>
             <!-- <a class="ml-2" href="https://developers.facebook.com/docs/plugins/share-button/"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-facebook-50@2x.png') }}" /></a>
             <a class="ml-2" href="https://api.whatsapp.com/send?text=check%20this%20out"><img class="box-content room-footer-image" src="{{ asset('images/calculator/icons8-whatsapp-50@2x.png') }}" /></a>
             <a class="ml-2" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.onestorage.com.hk" title="Share by Email">

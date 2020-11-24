@@ -22,7 +22,7 @@
     <div class="flex mb-24">
         <img class="mx-15 w-40 h-40 rounded-full object-fill" src="{{asset(Auth::user()->profile->avatar)}}" alt="Avatar of Jonathan Reinink">
         <div class="flex flex-col lg:rounded-b-none lg:rounded-r justify-end">
-            <div class="branch-title">{{Auth::user()->getName()}}, 歡迎你回來!</div>
+            <div class="branch-title">{{Auth::user()->getName()}}, {{__('frontend_chatlist.welcomeBack')}}</div>
         </div>
     </div>
 
@@ -31,20 +31,20 @@
         <div class="flex w-full mb-4">
             <div class="w-1/5">
                 <a href="{{route('pages.account')}}">
-                    <div class="border text-center branch-tab-active py-6">個人資料</div>
+                    <div class="border text-center branch-tab-active py-6">{{__('frontend_chatlist.personalInformation')}} </div>
                 </a>
                 <a href="{{route('pages.chatList')}}">
-                    <div class="border text-center branch-tab py-6">信息</div>
+                    <div class="border text-center branch-tab py-6">{{__('frontend_chatlist.information')}}</div>
                 </a>
                 <a href="{{route('logout')}}">
-                    <div class="border text-center branch-tab py-6" style="background-color: white !important;">登出</div>
+                    <div class="border text-center branch-tab py-6" style="background-color: white !important;">{{__('frontend_chatlist.logout')}}</div>
                 </a>
             </div>
 
             <div class="w-4/5 ml-2 border">
                 <p class="border-b py-2">
                     <a class="mx-4 font_19 robert-regular" href="{{route('pages.chatList')}}" style="color: #C293FC">
-                        &lt; Back
+                        &lt; {{__('frontend_common.back')}}
                     </a>
                 </p>
 
@@ -68,7 +68,7 @@
                             <div class="flex justify-between">
                                 <p class="leading-none pt-2 font_19 regular-color">
                                     @if($message->user->isAdmin())
-                                    Admin <span class="text-grey font-normal ml-2 robert-regular">Admin at OneStorage</span>
+                                        {{__('frontend_common.admin')}} <span class="text-grey font-normal ml-2 robert-regular">{{__('frontend_chatlist.adminAtOneStorage')}}</span>
                                     @else
                                     {{$message->user->getName()}}
                                     @endif
@@ -104,8 +104,8 @@
                                 </p>
                             </div>
                             <div class="font_16 robert-regular mt-6">
-                                <textarea class="border placeholder-gray-600 px-3 py-2 w-full border-gray-300" name="message" placeholder="Reply to Tom..." rows="3"></textarea>
-                                <button class="mt-4 mb-3 px-4 py-2 text-center" style="font-size: 17px;background-color: #3F81C7; color:white">送出</button>
+                                <textarea class="border placeholder-gray-600 px-3 py-2 w-full border-gray-300" name="message" placeholder="{{__('frontend_chatlist.replyTo')}}" rows="3"></textarea>
+                                <button class="mt-4 mb-3 px-4 py-2 text-center" style="font-size: 17px;background-color: #3F81C7; color:white">{{__('frontend_common.logout')}}</button>
                             </div>
                         </div>
                     </form>

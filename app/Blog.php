@@ -5,11 +5,24 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Helper\Helper;
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
+use Illuminate\Support\Facades\App;
 
-class Blog extends Model
+class Blog extends Model implements TranslatableContract
 {
+    use Translatable;
+
+    public $translatedAttributes = ['title', 'content'];
 
     public static $IMAGE_PREFIX = '/images/blogs/';
+
+    public function getTitleAttribute($value){
+        if(!$value){
+            return $this->_id;
+        }
+        return $value;
+    }
 
     /**
      * @param $value
@@ -65,8 +78,16 @@ class Blog extends Model
      */
     public function setData($request){
         $this->_id = $request->_id;
-        $this->title = $request->title;
-        $this->content = $request->content;
+        //$this->title = $request->title;
+        //$this->content = $request->content;
+        $locale = App::getLocale();
+        $this->update([
+           $locale => [
+               'title'  => $request->title,
+               'content' => $request->content
+           ]
+        ]);
+
         $this->used_promotion = isset($request->usedPromition) &&  $request->usedPromition == "on";
         if(!$this->used_promotion){
             $this->as_promotion = false;

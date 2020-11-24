@@ -40,7 +40,7 @@
         <div class="col-span-2 mx-5">
             <div class="text-left pb-5" style="border-bottom-width:1px">
                 <h1 class="font_21 break-all" style="color: #7E3E97;">{{$blog->title}}</h1>
-                <p class="font_19 mt-4">刊登日期: {{$blog->publish_date->format('d-m-Y')}}</p>
+                <p class="font_19 mt-4">{{__('frontend_latestNews.publishDate')}}: {{$blog->publish_date->format('d-m-Y')}}</p>
             </div>
             <div class="text-left mt-5">
                 <img class="pb-4" src="{{asset($blog->image)}}">
@@ -62,7 +62,7 @@
         <div class=" col-span-2 mx-6">
             <div class="text-left pt-10 pb-5">
                 <div class="px-2 pb-8">
-                    <h1 class="font_21">其他資訊</h1>
+                    <h1 class="font_21">{{ __('frontend_latestNews.other') }}</h1>
                 </div>
                 <?php
                 $latest_news = App\Blog::getNewses(4);

@@ -2,20 +2,20 @@
     <div class="pb-5 mx-5">
         <div class="grid ">
             <div class="flex flex-col">
-                <h2 class="font_15 mt-4 mb-8 font-bold">關於至尊迷你倉</h2>
-                <div class="text-justify mb-4 leading-5 font_13">為金朝陽集團屬下業務(股票代號： 00878.HK)。
+                <h2 class="font_15 mt-4 mb-8 font-bold">{{__('frontend_footer.aboutSupreme')}}</h2>
+                <div class="text-justify mb-4 leading-5 font_13">{{__('frontend_footer.business')}}
                     <br><br>
-                    分店遍佈香港、九龍及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質及專業的儲物收納服務。
+                    {{__('frontend_footer.withBranches')}}
                     <br><br>
-                    至尊迷你倉是亞洲迷你倉商會(SSAA)及香港迷你倉總會會員(HKMSA)。
+                    {{__('frontend_footer.supremeMiniStorage')}}
                 </div>
                 <span class="w-auto my-8 font_15 font-bold">
-                        <a href="{{route('pages.joinUs')}}">職位空缺</a> | <a href="{{route('pages.disclaimer')}}">免責聲明</a>
+                        <a href="{{route('pages.joinUs')}}">{{__('frontend_footer.vacancies')}}</a> | <a href="{{route('pages.disclaimer')}}">{{__('frontend_footer.disclaimer')}}</a>
                     </span>
-                <p class="font_15">©2020 至尊迷你倉 版權所有</p>
+                <p class="font_15">{{__('frontend_footer.copyright')}}</p>
             </div>
             <div class="mt-12">
-                <h2 class="font_15 mb-8 font-bold">最新資訊</h2>
+                <h2 class="font_15 mb-8 font-bold">{{__('frontend_footer.latestNewsAccount')}}</h2>
                 <?php
                 $latest_news = App\Blog::getNewses(3);
                 ?>
@@ -30,7 +30,7 @@
             </div>
             <div>
                 <div class="mt-2">
-                    <h2 class="font_15 mt-4 mb-8 font-bold">聯絡我們</h2>
+                    <h2 class="font_15 mt-4 mb-8 font-bold">{{__('frontend_footer.contactUs')}}</h2>
                     <div class="grid grid-cols-6 gap-4 font_13 ml-1">
                         <a href="tel: 852-21112636" target="_blank" class="flex col-span-6 ">
                             <img class="fill-current mr-4" src="{{asset('images/footer/icons8-phone-50@2x.png')}}" />
@@ -46,28 +46,46 @@
                         </a>
                         <div class="flex col-span-6 ">
                             <img class="fill-current mr-4" src="{{asset('images/footer/icons8-home-50@2x.png')}}" />
-                            <span class="self-center text-primary">查看分店地址</span>
+                            <span class="self-center text-primary">{{__('frontend_footer.viewBranchAddress')}}</span>
                         </div>
                     </div>
 
                 </div>
 
                 <div class="grid grid-cols-1  mt-8 z-10">
-                    <p class="font_18 pl-10 pb-3">香港島迷你倉</p>
+                    <p class="font_18 pl-10 pb-3">{{__('frontend_contact_us.hkMiniStorage')}}</p>
                     <?php
-                    $locations = App\LocationInfo::getHongKong();
+                    use Illuminate\Support\Facades\Session;
+                    $locations = null;
+                    if(Session::has('locale') && Session::get('locale') == "en") {
+                        $locations = App\LocationInfo::getHongKongEN();
+                    }
+                    else {
+                        $locations = App\LocationInfo::getHongKongCH();
+                    }
                     ?>
                     @each('partials.location_info1', $locations, 'location')
 
-                    <p class="font_18 pl-10 pb-3 pt-5">九龍迷你倉</p>
+                    <p class="font_18 pl-10 pb-3 pt-5">{{__('frontend_contact_us.kowloonMiniStorage')}}</p>
                     <?php
-                    $locations = App\LocationInfo::getKowloon();
+                    $locations = null;
+                    if(Session::has('locale') && Session::get('locale') == "en") {
+                        $locations = App\LocationInfo::getKowloonEN();
+                    }
+                    else {
+                        $locations = App\LocationInfo::getKowloonCH();
+                    }
                     ?>
                     @each('partials.location_info1', $locations, 'location')
 
-                    <p class="font_18 pl-10 pb-3 pt-5">新界迷你倉</p>
+                    <p class="font_18 pl-10 pb-3 pt-5">{{__('frontend_contact_us.newTerritoriesMiniStorage')}}</p>
                     <?php
-                    $locations = App\LocationInfo::getNew();
+                    if(Session::has('locale') && Session::get('locale') == "en") {
+                        $locations = App\LocationInfo::getNewEN();
+                    }
+                    else {
+                        $locations = App\LocationInfo::getNewCH();
+                    }
                     ?>
                     @each('partials.location_info1', $locations, 'location')
 

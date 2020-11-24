@@ -1,0 +1,33 @@
+<?php
+
+return [
+
+    'disclaimer' => 'Disclaimer',
+    'informationContained' => 'The information contained in this webpage is provided free of charge based on the "practical range" and "practical range" and is for reference only. Supreme Mini Storage expressly disclaims any form of representation, warranty or liability derived from the information or services provided on this webpage, or from contact with or obtaining such information or services, or the results obtained from using this webpage, including But it is not limited to any guarantee of the legality, validity, accuracy, adequacy or enforceability of such information.',
+    'legalPermission' => 'Under the legal permission, Supreme Mini Storage disposes of any direct, indirect, incidental, related or corresponding losses, damages, expenses, claims or demands caused by the use or reliance on the information provided on this webpage All responsibilities.',
+    'userDecision' => 'The user understands and agrees that the user shall determine whether to use or rely on such information at his own risk, and the user shall consider verifying such information from other independent sources and seek independent advice before making any transaction decision.',
+    'confirmAccept' => 'The user must confirm and accept any information downloaded or extracted from this webpage by using or browsing this webpage at his own risk. The user is solely responsible for any damage to the user\'s computer system or loss of data caused by downloading any data on this page.',
+    'requireCompanyInfo' => "If the user inquires about the company's information by e-mail cs@onestorage.com.hk, the company has the right to publicize or publish the information in the normal form in response to the user's e-mail.",
+    'privacyPolicyStatement' => 'Privacy policy statement',
+    'specialAdminRegion' => 'Supreme Mini Storage promises to properly handle personal data to protect privacy in accordance with the "Personal Data (Privacy) Ordinance" Chapter 486 of the Laws of the Hong Kong Special Administrative Region.',
+    'recordVisit' => 'Unless otherwise stated, we will record the user\'s visit and the user\'s IP address. We will not collect any personally identifiable information when users browse this website. The cookie files (if any) used in any part of this website are not used to collect personal information. Cookie files can be stored in the computer of the web browser to obtain the computer configuration data of the web browser and analyze their browsing habits. Users can modify relevant Internet options or set browsing preferences to refuse to accept cookie files. However, users may not be able to use or activate certain functions provided on this website. This website may block users who refuse to accept cookie files.',
+    'identify' => 'When using this website, users may be asked to provide personally identifiable information. Such information is essential to the services and activities provided on this website. If the user fails to provide the required information, we will not be able to provide the user with the services of this website.',
+    'purposes' => 'The information we collect will be used for the following purposes:',
+    'monitor' => '1. Monitor the operation of this website and assist the future development of this website;',
+    'compile' => '2. Compile overall statistics about our users;',
+    'collectInfo' => '3. Collect information to verify identity and records, and maintain a contact list for communication;',
+    'internalManagement' => '4. For internal management, to resolve disputes and problems, and to strengthen the implementation of our terms of use;',
+    'provide' => '5. Provide users with information that we believe users are interested in, such as targeted banners, new services and products, and other promotional and marketing materials;',
+    'contactUsers' => '6. To contact users regarding administrative notices and communications related to users\' use of the website.',
+    'verificationProcedure' => 'In addition, we can also use the user\'s data and third-party data for verification procedures (that is, two sets of personal data collected for different purposes are verified). By registering or logging in to the website, the user agrees to allow us to perform the above verification procedures when deemed necessary to provide services.',
+    'followingWays' => 'We will also use user data in the following ways:',
+    'shareInfo' => '1. We will share most of the user information we collect with our business partners, subsidiaries and associated companies.',
+    'arrangeContent' => '2. In order to provide users with more information and services, we have arranged content providers and service providers to provide information and services. To this end, we may need to share user information with these content providers and service providers.',
+    'advertiser' => 'If we add new services and need to share the user\'s personal data with other advertisers or sponsors, we will notify users in advance to give users the opportunity to opt-out and not accept these services.',
+    'speaking' => 'Generally speaking, we will not disclose or transmit user information to any other person in a way that can identify the user, except in the following cases:',
+    'serviceProvider' => '1. If we use third-party providers and service providers on the website to help improve our services, and the user uses the above-mentioned optional services, we must provide the user\'s information to the provider that provides such services Or service provider.',
+    'accessAccount' => '2. If required by law, we will disclose or access user account information.',
+    'disclose' => '3. We will also disclose or access account information for administrative management and other purposes that we consider necessary to maintain, overhaul and improve our products and services.',
+    'accessGroup' => 'In addition, the user\'s information will be disclosed or transferred to our business partners, any person in the group or legal entity or department, and the above-mentioned groups can also access such information.',
+    'personalDataOrdinance' => 'Users have the right to access or correct their personal data in accordance with the "Personal Data (Privacy) Ordinance", Chapter 486 of the Laws of the Hong Kong Special Administrative Region. Any request to access or change personal information should be made in writing and mailed to us.',
+];

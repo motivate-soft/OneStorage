@@ -10,9 +10,9 @@
         <div class="flex mb-2">
             <img class="fill-current" style="height: 50px;" src="{{asset('images/footer/Artboard 1@72x-8@2x.png')}}" />
             <div class="leading-5 ">
-                <p class="">電話 : <span>{{$item['phone']}}</span></p>
+                <p class="">{{__('frontend_location_info.phone')}} : <span>{{$item['phone']}}</span></p>
                 <a href="{{'http://maps.google.com/?q='.$item['address']}}" target="_blank" rel="noopener noreferrer">
-                    地址 : {{$item['address']}}
+                    {{__('frontend_location_info.address')}} : {{$item['address']}}
                 </a>
             </div>
         </div>

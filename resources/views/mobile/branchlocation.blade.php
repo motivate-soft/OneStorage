@@ -228,13 +228,13 @@
 </div>
 
 <div class="p-5 bg-grey">
-    <div class="rentwarehouse-wrapper-title color-primary text-center">租倉</div>
+    <div class="rentwarehouse-wrapper-title color-primary text-center">{{ __('frontend_branchLocation.selectLocation') }}</div>
 
     <div id="branchSearchForm" class="flex justify-between items-center px-1 py-5 mx-auto">
         <img class="rentwarehouse-select-store-image-m px-0" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
         <div class="flex relative rentwarehouse-select-store-item-area-m mx-1">
             <select id="location-select" data-url="{{route('pages.branchLocation')}}" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-1 py-2 pr-8 shadow leading-tight focus:outline-none focus:shadow-outline rentwarehouse-selects-store-item-select-m">
-                <option class="rentwarehouse-selects-store-item-option-m" selected disabled>地區</option>
+                <option class="rentwarehouse-selects-store-item-option-m" selected disabled>{{ __('frontend_branchLocation.area') }}</option>
                 @foreach($locations as $location)
 
                 <option value="{{$location->location}}" class="rentwarehouse-selects-store-item-option-m" {{$location->location == $_GET['location'] ? 'selected' : ''}}>
@@ -260,39 +260,39 @@
                     <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
             </div>
         </div>
-        <button id="goToStore" class="rentwarehouse-select-store-button-m items-center ml-2 px-2">租倉</button>
+        <button id="goToStore" class="rentwarehouse-select-store-button-m items-center ml-2 px-2">{{ __('frontend_branchLocation.search') }}</button>
     </div>
 
     <div class="flex relative pt-4 mb-12">
-        <label class="flex items-center absolute right-0 rentwarehouse-price-check"><input type="checkbox" class="mr-3" />只顯示有折扣地區</label>
+        <label class="flex items-center absolute right-0 rentwarehouse-price-check"><input type="checkbox" class="mr-3" />{{ __('frontend_branchLocation.onlyShow') }}</label>
     </div>
     <div class="block">
         <div class="accordion1 appearance-none flex relative bg-white border border-gray-300">
             <img class="align-middle w-4" src="{{ asset('branchlocation/icons8-ruler-50@2x.png') }}" />
-            <span class="pl-2 align-middle">尺寸</span>
+            <span class="pl-2 align-middle">{{ __('frontend_branchLocation.size') }}</span>
             <div class="absolute right-6">
                 <i class="icon wb-chevron-down"></i>
             </div>
         </div>
         <div class="panel-other">
             <div class="flex branchlocation-card-wrapper branchlocation-m-item items-center relative" value="S">
-                <span class="pl-8 pr-4 branchlocation-card-title flex-shrink-0">小型倉</span>
-                <span class="pl-0 pt-4 pb-4 pr-7 branchlocation-m-card-content leading-5">換季衣服, 兒童物及玩具,書本</span>
+                <span class="pl-8 pr-4 branchlocation-card-title flex-shrink-0">{{ __('frontend_branchLocation.smallStore') }}</span>
+                <span class="pl-0 pt-4 pb-4 pr-7 branchlocation-m-card-content leading-5">{{ __('frontend_branchLocation.smallDesc') }}</span>
                 <span class="pr-0 pt-4 pb-4 absolute right-2 branchlocation-m-card-check text-white"><i class="icon wb-check"></i></span>
             </div>
             <div class="flex branchlocation-card-wrapper branchlocation-m-item items-center relative" value="M">
-                <span class="pl-8 pr-4 branchlocation-card-title flex-shrink-0">中型倉</span>
-                <span class="pl-0 pt-4 pb-4 pr-7 branchlocation-m-card-content leading-5">梳化, 椅, 櫃, 枱, 床縟, 單車, 高爾夫球袋, 箱</span>
+                <span class="pl-8 pr-4 branchlocation-card-title flex-shrink-0">{{ __('frontend_branchLocation.mediumStore') }}</span>
+                <span class="pl-0 pt-4 pb-4 pr-7 branchlocation-m-card-content leading-5">{{ __('frontend_branchLocation.mediumDesc') }}</span>
                 <span class="pr-0 pt-4 pb-4 absolute right-2 branchlocation-m-card-check text-white"><i class="icon wb-check"></i></span>
             </div>
             <div class="flex branchlocation-card-wrapper branchlocation-m-item items-center relative" value="L">
-                <span class="pl-8 pr-4 branchlocation-card-title flex-shrink-0">大型倉</span>
-                <span class="pl-0 pt-4 pb-4 pr-7 branchlocation-m-card-content leading-5">梳化, 椅, 櫃, 枱, 床縟, 單車, 高爾夫球袋, 箱</span>
+                <span class="pl-8 pr-4 branchlocation-card-title flex-shrink-0">{{ __('frontend_branchLocation.largeStore') }}</span>
+                <span class="pl-0 pt-4 pb-4 pr-7 branchlocation-m-card-content leading-5">{{ __('frontend_branchLocation.largeDesc') }}</span>
                 <span class="pr-0 pt-4 pb-4 absolute right-2 branchlocation-m-card-check text-white"><i class="icon wb-check"></i></span>
             </div>
             <div class="flex branchlocation-card-wrapper branchlocation-m-item items-center relative" value="XL">
-                <span class="pl-8 pr-4 branchlocation-card-title flex-shrink-0">特大倉</span>
-                <span class="pl-0 pt-4 pb-4 pr-7 branchlocation-m-card-content leading-5">梳化, 椅, 櫃, 枱, 床縟, 單車, 高爾夫球袋, 箱換季衣服, 兒童物及玩具,書本</span>
+                <span class="pl-8 pr-4 branchlocation-card-title flex-shrink-0">{{ __('frontend_branchLocation.xLargeStore') }}</span>
+                <span class="pl-0 pt-4 pb-4 pr-7 branchlocation-m-card-content leading-5">{{ __('frontend_branchLocation.xLargeDesc') }}</span>
                 <span class="pr-0 pt-4 pb-4 absolute right-2 branchlocation-m-card-check text-white"><i class="icon wb-check"></i></span>
             </div>
         </div>
@@ -300,7 +300,7 @@
     <div class="px-3 py-4">
         <div class="flex py-3">
             <img class="w-5" src="{{ asset('branchlocation/icons8-pricing-50@2x.png') }}" />
-            <span class="rentwarehouse-price-title color-primary pl-5">價格範圍</span>
+            <span class="rentwarehouse-price-title color-primary pl-5">{{ __('frontend_branchLocation.priceRange') }}</span>
             <span id="amount" class="rentwarehouse-price-title color-primary rentwarehouse-price pl-10"></span>
         </div>
         <div class="relative pt-5">
@@ -310,13 +310,13 @@
         </div>
         <div class="flex pt-5 pb-3">
             <a href="{{route('pages.calculator')}}">
-                <p class="branchlocation-store-select-description my-auto">租迷你倉唔知自己需要咩size ? 試下我地既空間計算器</p>
+                <p class="branchlocation-store-select-description my-auto">{{__('frontend_branchLocation.localSpaceCalculator')}}</p>
             </a>
             <img class="object-none box-content pl-1 -mt-1" src="{{ asset('branchlocation/icons8-crown-48@2x.png') }}" />
         </div>
 
     </div>
-    <div class="rentwarehouse-wrapper-title color-primary text-center pb-4">迷你倉分店位置</div>
+    <div class="rentwarehouse-wrapper-title color-primary text-center pb-4">{{ __('frontend_branchLocation.branchLocations') }}</div>
     <div class="grid grid-cols-1 row-gap-2 pt-5 px-6" id="storesList">
         @foreach($stores as $store)
             <?php
@@ -325,7 +325,7 @@
         <div class="flex flex-col justify-between relative rounded overflow-hidden shadow-lg location-content-item mx-auto mb-4" data-name="{{$store->branch}}" data-price="{{$store->price}}" data-size-label="{{$store_model->getSizeLabel()}}">
             <a href="{{route('pages.rentWareHouse', $store->_id)}}" class="relative">
                 <div class="ribbon ribbon-badge ribbon-pink">
-                    <span class="ribbon-inner">最新優惠</span>
+                    <span class="ribbon-inner">{{ __('frontend_branchLocation.latestOffers') }}</span>
                 </div>
                 <?php
                 $storeImages = $store_model->storeImages()->where('is_used', true)->get();
@@ -345,11 +345,11 @@
                 </div>
                 <div class="flex py-1 pl-1 items-center">
                     <img class="w-3" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
-                    <p class="color-primary location-content-description">合符消防署條例 + 其他 8 項設施 </p>
+                    <p class="color-primary location-content-description">{{__('frontend_branchLocation.regulationFacility')}}</p>
                 </div>
                 <a href="{{route('pages.rentWareHouse', $store->_id)}}">
                     <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
-                        選擇
+                        {{ __('frontend_branchLocation.select') }}
                     </button>
                 </a>
             </div>

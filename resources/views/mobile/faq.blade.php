@@ -117,37 +117,60 @@
     <div class="flex maintitle-wrapper-m color-primary">
         <div class="relative maintitle-right-m">
             <div class="flex items-center">
-                <span>常見問題</span>
+                <span>{{__('frontend_faq.menuTitle')}}</span>
             </div>
         </div>
     </div>
 
     <div class="flex pt-10">
         <ul class="w-max-content pr-2 mx-auto" id="faq-menu">
-            @foreach(Helper::$FAQ_DATA as $index => $data)
-                <li data-index="{{$index}}" class="p-3 cursor-pointer item category-title">{{$data['category']}}</li>
-            @endforeach
+            @if(Session::has('locale') && Session::get('locale') == "en")
+                @foreach(Helper::$FAQ_DATA_EN as $index => $data)
+                    <li data-index="{{$index}}" class="p-3 cursor-pointer item category-title">{{$data['category']}}</li>
+                @endforeach
+            @else
+                @foreach(Helper::$FAQ_DATA_CH as $index => $data)
+                    <li data-index="{{$index}}" class="p-3 cursor-pointer item category-title">{{$data['category']}}</li>
+                @endforeach
+            @endif
         </ul>
     </div>
     <div id="faq-content" class="bg-gray content-area px-6">
-        @foreach(Helper::$FAQ_DATA as $data)
-            <div id=`{{'content'.$index}}` class="faq-wrapper">
-                @foreach($data['faqs'] as $faq)
-                    <div class="accordion flex justify-between appearance-none ">
-                        <p class="break-words">{{$faq['question']}}</p>
-                        <i class="icon wb-chevron-down text-gray-700 ml-4"></i>
-                    </div>
-                    <div class="answer-panel">
-                        <p class="leading-normal py-4 color-primary">{{$faq['answer']}}</p>
-                    </div>
-                @endforeach
-            </div>
-        @endforeach
+        @if(Session::has('locale') && Session::get('locale') == "en")
+            @foreach(Helper::$FAQ_DATA_EN as $data)
+                <div id=`{{'content'.$index}}` class="faq-wrapper">
+                    @foreach($data['faqs'] as $faq)
+                        <div class="accordion flex justify-between appearance-none ">
+                            <p class="break-words">{{$faq['question']}}</p>
+                            <i class="icon wb-chevron-down text-gray-700 ml-4"></i>
+                        </div>
+                        <div class="answer-panel">
+                            <p class="leading-normal py-4 color-primary">{{$faq['answer']}}</p>
+                        </div>
+                    @endforeach
+                </div>
+            @endforeach
+        @else
+            @foreach(Helper::$FAQ_DATA_CH as $data)
+                <div id=`{{'content'.$index}}` class="faq-wrapper">
+                    @foreach($data['faqs'] as $faq)
+                        <div class="accordion flex justify-between appearance-none ">
+                            <p class="break-words">{{$faq['question']}}</p>
+                            <i class="icon wb-chevron-down text-gray-700 ml-4"></i>
+                        </div>
+                        <div class="answer-panel">
+                            <p class="leading-normal py-4 color-primary">{{$faq['answer']}}</p>
+                        </div>
+                    @endforeach
+                </div>
+            @endforeach
+        @endif
+
     </div>
 
 
     <div class="bg-white px-6 py-10">
-        <div class="capitalize mt-2 maintitle-right-bottom-m mb-8">搵唔到您想要嘅答案，不如直接聯絡我地啦！</div>
+        <div class="capitalize mt-2 maintitle-right-bottom-m mb-8">{{__('frontend_faq.pageSubTitle')}}</div>
         @include('partials.enquiryForm', ['page' => Helper::$SS_FROM_FAQ_PAGE])
     </div>
 

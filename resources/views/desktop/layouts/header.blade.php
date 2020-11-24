@@ -16,15 +16,15 @@
             <ul class="pl-20 xl:pl-36 list-reset flex flex-col md:flex-row lg:ml-0 lg:justify-end justify-between flex-1 items-center font_15 source-han" style="z-index: 50;">
 
                 <li class="mr-1 md:mr-0 dropdown">
-                    <a class="dropbtn inline-block default-color no-underline py-2 px-2" href="{{route('pages.aboutUs')}}">關於我們</a>
+                    <a class="dropbtn inline-block default-color no-underline py-2 px-2" href="{{route('pages.aboutUs')}}">{{ __('frontend_about.menuTitle') }}</a>
                 </li>
 
                 <li class="mr-1 md:mr-0 dropdown">
-                    <a class="dropbtn inline-block default-color no-underline  py-2 px-2" href="{{route('pages.lastNews')}}">最新資訊</a>
+                    <a class="dropbtn inline-block default-color no-underline  py-2 px-2" href="{{route('pages.lastNews')}}">{{ __('frontend_latestNews.menuTitle') }}</a>
                 </li>
 
                 <li class="mr-1 md:mr-0 dropdown">
-                    <a class="dropbtn inline-block default-color no-underline py-2 px-2" href="{{route('pages.branchLocation')}}">分店位置</a>
+                    <a class="dropbtn inline-block default-color no-underline py-2 px-2" href="{{route('pages.branchLocation')}}">{{ __('frontend_branchLocation.menuTitle') }}</a>
 
                     <ul class="dropdown-content">
                         <?php $locations = App\Store::getLocations(); ?>
@@ -38,15 +38,16 @@
                     </ul>
                 </li>
                 <li class="relative mr-1 md:mr-0 dropdown">
-                    <a class="dropbtn crown inline-block default-color no-underline py-2 px-2" href="{{route('pages.calculator')}}">空間計算器</a>
+                    <a class="dropbtn crown inline-block default-color no-underline py-2 px-2" href="{{route('pages.calculator')}}">{{__('frontend_calculator.menuTitle')}}</a>
                 </li>
                 <li class="relative mr-1 md:mr-0 dropdown">
-                    <a class="dropbtn inline-block default-color no-underline  py-2 px-2" href="{{route('pages.faq')}}">常見問題</a>
+                    <a class="dropbtn inline-block default-color no-underline  py-2 px-2" href="{{route('pages.faq')}}">{{__('frontend_faq.menuTitle')}}</a>
                 </li>
 
                 <li class="relative mr-0 md:mr-8 dropdown">
-                    <a class="dropbtn inline-block default-color no-underline  py-2 px-2" href="{{route('pages.contactUs')}}">聯絡我們</a>
+                    <a class="dropbtn inline-block default-color no-underline  py-2 px-2" href="{{route('pages.contactUs')}}">{{__('frontend_contact_us.menuTitle')}}</a>
                 </li>
+
 
                 <li class="sm:mr-5 md:mr-10 lg:mr-15">
                     <a href="https://wa.me/85251188503" target="_blank" class="flex">
@@ -55,13 +56,28 @@
                     </a>
                 </li>
                 <div class="flex">
+                    <li class="mr-1 md:mr-0 dropdown my-auto">
+                        <a class="dropbtn inline-block default-color no-underline py-2 px-2" href="#">
+                            {{Helper::getLocalName()}}
+                        </a>
+                        <ul class="dropdown-content">
+                            <li class="py-1">
+                                <a class="block hover:text-purple-700 cursor-pointer font_15" href="{{url('locale/zh-CN')}}">
+                                    Chinese
+                                </a>
+                                <a class="block hover:text-purple-700 cursor-pointer font_15" href="{{url('locale/en')}}">
+                                    English
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <?php
                     if (Auth::check()) {
                     ?>
                     <li class="mr-1 md:mr-0">
                         <a class="inline-block font_16 default-color no-underline py-2 px-2" href="{{route('pages.account')}}" style="display: flex;">
                             <img class=" mr-1" src="{{asset('images/header/icons8-user-50@2x.png')}}" />
-                            <span class=" self-center text-primary">帳戶</span>
+                            <span class=" self-center text-primary">{{__('frontend_header.account')}}</span>
                         </a>
                     </li>
                     <li class="mr-1 md:mr-0">
@@ -71,7 +87,7 @@
                         <a class="{{$hasMsg ? 'inbox new-msg' : ' '}} inline-block font_16 default-color no-underline py-2 px-2" href="{{route('pages.chatList')}}" style="display: flex;">
                             <img class="mr-1" src="{{asset('images/header/icons8-secured-letter-40@2x.png')}}" />
                             <span class="self-center text-primary">
-                                        信息
+                                        {{__('frontend_header.information')}}
                                     </span>
                         </a>
                     </li>
@@ -81,14 +97,14 @@
                     <li class="mr-1 md:mr-0">
                         <a class="inline-block font_16 default-color no-underline py-2 px-2" href="{{route('login')}}" style="display: flex;">
                             <img class=" mr-1" src="{{asset('images/header/icons8-user-50@2x.png')}}" />
-                            <span class=" self-center text-primary">登入</span>
+                            <span class=" self-center text-primary">{{__('frontend_login.menuTitle')}}</span>
                         </a>
                     </li>
                     <li class="mr-1 md:mr-0">
                         <a class=" inline-block  font_16 default-color no-underline  py-2 px-2" href="{{route('register')}}" style="display: flex;">
                             <img class="mr-1" src="{{asset('images/header/icons8-join-50@2x.png')}}" />
                             <span class="self-center text-primary">
-                                        註冊
+                                        {{__('frontend_register.menuTitle')}}
                                     </span>
                         </a>
                     </li>

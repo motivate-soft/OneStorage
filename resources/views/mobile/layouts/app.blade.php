@@ -168,6 +168,7 @@
 
 
     <script src="{{ asset('js/accessory.js') }}"></script>
+    <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('js/onestorage.js') }}"></script>
 
     @yield('scripts')

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Store;
 use App\AppConfig;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use DB;
 
 /**
@@ -58,7 +59,13 @@ class StoreController extends Controller
      */
     public function getBranch(){
         $location = isset($_GET['location']) ? $_GET['location'] : '';
-        $branches = Store::where('location', $location)->select('branch', '_id', 'address')->get();
+        $branches = DB::table('store_translations')
+            ->leftJoin('stores', 'stores.id', '=', 'store_translations.store_id')
+            ->where('locale', App::getLocale())
+            ->where('location', $location)
+            ->select('store_translations.branch', 'stores._id', 'store_translations.address')
+            ->get();
+//        $branches = Store::where('location', $location)->select('branch', '_id', 'address')->get();
         return $branches;
     }
 
@@ -85,8 +92,10 @@ class StoreController extends Controller
         $_GET['location'] = $location;
 
         $stores = DB::table('stores')->join('store_sizes', 'store_sizes.store_id', '=', 'stores.id')
+            ->join('store_translations', 'store_translations.store_id', '=', 'stores.id')
+            ->where('store_translations.locale', App::getLocale())
             ->groupBy('stores.id')
-            ->selectRaw('stores.*, min(store_sizes.prepaid_price) as price');
+            ->selectRaw('stores.*, store_translations.* ,min(store_sizes.prepaid_price) as price');
 
         $appConfig = AppConfig::first();
 

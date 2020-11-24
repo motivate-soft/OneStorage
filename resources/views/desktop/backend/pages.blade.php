@@ -72,6 +72,7 @@
     .container {
         position: relative;
     }
+
 </style>
 @endsection
 
@@ -80,16 +81,15 @@
     <div class="w-1/2">
         <div class="mb-6">
             <div>
-                <span class="font_25 mr-4">Pages</span>
-                <span class="font_16">Frontpage</span>
+                <span class="font_25 mr-4">{{ __('backend_pages.title') }}</span>
+                <span class="font_16">{{ __('backend_pages.frontPage') }}</span>
             </div>
         </div>
         <div class="flex flex-col">
             <div class="bg-white w-full border border-primary shadow-lg p-5 mb-10">
                 <p class="font_26 mb-2">
-                    首頁圖片
+                    {{ __('backend_pages.homeImage') }}
                 </p>
-                <!-- <p class="font_16 robert-regular mb-2">C:/Users/download/bg.jpg</p> -->
                 <div class="grid grid-cols-3 row-gap-2 col-gap-2 mb-2">
                     <?php
                     $backgrounds = App\Background::all();
@@ -118,7 +118,7 @@
             </div>
             <div class="bg-white w-full border border-primary shadow-lg p-5">
                 <p class="font_26 mb-2">
-                    最新優惠
+                    {{ __('backend_pages.latestOffers') }}
                 </p>
                 <div class="grid grid-cols-2 col-gap-4 row-gap-2 p-4" id="promotion-wrapper">
                     <?php
@@ -130,16 +130,16 @@
                     ?>
                     @foreach($data as $key => $item)
                     <label class="promotion-item"><input {{$item ? '' : 'disabled'}} {{$item && $item->state ? 'checked' : ''}} data-id="{{$item ? $item->id : ''}}" class="checkbox mr-3" type="checkbox" />
-                        {{$key.'. '}}<span>{{$item ? $item->title : '"Title of the news"'}}</span>
+                        {{$key.'. '}}<span>{{$item ? $item->title : __('backend_pages.titleOfNews')}}</span>
                     </label>
                     @endforeach
                 </div>
                 <div class="flex mx-2">
                     <div class="w-1/3 mr-12">
-                        <p class="mb-2">Select Position</p>
+                        <p class="mb-2">{{ __('backend_pages.selectPos') }}</p>
                         <div class="w-full inline-block relative">
                             <select id="position-select" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
-                                <option value="" selected disabled class="text-grey">Position</option>
+                                <option value="" selected disabled class="text-grey">{{ __('backend_pages.position') }}</option>
                                 @for($i = 1; $i < 7; $i++) <option value="{{$i}}">{{$i}}</option>
                                     @endfor
                             </select>
@@ -150,10 +150,10 @@
                         </div>
                     </div>
                     <div class="w-2/3">
-                        <p class="mb-2">Select news</p>
+                        <p class="mb-2">{{ __('backend_pages.selectNews') }}</p>
                         <div class="w-full inline-block relative">
                             <select id="news-select" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
-                                <option value="" selected disabled class="text-grey">News</option>
+                                <option value="" selected disabled class="text-grey">{{ __('backend_pages.news') }}</option>
                                 <?php
                                 $promotionNews = App\Blog::where('used_promotion', true)->get();
                                 ?>
@@ -179,21 +179,21 @@
             <div class="mb-6 flex justify-between">
                 <div>
                     <span class="font_25"></span>
-                    <span class="font_16">News/ Blog / Promo</span>
+                    <span class="font_16">{{ __('backend_pages.newsBlogPromo') }}</span>
                 </div>
                 <div class="flex justify-between">
-                    <button type="submit" class="font_21 px-8 py-1 text-white mr-4" style="background-color: #B881FD;">儲存</button>
-                    <button type="button" class="deleteBtn font_21 px-8 py-1 text-white mr-4" style="background-color: #FD8181;">刪除</button>
-                    <button type="reset" id="resetBtn" class="font_21 px-4 py-1 text-black">取消</button>
+                    <button type="submit" class="font_21 px-8 py-1 text-white mr-4" style="background-color: #B881FD;">{{ __('backend_pages.save') }}</button>
+                    <button type="button" class="deleteBtn font_21 px-8 py-1 text-white mr-4" style="background-color: #FD8181;">{{ __('backend_pages.delete') }}</button>
+                    <button type="reset" id="resetBtn" class="font_21 px-4 py-1 text-black">{{ __('backend_pages.cancel') }}</button>
                 </div>
             </div>
             <div class="">
                 <div class="bg-white h-full border border-primary shadow-lg px-10 py-5">
 
                     <p class="font_26 mb-2">
-                        圖片
+                        {{ __('backend_pages.image') }}
                     </p>
-                    <p class="font_16 robert-regular mb-2">Content Picture</p>
+                    <p class="font_16 robert-regular mb-2">{{ __('backend_pages.contentPicture') }}</p>
                     <div class="flex w-1/2 mb-4 image-wrapper">
                         <img id="imagePreview" class="mr-4 preview w-1/2" />
                         <div class="w-1/2 flex flex-col justify-center">
@@ -203,7 +203,7 @@
                     </div>
                     <div class="flex">
                         <div class="w-1/2">
-                            <p class="font_16 robert-regular mb-2">Thumbnail Picture</p>
+                            <p class="font_16 robert-regular mb-2">{{ __('backend_pages.thumbnailPicture') }}</p>
                             <div class="flex mb-4 image-wrapper">
                                 <img id="thumbPreview" class="mr-4 preview w-1/2" />
                                 <div class="w-1/2 flex flex-col justify-center">
@@ -224,7 +224,7 @@
                         </div>
                     </div>
                     <label class="robert-regular font_14">
-                        <input class="mb-4 mr-3" type="checkbox" name="usedNotify" id="usedNotify" />Use as Notification Bar
+                        <input class="mb-4 mr-3" type="checkbox" name="usedNotify" id="usedNotify" />{{ __('backend_pages.useAsNotifyBar') }}
                     </label>
                     <div class="border-b border-gray-300 mb-4">
                         <div class="mb-4">
@@ -232,19 +232,19 @@
                             <input placeholder="Id" class="form-input w-full appearance-none bg-white border border-gray-300 p-2 text-base" name="_id" required type="text" id="id">
                         </div>
                         <div class="mb-4">
-                            <p class="font_26 mb-2">題目</p>
+                            <p class="font_26 mb-2">{{ __('backend_pages.blogTopic') }}</p>
                             <input placeholder="Title" class="form-input w-full appearance-none bg-white border border-gray-300 p-2 text-base" name="title" required type="text" id="title">
                         </div>
                         <div class="mb-4">
-                            <p class="font_26 mb-2">題目</p>
-                            <textarea placeholder="Content" name="content" required rows="4" class="form-input w-full appearance-none bg-white border border-gray-300 p-2 text-base" id="content"></textarea>
+                            <p class="font_26 mb-2">{{ __('backend_pages.blogContent') }}</p>
+                            <textarea placeholder="Content" name="content" required rows="8" class="form-input w-full ckeditor" id="content"></textarea>
                         </div>
-                        <p class="font_26 mb-2">刊登日期</p>
+                        <p class="font_26 mb-2">{{ __('backend_pages.publishDate') }}</p>
                         <div class="date-group">
                             <div class="date-component">
                                 <div class="relative mr-4">
                                     <select id="daySelector" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日" name="day" required>
-                                        <option value="" selected disabled>日</option>
+                                        <option value="" selected disabled>{{ __('backend_pages.day') }}</option>
                                         @for($i = 1; $i < 32; $i++) <option value="{{$i}}">{{$i}}</option>
                                         @endfor
                                     </select>
@@ -258,7 +258,7 @@
                             <div class="date-component">
                                 <div class="relative mr-4">
                                     <select id="monthSelector" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="month" required>
-                                        <option value="" selected disabled>月</option>
+                                        <option value="" selected disabled>{{ __('backend_pages.month') }}</option>
                                         @for($i = 1; $i < 13; $i++) <option value="{{$i}}">{{$i}}</option>
                                         @endfor
                                     </select>
@@ -272,7 +272,7 @@
                             <div class="date-component">
                                 <div class="relative">
                                     <select id="yearSelector" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="year" required>
-                                        <option value="" selected disabled>年</option>
+                                        <option value="" selected disabled>{{ __('backend_pages.year') }}</option>
                                         @for($i = 1990; $i < 2021; $i++) <option value="{{$i}}">{{$i}}</option>
                                         @endfor
                                     </select>
@@ -288,7 +288,7 @@
 
 
                     <div>
-                        <p class="font_26 mb-2">Title</p>
+                        <p class="font_26 mb-2">{{ __('backend_pages.blogTopic') }}</p>
 
                         <?php
                         $newses = \App\Blog::getNewses()->paginate(5);
@@ -322,13 +322,16 @@
 
 @section('scripts')
 <script>
+
+
+
     function readURL(input, preview) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
             reader.onload = function(e) {
                 preview.attr('src', e.target.result);
-            }
+            };
 
             reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
@@ -401,7 +404,10 @@
                 $("#usedNotify").prop("checked", blog.used_notify);
                 $("#id").val(blog._id);
                 $("#title").val(blog.title);
+
+                CKEDITOR.instances['content'].setData(blog.content);
                 $("#content").val(blog.content);
+
                 $("#method").val('PUT');
                 $("#blogId").val(blog.id);
                 const date = new Date(blog.publish_date.date);
@@ -409,11 +415,11 @@
                 actionBar.show();
             }
         });
-    })
+    });
 
     $(".input-wrapper").click(function() {
         $(this).next(".image-input").click();
-    })
+    });
 
     $(".image-input").change(function() {
         readURL(this, $(this).closest('.image-wrapper').find('.preview'));
@@ -460,9 +466,8 @@
                     item.find('span').text($("#news-select option:selected").text());
                 }
             });
-
         }
-    })
+    });
 
 
     $(function() {
@@ -472,5 +477,11 @@
         $("#resetBtn").click();
         OneStorage.DOB(new Date());
     });
+
+    $("#content").ckeditor();
+
+    CKEDITOR.replace( 'content', {
+        height: 700
+    } );
 </script>
 @endsection

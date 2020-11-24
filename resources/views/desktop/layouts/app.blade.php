@@ -76,9 +76,13 @@
             @yield('content')
         </main>
         @yield('footer')
+
     </div>
 
+    <input id="locale" value="{{\Illuminate\Support\Facades\Session::get('locale')}}" type="hidden">
+
     <script src="{{ asset('js/accessory.js') }}"></script>
+    <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('js/onestorage.js') }}"></script>
 
     @yield('scripts')

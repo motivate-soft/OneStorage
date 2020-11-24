@@ -18,52 +18,6 @@ use Illuminate\Support\Facades\Mail;
  */
 class EnquiryController extends Controller
 {
-    public static $SEARCH_KEYS = [
-        [
-            'key' => 'created_at',
-            'value' => '日期'
-        ],
-        [
-            'key' => 'first_name',
-            'value' => 'First name'
-        ],
-        [
-            'key' => 'last_name',
-            'value' => 'Last name'
-        ],
-        [
-            'key' => 'phone_number',
-            'value' => 'Telephone'
-        ],
-        [
-            'key' => 'email',
-            'value' => 'Email'
-        ],
-        [
-            'key' => 'branch_name',
-            'value' => '需求'
-        ],
-        [
-            'key' => 'question',
-            'value' => '查詢問題'
-        ],
-        [
-            'key' => 'message',
-            'value' => '你的信息'
-        ],
-        [
-            'key' => 'page',
-            'value' => '頁面'
-        ],
-        [
-            'key' => 'status',
-            'value' => '狀態'
-        ],
-        [
-            'key' => 'principal',
-            'value' => '負責人'
-        ]
-    ];
     public static $EXPORT_NAME = "enquiries.xlsx";
     public static $ROWS_PER_PAGE = 10;
     /**
@@ -72,6 +26,52 @@ class EnquiryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
+        $SEARCH_KEYS = [
+            [
+                'key' => 'created_at',
+                'value' => __('backend_enquiries.date')
+            ],
+            [
+                'key' => 'first_name',
+                'value' => __('backend_enquiries.firstName')
+            ],
+            [
+                'key' => 'last_name',
+                'value' => __('backend_enquiries.lastName')
+            ],
+            [
+                'key' => 'phone_number',
+                'value' => __('backend_enquiries.telephone')
+            ],
+            [
+                'key' => 'email',
+                'value' => __('backend_enquiries.email')
+            ],
+            [
+                'key' => 'branch_name',
+                'value' => __('backend_enquiries.demand')
+            ],
+            [
+                'key' => 'question',
+                'value' => __('backend_enquiries.question')
+            ],
+            [
+                'key' => 'message',
+                'value' => __('backend_enquiries.message')
+            ],
+            [
+                'key' => 'page',
+                'value' => __('backend_enquiries.page')
+            ],
+            [
+                'key' => 'status',
+                'value' => __('backend_enquiries.status')
+            ],
+            [
+                'key' => 'principal',
+                'value' => __('backend_enquiries.principle')
+            ]
+        ];
         $key = isset($_GET['key']) ? $_GET['key'] : '';
         $value = isset($_GET['value']) ? $_GET['value'] : '';
 
@@ -83,7 +83,7 @@ class EnquiryController extends Controller
 
         $enquiries = $enquiries->paginate(static::$ROWS_PER_PAGE)->appends(request()->query());
 
-        return view('backend.enquiries', ['enquiries' => $enquiries, 'keys' => static::$SEARCH_KEYS]);
+        return view('backend.enquiries', ['enquiries' => $enquiries, 'keys' => $SEARCH_KEYS]);
     }
 
     /**

@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'dearCustomer' => '親愛的顧客:',
+    'congratulation' => '恭喜閣下已辦妥至尊迷你倉',
+    'redemption' => '獨家優惠的換領手續',
+    'coupon' => '優惠碼如下 :',
+    'supremeMiniStorage' => '請妥善保管此電郵上的優惠碼，並於預約參觀至尊迷你倉',
+    'promoCode' => '旗下分店及簽訂租倉合約時，向職員出示閣下所擁有之優惠碼，優惠方能生效。',
+    'browseNow' => '請即瀏覽',
+    'closest' => '參考最接近您的至尊迷你倉 ',
+    'branchLocation' => ' 分店位置，預約參觀服務。',
+    'thankYou' => '感謝閣下對',
+    'serviceExperience' => '的支持，我們期待為您送上最可靠便捷的存倉服務及尊貴的服務體驗。',
+    'happyLife' => '祝您生活愉快！',
+    'team' => '團隊',
+    'usageRule' => '使用細則 : ',
+    'eachCoupon' => '1. 每個優惠碼只可使用一次，每次只限租用一個至尊迷你倉One Storage轄下的迷你倉。',
+    'offerDescription' => '2. 此優惠只適用於6個月或以上之預繳計劃。',
+    'couponCode' => '3. 此優惠碼不可同時與其他折扣一起使用。',
+    'dispute' => '4. 如有任何爭議，至尊迷你倉One Storage保留最終決定權。',
+    'enquiry' => '5. 如您對此優惠有任何查詢，請致電2111 2636聯絡我們的客戶服務主任，或到 ',
+    'contactOnline' => ' 聯絡線上客服。',
+    'extremeMiniStorage' => '至尊迷你倉',
+];

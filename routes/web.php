@@ -12,11 +12,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Session;
 
 // Common routes
 Route::get('/branches', 'StoreController@getBranch');
 Route::put('/messages/{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
 
+Route::get('/locale/{locale}', function($locale){
+    Session::put('locale', $locale);
+    return redirect()->back();
+})->name('locale');
 
 // User pages routes
 Route::group(['prefix' => '/'], function () {
@@ -35,6 +40,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/one-storage-login', 'AuthController@loginPage')->name('login');
     Route::get('/one-storage-register', 'AuthController@registerPage')->name('register');
     Route::get('/forgot-password', 'AuthController@forgotPwdPage')->middleware(['guest'])->name('password.request');
+    Route::get('/forgot-number', 'AuthController@forgotNumPage')->middleware(['guest'])->name('number.request');
     Route::get('/reset-password/{token}', function ($token) {
         return view('account.reset-password', ['token' => $token]);
     })->middleware(['guest'])->name('password.reset');
@@ -43,7 +49,10 @@ Route::group(['prefix' => '/'], function () {
 
     Route::post('login', 'AuthController@login');
     Route::post('register', 'AuthController@register');
+
     Route::post('forgot-password', 'AuthController@forgotPwd')->middleware(['guest'])->name('password.email');
+    Route::post('forgot-number', 'AuthController@forgotNum')->middleware(['guest'])->name('number.email');
+
     Route::post('reset-password', 'AuthController@resetPwd')->middleware(['guest'])->name('password.update');
     Route::get('logout', 'AuthController@logout')->name('logout');
 

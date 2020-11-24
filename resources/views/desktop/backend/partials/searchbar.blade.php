@@ -1,7 +1,7 @@
 <form method="GET" action="{{Request::url()}}" class="flex justify-end" style="height: 44px;">
     <div class="flex relative mr-8 shadow-md">
         <select name="key" id="search-field-select" class="block text-primary appearance-none w-full bg-white border-none hover:border-gray-500 px-20 leading-tight focus:outline-none focus:shadow-outline ">
-            <option value="" selected class="text-grey">Search Field</option>
+            <option value="" selected class="text-grey">{{ __('backend_enquiries.searchField') }}</option>
             @foreach($keys as $key)
             <option value="{{$key['key']}}" {{$key['key'] == (isset($_GET['key'])?$_GET['key']:'') ? 'selected' : ''}} class="text-grey-2">{{$key['value']}}</option>
             @endforeach
@@ -15,5 +15,5 @@
         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x1.png')}}" alt="">
         <input class="form-control w-full shadow-md" style="color: #4D5567 !important" type="text" placeholder="" name="value" value="{{isset($_GET['value'])?$_GET['value']:''}}">
     </div>
-    <a class="ml-8 text-blue-700 my-auto cursor-pointer" href="{{Request::url().'/export'}}">Export as xls</a>
+    <a class="ml-8 text-blue-700 my-auto cursor-pointer" href="{{Request::url().'/export'}}">{{ __('backend_enquiries.exportAsXLS') }}</a>
 </form>

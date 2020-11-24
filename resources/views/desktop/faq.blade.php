@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('迷你倉 | 常見問題 | 至尊迷你倉 One Storage')}}</title>
+<title>{{__('frontend_faq.title')}}</title>
 @endsection
 
 @section('styles')
@@ -127,40 +127,62 @@
 
     <div class="maintitle-wrapper color-primary text-center">
         <div class="maintitle-right">
-            <p class="mb-6 self-center">常見問題</p>
+            <p class="mb-6 self-center">{{__('frontend_faq.menuTitle')}}</p>
         </div>
     </div>
 
     <div class="grid grid-cols-10 gap-6 pt-10">
         <div class="col-start-1 col-span-3 flex relative justify-center">
             <ul class="pl-24" id="faq-menu">
-                @foreach(Helper::$FAQ_DATA as $index => $data)
-                    <li data-index="{{$index}}" class="p-3 cursor-pointer item category-title">{{$data['category']}}</li>
-                @endforeach
+                @if(Session::has('locale') && Session::get('locale') == "en")
+                    @foreach(Helper::$FAQ_DATA_EN as $index => $data)
+                        <li data-index="{{$index}}" class="p-3 cursor-pointer item category-title">{{$data['category']}}</li>
+                    @endforeach
+                @else
+                    @foreach(Helper::$FAQ_DATA_CH as $index => $data)
+                        <li data-index="{{$index}}" class="p-3 cursor-pointer item category-title">{{$data['category']}}</li>
+                    @endforeach
+                @endif
+
+
             </ul>
         </div>
         <div class="col-start-4 col-span-7 bg-gray content-area pr-40 pb-10" id="faq-content">
-            @foreach(Helper::$FAQ_DATA as $data)
-                <div id=`{{'content'.$index}}` class="faq-wrapper">
-                    @foreach($data['faqs'] as $faq)
-                        <div class="accordion flex justify-between appearance-none ">
-                            <p class="break-words">{{$faq['question']}}</p>
-                            <i class="icon wb-chevron-down text-gray-700 ml-4"></i>
-                        </div>
-                        <div class="answer-panel">
-                            <p class="leading-normal py-4 color-primary">{{$faq['answer']}}</p>
-                        </div>
-                    @endforeach
-                </div>
-            @endforeach
+            @if(Session::has('locale') && Session::get('locale') == "en")
+                @foreach(Helper::$FAQ_DATA_EN as $data)
+                    <div id=`{{'content'.$index}}` class="faq-wrapper">
+                        @foreach($data['faqs'] as $faq)
+                            <div class="accordion flex justify-between appearance-none ">
+                                <p class="break-words">{{$faq['question']}}</p>
+                                <i class="icon wb-chevron-down text-gray-700 ml-4"></i>
+                            </div>
+                            <div class="answer-panel">
+                                <p class="leading-normal py-4 color-primary">{{$faq['answer']}}</p>
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
+            @else
+                @foreach(Helper::$FAQ_DATA_CH as $data)
+                    <div id=`{{'content'.$index}}` class="faq-wrapper">
+                        @foreach($data['faqs'] as $faq)
+                            <div class="accordion flex justify-between appearance-none ">
+                                <p class="break-words">{{$faq['question']}}</p>
+                                <i class="icon wb-chevron-down text-gray-700 ml-4"></i>
+                            </div>
+                            <div class="answer-panel">
+                                <p class="leading-normal py-4 color-primary">{{$faq['answer']}}</p>
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
+            @endif
         </div>
-
 
     </div>
 
-
     <div class="mt-4 w-full">
-        <p class="maintitle-right-bottom text-center mb-8">搵唔到您想要嘅答案，不如直接聯絡我地啦！</p>
+        <p class="maintitle-right-bottom text-center mb-8">{{__('frontend_faq.pageSubTitle')}}</p>
         <div class="w-1/3 mx-auto px-4">
             @include('partials.enquiryForm', ['page' => Helper::$SS_FROM_FAQ_PAGE])
         </div>

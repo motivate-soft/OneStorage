@@ -24,14 +24,14 @@
 
 @section('content')
 
-<div class="mt-10 robert-font mb-8 fontsize-25 regular-color text-center px-5 pt-4">{{Auth::user()->getName()}}, 歡迎你回來!</div>
+<div class="mt-10 robert-font mb-8 fontsize-25 regular-color text-center px-5 pt-4">{{Auth::user()->getName()}}, {{__('frontend_chatlist.welcomeBack')}}</div>
 <div class="w-full pb-8">
 
     <div class=" flex w-full">
         <div class="w-1/5"></div>
-        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{route('pages.account')}}">個人資料</a>
-        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color bg-grey" href="{{route('pages.chatList')}}">信息</a>
-        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{route('logout')}}">登出</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{route('pages.account')}}">{{__('frontend_chatlist.personalInformation')}}</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color bg-grey" href="{{route('pages.chatList')}}">{{__('frontend_chatlist.information')}}</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{route('logout')}}">{{__('frontend_chatlist.logout')}}</a>
         <div class="w-1/5"></div>
     </div>
 
@@ -100,7 +100,7 @@
                     </div>
                     <div class="font_16 robert-regular mt-6">
                         <textarea class="border fontsize-13 placeholder-gray-600 px-3 py-2 w-full border-gray-300" name="message" placeholder="Reply to Tom..." rows="3"></textarea>
-                        <button class="mt-4 mb-3 px-4 py-2 text-center" style="font-size: 17px;background-color: #3F81C7; color:white">送出</button>
+                        <button class="mt-4 mb-3 px-4 py-2 text-center" style="font-size: 17px;background-color: #3F81C7; color:white">{{__('frontend_common.logout')}}</button>
                     </div>
                 </div>
             </form>

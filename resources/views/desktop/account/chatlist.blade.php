@@ -38,7 +38,7 @@
         <!-- <img class="mx-15 object-none" src="{{asset('images/contactUs/Intersection 15@2x.png')}}" alt="Avatar of Jonathan Reinink"> -->
         <img class="mx-15 w-40 h-40 rounded-full object-fill" src="{{asset(Auth::user()->profile->avatar)}}" alt="Avatar of Jonathan Reinink">
         <div class="flex flex-col lg:rounded-b-none lg:rounded-r justify-end">
-            <div class="branch-title">{{Auth::user()->getName()}}, 歡迎你回來!</div>
+            <div class="branch-title">{{Auth::user()->getName()}}, {{__('frontend_chatlist.welcomeBack')}}</div>
         </div>
     </div>
 
@@ -47,13 +47,13 @@
         <div class="flex w-full mb-4">
             <div class="w-1/5">
                 <a href="{{route('pages.account')}}">
-                    <div class="border text-center branch-tab-active py-6">個人資料</div>
+                    <div class="border text-center branch-tab-active py-6">{{__('frontend_chatlist.personalInformation')}}</div>
                 </a>
                 <a href="{{route('pages.chatList')}}">
-                    <div class="border text-center branch-tab py-6">信息</div>
+                    <div class="border text-center branch-tab py-6">{{__('frontend_chatlist.information')}}</div>
                 </a>
                 <a href="{{route('logout')}}">
-                    <div class="border text-center branch-tab py-6" style="background-color: white !important;">登出</div>
+                    <div class="border text-center branch-tab py-6" style="background-color: white !important;">{{__('frontend_chatlist.logout')}}</div>
                 </a>
             </div>
 
@@ -96,7 +96,7 @@
                             <!-- <p class="text-right pt-2 font_14 robert-regular">28-Jul-2020</p> -->
                         </div>
                         <div class="font_19 mt-2 robert-regular">
-                            <p class="text-xs text-blue-500">Click here to chat with Admin</p>
+                            <p class="text-xs text-blue-500">{{__('frontend_chatlist.goAdminChat')}}</p>
                         </div>
                     </div>
                 </a>

@@ -190,9 +190,9 @@
     <div class="flex maintitle-wrapper-m color-primary">
         <div class="relative maintitle-right-m">
             <div class="flex items-center">
-                <span>空間計算器</span>
+                <span>{{__('frontend_calculator.menuTitle')}}</span>
             </div>
-            <div class="capitalize maintitle-right-bottom-m">唔知道自己需要幾大個倉？不如自己計一計！</div>
+            <div class="capitalize maintitle-right-bottom-m">{{__('frontend_calculator.pageSubTitle')}}</div>
         </div>
     </div>
 
@@ -209,51 +209,51 @@
     </div>
 
     <div>
-        <p class="color-primary text-left calculator-content-title-m">你需要租</p>
+        <p class="color-primary text-left calculator-content-title-m">{{__('frontend_calculator.needRent')}}</p>
     </div>
 
     <div class="flex overflow-x-auto pt-10 pb-5">
         <div class="flex-shrink-0 relative max-w-md rounded overflow-hidden shadow-lg room-card-wrapper-m store-select mx-3" id="s-store">
             <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-s.jpg') }}" alt="Room">
             <div class="px-6 py-4">
-                <div class="room-card-title text-center mb-2">小型倉</div>
+                <div class="room-card-title text-center mb-2">{{__('frontend_calculator.smallWarehouse')}}</div>
             </div>
             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                <button value="S" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
+                <button value="S" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">{{__('frontend_calculator.search')}}</button>
             </div>
         </div>
         <div class="flex-shrink-0 relative max-w-md rounded overflow-hidden shadow-lg room-card-wrapper-m store-select mx-3 active" id="m-store">
             <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-m.jpg') }}" alt="Room">
             <div class="px-6 py-4">
-                <div class="room-card-title text-center mb-2">中型倉</div>
+                <div class="room-card-title text-center mb-2">{{__('frontend_calculator.mediumWarehouse')}}</div>
             </div>
             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                <button value="M" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
+                <button value="M" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">{{__('frontend_calculator.search')}}</button>
             </div>
         </div>
         <div class="flex-shrink-0 relative max-w-md rounded overflow-hidden shadow-lg room-card-wrapper-m store-select mx-3" id="l-store">
             <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-l.jpg') }}" alt="Room">
             <div class="px-6 py-4">
-                <div class="room-card-title text-center mb-2">大型倉</div>
+                <div class="room-card-title text-center mb-2">{{__('frontend_calculator.largeWarehouse')}}</div>
             </div>
             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                <button value="L" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
+                <button value="L" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">{{__('frontend_calculator.search')}}</button>
             </div>
         </div>
         <div class="flex-shrink-0 relative max-w-md rounded overflow-hidden shadow-lg room-card-wrapper-m store-select mx-3" id="xl-store">
             <img class="room-card-image mx-auto" src="{{ asset('images/calculator/rooms-xl.jpg') }}" alt="Room">
             <div class="px-6 py-4">
-                <div class="room-card-title text-center mb-2">特大倉</div>
+                <div class="room-card-title text-center mb-2">{{__('frontend_calculator.extraWarehouse')}}</div>
             </div>
             <div class="absolute bottom-0 w-full px-6 pt-4 pb-5">
-                <button value="XL" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">搜尋</button>
+                <button value="XL" class="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow color-primary store-select-button">{{__('frontend_calculator.search')}}</button>
             </div>
         </div>
     </div>
 
     <div>
-        <p class="text-center font_34 mt-10 px-2">預計需要空間：<span id="sizeText">0</span> 呎</p>
-        <p class="color-primary text-left calculator-others-title-m">其他資訊</p>
+        <p class="text-center font_34 mt-10 px-2">{{__('frontend_calculator.expectNeedSpace')}}：<span id="sizeText">0</span> {{__('frontend_calculator.feet')}}</p>
+        <p class="color-primary text-left calculator-others-title-m">{{__('frontend_calculator.shareIt')}}</p>
     </div>
 
     <div class="grid grid-cols-1 row-gap-1 pb-10 px-6">

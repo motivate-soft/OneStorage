@@ -1,13 +1,13 @@
 <table class="w-full bg-white" id="content">
     <tr class="table-heading shadow-lg border border-primary">
-        <th class="py-5 border-r border-second">日期</th>
-        <th class="py-5 border-r border-second">客人資料</th>
-        <th class="py-5 border-r border-second">需求</th>
-        <th class="py-5 border-r border-second">查詢問題</th>
-        <th class="py-5 border-r border-second w-1/6">你的信息</th>
-        <th class="py-5 border-r border-second">頁面</th>
-        <th class="py-5 border-r border-second">狀態</th>
-        <th class="py-5">負責人</th>
+        <th class="py-5 border-r border-second">{{__('backend_enquiries.date')}}</th>
+        <th class="py-5 border-r border-second">{{__('backend_enquiries.profile')}}</th>
+        <th class="py-5 border-r border-second">{{__('backend_enquiries.demand')}}</th>
+        <th class="py-5 border-r border-second">{{__('backend_enquiries.question')}}</th>
+        <th class="py-5 border-r border-second w-1/6">{{__('backend_enquiries.message')}}</th>
+        <th class="py-5 border-r border-second">{{__('backend_enquiries.page')}}</th>
+        <th class="py-5 border-r border-second">{{__('backend_enquiries.status')}}</th>
+        <th class="py-5">{{__('backend_enquiries.principle')}}</th>
     </tr>
     @foreach($enquiries as $enquiry)
     <tr class="border-b border-third align-top">

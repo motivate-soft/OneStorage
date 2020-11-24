@@ -25,7 +25,7 @@
     <div class="flex mb-24">
         <img class="mx-15 img-avatar w-40 h-40 rounded-full object-fill" src="{{asset($user->profile->avatar)}}" alt="Avatar of Jonathan Reinink">
         <div class="flex flex-col lg:rounded-b-none lg:rounded-r justify-end">
-            <div class="branch-title">{{$user->getName()}}, 歡迎你回來!</div>
+            <div class="branch-title">{{$user->getName()}}, {{__('frontend_accountinfo.welcomeBack')}}</div>
         </div>
     </div>
 
@@ -33,20 +33,20 @@
         <div class=" flex w-full mb-4">
             <div class=" w-1/4"></div>
             <div class=" w-3/4">
-                <p class=" text-center" id="notification" style="color: #18B84D; font-size: 11px">更新成功! </p>
+                <p class=" text-center" id="notification" style="color: #18B84D; font-size: 11px">{{__('frontend_accountinfo.updateCompleted')}}</p>
             </div>
         </div>
 
         <div class="flex w-full mb-4">
             <div class="w-1/5">
                 <a href="{{route('pages.account')}}">
-                    <div class="border text-center branch-tab-active py-6">個人資料</div>
+                    <div class="border text-center branch-tab-active py-6">{{__('frontend_accountinfo.personalInformation')}}</div>
                 </a>
                 <a href="{{route('pages.chatList')}}">
-                    <div class="border text-center branch-tab py-6">信息</div>
+                    <div class="border text-center branch-tab py-6">{{__('frontend_accountinfo.information')}}</div>
                 </a>
                 <a href="{{route('logout')}}">
-                    <div class="border text-center branch-tab py-6" style="background-color: white !important;">登出</div>
+                    <div class="border text-center branch-tab py-6" style="background-color: white !important;">{{__('frontend_accountinfo.logout')}}</div>
                 </a>
             </div>
 
@@ -54,14 +54,14 @@
                 @csrf
                 <div class=" w-3/5 pl-12">
                     <div class=" sub-content">
-                        <p class="subcontent-header my-2 pt-4">個人資料</p>
+                        <p class="subcontent-header my-2 pt-4">{{__('frontend_accountinfo.personalInformation')}}</p>
 
                         <div class=" flex relative py-2">
-                            <p class=" w-1/4 input-label text-right ">姓 :</p>
+                            <p class=" w-1/4 input-label text-right ">{{__('frontend_accountinfo.lastName')}} :</p>
                             <div class=" flex w-1/4 items-center border-b">
                                 <input name="firstName" required id="firstName" class="ischanged appearance-none bg-transparent border-none text-center  w-full px-2 leading-tight" type="text" value="{{$user->first_name}}" readonly>
                             </div>
-                            <p class=" w-1/4 input-label text-right ">名 :</p>
+                            <p class=" w-1/4 input-label text-right ">{{__('frontend_accountinfo.firstName')}} :</p>
                             <div class=" w-1/4 items-center border-b">
                                 <input name="lastName" required id="lastName" class="ischanged appearance-none bg-transparent border-none w-full text-center  px-2 leading-tight" type="text" value="{{$user->last_name}}" readonly>
                             </div>
@@ -69,7 +69,7 @@
                         </div>
 
                         <div class=" flex relative py-2">
-                            <p class=" w-1/4 input-label text-right ">電子郵件 :</p>
+                            <p class=" w-1/4 input-label text-right ">{{__('frontend_accountinfo.email')}} :</p>
                             <div class=" w-3/4 items-center border-b">
                                 <input name="email" required id="email" class="ischanged appearance-none bg-transparent border-none text-center w-full  px-2 leading-tight" type="text" value="{{$user->email}}" readonly>
                             </div>
@@ -77,7 +77,7 @@
                         </div>
 
                         <div class=" flex relative py-2 mb-8">
-                            <p class=" w-1/4 input-label text-right ">手機號碼 :</p>
+                            <p class=" w-1/4 input-label text-right ">{{__('frontend_accountinfo.mobilePhoneNumber')}} :</p>
                             <div class=" w-3/4 items-center border-b">
                                 <input name="phone" required id="phone" class="ischanged appearance-none bg-transparent text-center border-none w-full  px-2 leading-tight" type="text" value="{{$user->phone}}" readonly>
                             </div>
@@ -98,10 +98,10 @@
                             </div>
                         </div> -->
 
-                        <p class="subcontent-header py-4 mb-2 ">更改密碼</p>
+                        <p class="subcontent-header py-4 mb-2 ">{{__('frontend_accountinfo.changePassword')}}</p>
 
                         <div class=" flex relative mb-8">
-                            <p class=" w-1/4 input-label text-right ">密碼 :</p>
+                            <p class=" w-1/4 input-label text-right ">{{__('frontend_accountinfo.password')}} :</p>
                             <div class=" w-3/4 items-center border-b">
                                 <input id="password" name="password" class="ischanged appearance-none bg-transparent border-none text-center w-full px-2 leading-tight" type="password" value="" readonly>
                             </div>
@@ -110,12 +110,12 @@
 
                         <div class="date-group">
 
-                            <p class=" date-title text-right  mr-2" style="font-size: 19px">生日日期</p>
+                            <p class=" date-title text-right  mr-2" style="font-size: 19px">{{__('frontend_accountinfo.birthdayDate')}}</p>
 
                             <div class=" date-component">
                                 <div class="inline-block relative">
-                                    <select id="daySelector" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日" name="day" required>
-                                        <option value="" selected>日</option>
+                                    <select id="daySelector" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="{{__('frontend_accountinfo.day')}}" name="day" required>
+                                        <option value="" selected>{{__('frontend_accountinfo.day')}}</option>
                                         @for($i = 1; $i < 32; $i++) <option value="{{$i}}">{{$i}}</option>
                                             @endfor
                                     </select>
@@ -129,7 +129,7 @@
                             <div class=" date-component">
                                 <div class="inline-block relative">
                                     <select id="monthSelector" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="month" required>
-                                        <option value="" selected>月</option>
+                                        <option value="" selected>{{__('frontend_accountinfo.month')}}</option>
                                         @for($i = 1; $i < 13; $i++) <option value="{{$i}}">{{$i}}</option>
                                             @endfor
                                     </select>
@@ -143,7 +143,7 @@
                             <div class=" date-component">
                                 <div class="inline-block relative">
                                     <select id="yearSelector" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="year" required>
-                                        <option value="" selected>年</option>
+                                        <option value="" selected>{{__('frontend_accountinfo.year')}}</option>
                                         @for($i = 1920; $i < 2021; $i++) <option value="{{$i}}">{{$i}}</option>
                                             @endfor
                                     </select>
@@ -155,15 +155,22 @@
                             </div>
                         </div>
 
-                        <p class="subcontent-header py-4 mb-2 ">住址</p>
+                        <p class="subcontent-header py-4 mb-2 ">{{__('frontend_accountinfo.address')}}</p>
 
                         <div class=" flex mb-8 py-4">
                             <div class=" w-1/3">
                                 <div class="inline-block relative w-full px-2">
                                     <select value="{{$user->profile->area}}" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="area">
-                                        <option value="" selected>地域</option>
+                                        <option value="" selected>{{__('frontend_accountinfo.part')}}</option>
                                         <?php
-                                        $areas = ["香港", "九龍", "新界"];
+
+                                            $areas = null;
+                                            if(Session::has('locale') && Session::get('locale')=="en") {
+                                                $areas = ["Hong Kong", "Kowloon", "New Territories"];
+                                            }
+                                            else {
+                                                $areas = ["香港", "九龍", "新界"];
+                                            }
                                         ?>
                                         @foreach($areas as $area)
                                         <option value="{{$area}}" {{$user->profile->area == $area ? 'selected' : ''}}>{{$area}}</option>
@@ -179,9 +186,15 @@
                             <div class=" w-2/3">
                                 <div class="inline-block relative w-full px-2">
                                     <select value="{{$user->profile->place}}" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="place">
-                                        <option value="" selected>地區</option>
+                                        <option value="" selected>{{__('frontend_accountinfo.area')}}</option>
                                         <?php
-                                        $places = ["中西區", "灣仔", "東區", "南區", "深水埗", "油尖旺", "九龍城", "黃大仙", "觀塘", "屯門", "元朗", "荃灣", "葵青", "離島", "北區", "大埔", "沙田", "西貢"];
+                                            $places = null;
+                                            if(Session::has('locale') && Session::get('locale')=="en") {
+                                                $places = ["Central and Western District", "Wanchai", "East District", "South District", "Sham shui po", "Yau Tsim Mong", "Kowloon City", "Wong Tai Sin", "Kwun Tong", "Tuen Mun", "Yuen Long", "Tsuen Wan", "Kwai Tsing", "Outlying islands", "North District", "Tai Po", "Sha Tin", "Saigon"];
+                                            }
+                                            else {
+                                                $places = ["中西區", "灣仔", "東區", "南區", "深水埗", "油尖旺", "九龍城", "黃大仙", "觀塘", "屯門", "元朗", "荃灣", "葵青", "離島", "北區", "大埔", "沙田", "西貢"];
+                                            }
                                         ?>
                                         @foreach($places as $place)
                                         <option value="{{$place}}" {{$user->profile->place == $place ? 'selected' : ''}}>{{$place}}</option>
@@ -197,13 +210,13 @@
 
                         <div class=" relative mb-8 px-2">
                             <div class=" w-full items-center border-b">
-                                <input value="{{$user->profile->address_line1}}" name="addr1" class="appearance-none bg-transparent border-none w-full px-2 py-1 leading-tight" type="text" placeholder="地址第一行">
+                                <input value="{{$user->profile->address_line1}}" name="addr1" class="appearance-none bg-transparent border-none w-full px-2 py-1 leading-tight" type="text" placeholder="{{__('frontend_accountinfo.addressLine1')}}">
                             </div>
                         </div>
 
                         <div class=" relative mb-8 px-2">
                             <div class=" w-full items-center border-b">
-                                <input value="{{$user->profile->address_line2}}" name="addr2" class="appearance-none bg-transparent border-none w-full px-2 py-1 leading-tight" type="text" placeholder="地址第二行">
+                                <input value="{{$user->profile->address_line2}}" name="addr2" class="appearance-none bg-transparent border-none w-full px-2 py-1 leading-tight" type="text" placeholder="{{__('frontend_accountinfo.addressLine2')}}">
                             </div>
                         </div>
 
@@ -214,7 +227,7 @@
                                     <?php
                                     $methods = ["Whatsapp", "Email", "Call"];
                                     ?>
-                                    <option value="" selected>最佳聯絡方式</option>
+                                    <option value="" selected>{{__('frontend_accountinfo.bestContactUs')}}</option>
                                     @foreach($methods as $method)
                                     <option value="{{$method}}" {{$user->profile->contact_method == $method ? 'selected' : ''}}>{{$method}}</option>
                                     @endforeach
@@ -229,22 +242,22 @@
 
                         <div class="radio-group">
 
-                            <p class="radio-title w-4/6 ">是否One Storage 現有客戶 ? </p>
+                            <p class="radio-title w-4/6 ">{{__('frontend_accountinfo.customerOneStorage')}}</p>
 
                             <div class=" radio-custom w-1/6">
                                 <input type="radio" id="storageyesunchecked" class="radio-gray" value="1" name="isCustomer">
-                                <label for="storageyesunchecked" class="radio-label">是</label>
+                                <label for="storageyesunchecked" class="radio-label">{{__('frontend_common.yes')}}</label>
                             </div>
                             <div class=" radio-custom w-1/6">
                                 <input type="radio" id="storagenochecked" checked class="radio-gray" value="0" name="isCustomer">
-                                <label for="storagenochecked" class="radio-label">否</label>
+                                <label for="storagenochecked" class="radio-label">{{__('frontend_common.no')}}</label>
                             </div>
                         </div>
 
                         <div class="flex">
                             <div class="w-1/3 inline-block relative mb-6">
                                 <select value="{{$user->profile->branch_id}}" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="branch">
-                                    <option value="" selected>分店</option>
+                                    <option value="" selected>{{__('frontend_accountinfo.branch')}}</option>
                                     <?php
                                     $branches = App\Store::select('branch', 'id')->get();
                                     ?>
@@ -262,26 +275,26 @@
 
                         <div class="radio-group pb-6">
 
-                            <p class="radio-title w-4/6 ">是否SoundWill Club 會員 ? </p>
+                            <p class="radio-title w-4/6 ">{{__('frontend_common.soundWillClub')}}</p>
 
                             <div class=" radio-custom w-1/6">
                                 <input type="radio" id="clubyesunchecked" class="radio-gray" value="1" name="isMember">
-                                <label for="clubyesunchecked" class="radio-label">是</label>
+                                <label for="clubyesunchecked" class="radio-label">{{__('frontend_common.yes')}}</label>
                             </div>
                             <div class=" radio-custom w-1/6">
                                 <input type="radio" id="clubnochecked" checked class="radio-gray" value="0" name="isMember">
-                                <label for="clubnochecked" class="radio-label">否</label>
+                                <label for="clubnochecked" class="radio-label">{{__('frontend_common.no')}}</label>
                             </div>
                         </div>
                         <button class="submit-btn hover:bg-purple-400 my-4">
-                            更新
+                            {{__('frontend_common.update')}}
                         </button>
                     </div>
                 </div>
                 <div class="w-2/5 pt-10">
                     <img class="object-fill img-avatar rounded-full mx-auto h-40 w-40 cursor-pointer" src="{{asset($user->profile->avatar)}}" alt="Avatar of Jonathan Reinink">
                     <input type="file" name="avatar" class="hidden img-input" accept=".jpg,.png,.gif" />
-                    <p class="text-center py-3" style="color: #4D5567; font-size: 14px">更改相片</p>
+                    <p class="text-center py-3" style="color: #4D5567; font-size: 14px">{{__('frontend_accountinfo.changePhoto')}}</p>
                 </div>
             </form>
         </div>

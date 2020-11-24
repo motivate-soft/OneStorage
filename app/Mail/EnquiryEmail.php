@@ -9,6 +9,10 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Enquiry;
 
+/**
+ * Class EnquiryEmail
+ * @package App\Mail
+ */
 class EnquiryEmail extends Mailable
 {
     use Queueable, SerializesModels;
@@ -16,10 +20,13 @@ class EnquiryEmail extends Mailable
     public $enquiry;
     public $toSupport;
 
-
+    /**
+     * EnquiryEmail constructor.
+     * @param Enquiry $enquiry
+     * @param bool $toSupport
+     */
     public function __construct(Enquiry $enquiry, bool $toSupport = true)
     {
-        //
         $this->enquiry = $enquiry;
         $this->toSupport = $toSupport;
     }
@@ -29,8 +36,7 @@ class EnquiryEmail extends Mailable
      *
      * @return $this
      */
-    public function build()
-    {
+    public function build(){
         $mail = $this->from($this->toSupport ? $this->enquiry->email : Helper::$ONESTORAGE_EMAIL)
                 ->view('emails.enquiry');
 

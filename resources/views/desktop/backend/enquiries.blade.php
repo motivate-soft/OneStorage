@@ -7,21 +7,21 @@
 @section('content')
 <div class="bg-grey w-full h-screen pl-16 pr-5 pt-10 pb-24">
     <div class="flex justify-between">
-        <a href="{{url('/backend')}}" class="font_25 mb-6">Enquiries</a>
+        <a href="{{url('/backend')}}" class="font_25 mb-6">{{ __('backend_enquiries.title') }}</a>
         @include('backend.partials.searchbar')
     </div>
 
     <div class="bg-white h-full">
         <table class="w-full bg-white" id="content">
-            <tr class="table-heading shadow-lg border border-primary">
-                <th class="py-5 border-r border-second">日期</th>
-                <th class="py-5 border-r border-second">客人資料</th>
-                <th class="py-5 border-r border-second">需求</th>
-                <th class="py-5 border-r border-second">查詢問題</th>
-                <th class="py-5 border-r border-second w-1/6">你的信息</th>
-                <th class="py-5 border-r border-second">頁面</th>
-                <th class="py-5 border-r border-second">狀態</th>
-                <th class="py-5">負責人</th>
+            <tr class="table-heading shadow-lg border border-primary robert-regular">
+                <th class="py-5 border-r border-second">{{ __('backend_enquiries.date') }}</th>
+                <th class="py-5 border-r border-second">{{ __('backend_enquiries.profile') }}</th>
+                <th class="py-5 border-r border-second">{{ __('backend_enquiries.demand') }}</th>
+                <th class="py-5 border-r border-second">{{ __('backend_enquiries.question') }}</th>
+                <th class="py-5 border-r border-second w-1/6">{{ __('backend_enquiries.message') }}</th>
+                <th class="py-5 border-r border-second">{{ __('backend_enquiries.page') }}</th>
+                <th class="py-5 border-r border-second">{{ __('backend_enquiries.status') }}</th>
+                <th class="py-5">{{ __('backend_enquiries.principle') }}</th>
             </tr>
             @foreach($enquiries as $enquiry)
             <tr class="border-b border-third align-top">

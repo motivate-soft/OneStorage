@@ -7,14 +7,17 @@ use App\Exports\UsersExport;
 use App\Profile;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Mail\Mailer;
 
 /**
  * Class AuthController
@@ -22,58 +25,64 @@ use Illuminate\Auth\Events\PasswordReset;
  */
 class AuthController extends Controller
 {
-    public static $SEARCH_KEYS = [
-        [
-            'key' => 'users.created_at',
-            'value' => '註冊日期'
-        ],
-        [
-            'key' => 'users.first_name',
-            'value' => 'First name'
-        ],
-        [
-            'key' => 'users.last_name',
-            'value' => 'Last name'
-        ],
-        [
-            'key' => 'users.phone',
-            'value' => 'Telephone'
-        ],
-        [
-            'key' => 'users.email',
-            'value' => 'Email'
-        ],
-        [
-            'key' => 'profiles.address_line1',
-            'value' => 'address'
-        ],
-        [
-            'key' => 'profiles.birthday',
-            'value' => 'DOB'
-        ],
-        // [
-        //     'key' => '',
-        //     'value' => 'Preferred'
-        // ],
-        [
-            'key' => 'profiles.is_soundwill_member',
-            'value' => 'Returning'
-        ],
-        [
-            'key' => 'profiles.contact_method',
-            'value' => '註冊渠道'
-        ],
-        [
-            'key' => 'enquiry',
-            'value' => '查詢'
-        ],
-    ];
-
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
+
+    protected $mailer;
+    protected $toEmail = "";
+    protected $adminEmail = "noreply@onestorage.com.hk";
+
+    public function __construct(Mailer $mailer)
+    {
+        $this->mailer = $mailer;
+    }
+
     public function index(){
         //
+        $SEARCH_KEYS = [
+            [
+                'key' => 'users.created_at',
+                'value' => __('backend_members.regDate')
+            ],
+            [
+                'key' => 'users.first_name',
+                'value' => __('backend_members.firstName')
+            ],
+            [
+                'key' => 'users.last_name',
+                'value' => __('backend_members.lastName')
+            ],
+            [
+                'key' => 'users.phone',
+                'value' => __('backend_members.telephone')
+            ],
+            [
+                'key' => 'users.email',
+                'value' => __('backend_members.email')
+            ],
+            [
+                'key' => 'profiles.address_line1',
+                'value' => __('backend_members.address')
+            ],
+            [
+                'key' => 'profiles.birthday',
+                'value' => __('backend_members.DOB')
+            ],
+            [
+                'key' => 'profiles.is_soundwill_member',
+                'value' => __('backend_members.returning')
+            ],
+            [
+                'key' => 'profiles.contact_method',
+                'value' => __('backend_members.contactMethod')
+            ],
+            [
+                'key' => 'enquiry',
+                'value' => __('backend_members.inquire')
+            ],
+        ];
+
         $key = isset($_GET['key']) ? $_GET['key'] : '';
         $value = isset($_GET['value']) ? $_GET['value'] : '';
 
@@ -94,7 +103,7 @@ class AuthController extends Controller
         }
         // print_r($members);
 
-        return view('backend.members', ['members' => $members, 'keys' => static::$SEARCH_KEYS]);
+        return view('backend.members', ['members' => $members, 'keys' => $SEARCH_KEYS]);
     }
 
     /**
@@ -165,6 +174,39 @@ class AuthController extends Controller
             ? back()->with(['status' => __($status)])
             : back()->withErrors(['email' => __($status)]);
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function forgotNumPage(){
+        return view('account.forgot-number');
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function forgotNum(Request $request){
+
+        $request->validate(['email' => 'required|email']);
+
+        $this->toEmail = $request->email;
+
+        try {
+            $this->mailer->send('partisals.lead', ['number'=>User::where("email", $this->toEmail)->first()->phone], function (Message $m){
+                $m->from($this->adminEmail)->to($this->toEmail)->subject('OneStorage');
+            });
+            $status = true;
+        } catch (\Exception $e)
+        {
+            $status = $e->getMessage();
+        }
+
+        return $status === true
+            ? back()->with(['status' => __($status)])
+            : back()->withErrors(['email' => __($status)]);
+    }
+
 
     /**
      * @param Request $request

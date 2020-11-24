@@ -34,42 +34,41 @@
 @endsection
 
 @section('content')
-<p class=" text-center fontsize-21 py-6 regular-color px-5">職位空缺</p>
+<p class=" text-center fontsize-21 py-6 regular-color px-5">{{__('frontend_joinus.vacancies')}}</p>
 
 <div class="pt-8 bg-grey pb-4 px-5">
     <div class="flex">
         <img class="w-24 h-24 mr-2" src="{{asset('images/contactUs/contactUs.png')}}" alt="Avatar of Jonathan Reinink">
         <div>
             <div class="mb-8">
-                <div class="jointitle-color fontsize-25 mb-4">客戶服務主任</div>
-                <p class=" fontsize-13 regular-color">處理迷你倉銷售﹑客戶查詢﹑透過電郵及電話處理客戶要求﹑為客戶提供高水平服務﹑負責日常事務﹑
-                    文書處理﹑協助租務及市場部運作。 </p>
+                <div class="jointitle-color fontsize-25 mb-4">{{__('frontend_joinus.customerServiceOfficer')}}</div>
+                <p class=" fontsize-13 regular-color">{{__('frontend_joinus.handleSales')}}</p>
             </div>
 
             <div class="mb-4">
-                <div class="jointitle-color fontsize-25 mb-4">入職要求</div>
-                <p class="after-list regular-color pl-2 py-1">中六或以上程度及一年或以上的客戶服務工作經驗</p>
-                <p class="after-list regular-color pl-2 py-1">有客戶服務或銷售經驗者優先</p>
-                <p class="after-list regular-color pl-2 py-1">需自律﹑獨立﹑有責任心 </p>
-                <p class="after-list regular-color pl-2 py-1">懂基本電腦操作</p>
+                <div class="jointitle-color fontsize-25 mb-4">{{__('frontend_joinus.entryRequirements')}}</div>
+                <p class="after-list regular-color pl-2 py-1">{{__('frontend_joinus.workExperience')}}</p>
+                <p class="after-list regular-color pl-2 py-1">{{__('frontend_joinus.prefered')}}</p>
+                <p class="after-list regular-color pl-2 py-1">{{__('frontend_joinus.needTo')}}</p>
+                <p class="after-list regular-color pl-2 py-1">{{__('frontend_joinus.computerOperation')}}</p>
             </div>
 
             <div class="mb-4">
-                <div class="jointitle-color fontsize-25 mb-4">員工福利</div>
-                <p class="after-list regular-color pl-2 py-1">銀行假期 </p>
-                <p class="after-list regular-color pl-2 py-1">有薪年假 </p>
-                <p class="after-list regular-color pl-2 py-1">醫療福利 </p>
-                <p class="after-list regular-color pl-2 py-1">年尾獎金 </p>
-                <p class="after-list regular-color pl-2 py-1">營業獎金 </p>
-                <p class="after-list regular-color pl-2 py-1">員工優惠 </p>
-                <p class="after-list regular-color pl-2 py-1">在職培訓 </p>
-                <p class="after-list regular-color pl-2 py-1">晉升機會 </p>
+                <div class="jointitle-color fontsize-25 mb-4">{{__('frontend_joinus.employeeBenefits')}} </div>
+                <p class="after-list regular-color pl-2 py-1">{{__('frontend_joinus.bankHoliday')}} </p>
+                <p class="after-list regular-color pl-2 py-1">{{__('frontend_joinus.paidAnnualLeave')}} </p>
+                <p class="after-list regular-color pl-2 py-1">{{__('frontend_joinus.medicalBenefits')}} </p>
+                <p class="after-list regular-color pl-2 py-1">{{__('frontend_joinus.yearEndBonus')}} </p>
+                <p class="after-list regular-color pl-2 py-1">{{__('frontend_joinus.businessBonus')}} </p>
+                <p class="after-list regular-color pl-2 py-1">{{__('frontend_joinus.staffDiscount')}} </p>
+                <p class="after-list regular-color pl-2 py-1">{{__('frontend_joinus.training')}} </p>
+                <p class="after-list regular-color pl-2 py-1">{{__('frontend_joinus.promotionOpportunites')}} </p>
             </div>
         </div>
     </div>
 
-    <p class=" fontsize-13 regular-color px-5 mb-2">請電郵履歷至 swhr@soundwill.com.hk </p>
-    <p class=" fontsize-13 regular-color px-5">(申請人提供之全部資料絕對保密及只作招聘之用) </p>
+    <p class=" fontsize-13 regular-color px-5 mb-2">{{__('frontend_joinus.emailResume')}} swhr@soundwill.com.hk </p>
+    <p class=" fontsize-13 regular-color px-5">{{__('frontend_joinus.allInformation')}} </p>
 </div>
 
 
@@ -77,54 +76,54 @@
     @csrf
     <input type="hidden" name="page" value="{{Helper::$SS_FROM_JOINUS_PAGE}}">
 
-    <p class=" font-bold mb-10 fontsize-19 regular-color">立即申請 </p>
+    <p class=" font-bold mb-10 fontsize-19 regular-color">{{__('frontend_joinus.applyImmediately')}}</p>
     <div class="flex mb-4 w-full">
         <div class="flex w-1/2 input-group">
             <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">
-            <input class="w-full form-control placeholder-color" type="text" placeholder="姓" name="firstName" required>
+            <input class="w-full form-control placeholder-color" type="text" placeholder="{{__('frontend_common.firstName')}}" name="firstName" required>
         </div>
         <div class="w-1/2 flex input-group">
-            <input class="w-full form-control ml-1 pl-3 placeholder-color" type="text" placeholder="名" name="lastName" required>
+            <input class="w-full form-control ml-1 pl-3 placeholder-color" type="text" placeholder="{{__('frontend_common.lastName')}}" name="lastName" required>
         </div>
     </div>
 
 
     <div class="input-group mb-4">
         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-        <input class="form-control placeholder-color" type="text" placeholder="手機號碼" name="phoneNumber" required>
+        <input class="form-control placeholder-color" type="text" placeholder="{{__('frontend_common.mobileNumber')}}" name="phoneNumber" required>
     </div>
 
     <div class="input-group mb-8">
         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">
-        <input class="form-control placeholder-color" type="text" placeholder="電子郵件" name="email">
+        <input class="form-control placeholder-color" type="text" placeholder="{{__('frontend_common.email')}}" name="email">
     </div>
 
     <div class=" mx-3 px-3 mb-8">
         <div class="flex py-1">
-            <p class="w-2/5 fontsize-14 placeholder-color">上傳 CV</p>
+            <p class="w-2/5 fontsize-14 placeholder-color">{{__('frontend_common.upload')}} CV</p>
             <div class="flex w-1/3">
-                <button class="fileupload-btn fontsize-11 regular-color rounded">選擇檔案</button>
+                <button class="fileupload-btn fontsize-11 regular-color rounded">{{__('frontend_joinus.selectFile')}}</button>
                 <input type="file" class="hidden file-input" name="fileCV" />
             </div>
             <span class="file-name ml-2"></span>
         </div>
         <div class="flex py-1">
-            <p class="w-2/5 fontsize-14 placeholder-color">上傳 Cover letter</p>
+            <p class="w-2/5 fontsize-14 placeholder-color">{{__('frontend_common.upload')}} Cover letter</p>
             <div class="flex w-1/3">
-                <button class="fileupload-btn fontsize-11 regular-color rounded">選擇檔案</button>
+                <button class="fileupload-btn fontsize-11 regular-color rounded">{{__('frontend_joinus.selectFile')}}</button>
                 <input type="file" class="hidden file-input" name="fileCL" />
             </div>
             <span class="file-name ml-2"></span>
         </div>
     </div>
 
-    <button class="submit-btn hover:bg-purple-400 fontsize-21 regular-color" data-text="送出">
-        送出
+    <button class="submit-btn hover:bg-purple-400 fontsize-21 regular-color" data-text="{{__('frontend_common.send')}}">
+        {{__('frontend_common.send')}}
     </button>
 </form>
 
     <div class="mt-14 mb-8">
-        <p class=" text-left fontsize-21 regular-color font-bold">其他資訊</p>
+        <p class=" text-left fontsize-21 regular-color font-bold">{{__('frontend_joinus.otherInformation')}}</p>
     </div>
     <div class="mb-8">
         <?php

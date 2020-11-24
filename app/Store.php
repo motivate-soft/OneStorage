@@ -6,9 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 use Helper;
 use Image;
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
+use Illuminate\Support\Facades\App;
 
-class Store extends Model
+class Store extends Model implements TranslatableContract
 {
+    use Translatable;
 
     public static $_SERVICE_COUNT = 8;
     public static $_MAX_QUESTION_COUNT = 5;
@@ -17,10 +21,9 @@ class Store extends Model
      * Fillable attributes
      * @var array
      */
-    protected $fillable = [
-        '_id', 'detail', 'branch', 'location', 'suburb', 'address', 'latest_offer', 'text_above_addr',
-        'text_below_addr', 'opening_hours', 'nearby_facilities'
-    ];
+
+    public $translatedAttributes = ['detail', 'branch', 'location', 'suburb', 'address', 'latest_offer', 'text_above_addr',
+        'text_below_addr', 'opening_hours', 'nearby_facilities'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -73,7 +76,15 @@ class Store extends Model
      * @return mixed
      */
     public static function getLocations(){
-        return  Store::select('id', 'location')->orderBy('id', 'asc')->get()->unique('location');
+        $locations = DB::table('store_translations')
+            ->select('store_id as id', 'location')
+            ->where('locale', App::getLocale())
+            ->orderBy('store_id', 'asc')
+            ->get()
+            ->unique('location');
+//        dd($locations);
+//        return  Store::select('id', 'location')->orderBy('id', 'asc')->get()->unique('location');
+        return $locations;
     }
 
     /**
@@ -172,16 +183,22 @@ class Store extends Model
      */
     public function setData($data){
         $this->_id = $data['_id'];
-        $this->location = $data['location'];
-        $this->branch = $data['branch'];
-        $this->suburb = $data['suburb'];
-        $this->detail = $data['detail'];
-        $this->latest_offer = $data['latest_offer'];
-        $this->address = $data['address'];
-        $this->text_above_addr = $data['text_above_addr'];
-        $this->text_below_addr = $data['text_below_addr'];
-        $this->opening_hours = $data['opening_hours'];
-        $this->nearby_facilities = $data['nearby_facilities'];
+        $locale = App::getLocale();
+        $this->update([
+            $locale => [
+                'location'  => $data['location'],
+                'branch'  => $data['branch'],
+                'suburb'  => $data['suburb'],
+                'detail'  => $data['detail'],
+                'latest_offer'  => $data['latest_offer'],
+                'address'  => $data['address'],
+                'text_above_addr'  => $data['text_above_addr'],
+                'text_below_addr'  => $data['text_below_addr'],
+                'opening_hours'  => $data['opening_hours'],
+                'nearby_facilities'  => $data['nearby_facilities'],
+            ]
+        ]);
+
         $this->video_link = $data['video_link'];
         $this->lat = $data['lat'];
         $this->lng = $data['lng'];
@@ -230,9 +247,15 @@ class Store extends Model
             } else if (isset($data['question' . $i]) && $data['question' . $i] != "") {
                 $question = new StoreQuestion;
                 $question->store_id = $this->id;
-                $question->question = $data['question' . $i];
-                $question->answer = $data['answer' . $i];
                 $question->save();
+                $question->update([
+                    $locale => [
+                        'question' => $data['question' . $i],
+                        'answer' => $data['answer' . $i]
+                    ]
+                ]);
+//                $question->question = $data['question' . $i];
+//                $question->answer = $data['answer' . $i];
             }
         }
         $this->setImages($data, "offerImages", "/images/offers");

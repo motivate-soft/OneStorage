@@ -75,7 +75,7 @@
     <div class="flex maintitle-wrapper-m color-primary">
         <div class="relative maintitle-right-m">
             <div class="flex">
-                <span class="">關於</span>
+                <span class="">{{ __('frontend_about.on') }}</span>
                 <span class="capitalize maintitle-right-aboutus-english-m pt-1">one storage</span>
             </div>
             <div class="capitalize maintitle-right-bottom-m">one choice one storage</div>
@@ -89,10 +89,10 @@
     </div>
 
     <div class="color-primary">
-        <p class="pl-5 content-title mt-1 mb-4">至尊迷你倉</p>
-        <p class="leading-relaxed content-description-m px-6">為金朝陽集團屬下業務(股票代號： 00878.HK)。
+        <p class="pl-5 content-title mt-1 mb-4">{{ __('frontend_about.title1') }}</p>
+        <p class="leading-relaxed content-description-m px-6">{{ __('frontend_about.desc1-1') }}
             <br /><br />
-            分店遍佈香港、九龍及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質及專業的儲物收納服務。至尊迷你倉是亞洲迷你倉商會(Self Storage Association Asia, SSAA)及香港迷你倉總會會員(Hong Kong Mini-Storages Association, HKMSA)。
+            {{ __('frontend_about.desc1-2') }}
         </p>
     </div>
 
@@ -105,13 +105,12 @@
     </div>
 
     <div class="color-primary">
-        <p class="pl-5 content-title">設備及付款方式</p>
+        <p class="pl-5 content-title">{{ __('frontend_about.title2') }}</p>
         <p class="leading-relaxed content-description-m px-6 pt-10">
-            迷你倉裝修及設備合乎消防處迷你倉指引，客人可24小時自助儲存，配備全天候保安系統及智能保安系統。
+            {{ __('frontend_about.desc2-1') }}
             <br /><br />
-            租賃迷你倉可以用以下方式付款：
-            <br/>
-            EPS、支票、信用卡、轉數快及免息分期
+            {{ __('frontend_about.desc2-2') }}<br/>
+            {{ __('frontend_about.desc2-3') }}
         </p>
     </div>
 

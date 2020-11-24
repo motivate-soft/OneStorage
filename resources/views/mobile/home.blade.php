@@ -227,21 +227,21 @@
 <div class="bg-white w-full pr-px pt-10 relative mx-auto">
     <div class="pl-10">
         <p class="z-20 page-title leading-snug text-primary">
-            迷你倉<span class="text-yellow">首選</span>
+            {{ __('frontend_home.titlePart1') }}<span class="text-yellow">{{ __('frontend_home.titlePart2') }}</span>
         </p>
         <span class="z-10 page-title title-shadow" style="font-size: 30px">
             One Choice ‧ One Storage
         </span>
-        <p class="page-desc pt-3">至尊迷你倉</p>
+        <p class="page-desc pt-3">{{ __('frontend_home.subTitle') }}</p>
     </div>
 
 
     <div class="mt-4 mb-1 mx-4 robert-black text-primary text-center flex flex-col">
         <div class="mb-4">
-            <span class="my-auto relative font_14 crown">唔知自己需要咩size ? 試下我地既空間計算器&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span class="my-auto relative font_14 crown">{{ __('frontend_home.calcDesc1') }} {{ __('frontend_home.calcDesc2') }}&nbsp;&nbsp;&nbsp;</span>
         </div>
 
-        <a href="{{route('pages.calculator')}}" target="_blank" class="bg-yellow px-4 py-2 font_14 mx-auto rounded-lg">立即計算</a>
+        <a href="{{route('pages.calculator')}}" target="_blank" class="bg-yellow px-4 py-2 font_14 mx-auto rounded-lg">{{ __('frontend_home.calculate') }}</a>
     </div>
 
     <?php
@@ -259,7 +259,7 @@
         <div class="w-5/12 inline-block relative">
             <?php $locations = App\Store::getLocations(); ?>
             <select id="location-select" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
-                <option value="" selected disabled class="text-grey">地區</option>
+                <option value="" selected disabled class="text-grey">{{ __('frontend_home.area') }}</option>
                 @foreach($locations as $location)
                 <option value="{{$location->location}}" class=" text-grey-2">{{$location->location}}</option>
                 @endforeach
@@ -271,7 +271,7 @@
         </div>
         <div class="w-5/12 inline-block relative">
             <select disabled="disabled" id="branch-select" data-url="{{route('pages.rentWareHouse')}}" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none">
-                <option value="" selected disabled class="text-grey">分店</option>
+                <option value="" selected disabled class="text-grey">{{ __('frontend_home.branch') }}</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -280,7 +280,7 @@
         </div>
     </div>
     <button id="goToStore" class="button-primary w-full" type="submit">
-        租倉
+        {{ __('frontend_home.rent') }}
     </button>
 </div>
 
@@ -288,21 +288,21 @@
     @csrf
     <input type="hidden" name="page" value="{{Helper::$SS_FROM_FRONT_PAGE1}}">
     <input type="hidden" name="ajax" value="1">
-    <p class="heading1 text-center mb-4">填妥簡單資料，立即領取5% off 獨家優惠</p>
+    <p class="heading1 text-center mb-4">{{ __('frontend_home.discountDesc') }}</p>
     <div class="flex mb-4 w-full">
         <div class="flex w-1/2 input-group mr-2">
             <img class="form-control-icon" src="<?php echo e(asset('images/contactUs/icons8-account-50@2x.png')); ?>" alt="Mobile">
             @if(Auth::check())
-            <input class="w-full form-control" type="text" placeholder="姓" name="firstName" value="{{Auth::user()->first_name}}" required>
+            <input class="w-full form-control" type="text" placeholder="{{ __('frontend_common.firstName') }}" name="firstName" value="{{Auth::user()->first_name}}" required>
             @else
-            <input class="w-full form-control" type="text" placeholder="姓" name="firstName" required>
+            <input class="w-full form-control" type="text" placeholder="{{ __('frontend_common.firstName') }}" name="firstName" required>
             @endif
         </div>
         <div class="w-1/2 flex input-group">
             @if(Auth::check())
-            <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" value="{{Auth::user()->last_name}}" type="text" placeholder="名" name="lastName" required>
+            <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" value="{{Auth::user()->last_name}}" type="text" placeholder="{{ __('frontend_common.lastName') }}" name="lastName" required>
             @else
-            <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名" name="lastName" required>
+            <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="{{ __('frontend_common.lastName') }}" name="lastName" required>
             @endif
         </div>
     </div>
@@ -310,14 +310,14 @@
     <div class="input-group mb-4">
         <img class="form-control-icon" src="<?php echo e(asset('images/contactUs/icons8-email-50@2x.png')); ?>" alt="Mobile">
         @if(Auth::check())
-        <input class="form-control" type="email" placeholder="電子郵件" value="{{Auth::user()->email}}" name="email" required>
+        <input class="form-control" type="email" placeholder="{{ __('frontend_common.email') }}" value="{{Auth::user()->email}}" name="email" required>
         @else
-        <input class="form-control" type="email" placeholder="電子郵件" name="email" required>
+        <input class="form-control" type="email" placeholder="{{ __('frontend_common.email') }}" name="email" required>
         @endif
     </div>
 
-    <button class="button-primary w-full" type="submit" data-text="領取優惠">
-        領取優惠
+    <button class="button-primary w-full" type="submit" data-text="{{ __('frontend_home.receiveDiscount') }}">
+        {{ __('frontend_home.receiveDiscount') }}
     </button>
 </form>
 
@@ -325,19 +325,19 @@
     <div class="flex overflow-x-auto overflow-y-hidden pb-4 mb-8">
         <div class="flex-shrink-0 mr-2">
             <a href="https://youtu.be/GdBSugr-vY8" target="_blank"><img src="{{asset('images/video_thumb1.jpg')}}" class="mb-4" /></a>
-            <p class="text-center text1">至尊迷你倉幫您解決一切空間煩惱</p>
+            <p class="text-center text1">{{ __('frontend_home.videoDesc1') }}</p>
         </div>
         <div class="flex-shrink-0 mx-2">
             <a href="https://youtu.be/AG_ZbMUNok4" target="_blank"><img src="{{asset('images/video_thumb2.jpg')}}" class="mb-4" /></a>
-            <p class="text-center text1">至尊迷你倉梗有一款岩您用</p>
+            <p class="text-center text1">{{ __('frontend_home.videoDesc2') }}</p>
         </div>
         <div class="flex-shrink-0 ml-2">
             <a href="https://youtu.be/hxzEMSnO16g" target="_blank"><img src="{{asset('images/video_thumb3.jpg')}}" class="mb-4" /></a>
-            <p class="text-center text1">租用 One Storage 就係咁簡單 </p>
+            <p class="text-center text1">{{ __('frontend_home.videoDesc3') }}</p>
         </div>
     </div>
 
-    <span class="heading2 box-shadow">最新租倉優惠</span>
+    <span class="heading2 box-shadow">{{ __('frontend_home.latestOffers') }}</span>
 
     <div class="grid grid-cols-1 my-10 mx-auto">
         <?php
@@ -350,8 +350,8 @@
 </div>
 
 <div class="home-screen-background pb-8 text-center">
-    <span class="heading2 box-shadow1 relative" style="top:-26px">客戶感言</span>
-    <p class="text4 ml-10 mt-8 mb-1">用戶好評來自
+    <span class="heading2 box-shadow1 relative" style="top:-26px">{{ __('frontend_home.customer') }}</span>
+    <p class="text4 ml-10 mt-8 mb-1">{{ __('frontend_home.testimonials') }}
         <span class="text-blue-900 font-extrabold">
             <a href="https://www.facebook.com/onestorage/" target="_blank">facebook</a>
         </span>
@@ -360,7 +360,7 @@
         <div class="score-lg relative" style="top: -30px">
             <p class="m-auto">5.0</p>
         </div>
-        <p class="text4">（滿分為 <span class="font-bold">5</span>） 根據 <span class="font-bold">逾180</span> 位用戶的意見</p>
+        <p class="text4">（{{ __('frontend_home.fullMarks') }} <span class="font-bold">5</span>） {{ __('frontend_home.accordingTo') }} <span class="font-bold">{{ __('frontend_home.overThan') }}</span> {{ __('frontend_home.userOpinions') }}</p>
     </div>
 
 
@@ -383,7 +383,7 @@
                         <p class="m-auto">5.0</p>
                     </div>
                     <p class="text1 mb-8 whitespace-normal">
-                        方便、簡潔、員工友好。
+                        {{__('frontend_home.convenient')}}
                     </p>
                 </div>
 
@@ -398,11 +398,7 @@
                         <p class="m-auto">5.0</p>
                     </div>
                     <p class="text1 mb-8 whitespace-normal">
-                        Excellent customer service,
-                        very fast response even at
-                        midnight on facebook
-                        messenger. Save me a lot
-                        of time.
+                        {{__('frontend_home.saveTime')}}
                     </p>
                 </div>
 
@@ -417,7 +413,7 @@
                         <p class="m-auto">5.0</p>
                     </div>
                     <p class="text1 mb-8 whitespace-normal">
-                        二十四小時，十分方便，搬屋雜物多，好夠用！very good
+                        {{__('frontend_home.veryGood')}}
                     </p>
                 </div>
 
@@ -438,85 +434,84 @@
 
 <div class="bg-yellow pb-12 text-center">
     <div class="text-center py-14 leading-5">
-        <p class="font_33 mb-8">至尊迷你倉</p>
+        <p class="font_33 mb-8">{{__('frontend_home.extremeMiniStorage')}}</p>
         <p class="font_14 mx-20">
-            為金朝陽集團屬下業務(股票代號： 00878.HK)。<br />
-            分店遍佈港、九及新界，更積極不斷擴充業務，旗下迷你倉全部合乎消防處規格，為客戶提供優質的儲存環境及專業的服務。至尊迷你倉是亞洲迷你倉商會(SSAA)及香港迷你倉總會會員(HKMSA)。
-
+            {{__('frontend_home.businessGCG')}}<br />
+            {{__('frontend_home.withBranches')}}
         </p>
     </div>
 
     <img src="<?php echo e(asset('images/img_camera.jpg')); ?>" class="yellow-shadow1 object-fill w-full" />
     <div class="text-left px-4 py-3">
-        <p class="heading2 text-center pb-6">迷你倉設施</p>
+        <p class="heading2 text-center pb-6">{{__('frontend_home.miniStorageFacilities')}}</p>
         <div class="grid grid-cols-1 row-gap-3 mb-8">
             <div class="flex">
                 <img src="<?php echo e(asset('images/ic_key_card.png')); ?>" class="w-8 h-8 mr-2 object-none" />
-                <p class="text0 my-auto" style="width: calc(100% - 2rem)">7 x 24智能保安進出系統</p>
+                    <p class="text0 my-auto" style="width: calc(100% - 2rem)">{{__('frontend_home.accessSystem')}}</p>
             </div>
             <div class="flex">
                 <img src="<?php echo e(asset('images/ic_fire.png')); ?>" class="w-8 h-8 mr-2 object-none" />
-                <p class="text0 my-auto" style="width: calc(100% - 2rem)">消防裝置設備</p>
+                <p class="text0 my-auto" style="width: calc(100% - 2rem)">{{__('frontend_home.equipment')}}</p>
             </div>
             <div class="flex">
                 <img src="<?php echo e(asset('images/ic_water.png')); ?>" class="w-8 h-8 mr-2 object-none" />
-                <p class="text0 my-auto" style="width: calc(100% - 2rem)">自助飲用水機</p>
+                <p class="text0 my-auto" style="width: calc(100% - 2rem)">{{__('frontend_home.selfService')}}</p>
             </div>
             <div class="flex">
                 <img src="<?php echo e(asset('images/ic_24_hours.png')); ?>" class="w-8 h-8 mr-2 object-none" />
-                <p class="text0 my-auto" style="width: calc(100% - 2rem)">24小時電話熱線服務</p>
+                <p class="text0 my-auto" style="width: calc(100% - 2rem)">{{__('frontend_home.hotlineService')}}</p>
             </div>
         </div>
         <div class="grid grid-cols-1 row-gap-3">
             <div class="flex flex-row-reverse">
                 <img src="<?php echo e(asset('images/ic_air_con.png')); ?>" class="w-8 h-8 ml-2 object-none" />
-                <p class="text1 my-auto">無間斷恆溫空調</p>
+                <p class="text1 my-auto">{{__('frontend_home.constantTemperature')}}</p>
             </div>
 
             <div class="flex flex-row-reverse">
                 <img src="<?php echo e(asset('images/ic_delivery.png')); ?>" class="w-8 h-8 ml-2 object-none" />
-                <p class="text0 my-auto">鋁梯及手推車借用服務</p>
+                <p class="text0 my-auto">{{__('frontend_home.loanService')}}</p>
             </div>
 
             <div class="flex flex-row-reverse">
                 <img src="<?php echo e(asset('images/ic_sec_cam.png')); ?>" class="w-8 h-8 ml-2 object-none" />
-                <p class="text0 my-auto">全天候高清保安監察及警報系統</p>
+                <p class="text0 my-auto">{{__('frontend_home.allWeather')}}</p>
             </div>
 
             <div class="flex flex-row-reverse">
                 <img src="<?php echo e(asset('images/ic_wifi.png')); ?>" class="w-8 h-8 ml-2 object-none" />
-                <p class="text0 my-auto">免費Wi-Fi</p>
+                <p class="text0 my-auto">{{__('frontend_home.freeWiFi')}}</p>
             </div>
         </div>
     </div>
 </div>
 
 <div class="bg-grey py-8 text-center">
-    <span class="heading2 box-shadow1">常見問題</span>
+    <span class="heading2 box-shadow1">{{__('frontend_home.faq')}}</span>
     <div class="text-left mt-12 px-10">
         <div class="mb-8">
             <div class="flex cursor-pointer home-problem-toggle-item">
                 <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="mr-4" />
-                <span class="text4 my-auto">怎樣聯絡至尊迷你倉？</span>
+                <span class="text4 my-auto">{{__('frontend_home.howToContact')}}</span>
             </div>
-            <div class="hidden px-8 pt-4 leading-normal">可致電：2111 2636、電郵：cs@onestorage.com.hk或Whatapp: 51188503</div>
+            <div class="hidden px-8 pt-4 leading-normal">{{__('frontend_home.callEmailWhatsapp')}}</div>
         </div>
 
         <div class="mb-8">
             <div class="flex cursor-pointer home-problem-toggle-item">
                 <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="mr-4" />
-                <span class="text4 my-auto">至尊迷你倉分店位於那裡？</span>
+                <span class="text4 my-auto">{{__('frontend_home.whereIsSupreme')}}</span>
             </div>
-            <div class="hidden px-8 pt-4 leading-normal">我們分店遍佈港、九及新界，詳情可查閱分店位置。</div>
+            <div class="hidden px-8 pt-4 leading-normal">{{__('frontend_home.branchLocation')}}</div>
         </div>
 
         <div class="mb-8">
             <div class="flex cursor-pointer home-problem-toggle-item">
                 <img src="<?php echo e(asset('images/ic_rarrow.png')); ?>" class="mr-4" />
-                <span class="text4 my-auto">可以預約實地參觀迷你倉嗎？</span>
+                <span class="text4 my-auto">{{__('frontend_home.appointment')}}</span>
             </div>
             <div class="hidden px-8 pt-4 leading-normal">
-                <p>歡迎致電21112636或whatsapp 51188503預約參觀。星期日及公眾假期，需至少於 1 天前預約。</p>
+                <p>{{__('frontend_home.appointmentDescription')}}</p>
             </div>
         </div>
     </div>

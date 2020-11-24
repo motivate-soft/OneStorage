@@ -63,20 +63,20 @@
 @section('content')
 <div class="bg-grey w-full h-screen pl-16 pr-5 pt-10 pb-24">
     <div class="flex justify-between">
-        <a href="{{route('backend.members')}}" class="font_25 mb-6">Members</a>
+        <a href="{{route('backend.members')}}" class="font_25 mb-6">{{ __('backend_members.title') }}</a>
         @include('backend.partials.searchbar')
     </div>
 
     <div class="bg-white h-full overflow-x-auto">
         <table class="w-full bg-white flex-shrink-0 whitespace-no-wrap" id="content" style="min-width: 1000px">
-            <tr class="table-heading shadow-lg border border-primary">
-                <th class="py-5 border-r border-second">註冊日期</th>
-                <th class="py-5 border-r border-second">客人資料</th>
-                <th class="py-5 border-r border-second">註冊渠道</th>
-                <th class="py-5 border-r border-second">查詢</th>
+            <tr class="table-heading shadow-lg border border-primary robert-regular">
+                <th class="py-5 border-r border-second">{{ __('backend_members.regDate') }}</th>
+                <th class="py-5 border-r border-second">{{ __('backend_members.profile') }}</th>
+                <th class="py-5 border-r border-second">{{ __('backend_members.regChannel') }}</th>
+                <th class="py-5 border-r border-second">{{ __('backend_members.inquire') }}</th>
                 <th class="py-5 border-r border-second">
                     <label class="cursor-pointer">
-                        Select all
+                        {{ __('backend_members.selectAll') }}
                         <input class="checkbox ml-1" id="selectAll" type="checkbox" />
                     </label>
                 </th>
@@ -121,7 +121,7 @@
                                 <span class="my-auto">{{$member->email}}</span>
                             </div>
                             <div class="my-auto">
-                                <span class="robert-black">Returning: </span>
+                                <span class="robert-black">{{ __('backend_members.returning') }}: </span>
                                 <span>{{$member->is_soundwill_member ? 'SoundWill' : '-'}} <br />{{$member->is_existing_customer ? 'OneStorage (分店)' : '-'}}</span>
                             </div>
                         </div>
@@ -173,32 +173,32 @@
                 <div class="flex mb-4 w-full">
                     <div class="flex w-1/2 input-group">
                         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">
-                        <input class="w-full form-control appearance-none" type="text" placeholder="姓" name="firstName" required>
+                        <input class="w-full form-control appearance-none" type="text" placeholder="{{ __('backend_members.lastName') }}" name="firstName" required>
                     </div>
                     <div class="w-1/2 flex input-group">
-                        <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名" name="lastName" required>
+                        <input class="w-full form-control" style="margin-left: 4px;padding-left:12px" type="text" placeholder="{{ __('backend_members.firstName') }}" name="lastName" required>
                     </div>
                 </div>
 
 
                 <div class="input-group mb-4">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-                    <input class="form-control" type="text" placeholder="手機號碼" name="phone" required>
+                    <input class="form-control" type="text" placeholder="{{ __('backend_members.telephone') }}" name="phone" required>
                 </div>
 
                 <div class="input-group mb-4">
                     <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">
-                    <input class="form-control" type="email" placeholder="電子郵件" name="email" required>
+                    <input class="form-control" type="email" placeholder="{{ __('backend_members.email') }}" name="email" required>
                 </div>
 
                 <div class="date-group">
 
-                    <p class="date-title">生日日期</p>
+                    <p class="date-title">{{ __('backend_members.DOB') }}</p>
 
                     <div class=" date-component">
                         <div class="inline-block relative">
                             <select id="daySelector" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" aria-placeholder="日" name="day" required>
-                                <option value="" selected disabled>日</option>
+                                <option value="" selected disabled>{{ __('backend_members.day') }}</option>
                                 @for($i = 1; $i < 32; $i++) <option value="{{$i}}">{{$i}}</option>
                                     @endfor
                             </select>
@@ -212,7 +212,7 @@
                     <div class=" date-component">
                         <div class="inline-block relative">
                             <select id="monthSelector" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="month" required>
-                                <option value="" selected disabled>月</option>
+                                <option value="" selected disabled>{{ __('backend_members.month') }}</option>
                                 @for($i = 1; $i < 13; $i++) <option value="{{$i}}">{{$i}}</option>
                                     @endfor
                             </select>
@@ -226,7 +226,7 @@
                     <div class=" date-component">
                         <div class="inline-block relative">
                             <select id="yearSelector" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="year" required>
-                                <option value="" selected disabled>年</option>
+                                <option value="" selected disabled>{{ __('backend_members.year') }}</option>
                                 @for($i = 1990; $i < 2021; $i++) <option value="{{$i}}">{{$i}}</option>
                                     @endfor
                             </select>
@@ -238,7 +238,7 @@
                     </div>
                 </div>
 
-                <input class="w-full form-control mb-6" style="padding-left:16px" type="text" placeholder="地址第一行" name="addr1">
+                <input class="w-full form-control mb-6" style="padding-left:16px" type="text" placeholder="{{ __('backend_members.addressLine1') }}" name="addr1">
 
                 <!-- <div class="w-full inline-block relative mb-6">
                     <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="contactMethod">
@@ -254,33 +254,33 @@
                 </div> -->
 
                 <div class="radio-group">
-                    <p class="radio-title w-4/6">是否One Storage 現有客戶 ? </p>
+                    <p class="radio-title w-4/6">{{ __('backend_members.isCustomer') }}</p>
 
                     <div class="radio-custom w-1/6">
                         <input type="radio" id="storageyesunchecked" class="radio-gray" value="1" name="isCustomer">
-                        <label for="storageyesunchecked" class="radio-label">是</label>
+                        <label for="storageyesunchecked" class="radio-label">{{ __('backend_members.yes') }}</label>
                     </div>
                     <div class="radio-custom w-1/6">
                         <input type="radio" id="storagenochecked" class="radio-gray" value="0" name="isCustomer">
-                        <label for="storagenochecked" class="radio-label">否</label>
+                        <label for="storagenochecked" class="radio-label">{{ __('backend_members.no') }}</label>
                     </div>
                 </div>
 
                 <div class="radio-group">
-                    <p class="radio-title w-4/6">是否SoundWill Club 會員 ? </p>
+                    <p class="radio-title w-4/6">{{ __('backend_members.isMemberSoundWill') }}</p>
 
                     <div class=" radio-custom w-1/6">
                         <input type="radio" id="clubyesunchecked" class="radio-gray" value="1" name="isMember">
-                        <label for="clubyesunchecked" class="radio-label">是</label>
+                        <label for="clubyesunchecked" class="radio-label">{{ __('backend_members.yes') }}</label>
                     </div>
                     <div class=" radio-custom w-1/6">
                         <input type="radio" id="clubnochecked" class="radio-gray" value="0" name="isMember">
-                        <label for="clubnochecked" class="radio-label">否</label>
+                        <label for="clubnochecked" class="radio-label">{{ __('backend_members.no') }}</label>
                     </div>
                 </div>
 
                 <button class="submit-btn hover:bg-purple-400 mt-4">
-                    更新
+                    {{ __('backend_members.update') }}
                 </button>
             </div>
 

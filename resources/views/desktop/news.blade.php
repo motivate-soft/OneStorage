@@ -21,6 +21,7 @@
         -webkit-line-clamp: 3; /* number of lines to show */
         -webkit-box-orient: vertical;
     }
+
 </style>
 
 @endsection
@@ -37,21 +38,21 @@
             <div class="col-span-2 mr-0">
                 <div class="text-left text-5xl pt-10 pb-5 ml-10 border-b">
                     <h1 class="font_36 text-purple break-all pr-8">{{$blog->title}}</h1>
-                    <p class="text2 text-xl mt-4">刊登日期: {{$blog->publish_date->format('d-m-Y')}}</p>
+                    <p class="text2 text-xl mt-4">{{ __('frontend_latestNews.publishDate') }}: {{$blog->publish_date->format('d-m-Y')}}</p>
                 </div>
                 <div class="text-left ml-10 mt-5">
                     <img class="pb-4" src="{{asset($blog->image)}}">
                     <div class="bg-grey-1 py-5 px-5 mb-8">
-                        <h1 class="font_19 robert-black text-justify leading-normal break-words">
-                            <?php echo nl2br($blog->content) ?>
-                        </h1>
+                        <div class="font_19 robert-black text-justify leading-normal break-words">
+                            {!! $blog->content !!}
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-span-1 mx-0">
                 <div class="text-left pt-10 pb-5">
                     <div class="text-3xl">
-                        <h1 class="font_25 pt-4">其他資訊</h1>
+                        <h1 class="font_25 pt-4">{{ __('frontend_latestNews.other') }}</h1>
                     </div>
                     <?php
                     $latest_news = App\Blog::getNewses(4);

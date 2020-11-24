@@ -32,23 +32,23 @@
                 @csrf
                 <input type="hidden" value="admin" name="role"/>
                 <p class="font_25 mb-10 ml-5 mr-8 leading-tight">
-                    OneStorage Backend login<br />
-                    Please sign in to your account
+                    {{__('backend_login.subTitle')}}<br />
+                    {{__('backend_login.description')}}
                 </p>
                 <div class="flex mb-6">
-                    <span class="w-1/3 font_19 mr-px my-auto">Login Name:</span>
+                    <span class="w-1/3 font_19 mr-px my-auto">{{__('backend_login.userName')}}</span>
                     <input class="form-input w-2/3 appearance-none rounded-none bg-white border border-gray-300 p-2 text-base" name="first_name" required type="text">
                 </div>
                 <div class="flex mb-6">
-                    <span class="w-1/3 font_19 mr-px my-auto">Password:</span>
+                    <span class="w-1/3 font_19 mr-px my-auto">{{__('backend_login.password')}}</span>
                     <input class="form-input w-2/3 appearance-none rounded-none bg-white border border-gray-300 p-2 text-base" name="password" required type="password">
                 </div>
                 <div class="flex">
                     <div class="w-1/3"></div>
-                    <button class="bg-purple  py-2 px-10 text-white font_21 font-bold hover:bg-purple-500" name="name" required type="text">登入</button>
+                    <button class="bg-purple  py-2 px-10 text-white font_21 font-bold hover:bg-purple-500" name="name" required type="text">{{__('backend_login.login')}}</button>
                 </div>
             </form>
-            <p class="text-center font_19">©️ 2020 One Storage Management Company Limited - All rights reserved.</p>
+            <p class="text-center font_19">{{__('backend_login.copyRight')}}</p>
 
         </main>
     </div>

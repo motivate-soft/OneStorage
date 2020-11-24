@@ -27,15 +27,15 @@
 <?php
 $user = Auth::user();
 ?>
-<div class=" mt-10 robert-font mb-8 fontsize-25 regular-color pt-4 text-center px-5">{{$user->getName()}}, 歡迎你回來!</div>
+<div class=" mt-10 robert-font mb-8 fontsize-25 regular-color pt-4 text-center px-5">{{$user->getName()}}, {{__('frontend_chatlist.welcomeBack')}}</div>
 
 <div class="w-full pb-8">
 
     <div class=" flex w-full">
         <div class="w-1/5"></div>
-        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{route('pages.account')}}">個人資料</a>
-        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color bg-grey" href="{{route('pages.chatList')}}">信息</a>
-        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{route('logout')}}">登出</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{route('pages.account')}}">{{__('frontend_chatlist.personalInformation')}}</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color bg-grey" href="{{route('pages.chatList')}}">{{__('frontend_chatlist.information')}}</a>
+        <a class=" w-1/5 border text-center py-3 fontsize-11 regular-color" href="{{route('logout')}}">{{__('frontend_chatlist.logout')}}</a>
         <div class="w-1/5"></div>
     </div>
 

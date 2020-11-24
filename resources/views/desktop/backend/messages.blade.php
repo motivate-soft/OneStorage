@@ -13,9 +13,9 @@
 @section('content')
 <div class="bg-grey w-full h-screen pl-16 pr-5 pt-10 pb-24">
     <div class="w-1/2 mb-8">
-        <p class="font_25 mb-2">Messages</p>
+        <p class="font_25 mb-2">{{ __('backend_messages.title') }}</p>
         <div class="flex justify-end">
-            <span class="font_12 mb-4">Last messaged</span>
+            <span class="font_12 mb-4">{{ __('backend_messages.lastMessaged') }}</span>
         </div>
 
         <div class="border bg-white mb-6 px-2">
@@ -79,24 +79,24 @@
         </div>
 
 
-        <p class="font_25 mb-1">Broadcast message</p>
+        <p class="font_25 mb-1">{{ __('backend_messages.broadcast') }}</p>
 
         <form class="bg-white border py-2 pl-px pr-8 robert-regular" method="post" action="{{url('/backend/broadcast')}}">
             @csrf
             <div class="flex mb-4">
-                <span class="text-right w-1/6 mr-2 mt-4">To:</span>
+                <span class="text-right w-1/6 mr-2 mt-4">{{ __('backend_messages.to') }}:</span>
                 <div class="w-1/2">
                     <input required placeholder="" class="form-input w-full appearance-none bg-white border border-gray-300 p-2 text-base" name="recipient" type="text" value="All">
-                    <span class="font_13 pl-2">*type user ID (separate by comma if multiple) or ALL</span>
+                    <span class="font_13 pl-2">{{ __('backend_messages.desc1') }}</span>
                 </div>
             </div>
             <div class="flex mb-4">
-                <span class="text-right w-1/6 mr-2 mt-1">Message:</span>
+                <span class="text-right w-1/6 mr-2 mt-1">{{ __('backend_messages.message') }}:</span>
                 <textarea placeholder="" name="message" required rows="4" class="w-5/6 form-input appearance-none bg-white border border-gray-300 p-2 text-base" id="content"></textarea>
             </div>
             <div class="flex mb-4 robert-black">
                 <span class="w-1/6"></span>
-                <button type="submit" class="font_21 px-8 py-1 text-white mr-4" style="background-color: #B881FD;">Send</button>
+                <button type="submit" class="font_21 px-8 py-1 text-white mr-4" style="background-color: #B881FD;">{{ __('backend_messages.send') }}</button>
             </div>
         </form>
     </div>

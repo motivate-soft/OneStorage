@@ -1,9 +1,9 @@
 <table class="w-full bg-white" id="content">
     <tr class="table-heading shadow-lg border border-primary">
-        <th class="py-5 border-r border-second">註冊日期</th>
-        <th class="py-5 border-r border-second">客人資料</th>
-        <th class="py-5 border-r border-second">註冊渠道</th>
-        <th class="py-5 border-r border-second">查詢</th>
+        <th class="py-5 border-r border-second">{{__('backend_members.regDate')}}</th>
+        <th class="py-5 border-r border-second">{{__('backend_members.profile')}}</th>
+        <th class="py-5 border-r border-second">{{__('backend_members.regChannel')}}</th>
+        <th class="py-5 border-r border-second">{{__('backend_members.inquire')}}</th>
     </tr>
     @foreach($users as $user)
     <tr class="border-b border-third align-top">

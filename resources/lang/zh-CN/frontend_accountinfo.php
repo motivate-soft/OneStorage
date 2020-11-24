@@ -1,0 +1,31 @@
+<?php
+
+return [
+
+    'welcomeBack' => '歡迎你回來!',
+    'personalInformation' => '個人資料',
+    'lastName' => '姓',
+    'firstName' => '名',
+    'email' => '電子郵件',
+    'mobilePhoneNumber' => '手機號碼',
+    'changePassword' => '更改密碼',
+    'password' => '密碼',
+    'birthdayDate' => '生日日期',
+    'address' => '住址',
+    'update' => '更新',
+    'information' => '信息',
+    'logout' => '登出',
+    'updateCompleted' => '更新成功!',
+    'year' => '年',
+    'month' => '月',
+    'day' => '日',
+    'addressLine1' => '地址第一行',
+    'addressLine2' => '地址第二行',
+    'bestContactUs' => '最佳聯絡方式',
+    'customerOneStorage' => '是否One Storage 現有客戶 ? ',
+    'soundWillClub' => '是否SoundWill Club 會員 ?',
+    'changePhoto' => '更改相片',
+    'part' => '地域',
+    'area' => '地區',
+    'branch' => '分店',
+];

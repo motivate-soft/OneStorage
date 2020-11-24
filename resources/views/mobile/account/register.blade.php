@@ -21,7 +21,7 @@
 
 
 <div class="w-full px-6">
-    <p class="text-center font_21 regular-color mt-10 pb-12 pt-6 px-9">註冊</p>
+    <p class="text-center font_21 regular-color mt-10 pb-12 pt-6 px-9">{{__('frontend_register.register')}}</p>
     {{--<div class="input-group mb-4">--}}
         {{--<img class="form-control-icon" src="{{asset('images/contactUs/icons8-gmail-50@2x.png')}}" alt="Mobile">--}}
         {{--<input class="form-control  py-10 cursor-pointer btn text-left gmail-btn-mobile hover:bg-red-500" type="button" value="以 Gmail 登入">--}}
@@ -34,7 +34,7 @@
 
     <div class=" flex py-4">
         <div class=" w-2/5 border-b my-2"></div>
-        <div class=" w-1/5 text-center fontsize-14">或</div>
+        <div class=" w-1/5 text-center fontsize-14">{{__('frontend_register.or')}}</div>
         <div class=" w-2/5 border-b my-2"></div>
     </div>
 
@@ -47,50 +47,50 @@
     <div class="flex mb-4 w-full">
         <div class="flex w-1/2 input-group">
             <img class="form-control-icon" src="{{asset('images/contactUs/icons8-account-50@2x.png')}}" alt="Mobile">
-            <input class="w-full form-control fontsize-14" type="text" placeholder="姓" name="firstName" required>
+            <input class="w-full form-control fontsize-14" type="text" placeholder="{{__('frontend_common.firstName')}}" name="firstName" required>
         </div>
         <div class="w-1/2 flex input-group">
-            <input class="w-full form-control fontsize-14" style="margin-left: 4px;padding-left:12px" type="text" placeholder="名" name="lastName" required>
+            <input class="w-full form-control fontsize-14" style="margin-left: 4px;padding-left:12px" type="text" placeholder="{{__('frontend_register.lastName')}}" name="lastName" required>
         </div>
     </div>
 
 
     <div class="input-group mb-1">
         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-phone-50@2x.png')}}" alt="Mobile">
-        <input class="form-control fontsize-14" type="text" placeholder="手機號碼" name="phone" required>
+        <input class="form-control fontsize-14" type="text" placeholder="{{__('frontend_common.mobileNumber')}}" name="phone" required>
     </div>
 
-    <div class="mt-1 mb-4 text-red-600"><span class="hidden error-msg" id="phoneDuplicateMsg">此手機號碼已被使用</span></div>
+    <div class="mt-1 mb-4 text-red-600"><span class="hidden error-msg" id="phoneDuplicateMsg">{{__('frontend_register.mobileNumberUsed')}}</span></div>
 
     <div class="input-group">
         <img class="form-control-icon" src="{{asset('images/contactUs/icons8-email-50@2x.png')}}" alt="Mobile">
-        <input class="form-control fontsize-14" type="text" placeholder="電子郵件" name="email" required>
+        <input class="form-control fontsize-14" type="text" placeholder="{{__('frontend_register.email')}}" name="email" required>
     </div>
 
-    <div class="mt-2 mb-4 text-red-600"><span class="hidden error-msg" id="emailDuplicateMsg">该电子邮件已被使用</span></div>
+    <div class="mt-2 mb-4 text-red-600"><span class="hidden error-msg" id="emailDuplicateMsg">{{__('frontend_register.emailUsed')}}</span></div>
 
     <div class="radio-group">
 
-        <p class="radio-title w-1/4 fontsize-14">性別</p>
+        <p class="radio-title w-1/4 fontsize-14">{{__('frontend_register.gender')}}</p>
 
         <div class=" radio-custom w-1/4">
             <input type="radio" checked id="genderunchecked" class="radio-gray" value="m" name="gender">
-            <label for="genderunchecked" class="radio-label fontsize-14">男</label>
+            <label for="genderunchecked" class="radio-label fontsize-14">{{__('frontend_register.male')}}</label>
         </div>
         <div class=" radio-custom w-1/4">
             <input type="radio" id="genderchecked" class="radio-gray" name="gender" value="w" name="gender">
-            <label for="genderchecked" class="radio-label fontsize-14">女</label>
+            <label for="genderchecked" class="radio-label fontsize-14">{{__('frontend_register.female')}}</label>
         </div>
     </div>
 
     <div class="date-group">
 
-        <p class=" date-title fontsize-14">生日日期</p>
+        <p class=" date-title fontsize-14">{{__('frontend_register.birthDate')}}</p>
 
         <div class=" date-component">
             <div class="inline-block relative">
-                <select id="daySelector" class="block appearance-none w-full bg-white border border-gray-200 px-3 py-2 pr-8 leading-tight focus:outline-none fontsize-14" aria-placeholder="日" name="day" required>
-                    <option value="" selected disabled>日</option>
+                <select id="daySelector" class="block appearance-none w-full bg-white border border-gray-200 px-3 py-2 pr-8 leading-tight focus:outline-none fontsize-14" aria-placeholder="{{__('frontend_register.day')}}" name="day" required>
+                    <option value="" selected disabled>{{__('frontend_register.day')}}</option>
                     @for($i = 1; $i < 32; $i++) <option value="{{$i}}">{{$i}}</option>
                         @endfor
                 </select>
@@ -104,7 +104,7 @@
         <div class=" date-component">
             <div class="inline-block relative">
                 <select id="monthSelector" class="block appearance-none w-full bg-white border border-gray-200 px-3 py-2 pr-8 leading-tight focus:outline-none fontsize-14" name="month" required>
-                    <option value="" selected disabled>月</option>
+                    <option value="" selected disabled>{{__('frontend_register.month')}}</option>
                     @for($i = 1; $i < 13; $i++) <option value="{{$i}}">{{$i}}</option>
                         @endfor
                 </select>
@@ -118,7 +118,7 @@
         <div class=" date-component">
             <div class="inline-block relative">
                 <select id="yearSelector" class="block appearance-none w-full bg-white border border-gray-200 px-3 py-2 pr-8 leading-tight focus:outline-none fontsize-14" name="year" required>
-                    <option value="" selected disabled>年</option>
+                    <option value="" selected disabled>{{__('frontend_register.year')}}</option>
                     @for($i = 1920; $i < 2021; $i++) <option value="{{$i}}">{{$i}}</option>
                         @endfor
                 </select>
@@ -131,20 +131,20 @@
     </div>
     <div class="p-2 mb-4" style="background-color: #F9F9F9">
         <div class="flex justify-between cursor-pointer" id="btn-option-toggler">
-            <p class="register-subtilte fontsize-14" style="margin-bottom: 0px;">Optional</p>
+            <p class="register-subtilte fontsize-14" style="margin-bottom: 0px;">{{__('frontend_register.optional')}}</p>
             <i class="register-subtilte icon wb-chevron-down" style="margin-bottom: 0px;"></i>
         </div>
 
         <div id="optional-content" class="hidden mt-4">
-            <p class=" register-subtilte fontsize-14">住址</p>
+            <p class=" register-subtilte fontsize-14">{{__('frontend_register.address')}}</p>
 
             <div class="flex mb-6">
                 <div class="w-1/3 inline-block relative">
                     <select class="block appearance-none w-full bg-white fontsize-14 border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="area">
-                        <option value="" selected>地域</option>
-                        <option value="香港">香港</option>
-                        <option value="九龍">九龍</option>
-                        <option value="新界">新界</option>
+                        <option value="" selected>{{__('frontend_register.part')}}</option>
+                        <option value="{{__('frontend_register.hongkong')}}">{{__('frontend_register.hongkong')}}</option>
+                        <option value="{{__('frontend_register.kowloon')}}">{{__('frontend_register.kowloon')}}</option>
+                        <option value="{{__('frontend_register.newTerritories')}}">{{__('frontend_register.newTerritories')}}</option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                         <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -154,25 +154,25 @@
 
                 <div class="w-2/3 inline-block relative ml-4">
                     <select class="block appearance-none w-full bg-white fontsize-14 border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="place">
-                        <option value="" selected>地區</option>
-                        <option value="中西區">中西區</option>
-                        <option value="灣仔">灣仔</option>
-                        <option value="東區">東區</option>
-                        <option value="南區">南區</option>
-                        <option value="深水埗">深水埗</option>
-                        <option value="油尖旺">油尖旺</option>
-                        <option value="九龍城">九龍城</option>
-                        <option value="黃大仙">黃大仙</option>
-                        <option value="觀塘">觀塘</option>
-                        <option value="屯門">屯門</option>
-                        <option value="元朗">元朗</option>
-                        <option value="荃灣">荃灣</option>
-                        <option value="葵青">葵青</option>
-                        <option value="離島">離島</option>
-                        <option value="北區">北區</option>
-                        <option value="大埔">大埔</option>
-                        <option value="沙田">沙田</option>
-                        <option value="西貢">西貢</option>
+                        <option value="" selected>{{__('frontend_register.area')}}</option>
+                        <option value="{{__('frontend_register.cwDistrict')}}">{{__('frontend_register.cwDistrict')}}</option>
+                        <option value="{{__('frontend_register.wanchai')}}">{{__('frontend_register.wanchai')}}</option>
+                        <option value="{{__('frontend_register.eastDistrict')}}">{{__('frontend_register.eastDistrict')}}</option>
+                        <option value="{{__('frontend_register.southDistrict')}}">{{__('frontend_register.southDistrict')}}</option>
+                        <option value="{{__('frontend_register.shamShuiPo')}}">{{__('frontend_register.shamShuiPo')}}</option>
+                        <option value="{{__('frontend_register.yautsimmong')}}">{{__('frontend_register.yautsimmong')}}</option>
+                        <option value="{{__('frontend_register.kowloonCity')}}">{{__('frontend_register.kowloonCity')}}</option>
+                        <option value="{{__('frontend_register.wongtaisin')}}">{{__('frontend_register.wongtaisin')}}</option>
+                        <option value="{{__('frontend_register.kwuntong')}}">{{__('frontend_register.kwuntong')}}</option>
+                        <option value="{{__('frontend_register.tuenmun')}}">{{__('frontend_register.tuenmun')}}</option>
+                        <option value="{{__('frontend_register.yuenlong')}}">{{__('frontend_register.yuenlong')}}</option>
+                        <option value="{{__('frontend_register.tsuenwan')}}">{{__('frontend_register.tsuenwan')}}</option>
+                        <option value="{{__('frontend_register.kwaitsing')}}">{{__('frontend_register.kwaitsing')}}</option>
+                        <option value="{{__('frontend_register.outlyingIsland')}}">{{__('frontend_register.outlyingIsland')}}</option>
+                        <option value="{{__('frontend_register.northDistrict')}}">{{__('frontend_register.northDistrict')}}</option>
+                        <option value="{{__('frontend_register.taipo')}}">{{__('frontend_register.taipo')}}</option>
+                        <option value="{{__('frontend_register.shatin')}}">{{__('frontend_register.shatin')}}</option>
+                        <option value="{{__('frontend_register.saigon')}}">{{__('frontend_register.saigon')}}</option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                         <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -182,16 +182,16 @@
             </div>
 
 
-            <input class="w-full form-control mb-6 pl-4 fontsize-14" type="text" placeholder="地址第一行" name="addr1">
+            <input class="w-full form-control mb-6 pl-4 fontsize-14" type="text" placeholder="{{__('frontend_register.addressLine1')}}" name="addr1">
 
-            <input class="w-full form-control mb-6 pl-4 fontsize-14" type="text" placeholder="地址第二行" name="addr2">
+            <input class="w-full form-control mb-6 pl-4 fontsize-14" type="text" placeholder="{{__('frontend_register.addressLine2')}}" name="addr2">
 
             <div class="w-full inline-block relative mb-6">
                 <select class="block appearance-none w-full bg-white fontsize-14 border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="contactMethod">
-                    <option value="" selected>最佳聯絡方式</option>
+                    <option value="" selected disabled>{{__('frontend_register.bestContactMethod')}}</option>
                     <option value="Whatsapp">Whatsapp</option>
-                    <option value="Email">Email</option>
-                    <option value="Call">Call</option>
+                    <option value="{{__('frontend_register.email')}}">{{__('frontend_register.email')}}</option>
+                    <option value="{{__('frontend_register.call')}}">{{__('frontend_register.call')}}</option>
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                     <svg class="fill-current h-6 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -201,15 +201,15 @@
 
             <div class="radio-group">
 
-                <p class="radio-title w-4/6 fontsize-14">是否One Storage 現有客戶 ? </p>
+                <p class="radio-title w-4/6 fontsize-14">{{__('frontend_register.existingCustomers')}}</p>
 
                 <div class="radio-custom w-1/6">
                     <input type="radio" id="storageyesunchecked" class="radio-gray" value="1" name="isCustomer">
-                    <label for="storageyesunchecked" class="radio-label">是</label>
+                    <label for="storageyesunchecked" class="radio-label">{{__('frontend_register.yes')}}</label>
                 </div>
                 <div class="radio-custom w-1/6">
                     <input type="radio" id="storagenochecked" class="radio-gray" value="0" name="isCustomer">
-                    <label for="storagenochecked" class="radio-label">否</label>
+                    <label for="storagenochecked" class="radio-label">{{__('frontend_register.no')}}</label>
                 </div>
             </div>
 
@@ -217,7 +217,7 @@
                 <div class="w-2/3"></div>
                 <div class="w-1/3 inline-block relative mb-6">
                     <select class="block appearance-none w-full fontsize-14 bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="branch">
-                        <option value="" selected disabled>分店</option>
+                        <option value="" selected disabled>{{__('frontend_register.branch')}}</option>
                         <?php
                         $branches = App\Store::select('branch')->get();
                         ?>
@@ -234,15 +234,15 @@
 
             <div class="radio-group">
 
-                <p class="radio-title w-4/6 fontsize-14">是否SoundWill Club 會員 ? </p>
+                <p class="radio-title w-4/6 fontsize-14">{{__('frontend_register.soundWill')}}</p>
 
                 <div class=" radio-custom w-1/6">
                     <input type="radio" id="clubyesunchecked" class="radio-gray" value="1" name="isMember">
-                    <label for="clubyesunchecked" class="radio-label">是</label>
+                    <label for="clubyesunchecked" class="radio-label">{{__('frontend_register.yes')}}</label>
                 </div>
                 <div class=" radio-custom w-1/6">
                     <input type="radio" id="clubnochecked" class="radio-gray" value="0" name="isMember">
-                    <label for="clubnochecked" class="radio-label">否</label>
+                    <label for="clubnochecked" class="radio-label">{{__('frontend_register.no')}}</label>
                 </div>
             </div>
         </div>
@@ -251,7 +251,7 @@
 
     <div class="relative">
         <img id="pwdShowToggle" class="form-control-right-icon" src="{{asset('images/contactUs/Image_39@2x.png')}}" alt="Mobile">
-        <input class="show-input w-full form-control mb-6 fontsize-12 pl-4" placeholder="密碼" name="password" id="password" type="password" required>
+        <input class="show-input w-full form-control mb-6 fontsize-12 pl-4" placeholder="{{__('frontend_register.password')}}" name="password" id="password" type="password" required>
     </div>
 
     <!-- <div class="relative">
@@ -260,7 +260,7 @@
     </div> -->
 
     <button class="submit-btn hover:bg-purple-400 fontsize-21">
-        註冊
+        {{__('frontend_register.register')}}
     </button>
 </form>
 @endsection
