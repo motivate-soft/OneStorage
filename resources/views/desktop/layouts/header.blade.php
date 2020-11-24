@@ -57,19 +57,19 @@
                 </li>
                 <div class="flex">
                     <li class="mr-1 md:mr-0 dropdown my-auto">
-                        <a class="dropbtn inline-block default-color no-underline py-2 px-2" href="#">
-                            {{Helper::getLocalName()}}
-                        </a>
-                        <ul class="dropdown-content">
-                            <li class="py-1">
-                                <a class="block hover:text-purple-700 cursor-pointer font_15" href="{{url('locale/zh-CN')}}">
-                                    Chinese
-                                </a>
-                                <a class="block hover:text-purple-700 cursor-pointer font_15" href="{{url('locale/en')}}">
-                                    English
-                                </a>
-                            </li>
-                        </ul>
+                        {{--<a class="dropbtn inline-block default-color no-underline py-2 px-2" href="#">--}}
+                            {{--{{Helper::getLocalName()}}--}}
+                        {{--</a>--}}
+                        {{--<ul class="dropdown-content">--}}
+                            {{--<li class="py-1">--}}
+                                {{--<a class="block hover:text-purple-700 cursor-pointer font_15" href="{{url('locale/zh-CN')}}">--}}
+                                    {{--Chinese--}}
+                                {{--</a>--}}
+                                {{--<a class="block hover:text-purple-700 cursor-pointer font_15" href="{{url('locale/en')}}">--}}
+                                    {{--English--}}
+                                {{--</a>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
                     </li>
                     <?php
                     if (Auth::check()) {
