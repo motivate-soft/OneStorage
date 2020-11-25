@@ -313,38 +313,40 @@
             <div id="stores-wrapper" class="grid grid-cols-3 col-gap-4 row-gap-6 pt-5 pl-8 pr-0 md:w-4/5 lg:w-full">
                 @foreach($stores as $store)
                     <?php
-                        $store_model = App\Store::find($store->id);
+                        $store_model = App\Store::find($store->store_id);
                     ?>
-                <div class="flex flex-col relative rounded overflow-hidden shadow-lg location-content-item" data-name="{{$store->branch}}" data-price="{{$store->price}}" data-size-label="{{$store_model->getSizeLabel()}}">
-                    <a href="{{route('pages.rentWareHouse', $store->_id)}}" class="relative">
-                        <div class="ribbon ribbon-badge ribbon-pink">
-                            <span class="ribbon-inner"> {{ __('frontend_branchLocation.latestOffers') }}</span>
-                        </div>
-                        <?php
-                        $storeImages = $store_model->storeImages()->where('is_used', true)->get();
-                        ?>
-                        <img class="rentwarehouse-image" style="height: 246px;" src="{{count($storeImages) ? asset($storeImages[0]->image) : asset('branchlocation/Intersection 7@2x.png')}}" alt="Rentwarehouse">
-                        <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ {{$store->price}} <span class="text-sm">{{__('frontend_branchLocation.from')}}</span></span>
-                    </a>
-                    <div class="flex flex-col justify-between p-2 flex-auto">
-                        <div class="mb-2 color-primary location-content-title">{{$store->branch}}</div>
-                        <div class="flex py-1 mb-2">
-                            <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
-                            <p class="ml-1 color-primary my-auto location-content-description store-address" data-lat="{{$store->lat}}" data-lng="{{$store->lng}}">{{$store->address}}</p>
-                        </div>
-                        <div class="flex py-1 mb-1">
-                            <img class="w-4 h-4 object-none" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
-                            <p class="ml-1 color-primary my-auto location-content-description">{{__('frontend_branchLocation.regulationFacility')}} </p>
-                        </div>
-
-                        <a href="{{route('pages.rentWareHouse', $store->_id)}}">
-                            <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
-                                {{ __('frontend_branchLocation.select') }}
-                            </button>
+                    @if($store_model)
+                    <div class="flex flex-col relative rounded overflow-hidden shadow-lg location-content-item" data-name="{{$store->branch}}" data-price="{{$store->price}}" data-size-label="{{$store_model->getSizeLabel()}}">
+                        <a href="{{route('pages.rentWareHouse', $store->_id)}}" class="relative">
+                            <div class="ribbon ribbon-badge ribbon-pink">
+                                <span class="ribbon-inner"> {{ __('frontend_branchLocation.latestOffers') }}</span>
+                            </div>
+                            <?php
+                            $storeImages = $store_model->storeImages()->where('is_used', true)->get();
+                            ?>
+                            <img class="rentwarehouse-image" style="height: 246px;" src="{{count($storeImages) ? asset($storeImages[0]->image) : asset('branchlocation/Intersection 7@2x.png')}}" alt="Rentwarehouse">
+                            <span class="absolute bottom-2 left-2 text-white font-weight-bolder location-content-item-price">$ {{$store->price}} <span class="text-sm">{{__('frontend_branchLocation.from')}}</span></span>
                         </a>
-                    </div>
+                        <div class="flex flex-col justify-between p-2 flex-auto">
+                            <div class="mb-2 color-primary location-content-title">{{$store->branch}}</div>
+                            <div class="flex py-1 mb-2">
+                                <img class="w-4 h-4" src="{{ asset('branchlocation/icons8-marker-50@2x.png') }}" />
+                                <p class="ml-1 color-primary my-auto location-content-description store-address" data-lat="{{$store->lat}}" data-lng="{{$store->lng}}">{{$store->address}}</p>
+                            </div>
+                            <div class="flex py-1 mb-1">
+                                <img class="w-4 h-4 object-none" src="{{ asset('branchlocation/007-fire-extinguisher@2x.png') }}" />
+                                <p class="ml-1 color-primary my-auto location-content-description">{{__('frontend_branchLocation.regulationFacility')}} </p>
+                            </div>
 
-                </div>
+                            <a href="{{route('pages.rentWareHouse', $store->_id)}}">
+                                <button class="w-full text-white font-bold py-2 rounded location-content-item-button">
+                                    {{ __('frontend_branchLocation.select') }}
+                                </button>
+                            </a>
+                        </div>
+
+                    </div>
+                    @endif
                 @endforeach
 
             </div>
