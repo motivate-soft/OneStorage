@@ -284,7 +284,7 @@
     </button>
 </div>
 
-<form id="discountForm" class="bg-primary px-5 pb-4" method="post" action="{{route('enquiries.store')}}">
+<form id="discountForm" class="bg-primary px-5 pb-4" style="display: none"method="post" action="{{route('enquiries.store')}}"> <!--kch-display:none-->
     @csrf
     <input type="hidden" name="page" value="{{Helper::$SS_FROM_FRONT_PAGE1}}">
     <input type="hidden" name="ajax" value="1">

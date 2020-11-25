@@ -197,7 +197,7 @@
     @endif
 </div>
 
-<div class="bg-primary py-4" style="display: none">
+<div class="bg-primary py-4" style="display: none"><!--kch-display:none-->
     <p class="heading1 text-center">{{ __('frontend_home.discountDesc') }}</p>
 
     <form id="discountForm" class="flex justify-between mt-6 pr-10 pb-4 section" method="post" action="{{route('enquiries.store')}}">
