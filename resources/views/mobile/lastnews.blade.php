@@ -29,7 +29,9 @@
                 <div class="pl-2" style="width: calc(90% - 6rem);">
                     <p class="font_16 leading-normal truncate">{{$news->title}}</p>
                     <p class="font_12 robert-regular mt-2"> {{__('frontend_latestNews.publishDate')}}:{{$news->created_at->format('d-m-Y')}}</p>
-                    <p class="font_16 my-4 leading-normal text-left whitespace-pre-line break-all">{{ mb_strimwidth($news->content, 0, 80, "...")}}</p>
+                    <p class="font_16 my-4 leading-normal text-left whitespace-pre-line break-all">
+                        {!! strip_tags(mb_strimwidth($news->content, 0, 200, "...")) !!}
+                    </p>
                 </div>
             </a>
             <?php
