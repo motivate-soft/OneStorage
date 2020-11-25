@@ -21,3 +21,5 @@ storage
 /config/mail.php
 /composer.lock
 /package-lock.json
+/app/Http/Kernel.php
+/config/view.php
