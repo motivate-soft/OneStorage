@@ -80,7 +80,7 @@ class Store extends Model implements TranslatableContract
             ->select('store_id as id', 'location')
             ->where('locale', App::getLocale())
             ->orderBy('store_id', 'asc')
-            ->limit(6)
+            ->limit(6)//kch
             ->get()
             ->unique('location');
 //        dd($locations);

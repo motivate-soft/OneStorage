@@ -95,6 +95,7 @@ class StoreController extends Controller
             ->join('store_translations', 'store_translations.store_id', '=', 'stores.id')
             ->join('store_sizes', 'store_sizes.store_id', '=', 'stores.id')
             ->where('store_translations.locale', App::getLocale())
+            ->limit(6)//kch.
             ->selectRaw('stores.*, store_translations.* ,min(store_sizes.prepaid_price) as price')
             ->groupBy('stores.id');
 
