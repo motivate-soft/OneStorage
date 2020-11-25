@@ -64,7 +64,8 @@
                         <div class="text-left px-3 font_17" style="width: calc(100% - 6rem)">
                             <p class="truncate font-bold leading-relaxed mb-1">{{$news->title}}</p>
                             <p class="leading-normal break-all news-short-content pt-1" >
-                                <?php echo nl2br($news->content) ?>
+                                <?php //echo nl2br($news->content) ?>
+                                {!! strip_tags(mb_strimwidth($news->content, 0, 250, "...")) !!}
                             </p>
                         </div>
                     </a>

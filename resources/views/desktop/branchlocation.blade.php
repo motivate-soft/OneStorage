@@ -354,8 +354,10 @@
         </div>
     </div>
     <div class="w-full lg:w-2/5 lg:ml-5">
-        <div id="map" class="w-full">
-            <p class="text-center my-10 state-text">Loading...</p>
+        <div class="sticky" style="top: 10.3rem">
+            <div id="map" class="w-full h-screen">
+                <p class="text-center my-10 state-text">Loading...</p>
+            </div>
         </div>
     </div>
 </div>

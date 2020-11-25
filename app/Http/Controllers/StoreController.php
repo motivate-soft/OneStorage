@@ -22,7 +22,7 @@ class StoreController extends Controller
      */
     public function store(Request $request){
         $data = $request->all();
-        $store = new Store;
+        $store = Store::create();
         $store->setData($data);
         return redirect()->back();
     }

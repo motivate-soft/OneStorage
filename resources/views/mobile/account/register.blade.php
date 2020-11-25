@@ -219,7 +219,7 @@
                     <select class="block appearance-none w-full fontsize-14 bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="branch">
                         <option value="" selected disabled>{{__('frontend_register.branch')}}</option>
                         <?php
-                        $branches = App\Store::select('branch')->get();
+                        $branches = App\Store::all();
                         ?>
                         @foreach($branches as $branch)
                         <option value="{{$branch->id}}">{{$branch->branch}}</option>

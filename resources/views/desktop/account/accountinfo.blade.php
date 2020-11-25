@@ -225,7 +225,7 @@
                             <div class="inline-block relative w-full px-2">
                                 <select value="{{$user->profile->contact_method}}" class="block appearance-none w-full bg-gray-100 border-b border-gray-200 px-2 py-2 pr-8 leading-tight focus:outline-none" name="contactMethod">
                                     <?php
-                                    $methods = ["Whatsapp", "Email", "Call"];
+                                    $methods = ["WhatsApp", "Email", "Call"];
                                     ?>
                                     <option value="" selected>{{__('frontend_accountinfo.bestContactUs')}}</option>
                                     @foreach($methods as $method)
@@ -259,10 +259,10 @@
                                 <select value="{{$user->profile->branch_id}}" class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="branch">
                                     <option value="" selected>{{__('frontend_accountinfo.branch')}}</option>
                                     <?php
-                                    $branches = App\Store::select('branch', 'id')->get();
+                                    $branches = App\Store::all();
                                     ?>
                                     @foreach($branches as $branch)
-                                    <option value="{{$branch->id}}" {{$user->profile->branch_id == $branch->id ? 'selected' : ''}}>{{$branch->branch}}</option>
+                                        <option value="{{$branch->id}}" {{$user->profile->branch_id == $branch->id ? 'selected' : ''}}>{{$branch->branch}}</option>
                                     @endforeach
                                 </select>
                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -275,7 +275,7 @@
 
                         <div class="radio-group pb-6">
 
-                            <p class="radio-title w-4/6 ">{{__('frontend_common.soundWillClub')}}</p>
+                            <p class="radio-title w-4/6 ">{{__('frontend_register.soundWill')}}</p>
 
                             <div class=" radio-custom w-1/6">
                                 <input type="radio" id="clubyesunchecked" class="radio-gray" value="1" name="isMember">

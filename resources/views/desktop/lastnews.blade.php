@@ -34,7 +34,8 @@
             <div class="" style="width: calc(100% - 8rem);">
                 <h1 class="font_19 w-4/5 leading-normal px-0 break-all">{!! $news->title !!}</h1>
                 <p class="font_12 robert-regular mt-2 "> {{ __('frontend_latestNews.publishDate') }}:{{$news->publish_date->format('d-m-Y')}}</p>
-                <p class="font_16 w-2/3 text-justify mt-6 mb-4 leading-normal break-all">{!! strip_tags(mb_strimwidth($news->content, 0, 120, "...")) !!}</p>
+
+                <p class="font_16 w-2/3 text-justify mt-6 mb-4 leading-normal break-all">{!! strip_tags(mb_strimwidth($news->content, 0, 250, "...")) !!}</p>
             </div>
         </a>
         <?php

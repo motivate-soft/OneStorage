@@ -392,7 +392,7 @@
                             @endif
 
                         </div>
-                    </div>.p
+                    </div>
 
                     <div class="horz-line my-4"></div>
 

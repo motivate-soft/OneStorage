@@ -223,7 +223,7 @@
 @endsection
 
 @section('content')
-<div id="map" class="w-full">
+<div id="map" class="w-full same-height" >
     <p class="text-center my-10 state-text">Loading...</p>
 </div>
 

@@ -30,7 +30,7 @@ class BlogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        $blog = new Blog;
+        $blog = Blog::create();
         $blog->setData($request);
         return redirect()->back();
     }

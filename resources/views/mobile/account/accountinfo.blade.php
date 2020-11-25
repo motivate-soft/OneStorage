@@ -241,10 +241,10 @@ use Illuminate\Support\Facades\Session;?>
                 <div class="w-1/2 inline-block relative mb-6">
                     <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none fontsize-14" name="branch">
                         <?php
-                        $branches = App\Store::select('branch', 'id')->get();
+                        $branches = App\Store::all();
                         ?>
                         @foreach($branches as $branch)
-                        <option value="{{$branch->id}}" {{$user->profile->branch_id == $branch->id ? 'selected' : ''}}>{{$branch->branch}}</option>
+                            <option value="{{$branch->id}}" {{$user->profile->branch_id == $branch->id ? 'selected' : ''}}>{{$branch->branch}}</option>
                         @endforeach
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -257,7 +257,7 @@ use Illuminate\Support\Facades\Session;?>
 
             <div class="radio-group">
 
-                <p class="radio-title w-4/6  fontsize-14">{{__('frontend_common.soundWillClub')}}</p>
+                <p class="radio-title w-4/6  fontsize-14">{{__('frontend_register.soundWill')}}</p>
 
                 <div class=" radio-custom w-1/6">
                     <input type="radio" id="clubyesunchecked" class="radio-gray" value="1" name="isMember">

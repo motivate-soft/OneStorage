@@ -188,7 +188,7 @@
                         <div class="w-full inline-block relative mb-6">
                             <select class="block appearance-none w-full bg-white border border-gray-200 px-4 py-2 pr-8 leading-tight focus:outline-none" name="contactMethod">
                                 <option value="" selected disabled>{{__('frontend_register.bestContactMethod')}}</option>
-                                <option value="Whatsapp">Whatsapp</option>
+                                <option value="{{__('frontend_register.whatsApp')}}">{{__('frontend_register.whatsApp')}}</option>
                                 <option value="{{__('frontend_register.email')}}">{{__('frontend_register.email')}}</option>
                                 <option value="{{__('frontend_register.call')}}">{{__('frontend_register.call')}}</option>
                             </select>

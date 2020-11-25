@@ -245,17 +245,13 @@ class Store extends Model implements TranslatableContract
                     $question->save();
                 }
             } else if (isset($data['question' . $i]) && $data['question' . $i] != "") {
-                $question = new StoreQuestion;
-                $question->store_id = $this->id;
-                $question->save();
-                $question->update([
+                StoreQuestion::create([
+                    'store_id' => $this->id,
                     $locale => [
                         'question' => $data['question' . $i],
                         'answer' => $data['answer' . $i]
                     ]
                 ]);
-//                $question->question = $data['question' . $i];
-//                $question->answer = $data['answer' . $i];
             }
         }
         $this->setImages($data, "offerImages", "/images/offers");

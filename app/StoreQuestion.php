@@ -11,6 +11,8 @@ class StoreQuestion extends Model implements TranslatableContract
 {
     use Translatable;
 
+    protected $fillable = ['store_id'];
+
     public $translatedAttributes = ['question', 'answer'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

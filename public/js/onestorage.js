@@ -106,6 +106,7 @@ $(function () {
                     data: $(this).serialize(),
                     datatype: 'json',
                     success: function (result) {
+                        console.log(result);
                         submitBtn.css("background-color", "#28e8db");
                         submitBtn.text(submitBtn.attr('data-text1'));
 
@@ -173,7 +174,11 @@ $(function () {
                         if($("body").width() <= 1440){
                             jMap.height(350);
                         }else{
-                            jMap.height(jMap.width());
+                            if(jMap.hasClass("same-height")){
+                                jMap.height(jMap.width());
+                            }else{
+                                jMap.height(screen.height - document.getElementsByTagName("nav")[0].clientHeight);
+                            }
                         }
 
 
