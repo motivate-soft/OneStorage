@@ -193,7 +193,7 @@ class AuthController extends Controller
         $this->toEmail = $request->email;
 
         try {
-            $this->mailer->send('partisals.lead', ['number'=>User::where("email", $this->toEmail)->first()->phone], function (Message $m){
+            $this->mailer->send('partials.lead', ['number'=>User::where("email", $this->toEmail)->first()->phone], function (Message $m){
                 $m->from($this->adminEmail)->to($this->toEmail)->subject('OneStorage');
             });
             $status = true;
@@ -203,7 +203,7 @@ class AuthController extends Controller
         }
 
         return $status === true
-            ? back()->with(['status' => __($status)])
+            ? back()->with(['status' => __("Success")])
             : back()->withErrors(['email' => __($status)]);
     }
 
