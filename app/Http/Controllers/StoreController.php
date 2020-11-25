@@ -91,11 +91,12 @@ class StoreController extends Controller
         $location = isset($_GET['location']) ? $_GET['location'] : '';
         $_GET['location'] = $location;
 
-        $stores = DB::table('stores')->join('store_sizes', 'store_sizes.store_id', '=', 'stores.id')
+        $stores = DB::table('stores')
             ->join('store_translations', 'store_translations.store_id', '=', 'stores.id')
+            ->join('store_sizes', 'store_sizes.store_id', '=', 'stores.id')
             ->where('store_translations.locale', App::getLocale())
-            ->groupBy('stores.id')
-            ->selectRaw('stores.*, store_translations.* ,min(store_sizes.prepaid_price) as price');
+            ->selectRaw('stores.*, store_translations.* ,min(store_sizes.prepaid_price) as price')
+            ->groupBy('stores.id');
 
         $appConfig = AppConfig::first();
 
@@ -106,6 +107,8 @@ class StoreController extends Controller
         }
 
         $stores = $location == '' ? $stores->get() : $stores->where('location', $location)->get();
+
+//        dd($stores);
 
         return view('branchlocation', ['locations' => $locations, 'stores' => $stores]);
     }
