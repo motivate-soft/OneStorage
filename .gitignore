@@ -20,5 +20,4 @@ storage
 /public/uploads
 /composer.lock
 /package-lock.json
-/app/Http/Kernel.php
 
