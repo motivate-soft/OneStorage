@@ -7,6 +7,6 @@ return [
     'information' => '信息',
     'logout' => '登出',
     'goAdminChat' => '单击此处与管理员聊天',
-    'adminAtOneStorage' => '管理员在 OneStorage',
+    'adminAtOneStorage' => 'OneStorage 管理員',
     'replyTo' => '回复汤姆...',
 ];

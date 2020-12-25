@@ -1,18 +1,22 @@
 <?php
 
-use Jenssegers\Agent\Agent as Agent;
+//...use Jenssegers\Agent\Agent as Agent;
+use Jenssegers\Agent\Agent;
 
+//...$Agent = new Agent();
+$agent = new Agent();
 
-$Agent = new Agent();
 // agent detection influences the view storage path
-if ($Agent->isDesktop()) {
+if (!$agent->isMobile()) {
     // you're a mobile device
-    $viewPath = resource_path('views/desktop');
+         $viewPath = resource_path('views/desktop');
+    
 } else {
     // you're a desktop device, or something similar
-    $viewPath = resource_path('views/mobile');
+   	$viewPath = resource_path('views/mobile');
+      
 }
-
+ 
 return [
 
     /*

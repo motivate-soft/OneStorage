@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{ __('迷你倉 | 會員資料 | 至尊迷你倉 One Storage') }}</title>
+<title>{{ __('frontend_title.memberInformation') }}</title>
 @endsection
 
 @section('styles')

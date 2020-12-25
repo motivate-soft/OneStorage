@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('迷你倉 | 忘記密碼 | 至尊迷你倉 One Storage')}}</title>
+<title>{{__('frontend_title.resetPassword')}}</title>
 @endsection
 
 @section('styles')

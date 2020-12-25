@@ -2,7 +2,6 @@
 
 return [
 
-    'title' => '迷你倉 | 登入 | 至尊迷你倉 One Storage',
     'menuTitle' => '登入',
     'mobilePhoneNumber' => '手機號碼',
     'password' => '密碼',

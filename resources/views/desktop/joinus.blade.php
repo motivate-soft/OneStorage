@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('迷你倉 | 職位空缺 | 至尊迷你倉 One Storage')}}</title>
+<title>{{__('frontend_title.jobVacancy')}}</title>
 @endsection
 
 @section('styles')
@@ -33,7 +33,7 @@
                 <div class="mb-4">
                     <div class=" subtitle-font">{{__('frontend_joinus.entryRequirements')}}</div>
                     <p class="after-list content-font">{{__('frontend_joinus.workExperience')}}</p>
-                    <p class="after-list content-font">{{__('frontend_joinus.prefered')}}</p>
+                    <p class="after-list content-font">{{__('frontend_joinus.preferred')}}</p>
                     <p class="after-list content-font">{{__('frontend_joinus.needTo')}}</p>
                     <p class="after-list content-font">{{__('frontend_joinus.computerOperation')}}</p>
                 </div>
@@ -47,7 +47,7 @@
                     <p class="after-list content-font">{{__('frontend_joinus.businessBonus')}}</p>
                     <p class="after-list content-font">{{__('frontend_joinus.staffDiscount')}}</p>
                     <p class="after-list content-font">{{__('frontend_joinus.training')}}</p>
-                    <p class="after-list content-font">{{__('frontend_joinus.promotionOpportunites')}}</p>
+                    <p class="after-list content-font">{{__('frontend_joinus.promotionOpportunities')}}</p>
                 </div>
                 <p class="content-font contentfont-color">{{__('frontend_joinus.emailResume')}} <b>swhr@soundwill.com.hk</b> </p>
                 <p class="content-font contentfont-color">{{__('frontend_joinus.allInformation')}} </p>

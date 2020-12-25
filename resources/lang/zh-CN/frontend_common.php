@@ -9,7 +9,7 @@ return [
     'yes' => '是',
     'no' => '否',
     'update' => '更新',
-    'back' => '背部',
+    'back' => '上一頁',
     'admin' => '管理员',
     'logout' => '送出',
     'question' => '询问',

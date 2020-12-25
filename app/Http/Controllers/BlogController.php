@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Blog;
 use Illuminate\Http\Request;
-
+use App\SeoTag;
 /**
  * Class BlogController
  * @package App\Http\Controllers
@@ -19,7 +19,7 @@ class BlogController extends Controller
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      */
     public function get($id){
-        $blog = Blog::findOrFail($id);
+        $blog = Blog::with('seoTag')->findOrFail($id);
         return $blog;
     }
 
@@ -32,6 +32,14 @@ class BlogController extends Controller
     public function store(Request $request){
         $blog = Blog::create();
         $blog->setData($request);
+      
+        $input = $request->only(['seo_title', 'seo_description', 'seo_keyword', 'seo_content', 'alt_field']);
+        
+        $input['blog_id'] = $blog->id;
+
+        $seoTag = SeoTag::create($input);
+        
+
         return redirect()->back();
     }
 
@@ -42,8 +50,9 @@ class BlogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id){
-        $blog = Blog::where('_id', $id)->first();
-        return view('news', compact('blog'));
+        $blog = Blog::with('seoTag')->where('_id', $id)->first();
+        $seoTag = SeoTag::where('blog_id', $blog->id)->first();
+        return view('news',['blog'=>$blog, 'seoTag'=>$seoTag]);
     }
 
     /**
@@ -55,6 +64,14 @@ class BlogController extends Controller
     public function update(Request $request){
         $blog = Blog::find(isset($request->id) ?  $request->id : 0);
         $blog->setData($request);
+
+        if($request->id)
+        {
+            $input = $request->only(['seo_title', 'seo_description', 'seo_keyword', 'seo_content', 'alt_field']);
+            $input['blog_id'] = $blog->id;
+            SeoTag::updateOrCreate(['blog_id'=>$request->id], $input);    
+        }
+        
         return redirect()->back();
     }
 
@@ -100,5 +117,12 @@ class BlogController extends Controller
             return true;
         }
         return false;
+    }
+
+    public function getSeoTag()
+    {
+        $seoTag = SeoTag::find(1);
+
+        return response()->json(['data'=>$seoTag]);
     }
 }

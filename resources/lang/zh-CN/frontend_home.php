@@ -43,7 +43,7 @@ return [
     'branchLocation' => '我們分店遍佈港、九及新界，詳情可查閱分店位置。',
     'appointment' => '可以預約實地參觀迷你倉嗎？',
     'appointmentDescription' => '歡迎致電21112636或whatsapp 51188503預約參觀。星期日及公眾假期，需至少於 1 天前預約。',
-    'saveTime' => '优质的客户服务，即使在午夜时分在Facebook ',
+    'saveTime' => 'Excellent customer service, very fast response even at midnight on facebook messenger. Save me a lot of time.',
     'constantTemperature' => '無間斷恆溫空調',
     'equipment' => '消防裝置設備',
     'accessSystem' => '7 x 24智能保安進出系統',

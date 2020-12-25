@@ -233,7 +233,8 @@
                         </div>
                         <div class="mb-4">
                             <p class="font_26 mb-2">{{ __('backend_pages.blogTopic') }}</p>
-                            <input placeholder="Title" class="form-input w-full appearance-none bg-white border border-gray-300 p-2 text-base" name="title" required type="text" id="title">
+                            <textarea placeholder="Title" name="title" required rows="1" class="form-input w-full ckeditor" id="title"></textarea>
+                            <!-- <input placeholder="Title" class="form-input w-full appearance-none bg-white border border-gray-300 p-2 text-base" name="title" required type="text" id="title"> -->
                         </div>
                         <div class="mb-4">
                             <p class="font_26 mb-2">{{ __('backend_pages.blogContent') }}</p>
@@ -287,7 +288,7 @@
 
 
 
-                    <div>
+                    <div class="border-b border-gray-300  mb-2">
                         <p class="font_26 mb-2">{{ __('backend_pages.blogTopic') }}</p>
 
                         <?php
@@ -295,7 +296,7 @@
                         ?>
                         @foreach ($newses as $news)
                         <div class="flex justify-between mb-2 robert-regular cursor-pointer blog-item" id="{{$news->id}}">
-                            <span class="blog-title my-auto truncate">{{ $news->title }}</span>
+                            <span class="blog-title my-auto truncate">{!! $news->title !!}</span>
                             <div class="flex justify-end flex-shrink-0">
                                 <div class="action-bar hidden">
                                     <img src="{{asset('images/icons8-edit-48@2x.png')}}" class="inline" />
@@ -310,6 +311,31 @@
 
                         {{ $newses->links() }}
                     </div>
+
+                    <p class="font_26 mb-2">{{ __('backend_pages.seotags') }}</p>
+                    
+                    <div class="mb-4">
+                        <p class="font_26 mb-2">{{ __('backend_pages.seoTitle') }}</p>
+                        <input placeholder="Seo Title" class="form-input w-full appearance-none bg-white border border-gray-300 p-2 text-base" name="seo_title" type="text" id="seotitle">
+                    </div>
+                    <div class="mb-4">
+                        <p class="font_26 mb-2">{{ __('backend_pages.seoDescription') }}</p>
+                        <input placeholder="Seo Description" class="form-input w-full appearance-none bg-white border border-gray-300 p-2 text-base" name="seo_description" type="text" id="seodescription">
+                    </div>
+                    <div class="mb-4">
+                        <p class="font_26 mb-2">{{ __('backend_pages.seoKeyword') }}</p>
+                        <input placeholder="Seo Keyword" class="form-input w-full appearance-none bg-white border border-gray-300 p-2 text-base" name="seo_keyword"  type="text" id="seokeyword">
+                    </div>
+                    <div class="mb-4">
+                        <p class="font_26 mb-2">{{ __('backend_pages.seoContent') }}</p>
+                        <textarea placeholder="Seo Content" class="form-input w-full appearance-none bg-white border border-gray-300 p-2 text-base" name="seo_content" type="text" id="seocontent"></textarea>
+                    </div>
+
+                    
+                    <div class="mb-4">
+                        <p class="font_26 mb-2">{{ __('backend_pages.altField') }}</p>
+                        <input placeholder="Alt Field" class="form-input w-full appearance-none bg-white border border-gray-300 p-2 text-base" name="alt_field"  type="text" id="altfield">
+                    </div>
                 </div>
 
             </div>
@@ -323,7 +349,23 @@
 @section('scripts')
 <script>
 
+    // $(function(){
+    //     $.ajax({
+    //         url: '/backend/getseotag',
+    //         type: 'GET',
+    //         success: function(result) {
+    //             let data  = result['data'];
+    //             if(data['seo_title'] !== undefined)
+    //             {
+    //                 $('#seotitle').val(data['seo_title']);
+    //                 $('#seocontent').val(data['seo_content']);
+    //                 $('#seokeyword').val(data['seo_keyword']);
+    //                 $('#seodescription').val(data['seo_description']);
+    //             }
 
+    //         }
+    //     });
+    // }());
 
     function readURL(input, preview) {
         if (input.files && input.files[0]) {
@@ -403,8 +445,25 @@
                 $("#usedPromition").prop("checked", blog.used_promotion);
                 $("#usedNotify").prop("checked", blog.used_notify);
                 $("#id").val(blog._id);
+                CKEDITOR.instances['title'].setData(blog.title);
                 $("#title").val(blog.title);
-
+                if(blog.seo_tag !== null)
+                {   
+                    let data = blog.seo_tag
+                    $('#seotitle').val(data['seo_title']);
+                    $('#seocontent').val(data['seo_content']);
+                    $('#seokeyword').val(data['seo_keyword']);
+                    $('#seodescription').val(data['seo_description']);
+                    $('#altfield').val(data['alt_field']);
+                }else
+                {
+                    $('#seotitle').val("");
+                    $('#seocontent').val("");
+                    $('#seokeyword').val("");
+                    $('#seodescription').val("");
+                    $('#altfield').val("");
+                }
+              
                 CKEDITOR.instances['content'].setData(blog.content);
                 $("#content").val(blog.content);
 
@@ -479,9 +538,14 @@
     });
 
     $("#content").ckeditor();
-
+    $("#title").ckeditor();
+    CKEDITOR.replace( 'title', {
+        height: 100
+    } );
     CKEDITOR.replace( 'content', {
         height: 700
     } );
+
+   
 </script>
 @endsection

@@ -1442,107 +1442,114 @@ $(function () {
 
             if(locale == "en")
             {
-                faqData = [{
-                    category: 'Contact us',
-                    faqs: [{
-                        question: '1. How can I contact Supreme Mini Storage?',
-                        answer: 'Tel: (852) 2111 2636/ Email: cs@onestorage.com.hk or WhatsApp: (852) 54907251'
-                    },
-                        {
-                            question: '2. When is the branch visit and payment time?',
-                            answer: 'Please call the branch to make an appointment: Monday to Friday: 10:00 am to 7:00 pm / Saturday, Sunday and public holidays: 10:00 am to 5:00 pm'
-                        },
-                        {
-                            question: '3. Can I contact you outside of business hours?',
-                            answer: 'Outside office hours, please call the enquiry hotline at 2111 2636.'
-                        }
-                    ]
-                },
+                faqData = [
                     {
-                        category: 'Size selection',
+                        category: 'Contact us',
                         faqs: [{
-                            question: '1. What size of mini storage should I use?',
-                            answer: 'You can use the space calculator to calculate the required warehouse size or contact our customer service specialist to recommend a suitable solution for you.'
-                        },
+                                question: '1. How to contact One Storage?',
+                                answer: 'Hotline: (852) 2111 2636 email: cs@onestorage.com.hk Whatsapp: (852)5118 8503'
+                            },
                             {
-                                question: '2. What mini storage size is available?',
-                                answer: 'Each branch has a variety of different sizes of mini storage to choose from, please call the hotline 21112636 for inquiries.'
+                                question: '2. What is office hours for payment and site visit?',
+                                answer: 'By appointment for site visit: Monday to Friday: 10:00 am to 7:00 pm Saturaday/Sunday and Public Holiday: 10:00 am to 5:00 pm'
+                            },
+                            {
+                                question: '3. How to contact One Storage after Office hours?',
+                                answer: 'Please call (852) 2111 2636 after office hours.'
                             }
                         ]
                     },
                     {
-                        category: 'Field visit',
-                        faqs: [{
-                            question: '1. Can I visit before renting the mini storage？',
-                            answer: 'We welcome guests to visit the branch in person before renting the warehouse to understand the actual situation of the branch.'
-                        },
+                        category : 'Size selections',
+                        faqs : [
                             {
-                                question: '2. Do I need to make an appointment to visit the mini storage？',
-                                answer: 'Before visiting each branch, please call 2111 2636 or contact each branch directly to make an appointment. If you want to visit on Saturday, Sunday or public holiday, please make an appointment at least one working day in advance.'
+                                question : '1. What size of storage I need?',
+                                answer : 'You can use space calculator to measure the size of storage you need or contact our staff for proposals'
+                            },
+                            {
+                                question : '2. What size of storage for selection?',
+                                answer : 'Branches have different size storges, please call 21112636 for details.'
                             }
                         ]
                     },
                     {
-                        category: 'Environmental Facilities',
-                        faqs: [{
-                            question: '1. What is the environmental temperature and humidity in the warehouse？',
-                            answer: 'Each branch is equipped with a reliable constant temperature air-conditioning system, which operates 24 hours a day.'
-                        },
+                        category : 'Site Visit',
+                        faqs : [
                             {
-                                question: '2. How about the fire fighting equipment in the supreme mini storage?',
-                                answer: 'Fully comply with the fire protection guidelines of the Fire Services Department.'
+                                question : '1. Can we have size visit before rental?',
+                                answer : 'We welcome customers to have site visit to know the actual environment before rental.'
                             },
                             {
-                                question: '3. What is the security situation in the mini storage?',
-                                answer: 'Equipped with 7 x 24 hours smart security access system, all-weather high-definition security monitoring and alarm system.'
+                                question : '2. Any appointment needed before site vist?',
+                                answer : 'We welcome customers to have site visit.  Please call 2111 2636 or contact the individual branch directly to make appointment .  If you want to have site visit on weekend, Sunday or public holiday, please make your appointment at least one working day before.'
                             }
                         ]
                     },
                     {
-                        category: 'Lease contract',
-                        faqs: [{
-                            question: '1. Do I need to pay a deposit to rent a mini storage?',
-                            answer: 'Contract period 1-2 months: deposit is 2 months of original rent, 3 months or more contract period: deposit is 1 month of original rent. The deposit will be returned within 30 days after the end of the contract and move out.'
-                        },
+                        category : 'Environmental and Facilities',
+                        faqs : [
                             {
-                                question: '2. How to pay rent?',
-                                answer: "Guests can choose the following payment methods: EPS, cheque, credit card, FPS or interest-free installment."
+                                question : '1. How about the enviroment and humidity of the storage?',
+                                answer : 'All branches have 24 hours air conditioning  to maintain constant temperature.'
                             },
                             {
-                                question: '3. The company needs an invoice to make payment. Can you give me an invoice every month?',
-                                answer: "For customers who pay monthly, we will send monthly invoices by email or Whatsapp, but if you are a customer of the prepayment plan, our company will not provide monthly invoices."
-                            },
-                        ]
-                    },
-                    {
-                        category: 'Entry and deposit',
-                        faqs: [{
-                            question: '1. After renting a mini warehouse, how do I enter or deposit and withdraw?',
-                            answer: 'Customers can use smart cards to easily enter and exit the mini warehouse at any time to withdraw items.'
-                        },
-                            {
-                                question: '2. Is it possible to withdraw items from the mini storage at any time?',
-                                answer: 'Yes, customers can use smart cards to withdraw and deposit 24 hours a day, and easily enter and exit the mini storage at any time.'
+                                question : '2. How about the fire services facilities for storage?',
+                                answer : 'Fllows the instrction provided by Fire Services Department.'
                             },
                             {
-                                question: "3. What can't be stored?",
-                                answer: 'Customers cannot store any hazardous or dangerous goods that are under legal control, including explosive or flammable items, radiation or chemicals, illegal or corrosive items, food or any perishable items, otherwise all liability The customer is responsible. The company has the right to immediately terminate the contract and seek compensation, and the deposit will not be refunded.'
+                                question : '3. How about the security of the storage?',
+                                answer : '7 X 24 around the clock secuity access system, high resolution monitor and alarm system. '
                             }
                         ]
                     },
                     {
-                        category: 'Exit and renew',
-                        faqs: [{
-                            question: '1. The contract has not expired, what should I do if I want to end the contract early? Do I need to pay liquidated damages?',
-                            answer: 'If you need to terminate the contract early, the fees you have paid will not be refunded.'
-                        },
+                        category : 'Storge Rental Agreement',
+                        faqs : [
                             {
-                                question: '2. After the contract expires, I want to continue using it. Do I need to re-sign the contract?',
-                                answer: 'If necessary, 30 days before the contract expires, the branch staff will contact the customer to arrange the renewal of the contract and sign the contract again.'
+                                question : '1. Any deposit is needed for storage rental?',
+                                answer : 'For 1-2 month storage rental agreement: 2 months original rental fee as deposit. For 3 months or above storage rental agreement deposit: 1 month original rental fee as deposit. All the deposit will returned within 30 days after the agreement completed.'
                             },
                             {
-                                question: '3. How do I go through the exit procedures when the contract expires?',
-                                answer: 'Guests only need to notify by email, phone or written 14 days in advance (the customer service officer will confirm the return application by email). Prepare the documents and review the warehouse conditions on the day of return. The deposit will be refunded within 30 days after the return.'
+                                question : '2. How to pay the rental fee?',
+                                answer : "Customer can have following payment methods: EPS, cheque, credit card, Faster Payment System (FPS) or interest free installment."
+                            },
+                            {
+                                question : '3. Can One Storage issue monthly rental fee invoice for payment which requested by company?',
+                                answer : "One Storage will issue invoice to customer who settles rental fee by monthly base through email or whatsapp.  However, no monthly invoice will be issued if you are prepayment customer. "
+                            },
+                        ]
+                    },
+                    {
+                        category : 'Move in and Access',
+                        faqs : [
+                            {
+                                question : '1. After rental, how to move in and access for the stoarge?',
+                                answer : 'Customer can use intelligent access card anytime to save and take any stuffs from storage.'
+                            },
+                            {
+                                question : '2. Can customer access the storage anytime?',
+                                answer : 'Yes, Customer can access the storage with access anytime to deposit and take anything 24 hours.'
+                            },
+                            {
+                                question : "3. Anything is prohibit to deposit in storage?",
+                                answer : 'Cutomer is prohibit to deposit anything that may considered harmful, dangerous, restricted or prohibited by law, includes but not limited to explosive, flammable, radioactive, chemicals, illegal, corrosive, food or perishable goods. One Storage Management Company Limited has the right to teminate the agreement immediately and ask for compansation.  Deposit  '
+                            }
+                        ]
+                    },
+                    {
+                        category : 'Temination and Renewal Agreement',
+                        faqs : [
+                            {
+                                question : '1. 1. What is the process for the incompleted agreement which need to teminate? Any penalty for this situation? ',
+                                answer : 'If customer needs to teminate the agreement, all payments are not refundable. '
+                            },
+                            {
+                                question : '2. Does the cutomer need to sign a new agreemtn if he/she wants to continue the stoarge services? ',
+                              answer : 'Yes, Customer services officer will contact the customer 30 day before the agreement expired and new agreement will be issued for customer to sign.'
+                            },
+                            {
+                                question : '3. What is the process for agreement expired?',
+                               answer : 'Customer can contact 14 days before the due date by written notification, call or email (Customer service officer will send the temination document by email.)'
                             }
                         ]
                     },

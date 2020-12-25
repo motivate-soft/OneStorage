@@ -1,16 +1,16 @@
 <?php
 
 return [
-    'aboutSupreme' => 'About supreme mini storage',
-    'business' => "It is a business under the Golden Chaoyang Group (stock code: 00878.HK).",
-    'withBranches' => "With branches in Hong Kong, Kowloon and the New Territories, we are actively expanding our business to provide customers with high-quality and professional storage and storage services.",
-    'supremeMiniStorage' => 'Supreme Mini Storage is a member of the Asian Mini Storage Association (SSAA) and the Hong Kong Mini Storage Association (HKMSA).',
-    'vacancies' => 'Vacancies',
+    'aboutSupreme' => 'About One Storage Management Company Limited',
+    'business' => "Subsidary of Sounwill Holding Limited (Stock Code: 00878)",
+    'withBranches' => "Our braches locate in different districts of Hong Kong Island, Kowloon and New Territories.   We continue to expand our business road map and provide excellent quality and professional storage services.",
+    'supremeMiniStorage' => 'Member of Hong Kong Mini-Storages Association (HKMSA) and The Self Storage Association Asia',
+    'vacancies' => 'Job Vacancy',
     'disclaimer' => 'Disclaimer',
-    'copyright' => '©2020 Supreme Mini Storage Copyright',
-    'contactUs' => 'Contact us',
-    'viewBranchAddress' => 'View branch address',
-    'latestNewsAccount' => 'Latest news account',
+    'copyright' => '©2020 One Storage Management Company Limited All rights Reserved',
+    'contactUs' => 'Contact Us',
+    'viewBranchAddress' => 'Address of Branches',
+    'latestNewsAccount' => 'Latest News',
     'isMember' => 'Is a member of the following organizations:',
     'copyright_' => 'Supreme Mini Storage | Copyright | Disclaimer',
 ];

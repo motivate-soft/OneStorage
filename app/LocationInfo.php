@@ -192,15 +192,15 @@ class LocationInfo
 
     private static $HK_LOCATIONS_EN = [
         [
-            'name' => 'Xiaoxiwan',
+            'name' => 'Siu Sai Wan',
             'items' => [
                 [
                     'phone'   => '2111 1062',
-                    'address' => '4th Floor, Prince Industrial Building, 5 Xin Yip Street, Chai Wan'
+                    'address' => '4/F, Price Factory Building, No.5 Sun Yip Street, Chai Wan, Hong Kong'
                 ],
                 [
                     'phone'   => '2116 0071',
-                    'address' => 'Room B, 7th Floor, Sun Dragon Industrial Building, 11 Xin Yip Street, Chai Wan'
+                    'address' => '7/F B Sum Lung Industrial Building No. 11 Sun Yip  Str, Siu Sai Wan, Chai Wan, Hong Kong'
                 ]
             ]
         ],
@@ -209,11 +209,11 @@ class LocationInfo
             'items' => [
                 [
                     'phone'   => '2194 0038',
-                    'address' => 'Room C, 6th Floor, Wanfeng Industrial Building, 7 Cheung Lee Street, Chai Wan'
+                    'address' => 'Unit 6C Man Foong Industrial Building, 7 Cheung Lee Street, Chai Wan, Hong Kong'
                 ],
                 [
                     'phone'   => '2116 0460',
-                    'address' => 'Room B1, 14th Floor, Chai Wan Centre Industrial Building, 20 Lee Chung Street, Chai Wan'
+                    'address' => 'Flat B1, 14/F, Chai Wan Industrial Centre, 20 Lee Chung Street, Chai Wan, Hong Kong'
                 ]
             ]
         ],
@@ -222,7 +222,7 @@ class LocationInfo
             'items' => [
                 [
                     'phone'   => '2680 9691',
-                    'address' => 'Room A, 14th Floor, Ruiqi Industrial Building, 18 Wong Chuk Hang Road'
+                    'address' => 'Unit A 14/F, Shui Ki Industrial Building, 18 Wong Chuk Hang Road, Wong Chuk Hang, Hong Kong'
                 ]
             ]
         ],
@@ -234,11 +234,11 @@ class LocationInfo
             'items' => [
                 [
                     'phone'   => '2111 0509',
-                    'address' => 'Unit B, 9th Floor, Jie King Industrial Building, 114 King Fuk Street, San Po Kong'
+                    'address' => 'Unit B, 9/F, Chiap King Industrial Building No.114 King Fuk Street San Po Kong, Kowloon'
                 ],
                 [
                     'phone'   => '2111 2739',
-                    'address' => 'Room CD, 9th Floor, Lijia Industrial Building, 8 Wufang Street, San Po Kong'
+                    'address' => 'Unit C, D on 9/F Lee Ka Industrial Building, 8 Ng Fong Street, San Po Kong, Kowloon'
                 ]
             ]
         ]
@@ -250,11 +250,11 @@ class LocationInfo
             'items' => [
                 [
                     'phone'   => '2111 2683',
-                    'address' => '2-3/F, Block A, Phase 1, Tongzhen Industrial Building, 9-11 Cheong Wing Road, Kwai Chung'
+                    'address' => 'Flat A, 2/F & 3/F, Block A, Tung Chun Industrial Building, 9-11 Cheung Wing Road, Kwai Chung, New Territories'
                 ],
                 [
                     'phone'   => '2111 0389',
-                    'address' => 'Unit D, 2/F, Yield Industrial Warehouse Building, 16 Ta Chuen Ping Street, Kwai Chung'
+                    'address' => 'Flat D, 2/F, Mercantile Industrial And Warehouse, 16 Ta Chuen Ping Street, Kwai Chung, New Territories'
                 ],
                 // [
                 //     'phone'   => '2111 1629',
@@ -267,7 +267,7 @@ class LocationInfo
             'items' => [
                 [
                     'phone'   => '2111 1063',
-                    'address' => '5&7 Floor, Block D, Phase 2, Tsing Yi Industrial Centre, 1-33 Cheung Tat Road, Tsing Yi'
+                    'address' => 'Unit 2-14, 5 & 7 /F Block D, Tsing Yi Industrial Centre, Phase 2, 1-33, Cheung Tat Road, Tsing Yi'
                 ],
                 // [
                 //     'phone'   => '2111 1063',
@@ -280,7 +280,7 @@ class LocationInfo
             'items' => [
                 [
                     'phone'   => '2111 1629',
-                    'address' => 'Room B, 8th Floor, Kwai Fung Industrial Building, 9-15 Kwai Cheong Road, Kwai Hing'
+                    'address' => 'Unit B, 8/F, Kwai Fong Industrial Building No.9-15 Kwai Cheong Road, Kwai Chung, New Territories'
                 ]
             ]
         ],
@@ -289,15 +289,15 @@ class LocationInfo
             'items' => [
                 [
                     'phone'   => '2111 3536',
-                    'address' => 'Room E, H-J, 6th Floor, Fu Cheong Center, 5-7 Wong Chuk Yeung Street, Fotan'
+                    'address' => 'Unit H-J, 6/F, Fu Cheung Centre, 5-7 Wong Chuk Yeung Street, Fo Tan, New Territories'
                 ],
                 [
                     'phone'   => '2111 3525',
-                    'address' => 'Room C, 3/F, Warwick Industrial Building, 1-7 Wo Heung Street, Fotan'
+                    'address' => 'Factory C, 3/F Wah Wai Industrial Building, 1-7 Wo Heung Street, Fo Tan, New Territories'
                 ],
                 [
                     'phone'   => '2116 8955',
-                    'address' => 'Room AB, 3rd Floor, Universe Industrial Centre, 19-25 Shan Mei Street, Fo Tan'
+                    'address' => 'Workshop A&B on 3/F, Universal Industrial Centre, 19- 25 Shan Mei street, Shatin, New Territories'
                 ],
                 // [
                 //     'phone'   => 'TBC',
@@ -310,7 +310,7 @@ class LocationInfo
             'items' => [
                 [
                     'phone'   => '2111 4528',
-                    'address' => 'Room B, 3rd Floor, Meisik Industrial Building, 1-11 Kwai Ting Road, Kwai Fong'
+                    'address' => 'Unit B, 3/F, Mai Sik Industrial Building No.11 Kwai Ting Road, Kwai Chung, New Territories'
                 ]
             ]
         ],
@@ -319,7 +319,7 @@ class LocationInfo
             'items' => [
                 [
                     'phone'   => '2374 2022',
-                    'address' => '1, 4 and 5 floors, Tong Ming Industrial Building, 3 Sun Yick Lane, Tuen Mun'
+                    'address' => '1/F, 4/F & 5/F, Tung Ming Industrial Building, 3 San Yick Lane, Tuen Mun, New Territories'
                 ],
                 // [
                 //     'phone'   => '2374 2022',
@@ -336,11 +336,11 @@ class LocationInfo
             'items' => [
                 [
                     'phone'   => '2111 2663',
-                    'address' => '14th Floor, Phase 2, Metropolitan Industrial Warehouse Building, 216-218 Texaco Road, Tsuen Wan'
+                    'address' => '14/F Metropolitan Industrial & Warehouse Building No.2, 216-218 Texaco Road, Tsuen Wan, New Territories'
                 ],
                 [
                     'phone'   => '2116 9327',
-                    'address' => 'Room B, 7th Floor, Wah Hing Industrial Building, 2-6 Ma Kok Street, Tsuen Wan'
+                    'address' => 'Unit B, 7/F Wa Hing Building, 2-6 Ma Kok Street, Tsuen Wan, New Territories'
                 ]
             ]
         ]

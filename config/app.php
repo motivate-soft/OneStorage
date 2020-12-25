@@ -179,6 +179,7 @@ return [
         Cmgmyr\Messenger\MessengerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+	Jenssegers\Agent\AgentServiceProvider::class,
 
     ],
 
@@ -234,6 +235,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Helper' => App\Helper\Helper::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+	'Agent' => Jenssegers\Agent\Facades\Agent::class,
     ],
 
 ];

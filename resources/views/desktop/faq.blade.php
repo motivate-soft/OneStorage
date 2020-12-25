@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('frontend_faq.title')}}</title>
+<title>{{__('frontend_title.faq')}}</title>
 @endsection
 
 @section('styles')

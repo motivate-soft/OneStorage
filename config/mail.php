@@ -40,7 +40,7 @@ return [
             'port' => 587,
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'username' => 'noreply@onestorage.com.hk',
-            'password' => 'ones@2020stanley',
+            'password' => 'EvlFABlh2i',
             'timeout' => null,
             'auth_mode' => null,
         ],

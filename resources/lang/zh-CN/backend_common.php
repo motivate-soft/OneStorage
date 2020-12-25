@@ -2,6 +2,6 @@
 
 return [
 
-    'logout' => '登出'
+    'logout' => 'Logout'
 
 ];

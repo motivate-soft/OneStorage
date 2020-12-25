@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('frontend_register.title')}}</title>
+<title>{{__('frontend_title.registration')}}</title>
 @endsection
 
 @section('styles')

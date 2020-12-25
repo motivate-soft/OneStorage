@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'phone' => 'Phone',
+    'phone' => 'Telephone No',
     'address' => 'Location',
 ];

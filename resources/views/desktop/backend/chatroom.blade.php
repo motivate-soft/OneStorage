@@ -1,7 +1,7 @@
 @extends('backend.layouts.app')
 
 @section('title')
-<title>{{__('Messages')}}</title>
+<title>{{__('frontend_title.messeng')}}</title>
 @endsection
 
 @section('content')

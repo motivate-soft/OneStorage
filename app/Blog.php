@@ -158,4 +158,10 @@ class Blog extends Model implements TranslatableContract
             ->first();
         return $latest_news;
     }
+
+
+    public function seoTag()
+    {
+        return $this->hasOne('App\SeoTag', 'blog_id');
+    }
 }

@@ -2,7 +2,7 @@
 
 return [
     'menuTitle' => 'Latest News',
-    'title' => 'Latest News about Mini Storage',
-    'publishDate' => 'Publish Date',
-    'other' => 'Other News'
+    'title' => 'Latest News ',
+    'publishDate' => 'Release Date',
+    'other' => 'Other Inforamtion'
 ];

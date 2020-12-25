@@ -89,6 +89,10 @@
     <script>
         resize();
 
+        // ------ Add code to change language style -----
+        var locale = $("#locale").val();
+
+
         function resize() {
             document.getElementById("main-content").style.marginTop = (document.getElementsByTagName("nav")[0].clientHeight) + "px";
         }

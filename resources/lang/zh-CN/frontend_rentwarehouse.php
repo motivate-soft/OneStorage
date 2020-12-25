@@ -2,7 +2,7 @@
 
 return [
 
-    'video' => '视频',
+    'video' => 'Video',
     'details' => '詳細資料',
     'leaseArea' => '租用面積',
     'popularSize' => '以下是較受歡迎之尺寸',

@@ -3,13 +3,13 @@
 return [
 
     'menuTitle' => 'About',
-    'on' => 'On',
-    'title1' => 'Extreme Mini Storage',
-    'desc1-1' => 'It is a business of Jinchaoyang Group (stock code: 00878.HK).',
-    'desc1-2' => 'With branches in Hong Kong, Kowloon and the New Territories, we are actively expanding our business to provide customers with high-quality and professional storage and storage services. Supreme Mini Storage is a member of the Self Storage Association Asia (SSAA) and Hong Kong Mini-Storages Association (HKMSA).',
-    'title2' => 'Equipment and payment method',
-    'desc2-1' => 'The decoration and equipment of the mini-storage comply with the guidelines for mini-storage of the Fire Services Department. Guests can self-store 24 hours a day, equipped with an all-weather security system and an intelligent security system.',
-    'desc2-2' => 'The lease of mini storage can be paid in the following ways:',
-    'desc2-3' => 'EPS, cheque, credit card, FPS and interest-free installment'
+    'on' => 'About',
+    'title1' => 'One Storage Management Company Limited',
+    'desc1-1' => 'Subsidiary of Soundwill Holding Limited (Stock Code: 00878.hk) ',
+    'desc1-2' => 'Our braches locate in different districts of Hong Kong Island, Kowloon and New Territories. We continue to expand our business road map and provide excellent quality and professional storage services. One Storage is the member of Hong Kong Mini-Storage Association (HKMSA) and Self Storage Association Asia (SSAA).',
+    'title2' => 'Facilities and Payment Methods',
+    'desc2-1' => 'Follow the renovation and facilities guideline from Fire Service Department, having security system and smart access system.  Customers can access storage all round the clock. ',
+    'desc2-2' => 'Settle Your Stoarge Rental Payment with Following Payment Methods:',
+    'desc2-3' => 'EPS, Cheque, Credit Card, Faster Payment System (FPS) and Interest-Free Instalment'
 
 ];

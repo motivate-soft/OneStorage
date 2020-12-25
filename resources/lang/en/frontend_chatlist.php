@@ -2,9 +2,9 @@
 
 return [
 
-    'welcomeBack' => 'Welcome back!',
+    'welcomeBack' => 'Welcome Back!',
     'personalInformation' => 'Personal information',
-    'information' => 'Information',
+    'information' => 'Message',
     'logout' => 'Logout',
     'goAdminChat' => 'Click here to chat with admin',
     'adminAtOneStorage' => 'Admin at OneStorage',

@@ -2,11 +2,10 @@
 
 return [
 
-    'title' => 'Mini Storage | Login | Supreme Mini Storage One Storage',
     'menuTitle' => 'Login',
-    'mobilePhoneNumber' => 'Mobile phone number',
+    'mobilePhoneNumber' => 'Mobile No',
     'password' => 'Password',
-    'forgetPassword' => 'Forgot password?',
+    'forgetPassword' => 'Forgot Password?',
     'forgetNumber' => 'Forgot login number?',
     'loginWithGmail' => 'Login with Gmail',
     'loginWithFacebook' => 'Login with Facebook',

@@ -25,6 +25,12 @@ return [
     'publishDate' => 'Publish Date',
     'day' => 'Day',
     'month' => 'Month',
-    'year' => 'Year'
+    'year' => 'Year',
+    'seotags' => 'Seo Tags',
+    'seoTitle' => 'Seo Title',
+    'seoDescription' => 'Seo Description',
+    'seoKeyword' => 'Seo Keyword',
+    'seoContent' => 'Seo Content',
+    'altField' => 'Alt Field'
 
 ];

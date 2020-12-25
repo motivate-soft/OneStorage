@@ -117,14 +117,27 @@
                 <?php
                 $latest_news = App\Blog::getNewses(3);
                 ?>
-                @foreach($latest_news as $news)
-                <a class="flex mb-5" href="{{route('pages.news', $news->_id)}}">
-                    <img class="h-32 w-32 mr-4 object-cover" src="{{asset($news->thumbnail)}}">
-                    <span class="h-32 break-all leading-4 font_13 overflow-y-hidden robert-black" style="width: calc(100% - 8rem)">
-                        <?php echo nl2br($news->content) ?>
-                    </span>
-                </a>
-                @endforeach
+                <?php
+                    $latest_news = App\Blog::getNewses(4);
+                    $count = count($latest_news);
+                    ?>
+                    @foreach($latest_news as $index => $news)
+                    <a href="{{route('pages.news', $news->_id)}}" class="flex  rounded-lg mt-2 lg:py-3  px-2">
+                        <img class="h-24 w-24 ml-0 mb-4" src="{{asset($news->thumbnail)}}">
+                        <div class="text-left px-3 font_17" style="width: calc(100% - 6rem)">
+                            <p class="truncate font-bold leading-relaxed mb-1">{!! $news->title !!}</p>
+                            <p class="leading-normal break-all news-short-content pt-1" >
+                                <?php //echo nl2br($news->content) ?>
+                                {!! strip_tags(mb_strimwidth($news->content, 0, 250, "...")) !!}
+                            </p>
+                        </div>
+                    </a>
+                    @if($index != $count - 1)
+                    <div class="rounded-lg  px-2">
+                        <hr>
+                    </div>
+                    @endif
+                    @endforeach
             </div>
         </div>
 

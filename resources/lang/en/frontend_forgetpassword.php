@@ -2,8 +2,7 @@
 
 return [
 
-    'title' => 'Mini Storage | Forgot Password | Supreme Mini Storage One Storage',
-    'forgetPassword' => 'Forget password',
+    'forgetPassword' => 'Forget Password',
     'forgetNumber' => 'Forget login number',
     'email' => 'Email',
     'send' => 'Send',

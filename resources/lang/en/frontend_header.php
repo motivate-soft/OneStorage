@@ -2,16 +2,16 @@
 
 return [
 
-    'latestNews' => 'Latest news',
+    'latestNews' => 'Latest News',
     'view' => 'View',
-    'viewAboutUs' => 'View about us',
-    'latest' => 'Latest',
-    'branchLocation' => 'Branch location',
-    'spaceCalculator' => 'Space calculator',
+    'viewAboutUs' => 'About us',
+    'latest' => 'Latest News',
+    'branchLocation' => 'Branches',
+    'spaceCalculator' => 'Space Calculator',
     'faq' => 'FAQ',
-    'contactUs' => 'Contact us',
+    'contactUs' => 'Contact Us',
     'login' => 'Login',
-    'register' => 'Register',
+    'register' => 'Registration',
     'information' => 'Information',
     'account' => 'Account',
 ];

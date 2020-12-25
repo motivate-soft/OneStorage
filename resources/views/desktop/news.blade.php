@@ -2,7 +2,15 @@
 
 @section('title')
     @if($blog)
-        <title>{{__('迷你倉 | '. $blog->title .' | 至尊迷你倉 One Storage')}}</title>
+    @php
+    $title =strip_tags($blog->title);
+    
+    @endphp
+    <meta name="keywords" content="{{$seoTag?$seoTag->seo_keyword:'' }}">
+    <meta name="title" content="{{$seoTag?$seoTag->seo_title:'' }}">
+    <meta name="content" content="{{$seoTag?$seoTag->seo_content:'' }}">
+    <meta name="description" content="{{$seoTag?$seoTag->seo_description:'' }}">
+        <title>{!! __('迷你倉 | '. $title .' | 至尊迷你倉 One Storage') !!}</title>
     @else
         <title>{{__('迷你倉 | 至尊迷你倉 One Storage')}}</title>
     @endif
@@ -21,7 +29,20 @@
         -webkit-line-clamp: 3; /* number of lines to show */
         -webkit-box-orient: vertical;
     }
+    
+    .leading-normal table  tr td {
+        border: 1px solid #d2d6dc !important;
+    }
 
+    
+    .leading-normal ol{
+        list-style-position: inside !important;
+        list-style: decimal;
+    }
+    .leading-normal ul{
+        list-style-position: inside !important;
+        list-style: disc;
+    }
 </style>
 
 @endsection
@@ -31,17 +52,19 @@
 @endsection
 
 @section('content')
+
+
 @if($blog)
 <div class="py-10">
     <div class="bg-white section">
         <div class="grid grid-cols-3 gap-4">
             <div class="col-span-2 mr-0">
                 <div class="text-left text-5xl pt-10 pb-5 ml-10 border-b">
-                    <h1 class="font_36 text-purple break-all pr-8">{{$blog->title}}</h1>
+                    <h1 class="font_36 text-purple break-all pr-8">{!! $blog->title !!}</h1>
                     <p class="text2 text-xl mt-4">{{ __('frontend_latestNews.publishDate') }}: {{$blog->publish_date->format('d-m-Y')}}</p>
                 </div>
                 <div class="text-left ml-10 mt-5">
-                    <img class="pb-4" src="{{asset($blog->image)}}">
+                    <img class="pb-4" src="{{asset($blog->image)}}" alt="{{$seoTag?$seoTag->alt_field:''}}">
                     <div class="bg-grey-1 py-5 px-5 mb-8">
                         <div class="font_19 robert-black text-justify leading-normal break-words">
                             {!! $blog->content !!}
@@ -60,9 +83,9 @@
                     ?>
                     @foreach($latest_news as $index => $news)
                     <a href="{{route('pages.news', $news->_id)}}" class="flex  rounded-lg mt-2 lg:py-3  px-2">
-                        <img class="h-24 w-24 ml-0 mb-4" src="{{asset($news->thumbnail)}}">
+                        <img class="h-24 w-24 ml-0 mb-4" src="{{asset($news->thumbnail)}}" >
                         <div class="text-left px-3 font_17" style="width: calc(100% - 6rem)">
-                            <p class="truncate font-bold leading-relaxed mb-1">{{$news->title}}</p>
+                            <p class="truncate font-bold leading-relaxed mb-1">{!! $news->title !!}</p>
                             <p class="leading-normal break-all news-short-content pt-1" >
                                 <?php //echo nl2br($news->content) ?>
                                 {!! strip_tags(mb_strimwidth($news->content, 0, 250, "...")) !!}

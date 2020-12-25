@@ -59,6 +59,33 @@
                 <a href="{{route('pages.contactUs')}}">{{__('frontend_contact_us.menuTitle')}}</a>
             </div>
 
+            <!-- <div class="text-left px-4 pt-2 py-2 m-2 font_16 default-color">
+                <div class="flex ">
+                    <a class="inline-block font_16 default-color no-underline " href="#">{{Helper::getLocalName()}}</a>
+                    <div class="inset-y-0 accordion_1 right-0 items-center px-2 text-gray-700" style="margin-left: 84px; ">
+                        <a href="javascript:void(0)"><i class="icon wb-chevron-down"></i></a>
+                    </div>
+                </div>
+                <div class="text-left px-5 font_16 default-color panel_1" style="display: none; padding-top:8px;">
+
+                    <div class="text-left w-full px-4  m-2 font_16 default-color">
+                        <div class="flex">
+                            <a class="inline-block font_16 default-color no-underline" href="{{url('locale/zh-CN')}}">
+                                中文
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="text-left w-full px-4  m-2 font_16 default-color">
+                        <div class="flex">
+                            <a class="inline-block font_16 default-color no-underline" href="{{url('locale/en')}}">
+                                English
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
             <div class="flex text-left px-4 py-2 m-2 font_16 default-color">
                 <?php
                 if (Auth::check()) {

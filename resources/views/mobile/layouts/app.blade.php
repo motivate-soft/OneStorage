@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -165,7 +165,7 @@
         @yield('footer')
     </div>
 
-
+    <input id="locale" value="{{\Illuminate\Support\Facades\Session::get('locale')}}" type="hidden">
 
     <script src="{{ asset('js/accessory.js') }}"></script>
     <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
@@ -174,6 +174,15 @@
     @yield('scripts')
 
     <script>
+
+        // ------ Add code to change language style -----
+        var locale = $("#locale").val();
+
+        {{--if(locale == "en") {--}}
+            {{--window.location.href = "{{url('/locale')}}" + "/zh-CN";--}}
+        {{--}--}}
+        // ----- end
+
         //Javascript to toggle the menu
         document.getElementById('nav-toggle').onclick = function() {
             document.getElementById("nav-content").classList.toggle("hidden");

@@ -5,7 +5,7 @@ return [
     'title' => 'Enquiries',
     'date' => 'Date',
     'profile' => 'Profile',
-    'demand' => 'Demand',
+    'demand' => 'Request',
     'question'  => 'Question',
     'message' => 'Message',
     'page' => 'Page',

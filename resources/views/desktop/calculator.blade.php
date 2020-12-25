@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('frontend_calculator.title')}}</title>
+<title>{{__('frontend_title.spaceCalculator')}}</title>
 @endsection
 
 @section('styles')

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('迷你倉 | 職位空缺 | 至尊迷你倉 One Storage')}}</title>
+    <title>{{__('frontend_title.jobVacancy')}}</title>
 @endsection
 
 @section('styles')
@@ -62,7 +62,7 @@
                 <p class="after-list regular-color pl-2 py-1">{{__('frontend_joinus.businessBonus')}} </p>
                 <p class="after-list regular-color pl-2 py-1">{{__('frontend_joinus.staffDiscount')}} </p>
                 <p class="after-list regular-color pl-2 py-1">{{__('frontend_joinus.training')}} </p>
-                <p class="after-list regular-color pl-2 py-1">{{__('frontend_joinus.promotionOpportunites')}} </p>
+                <p class="after-list regular-color pl-2 py-1">{{__('frontend_joinus.promotionOpportunities')}} </p>
             </div>
         </div>
     </div>

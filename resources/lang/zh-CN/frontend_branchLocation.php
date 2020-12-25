@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => '迷你倉 | 分店位置 | 至尊迷你倉 One Storage',
+
     'menuTitle' => '分店位置',
     'selectLocation' => '選擇迷你倉分店位置',
     'branch' => '分店',

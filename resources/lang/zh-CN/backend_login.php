@@ -2,10 +2,10 @@
 
 return [
 
-    'login' => '登入',
-    'userName' => '用户名：',
-    'password' => '密码:',
-    'subTitle' => 'OneStorage后端登录',
-    'description' => '请登录到您的帐户',
-    'copyRight' => '©2020一存储管理有限公司-保留所有权利。',
+    'login' => 'Login',
+    'userName' => 'Username:',
+    'password' => 'Password:',
+    'subTitle' => 'OneStorage backend login',
+    'description' => 'Please log in to your account',
+    'copyRight' => '© 2020 One Storage Management Company Limited - All rights reserved.',
 ];

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('迷你倉 | 空間計算器 | 至尊迷你倉 One Storage')}}</title>
+    <title>{{__('frontend_title.spaceCalculator')}}</title>
 @endsection
 
 @section('styles')

@@ -2,17 +2,17 @@
 
 return [
 
-    'pageSubTitle' => "Check mini storage lease.",
-    'lastName' => 'Last name',
-    'firstName' => 'First name',
-    'mobilePhoneNumber' => 'Mobile phone number',
+    'pageSubTitle' => "Enquiry for Storage Rental",
+    'lastName' => 'Last Name',
+    'firstName' => 'First Name',
+    'mobilePhoneNumber' => 'Mobile No',
     'email' => 'Email',
-    'emailBranch' => 'Email branch',
-    'emailBranchQuestion' => 'Email branch inquiry question',
-    'findBranch' => 'Where can I find a branch?',
-    'appointmentVisit' => 'I want to make an appointment to visit.',
+    'emailBranch' => 'Branch',
+    'emailBranchQuestion' => 'Question',
+    'findBranch' => 'Where is the branch?',
+    'appointmentVisit' => 'I want to site visit',
     'sizePrice' => 'What is the size and price?',
     'other' => 'Other',
-    'sendOut' => 'Send',
+    'sendOut' => 'Send out',
     'yourMessage' => 'Your message',
 ];

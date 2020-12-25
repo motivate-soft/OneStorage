@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('frontend_branchLocation.title')}}</title>
+<title>{{__('frontend_title.branch')}}</title>
 @endsection
 
 @section('styles')
